@@ -1,0 +1,82 @@
+[ode-ts-client](../README.md) / [Exports](../modules.md) / IXitiTrackingParams
+
+# Interface: IXitiTrackingParams
+
+2021 implementation of XiTi.
+
+## Table of contents
+
+### Properties
+
+- [EXPLOITANT](ixititrackingparams.md#exploitant)
+- [ID\_PERSO](ixititrackingparams.md#id_perso)
+- [LIBELLE\_SERVICE](ixititrackingparams.md#libelle_service)
+- [OUTIL](ixititrackingparams.md#outil)
+- [PLATFORME](ixititrackingparams.md#platforme)
+- [PROFILE](ixititrackingparams.md#profile)
+- [PROJET](ixititrackingparams.md#projet)
+- [STRUCT\_ID](ixititrackingparams.md#struct_id)
+- [STRUCT\_UAI](ixititrackingparams.md#struct_uai)
+- [TYPE](ixititrackingparams.md#type)
+
+## Properties
+
+### EXPLOITANT
+
+• **EXPLOITANT**: *any*
+
+___
+
+### ID\_PERSO
+
+• **ID\_PERSO**: *any*
+
+___
+
+### LIBELLE\_SERVICE
+
+• **LIBELLE\_SERVICE**: { `default`: *string*  } & { [prop: string]: *string*;  }
+
+Which property of LIBELLE_SERVICE to use depends on the frontend.
+
+___
+
+### OUTIL
+
+• **OUTIL**: *any*
+
+___
+
+### PLATFORME
+
+• **PLATFORME**: *any*
+
+___
+
+### PROFILE
+
+• **PROFILE**: *any*
+
+___
+
+### PROJET
+
+• **PROJET**: *any*
+
+___
+
+### STRUCT\_ID
+
+• **STRUCT\_ID**: *any*
+
+___
+
+### STRUCT\_UAI
+
+• **STRUCT\_UAI**: *string*
+
+___
+
+### TYPE
+
+• **TYPE**: *string*

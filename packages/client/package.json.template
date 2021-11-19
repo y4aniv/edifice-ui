@@ -1,0 +1,48 @@
+{
+  "name": "${modname}",
+  "version": "${npmVersion}",
+  "description": "Foundation frameworks by Open Digital Education",
+  "main": "dist/ts/index.js",
+  "types": "dist/ts/index.d.ts",
+  "scripts": {
+    "prepare": "npx husky install",
+    "compile": "npx tsc --build ./tsconfig.json",
+    "test": "npm run compile && npx jasmine --config=src/test/config/jasmine.json",
+    "docs": "npx rimraf ./docs/ && npx typedoc src/ts/index.ts --excludePrivate --disableSources --plugin typedoc-plugin-markdown",
+    "build": "npx webpack",
+    "watch": "npx webpack --config webpack.config.watch.js --env build_target=${webpackWatchSpringboard}/assets/js/ode-ts-client --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opendigitaleducation/ode-ts-client.git"
+  },
+  "author": "Open Digital Education",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/opendigitaleducation/ode-ts-client/issues"
+  },
+  "homepage": "https://github.com/opendigitaleducation/ode-ts-client#readme",
+  "devDependencies": {
+    "@types/jasmine": "^3.6.3",
+    "@types/node": "^14.14.28",
+    "file-loader": "~6.2.0",
+    "husky": "~7.0.2",
+    "jasmine": "^3.6.4",
+    "rimraf": "^3.0.2",
+    "terser-webpack-plugin": "5.1.4",
+    "ts-loader": "^8.0.18",
+    "typedoc": "0.20.34",
+    "typedoc-plugin-markdown": "3.6.0",
+    "typescript": "4.2.2",
+    "webpack": "5.22.0",
+    "webpack-cli": "4.5.0"
+  },
+  "dependencies": {
+    "axios": "~0.21.1",
+    "core-js": "3.8.3",
+    "rxjs": "7.3.0"
+  },
+  "files": [
+    "dist/ts/**/*"
+  ]
+}
