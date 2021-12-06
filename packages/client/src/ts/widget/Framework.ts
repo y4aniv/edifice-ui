@@ -153,6 +153,8 @@ export class WidgetFramework implements IWidgetFramework {
                 }
                 if(w.platformConf.mandatory) {
                     this._userPrefs[widgetName].show = true;
+                    //#WB-48 : mandatory widgets are now sorted by default order.
+                    this._userPrefs[widgetName].index = defaultWidgetOrder[widgetName] ?? 999;
                 }
                 // Load its translations.
                 if( w.platformConf.i18n ) {
