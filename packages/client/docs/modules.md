@@ -118,6 +118,7 @@
 - [UserPreferenceKey](modules.md#userpreferencekey)
 - [WidgetName](modules.md#widgetname)
 - [WidgetPosition](modules.md#widgetposition)
+- [WidgetSpecificUserPrefs](modules.md#widgetspecificuserprefs)
 - [WidgetUserPref](modules.md#widgetuserpref)
 
 ### Variables
@@ -513,17 +514,15 @@ ___
 
 ___
 
+### WidgetSpecificUserPrefs
+
+Ƭ **WidgetSpecificUserPrefs**: *schoolId*
+
+___
+
 ### WidgetUserPref
 
-Ƭ **WidgetUserPref**: *object*
-
-#### Type declaration:
-
-Name | Type | Description |
-:------ | :------ | :------ |
-`index` | *number* | Integer defining the sort order of this widget.   |
-`position`? | [*WidgetPosition*](modules.md#widgetposition) | Prefered position on-screen (left, right...).   |
-`show` | *boolean* | Boolean indicating wether the user wants to see this widget, or not.   |
+Ƭ **WidgetUserPref**: { `index`: *number* ; `position?`: [*WidgetPosition*](modules.md#widgetposition) ; `show`: *boolean*  } & { [pref in WidgetSpecificUserPrefs]?: any}
 
 ## Variables
 

@@ -57,14 +57,20 @@ export interface IWidget {
 }
 
 //-------------------------------------
+export type WidgetSpecificUserPrefs = "schoolId" // lastest selected school id, in school-widget
+//-------------------------------------
+
+//-------------------------------------
 export type WidgetUserPref = {
 //-------------------------------------
-    /** Integer defining the sort order of this widget. */
-    index:number;
-    /** Boolean indicating wether the user wants to see this widget, or not. */
-    show:boolean;
-    /** Prefered position on-screen (left, right...). */
-    position?: WidgetPosition;
+  /** Integer defining the sort order of this widget. */
+  index: number;
+  /** Boolean indicating wether the user wants to see this widget, or not. */
+  show: boolean;
+  /** Prefered position on-screen (left, right...). */
+  position?: WidgetPosition;
+} & {
+  [pref in WidgetSpecificUserPrefs]?: any;
 };
 
 //-------------------------------------
