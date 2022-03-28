@@ -44,6 +44,7 @@
 - [IPreferences](interfaces/ipreferences.md)
 - [IPromisified](interfaces/ipromisified.md)
 - [IProperty](interfaces/iproperty.md)
+- [IQuotaAndUsage](interfaces/iquotaandusage.md)
 - [IResource](interfaces/iresource.md)
 - [ISearchParameters](interfaces/isearchparameters.md)
 - [ISearchResults](interfaces/isearchresults.md)

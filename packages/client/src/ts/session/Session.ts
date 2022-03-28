@@ -1,6 +1,6 @@
 import { transport } from "../transport/Framework";
 import { notify } from "../notify/Framework";
-import { ISession, IUserDescription, IUserInfo } from "./interfaces";
+import { IQuotaAndUsage, ISession, IUserDescription, IUserInfo } from "./interfaces";
 import { ConfigurationFramework, configure } from "../configure/Framework";
 import { ConfigurationFrameworkFactory } from "../configure/interfaces";
 import { App } from "../globals";
@@ -124,6 +124,21 @@ export class Session implements ISession {
         const workflowRight = (right.workflow) ? this.hasWorkflow(right.workflow) : true;
 
         return resourceRight && workflowRight;
+    }
+
+    ////////////////////////////////////////////////////////// Storage management
+
+    get latestQuotaAndUsage():Promise<IQuotaAndUsage> {
+        return http.get<IQuotaAndUsage>( `/workspace/quota/user/${this._me.userId}` ).then( infos => {
+            if( this._description ) {
+                // Update quota and storage internal session infos.
+                this._description.quota   = infos.quota;
+                this._description.storage = infos.storage;
+            }
+            return infos;
+        }).catch( () => {
+            return {quota:0, storage:0};
+        });
     }
 
     ////////////////////////////////////////////////////////// Language management

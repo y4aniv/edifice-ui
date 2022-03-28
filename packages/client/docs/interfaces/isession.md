@@ -10,6 +10,7 @@
 - [currentApp](isession.md#currentapp)
 - [currentLanguage](isession.md#currentlanguage)
 - [description](isession.md#description)
+- [latestQuotaAndUsage](isession.md#latestquotaandusage)
 - [notLoggedIn](isession.md#notloggedin)
 - [user](isession.md#user)
 
@@ -50,6 +51,14 @@ ___
 • `Readonly` **description**: [*IUserDescription*](iuserdescription.md)
 
 Additional information about the connected user.
+
+___
+
+### latestQuotaAndUsage
+
+• `Readonly` **latestQuotaAndUsage**: *Promise*<[*IQuotaAndUsage*](iquotaandusage.md)\>
+
+Retrieve the lastest storage + quota information.
 
 ___
 

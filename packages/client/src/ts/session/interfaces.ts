@@ -6,7 +6,7 @@ import { session } from "./Framework";
 export abstract class SessionFrameworkFactory {
 //-------------------------------------
   static instance():ISessionFramework {
-    return session
+    return session;
   };
 }
 
@@ -35,6 +35,8 @@ export interface ISession {
   readonly user:IUserInfo;
   /** Retrieve the current main app, @see ConfigureFramework.Platform.apps */
   readonly currentApp:App|null;
+  /** Retrieve the lastest storage + quota information. */
+  readonly latestQuotaAndUsage:Promise<IQuotaAndUsage>;
 
   hasWorkflow( workflowName:string ):boolean;
   hasRight(resource:any, right:any):boolean;
@@ -84,6 +86,15 @@ export interface IUserDescription {
   profiles:Array<"Student"|"Teacher"|"Relative"|"Personnel"|"Guest">// NOTE: initial field name is "type", but it is renamed to "profiles" internally.
   userId: string;       // "12345678-9abc-def0-1234-56789abcdef0"
   visibleInfos: Array<string>;  // ["SHOW_BIRTHDATE"]
+}
+
+//-------------------------------------
+export interface IQuotaAndUsage {
+//-------------------------------------
+  /** Maximum use of the storage space. */
+  quota: number;
+  /** Current use of the storage space. */
+  storage: number;
 }
 
 ////////////////////////////////////////// LEGACY
