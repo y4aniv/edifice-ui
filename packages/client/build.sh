@@ -73,6 +73,10 @@ watch () {
     node sh -c "npm run watch --watch_springboard=/home/node/springboard"
 }
 
+audit () {
+  docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "npm audit"
+}
+
 publishNPM () {
   LOCAL_BRANCH=`echo $GIT_BRANCH | sed -e "s|origin/||g"`
   docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "npm publish --tag $LOCAL_BRANCH"
@@ -116,6 +120,9 @@ do
       ;;
     watch)
       watch
+      ;;
+    audit)
+      audit
       ;;
     publishNPM)
       publishNPM
