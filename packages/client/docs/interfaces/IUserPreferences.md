@@ -37,6 +37,7 @@
 | `portal` | `any` |
 | `rgpdCookies` | `any` |
 | `timeline` | `any` |
+| `video` | `any` |
 | `widgets` | `any` |
 
 ## Methods

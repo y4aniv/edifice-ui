@@ -570,6 +570,7 @@ ___
 | `EXPLORER` | ``"explorer"`` |
 | `PORTAL` | ``"portal"`` |
 | `TIMELINE` | ``"timeline"`` |
+| `VIDEO` | ``"video"`` |
 
 ___
 

@@ -20,8 +20,12 @@ export interface IConfigurationFramework {
       readonly deploymentTag:string;
       readonly cdnDomain:string;
       readonly apps: {
-        /** Initialize an app (preload its public conf and i18n) */
-        initialize(app:App):Promise<void>;
+        /** 
+         * Initialize an app (preload its public conf and i18n)
+         * @param app Which application to initialize
+         * @param alternativeApp Truthy when an application needs initializing another, while remaining principal.
+         */
+        initialize(app:App, alternativeApp?:boolean):Promise<void>;
         /** Load and return the public conf of an app. */
         getPublicConf(app:App):Promise<any>;
         /** Load the i18n of an app. */
@@ -100,30 +104,6 @@ export interface IXitiTrackingParams {
   PROFILE: any;
   // NOM_PAGE is missing, but has to determined by the frontend.
 }
-
-/* 
-FIXME Remove old code in comments below, once the 2021 XiTi impl is validated.
-The following was ported from themes but NEVER TESTED.
-
-export interface IXitiTrackingParams {
-  //Springboard constants
-  ID_COLLECTIVITE: number|'';
-  ID_PLATEFORME: number|'';
-  ID_PROJET: number|'';
-
-  //Structure var
-  ID_ETAB: 0|''|{id:number; collectiviteId?:any; plateformeId?:any; projetId?:any;};
-
-  //App vars
-  ID_SERVICE: number|'';
-  LIB_SERVICE: number|string;
-  ENABLE_PROXY?: boolean;
-
-  //User vars
-  ID_PERSO: string;
-  ID_PROFIL: number;
-}
-*/
 
 //-------------------------------------
 export interface ITheme {

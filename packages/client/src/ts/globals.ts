@@ -25,6 +25,8 @@ export const APP = {
  ,EXERCIZER:  "exercizer"
  ,TIMELINE:   "timeline"
  ,CAS:        "cas"
+ ,VIDEO:      "video"
+
  // TODO compléter/trier les apps suivantes
 /*
   "competences"
@@ -74,7 +76,6 @@ export const APP = {
   "pages"
   "website"
   "parametrage"
-  "video"
   "kne"
   "sacoche"
 */
