@@ -43,6 +43,7 @@ const defaultWidgetPosition:{ [name in WidgetName]: WidgetPosition} = {
 const defaultWidgetOrder:{ [name in WidgetName]: number} = {
     "school-widget":        0,
     "my-apps":              10,
+    "record-me":            15,
     "last-infos-widget":    20,       // Actualités
     "qwant":                30,
     "qwant-junior":         30,
@@ -50,8 +51,7 @@ const defaultWidgetOrder:{ [name in WidgetName]: number} = {
     "bookmark-widget":      50,
     "carnet-de-bord":       60,
     "maxicours-widget":     70,
-    "cursus-widget":        80,
-    "record-me":            90,       // Dictaphone
+    "cursus-widget":        80,       // Dictaphone
     "rss-widget":           100,
     "mood":                 110,
     "birthday":             120,
