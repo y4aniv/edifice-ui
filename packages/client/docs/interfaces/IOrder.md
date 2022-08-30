@@ -6,24 +6,24 @@
 
 ### Properties
 
-- [defaultValue](IOrder.md#defaultvalue)
-- [i18n](IOrder.md#i18n)
-- [id](IOrder.md#id)
+- [defaultValue](iorder.md#defaultvalue)
+- [i18n](iorder.md#i18n)
+- [id](iorder.md#id)
 
 ## Properties
 
 ### defaultValue
 
-• `Optional` **defaultValue**: [`SortOrderType`](../modules.md#sortordertype)
+• `Optional` **defaultValue**: [*SortOrderType*](../modules.md#sortordertype)
 
 ___
 
 ### i18n
 
-• **i18n**: `string`
+• **i18n**: *string*
 
 ___
 
 ### id
 
-• **id**: [`SortByType`](../modules.md#sortbytype)
+• **id**: [*SortByType*](../modules.md#sortbytype)

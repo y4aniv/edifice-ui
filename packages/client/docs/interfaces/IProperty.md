@@ -6,17 +6,17 @@
 
 ### Properties
 
-- [i18n](IProperty.md#i18n)
-- [key](IProperty.md#key)
+- [i18n](iproperty.md#i18n)
+- [key](iproperty.md#key)
 
 ## Properties
 
 ### i18n
 
-• `Optional` **i18n**: `string`
+• `Optional` **i18n**: *string*
 
 ___
 
 ### key
 
-• **key**: [`PropKeyType`](../modules.md#propkeytype)
+• **key**: [*PropKeyType*](../modules.md#propkeytype)

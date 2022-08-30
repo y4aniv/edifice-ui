@@ -6,45 +6,45 @@
 
 ### Properties
 
-- [app](ISearchParameters.md#app)
-- [filters](ISearchParameters.md#filters)
-- [orders](ISearchParameters.md#orders)
-- [pagination](ISearchParameters.md#pagination)
-- [search](ISearchParameters.md#search)
-- [types](ISearchParameters.md#types)
+- [app](isearchparameters.md#app)
+- [filters](isearchparameters.md#filters)
+- [orders](isearchparameters.md#orders)
+- [pagination](isearchparameters.md#pagination)
+- [search](isearchparameters.md#search)
+- [types](isearchparameters.md#types)
 
 ## Properties
 
 ### app
 
-• **app**: [`App`](../modules.md#app)
+• **app**: [*App*](../modules.md#app)
 
 ___
 
 ### filters
 
-• **filters**: [`FilterValues`](../modules.md#filtervalues)
+• **filters**: [*FilterValues*](../modules.md#filtervalues)
 
 ___
 
 ### orders
 
-• `Optional` **orders**: [`OrderValues`](../modules.md#ordervalues)
+• `Optional` **orders**: [*OrderValues*](../modules.md#ordervalues)
 
 ___
 
 ### pagination
 
-• **pagination**: [`IPagination`](IPagination.md)
+• **pagination**: [*IPagination*](ipagination.md)
 
 ___
 
 ### search
 
-• `Optional` **search**: `String`
+• `Optional` **search**: String
 
 ___
 
 ### types
 
-• **types**: [`ResourceType`](../modules.md#resourcetype)[]
+• **types**: [*ResourceType*](../modules.md#resourcetype)[]

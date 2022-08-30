@@ -67,6 +67,8 @@ export interface IHttp {
 
     /** HTTP GET, Accept: application/javascript */
     loadScript(url: string, params?: IHttpParams): Promise<void>;
+
+    setCdn(url:string):void;
 }
 
 //-------------------------------------

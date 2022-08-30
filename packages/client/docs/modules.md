@@ -6,68 +6,68 @@
 
 ### Namespaces
 
-- [RxJS](modules/RxJS.md)
+- [RxJS](modules/rxjs.md)
 
 ### Classes
 
-- [AbstractBusAgent](classes/AbstractBusAgent.md)
-- [ConfigurationFrameworkFactory](classes/ConfigurationFrameworkFactory.md)
-- [ExplorerFrameworkFactory](classes/ExplorerFrameworkFactory.md)
-- [ITimelineFactory](classes/ITimelineFactory.md)
-- [LastInfosWidget](classes/LastInfosWidget.md)
-- [NotifyFrameworkFactory](classes/NotifyFrameworkFactory.md)
-- [SessionFrameworkFactory](classes/SessionFrameworkFactory.md)
-- [TransportFrameworkFactory](classes/TransportFrameworkFactory.md)
-- [WidgetFrameworkFactory](classes/WidgetFrameworkFactory.md)
+- [AbstractBusAgent](classes/abstractbusagent.md)
+- [ConfigurationFrameworkFactory](classes/configurationframeworkfactory.md)
+- [ExplorerFrameworkFactory](classes/explorerframeworkfactory.md)
+- [ITimelineFactory](classes/itimelinefactory.md)
+- [LastInfosWidget](classes/lastinfoswidget.md)
+- [NotifyFrameworkFactory](classes/notifyframeworkfactory.md)
+- [SessionFrameworkFactory](classes/sessionframeworkfactory.md)
+- [TransportFrameworkFactory](classes/transportframeworkfactory.md)
+- [WidgetFrameworkFactory](classes/widgetframeworkfactory.md)
 
 ### Interfaces
 
-- [IAction](interfaces/IAction.md)
-- [IActionParameters](interfaces/IActionParameters.md)
-- [IActionResult](interfaces/IActionResult.md)
-- [IBus](interfaces/IBus.md)
-- [IBusAgent](interfaces/IBusAgent.md)
-- [IConfigurationFramework](interfaces/IConfigurationFramework.md)
-- [IContext](interfaces/IContext.md)
-- [IExplorerContext](interfaces/IExplorerContext.md)
-- [IExplorerFramework](interfaces/IExplorerFramework.md)
-- [IFilter](interfaces/IFilter.md)
-- [IFlashMessageModel](interfaces/IFlashMessageModel.md)
-- [IFolder](interfaces/IFolder.md)
-- [IHttp](interfaces/IHttp.md)
-- [IIdiom](interfaces/IIdiom.md)
-- [ILastInfosModel](interfaces/ILastInfosModel.md)
-- [IMatomoTrackingParams](interfaces/IMatomoTrackingParams.md)
-- [INotifyFramework](interfaces/INotifyFramework.md)
-- [IOrder](interfaces/IOrder.md)
-- [IPagination](interfaces/IPagination.md)
-- [IPreferences](interfaces/IPreferences.md)
-- [IPromisified](interfaces/IPromisified.md)
-- [IProperty](interfaces/IProperty.md)
-- [IQuotaAndUsage](interfaces/IQuotaAndUsage.md)
-- [IResource](interfaces/IResource.md)
-- [ISearchParameters](interfaces/ISearchParameters.md)
-- [ISearchResults](interfaces/ISearchResults.md)
-- [ISession](interfaces/ISession.md)
-- [ISessionFramework](interfaces/ISessionFramework.md)
-- [ITheme](interfaces/ITheme.md)
-- [IThemeConf](interfaces/IThemeConf.md)
-- [IThemeConfOverriding](interfaces/IThemeConfOverriding.md)
-- [IThemeDesc](interfaces/IThemeDesc.md)
-- [ITimelineApp](interfaces/ITimelineApp.md)
-- [ITimelineNotification](interfaces/ITimelineNotification.md)
-- [ITrackingParams](interfaces/ITrackingParams.md)
-- [ITransportFramework](interfaces/ITransportFramework.md)
-- [IUserDescription](interfaces/IUserDescription.md)
-- [IUserInfo](interfaces/IUserInfo.md)
-- [IUserPreferences](interfaces/IUserPreferences.md)
-- [IWebApp](interfaces/IWebApp.md)
-- [IWidget](interfaces/IWidget.md)
-- [IWidgetFramework](interfaces/IWidgetFramework.md)
-- [IWidgetModel](interfaces/IWidgetModel.md)
-- [IWorkflowAuth](interfaces/IWorkflowAuth.md)
-- [IXitiTrackingParams](interfaces/IXitiTrackingParams.md)
-- [Recipient](interfaces/Recipient.md)
+- [IAction](interfaces/iaction.md)
+- [IActionParameters](interfaces/iactionparameters.md)
+- [IActionResult](interfaces/iactionresult.md)
+- [IBus](interfaces/ibus.md)
+- [IBusAgent](interfaces/ibusagent.md)
+- [IConfigurationFramework](interfaces/iconfigurationframework.md)
+- [IContext](interfaces/icontext.md)
+- [IExplorerContext](interfaces/iexplorercontext.md)
+- [IExplorerFramework](interfaces/iexplorerframework.md)
+- [IFilter](interfaces/ifilter.md)
+- [IFlashMessageModel](interfaces/iflashmessagemodel.md)
+- [IFolder](interfaces/ifolder.md)
+- [IHttp](interfaces/ihttp.md)
+- [IIdiom](interfaces/iidiom.md)
+- [ILastInfosModel](interfaces/ilastinfosmodel.md)
+- [IMatomoTrackingParams](interfaces/imatomotrackingparams.md)
+- [INotifyFramework](interfaces/inotifyframework.md)
+- [IOrder](interfaces/iorder.md)
+- [IPagination](interfaces/ipagination.md)
+- [IPreferences](interfaces/ipreferences.md)
+- [IPromisified](interfaces/ipromisified.md)
+- [IProperty](interfaces/iproperty.md)
+- [IQuotaAndUsage](interfaces/iquotaandusage.md)
+- [IResource](interfaces/iresource.md)
+- [ISearchParameters](interfaces/isearchparameters.md)
+- [ISearchResults](interfaces/isearchresults.md)
+- [ISession](interfaces/isession.md)
+- [ISessionFramework](interfaces/isessionframework.md)
+- [ITheme](interfaces/itheme.md)
+- [IThemeConf](interfaces/ithemeconf.md)
+- [IThemeConfOverriding](interfaces/ithemeconfoverriding.md)
+- [IThemeDesc](interfaces/ithemedesc.md)
+- [ITimelineApp](interfaces/itimelineapp.md)
+- [ITimelineNotification](interfaces/itimelinenotification.md)
+- [ITrackingParams](interfaces/itrackingparams.md)
+- [ITransportFramework](interfaces/itransportframework.md)
+- [IUserDescription](interfaces/iuserdescription.md)
+- [IUserInfo](interfaces/iuserinfo.md)
+- [IUserPreferences](interfaces/iuserpreferences.md)
+- [IWebApp](interfaces/iwebapp.md)
+- [IWidget](interfaces/iwidget.md)
+- [IWidgetFramework](interfaces/iwidgetframework.md)
+- [IWidgetModel](interfaces/iwidgetmodel.md)
+- [IWorkflowAuth](interfaces/iworkflowauth.md)
+- [IXitiTrackingParams](interfaces/ixititrackingparams.md)
+- [Recipient](interfaces/recipient.md)
 
 ### Type aliases
 
@@ -149,674 +149,672 @@
 
 ### ActionType
 
-Ƭ **ActionType**: typeof [`ACTION`](modules.md#action)[keyof typeof [`ACTION`](modules.md#action)]
+Ƭ **ActionType**: *typeof* [*ACTION*](modules.md#action)[keyof *typeof* [*ACTION*](modules.md#action)]
 
 ___
 
 ### AddBundleCallback
 
-Ƭ **AddBundleCallback**: () => `void` \| `Promise`<`void`\>
+Ƭ **AddBundleCallback**: () => *void* \| *Promise*<void\>
 
-#### Type declaration
+#### Type declaration:
 
-▸ (): `void` \| `Promise`<`void`\>
+▸ (): *void* \| *Promise*<void\>
 
-##### Returns
-
-`void` \| `Promise`<`void`\>
+**Returns:** *void* \| *Promise*<void\>
 
 ___
 
 ### AnalyticStatus
 
-Ƭ **AnalyticStatus**: ``"void"`` \| ``"pending"`` \| ``"ready"`` \| ``"failed"``
+Ƭ **AnalyticStatus**: *void* \| *pending* \| *ready* \| *failed*
 
 ___
 
 ### App
 
-Ƭ **App**: typeof [`APP`](modules.md#app)[keyof typeof [`APP`](modules.md#app)]
+Ƭ **App**: *typeof* [*APP*](modules.md#app)[keyof *typeof* [*APP*](modules.md#app)]
 
 ___
 
 ### BooleanFilterType
 
-Ƭ **BooleanFilterType**: typeof [`BOOLEAN_FILTER`](modules.md#boolean_filter)[keyof typeof [`BOOLEAN_FILTER`](modules.md#boolean_filter)]
+Ƭ **BooleanFilterType**: *typeof* [*BOOLEAN\_FILTER*](modules.md#boolean_filter)[keyof *typeof* [*BOOLEAN\_FILTER*](modules.md#boolean_filter)]
 
 ___
 
 ### CopyParameters
 
-Ƭ **CopyParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `folderId`: [`ID`](modules.md#id) ; `folderIds`: [`ID`](modules.md#id)[] ; `resourceIds`: [`ID`](modules.md#id)[]  }
+Ƭ **CopyParameters**: [*IActionParameters*](interfaces/iactionparameters.md) & { `folderId`: [*ID*](modules.md#id) ; `folderIds`: [*ID*](modules.md#id)[] ; `resourceIds`: [*ID*](modules.md#id)[]  }
 
 ___
 
 ### CreateFolderParameters
 
-Ƭ **CreateFolderParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `app`: [`App`](modules.md#app) ; `name`: `string` ; `parentId`: [`ID`](modules.md#id) \| ``"default"`` ; `type`: [`ResourceType`](modules.md#resourcetype)  }
+Ƭ **CreateFolderParameters**: [*IActionParameters*](interfaces/iactionparameters.md) & { `app`: [*App*](modules.md#app) ; `name`: *string* ; `parentId`: [*ID*](modules.md#id) \| *default* ; `type`: [*ResourceType*](modules.md#resourcetype)  }
 
 ___
 
 ### CreateFolderResult
 
-Ƭ **CreateFolderResult**: [`IActionResult`](interfaces/IActionResult.md) & [`IFolder`](interfaces/IFolder.md) & { `createdAt`: `string`  }
+Ƭ **CreateFolderResult**: [*IActionResult*](interfaces/iactionresult.md) & [*IFolder*](interfaces/ifolder.md) & { `createdAt`: *string*  }
 
 ___
 
 ### DeleteParameters
 
-Ƭ **DeleteParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `folderIds`: [`ID`](modules.md#id)[] ; `resourceIds`: [`ID`](modules.md#id)[]  }
+Ƭ **DeleteParameters**: [*IActionParameters*](interfaces/iactionparameters.md) & { `folderIds`: [*ID*](modules.md#id)[] ; `resourceIds`: [*ID*](modules.md#id)[]  }
 
 ___
 
 ### ErrorCode
 
-Ƭ **ErrorCode**: typeof [`ERROR_CODE`](modules.md#error_code)[keyof typeof [`ERROR_CODE`](modules.md#error_code)]
+Ƭ **ErrorCode**: *typeof* [*ERROR\_CODE*](modules.md#error_code)[keyof *typeof* [*ERROR\_CODE*](modules.md#error_code)]
 
 ___
 
 ### EventName
 
-Ƭ **EventName**: typeof [`EVENT_NAME`](modules.md#event_name)[keyof typeof [`EVENT_NAME`](modules.md#event_name)]
+Ƭ **EventName**: *typeof* [*EVENT\_NAME*](modules.md#event_name)[keyof *typeof* [*EVENT\_NAME*](modules.md#event_name)]
 
 ___
 
 ### FilterValues
 
-Ƭ **FilterValues**: { [B in BooleanFilterType]?: boolean } & { [S in StringFilterType]?: string } & { `folder?`: [`ID`](modules.md#id)  }
+Ƭ **FilterValues**: { [B in BooleanFilterType]?: boolean} & { [S in StringFilterType]?: string} & { `folder?`: [*ID*](modules.md#id)  }
 
 ___
 
 ### FolderType
 
-Ƭ **FolderType**: typeof [`FOLDER`](modules.md#folder)[keyof typeof [`FOLDER`](modules.md#folder)]
+Ƭ **FolderType**: *typeof* [*FOLDER*](modules.md#folder)[keyof *typeof* [*FOLDER*](modules.md#folder)]
 
 ___
 
 ### GetContextParameters
 
-Ƭ **GetContextParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & [`ISearchParameters`](interfaces/ISearchParameters.md)
+Ƭ **GetContextParameters**: [*IActionParameters*](interfaces/iactionparameters.md) & [*ISearchParameters*](interfaces/isearchparameters.md)
 
 ___
 
 ### GetContextResult
 
-Ƭ **GetContextResult**: [`IActionResult`](interfaces/IActionResult.md) & [`IContext`](interfaces/IContext.md)
+Ƭ **GetContextResult**: [*IActionResult*](interfaces/iactionresult.md) & [*IContext*](interfaces/icontext.md)
 
 ___
 
 ### GetResourcesParameters
 
-Ƭ **GetResourcesParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & [`ISearchParameters`](interfaces/ISearchParameters.md)
+Ƭ **GetResourcesParameters**: [*IActionParameters*](interfaces/iactionparameters.md) & [*ISearchParameters*](interfaces/isearchparameters.md)
 
 ___
 
 ### GetResourcesResult
 
-Ƭ **GetResourcesResult**: [`IActionResult`](interfaces/IActionResult.md) & [`ISearchResults`](interfaces/ISearchResults.md)
+Ƭ **GetResourcesResult**: [*IActionResult*](interfaces/iactionresult.md) & [*ISearchResults*](interfaces/isearchresults.md)
 
 ___
 
 ### GetSubFoldersResult
 
-Ƭ **GetSubFoldersResult**: [`IActionResult`](interfaces/IActionResult.md) & { `folders`: [`IFolder`](interfaces/IFolder.md)[]  }
+Ƭ **GetSubFoldersResult**: [*IActionResult*](interfaces/iactionresult.md) & { `folders`: [*IFolder*](interfaces/ifolder.md)[]  }
 
 ___
 
 ### Hobby
 
-Ƭ **Hobby**: `Object`
+Ƭ **Hobby**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `category` | ``"sport"`` \| ``"cinema"`` \| ``"animals"`` \| ``"music"`` \| ``"places"`` \| ``"books"`` |
-| `values` | `string` |
-| `visibility` | ``"PRIVE"`` \| ``"PUBLIC"`` |
+Name | Type |
+:------ | :------ |
+`category` | *sport* \| *cinema* \| *animals* \| *music* \| *places* \| *books* |
+`values` | *string* |
+`visibility` | *PRIVE* \| *PUBLIC* |
 
 ___
 
 ### ID
 
-Ƭ **ID**: `string`
+Ƭ **ID**: *string*
 
 ___
 
 ### IHttpParams
 
-Ƭ **IHttpParams**: `Object`
+Ƭ **IHttpParams**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `disableNotifications?` | `boolean` | Set to true to prevent sending notifications. |
-| `headers?` | { `[key: string]`: `string`;  } | HTTP headers to apply to the request. |
-| `queryParams?` | { `[key: string]`: `any`;  } | Object to serialize as query parameters and append to the request URL. |
-| `requestName?` | `string` | Request the API to send a notification when done. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`disableNotifications`? | *boolean* | Set to true to prevent sending notifications.   |
+`headers`? | *object* | HTTP headers to apply to the request.   |
+`queryParams`? | *object* | Object to serialize as query parameters and append to the request URL.   |
+`requestName`? | *string* | Request the API to send a notification when done.   |
 
 ___
 
 ### IHttpResponse
 
-Ƭ **IHttpResponse**: `Object`
+Ƭ **IHttpResponse**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `headers?` | `any` |
-| `status` | `number` |
-| `statusText` | `string` |
+Name | Type |
+:------ | :------ |
+`headers`? | *any* |
+`status` | *number* |
+`statusText` | *string* |
 
 ___
 
 ### IThemeOverrides
 
-Ƭ **IThemeOverrides**: { [app in App]?: string }
+Ƭ **IThemeOverrides**: { [app in App]?: string}
 
 ___
 
 ### LayerName
 
-Ƭ **LayerName**: typeof [`LAYER_NAME`](modules.md#layer_name)[keyof typeof [`LAYER_NAME`](modules.md#layer_name)]
+Ƭ **LayerName**: *typeof* [*LAYER\_NAME*](modules.md#layer_name)[keyof *typeof* [*LAYER\_NAME*](modules.md#layer_name)]
 
 ___
 
 ### ManagePropertiesParameters
 
-Ƭ **ManagePropertiesParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `resources`: [`IResource`](interfaces/IResource.md)[]  }
+Ƭ **ManagePropertiesParameters**: [*IActionParameters*](interfaces/iactionparameters.md) & { `resources`: [*IResource*](interfaces/iresource.md)[]  }
 
 ___
 
 ### ManagePropertiesResult
 
-Ƭ **ManagePropertiesResult**: [`IActionResult`](interfaces/IActionResult.md) & { `genericProps`: [`IProperty`](interfaces/IProperty.md)[]  }
+Ƭ **ManagePropertiesResult**: [*IActionResult*](interfaces/iactionresult.md) & { `genericProps`: [*IProperty*](interfaces/iproperty.md)[]  }
 
 ___
 
 ### MoveParameters
 
-Ƭ **MoveParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `folderId`: [`ID`](modules.md#id) ; `folderIds`: [`ID`](modules.md#id)[] ; `resourceIds`: [`ID`](modules.md#id)[]  }
+Ƭ **MoveParameters**: [*IActionParameters*](interfaces/iactionparameters.md) & { `folderId`: [*ID*](modules.md#id) ; `folderIds`: [*ID*](modules.md#id)[] ; `resourceIds`: [*ID*](modules.md#id)[]  }
 
 ___
 
 ### NotificationModel
 
-Ƭ **NotificationModel**: `Object`
+Ƭ **NotificationModel**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `_id` | `string` |
-| `date` | { `$date`: `number`  } |
-| `date.$date` | `number` |
-| `eventType` | `string` |
-| `message` | `string` |
-| `params` | { `blogTitle`: `string` ; `resourceUri`: `string` ; `uri`: `string` ; `username`: `string`  } |
-| `params.blogTitle` | `string` |
-| `params.resourceUri` | `string` |
-| `params.uri` | `string` |
-| `params.username` | `string` |
-| `recipients?` | [`Recipient`](interfaces/Recipient.md)[] |
-| `reported?` | `boolean` |
-| `reporters?` | `any` |
-| `resource` | `string` |
-| `sender` | `string` |
-| `type` | `string` |
+Name | Type |
+:------ | :------ |
+`_id` | *string* |
+`date` | *object* |
+`date.$date` | *number* |
+`eventType` | *string* |
+`message` | *string* |
+`params` | *object* |
+`params.blogTitle` | *string* |
+`params.resourceUri` | *string* |
+`params.uri` | *string* |
+`params.username` | *string* |
+`recipients`? | [*Recipient*](interfaces/recipient.md)[] |
+`reported`? | *boolean* |
+`reporters`? | *any* |
+`resource` | *string* |
+`sender` | *string* |
+`type` | *string* |
 
 ___
 
 ### OrderValues
 
-Ƭ **OrderValues**: { [O in SortByType]?: SortOrderType }
+Ƭ **OrderValues**: { [O in SortByType]?: SortOrderType}
 
 ___
 
 ### PropFormatType
 
-Ƭ **PropFormatType**: typeof [`PROP_FORMAT`](modules.md#prop_format)[keyof typeof [`PROP_FORMAT`](modules.md#prop_format)]
+Ƭ **PropFormatType**: *typeof* [*PROP\_FORMAT*](modules.md#prop_format)[keyof *typeof* [*PROP\_FORMAT*](modules.md#prop_format)]
 
 ___
 
 ### PropKeyType
 
-Ƭ **PropKeyType**: typeof [`PROP_KEY`](modules.md#prop_key)[keyof typeof [`PROP_KEY`](modules.md#prop_key)]
+Ƭ **PropKeyType**: *typeof* [*PROP\_KEY*](modules.md#prop_key)[keyof *typeof* [*PROP\_KEY*](modules.md#prop_key)]
 
 ___
 
 ### PropModeType
 
-Ƭ **PropModeType**: typeof [`PROP_MODE`](modules.md#prop_mode)[keyof typeof [`PROP_MODE`](modules.md#prop_mode)]
+Ƭ **PropModeType**: *typeof* [*PROP\_MODE*](modules.md#prop_mode)[keyof *typeof* [*PROP\_MODE*](modules.md#prop_mode)]
 
 ___
 
 ### PropTypeType
 
-Ƭ **PropTypeType**: typeof [`PROP_TYPE`](modules.md#prop_type)[keyof typeof [`PROP_TYPE`](modules.md#prop_type)]
+Ƭ **PropTypeType**: *typeof* [*PROP\_TYPE*](modules.md#prop_type)[keyof *typeof* [*PROP\_TYPE*](modules.md#prop_type)]
 
 ___
 
 ### ResourceType
 
-Ƭ **ResourceType**: typeof [`RESOURCE`](modules.md#resource)[keyof typeof [`RESOURCE`](modules.md#resource)]
+Ƭ **ResourceType**: *typeof* [*RESOURCE*](modules.md#resource)[keyof *typeof* [*RESOURCE*](modules.md#resource)]
 
 ___
 
 ### School
 
-Ƭ **School**: `Object`
+Ƭ **School**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `classes` | `string`[] |
-| `id` | `string` |
-| `name` | `string` |
+Name | Type |
+:------ | :------ |
+`classes` | *string*[] |
+`id` | *string* |
+`name` | *string* |
 
 ___
 
 ### SearchResultHandler
 
-Ƭ **SearchResultHandler**: (`input`: [`IActionParameters`](interfaces/IActionParameters.md), `output`: [`IActionResult`](interfaces/IActionResult.md)) => `void`
+Ƭ **SearchResultHandler**: (`input`: [*IActionParameters*](interfaces/iactionparameters.md), `output`: [*IActionResult*](interfaces/iactionresult.md)) => *void*
 
-#### Type declaration
+#### Type declaration:
 
-▸ (`input`, `output`): `void`
+▸ (`input`: [*IActionParameters*](interfaces/iactionparameters.md), `output`: [*IActionResult*](interfaces/iactionresult.md)): *void*
 
-##### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `input` | [`IActionParameters`](interfaces/IActionParameters.md) |
-| `output` | [`IActionResult`](interfaces/IActionResult.md) |
+Name | Type |
+:------ | :------ |
+`input` | [*IActionParameters*](interfaces/iactionparameters.md) |
+`output` | [*IActionResult*](interfaces/iactionresult.md) |
 
-##### Returns
-
-`void`
+**Returns:** *void*
 
 ___
 
 ### SortByType
 
-Ƭ **SortByType**: typeof [`SORT_BY`](modules.md#sort_by)[keyof typeof [`SORT_BY`](modules.md#sort_by)]
+Ƭ **SortByType**: *typeof* [*SORT\_BY*](modules.md#sort_by)[keyof *typeof* [*SORT\_BY*](modules.md#sort_by)]
 
 ___
 
 ### SortOrderType
 
-Ƭ **SortOrderType**: typeof [`SORT_ORDER`](modules.md#sort_order)[keyof typeof [`SORT_ORDER`](modules.md#sort_order)]
+Ƭ **SortOrderType**: *typeof* [*SORT\_ORDER*](modules.md#sort_order)[keyof *typeof* [*SORT\_ORDER*](modules.md#sort_order)]
 
 ___
 
 ### StringFilterType
 
-Ƭ **StringFilterType**: typeof [`STRING_FILTER`](modules.md#string_filter)[keyof typeof [`STRING_FILTER`](modules.md#string_filter)]
+Ƭ **StringFilterType**: *typeof* [*STRING\_FILTER*](modules.md#string_filter)[keyof *typeof* [*STRING\_FILTER*](modules.md#string_filter)]
 
 ___
 
 ### StringFilterValue
 
-Ƭ **StringFilterValue**: `Object`
+Ƭ **StringFilterValue**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `i18n` | `string` |
-| `value` | `string` |
+Name | Type |
+:------ | :------ |
+`i18n` | *string* |
+`value` | *string* |
 
 ___
 
 ### TrackingType
 
-Ƭ **TrackingType**: ``"matomo"`` \| ``"internal"``
+Ƭ **TrackingType**: *matomo* \| *internal*
 
 ___
 
 ### UpdateFolderParameters
 
-Ƭ **UpdateFolderParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `app`: [`App`](modules.md#app) ; `folderId`: [`ID`](modules.md#id) ; `name`: `string` ; `parentId`: [`ID`](modules.md#id) \| ``"default"`` ; `type`: [`ResourceType`](modules.md#resourcetype)  }
+Ƭ **UpdateFolderParameters**: [*IActionParameters*](interfaces/iactionparameters.md) & { `app`: [*App*](modules.md#app) ; `folderId`: [*ID*](modules.md#id) ; `name`: *string* ; `parentId`: [*ID*](modules.md#id) \| *default* ; `type`: [*ResourceType*](modules.md#resourcetype)  }
 
 ___
 
 ### UpdateFolderResult
 
-Ƭ **UpdateFolderResult**: [`CreateFolderResult`](modules.md#createfolderresult) & { `parentId`: [`ID`](modules.md#id) \| ``"default"`` ; `updatedAt`: `string`  }
+Ƭ **UpdateFolderResult**: [*CreateFolderResult*](modules.md#createfolderresult) & { `parentId`: [*ID*](modules.md#id) \| *default* ; `updatedAt`: *string*  }
 
 ___
 
 ### UpdatePropertiesParameters
 
-Ƭ **UpdatePropertiesParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `props`: { [key in PropKeyType]?: string } ; `resources`: [`IResource`](interfaces/IResource.md)[]  }
+Ƭ **UpdatePropertiesParameters**: [*IActionParameters*](interfaces/iactionparameters.md) & { `props`: { [key in PropKeyType]?: string} ; `resources`: [*IResource*](interfaces/iresource.md)[]  }
 
 ___
 
 ### UpdatePropertiesResult
 
-Ƭ **UpdatePropertiesResult**: [`IActionResult`](interfaces/IActionResult.md) & { `resources`: [`IResource`](interfaces/IResource.md)[]  }
+Ƭ **UpdatePropertiesResult**: [*IActionResult*](interfaces/iactionresult.md) & { `resources`: [*IResource*](interfaces/iresource.md)[]  }
 
 ___
 
 ### UserPreferenceKey
 
-Ƭ **UserPreferenceKey**: typeof [`USER_PREFS`](modules.md#user_prefs)[keyof typeof [`USER_PREFS`](modules.md#user_prefs)] \| [`App`](modules.md#app)
+Ƭ **UserPreferenceKey**: *typeof* [*USER\_PREFS*](modules.md#user_prefs)[keyof *typeof* [*USER\_PREFS*](modules.md#user_prefs)] \| [*App*](modules.md#app)
 
 ___
 
 ### WidgetName
 
-Ƭ **WidgetName**: typeof [`WIDGET_NAME`](modules.md#widget_name)[keyof typeof [`WIDGET_NAME`](modules.md#widget_name)]
+Ƭ **WidgetName**: *typeof* [*WIDGET\_NAME*](modules.md#widget_name)[keyof *typeof* [*WIDGET\_NAME*](modules.md#widget_name)]
 
 ___
 
 ### WidgetPosition
 
-Ƭ **WidgetPosition**: typeof [`WIDGET_POSITION`](modules.md#widget_position)[keyof typeof [`WIDGET_POSITION`](modules.md#widget_position)]
+Ƭ **WidgetPosition**: *typeof* [*WIDGET\_POSITION*](modules.md#widget_position)[keyof *typeof* [*WIDGET\_POSITION*](modules.md#widget_position)]
 
 ___
 
 ### WidgetSpecificUserPrefs
 
-Ƭ **WidgetSpecificUserPrefs**: ``"schoolId"``
+Ƭ **WidgetSpecificUserPrefs**: *schoolId*
 
 ___
 
 ### WidgetUserPref
 
-Ƭ **WidgetUserPref**: { `index`: `number` ; `position?`: [`WidgetPosition`](modules.md#widgetposition) ; `show`: `boolean`  } & { [pref in WidgetSpecificUserPrefs]?: any }
+Ƭ **WidgetUserPref**: { `index`: *number* ; `position?`: [*WidgetPosition*](modules.md#widgetposition) ; `show`: *boolean*  } & { [pref in WidgetSpecificUserPrefs]?: any}
 
 ## Variables
 
 ### ACTION
 
-• `Const` **ACTION**: `Object`
+• `Const` **ACTION**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `COMMENT` | ``"comment"`` |
-| `COPY` | ``"copy"`` |
-| `CREATE` | ``"create"`` |
-| `DELETE` | ``"delete"`` |
-| `EXPORT` | ``"export"`` |
-| `INITIALIZE` | ``"initialize"`` |
-| `MANAGE` | ``"manage"`` |
-| `MOVE` | ``"move"`` |
-| `OPEN` | ``"open"`` |
-| `PRINT` | ``"print"`` |
-| `PUBLISH` | ``"publish"`` |
-| `SEARCH` | ``"search"`` |
-| `SHARE` | ``"share"`` |
-| `UPD_PROPS` | ``"properties"`` |
+Name | Type |
+:------ | :------ |
+`COMMENT` | *comment* |
+`COPY` | *copy* |
+`CREATE` | *create* |
+`DELETE` | *delete* |
+`EXPORT` | *export* |
+`INITIALIZE` | *initialize* |
+`MANAGE` | *manage* |
+`MOVE` | *move* |
+`OPEN` | *open* |
+`PRINT` | *print* |
+`PUBLISH` | *publish* |
+`SEARCH` | *search* |
+`SHARE` | *share* |
+`UPD_PROPS` | *properties* |
 
 ___
 
 ### APP
 
-• `Const` **APP**: `Object`
+• `Const` **APP**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `BLOG` | ``"blog"`` |
-| `CAS` | ``"cas"`` |
-| `EXERCIZER` | ``"exercizer"`` |
-| `EXPLORER` | ``"explorer"`` |
-| `PORTAL` | ``"portal"`` |
-| `TIMELINE` | ``"timeline"`` |
-| `VIDEO` | ``"video"`` |
+Name | Type |
+:------ | :------ |
+`BLOG` | *blog* |
+`CAS` | *cas* |
+`EXERCIZER` | *exercizer* |
+`EXPLORER` | *explorer* |
+`PORTAL` | *portal* |
+`TIMELINE` | *timeline* |
+`VIDEO` | *video* |
 
 ___
 
 ### BOOLEAN\_FILTER
 
-• `Const` **BOOLEAN\_FILTER**: `Object`
+• `Const` **BOOLEAN\_FILTER**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `FAVORITE` | ``"favorite"`` |
-| `OWNER` | ``"owner"`` |
-| `PUBLIC` | ``"public"`` |
-| `SHARED` | ``"shared"`` |
+Name | Type |
+:------ | :------ |
+`FAVORITE` | *favorite* |
+`OWNER` | *owner* |
+`PUBLIC` | *public* |
+`SHARED` | *shared* |
 
 ___
 
 ### ERROR\_CODE
 
-• `Const` **ERROR\_CODE**: `Object`
+• `Const` **ERROR\_CODE**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `AGENT_NOT_FOUND` | ``"0050"`` |
-| `APP_NOT_FOUND` | ``"0040"`` |
-| `MALFORMED_DATA` | ``"0080"`` |
-| `NOT_INITIALIZED` | ``"0020"`` |
-| `NOT_SUPPORTED` | ``"0030"`` |
-| `SUCCESS` | ``"0000"`` |
-| `TIME_OUT` | ``"0070"`` |
-| `TRANSPORT_ERROR` | ``"0060"`` |
-| `UNKNOWN` | ``"0010"`` |
+Name | Type |
+:------ | :------ |
+`AGENT_NOT_FOUND` | *0050* |
+`APP_NOT_FOUND` | *0040* |
+`MALFORMED_DATA` | *0080* |
+`NOT_INITIALIZED` | *0020* |
+`NOT_SUPPORTED` | *0030* |
+`SUCCESS` | *0000* |
+`TIME_OUT` | *0070* |
+`TRANSPORT_ERROR` | *0060* |
+`UNKNOWN` | *0010* |
 
 ___
 
 ### EVENT\_NAME
 
-• `Const` **EVENT\_NAME**: `Object`
+• `Const` **EVENT\_NAME**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `SEARCH_RESULTED` | ``"searchResulted"`` |
-| `USERPREF_CHANGED` | ``"userprefChanged"`` |
+Name | Type |
+:------ | :------ |
+`SEARCH_RESULTED` | *searchResulted* |
+`USERPREF_CHANGED` | *userprefChanged* |
 
 ___
 
 ### FOLDER
 
-• `Const` **FOLDER**: `Object`
+• `Const` **FOLDER**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `BIN` | ``"bin"`` |
-| `DEFAULT` | ``"default"`` |
+Name | Type |
+:------ | :------ |
+`BIN` | *bin* |
+`DEFAULT` | *default* |
 
 ___
 
 ### LAYER\_NAME
 
-• `Const` **LAYER\_NAME**: `Object`
+• `Const` **LAYER\_NAME**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `EXPLORER` | ``"explorer"`` |
-| `WIDGETS` | ``"widgets"`` |
+Name | Type |
+:------ | :------ |
+`EXPLORER` | *explorer* |
+`WIDGETS` | *widgets* |
 
 ___
 
 ### PROP\_FORMAT
 
-• `Const` **PROP\_FORMAT**: `Object`
+• `Const` **PROP\_FORMAT**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `PLAIN` | ``"plain"`` |
+Name | Type |
+:------ | :------ |
+`PLAIN` | *plain* |
 
 ___
 
 ### PROP\_KEY
 
-• `Const` **PROP\_KEY**: `Object`
+• `Const` **PROP\_KEY**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `COLOR` | ``"color"`` |
-| `DESCRIPTION` | ``"description"`` |
-| `IMAGE` | ``"image"`` |
-| `TITLE` | ``"title"`` |
-| `URL` | ``"url"`` |
+Name | Type |
+:------ | :------ |
+`COLOR` | *color* |
+`DESCRIPTION` | *description* |
+`IMAGE` | *image* |
+`TITLE` | *title* |
+`URL` | *url* |
 
 ___
 
 ### PROP\_MODE
 
-• `Const` **PROP\_MODE**: `Object`
+• `Const` **PROP\_MODE**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `READONLY` | ``"RO"`` |
-| `READWRITE` | ``"RW"`` |
+Name | Type |
+:------ | :------ |
+`READONLY` | *RO* |
+`READWRITE` | *RW* |
 
 ___
 
 ### PROP\_TYPE
 
-• `Const` **PROP\_TYPE**: `Object`
+• `Const` **PROP\_TYPE**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `DATE` | ``"date"`` |
-| `IMAGE` | ``"image"`` |
-| `NUMBER` | ``"number"`` |
-| `TEXT` | ``"text"`` |
+Name | Type |
+:------ | :------ |
+`DATE` | *date* |
+`IMAGE` | *image* |
+`NUMBER` | *number* |
+`TEXT` | *text* |
 
 ___
 
 ### RESOURCE
 
-• `Const` **RESOURCE**: `Object`
+• `Const` **RESOURCE**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `BLOG` | ``"blog"`` |
-| `EXERCISE` | ``"exercise"`` |
-| `FOLDER` | ``"folder"`` |
+Name | Type |
+:------ | :------ |
+`BLOG` | *blog* |
+`EXERCISE` | *exercise* |
+`FOLDER` | *folder* |
 
 ___
 
 ### SORT\_BY
 
-• `Const` **SORT\_BY**: `Object`
+• `Const` **SORT\_BY**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `MODIFY_DATE` | ``"modifiedAt"`` |
-| `NAME` | ``"name"`` |
-| `VIEWS` | ``"views"`` |
+Name | Type |
+:------ | :------ |
+`MODIFY_DATE` | *modifiedAt* |
+`NAME` | *name* |
+`VIEWS` | *views* |
 
 ___
 
 ### SORT\_ORDER
 
-• `Const` **SORT\_ORDER**: `Object`
+• `Const` **SORT\_ORDER**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `ASC` | ``"asc"`` |
-| `DESC` | ``"desc"`` |
+Name | Type |
+:------ | :------ |
+`ASC` | *asc* |
+`DESC` | *desc* |
 
 ___
 
 ### STRING\_FILTER
 
-• `Const` **STRING\_FILTER**: `Object`
+• `Const` **STRING\_FILTER**: *object*
+
+#### Type declaration:
 
 ___
 
 ### USER\_PREFS
 
-• `Const` **USER\_PREFS**: `Object`
+• `Const` **USER\_PREFS**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `APPS` | ``"apps"`` |
-| `AUTH_CONNECTOR_ACCESSED` | ``"authenticatedConnectorsAccessed"`` |
-| `CURSUS` | ``"cursus"`` |
-| `INFOTIP` | ``"infotip"`` |
-| `LANGUAGE` | ``"language"`` |
-| `RGPD_COOKIES` | ``"rgpdCookies"`` |
-| `WIDGETS` | ``"widgets"`` |
+Name | Type |
+:------ | :------ |
+`APPS` | *apps* |
+`AUTH_CONNECTOR_ACCESSED` | *authenticatedConnectorsAccessed* |
+`CURSUS` | *cursus* |
+`INFOTIP` | *infotip* |
+`LANGUAGE` | *language* |
+`RGPD_COOKIES` | *rgpdCookies* |
+`WIDGETS` | *widgets* |
 
 ___
 
 ### WIDGET\_NAME
 
-• `Const` **WIDGET\_NAME**: `Object`
+• `Const` **WIDGET\_NAME**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `AGENDA` | ``"agenda-widget"`` |
-| `BIRTHDAY` | ``"birthday"`` |
-| `BOOKMARK` | ``"bookmark-widget"`` |
-| `CALENDAR` | ``"calendar-widget"`` |
-| `CARNET` | ``"carnet-de-bord"`` |
-| `CURSUS` | ``"cursus-widget"`` |
-| `LAST_INFOS` | ``"last-infos-widget"`` |
-| `MAXICOURS` | ``"maxicours-widget"`` |
-| `MOOD` | ``"mood"`` |
-| `MY_APPS` | ``"my-apps"`` |
-| `NOTES` | ``"notes"`` |
-| `QWANT` | ``"qwant"`` |
-| `QWANT_JUNIOR` | ``"qwant-junior"`` |
-| `RECORD` | ``"record-me"`` |
-| `RSS` | ``"rss-widget"`` |
-| `SCHOOL` | ``"school-widget"`` |
+Name | Type |
+:------ | :------ |
+`AGENDA` | *agenda-widget* |
+`BIRTHDAY` | *birthday* |
+`BOOKMARK` | *bookmark-widget* |
+`CALENDAR` | *calendar-widget* |
+`CARNET` | *carnet-de-bord* |
+`CURSUS` | *cursus-widget* |
+`LAST_INFOS` | *last-infos-widget* |
+`MAXICOURS` | *maxicours-widget* |
+`MOOD` | *mood* |
+`MY_APPS` | *my-apps* |
+`NOTES` | *notes* |
+`QWANT` | *qwant* |
+`QWANT_JUNIOR` | *qwant-junior* |
+`RECORD` | *record-me* |
+`RSS` | *rss-widget* |
+`SCHOOL` | *school-widget* |
 
 ___
 
 ### WIDGET\_POSITION
 
-• `Const` **WIDGET\_POSITION**: `Object`
+• `Const` **WIDGET\_POSITION**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `LEFT` | ``"left"`` |
-| `RIGHT` | ``"right"`` |
+Name | Type |
+:------ | :------ |
+`LEFT` | *left* |
+`RIGHT` | *right* |
 
 ___
 
 ### appNameForResource
 
-• `Const` **appNameForResource**: { [R in ResourceType]: App }
+• `Const` **appNameForResource**: { [R in ResourceType]: App}
 
 ___
 
 ### explorer
 
-• `Const` **explorer**: [`IExplorerFramework`](interfaces/IExplorerFramework.md)
+• `Const` **explorer**: [*IExplorerFramework*](interfaces/iexplorerframework.md)
 
 The whole framework is a singleton.

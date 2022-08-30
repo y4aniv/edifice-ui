@@ -1,148 +1,138 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / ConnectableObservable
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / ConnectableObservable
 
 # Class: ConnectableObservable<T\>
 
-[RxJS](../modules/RxJS.md).ConnectableObservable
+[RxJS](../modules/rxjs.md).ConnectableObservable
 
-**`deprecated`** Will be removed in v8. Use [connectable](../modules/RxJS.md#connectable) to create a connectable observable.
-If you are using the `refCount` method of `ConnectableObservable`, use the [share](../modules/RxJS.md#share) operator
+**`deprecated`** Will be removed in v8. Use [connectable](../modules/rxjs.md#connectable) to create a connectable observable.
+If you are using the `refCount` method of `ConnectableObservable`, use the [share](../modules/rxjs.md#share) operator
 instead.
 Details: https://rxjs.dev/deprecations/multicasting
 
 ## Type parameters
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
 ## Hierarchy
 
-- [`Observable`](RxJS.Observable.md)<`T`\>
+* [*Observable*](rxjs.observable.md)<T\>
 
-  ↳ **`ConnectableObservable`**
+  ↳ **ConnectableObservable**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](RxJS.ConnectableObservable.md#constructor)
+- [constructor](rxjs.connectableobservable.md#constructor)
 
 ### Properties
 
-- [\_connection](RxJS.ConnectableObservable.md#_connection)
-- [\_refCount](RxJS.ConnectableObservable.md#_refcount)
-- [\_subject](RxJS.ConnectableObservable.md#_subject)
-- [operator](RxJS.ConnectableObservable.md#operator)
-- [source](RxJS.ConnectableObservable.md#source)
-- [subjectFactory](RxJS.ConnectableObservable.md#subjectfactory)
-- [create](RxJS.ConnectableObservable.md#create)
+- [\_connection](rxjs.connectableobservable.md#_connection)
+- [\_refCount](rxjs.connectableobservable.md#_refcount)
+- [\_subject](rxjs.connectableobservable.md#_subject)
+- [operator](rxjs.connectableobservable.md#operator)
+- [source](rxjs.connectableobservable.md#source)
+- [subjectFactory](rxjs.connectableobservable.md#subjectfactory)
+- [create](rxjs.connectableobservable.md#create)
 
 ### Methods
 
-- [\_teardown](RxJS.ConnectableObservable.md#_teardown)
-- [connect](RxJS.ConnectableObservable.md#connect)
-- [forEach](RxJS.ConnectableObservable.md#foreach)
-- [getSubject](RxJS.ConnectableObservable.md#getsubject)
-- [lift](RxJS.ConnectableObservable.md#lift)
-- [pipe](RxJS.ConnectableObservable.md#pipe)
-- [refCount](RxJS.ConnectableObservable.md#refcount)
-- [subscribe](RxJS.ConnectableObservable.md#subscribe)
-- [toPromise](RxJS.ConnectableObservable.md#topromise)
+- [\_teardown](rxjs.connectableobservable.md#_teardown)
+- [connect](rxjs.connectableobservable.md#connect)
+- [forEach](rxjs.connectableobservable.md#foreach)
+- [getSubject](rxjs.connectableobservable.md#getsubject)
+- [lift](rxjs.connectableobservable.md#lift)
+- [pipe](rxjs.connectableobservable.md#pipe)
+- [refCount](rxjs.connectableobservable.md#refcount)
+- [subscribe](rxjs.connectableobservable.md#subscribe)
+- [toPromise](rxjs.connectableobservable.md#topromise)
 
 ## Constructors
 
 ### constructor
 
-• **new ConnectableObservable**<`T`\>(`source`, `subjectFactory`)
+\+ **new ConnectableObservable**<T\>(`source`: [*Observable*](rxjs.observable.md)<T\>, `subjectFactory`: () => [*Subject*](rxjs.subject.md)<T\>): [*ConnectableObservable*](rxjs.connectableobservable.md)<T\>
 
-**`deprecated`** Will be removed in v8. Use [connectable](../modules/RxJS.md#connectable) to create a connectable observable.
+**`deprecated`** Will be removed in v8. Use [connectable](../modules/rxjs.md#connectable) to create a connectable observable.
 `new ConnectableObservable(source, factory)` is equivalent to
 `connectable(source, { connector: factory })`.
-When the `refCount()` method is needed, the [share](../modules/RxJS.md#share) operator should be used instead:
+When the `refCount()` method is needed, the [share](../modules/rxjs.md#share) operator should be used instead:
 `new ConnectableObservable(source, factory).refCount()` is equivalent to
 `source.pipe(share({ connector: factory }))`.
 Details: https://rxjs.dev/deprecations/multicasting
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | [`Observable`](RxJS.Observable.md)<`T`\> | The source observable |
-| `subjectFactory` | () => [`Subject`](RxJS.Subject.md)<`T`\> | The factory that creates the subject used internally. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`source` | [*Observable*](rxjs.observable.md)<T\> | The source observable   |
+`subjectFactory` | () => [*Subject*](rxjs.subject.md)<T\> | The factory that creates the subject used internally.   |
 
-#### Overrides
+**Returns:** [*ConnectableObservable*](rxjs.connectableobservable.md)<T\>
 
-[Observable](RxJS.Observable.md).[constructor](RxJS.Observable.md#constructor)
+Overrides: [Observable](rxjs.observable.md)
 
 ## Properties
 
 ### \_connection
 
-• `Protected` **\_connection**: ``null`` \| [`Subscription`](RxJS.Subscription.md)
+• `Protected` **\_connection**: *null* \| [*Subscription*](rxjs.subscription.md)
 
 ___
 
 ### \_refCount
 
-• `Protected` **\_refCount**: `number`
+• `Protected` **\_refCount**: *number*
 
 ___
 
 ### \_subject
 
-• `Protected` **\_subject**: ``null`` \| [`Subject`](RxJS.Subject.md)<`T`\>
+• `Protected` **\_subject**: *null* \| [*Subject*](rxjs.subject.md)<T\>
 
 ___
 
 ### operator
 
-• **operator**: `undefined` \| [`Operator`](../interfaces/RxJS.Operator.md)<`any`, `T`\>
+• **operator**: *undefined* \| [*Operator*](../interfaces/rxjs.operator.md)<any, T\>
 
 **`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
 
-#### Inherited from
-
-[Observable](RxJS.Observable.md).[operator](RxJS.Observable.md#operator)
+Inherited from: [Observable](rxjs.observable.md).[operator](rxjs.observable.md#operator)
 
 ___
 
 ### source
 
-• **source**: [`Observable`](RxJS.Observable.md)<`T`\>
+• **source**: [*Observable*](rxjs.observable.md)<T\>
 
-#### Overrides
-
-[Observable](RxJS.Observable.md).[source](RxJS.Observable.md#source)
+Overrides: [Observable](rxjs.observable.md).[source](rxjs.observable.md#source)
 
 ___
 
 ### subjectFactory
 
-• `Protected` **subjectFactory**: () => [`Subject`](RxJS.Subject.md)<`T`\>
+• `Protected` **subjectFactory**: () => [*Subject*](rxjs.subject.md)<T\>
 
-#### Type declaration
+#### Type declaration:
 
-▸ (): [`Subject`](RxJS.Subject.md)<`T`\>
+▸ (): [*Subject*](rxjs.subject.md)<T\>
 
-##### Returns
-
-[`Subject`](RxJS.Subject.md)<`T`\>
+**Returns:** [*Subject*](rxjs.subject.md)<T\>
 
 ___
 
 ### create
 
-▪ `Static` **create**: (...`args`: `any`[]) => `any`
-
-#### Type declaration
-
-▸ (...`args`): `any`
+▪ `Static` **create**: (...`args`: *any*[]) => *any*
 
 Creates a new Observable by calling the Observable constructor
 
@@ -150,54 +140,52 @@ Creates a new Observable by calling the Observable constructor
 
 **`method`** create
 
-**`nocollapse`**
+**`param`** the subscriber function to be passed to the Observable constructor
+
+**`returns`** a new observable
+
+**`nocollapse`** 
 
 **`deprecated`** Use `new Observable()` instead. Will be removed in v8.
 
-##### Parameters
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `...args` | `any`[] |
+▸ (...`args`: *any*[]): *any*
 
-##### Returns
+#### Parameters:
 
-`any`
+Name | Type |
+:------ | :------ |
+`...args` | *any*[] |
 
-a new observable
+**Returns:** *any*
 
-#### Inherited from
-
-[Observable](RxJS.Observable.md).[create](RxJS.Observable.md#create)
+Inherited from: [Observable](rxjs.observable.md).[create](rxjs.observable.md#create)
 
 ## Methods
 
 ### \_teardown
 
-▸ `Protected` **_teardown**(): `void`
+▸ `Protected`**_teardown**(): *void*
 
-#### Returns
-
-`void`
+**Returns:** *void*
 
 ___
 
 ### connect
 
-▸ **connect**(): [`Subscription`](RxJS.Subscription.md)
+▸ **connect**(): [*Subscription*](rxjs.subscription.md)
 
-**`deprecated`** [ConnectableObservable](RxJS.ConnectableObservable.md) will be removed in v8. Use [connectable](../modules/RxJS.md#connectable) instead.
+**`deprecated`** [ConnectableObservable](rxjs.connectableobservable.md) will be removed in v8. Use [connectable](../modules/rxjs.md#connectable) instead.
 Details: https://rxjs.dev/deprecations/multicasting
 
-#### Returns
-
-[`Subscription`](RxJS.Subscription.md)
+**Returns:** [*Subscription*](rxjs.subscription.md)
 
 ___
 
 ### forEach
 
-▸ **forEach**(`next`): `Promise`<`void`\>
+▸ **forEach**(`next`: (`value`: T) => *void*): *Promise*<void\>
 
 Used as a NON-CANCELLABLE means of subscribing to an observable, for use with
 APIs that expect promises, like `async/await`. You cannot unsubscribe from this.
@@ -205,8 +193,8 @@ APIs that expect promises, like `async/await`. You cannot unsubscribe from this.
 **WARNING**: Only use this with observables you *know* will complete. If the source
 observable does not complete, you will end up with a promise that is hung up, and
 potentially all of the state of an async function hanging out in memory. To avoid
-this situation, look into adding something like [timeout](../modules/RxJS.md#timeout), [take](../modules/RxJS.md#take),
-[takeWhile](../modules/RxJS.md#takewhile), or [takeUntil](../modules/RxJS.md#takeuntil) amongst others.
+this situation, look into adding something like [timeout](../modules/rxjs.md#timeout), [take](../modules/rxjs.md#take),
+[takeWhile](../modules/rxjs.md#takewhile), or [takeUntil](../modules/rxjs.md#takeuntil) amongst others.
 
 ### Example:
 
@@ -239,24 +227,20 @@ getTotal().then(
 // "Total: 6"
 ```
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `next` | (`value`: `T`) => `void` | a handler for each value emitted by the observable |
+Name | Type | Description |
+:------ | :------ | :------ |
+`next` | (`value`: T) => *void* | a handler for each value emitted by the observable   |
 
-#### Returns
-
-`Promise`<`void`\>
+**Returns:** *Promise*<void\>
 
 a promise that either resolves on observable completion or
  rejects with the handled error
 
-#### Inherited from
+Inherited from: [Observable](rxjs.observable.md)
 
-[Observable](RxJS.Observable.md).[forEach](RxJS.Observable.md#foreach)
-
-▸ **forEach**(`next`, `promiseCtor`): `Promise`<`void`\>
+▸ **forEach**(`next`: (`value`: T) => *void*, `promiseCtor`: PromiseConstructorLike): *Promise*<void\>
 
 **`deprecated`** Passing a Promise constructor will no longer be available
 in upcoming versions of RxJS. This is because it adds weight to the library, for very
@@ -264,39 +248,33 @@ little benefit. If you need this functionality, it is recommended that you eithe
 polyfill Promise, or you create an adapter to convert the returned native promise
 to whatever promise implementation you wanted. Will be removed in v8.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `next` | (`value`: `T`) => `void` | a handler for each value emitted by the observable |
-| `promiseCtor` | `PromiseConstructorLike` | a constructor function used to instantiate the Promise |
+Name | Type | Description |
+:------ | :------ | :------ |
+`next` | (`value`: T) => *void* | a handler for each value emitted by the observable   |
+`promiseCtor` | PromiseConstructorLike | a constructor function used to instantiate the Promise   |
 
-#### Returns
-
-`Promise`<`void`\>
+**Returns:** *Promise*<void\>
 
 a promise that either resolves on observable completion or
  rejects with the handled error
 
-#### Inherited from
-
-[Observable](RxJS.Observable.md).[forEach](RxJS.Observable.md#foreach)
+Inherited from: [Observable](rxjs.observable.md)
 
 ___
 
 ### getSubject
 
-▸ `Protected` **getSubject**(): [`Subject`](RxJS.Subject.md)<`T`\>
+▸ `Protected`**getSubject**(): [*Subject*](rxjs.subject.md)<T\>
 
-#### Returns
-
-[`Subject`](RxJS.Subject.md)<`T`\>
+**Returns:** [*Subject*](rxjs.subject.md)<T\>
 
 ___
 
 ### lift
 
-▸ **lift**<`R`\>(`operator?`): [`Observable`](RxJS.Observable.md)<`R`\>
+▸ **lift**<R\>(`operator?`: [*Operator*](../interfaces/rxjs.operator.md)<T, R\>): [*Observable*](rxjs.observable.md)<R\>
 
 Creates a new Observable, with this Observable instance as the source, and the passed
 operator defined as the new observable's operator.
@@ -308,472 +286,394 @@ If you have implemented an operator using `lift`, it is recommended that you cre
 operator by simply returning `new Observable()` directly. See "Creating new operators from
 scratch" section here: https://rxjs.dev/guide/operators
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `R` |
+Name |
+:------ |
+`R` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `operator?` | [`Operator`](../interfaces/RxJS.Operator.md)<`T`, `R`\> | the operator defining the operation to take on the observable |
+Name | Type | Description |
+:------ | :------ | :------ |
+`operator?` | [*Operator*](../interfaces/rxjs.operator.md)<T, R\> | the operator defining the operation to take on the observable   |
 
-#### Returns
-
-[`Observable`](RxJS.Observable.md)<`R`\>
+**Returns:** [*Observable*](rxjs.observable.md)<R\>
 
 a new observable with the Operator applied
 
-#### Inherited from
-
-[Observable](RxJS.Observable.md).[lift](RxJS.Observable.md#lift)
+Inherited from: [Observable](rxjs.observable.md)
 
 ___
 
 ### pipe
 
-▸ **pipe**(): [`Observable`](RxJS.Observable.md)<`T`\>
+▸ **pipe**(): [*Observable*](rxjs.observable.md)<T\>
 
-#### Returns
+**Returns:** [*Observable*](rxjs.observable.md)<T\>
 
-[`Observable`](RxJS.Observable.md)<`T`\>
+Inherited from: [Observable](rxjs.observable.md)
 
-#### Inherited from
+▸ **pipe**<A\>(`op1`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\>): [*Observable*](rxjs.observable.md)<A\>
 
-[Observable](RxJS.Observable.md).[pipe](RxJS.Observable.md#pipe)
+#### Type parameters:
 
-▸ **pipe**<`A`\>(`op1`): [`Observable`](RxJS.Observable.md)<`A`\>
+Name |
+:------ |
+`A` |
 
-#### Type parameters
+#### Parameters:
 
-| Name |
-| :------ |
-| `A` |
+Name | Type |
+:------ | :------ |
+`op1` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\> |
 
-#### Parameters
+**Returns:** [*Observable*](rxjs.observable.md)<A\>
 
-| Name | Type |
-| :------ | :------ |
-| `op1` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `A`\> |
+Inherited from: [Observable](rxjs.observable.md)
 
-#### Returns
+▸ **pipe**<A, B\>(`op1`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\>, `op2`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\>): [*Observable*](rxjs.observable.md)<B\>
 
-[`Observable`](RxJS.Observable.md)<`A`\>
+#### Type parameters:
 
-#### Inherited from
+Name |
+:------ |
+`A` |
+`B` |
 
-[Observable](RxJS.Observable.md).[pipe](RxJS.Observable.md#pipe)
+#### Parameters:
 
-▸ **pipe**<`A`, `B`\>(`op1`, `op2`): [`Observable`](RxJS.Observable.md)<`B`\>
+Name | Type |
+:------ | :------ |
+`op1` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\> |
+`op2` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\> |
 
-#### Type parameters
+**Returns:** [*Observable*](rxjs.observable.md)<B\>
 
-| Name |
-| :------ |
-| `A` |
-| `B` |
+Inherited from: [Observable](rxjs.observable.md)
 
-#### Parameters
+▸ **pipe**<A, B, C\>(`op1`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\>, `op2`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\>, `op3`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\>): [*Observable*](rxjs.observable.md)<C\>
 
-| Name | Type |
-| :------ | :------ |
-| `op1` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `A`\> |
-| `op2` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`A`, `B`\> |
+#### Type parameters:
 
-#### Returns
+Name |
+:------ |
+`A` |
+`B` |
+`C` |
 
-[`Observable`](RxJS.Observable.md)<`B`\>
+#### Parameters:
 
-#### Inherited from
+Name | Type |
+:------ | :------ |
+`op1` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\> |
+`op2` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\> |
+`op3` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\> |
 
-[Observable](RxJS.Observable.md).[pipe](RxJS.Observable.md#pipe)
+**Returns:** [*Observable*](rxjs.observable.md)<C\>
 
-▸ **pipe**<`A`, `B`, `C`\>(`op1`, `op2`, `op3`): [`Observable`](RxJS.Observable.md)<`C`\>
+Inherited from: [Observable](rxjs.observable.md)
 
-#### Type parameters
+▸ **pipe**<A, B, C, D\>(`op1`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\>, `op2`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\>, `op3`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\>, `op4`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<C, D\>): [*Observable*](rxjs.observable.md)<D\>
 
-| Name |
-| :------ |
-| `A` |
-| `B` |
-| `C` |
+#### Type parameters:
 
-#### Parameters
+Name |
+:------ |
+`A` |
+`B` |
+`C` |
+`D` |
 
-| Name | Type |
-| :------ | :------ |
-| `op1` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `A`\> |
-| `op2` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`A`, `B`\> |
-| `op3` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`B`, `C`\> |
+#### Parameters:
 
-#### Returns
+Name | Type |
+:------ | :------ |
+`op1` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\> |
+`op2` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\> |
+`op3` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\> |
+`op4` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<C, D\> |
 
-[`Observable`](RxJS.Observable.md)<`C`\>
+**Returns:** [*Observable*](rxjs.observable.md)<D\>
 
-#### Inherited from
+Inherited from: [Observable](rxjs.observable.md)
 
-[Observable](RxJS.Observable.md).[pipe](RxJS.Observable.md#pipe)
+▸ **pipe**<A, B, C, D, E\>(`op1`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\>, `op2`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\>, `op3`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\>, `op4`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<C, D\>, `op5`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<D, E\>): [*Observable*](rxjs.observable.md)<E\>
 
-▸ **pipe**<`A`, `B`, `C`, `D`\>(`op1`, `op2`, `op3`, `op4`): [`Observable`](RxJS.Observable.md)<`D`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`A` |
+`B` |
+`C` |
+`D` |
+`E` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`op1` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\> |
+`op2` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\> |
+`op3` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\> |
+`op4` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<C, D\> |
+`op5` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<D, E\> |
 
-| Name |
-| :------ |
-| `A` |
-| `B` |
-| `C` |
-| `D` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `op1` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `A`\> |
-| `op2` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`A`, `B`\> |
-| `op3` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`B`, `C`\> |
-| `op4` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`C`, `D`\> |
-
-#### Returns
-
-[`Observable`](RxJS.Observable.md)<`D`\>
-
-#### Inherited from
-
-[Observable](RxJS.Observable.md).[pipe](RxJS.Observable.md#pipe)
-
-▸ **pipe**<`A`, `B`, `C`, `D`, `E`\>(`op1`, `op2`, `op3`, `op4`, `op5`): [`Observable`](RxJS.Observable.md)<`E`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `A` |
-| `B` |
-| `C` |
-| `D` |
-| `E` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `op1` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `A`\> |
-| `op2` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`A`, `B`\> |
-| `op3` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`B`, `C`\> |
-| `op4` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`C`, `D`\> |
-| `op5` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`D`, `E`\> |
-
-#### Returns
-
-[`Observable`](RxJS.Observable.md)<`E`\>
-
-#### Inherited from
-
-[Observable](RxJS.Observable.md).[pipe](RxJS.Observable.md#pipe)
-
-▸ **pipe**<`A`, `B`, `C`, `D`, `E`, `F`\>(`op1`, `op2`, `op3`, `op4`, `op5`, `op6`): [`Observable`](RxJS.Observable.md)<`F`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `A` |
-| `B` |
-| `C` |
-| `D` |
-| `E` |
-| `F` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `op1` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `A`\> |
-| `op2` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`A`, `B`\> |
-| `op3` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`B`, `C`\> |
-| `op4` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`C`, `D`\> |
-| `op5` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`D`, `E`\> |
-| `op6` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`E`, `F`\> |
-
-#### Returns
-
-[`Observable`](RxJS.Observable.md)<`F`\>
-
-#### Inherited from
-
-[Observable](RxJS.Observable.md).[pipe](RxJS.Observable.md#pipe)
-
-▸ **pipe**<`A`, `B`, `C`, `D`, `E`, `F`, `G`\>(`op1`, `op2`, `op3`, `op4`, `op5`, `op6`, `op7`): [`Observable`](RxJS.Observable.md)<`G`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `A` |
-| `B` |
-| `C` |
-| `D` |
-| `E` |
-| `F` |
-| `G` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `op1` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `A`\> |
-| `op2` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`A`, `B`\> |
-| `op3` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`B`, `C`\> |
-| `op4` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`C`, `D`\> |
-| `op5` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`D`, `E`\> |
-| `op6` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`E`, `F`\> |
-| `op7` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`F`, `G`\> |
-
-#### Returns
-
-[`Observable`](RxJS.Observable.md)<`G`\>
-
-#### Inherited from
-
-[Observable](RxJS.Observable.md).[pipe](RxJS.Observable.md#pipe)
-
-▸ **pipe**<`A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`\>(`op1`, `op2`, `op3`, `op4`, `op5`, `op6`, `op7`, `op8`): [`Observable`](RxJS.Observable.md)<`H`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `A` |
-| `B` |
-| `C` |
-| `D` |
-| `E` |
-| `F` |
-| `G` |
-| `H` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `op1` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `A`\> |
-| `op2` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`A`, `B`\> |
-| `op3` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`B`, `C`\> |
-| `op4` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`C`, `D`\> |
-| `op5` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`D`, `E`\> |
-| `op6` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`E`, `F`\> |
-| `op7` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`F`, `G`\> |
-| `op8` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`G`, `H`\> |
-
-#### Returns
-
-[`Observable`](RxJS.Observable.md)<`H`\>
-
-#### Inherited from
-
-[Observable](RxJS.Observable.md).[pipe](RxJS.Observable.md#pipe)
-
-▸ **pipe**<`A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`, `I`\>(`op1`, `op2`, `op3`, `op4`, `op5`, `op6`, `op7`, `op8`, `op9`): [`Observable`](RxJS.Observable.md)<`I`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `A` |
-| `B` |
-| `C` |
-| `D` |
-| `E` |
-| `F` |
-| `G` |
-| `H` |
-| `I` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `op1` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `A`\> |
-| `op2` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`A`, `B`\> |
-| `op3` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`B`, `C`\> |
-| `op4` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`C`, `D`\> |
-| `op5` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`D`, `E`\> |
-| `op6` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`E`, `F`\> |
-| `op7` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`F`, `G`\> |
-| `op8` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`G`, `H`\> |
-| `op9` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`H`, `I`\> |
-
-#### Returns
-
-[`Observable`](RxJS.Observable.md)<`I`\>
-
-#### Inherited from
-
-[Observable](RxJS.Observable.md).[pipe](RxJS.Observable.md#pipe)
-
-▸ **pipe**<`A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`, `I`\>(`op1`, `op2`, `op3`, `op4`, `op5`, `op6`, `op7`, `op8`, `op9`, ...`operations`): [`Observable`](RxJS.Observable.md)<`unknown`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `A` |
-| `B` |
-| `C` |
-| `D` |
-| `E` |
-| `F` |
-| `G` |
-| `H` |
-| `I` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `op1` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `A`\> |
-| `op2` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`A`, `B`\> |
-| `op3` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`B`, `C`\> |
-| `op4` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`C`, `D`\> |
-| `op5` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`D`, `E`\> |
-| `op6` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`E`, `F`\> |
-| `op7` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`F`, `G`\> |
-| `op8` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`G`, `H`\> |
-| `op9` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`H`, `I`\> |
-| `...operations` | [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `any`\>[] |
-
-#### Returns
-
-[`Observable`](RxJS.Observable.md)<`unknown`\>
-
-#### Inherited from
-
-[Observable](RxJS.Observable.md).[pipe](RxJS.Observable.md#pipe)
+**Returns:** [*Observable*](rxjs.observable.md)<E\>
+
+Inherited from: [Observable](rxjs.observable.md)
+
+▸ **pipe**<A, B, C, D, E, F\>(`op1`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\>, `op2`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\>, `op3`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\>, `op4`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<C, D\>, `op5`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<D, E\>, `op6`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<E, F\>): [*Observable*](rxjs.observable.md)<F\>
+
+#### Type parameters:
+
+Name |
+:------ |
+`A` |
+`B` |
+`C` |
+`D` |
+`E` |
+`F` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`op1` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\> |
+`op2` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\> |
+`op3` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\> |
+`op4` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<C, D\> |
+`op5` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<D, E\> |
+`op6` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<E, F\> |
+
+**Returns:** [*Observable*](rxjs.observable.md)<F\>
+
+Inherited from: [Observable](rxjs.observable.md)
+
+▸ **pipe**<A, B, C, D, E, F, G\>(`op1`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\>, `op2`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\>, `op3`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\>, `op4`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<C, D\>, `op5`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<D, E\>, `op6`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<E, F\>, `op7`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<F, G\>): [*Observable*](rxjs.observable.md)<G\>
+
+#### Type parameters:
+
+Name |
+:------ |
+`A` |
+`B` |
+`C` |
+`D` |
+`E` |
+`F` |
+`G` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`op1` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\> |
+`op2` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\> |
+`op3` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\> |
+`op4` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<C, D\> |
+`op5` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<D, E\> |
+`op6` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<E, F\> |
+`op7` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<F, G\> |
+
+**Returns:** [*Observable*](rxjs.observable.md)<G\>
+
+Inherited from: [Observable](rxjs.observable.md)
+
+▸ **pipe**<A, B, C, D, E, F, G, H\>(`op1`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\>, `op2`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\>, `op3`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\>, `op4`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<C, D\>, `op5`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<D, E\>, `op6`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<E, F\>, `op7`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<F, G\>, `op8`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<G, H\>): [*Observable*](rxjs.observable.md)<H\>
+
+#### Type parameters:
+
+Name |
+:------ |
+`A` |
+`B` |
+`C` |
+`D` |
+`E` |
+`F` |
+`G` |
+`H` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`op1` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\> |
+`op2` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\> |
+`op3` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\> |
+`op4` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<C, D\> |
+`op5` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<D, E\> |
+`op6` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<E, F\> |
+`op7` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<F, G\> |
+`op8` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<G, H\> |
+
+**Returns:** [*Observable*](rxjs.observable.md)<H\>
+
+Inherited from: [Observable](rxjs.observable.md)
+
+▸ **pipe**<A, B, C, D, E, F, G, H, I\>(`op1`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\>, `op2`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\>, `op3`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\>, `op4`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<C, D\>, `op5`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<D, E\>, `op6`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<E, F\>, `op7`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<F, G\>, `op8`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<G, H\>, `op9`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<H, I\>): [*Observable*](rxjs.observable.md)<I\>
+
+#### Type parameters:
+
+Name |
+:------ |
+`A` |
+`B` |
+`C` |
+`D` |
+`E` |
+`F` |
+`G` |
+`H` |
+`I` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`op1` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\> |
+`op2` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\> |
+`op3` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\> |
+`op4` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<C, D\> |
+`op5` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<D, E\> |
+`op6` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<E, F\> |
+`op7` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<F, G\> |
+`op8` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<G, H\> |
+`op9` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<H, I\> |
+
+**Returns:** [*Observable*](rxjs.observable.md)<I\>
+
+Inherited from: [Observable](rxjs.observable.md)
+
+▸ **pipe**<A, B, C, D, E, F, G, H, I\>(`op1`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\>, `op2`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\>, `op3`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\>, `op4`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<C, D\>, `op5`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<D, E\>, `op6`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<E, F\>, `op7`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<F, G\>, `op8`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<G, H\>, `op9`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<H, I\>, ...`operations`: [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, any\>[]): [*Observable*](rxjs.observable.md)<unknown\>
+
+#### Type parameters:
+
+Name |
+:------ |
+`A` |
+`B` |
+`C` |
+`D` |
+`E` |
+`F` |
+`G` |
+`H` |
+`I` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`op1` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, A\> |
+`op2` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<A, B\> |
+`op3` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<B, C\> |
+`op4` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<C, D\> |
+`op5` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<D, E\> |
+`op6` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<E, F\> |
+`op7` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<F, G\> |
+`op8` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<G, H\> |
+`op9` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<H, I\> |
+`...operations` | [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, any\>[] |
+
+**Returns:** [*Observable*](rxjs.observable.md)<unknown\>
+
+Inherited from: [Observable](rxjs.observable.md)
 
 ___
 
 ### refCount
 
-▸ **refCount**(): [`Observable`](RxJS.Observable.md)<`T`\>
+▸ **refCount**(): [*Observable*](rxjs.observable.md)<T\>
 
-**`deprecated`** [ConnectableObservable](RxJS.ConnectableObservable.md) will be removed in v8. Use the [share](../modules/RxJS.md#share) operator instead.
+**`deprecated`** [ConnectableObservable](rxjs.connectableobservable.md) will be removed in v8. Use the [share](../modules/rxjs.md#share) operator instead.
 Details: https://rxjs.dev/deprecations/multicasting
 
-#### Returns
-
-[`Observable`](RxJS.Observable.md)<`T`\>
+**Returns:** [*Observable*](rxjs.observable.md)<T\>
 
 ___
 
 ### subscribe
 
-▸ **subscribe**(`observer?`): [`Subscription`](RxJS.Subscription.md)
+▸ **subscribe**(`observer?`: *Partial*<[*Observer*](../interfaces/rxjs.observer.md)<T\>\>): [*Subscription*](rxjs.subscription.md)
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`observer?` | *Partial*<[*Observer*](../interfaces/rxjs.observer.md)<T\>\> |
+
+**Returns:** [*Subscription*](rxjs.subscription.md)
+
+Inherited from: [Observable](rxjs.observable.md)
+
+▸ **subscribe**(`next`: (`value`: T) => *void*): [*Subscription*](rxjs.subscription.md)
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`next` | (`value`: T) => *void* |
+
+**Returns:** [*Subscription*](rxjs.subscription.md)
+
+Inherited from: [Observable](rxjs.observable.md)
+
+▸ **subscribe**(`next?`: *null* \| (`value`: T) => *void*, `error?`: *null* \| (`error`: *any*) => *void*, `complete?`: *null* \| () => *void*): [*Subscription*](rxjs.subscription.md)
 
 **`deprecated`** Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `observer?` | `Partial`<[`Observer`](../interfaces/RxJS.Observer.md)<`T`\>\> |
+Name | Type |
+:------ | :------ |
+`next?` | *null* \| (`value`: T) => *void* |
+`error?` | *null* \| (`error`: *any*) => *void* |
+`complete?` | *null* \| () => *void* |
 
-#### Returns
+**Returns:** [*Subscription*](rxjs.subscription.md)
 
-[`Subscription`](RxJS.Subscription.md)
-
-#### Inherited from
-
-[Observable](RxJS.Observable.md).[subscribe](RxJS.Observable.md#subscribe)
-
-▸ **subscribe**(`next`): [`Subscription`](RxJS.Subscription.md)
-
-**`deprecated`** Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `next` | (`value`: `T`) => `void` |
-
-#### Returns
-
-[`Subscription`](RxJS.Subscription.md)
-
-#### Inherited from
-
-[Observable](RxJS.Observable.md).[subscribe](RxJS.Observable.md#subscribe)
-
-▸ **subscribe**(`next?`, `error?`, `complete?`): [`Subscription`](RxJS.Subscription.md)
-
-**`deprecated`** Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `next?` | ``null`` \| (`value`: `T`) => `void` |
-| `error?` | ``null`` \| (`error`: `any`) => `void` |
-| `complete?` | ``null`` \| () => `void` |
-
-#### Returns
-
-[`Subscription`](RxJS.Subscription.md)
-
-#### Inherited from
-
-[Observable](RxJS.Observable.md).[subscribe](RxJS.Observable.md#subscribe)
+Inherited from: [Observable](rxjs.observable.md)
 
 ___
 
 ### toPromise
 
-▸ **toPromise**(): `Promise`<`undefined` \| `T`\>
+▸ **toPromise**(): *Promise*<undefined \| T\>
 
-**`deprecated`** Replaced with [firstValueFrom](../modules/RxJS.md#firstvaluefrom) and [lastValueFrom](../modules/RxJS.md#lastvaluefrom). Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise
+**`deprecated`** Replaced with [firstValueFrom](../modules/rxjs.md#firstvaluefrom) and [lastValueFrom](../modules/rxjs.md#lastvaluefrom). Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise
 
-#### Returns
+**Returns:** *Promise*<undefined \| T\>
 
-`Promise`<`undefined` \| `T`\>
+Inherited from: [Observable](rxjs.observable.md)
 
-#### Inherited from
+▸ **toPromise**(`PromiseCtor`: PromiseConstructor): *Promise*<undefined \| T\>
 
-[Observable](RxJS.Observable.md).[toPromise](RxJS.Observable.md#topromise)
+**`deprecated`** Replaced with [firstValueFrom](../modules/rxjs.md#firstvaluefrom) and [lastValueFrom](../modules/rxjs.md#lastvaluefrom). Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise
 
-▸ **toPromise**(`PromiseCtor`): `Promise`<`undefined` \| `T`\>
+#### Parameters:
 
-**`deprecated`** Replaced with [firstValueFrom](../modules/RxJS.md#firstvaluefrom) and [lastValueFrom](../modules/RxJS.md#lastvaluefrom). Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise
+Name | Type |
+:------ | :------ |
+`PromiseCtor` | PromiseConstructor |
 
-#### Parameters
+**Returns:** *Promise*<undefined \| T\>
 
-| Name | Type |
-| :------ | :------ |
-| `PromiseCtor` | `PromiseConstructor` |
+Inherited from: [Observable](rxjs.observable.md)
 
-#### Returns
+▸ **toPromise**(`PromiseCtor`: PromiseConstructorLike): *Promise*<undefined \| T\>
 
-`Promise`<`undefined` \| `T`\>
+**`deprecated`** Replaced with [firstValueFrom](../modules/rxjs.md#firstvaluefrom) and [lastValueFrom](../modules/rxjs.md#lastvaluefrom). Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise
 
-#### Inherited from
+#### Parameters:
 
-[Observable](RxJS.Observable.md).[toPromise](RxJS.Observable.md#topromise)
+Name | Type |
+:------ | :------ |
+`PromiseCtor` | PromiseConstructorLike |
 
-▸ **toPromise**(`PromiseCtor`): `Promise`<`undefined` \| `T`\>
+**Returns:** *Promise*<undefined \| T\>
 
-**`deprecated`** Replaced with [firstValueFrom](../modules/RxJS.md#firstvaluefrom) and [lastValueFrom](../modules/RxJS.md#lastvaluefrom). Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `PromiseCtor` | `PromiseConstructorLike` |
-
-#### Returns
-
-`Promise`<`undefined` \| `T`\>
-
-#### Inherited from
-
-[Observable](RxJS.Observable.md).[toPromise](RxJS.Observable.md#topromise)
+Inherited from: [Observable](rxjs.observable.md)

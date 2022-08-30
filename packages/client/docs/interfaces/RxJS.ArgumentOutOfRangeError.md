@@ -1,49 +1,43 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / ArgumentOutOfRangeError
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / ArgumentOutOfRangeError
 
 # Interface: ArgumentOutOfRangeError
 
-[RxJS](../modules/RxJS.md).ArgumentOutOfRangeError
+[RxJS](../modules/rxjs.md).ArgumentOutOfRangeError
 
 ## Hierarchy
 
-- `Error`
+* *Error*
 
-  ↳ **`ArgumentOutOfRangeError`**
+  ↳ **ArgumentOutOfRangeError**
 
 ## Table of contents
 
 ### Properties
 
-- [message](RxJS.ArgumentOutOfRangeError.md#message)
-- [name](RxJS.ArgumentOutOfRangeError.md#name)
-- [stack](RxJS.ArgumentOutOfRangeError.md#stack)
+- [message](rxjs.argumentoutofrangeerror.md#message)
+- [name](rxjs.argumentoutofrangeerror.md#name)
+- [stack](rxjs.argumentoutofrangeerror.md#stack)
 
 ## Properties
 
 ### message
 
-• **message**: `string`
+• **message**: *string*
 
-#### Inherited from
-
-Error.message
+Inherited from: void
 
 ___
 
 ### name
 
-• **name**: `string`
+• **name**: *string*
 
-#### Inherited from
-
-Error.name
+Inherited from: void
 
 ___
 
 ### stack
 
-• `Optional` **stack**: `string`
+• `Optional` **stack**: *string*
 
-#### Inherited from
-
-Error.stack
+Inherited from: void

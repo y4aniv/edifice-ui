@@ -16,6 +16,38 @@ export class Http implements IHttp {
         this.axios = axios.create( params );
     }
 
+    setCdn(cdnUrl:string):void{
+        if(cdnUrl && XMLHttpRequest && !(XMLHttpRequest.prototype as any)["cdnUrl"]){
+            (XMLHttpRequest.prototype as any)["cdnUrl"] = cdnUrl;
+            (XMLHttpRequest.prototype as any).baseOpen = XMLHttpRequest.prototype.open;
+            XMLHttpRequest.prototype.open = function(){
+                const url = arguments[1] as string;
+                //PUBLIC infra
+                if(url.startsWith("/infra/public")){
+                    arguments[1] = cdnUrl + url;
+                }
+                //PUBLIC files (/.*/public)
+                const match = /^\/([^\/]*)\/public/.test(url)
+                if(match){
+                    arguments[1] = cdnUrl + url;
+                }
+                //ASSETS files
+                if(url.startsWith("/assets")){
+                    arguments[1] = cdnUrl + url;
+                }
+                //SKIP PUBLIC CONF
+                if(url == "/conf/public"){
+                    arguments[1] = url;
+                }
+                //SKIP HTTP
+                if(url.startsWith("http")){
+                    arguments[1] = url;
+                }
+                return (this as any).baseOpen.apply(this, arguments);
+            }    
+        }
+    }
+
     private toAxiosConfig(params?: IHttpParams): AxiosRequestConfig {
         if (!params) {
             return this.axios.defaults;

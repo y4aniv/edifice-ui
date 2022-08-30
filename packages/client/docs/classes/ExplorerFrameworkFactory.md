@@ -6,24 +6,24 @@
 
 ### Constructors
 
-- [constructor](ExplorerFrameworkFactory.md#constructor)
+- [constructor](explorerframeworkfactory.md#constructor)
 
 ### Methods
 
-- [instance](ExplorerFrameworkFactory.md#instance)
+- [instance](explorerframeworkfactory.md#instance)
 
 ## Constructors
 
 ### constructor
 
-• **new ExplorerFrameworkFactory**()
+\+ **new ExplorerFrameworkFactory**(): [*ExplorerFrameworkFactory*](explorerframeworkfactory.md)
+
+**Returns:** [*ExplorerFrameworkFactory*](explorerframeworkfactory.md)
 
 ## Methods
 
 ### instance
 
-▸ `Static` **instance**(): [`IExplorerFramework`](../interfaces/IExplorerFramework.md)
+▸ `Static`**instance**(): [*IExplorerFramework*](../interfaces/iexplorerframework.md)
 
-#### Returns
-
-[`IExplorerFramework`](../interfaces/IExplorerFramework.md)
+**Returns:** [*IExplorerFramework*](../interfaces/iexplorerframework.md)

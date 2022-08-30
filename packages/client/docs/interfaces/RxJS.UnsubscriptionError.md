@@ -1,56 +1,50 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / UnsubscriptionError
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / UnsubscriptionError
 
 # Interface: UnsubscriptionError
 
-[RxJS](../modules/RxJS.md).UnsubscriptionError
+[RxJS](../modules/rxjs.md).UnsubscriptionError
 
 ## Hierarchy
 
-- `Error`
+* *Error*
 
-  ↳ **`UnsubscriptionError`**
+  ↳ **UnsubscriptionError**
 
 ## Table of contents
 
 ### Properties
 
-- [errors](RxJS.UnsubscriptionError.md#errors)
-- [message](RxJS.UnsubscriptionError.md#message)
-- [name](RxJS.UnsubscriptionError.md#name)
-- [stack](RxJS.UnsubscriptionError.md#stack)
+- [errors](rxjs.unsubscriptionerror.md#errors)
+- [message](rxjs.unsubscriptionerror.md#message)
+- [name](rxjs.unsubscriptionerror.md#name)
+- [stack](rxjs.unsubscriptionerror.md#stack)
 
 ## Properties
 
 ### errors
 
-• `Readonly` **errors**: `any`[]
+• `Readonly` **errors**: *any*[]
 
 ___
 
 ### message
 
-• **message**: `string`
+• **message**: *string*
 
-#### Inherited from
-
-Error.message
+Inherited from: void
 
 ___
 
 ### name
 
-• **name**: `string`
+• **name**: *string*
 
-#### Inherited from
-
-Error.name
+Inherited from: void
 
 ___
 
 ### stack
 
-• `Optional` **stack**: `string`
+• `Optional` **stack**: *string*
 
-#### Inherited from
-
-Error.stack
+Inherited from: void

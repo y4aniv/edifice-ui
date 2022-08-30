@@ -6,102 +6,94 @@
 
 ### Properties
 
-- [data](IUserPreferences.md#data)
+- [data](iuserpreferences.md#data)
 
 ### Methods
 
-- [get](IUserPreferences.md#get)
-- [load](IUserPreferences.md#load)
-- [save](IUserPreferences.md#save)
-- [update](IUserPreferences.md#update)
+- [get](iuserpreferences.md#get)
+- [load](iuserpreferences.md#load)
+- [save](iuserpreferences.md#save)
+- [update](iuserpreferences.md#update)
 
 ## Properties
 
 ### data
 
-• **data**: `Object`
+• **data**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type |
-| :------ | :------ |
-| `apps` | `any` |
-| `authenticatedConnectorsAccessed` | `any` |
-| `blog` | `any` |
-| `cas` | `any` |
-| `cursus` | `any` |
-| `exercizer` | `any` |
-| `explorer` | `any` |
-| `infotip` | `any` |
-| `language` | `any` |
-| `portal` | `any` |
-| `rgpdCookies` | `any` |
-| `timeline` | `any` |
-| `video` | `any` |
-| `widgets` | `any` |
+Name | Type |
+:------ | :------ |
+`apps` |  |
+`authenticatedConnectorsAccessed` |  |
+`blog` |  |
+`cas` |  |
+`cursus` |  |
+`exercizer` |  |
+`explorer` |  |
+`infotip` |  |
+`language` |  |
+`portal` |  |
+`rgpdCookies` |  |
+`timeline` |  |
+`video` |  |
+`widgets` |  |
 
 ## Methods
 
 ### get
 
-▸ **get**(`key`): `any`
+▸ **get**(`key`: [*UserPreferenceKey*](../modules.md#userpreferencekey)): *any*
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `key` | [`UserPreferenceKey`](../modules.md#userpreferencekey) |
+Name | Type |
+:------ | :------ |
+`key` | [*UserPreferenceKey*](../modules.md#userpreferencekey) |
 
-#### Returns
-
-`any`
+**Returns:** *any*
 
 ___
 
 ### load
 
-▸ **load**(`key`, `defaultTo?`): `Promise`<`any`\>
+▸ **load**(`key`: [*UserPreferenceKey*](../modules.md#userpreferencekey), `defaultTo?`: *any*): *Promise*<any\>
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `key` | [`UserPreferenceKey`](../modules.md#userpreferencekey) |
-| `defaultTo?` | `any` |
+Name | Type |
+:------ | :------ |
+`key` | [*UserPreferenceKey*](../modules.md#userpreferencekey) |
+`defaultTo?` | *any* |
 
-#### Returns
-
-`Promise`<`any`\>
+**Returns:** *Promise*<any\>
 
 ___
 
 ### save
 
-▸ **save**(`key`): `Promise`<`void`\>
+▸ **save**(`key`: [*UserPreferenceKey*](../modules.md#userpreferencekey)): *Promise*<void\>
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `key` | [`UserPreferenceKey`](../modules.md#userpreferencekey) |
+Name | Type |
+:------ | :------ |
+`key` | [*UserPreferenceKey*](../modules.md#userpreferencekey) |
 
-#### Returns
-
-`Promise`<`void`\>
+**Returns:** *Promise*<void\>
 
 ___
 
 ### update
 
-▸ **update**(`key`, `data`): [`IUserPreferences`](IUserPreferences.md)
+▸ **update**(`key`: [*UserPreferenceKey*](../modules.md#userpreferencekey), `data`: *any*): [*IUserPreferences*](iuserpreferences.md)
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `key` | [`UserPreferenceKey`](../modules.md#userpreferencekey) |
-| `data` | `any` |
+Name | Type |
+:------ | :------ |
+`key` | [*UserPreferenceKey*](../modules.md#userpreferencekey) |
+`data` | *any* |
 
-#### Returns
-
-[`IUserPreferences`](IUserPreferences.md)
+**Returns:** [*IUserPreferences*](iuserpreferences.md)

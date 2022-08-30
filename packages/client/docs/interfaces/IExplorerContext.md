@@ -8,102 +8,92 @@ Context to explore resources from an application.
 
 ### Methods
 
-- [clear](IExplorerContext.md#clear)
-- [copy](IExplorerContext.md#copy)
-- [createFolder](IExplorerContext.md#createfolder)
-- [delete](IExplorerContext.md#delete)
-- [getContext](IExplorerContext.md#getcontext)
-- [getResources](IExplorerContext.md#getresources)
-- [getSearchParameters](IExplorerContext.md#getsearchparameters)
-- [getSubFolders](IExplorerContext.md#getsubfolders)
-- [initialize](IExplorerContext.md#initialize)
-- [isInitialized](IExplorerContext.md#isinitialized)
-- [latestResources](IExplorerContext.md#latestresources)
-- [manageProperties](IExplorerContext.md#manageproperties)
-- [move](IExplorerContext.md#move)
-- [updateFolder](IExplorerContext.md#updatefolder)
-- [updateProperties](IExplorerContext.md#updateproperties)
+- [clear](iexplorercontext.md#clear)
+- [copy](iexplorercontext.md#copy)
+- [createFolder](iexplorercontext.md#createfolder)
+- [delete](iexplorercontext.md#delete)
+- [getContext](iexplorercontext.md#getcontext)
+- [getResources](iexplorercontext.md#getresources)
+- [getSearchParameters](iexplorercontext.md#getsearchparameters)
+- [getSubFolders](iexplorercontext.md#getsubfolders)
+- [initialize](iexplorercontext.md#initialize)
+- [isInitialized](iexplorercontext.md#isinitialized)
+- [latestResources](iexplorercontext.md#latestresources)
+- [manageProperties](iexplorercontext.md#manageproperties)
+- [move](iexplorercontext.md#move)
+- [updateFolder](iexplorercontext.md#updatefolder)
+- [updateProperties](iexplorercontext.md#updateproperties)
 
 ## Methods
 
 ### clear
 
-▸ **clear**(): `void`
+▸ **clear**(): *void*
 
 Clear and reset the underlying context.
 
-#### Returns
-
-`void`
+**Returns:** *void*
 
 ___
 
 ### copy
 
-▸ **copy**(`targetId`, `resourceIds`, `folderIds`): `Promise`<`void`\>
+▸ **copy**(`targetId`: *string*, `resourceIds`: *string*[], `folderIds`: *string*[]): *Promise*<void\>
 
 Copy resources and folders into a folder.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `targetId` | `string` | ID of the destination folder. |
-| `resourceIds` | `string`[] | Array of resources ID to copy. |
-| `folderIds` | `string`[] | Array of folders ID to copy. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`targetId` | *string* | ID of the destination folder.   |
+`resourceIds` | *string*[] | Array of resources ID to copy.   |
+`folderIds` | *string*[] | Array of folders ID to copy.    |
 
-#### Returns
-
-`Promise`<`void`\>
+**Returns:** *Promise*<void\>
 
 ___
 
 ### createFolder
 
-▸ **createFolder**(`resourceType`, `parentId`, `name`): `Promise`<[`CreateFolderResult`](../modules.md#createfolderresult)\>
+▸ **createFolder**(`resourceType`: [*ResourceType*](../modules.md#resourcetype), `parentId`: *string*, `name`: *string*): *Promise*<[*CreateFolderResult*](../modules.md#createfolderresult)\>
 
 Create a new [sub]folder.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `resourceType` | [`ResourceType`](../modules.md#resourcetype) | Type of resources the created folder will contain. |
-| `parentId` | `string` | ID of the parent folder, or "default" for the root folder. |
-| `name` | `string` | Name of the created folder. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`resourceType` | [*ResourceType*](../modules.md#resourcetype) | Type of resources the created folder will contain.   |
+`parentId` | *string* | ID of the parent folder, or "default" for the root folder.   |
+`name` | *string* | Name of the created folder.    |
 
-#### Returns
-
-`Promise`<[`CreateFolderResult`](../modules.md#createfolderresult)\>
+**Returns:** *Promise*<[*CreateFolderResult*](../modules.md#createfolderresult)\>
 
 ___
 
 ### delete
 
-▸ **delete**(`resourceIds`, `folderIds`): `Promise`<`void`\>
+▸ **delete**(`resourceIds`: *string*[], `folderIds`: *string*[]): *Promise*<void\>
 
 Delete resources and folders.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `resourceIds` | `string`[] | Array of resources ID to delete. |
-| `folderIds` | `string`[] | Array of folders ID to delete. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`resourceIds` | *string*[] | Array of resources ID to delete.   |
+`folderIds` | *string*[] | Array of folders ID to delete.    |
 
-#### Returns
-
-`Promise`<`void`\>
+**Returns:** *Promise*<void\>
 
 ___
 
 ### getContext
 
-▸ **getContext**(): `undefined` \| [`IContext`](IContext.md)
+▸ **getContext**(): *undefined* \| [*IContext*](icontext.md)
 
-#### Returns
-
-`undefined` \| [`IContext`](IContext.md)
+**Returns:** *undefined* \| [*IContext*](icontext.md)
 
 The initialized search context, or undefined if initialize() has not been called before.
 
@@ -111,25 +101,21 @@ ___
 
 ### getResources
 
-▸ **getResources**(): `Promise`<[`GetResourcesResult`](../modules.md#getresourcesresult)\>
+▸ **getResources**(): *Promise*<[*GetResourcesResult*](../modules.md#getresourcesresult)\>
 
 Retrieve a page of listed resources from the server.
 Observers of the latestResources() will be notified.
 Search parameters can be adjusted beforehand, @see getSearchParameters().
 
-#### Returns
-
-`Promise`<[`GetResourcesResult`](../modules.md#getresourcesresult)\>
+**Returns:** *Promise*<[*GetResourcesResult*](../modules.md#getresourcesresult)\>
 
 ___
 
 ### getSearchParameters
 
-▸ **getSearchParameters**(): [`ISearchParameters`](ISearchParameters.md)
+▸ **getSearchParameters**(): [*ISearchParameters*](isearchparameters.md)
 
-#### Returns
-
-[`ISearchParameters`](ISearchParameters.md)
+**Returns:** [*ISearchParameters*](isearchparameters.md)
 
 search parameters in the current context, modifiable before any call to getResources() or initialize().
 
@@ -137,43 +123,37 @@ ___
 
 ### getSubFolders
 
-▸ **getSubFolders**(`parentId`): `Promise`<[`GetSubFoldersResult`](../modules.md#getsubfoldersresult)\>
+▸ **getSubFolders**(`parentId`: *string*): *Promise*<[*GetSubFoldersResult*](../modules.md#getsubfoldersresult)\>
 
 Retrieve subfolders of a parent folder, from the server.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `parentId` | `string` | ID of the parent folder. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`parentId` | *string* | ID of the parent folder.    |
 
-#### Returns
-
-`Promise`<[`GetSubFoldersResult`](../modules.md#getsubfoldersresult)\>
+**Returns:** *Promise*<[*GetSubFoldersResult*](../modules.md#getsubfoldersresult)\>
 
 ___
 
 ### initialize
 
-▸ **initialize**(): `Promise`<[`IContext`](IContext.md)\>
+▸ **initialize**(): *Promise*<[*IContext*](icontext.md)\>
 
 Retrieve the first page of listed resources from the server.
 Observers of the latestResources() will be notified.
 Search parameters can be adjusted beforehand, @see getSearchParameters().
 
-#### Returns
-
-`Promise`<[`IContext`](IContext.md)\>
+**Returns:** *Promise*<[*IContext*](icontext.md)\>
 
 ___
 
 ### isInitialized
 
-▸ **isInitialized**(): `boolean`
+▸ **isInitialized**(): *boolean*
 
-#### Returns
-
-`boolean`
+**Returns:** *boolean*
 
 true, if the context is initialized.
 
@@ -181,11 +161,9 @@ ___
 
 ### latestResources
 
-▸ **latestResources**(): [`Observable`](../classes/RxJS.Observable.md)<{ `input`: [`ISearchParameters`](ISearchParameters.md) ; `output`: [`ISearchResults`](ISearchResults.md)  }\>
+▸ **latestResources**(): [*Observable*](../classes/rxjs.observable.md)<{ `input`: [*ISearchParameters*](isearchparameters.md) ; `output`: [*ISearchResults*](isearchresults.md)  }\>
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<{ `input`: [`ISearchParameters`](ISearchParameters.md) ; `output`: [`ISearchResults`](ISearchResults.md)  }\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<{ `input`: [*ISearchParameters*](isearchparameters.md) ; `output`: [*ISearchResults*](isearchresults.md)  }\>
 
 a stream of (search,result) tuples, generated by initialize() and getResources() which should be called by your searches or pagination.
 
@@ -193,83 +171,75 @@ ___
 
 ### manageProperties
 
-▸ **manageProperties**(`resourceType`, `resources`): `Promise`<[`ManagePropertiesResult`](../modules.md#managepropertiesresult)\>
+▸ **manageProperties**(`resourceType`: [*ResourceType*](../modules.md#resourcetype), `resources`: [*IResource*](iresource.md)[]): *Promise*<[*ManagePropertiesResult*](../modules.md#managepropertiesresult)\>
 
 Retrieves which properties of the resource(s) are manageable.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `resourceType` | [`ResourceType`](../modules.md#resourcetype) |
-| `resources` | [`IResource`](IResource.md)[] |
+Name | Type |
+:------ | :------ |
+`resourceType` | [*ResourceType*](../modules.md#resourcetype) |
+`resources` | [*IResource*](iresource.md)[] |
 
-#### Returns
-
-`Promise`<[`ManagePropertiesResult`](../modules.md#managepropertiesresult)\>
+**Returns:** *Promise*<[*ManagePropertiesResult*](../modules.md#managepropertiesresult)\>
 
 ___
 
 ### move
 
-▸ **move**(`targetId`, `resourceIds`, `folderIds`): `Promise`<`void`\>
+▸ **move**(`targetId`: *string*, `resourceIds`: *string*[], `folderIds`: *string*[]): *Promise*<void\>
 
 Move resources and folders into a folder.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `targetId` | `string` | ID of the destination folder. |
-| `resourceIds` | `string`[] | Array of resources ID to move. |
-| `folderIds` | `string`[] | Array of folders ID to move. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`targetId` | *string* | ID of the destination folder.   |
+`resourceIds` | *string*[] | Array of resources ID to move.   |
+`folderIds` | *string*[] | Array of folders ID to move.    |
 
-#### Returns
-
-`Promise`<`void`\>
+**Returns:** *Promise*<void\>
 
 ___
 
 ### updateFolder
 
-▸ **updateFolder**(`folderId`, `resourceType`, `parentId`, `name`): `Promise`<[`UpdateFolderResult`](../modules.md#updatefolderresult)\>
+▸ **updateFolder**(`folderId`: *string*, `resourceType`: [*ResourceType*](../modules.md#resourcetype), `parentId`: *string*, `name`: *string*): *Promise*<[*UpdateFolderResult*](../modules.md#updatefolderresult)\>
 
 Modify the properties of a folder.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `folderId` | `string` | ID of the folder to modify. |
-| `resourceType` | [`ResourceType`](../modules.md#resourcetype) | Type of resources the modified folder will contain. |
-| `parentId` | `string` | ID of the parent folder. |
-| `name` | `string` | Name of the folder. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`folderId` | *string* | ID of the folder to modify.   |
+`resourceType` | [*ResourceType*](../modules.md#resourcetype) | Type of resources the modified folder will contain.   |
+`parentId` | *string* | ID of the parent folder.   |
+`name` | *string* | Name of the folder.    |
 
-#### Returns
-
-`Promise`<[`UpdateFolderResult`](../modules.md#updatefolderresult)\>
+**Returns:** *Promise*<[*UpdateFolderResult*](../modules.md#updatefolderresult)\>
 
 ___
 
 ### updateProperties
 
-▸ **updateProperties**(`resourceType`, `resources`, `props`): `Promise`<[`UpdatePropertiesResult`](../modules.md#updatepropertiesresult)\>
+▸ **updateProperties**(`resourceType`: [*ResourceType*](../modules.md#resourcetype), `resources`: [*IResource*](iresource.md)[], `props`: { `color`:  ; `description`:  ; `image`:  ; `title`:  ; `url`:   }): *Promise*<[*UpdatePropertiesResult*](../modules.md#updatepropertiesresult)\>
 
 Update managed properties.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `resourceType` | [`ResourceType`](../modules.md#resourcetype) |
-| `resources` | [`IResource`](IResource.md)[] |
-| `props` | `Object` |
-| `props.color` | `undefined` \| `string` |
-| `props.description` | `undefined` \| `string` |
-| `props.image` | `undefined` \| `string` |
-| `props.title` | `undefined` \| `string` |
-| `props.url` | `undefined` \| `string` |
+Name | Type |
+:------ | :------ |
+`resourceType` | [*ResourceType*](../modules.md#resourcetype) |
+`resources` | [*IResource*](iresource.md)[] |
+`props` | *object* |
+`props.color` | - |
+`props.description` | - |
+`props.image` | - |
+`props.title` | - |
+`props.url` | - |
 
-#### Returns
-
-`Promise`<[`UpdatePropertiesResult`](../modules.md#updatepropertiesresult)\>
+**Returns:** *Promise*<[*UpdatePropertiesResult*](../modules.md#updatepropertiesresult)\>

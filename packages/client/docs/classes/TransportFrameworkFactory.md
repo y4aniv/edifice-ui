@@ -6,24 +6,24 @@
 
 ### Constructors
 
-- [constructor](TransportFrameworkFactory.md#constructor)
+- [constructor](transportframeworkfactory.md#constructor)
 
 ### Methods
 
-- [instance](TransportFrameworkFactory.md#instance)
+- [instance](transportframeworkfactory.md#instance)
 
 ## Constructors
 
 ### constructor
 
-• **new TransportFrameworkFactory**()
+\+ **new TransportFrameworkFactory**(): [*TransportFrameworkFactory*](transportframeworkfactory.md)
+
+**Returns:** [*TransportFrameworkFactory*](transportframeworkfactory.md)
 
 ## Methods
 
 ### instance
 
-▸ `Static` **instance**(): [`ITransportFramework`](../interfaces/ITransportFramework.md)
+▸ `Static`**instance**(): [*ITransportFramework*](../interfaces/itransportframework.md)
 
-#### Returns
-
-[`ITransportFramework`](../interfaces/ITransportFramework.md)
+**Returns:** [*ITransportFramework*](../interfaces/itransportframework.md)

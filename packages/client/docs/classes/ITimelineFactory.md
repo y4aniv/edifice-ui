@@ -6,24 +6,24 @@
 
 ### Constructors
 
-- [constructor](ITimelineFactory.md#constructor)
+- [constructor](itimelinefactory.md#constructor)
 
 ### Methods
 
-- [createInstance](ITimelineFactory.md#createinstance)
+- [createInstance](itimelinefactory.md#createinstance)
 
 ## Constructors
 
 ### constructor
 
-• **new ITimelineFactory**()
+\+ **new ITimelineFactory**(): [*ITimelineFactory*](itimelinefactory.md)
+
+**Returns:** [*ITimelineFactory*](itimelinefactory.md)
 
 ## Methods
 
 ### createInstance
 
-▸ `Static` **createInstance**(): [`ITimelineApp`](../interfaces/ITimelineApp.md)
+▸ `Static`**createInstance**(): [*ITimelineApp*](../interfaces/itimelineapp.md)
 
-#### Returns
-
-[`ITimelineApp`](../interfaces/ITimelineApp.md)
+**Returns:** [*ITimelineApp*](../interfaces/itimelineapp.md)

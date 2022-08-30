@@ -1,49 +1,43 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / SequenceError
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / SequenceError
 
 # Interface: SequenceError
 
-[RxJS](../modules/RxJS.md).SequenceError
+[RxJS](../modules/rxjs.md).SequenceError
 
 ## Hierarchy
 
-- `Error`
+* *Error*
 
-  ↳ **`SequenceError`**
+  ↳ **SequenceError**
 
 ## Table of contents
 
 ### Properties
 
-- [message](RxJS.SequenceError.md#message)
-- [name](RxJS.SequenceError.md#name)
-- [stack](RxJS.SequenceError.md#stack)
+- [message](rxjs.sequenceerror.md#message)
+- [name](rxjs.sequenceerror.md#name)
+- [stack](rxjs.sequenceerror.md#stack)
 
 ## Properties
 
 ### message
 
-• **message**: `string`
+• **message**: *string*
 
-#### Inherited from
-
-Error.message
+Inherited from: void
 
 ___
 
 ### name
 
-• **name**: `string`
+• **name**: *string*
 
-#### Inherited from
-
-Error.name
+Inherited from: void
 
 ___
 
 ### stack
 
-• `Optional` **stack**: `string`
+• `Optional` **stack**: *string*
 
-#### Inherited from
-
-Error.stack
+Inherited from: void

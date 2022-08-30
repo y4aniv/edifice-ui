@@ -6,58 +6,54 @@
 
 ### Constructors
 
-- [constructor](LastInfosWidget.md#constructor)
+- [constructor](lastinfoswidget.md#constructor)
 
 ### Methods
 
-- [getMaxResults](LastInfosWidget.md#getmaxresults)
-- [loadInfos](LastInfosWidget.md#loadinfos)
-- [setMaxResults](LastInfosWidget.md#setmaxresults)
+- [getMaxResults](lastinfoswidget.md#getmaxresults)
+- [loadInfos](lastinfoswidget.md#loadinfos)
+- [setMaxResults](lastinfoswidget.md#setmaxresults)
 
 ## Constructors
 
 ### constructor
 
-• **new LastInfosWidget**()
+\+ **new LastInfosWidget**(): [*LastInfosWidget*](lastinfoswidget.md)
+
+**Returns:** [*LastInfosWidget*](lastinfoswidget.md)
 
 ## Methods
 
 ### getMaxResults
 
-▸ **getMaxResults**(): `Promise`<`number`\>
+▸ **getMaxResults**(): *Promise*<number\>
 
-#### Returns
-
-`Promise`<`number`\>
+**Returns:** *Promise*<number\>
 
 ___
 
 ### loadInfos
 
-▸ **loadInfos**(`maxResults`): `Promise`<[`ILastInfosModel`](../interfaces/ILastInfosModel.md)[]\>
+▸ **loadInfos**(`maxResults`: *number*): *Promise*<[*ILastInfosModel*](../interfaces/ilastinfosmodel.md)[]\>
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `maxResults` | `number` |
+Name | Type |
+:------ | :------ |
+`maxResults` | *number* |
 
-#### Returns
-
-`Promise`<[`ILastInfosModel`](../interfaces/ILastInfosModel.md)[]\>
+**Returns:** *Promise*<[*ILastInfosModel*](../interfaces/ilastinfosmodel.md)[]\>
 
 ___
 
 ### setMaxResults
 
-▸ **setMaxResults**(`maxResults`): `Promise`<`void`\>
+▸ **setMaxResults**(`maxResults`: *number*): *Promise*<void\>
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `maxResults` | `number` |
+Name | Type |
+:------ | :------ |
+`maxResults` | *number* |
 
-#### Returns
-
-`Promise`<`void`\>
+**Returns:** *Promise*<void\>

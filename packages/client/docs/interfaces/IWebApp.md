@@ -6,73 +6,73 @@
 
 ### Properties
 
-- [address](IWebApp.md#address)
-- [casType](IWebApp.md#castype)
-- [display](IWebApp.md#display)
-- [displayName](IWebApp.md#displayname)
-- [icon](IWebApp.md#icon)
-- [isExternal](IWebApp.md#isexternal)
-- [name](IWebApp.md#name)
-- [prefix](IWebApp.md#prefix)
-- [scope](IWebApp.md#scope)
-- [target](IWebApp.md#target)
+- [address](iwebapp.md#address)
+- [casType](iwebapp.md#castype)
+- [display](iwebapp.md#display)
+- [displayName](iwebapp.md#displayname)
+- [icon](iwebapp.md#icon)
+- [isExternal](iwebapp.md#isexternal)
+- [name](iwebapp.md#name)
+- [prefix](iwebapp.md#prefix)
+- [scope](iwebapp.md#scope)
+- [target](iwebapp.md#target)
 
 ## Properties
 
 ### address
 
-• **address**: `string`
+• **address**: *string*
 
 ___
 
 ### casType
 
-• `Optional` **casType**: `string`
+• `Optional` **casType**: *string*
 
 ___
 
 ### display
 
-• **display**: `boolean`
+• **display**: *boolean*
 
 ___
 
 ### displayName
 
-• **displayName**: `string`
+• **displayName**: *string*
 
 ___
 
 ### icon
 
-• **icon**: `string`
+• **icon**: *string*
 
 ___
 
 ### isExternal
 
-• **isExternal**: `boolean`
+• **isExternal**: *boolean*
 
 ___
 
 ### name
 
-• **name**: `string`
+• **name**: *string*
 
 ___
 
 ### prefix
 
-• `Optional` **prefix**: `string`
+• `Optional` **prefix**: *string*
 
 ___
 
 ### scope
 
-• **scope**: `string`[]
+• **scope**: *string*[]
 
 ___
 
 ### target
 
-• `Optional` **target**: `any`
+• `Optional` **target**: *any*

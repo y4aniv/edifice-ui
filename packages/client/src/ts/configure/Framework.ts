@@ -44,6 +44,8 @@ export class ConfigurationFramework implements IConfigurationFramework {
         if( typeof cdnDomain==="string" && cdnDomain.length>0 ) {
             this.Platform.cdnDomain = cdnDomain;
         }
+        transport.http.setCdn(this.Platform.cdnDomain);
+        //
         await Promise.all([
             this.Platform.theme.initialize(v),
             notify.onSessionReady().promise.then( userInfo=>this.Platform.idiom.addBundlePromise('/i18n') ),

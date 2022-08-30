@@ -1,49 +1,43 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / ObjectUnsubscribedError
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / ObjectUnsubscribedError
 
 # Interface: ObjectUnsubscribedError
 
-[RxJS](../modules/RxJS.md).ObjectUnsubscribedError
+[RxJS](../modules/rxjs.md).ObjectUnsubscribedError
 
 ## Hierarchy
 
-- `Error`
+* *Error*
 
-  ↳ **`ObjectUnsubscribedError`**
+  ↳ **ObjectUnsubscribedError**
 
 ## Table of contents
 
 ### Properties
 
-- [message](RxJS.ObjectUnsubscribedError.md#message)
-- [name](RxJS.ObjectUnsubscribedError.md#name)
-- [stack](RxJS.ObjectUnsubscribedError.md#stack)
+- [message](rxjs.objectunsubscribederror.md#message)
+- [name](rxjs.objectunsubscribederror.md#name)
+- [stack](rxjs.objectunsubscribederror.md#stack)
 
 ## Properties
 
 ### message
 
-• **message**: `string`
+• **message**: *string*
 
-#### Inherited from
-
-Error.message
+Inherited from: void
 
 ___
 
 ### name
 
-• **name**: `string`
+• **name**: *string*
 
-#### Inherited from
-
-Error.name
+Inherited from: void
 
 ___
 
 ### stack
 
-• `Optional` **stack**: `string`
+• `Optional` **stack**: *string*
 
-#### Inherited from
-
-Error.stack
+Inherited from: void

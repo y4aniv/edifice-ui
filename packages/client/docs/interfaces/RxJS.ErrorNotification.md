@@ -1,29 +1,29 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / ErrorNotification
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / ErrorNotification
 
 # Interface: ErrorNotification
 
-[RxJS](../modules/RxJS.md).ErrorNotification
+[RxJS](../modules/rxjs.md).ErrorNotification
 
 A notification representing an "error" from an observable.
-Can be used with [dematerialize](../modules/RxJS.md#dematerialize).
+Can be used with [dematerialize](../modules/rxjs.md#dematerialize).
 
 ## Table of contents
 
 ### Properties
 
-- [error](RxJS.ErrorNotification.md#error)
-- [kind](RxJS.ErrorNotification.md#kind)
+- [error](rxjs.errornotification.md#error)
+- [kind](rxjs.errornotification.md#kind)
 
 ## Properties
 
 ### error
 
-• **error**: `any`
+• **error**: *any*
 
 ___
 
 ### kind
 
-• **kind**: ``"E"``
+• **kind**: *E*
 
 The kind of notification. Always "E"

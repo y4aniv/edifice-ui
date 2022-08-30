@@ -6,24 +6,24 @@
 
 ### Properties
 
-- [displayName](IWorkflowAuth.md#displayname)
-- [name](IWorkflowAuth.md#name)
-- [type](IWorkflowAuth.md#type)
+- [displayName](iworkflowauth.md#displayname)
+- [name](iworkflowauth.md#name)
+- [type](iworkflowauth.md#type)
 
 ## Properties
 
 ### displayName
 
-• **displayName**: `string`
+• **displayName**: *string*
 
 ___
 
 ### name
 
-• **name**: `string`
+• **name**: *string*
 
 ___
 
 ### type
 
-• **type**: `string`
+• **type**: *string*

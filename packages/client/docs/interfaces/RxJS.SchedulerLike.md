@@ -1,67 +1,61 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / SchedulerLike
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / SchedulerLike
 
 # Interface: SchedulerLike
 
-[RxJS](../modules/RxJS.md).SchedulerLike
+[RxJS](../modules/rxjs.md).SchedulerLike
 
 SCHEDULER INTERFACES
 
 ## Hierarchy
 
-- [`TimestampProvider`](RxJS.TimestampProvider.md)
+* [*TimestampProvider*](rxjs.timestampprovider.md)
 
-  ↳ **`SchedulerLike`**
+  ↳ **SchedulerLike**
 
 ## Implemented by
 
-- [`Scheduler`](../classes/RxJS.Scheduler.md)
+* [*Scheduler*](../classes/rxjs.scheduler.md)
 
 ## Table of contents
 
 ### Methods
 
-- [now](RxJS.SchedulerLike.md#now)
-- [schedule](RxJS.SchedulerLike.md#schedule)
+- [now](rxjs.schedulerlike.md#now)
+- [schedule](rxjs.schedulerlike.md#schedule)
 
 ## Methods
 
 ### now
 
-▸ **now**(): `number`
+▸ **now**(): *number*
 
 Returns a timestamp as a number.
 
 This is used by types like `ReplaySubject` or operators like `timestamp` to calculate
 the amount of time passed between events.
 
-#### Returns
+**Returns:** *number*
 
-`number`
-
-#### Inherited from
-
-[TimestampProvider](RxJS.TimestampProvider.md).[now](RxJS.TimestampProvider.md#now)
+Inherited from: [TimestampProvider](rxjs.timestampprovider.md)
 
 ___
 
 ### schedule
 
-▸ **schedule**<`T`\>(`work`, `delay?`, `state?`): [`Subscription`](../classes/RxJS.Subscription.md)
+▸ **schedule**<T\>(`work`: (`state?`: T) => *void*, `delay?`: *number*, `state?`: T): [*Subscription*](../classes/rxjs.subscription.md)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `work` | (`this`: [`SchedulerAction`](RxJS.SchedulerAction.md)<`T`\>, `state?`: `T`) => `void` |
-| `delay?` | `number` |
-| `state?` | `T` |
+Name | Type |
+:------ | :------ |
+`work` | (`state?`: T) => *void* |
+`delay?` | *number* |
+`state?` | T |
 
-#### Returns
-
-[`Subscription`](../classes/RxJS.Subscription.md)
+**Returns:** [*Subscription*](../classes/rxjs.subscription.md)

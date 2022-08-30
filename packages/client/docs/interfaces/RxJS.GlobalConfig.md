@@ -1,28 +1,28 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / GlobalConfig
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / GlobalConfig
 
 # Interface: GlobalConfig
 
-[RxJS](../modules/RxJS.md).GlobalConfig
+[RxJS](../modules/rxjs.md).GlobalConfig
 
 The global configuration object for RxJS, used to configure things
-like how to react on unhandled errors. Accessible via [config](../modules/RxJS.md#config)
+like how to react on unhandled errors. Accessible via [config](../modules/rxjs.md#config)
 object.
 
 ## Table of contents
 
 ### Properties
 
-- [Promise](RxJS.GlobalConfig.md#promise)
-- [onStoppedNotification](RxJS.GlobalConfig.md#onstoppednotification)
-- [onUnhandledError](RxJS.GlobalConfig.md#onunhandlederror)
-- [useDeprecatedNextContext](RxJS.GlobalConfig.md#usedeprecatednextcontext)
-- [useDeprecatedSynchronousErrorHandling](RxJS.GlobalConfig.md#usedeprecatedsynchronouserrorhandling)
+- [Promise](rxjs.globalconfig.md#promise)
+- [onStoppedNotification](rxjs.globalconfig.md#onstoppednotification)
+- [onUnhandledError](rxjs.globalconfig.md#onunhandlederror)
+- [useDeprecatedNextContext](rxjs.globalconfig.md#usedeprecatednextcontext)
+- [useDeprecatedSynchronousErrorHandling](rxjs.globalconfig.md#usedeprecatedsynchronouserrorhandling)
 
 ## Properties
 
 ### Promise
 
-• `Optional` **Promise**: `PromiseConstructorLike`
+• `Optional` **Promise**: PromiseConstructorLike
 
 The promise constructor used by default for {@link Observable#toPromise toPromise} and {@link Observable#forEach forEach}
 methods.
@@ -35,7 +35,7 @@ ___
 
 ### onStoppedNotification
 
-• **onStoppedNotification**: ``null`` \| (`notification`: [`ObservableNotification`](../modules/RxJS.md#observablenotification)<`any`\>, `subscriber`: [`Subscriber`](../classes/RxJS.Subscriber.md)<`any`\>) => `void`
+• **onStoppedNotification**: *null* \| (`notification`: [*ObservableNotification*](../modules/rxjs.md#observablenotification)<any\>, `subscriber`: [*Subscriber*](../classes/rxjs.subscriber.md)<any\>) => *void*
 
 A registration point for notifications that cannot be sent to subscribers because they
 have completed, errored or have been explicitly unsubscribed. By default, next, complete
@@ -50,7 +50,7 @@ ___
 
 ### onUnhandledError
 
-• **onUnhandledError**: ``null`` \| (`err`: `any`) => `void`
+• **onUnhandledError**: *null* \| (`err`: *any*) => *void*
 
 A registration point for unhandled errors from RxJS. These are errors that
 cannot were not handled by consuming code in the usual subscription path. For
@@ -64,7 +64,7 @@ ___
 
 ### useDeprecatedNextContext
 
-• **useDeprecatedNextContext**: `boolean`
+• **useDeprecatedNextContext**: *boolean*
 
 If true, enables an as-of-yet undocumented feature from v5: The ability to access
 `unsubscribe()` via `this` context in `next` functions created in observers passed
@@ -83,7 +83,7 @@ ___
 
 ### useDeprecatedSynchronousErrorHandling
 
-• **useDeprecatedSynchronousErrorHandling**: `boolean`
+• **useDeprecatedSynchronousErrorHandling**: *boolean*
 
 If true, turns on synchronous error rethrowing, which is a deprecated behavior
 in v6 and higher. This behavior enables bad patterns like wrapping a subscribe

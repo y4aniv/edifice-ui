@@ -8,36 +8,32 @@ Framework exploration capabilities offered to the client.
 
 ### Methods
 
-- [createContext](IExplorerFramework.md#createcontext)
-- [getBus](IExplorerFramework.md#getbus)
+- [createContext](iexplorerframework.md#createcontext)
+- [getBus](iexplorerframework.md#getbus)
 
 ## Methods
 
 ### createContext
 
-▸ **createContext**(`types`, `app`): [`IExplorerContext`](IExplorerContext.md)
+▸ **createContext**(`types`: [*ResourceType*](../modules.md#resourcetype)[], `app`: [*App*](../modules.md#app)): [*IExplorerContext*](iexplorercontext.md)
 
 Create a new context to explore resources produced by an application.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `types` | [`ResourceType`](../modules.md#resourcetype)[] | Types of resource to be managed in this context. |
-| `app` | [`App`](../modules.md#app) | Application which creates the new context. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`types` | [*ResourceType*](../modules.md#resourcetype)[] | Types of resource to be managed in this context.   |
+`app` | [*App*](../modules.md#app) | Application which creates the new context.    |
 
-#### Returns
-
-[`IExplorerContext`](IExplorerContext.md)
+**Returns:** [*IExplorerContext*](iexplorercontext.md)
 
 ___
 
 ### getBus
 
-▸ **getBus**(): [`IBus`](IBus.md)
+▸ **getBus**(): [*IBus*](ibus.md)
 
 Retrieve the underlying communication bus.
 
-#### Returns
-
-[`IBus`](IBus.md)
+**Returns:** [*IBus*](ibus.md)

@@ -6,77 +6,77 @@
 
 ### Properties
 
-- [Platform](IConfigurationFramework.md#platform)
-- [School](IConfigurationFramework.md#school)
-- [User](IConfigurationFramework.md#user)
+- [Platform](iconfigurationframework.md#platform)
+- [School](iconfigurationframework.md#school)
+- [User](iconfigurationframework.md#user)
 
 ### Methods
 
-- [initialize](IConfigurationFramework.md#initialize)
+- [initialize](iconfigurationframework.md#initialize)
 
 ## Properties
 
 ### Platform
 
-• `Readonly` **Platform**: `Object`
+• `Readonly` **Platform**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `analytics` | { `status`: [`AnalyticStatus`](../modules.md#analyticstatus) ; `parameters`: <T\>(`type`: [`TrackingType`](../modules.md#trackingtype)) => `Promise`<`undefined` \| `T`\> ; `xiti`: () => `Promise`<`undefined` \| [`IXitiTrackingParams`](IXitiTrackingParams.md)\>  } | Configured tracking. |
-| `analytics.status` | [`AnalyticStatus`](../modules.md#analyticstatus) | Check the status, if something goes wrong. |
-| `analytics.parameters` | [object Object] | Get a tracker parameters. |
-| `analytics.xiti` | [object Object] | Get the XiTi configuration. This method awaits for the session to be be fully loaded. //FIXME refactor xiti configuration |
-| `apps` | { `getPublicConf`: (`app`: [`App`](../modules.md#app)) => `Promise`<`any`\> ; `initialize`: (`app`: [`App`](../modules.md#app), `alternativeApp?`: `boolean`) => `Promise`<`void`\> ; `loadI18n`: (`app`: [`App`](../modules.md#app)) => `Promise`<`void`\>  } | - |
-| `apps.getPublicConf` | [object Object] | Load and return the public conf of an app. |
-| `apps.initialize` | [object Object] | Initialize an app (preload its public conf and i18n) |
-| `apps.loadI18n` | [object Object] | Load the i18n of an app. |
-| `cdnDomain` | `string` | - |
-| `deploymentTag` | `string` | - |
-| `idiom` | [`IIdiom`](IIdiom.md) | I18n (port from legacy infra-front) |
-| `theme` | [`ITheme`](ITheme.md) | Configured theme. |
-| `listLanguages` | () => `Promise`<`string`[]\> | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`analytics` | *object* | Configured tracking.   |
+`analytics.status` | [*AnalyticStatus*](../modules.md#analyticstatus) | Check the status, if something goes wrong.   |
+`analytics.parameters` | [object Object] | - |
+`analytics.xiti` | [object Object] | - |
+`apps` | *object* | - |
+`apps.getPublicConf` | [object Object] | - |
+`apps.initialize` | [object Object] | - |
+`apps.loadI18n` | [object Object] | - |
+`cdnDomain` | *string* | - |
+`deploymentTag` | *string* | - |
+`idiom` | [*IIdiom*](iidiom.md) | I18n (port from legacy infra-front)   |
+`theme` | [*ITheme*](itheme.md) | Configured theme.   |
+`listLanguages` | () => *Promise*<string[]\> | - |
 
 ___
 
 ### School
 
-• `Readonly` **School**: `Object`
+• `Readonly` **School**: *object*
+
+#### Type declaration:
 
 ___
 
 ### User
 
-• `Readonly` **User**: `Object`
+• `Readonly` **User**: *object*
 
-#### Type declaration
+#### Type declaration:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `bookmarkedApps` | [`IWebApp`](IWebApp.md)[] | User's prefered apps. |
-| `keepOpenOnLogout` | `boolean` | Legacy option (//FIXME which use ?). |
-| `preferences` | [`IUserPreferences`](IUserPreferences.md) | User's preferences. |
-| `loadAppPrefs` | (`app`: [`App`](../modules.md#app)) => `Promise`<`any`\> | Load the user's preferences for the given app. |
-| `loadLanguage` | () => `Promise`<`string`\> | - |
-| `saveAppPrefs` | (`app`: [`App`](../modules.md#app)) => `Promise`<`void`\> | Save the user's preferences for the given app. |
-| `saveLanguage` | (`lang`: `string`) => `Promise`<`void`\> | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`bookmarkedApps` | [*IWebApp*](iwebapp.md)[] | User's prefered apps.   |
+`keepOpenOnLogout` | *boolean* | Legacy option (//FIXME which use ?).   |
+`preferences` | [*IUserPreferences*](iuserpreferences.md) | User's preferences.   |
+`loadAppPrefs` | (`app`: [*App*](../modules.md#app)) => *Promise*<any\> | - |
+`loadLanguage` | () => *Promise*<string\> | - |
+`saveAppPrefs` | (`app`: [*App*](../modules.md#app)) => *Promise*<void\> | - |
+`saveLanguage` | (`lang`: *string*) => *Promise*<void\> | - |
 
 ## Methods
 
 ### initialize
 
-▸ **initialize**(`version`, `cdnDomain`): `Promise`<`void`\>
+▸ **initialize**(`version`: *null* \| *string*, `cdnDomain`: *null* \| *string*): *Promise*<void\>
 
 Framework initialization
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `version` | ``null`` \| `string` |
-| `cdnDomain` | ``null`` \| `string` |
+Name | Type |
+:------ | :------ |
+`version` | *null* \| *string* |
+`cdnDomain` | *null* \| *string* |
 
-#### Returns
-
-`Promise`<`void`\>
+**Returns:** *Promise*<void\>

@@ -6,199 +6,199 @@
 
 ### Properties
 
-- [address](IUserDescription.md#address)
-- [alertSize](IUserDescription.md#alertsize)
-- [birthdate](IUserDescription.md#birthdate)
-- [displayName](IUserDescription.md#displayname)
-- [email](IUserDescription.md#email)
-- [health](IUserDescription.md#health)
-- [hobbies](IUserDescription.md#hobbies)
-- [id](IUserDescription.md#id)
-- [login](IUserDescription.md#login)
-- [mobile](IUserDescription.md#mobile)
-- [mood](IUserDescription.md#mood)
-- [motto](IUserDescription.md#motto)
-- [oldPicture](IUserDescription.md#oldpicture)
-- [photo](IUserDescription.md#photo)
-- [picture](IUserDescription.md#picture)
-- [profiles](IUserDescription.md#profiles)
-- [quota](IUserDescription.md#quota)
-- [relatedId](IUserDescription.md#relatedid)
-- [relatedName](IUserDescription.md#relatedname)
-- [relatedType](IUserDescription.md#relatedtype)
-- [schools](IUserDescription.md#schools)
-- [storage](IUserDescription.md#storage)
-- [tel](IUserDescription.md#tel)
-- [theme](IUserDescription.md#theme)
-- [type](IUserDescription.md#type)
-- [userId](IUserDescription.md#userid)
-- [userid](IUserDescription.md#userid)
-- [visibleInfos](IUserDescription.md#visibleinfos)
+- [address](iuserdescription.md#address)
+- [alertSize](iuserdescription.md#alertsize)
+- [birthdate](iuserdescription.md#birthdate)
+- [displayName](iuserdescription.md#displayname)
+- [email](iuserdescription.md#email)
+- [health](iuserdescription.md#health)
+- [hobbies](iuserdescription.md#hobbies)
+- [id](iuserdescription.md#id)
+- [login](iuserdescription.md#login)
+- [mobile](iuserdescription.md#mobile)
+- [mood](iuserdescription.md#mood)
+- [motto](iuserdescription.md#motto)
+- [oldPicture](iuserdescription.md#oldpicture)
+- [photo](iuserdescription.md#photo)
+- [picture](iuserdescription.md#picture)
+- [profiles](iuserdescription.md#profiles)
+- [quota](iuserdescription.md#quota)
+- [relatedId](iuserdescription.md#relatedid)
+- [relatedName](iuserdescription.md#relatedname)
+- [relatedType](iuserdescription.md#relatedtype)
+- [schools](iuserdescription.md#schools)
+- [storage](iuserdescription.md#storage)
+- [tel](iuserdescription.md#tel)
+- [theme](iuserdescription.md#theme)
+- [type](iuserdescription.md#type)
+- [userId](iuserdescription.md#userid)
+- [userid](iuserdescription.md#userid)
+- [visibleInfos](iuserdescription.md#visibleinfos)
 
 ## Properties
 
 ### address
 
-• **address**: `string`
+• **address**: *string*
 
 ___
 
 ### alertSize
 
-• **alertSize**: `boolean`
+• **alertSize**: *boolean*
 
 ___
 
 ### birthdate
 
-• **birthdate**: `string`
+• **birthdate**: *string*
 
 ___
 
 ### displayName
 
-• **displayName**: `string`
+• **displayName**: *string*
 
 ___
 
 ### email
 
-• **email**: `string`
+• **email**: *string*
 
 ___
 
 ### health
 
-• **health**: `string`
+• **health**: *string*
 
 ___
 
 ### hobbies
 
-• **hobbies**: [`Hobby`](../modules.md#hobby)[]
+• **hobbies**: [*Hobby*](../modules.md#hobby)[]
 
 ___
 
 ### id
 
-• **id**: `string`
+• **id**: *string*
 
 ___
 
 ### login
 
-• **login**: `string`
+• **login**: *string*
 
 ___
 
 ### mobile
 
-• **mobile**: `string`
+• **mobile**: *string*
 
 ___
 
 ### mood
 
-• **mood**: ``"default"`` \| ``"happy"`` \| ``"proud"`` \| ``"dreamy"`` \| ``"love"`` \| ``"tired"`` \| ``"angry"`` \| ``"worried"`` \| ``"sick"`` \| ``"joker"`` \| ``"sad"``
+• **mood**: *default* \| *happy* \| *proud* \| *dreamy* \| *love* \| *tired* \| *angry* \| *worried* \| *sick* \| *joker* \| *sad*
 
 ___
 
 ### motto
 
-• **motto**: `string`
+• **motto**: *string*
 
 ___
 
 ### oldPicture
 
-• `Optional` **oldPicture**: `string`
+• `Optional` **oldPicture**: *string*
 
 ___
 
 ### photo
 
-• **photo**: `string`
+• **photo**: *string*
 
 ___
 
 ### picture
 
-• **picture**: `string`
+• **picture**: *string*
 
 ___
 
 ### profiles
 
-• **profiles**: (``"Student"`` \| ``"Teacher"`` \| ``"Relative"`` \| ``"Personnel"`` \| ``"Guest"``)[]
+• **profiles**: (*Student* \| *Teacher* \| *Relative* \| *Personnel* \| *Guest*)[]
 
 ___
 
 ### quota
 
-• **quota**: `number`
+• **quota**: *number*
 
 ___
 
 ### relatedId
 
-• `Optional` **relatedId**: `any`
+• `Optional` **relatedId**: *any*
 
 ___
 
 ### relatedName
 
-• `Optional` **relatedName**: `any`
+• `Optional` **relatedName**: *any*
 
 ___
 
 ### relatedType
 
-• `Optional` **relatedType**: `any`
+• `Optional` **relatedType**: *any*
 
 ___
 
 ### schools
 
-• **schools**: [`School`](../modules.md#school)[]
+• **schools**: [*School*](../modules.md#school)[]
 
 ___
 
 ### storage
 
-• **storage**: `number`
+• **storage**: *number*
 
 ___
 
 ### tel
 
-• **tel**: `string`
+• **tel**: *string*
 
 ___
 
 ### theme
 
-• **theme**: `string`
+• **theme**: *string*
 
 ___
 
 ### type
 
-• **type**: `string`
+• **type**: *string*
 
 ___
 
 ### userId
 
-• **userId**: `string`
+• **userId**: *string*
 
 ___
 
 ### userid
 
-• **userid**: `string`
+• **userid**: *string*
 
 ___
 
 ### visibleInfos
 
-• **visibleInfos**: `string`[]
+• **visibleInfos**: *string*[]

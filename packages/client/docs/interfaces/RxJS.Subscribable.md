@@ -1,45 +1,43 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / Subscribable
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / Subscribable
 
 # Interface: Subscribable<T\>
 
-[RxJS](../modules/RxJS.md).Subscribable
+[RxJS](../modules/rxjs.md).Subscribable
 
 OBSERVABLE INTERFACES
 
 ## Type parameters
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
 ## Hierarchy
 
-- **`Subscribable`**
+* **Subscribable**
 
-  ↳ [`SubjectLike`](RxJS.SubjectLike.md)
+  ↳ [*SubjectLike*](rxjs.subjectlike.md)
 
 ## Implemented by
 
-- [`Observable`](../classes/RxJS.Observable.md)
+* [*Observable*](../classes/rxjs.observable.md)
 
 ## Table of contents
 
 ### Methods
 
-- [subscribe](RxJS.Subscribable.md#subscribe)
+- [subscribe](rxjs.subscribable.md#subscribe)
 
 ## Methods
 
 ### subscribe
 
-▸ **subscribe**(`observer`): [`Unsubscribable`](RxJS.Unsubscribable.md)
+▸ **subscribe**(`observer`: *Partial*<[*Observer*](rxjs.observer.md)<T\>\>): [*Unsubscribable*](rxjs.unsubscribable.md)
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `observer` | `Partial`<[`Observer`](RxJS.Observer.md)<`T`\>\> |
+Name | Type |
+:------ | :------ |
+`observer` | *Partial*<[*Observer*](rxjs.observer.md)<T\>\> |
 
-#### Returns
-
-[`Unsubscribable`](RxJS.Unsubscribable.md)
+**Returns:** [*Unsubscribable*](rxjs.unsubscribable.md)

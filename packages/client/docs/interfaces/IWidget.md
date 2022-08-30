@@ -6,14 +6,14 @@
 
 ### Properties
 
-- [platformConf](IWidget.md#platformconf)
-- [userPref](IWidget.md#userpref)
+- [platformConf](iwidget.md#platformconf)
+- [userPref](iwidget.md#userpref)
 
 ## Properties
 
 ### platformConf
 
-• `Readonly` **platformConf**: [`IWidgetModel`](IWidgetModel.md)
+• `Readonly` **platformConf**: [*IWidgetModel*](iwidgetmodel.md)
 
 The widgets conf at platform level.
 
@@ -21,6 +21,6 @@ ___
 
 ### userPref
 
-• `Readonly` **userPref**: [`WidgetUserPref`](../modules.md#widgetuserpref)
+• `Readonly` **userPref**: [*WidgetUserPref*](../modules.md#widgetuserpref)
 
 The widgets conf at user level.

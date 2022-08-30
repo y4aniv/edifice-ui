@@ -6,31 +6,31 @@
 
 ### Properties
 
-- [childNumber](IFolder.md#childnumber)
-- [id](IFolder.md#id)
-- [name](IFolder.md#name)
-- [type](IFolder.md#type)
+- [childNumber](ifolder.md#childnumber)
+- [id](ifolder.md#id)
+- [name](ifolder.md#name)
+- [type](ifolder.md#type)
 
 ## Properties
 
 ### childNumber
 
-• **childNumber**: `number`
+• **childNumber**: *number*
 
 ___
 
 ### id
 
-• **id**: `string`
+• **id**: *string*
 
 ___
 
 ### name
 
-• **name**: `string`
+• **name**: *string*
 
 ___
 
 ### type
 
-• **type**: `string`
+• **type**: *string*

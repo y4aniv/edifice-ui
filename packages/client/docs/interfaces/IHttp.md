@@ -6,26 +6,27 @@
 
 ### Properties
 
-- [latestResponse](IHttp.md#latestresponse)
+- [latestResponse](ihttp.md#latestresponse)
 
 ### Methods
 
-- [delete](IHttp.md#delete)
-- [deleteJson](IHttp.md#deletejson)
-- [get](IHttp.md#get)
-- [getScript](IHttp.md#getscript)
-- [loadScript](IHttp.md#loadscript)
-- [post](IHttp.md#post)
-- [postFile](IHttp.md#postfile)
-- [postJson](IHttp.md#postjson)
-- [put](IHttp.md#put)
-- [putJson](IHttp.md#putjson)
+- [delete](ihttp.md#delete)
+- [deleteJson](ihttp.md#deletejson)
+- [get](ihttp.md#get)
+- [getScript](ihttp.md#getscript)
+- [loadScript](ihttp.md#loadscript)
+- [post](ihttp.md#post)
+- [postFile](ihttp.md#postfile)
+- [postJson](ihttp.md#postjson)
+- [put](ihttp.md#put)
+- [putJson](ihttp.md#putjson)
+- [setCdn](ihttp.md#setcdn)
 
 ## Properties
 
 ### latestResponse
 
-• `Readonly` **latestResponse**: [`IHttpResponse`](../modules.md#ihttpresponse)
+• `Readonly` **latestResponse**: [*IHttpResponse*](../modules.md#ihttpresponse)
 
 Latest available HTTP response, valid during your get|post|put...then() and catch() handlers.
 
@@ -33,253 +34,247 @@ Latest available HTTP response, valid during your get|post|put...then() and catc
 
 ### delete
 
-▸ **delete**<`T`, `R`\>(`url`, `params?`): `Promise`<`R`\>
+▸ **delete**<T, R\>(`url`: *string*, `params?`: [*IHttpParams*](../modules.md#ihttpparams)): *Promise*<R\>
 
 HTTP DELETE
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `any` |
-| `R` | `any` |
+Name | Default |
+:------ | :------ |
+`T` | *any* |
+`R` | *any* |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `url` | `string` |
-| `params?` | [`IHttpParams`](../modules.md#ihttpparams) |
+Name | Type |
+:------ | :------ |
+`url` | *string* |
+`params?` | [*IHttpParams*](../modules.md#ihttpparams) |
 
-#### Returns
-
-`Promise`<`R`\>
+**Returns:** *Promise*<R\>
 
 ___
 
 ### deleteJson
 
-▸ **deleteJson**<`T`, `R`\>(`url`, `json`): `Promise`<`R`\>
+▸ **deleteJson**<T, R\>(`url`: *string*, `json`: *any*): *Promise*<R\>
 
 HTTP DELETE, Accept: application/json
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `any` |
-| `R` | `any` |
+Name | Default |
+:------ | :------ |
+`T` | *any* |
+`R` | *any* |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `url` | `string` |
-| `json` | `any` |
+Name | Type |
+:------ | :------ |
+`url` | *string* |
+`json` | *any* |
 
-#### Returns
-
-`Promise`<`R`\>
+**Returns:** *Promise*<R\>
 
 ___
 
 ### get
 
-▸ **get**<`R`\>(`url`, `params?`): `Promise`<`R`\>
+▸ **get**<R\>(`url`: *string*, `params?`: [*IHttpParams*](../modules.md#ihttpparams)): *Promise*<R\>
 
 HTTP GET Accept: application/json
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `R` | `any` |
+Name | Default |
+:------ | :------ |
+`R` | *any* |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `url` | `string` |
-| `params?` | [`IHttpParams`](../modules.md#ihttpparams) |
+Name | Type |
+:------ | :------ |
+`url` | *string* |
+`params?` | [*IHttpParams*](../modules.md#ihttpparams) |
 
-#### Returns
-
-`Promise`<`R`\>
+**Returns:** *Promise*<R\>
 
 ___
 
 ### getScript
 
-▸ **getScript**<`R`\>(`url`, `params?`, `exportedVariableName?`): `Promise`<`R`\>
+▸ **getScript**<R\>(`url`: *string*, `params?`: [*IHttpParams*](../modules.md#ihttpparams), `exportedVariableName?`: *string*): *Promise*<R\>
 
 HTTP GET, Accept: application/javascript
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `R` | `any` |
+Name | Default |
+:------ | :------ |
+`R` | *any* |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `url` | `string` |
-| `params?` | [`IHttpParams`](../modules.md#ihttpparams) |
-| `exportedVariableName?` | `string` |
+Name | Type |
+:------ | :------ |
+`url` | *string* |
+`params?` | [*IHttpParams*](../modules.md#ihttpparams) |
+`exportedVariableName?` | *string* |
 
-#### Returns
-
-`Promise`<`R`\>
+**Returns:** *Promise*<R\>
 
 ___
 
 ### loadScript
 
-▸ **loadScript**(`url`, `params?`): `Promise`<`void`\>
+▸ **loadScript**(`url`: *string*, `params?`: [*IHttpParams*](../modules.md#ihttpparams)): *Promise*<void\>
 
 HTTP GET, Accept: application/javascript
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `url` | `string` |
-| `params?` | [`IHttpParams`](../modules.md#ihttpparams) |
+Name | Type |
+:------ | :------ |
+`url` | *string* |
+`params?` | [*IHttpParams*](../modules.md#ihttpparams) |
 
-#### Returns
-
-`Promise`<`void`\>
+**Returns:** *Promise*<void\>
 
 ___
 
 ### post
 
-▸ **post**<`R`\>(`url`, `data?`, `params?`): `Promise`<`R`\>
+▸ **post**<R\>(`url`: *string*, `data?`: *any*, `params?`: [*IHttpParams*](../modules.md#ihttpparams)): *Promise*<R\>
 
 HTTP POST, Accept: application/json
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `R` | `any` |
+Name | Default |
+:------ | :------ |
+`R` | *any* |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `url` | `string` |
-| `data?` | `any` |
-| `params?` | [`IHttpParams`](../modules.md#ihttpparams) |
+Name | Type |
+:------ | :------ |
+`url` | *string* |
+`data?` | *any* |
+`params?` | [*IHttpParams*](../modules.md#ihttpparams) |
 
-#### Returns
-
-`Promise`<`R`\>
+**Returns:** *Promise*<R\>
 
 ___
 
 ### postFile
 
-▸ **postFile**<`R`\>(`url`, `data`, `params?`): `Promise`<`R`\>
+▸ **postFile**<R\>(`url`: *string*, `data`: *any*, `params?`: [*IHttpParams*](../modules.md#ihttpparams)): *Promise*<R\>
 
 HTTP POST
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `R` | `any` |
+Name | Default |
+:------ | :------ |
+`R` | *any* |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `url` | `string` | - |
-| `data` | `any` | must be of one of the following types: string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams Browser only: FormData, File, Blob Node only: Stream, Buffer |
-| `params?` | [`IHttpParams`](../modules.md#ihttpparams) | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`url` | *string* | - |
+`data` | *any* | must be of one of the following types: string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams Browser only: FormData, File, Blob Node only: Stream, Buffer    |
+`params?` | [*IHttpParams*](../modules.md#ihttpparams) | - |
 
-#### Returns
-
-`Promise`<`R`\>
+**Returns:** *Promise*<R\>
 
 ___
 
 ### postJson
 
-▸ **postJson**<`T`, `R`\>(`url`, `json`, `params?`): `Promise`<`R`\>
+▸ **postJson**<T, R\>(`url`: *string*, `json`: *any*, `params?`: [*IHttpParams*](../modules.md#ihttpparams)): *Promise*<R\>
 
 HTTP POST, Accept: application/json, Content-type: application/json
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `any` |
-| `R` | `any` |
+Name | Default |
+:------ | :------ |
+`T` | *any* |
+`R` | *any* |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `url` | `string` |
-| `json` | `any` |
-| `params?` | [`IHttpParams`](../modules.md#ihttpparams) |
+Name | Type |
+:------ | :------ |
+`url` | *string* |
+`json` | *any* |
+`params?` | [*IHttpParams*](../modules.md#ihttpparams) |
 
-#### Returns
-
-`Promise`<`R`\>
+**Returns:** *Promise*<R\>
 
 ___
 
 ### put
 
-▸ **put**<`T`, `R`\>(`url`, `data?`, `params?`): `Promise`<`R`\>
+▸ **put**<T, R\>(`url`: *string*, `data?`: *any*, `params?`: [*IHttpParams*](../modules.md#ihttpparams)): *Promise*<R\>
 
 HTTP PUT, Accept: application/json
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `any` |
-| `R` | `any` |
+Name | Default |
+:------ | :------ |
+`T` | *any* |
+`R` | *any* |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `url` | `string` |
-| `data?` | `any` |
-| `params?` | [`IHttpParams`](../modules.md#ihttpparams) |
+Name | Type |
+:------ | :------ |
+`url` | *string* |
+`data?` | *any* |
+`params?` | [*IHttpParams*](../modules.md#ihttpparams) |
 
-#### Returns
-
-`Promise`<`R`\>
+**Returns:** *Promise*<R\>
 
 ___
 
 ### putJson
 
-▸ **putJson**<`T`, `R`\>(`url`, `json`, `params?`): `Promise`<`R`\>
+▸ **putJson**<T, R\>(`url`: *string*, `json`: *any*, `params?`: [*IHttpParams*](../modules.md#ihttpparams)): *Promise*<R\>
 
 HTTP PUT, Accept: application/json, Content-type: application/json
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `any` |
-| `R` | `any` |
+Name | Default |
+:------ | :------ |
+`T` | *any* |
+`R` | *any* |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `url` | `string` |
-| `json` | `any` |
-| `params?` | [`IHttpParams`](../modules.md#ihttpparams) |
+Name | Type |
+:------ | :------ |
+`url` | *string* |
+`json` | *any* |
+`params?` | [*IHttpParams*](../modules.md#ihttpparams) |
 
-#### Returns
+**Returns:** *Promise*<R\>
 
-`Promise`<`R`\>
+___
+
+### setCdn
+
+▸ **setCdn**(`url`: *string*): *void*
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`url` | *string* |
+
+**Returns:** *void*

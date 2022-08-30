@@ -6,115 +6,115 @@
 
 ### Properties
 
-- [application](IResource.md#application)
-- [authorId](IResource.md#authorid)
-- [authorName](IResource.md#authorname)
-- [comments](IResource.md#comments)
-- [createdAt](IResource.md#createdat)
-- [favorite](IResource.md#favorite)
-- [folderId](IResource.md#folderid)
-- [id](IResource.md#id)
-- [modifiedAt](IResource.md#modifiedat)
-- [modifierId](IResource.md#modifierid)
-- [modifierName](IResource.md#modifiername)
-- [name](IResource.md#name)
-- [public](IResource.md#public)
-- [shared](IResource.md#shared)
-- [thumbnail](IResource.md#thumbnail)
-- [views](IResource.md#views)
+- [application](iresource.md#application)
+- [authorId](iresource.md#authorid)
+- [authorName](iresource.md#authorname)
+- [comments](iresource.md#comments)
+- [createdAt](iresource.md#createdat)
+- [favorite](iresource.md#favorite)
+- [folderId](iresource.md#folderid)
+- [id](iresource.md#id)
+- [modifiedAt](iresource.md#modifiedat)
+- [modifierId](iresource.md#modifierid)
+- [modifierName](iresource.md#modifiername)
+- [name](iresource.md#name)
+- [public](iresource.md#public)
+- [shared](iresource.md#shared)
+- [thumbnail](iresource.md#thumbnail)
+- [views](iresource.md#views)
 
 ## Properties
 
 ### application
 
-• **application**: [`App`](../modules.md#app)
+• **application**: [*App*](../modules.md#app)
 
 ___
 
 ### authorId
 
-• **authorId**: `string`
+• **authorId**: *string*
 
 ___
 
 ### authorName
 
-• **authorName**: `string`
+• **authorName**: *string*
 
 ___
 
 ### comments
 
-• `Optional` **comments**: `number`
+• `Optional` **comments**: *number*
 
 ___
 
 ### createdAt
 
-• **createdAt**: `string`
+• **createdAt**: *string*
 
 ___
 
 ### favorite
 
-• `Optional` **favorite**: `boolean`
+• `Optional` **favorite**: *boolean*
 
 ___
 
 ### folderId
 
-• `Optional` **folderId**: `string`
+• `Optional` **folderId**: *string*
 
 ___
 
 ### id
 
-• **id**: `string`
+• **id**: *string*
 
 ___
 
 ### modifiedAt
 
-• **modifiedAt**: `string`
+• **modifiedAt**: *string*
 
 ___
 
 ### modifierId
 
-• **modifierId**: `string`
+• **modifierId**: *string*
 
 ___
 
 ### modifierName
 
-• **modifierName**: `string`
+• **modifierName**: *string*
 
 ___
 
 ### name
 
-• **name**: `string`
+• **name**: *string*
 
 ___
 
 ### public
 
-• `Optional` **public**: `boolean`
+• `Optional` **public**: *boolean*
 
 ___
 
 ### shared
 
-• `Optional` **shared**: `boolean`
+• `Optional` **shared**: *boolean*
 
 ___
 
 ### thumbnail
 
-• **thumbnail**: `string`
+• **thumbnail**: *string*
 
 ___
 
 ### views
 
-• `Optional` **views**: `number`
+• `Optional` **views**: *number*

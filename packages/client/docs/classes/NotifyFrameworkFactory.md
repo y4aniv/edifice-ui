@@ -6,24 +6,24 @@
 
 ### Constructors
 
-- [constructor](NotifyFrameworkFactory.md#constructor)
+- [constructor](notifyframeworkfactory.md#constructor)
 
 ### Methods
 
-- [instance](NotifyFrameworkFactory.md#instance)
+- [instance](notifyframeworkfactory.md#instance)
 
 ## Constructors
 
 ### constructor
 
-• **new NotifyFrameworkFactory**()
+\+ **new NotifyFrameworkFactory**(): [*NotifyFrameworkFactory*](notifyframeworkfactory.md)
+
+**Returns:** [*NotifyFrameworkFactory*](notifyframeworkfactory.md)
 
 ## Methods
 
 ### instance
 
-▸ `Static` **instance**(): [`INotifyFramework`](../interfaces/INotifyFramework.md)
+▸ `Static`**instance**(): [*INotifyFramework*](../interfaces/inotifyframework.md)
 
-#### Returns
-
-[`INotifyFramework`](../interfaces/INotifyFramework.md)
+**Returns:** [*INotifyFramework*](../interfaces/inotifyframework.md)

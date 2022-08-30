@@ -6,278 +6,278 @@
 
 ### Enumerations
 
-- [NotificationKind](../enums/RxJS.NotificationKind.md)
+- [NotificationKind](../enums/rxjs.notificationkind.md)
 
 ### Classes
 
-- [AsyncSubject](../classes/RxJS.AsyncSubject.md)
-- [BehaviorSubject](../classes/RxJS.BehaviorSubject.md)
-- [ConnectableObservable](../classes/RxJS.ConnectableObservable.md)
-- [Notification](../classes/RxJS.Notification.md)
-- [Observable](../classes/RxJS.Observable.md)
-- [ReplaySubject](../classes/RxJS.ReplaySubject.md)
-- [Scheduler](../classes/RxJS.Scheduler.md)
-- [Subject](../classes/RxJS.Subject.md)
-- [Subscriber](../classes/RxJS.Subscriber.md)
-- [Subscription](../classes/RxJS.Subscription.md)
-- [VirtualAction](../classes/RxJS.VirtualAction.md)
-- [VirtualTimeScheduler](../classes/RxJS.VirtualTimeScheduler.md)
+- [AsyncSubject](../classes/rxjs.asyncsubject.md)
+- [BehaviorSubject](../classes/rxjs.behaviorsubject.md)
+- [ConnectableObservable](../classes/rxjs.connectableobservable.md)
+- [Notification](../classes/rxjs.notification.md)
+- [Observable](../classes/rxjs.observable.md)
+- [ReplaySubject](../classes/rxjs.replaysubject.md)
+- [Scheduler](../classes/rxjs.scheduler.md)
+- [Subject](../classes/rxjs.subject.md)
+- [Subscriber](../classes/rxjs.subscriber.md)
+- [Subscription](../classes/rxjs.subscription.md)
+- [VirtualAction](../classes/rxjs.virtualaction.md)
+- [VirtualTimeScheduler](../classes/rxjs.virtualtimescheduler.md)
 
 ### Interfaces
 
-- [ArgumentOutOfRangeError](../interfaces/RxJS.ArgumentOutOfRangeError.md)
-- [CompleteNotification](../interfaces/RxJS.CompleteNotification.md)
-- [CompletionObserver](../interfaces/RxJS.CompletionObserver.md)
-- [Connectable](../interfaces/RxJS.Connectable.md)
-- [EmptyError](../interfaces/RxJS.EmptyError.md)
-- [ErrorNotification](../interfaces/RxJS.ErrorNotification.md)
-- [ErrorObserver](../interfaces/RxJS.ErrorObserver.md)
-- [GlobalConfig](../interfaces/RxJS.GlobalConfig.md)
-- [GroupedObservable](../interfaces/RxJS.GroupedObservable.md)
-- [InteropObservable](../interfaces/RxJS.InteropObservable.md)
-- [MonoTypeOperatorFunction](../interfaces/RxJS.MonoTypeOperatorFunction.md)
-- [NextNotification](../interfaces/RxJS.NextNotification.md)
-- [NextObserver](../interfaces/RxJS.NextObserver.md)
-- [NotFoundError](../interfaces/RxJS.NotFoundError.md)
-- [ObjectUnsubscribedError](../interfaces/RxJS.ObjectUnsubscribedError.md)
-- [Observer](../interfaces/RxJS.Observer.md)
-- [Operator](../interfaces/RxJS.Operator.md)
-- [OperatorFunction](../interfaces/RxJS.OperatorFunction.md)
-- [ReadableStreamLike](../interfaces/RxJS.ReadableStreamLike.md)
-- [SchedulerAction](../interfaces/RxJS.SchedulerAction.md)
-- [SchedulerLike](../interfaces/RxJS.SchedulerLike.md)
-- [SequenceError](../interfaces/RxJS.SequenceError.md)
-- [SubjectLike](../interfaces/RxJS.SubjectLike.md)
-- [Subscribable](../interfaces/RxJS.Subscribable.md)
-- [SubscriptionLike](../interfaces/RxJS.SubscriptionLike.md)
-- [TimeInterval](../interfaces/RxJS.TimeInterval.md)
-- [TimeoutError](../interfaces/RxJS.TimeoutError.md)
-- [Timestamp](../interfaces/RxJS.Timestamp.md)
-- [TimestampProvider](../interfaces/RxJS.TimestampProvider.md)
-- [UnaryFunction](../interfaces/RxJS.UnaryFunction.md)
-- [Unsubscribable](../interfaces/RxJS.Unsubscribable.md)
-- [UnsubscriptionError](../interfaces/RxJS.UnsubscriptionError.md)
+- [ArgumentOutOfRangeError](../interfaces/rxjs.argumentoutofrangeerror.md)
+- [CompleteNotification](../interfaces/rxjs.completenotification.md)
+- [CompletionObserver](../interfaces/rxjs.completionobserver.md)
+- [Connectable](../interfaces/rxjs.connectable.md)
+- [EmptyError](../interfaces/rxjs.emptyerror.md)
+- [ErrorNotification](../interfaces/rxjs.errornotification.md)
+- [ErrorObserver](../interfaces/rxjs.errorobserver.md)
+- [GlobalConfig](../interfaces/rxjs.globalconfig.md)
+- [GroupedObservable](../interfaces/rxjs.groupedobservable.md)
+- [InteropObservable](../interfaces/rxjs.interopobservable.md)
+- [MonoTypeOperatorFunction](../interfaces/rxjs.monotypeoperatorfunction.md)
+- [NextNotification](../interfaces/rxjs.nextnotification.md)
+- [NextObserver](../interfaces/rxjs.nextobserver.md)
+- [NotFoundError](../interfaces/rxjs.notfounderror.md)
+- [ObjectUnsubscribedError](../interfaces/rxjs.objectunsubscribederror.md)
+- [Observer](../interfaces/rxjs.observer.md)
+- [Operator](../interfaces/rxjs.operator.md)
+- [OperatorFunction](../interfaces/rxjs.operatorfunction.md)
+- [ReadableStreamLike](../interfaces/rxjs.readablestreamlike.md)
+- [SchedulerAction](../interfaces/rxjs.scheduleraction.md)
+- [SchedulerLike](../interfaces/rxjs.schedulerlike.md)
+- [SequenceError](../interfaces/rxjs.sequenceerror.md)
+- [SubjectLike](../interfaces/rxjs.subjectlike.md)
+- [Subscribable](../interfaces/rxjs.subscribable.md)
+- [SubscriptionLike](../interfaces/rxjs.subscriptionlike.md)
+- [TimeInterval](../interfaces/rxjs.timeinterval.md)
+- [TimeoutError](../interfaces/rxjs.timeouterror.md)
+- [Timestamp](../interfaces/rxjs.timestamp.md)
+- [TimestampProvider](../interfaces/rxjs.timestampprovider.md)
+- [UnaryFunction](../interfaces/rxjs.unaryfunction.md)
+- [Unsubscribable](../interfaces/rxjs.unsubscribable.md)
+- [UnsubscriptionError](../interfaces/rxjs.unsubscriptionerror.md)
 
 ### Type aliases
 
-- [Cons](RxJS.md#cons)
-- [FactoryOrValue](RxJS.md#factoryorvalue)
-- [Falsy](RxJS.md#falsy)
-- [Head](RxJS.md#head)
-- [ObservableInput](RxJS.md#observableinput)
-- [ObservableInputTuple](RxJS.md#observableinputtuple)
-- [ObservableLike](RxJS.md#observablelike)
-- [ObservableNotification](RxJS.md#observablenotification)
-- [ObservedValueOf](RxJS.md#observedvalueof)
-- [ObservedValueTupleFromArray](RxJS.md#observedvaluetuplefromarray)
-- [ObservedValueUnionFromArray](RxJS.md#observedvalueunionfromarray)
-- [ObservedValuesFromArray](RxJS.md#observedvaluesfromarray)
-- [PartialObserver](RxJS.md#partialobserver)
-- [SubscribableOrPromise](RxJS.md#subscribableorpromise)
-- [Tail](RxJS.md#tail)
-- [TeardownLogic](RxJS.md#teardownlogic)
-- [TruthyTypesOf](RxJS.md#truthytypesof)
-- [ValueFromArray](RxJS.md#valuefromarray)
-- [ValueFromNotification](RxJS.md#valuefromnotification)
+- [Cons](rxjs.md#cons)
+- [FactoryOrValue](rxjs.md#factoryorvalue)
+- [Falsy](rxjs.md#falsy)
+- [Head](rxjs.md#head)
+- [ObservableInput](rxjs.md#observableinput)
+- [ObservableInputTuple](rxjs.md#observableinputtuple)
+- [ObservableLike](rxjs.md#observablelike)
+- [ObservableNotification](rxjs.md#observablenotification)
+- [ObservedValueOf](rxjs.md#observedvalueof)
+- [ObservedValueTupleFromArray](rxjs.md#observedvaluetuplefromarray)
+- [ObservedValueUnionFromArray](rxjs.md#observedvalueunionfromarray)
+- [ObservedValuesFromArray](rxjs.md#observedvaluesfromarray)
+- [PartialObserver](rxjs.md#partialobserver)
+- [SubscribableOrPromise](rxjs.md#subscribableorpromise)
+- [Tail](rxjs.md#tail)
+- [TeardownLogic](rxjs.md#teardownlogic)
+- [TruthyTypesOf](rxjs.md#truthytypesof)
+- [ValueFromArray](rxjs.md#valuefromarray)
+- [ValueFromNotification](rxjs.md#valuefromnotification)
 
 ### Variables
 
-- [ArgumentOutOfRangeError](RxJS.md#argumentoutofrangeerror)
-- [EMPTY](RxJS.md#empty)
-- [EmptyError](RxJS.md#emptyerror)
-- [NEVER](RxJS.md#never)
-- [NotFoundError](RxJS.md#notfounderror)
-- [ObjectUnsubscribedError](RxJS.md#objectunsubscribederror)
-- [SequenceError](RxJS.md#sequenceerror)
-- [TimeoutError](RxJS.md#timeouterror)
-- [UnsubscriptionError](RxJS.md#unsubscriptionerror)
-- [animationFrame](RxJS.md#animationframe)
-- [animationFrameScheduler](RxJS.md#animationframescheduler)
-- [asap](RxJS.md#asap)
-- [asapScheduler](RxJS.md#asapscheduler)
-- [async](RxJS.md#async)
-- [asyncScheduler](RxJS.md#asyncscheduler)
-- [config](RxJS.md#config)
-- [observable](RxJS.md#observable)
-- [queue](RxJS.md#queue)
-- [queueScheduler](RxJS.md#queuescheduler)
+- [ArgumentOutOfRangeError](rxjs.md#argumentoutofrangeerror)
+- [EMPTY](rxjs.md#empty)
+- [EmptyError](rxjs.md#emptyerror)
+- [NEVER](rxjs.md#never)
+- [NotFoundError](rxjs.md#notfounderror)
+- [ObjectUnsubscribedError](rxjs.md#objectunsubscribederror)
+- [SequenceError](rxjs.md#sequenceerror)
+- [TimeoutError](rxjs.md#timeouterror)
+- [UnsubscriptionError](rxjs.md#unsubscriptionerror)
+- [animationFrame](rxjs.md#animationframe)
+- [animationFrameScheduler](rxjs.md#animationframescheduler)
+- [asap](rxjs.md#asap)
+- [asapScheduler](rxjs.md#asapscheduler)
+- [async](rxjs.md#async)
+- [asyncScheduler](rxjs.md#asyncscheduler)
+- [config](rxjs.md#config)
+- [observable](rxjs.md#observable)
+- [queue](rxjs.md#queue)
+- [queueScheduler](rxjs.md#queuescheduler)
 
 ### Functions
 
-- [animationFrames](RxJS.md#animationframes)
-- [audit](RxJS.md#audit)
-- [auditTime](RxJS.md#audittime)
-- [bindCallback](RxJS.md#bindcallback)
-- [bindNodeCallback](RxJS.md#bindnodecallback)
-- [buffer](RxJS.md#buffer)
-- [bufferCount](RxJS.md#buffercount)
-- [bufferTime](RxJS.md#buffertime)
-- [bufferToggle](RxJS.md#buffertoggle)
-- [bufferWhen](RxJS.md#bufferwhen)
-- [catchError](RxJS.md#catcherror)
-- [combineAll](RxJS.md#combineall)
-- [combineLatest](RxJS.md#combinelatest)
-- [combineLatestAll](RxJS.md#combinelatestall)
-- [combineLatestWith](RxJS.md#combinelatestwith)
-- [concat](RxJS.md#concat)
-- [concatAll](RxJS.md#concatall)
-- [concatMap](RxJS.md#concatmap)
-- [concatMapTo](RxJS.md#concatmapto)
-- [concatWith](RxJS.md#concatwith)
-- [connect](RxJS.md#connect)
-- [connectable](RxJS.md#connectable)
-- [count](RxJS.md#count)
-- [debounce](RxJS.md#debounce)
-- [debounceTime](RxJS.md#debouncetime)
-- [defaultIfEmpty](RxJS.md#defaultifempty)
-- [defer](RxJS.md#defer)
-- [delay](RxJS.md#delay)
-- [delayWhen](RxJS.md#delaywhen)
-- [dematerialize](RxJS.md#dematerialize)
-- [distinct](RxJS.md#distinct)
-- [distinctUntilChanged](RxJS.md#distinctuntilchanged)
-- [distinctUntilKeyChanged](RxJS.md#distinctuntilkeychanged)
-- [elementAt](RxJS.md#elementat)
-- [empty](RxJS.md#empty)
-- [endWith](RxJS.md#endwith)
-- [every](RxJS.md#every)
-- [exhaust](RxJS.md#exhaust)
-- [exhaustAll](RxJS.md#exhaustall)
-- [exhaustMap](RxJS.md#exhaustmap)
-- [expand](RxJS.md#expand)
-- [filter](RxJS.md#filter)
-- [finalize](RxJS.md#finalize)
-- [find](RxJS.md#find)
-- [findIndex](RxJS.md#findindex)
-- [first](RxJS.md#first)
-- [firstValueFrom](RxJS.md#firstvaluefrom)
-- [flatMap](RxJS.md#flatmap)
-- [forkJoin](RxJS.md#forkjoin)
-- [from](RxJS.md#from)
-- [fromEvent](RxJS.md#fromevent)
-- [fromEventPattern](RxJS.md#fromeventpattern)
-- [generate](RxJS.md#generate)
-- [groupBy](RxJS.md#groupby)
-- [identity](RxJS.md#identity)
-- [ignoreElements](RxJS.md#ignoreelements)
-- [iif](RxJS.md#iif)
-- [interval](RxJS.md#interval)
-- [isEmpty](RxJS.md#isempty)
-- [isObservable](RxJS.md#isobservable)
-- [last](RxJS.md#last)
-- [lastValueFrom](RxJS.md#lastvaluefrom)
-- [map](RxJS.md#map)
-- [mapTo](RxJS.md#mapto)
-- [materialize](RxJS.md#materialize)
-- [max](RxJS.md#max)
-- [merge](RxJS.md#merge)
-- [mergeAll](RxJS.md#mergeall)
-- [mergeMap](RxJS.md#mergemap)
-- [mergeMapTo](RxJS.md#mergemapto)
-- [mergeScan](RxJS.md#mergescan)
-- [mergeWith](RxJS.md#mergewith)
-- [min](RxJS.md#min)
-- [multicast](RxJS.md#multicast)
-- [never](RxJS.md#never)
-- [noop](RxJS.md#noop)
-- [observeOn](RxJS.md#observeon)
-- [of](RxJS.md#of)
-- [onErrorResumeNext](RxJS.md#onerrorresumenext)
-- [pairs](RxJS.md#pairs)
-- [pairwise](RxJS.md#pairwise)
-- [partition](RxJS.md#partition)
-- [pipe](RxJS.md#pipe)
-- [pluck](RxJS.md#pluck)
-- [publish](RxJS.md#publish)
-- [publishBehavior](RxJS.md#publishbehavior)
-- [publishLast](RxJS.md#publishlast)
-- [publishReplay](RxJS.md#publishreplay)
-- [race](RxJS.md#race)
-- [raceWith](RxJS.md#racewith)
-- [range](RxJS.md#range)
-- [reduce](RxJS.md#reduce)
-- [refCount](RxJS.md#refcount)
-- [repeat](RxJS.md#repeat)
-- [repeatWhen](RxJS.md#repeatwhen)
-- [retry](RxJS.md#retry)
-- [retryWhen](RxJS.md#retrywhen)
-- [sample](RxJS.md#sample)
-- [sampleTime](RxJS.md#sampletime)
-- [scan](RxJS.md#scan)
-- [scheduled](RxJS.md#scheduled)
-- [sequenceEqual](RxJS.md#sequenceequal)
-- [share](RxJS.md#share)
-- [shareReplay](RxJS.md#sharereplay)
-- [single](RxJS.md#single)
-- [skip](RxJS.md#skip)
-- [skipLast](RxJS.md#skiplast)
-- [skipUntil](RxJS.md#skipuntil)
-- [skipWhile](RxJS.md#skipwhile)
-- [startWith](RxJS.md#startwith)
-- [subscribeOn](RxJS.md#subscribeon)
-- [switchAll](RxJS.md#switchall)
-- [switchMap](RxJS.md#switchmap)
-- [switchMapTo](RxJS.md#switchmapto)
-- [switchScan](RxJS.md#switchscan)
-- [take](RxJS.md#take)
-- [takeLast](RxJS.md#takelast)
-- [takeUntil](RxJS.md#takeuntil)
-- [takeWhile](RxJS.md#takewhile)
-- [tap](RxJS.md#tap)
-- [throttle](RxJS.md#throttle)
-- [throttleTime](RxJS.md#throttletime)
-- [throwError](RxJS.md#throwerror)
-- [throwIfEmpty](RxJS.md#throwifempty)
-- [timeInterval](RxJS.md#timeinterval)
-- [timeout](RxJS.md#timeout)
-- [timeoutWith](RxJS.md#timeoutwith)
-- [timer](RxJS.md#timer)
-- [timestamp](RxJS.md#timestamp)
-- [toArray](RxJS.md#toarray)
-- [using](RxJS.md#using)
-- [window](RxJS.md#window)
-- [windowCount](RxJS.md#windowcount)
-- [windowTime](RxJS.md#windowtime)
-- [windowToggle](RxJS.md#windowtoggle)
-- [windowWhen](RxJS.md#windowwhen)
-- [withLatestFrom](RxJS.md#withlatestfrom)
-- [zip](RxJS.md#zip)
-- [zipAll](RxJS.md#zipall)
-- [zipWith](RxJS.md#zipwith)
+- [animationFrames](rxjs.md#animationframes)
+- [audit](rxjs.md#audit)
+- [auditTime](rxjs.md#audittime)
+- [bindCallback](rxjs.md#bindcallback)
+- [bindNodeCallback](rxjs.md#bindnodecallback)
+- [buffer](rxjs.md#buffer)
+- [bufferCount](rxjs.md#buffercount)
+- [bufferTime](rxjs.md#buffertime)
+- [bufferToggle](rxjs.md#buffertoggle)
+- [bufferWhen](rxjs.md#bufferwhen)
+- [catchError](rxjs.md#catcherror)
+- [combineAll](rxjs.md#combineall)
+- [combineLatest](rxjs.md#combinelatest)
+- [combineLatestAll](rxjs.md#combinelatestall)
+- [combineLatestWith](rxjs.md#combinelatestwith)
+- [concat](rxjs.md#concat)
+- [concatAll](rxjs.md#concatall)
+- [concatMap](rxjs.md#concatmap)
+- [concatMapTo](rxjs.md#concatmapto)
+- [concatWith](rxjs.md#concatwith)
+- [connect](rxjs.md#connect)
+- [connectable](rxjs.md#connectable)
+- [count](rxjs.md#count)
+- [debounce](rxjs.md#debounce)
+- [debounceTime](rxjs.md#debouncetime)
+- [defaultIfEmpty](rxjs.md#defaultifempty)
+- [defer](rxjs.md#defer)
+- [delay](rxjs.md#delay)
+- [delayWhen](rxjs.md#delaywhen)
+- [dematerialize](rxjs.md#dematerialize)
+- [distinct](rxjs.md#distinct)
+- [distinctUntilChanged](rxjs.md#distinctuntilchanged)
+- [distinctUntilKeyChanged](rxjs.md#distinctuntilkeychanged)
+- [elementAt](rxjs.md#elementat)
+- [empty](rxjs.md#empty)
+- [endWith](rxjs.md#endwith)
+- [every](rxjs.md#every)
+- [exhaust](rxjs.md#exhaust)
+- [exhaustAll](rxjs.md#exhaustall)
+- [exhaustMap](rxjs.md#exhaustmap)
+- [expand](rxjs.md#expand)
+- [filter](rxjs.md#filter)
+- [finalize](rxjs.md#finalize)
+- [find](rxjs.md#find)
+- [findIndex](rxjs.md#findindex)
+- [first](rxjs.md#first)
+- [firstValueFrom](rxjs.md#firstvaluefrom)
+- [flatMap](rxjs.md#flatmap)
+- [forkJoin](rxjs.md#forkjoin)
+- [from](rxjs.md#from)
+- [fromEvent](rxjs.md#fromevent)
+- [fromEventPattern](rxjs.md#fromeventpattern)
+- [generate](rxjs.md#generate)
+- [groupBy](rxjs.md#groupby)
+- [identity](rxjs.md#identity)
+- [ignoreElements](rxjs.md#ignoreelements)
+- [iif](rxjs.md#iif)
+- [interval](rxjs.md#interval)
+- [isEmpty](rxjs.md#isempty)
+- [isObservable](rxjs.md#isobservable)
+- [last](rxjs.md#last)
+- [lastValueFrom](rxjs.md#lastvaluefrom)
+- [map](rxjs.md#map)
+- [mapTo](rxjs.md#mapto)
+- [materialize](rxjs.md#materialize)
+- [max](rxjs.md#max)
+- [merge](rxjs.md#merge)
+- [mergeAll](rxjs.md#mergeall)
+- [mergeMap](rxjs.md#mergemap)
+- [mergeMapTo](rxjs.md#mergemapto)
+- [mergeScan](rxjs.md#mergescan)
+- [mergeWith](rxjs.md#mergewith)
+- [min](rxjs.md#min)
+- [multicast](rxjs.md#multicast)
+- [never](rxjs.md#never)
+- [noop](rxjs.md#noop)
+- [observeOn](rxjs.md#observeon)
+- [of](rxjs.md#of)
+- [onErrorResumeNext](rxjs.md#onerrorresumenext)
+- [pairs](rxjs.md#pairs)
+- [pairwise](rxjs.md#pairwise)
+- [partition](rxjs.md#partition)
+- [pipe](rxjs.md#pipe)
+- [pluck](rxjs.md#pluck)
+- [publish](rxjs.md#publish)
+- [publishBehavior](rxjs.md#publishbehavior)
+- [publishLast](rxjs.md#publishlast)
+- [publishReplay](rxjs.md#publishreplay)
+- [race](rxjs.md#race)
+- [raceWith](rxjs.md#racewith)
+- [range](rxjs.md#range)
+- [reduce](rxjs.md#reduce)
+- [refCount](rxjs.md#refcount)
+- [repeat](rxjs.md#repeat)
+- [repeatWhen](rxjs.md#repeatwhen)
+- [retry](rxjs.md#retry)
+- [retryWhen](rxjs.md#retrywhen)
+- [sample](rxjs.md#sample)
+- [sampleTime](rxjs.md#sampletime)
+- [scan](rxjs.md#scan)
+- [scheduled](rxjs.md#scheduled)
+- [sequenceEqual](rxjs.md#sequenceequal)
+- [share](rxjs.md#share)
+- [shareReplay](rxjs.md#sharereplay)
+- [single](rxjs.md#single)
+- [skip](rxjs.md#skip)
+- [skipLast](rxjs.md#skiplast)
+- [skipUntil](rxjs.md#skipuntil)
+- [skipWhile](rxjs.md#skipwhile)
+- [startWith](rxjs.md#startwith)
+- [subscribeOn](rxjs.md#subscribeon)
+- [switchAll](rxjs.md#switchall)
+- [switchMap](rxjs.md#switchmap)
+- [switchMapTo](rxjs.md#switchmapto)
+- [switchScan](rxjs.md#switchscan)
+- [take](rxjs.md#take)
+- [takeLast](rxjs.md#takelast)
+- [takeUntil](rxjs.md#takeuntil)
+- [takeWhile](rxjs.md#takewhile)
+- [tap](rxjs.md#tap)
+- [throttle](rxjs.md#throttle)
+- [throttleTime](rxjs.md#throttletime)
+- [throwError](rxjs.md#throwerror)
+- [throwIfEmpty](rxjs.md#throwifempty)
+- [timeInterval](rxjs.md#timeinterval)
+- [timeout](rxjs.md#timeout)
+- [timeoutWith](rxjs.md#timeoutwith)
+- [timer](rxjs.md#timer)
+- [timestamp](rxjs.md#timestamp)
+- [toArray](rxjs.md#toarray)
+- [using](rxjs.md#using)
+- [window](rxjs.md#window)
+- [windowCount](rxjs.md#windowcount)
+- [windowTime](rxjs.md#windowtime)
+- [windowToggle](rxjs.md#windowtoggle)
+- [windowWhen](rxjs.md#windowwhen)
+- [withLatestFrom](rxjs.md#withlatestfrom)
+- [zip](rxjs.md#zip)
+- [zipAll](rxjs.md#zipall)
+- [zipWith](rxjs.md#zipwith)
 
 ## Type aliases
 
 ### Cons
 
-Ƭ **Cons**<`X`, `Y`\>: (`arg`: `X`, ...`rest`: `Y`) => `any` extends (...`args`: infer U) => `any` ? `U` : `never`
+Ƭ **Cons**<X, Y\>: (`arg`: X, ...`rest`: Y) => *any* *extends* (...`args`: *infer* U) => *any* ? U : *never*
 
 Constructs a new tuple with the specified type at the head.
 If you declare `Cons<A, [B, C]>` you will get back `[A, B, C]`.
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `X` | `X` |
-| `Y` | extends readonly `any`[] |
+Name | Type |
+:------ | :------ |
+`X` | - |
+`Y` | readonly *any*[] |
 
 ___
 
 ### FactoryOrValue
 
-Ƭ **FactoryOrValue**<`T`\>: `T` \| () => `T`
+Ƭ **FactoryOrValue**<T\>: T \| () => T
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
 ___
 
 ### Falsy
 
-Ƭ **Falsy**: ``null`` \| `undefined` \| ``false`` \| ``0`` \| ``0`` \| `0n` \| ``""``
+Ƭ **Falsy**: *null* \| *undefined* \| *false* \| *0* \| *0* \| *0n* \| **
 
 A simple type to represent a gamut of "falsy" values... with a notable exception:
 `NaN` is "falsy" however, it is not and cannot be typed via TypeScript. See
@@ -287,113 +287,113 @@ ___
 
 ### Head
 
-Ƭ **Head**<`X`\>: (...`args`: `X`) => `any` extends (`arg`: infer U, ...`rest`: `any`[]) => `any` ? `U` : `never`
+Ƭ **Head**<X\>: (...`args`: X) => *any* *extends* (`arg`: *infer* U, ...`rest`: *any*[]) => *any* ? U : *never*
 
 Extracts the head of a tuple.
 If you declare `Head<[A, B, C]>` you will get back `A`.
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `X` | extends readonly `any`[] |
+Name | Type |
+:------ | :------ |
+`X` | readonly *any*[] |
 
 ___
 
 ### ObservableInput
 
-Ƭ **ObservableInput**<`T`\>: [`Observable`](../classes/RxJS.Observable.md)<`T`\> \| [`InteropObservable`](../interfaces/RxJS.InteropObservable.md)<`T`\> \| `AsyncIterable`<`T`\> \| `PromiseLike`<`T`\> \| `ArrayLike`<`T`\> \| `Iterable`<`T`\> \| [`ReadableStreamLike`](../interfaces/RxJS.ReadableStreamLike.md)<`T`\>
+Ƭ **ObservableInput**<T\>: [*Observable*](../classes/rxjs.observable.md)<T\> \| [*InteropObservable*](../interfaces/rxjs.interopobservable.md)<T\> \| *AsyncIterable*<T\> \| *PromiseLike*<T\> \| *ArrayLike*<T\> \| *Iterable*<T\> \| [*ReadableStreamLike*](../interfaces/rxjs.readablestreamlike.md)<T\>
 
 Valid types that can be converted to observables.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
 ___
 
 ### ObservableInputTuple
 
-Ƭ **ObservableInputTuple**<`T`\>: { [K in keyof T]: ObservableInput<T[K]\> }
+Ƭ **ObservableInputTuple**<T\>: { [K in keyof T]: ObservableInput<T[K]\>}
 
-Used to infer types from arguments to functions like [forkJoin](RxJS.md#forkjoin).
+Used to infer types from arguments to functions like [forkJoin](rxjs.md#forkjoin).
 So that you can have `forkJoin([Observable<A>, PromiseLike<B>]): Observable<[A, B]>`
 et al.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
 ___
 
 ### ObservableLike
 
-Ƭ **ObservableLike**<`T`\>: [`InteropObservable`](../interfaces/RxJS.InteropObservable.md)<`T`\>
+Ƭ **ObservableLike**<T\>: [*InteropObservable*](../interfaces/rxjs.interopobservable.md)<T\>
 
-**`deprecated`** Renamed to [](../interfaces/RxJS.InteropObservable.md). Will be removed in v8.
+**`deprecated`** Renamed to [](../interfaces/rxjs.interopobservable.md). Will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
 ___
 
 ### ObservableNotification
 
-Ƭ **ObservableNotification**<`T`\>: [`NextNotification`](../interfaces/RxJS.NextNotification.md)<`T`\> \| [`ErrorNotification`](../interfaces/RxJS.ErrorNotification.md) \| [`CompleteNotification`](../interfaces/RxJS.CompleteNotification.md)
+Ƭ **ObservableNotification**<T\>: [*NextNotification*](../interfaces/rxjs.nextnotification.md)<T\> \| [*ErrorNotification*](../interfaces/rxjs.errornotification.md) \| [*CompleteNotification*](../interfaces/rxjs.completenotification.md)
 
 Valid observable notification types.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
 ___
 
 ### ObservedValueOf
 
-Ƭ **ObservedValueOf**<`O`\>: `O` extends [`ObservableInput`](RxJS.md#observableinput)<infer T\> ? `T` : `never`
+Ƭ **ObservedValueOf**<O\>: O *extends* [*ObservableInput*](rxjs.md#observableinput)<*infer* T\> ? T : *never*
 
 Extracts the type from an `ObservableInput<any>`. If you have
 `O extends ObservableInput<any>` and you pass in `Observable<number>`, or
 `Promise<number>`, etc, it will type as `number`.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `O` |
+Name |
+:------ |
+`O` |
 
 ___
 
 ### ObservedValueTupleFromArray
 
-Ƭ **ObservedValueTupleFromArray**<`X`\>: { [K in keyof X]: ObservedValueOf<X[K]\> }
+Ƭ **ObservedValueTupleFromArray**<X\>: { [K in keyof X]: ObservedValueOf<X[K]\>}
 
 Extracts a tuple of element types from an `ObservableInput<any>[]`.
 If you have `O extends ObservableInput<any>[]` and you pass in
 `[Observable<string>, Observable<number>]` you would get back a type
 of `[string, number]`.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `X` |
+Name |
+:------ |
+`X` |
 
 ___
 
 ### ObservedValueUnionFromArray
 
-Ƭ **ObservedValueUnionFromArray**<`X`\>: `X` extends [`ObservableInput`](RxJS.md#observableinput)<infer T\>[] ? `T` : `never`
+Ƭ **ObservedValueUnionFromArray**<X\>: X *extends* [*ObservableInput*](rxjs.md#observableinput)<*infer* T\>[] ? T : *never*
 
 Extracts a union of element types from an `ObservableInput<any>[]`.
 If you have `O extends ObservableInput<any>[]` and you pass in
@@ -402,137 +402,137 @@ back a type of `string`.
 If you pass in `[Observable<string>, Observable<number>]` you would
 get back a type of `string | number`.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `X` |
+Name |
+:------ |
+`X` |
 
 ___
 
 ### ObservedValuesFromArray
 
-Ƭ **ObservedValuesFromArray**<`X`\>: [`ObservedValueUnionFromArray`](RxJS.md#observedvalueunionfromarray)<`X`\>
+Ƭ **ObservedValuesFromArray**<X\>: [*ObservedValueUnionFromArray*](rxjs.md#observedvalueunionfromarray)<X\>
 
-**`deprecated`** Renamed to [ObservedValueUnionFromArray](RxJS.md#observedvalueunionfromarray). Will be removed in v8.
+**`deprecated`** Renamed to [ObservedValueUnionFromArray](rxjs.md#observedvalueunionfromarray). Will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `X` |
+Name |
+:------ |
+`X` |
 
 ___
 
 ### PartialObserver
 
-Ƭ **PartialObserver**<`T`\>: [`NextObserver`](../interfaces/RxJS.NextObserver.md)<`T`\> \| [`ErrorObserver`](../interfaces/RxJS.ErrorObserver.md)<`T`\> \| [`CompletionObserver`](../interfaces/RxJS.CompletionObserver.md)<`T`\>
+Ƭ **PartialObserver**<T\>: [*NextObserver*](../interfaces/rxjs.nextobserver.md)<T\> \| [*ErrorObserver*](../interfaces/rxjs.errorobserver.md)<T\> \| [*CompletionObserver*](../interfaces/rxjs.completionobserver.md)<T\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
 ___
 
 ### SubscribableOrPromise
 
-Ƭ **SubscribableOrPromise**<`T`\>: [`Subscribable`](../interfaces/RxJS.Subscribable.md)<`T`\> \| [`Subscribable`](../interfaces/RxJS.Subscribable.md)<`never`\> \| `PromiseLike`<`T`\> \| [`InteropObservable`](../interfaces/RxJS.InteropObservable.md)<`T`\>
+Ƭ **SubscribableOrPromise**<T\>: [*Subscribable*](../interfaces/rxjs.subscribable.md)<T\> \| [*Subscribable*](../interfaces/rxjs.subscribable.md)<never\> \| *PromiseLike*<T\> \| [*InteropObservable*](../interfaces/rxjs.interopobservable.md)<T\>
 
 **`deprecated`** Do not use. Most likely you want to use `ObservableInput`. Will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
 ___
 
 ### Tail
 
-Ƭ **Tail**<`X`\>: (...`args`: `X`) => `any` extends (`arg`: `any`, ...`rest`: infer U) => `any` ? `U` : `never`
+Ƭ **Tail**<X\>: (...`args`: X) => *any* *extends* (`arg`: *any*, ...`rest`: *infer* U) => *any* ? U : *never*
 
 Extracts the tail of a tuple.
 If you declare `Tail<[A, B, C]>` you will get back `[B, C]`.
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `X` | extends readonly `any`[] |
+Name | Type |
+:------ | :------ |
+`X` | readonly *any*[] |
 
 ___
 
 ### TeardownLogic
 
-Ƭ **TeardownLogic**: [`Subscription`](../classes/RxJS.Subscription.md) \| [`Unsubscribable`](../interfaces/RxJS.Unsubscribable.md) \| () => `void` \| `void`
+Ƭ **TeardownLogic**: [*Subscription*](../classes/rxjs.subscription.md) \| [*Unsubscribable*](../interfaces/rxjs.unsubscribable.md) \| () => *void* \| *void*
 
 ___
 
 ### TruthyTypesOf
 
-Ƭ **TruthyTypesOf**<`T`\>: `T` extends [`Falsy`](RxJS.md#falsy) ? `never` : `T`
+Ƭ **TruthyTypesOf**<T\>: T *extends* [*Falsy*](rxjs.md#falsy) ? *never* : T
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
 ___
 
 ### ValueFromArray
 
-Ƭ **ValueFromArray**<`A`\>: `A` extends infer T[] ? `T` : `never`
+Ƭ **ValueFromArray**<A\>: A *extends* *infer* T[] ? T : *never*
 
 Extracts the generic value from an Array type.
 If you have `T extends Array<any>`, and pass a `string[]` to it,
 `ValueFromArray<T>` will return the actual type of `string`.
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
 
 ___
 
 ### ValueFromNotification
 
-Ƭ **ValueFromNotification**<`T`\>: `T` extends { `kind`: ``"N"`` \| ``"E"`` \| ``"C"``  } ? `T` extends [`NextNotification`](../interfaces/RxJS.NextNotification.md)<`any`\> ? `T` extends { `value`: infer V  } ? `V` : `undefined` : `never` : `never`
+Ƭ **ValueFromNotification**<T\>: T *extends* { `kind`: *N* \| *E* \| *C*  } ? T *extends* [*NextNotification*](../interfaces/rxjs.nextnotification.md)<any\> ? T *extends* { `value`: *infer* V  } ? V : *undefined* : *never* : *never*
 
-Gets the value type from an [ObservableNotification](RxJS.md#observablenotification), if possible.
+Gets the value type from an [ObservableNotification](rxjs.md#observablenotification), if possible.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
 ## Variables
 
 ### ArgumentOutOfRangeError
 
-• **ArgumentOutOfRangeError**: `ArgumentOutOfRangeErrorCtor`
+• **ArgumentOutOfRangeError**: ArgumentOutOfRangeErrorCtor
 
 An error thrown when an element was queried at a certain index of an
 Observable, but no such index or position exists in that sequence.
 
-**`see`** [elementAt](RxJS.md#elementat)
+**`see`** [elementAt](rxjs.md#elementat)
 
-**`see`** [take](RxJS.md#take)
+**`see`** [take](rxjs.md#take)
 
-**`see`** [takeLast](RxJS.md#takelast)
+**`see`** [takeLast](rxjs.md#takelast)
 
 ___
 
 ### EMPTY
 
-• `Const` **EMPTY**: [`Observable`](../classes/RxJS.Observable.md)<`never`\>
+• `Const` **EMPTY**: [*Observable*](../classes/rxjs.observable.md)<never\>
 
-The same Observable instance returned by any call to [empty](RxJS.md#empty) without a
+The same Observable instance returned by any call to [empty](rxjs.md#empty) without a
 `scheduler`. It is preferable to use this over `empty()`.
 
 <span class="informal">Just emits 'complete', and nothing else.</span>
@@ -559,26 +559,26 @@ ___
 
 ### EmptyError
 
-• **EmptyError**: `EmptyErrorCtor`
+• **EmptyError**: EmptyErrorCtor
 
 An error thrown when an Observable or a sequence was queried but has no
 elements.
 
-**`see`** [first](RxJS.md#first)
+**`see`** [first](rxjs.md#first)
 
-**`see`** [last](RxJS.md#last)
+**`see`** [last](rxjs.md#last)
 
-**`see`** [single](RxJS.md#single)
+**`see`** [single](rxjs.md#single)
 
-**`see`** [firstValueFrom](RxJS.md#firstvaluefrom)
+**`see`** [firstValueFrom](rxjs.md#firstvaluefrom)
 
-**`see`** [lastValueFrom](RxJS.md#lastvaluefrom)
+**`see`** [lastValueFrom](rxjs.md#lastvaluefrom)
 
 ___
 
 ### NEVER
 
-• `Const` **NEVER**: [`Observable`](../classes/RxJS.Observable.md)<`never`\>
+• `Const` **NEVER**: [*Observable*](../classes/rxjs.observable.md)<never\>
 
 An Observable that emits no items to the Observer and never completes.
 
@@ -604,19 +604,19 @@ result.subscribe(x => console.log(x), info, info);
 
 ```
 
-**`see`** [Observable](../classes/RxJS.Observable.md)
+**`see`** [Observable](../classes/rxjs.observable.md)
 
 **`see`** {@link index/EMPTY}
 
-**`see`** [of](RxJS.md#of)
+**`see`** [of](rxjs.md#of)
 
-**`see`** [throwError](RxJS.md#throwerror)
+**`see`** [throwError](rxjs.md#throwerror)
 
 ___
 
 ### NotFoundError
 
-• **NotFoundError**: `NotFoundErrorCtor`
+• **NotFoundError**: NotFoundErrorCtor
 
 An error thrown when a value or values are missing from an
 observable sequence.
@@ -627,20 +627,20 @@ ___
 
 ### ObjectUnsubscribedError
 
-• **ObjectUnsubscribedError**: `ObjectUnsubscribedErrorCtor`
+• **ObjectUnsubscribedError**: ObjectUnsubscribedErrorCtor
 
 An error thrown when an action is invalid because the object has been
 unsubscribed.
 
-**`see`** [Subject](../classes/RxJS.Subject.md)
+**`see`** [Subject](../classes/rxjs.subject.md)
 
-**`see`** [BehaviorSubject](../classes/RxJS.BehaviorSubject.md)
+**`see`** [BehaviorSubject](../classes/rxjs.behaviorsubject.md)
 
 ___
 
 ### SequenceError
 
-• **SequenceError**: `SequenceErrorCtor`
+• **SequenceError**: SequenceErrorCtor
 
 An error thrown when something is wrong with the sequence of
 values arriving on the observable.
@@ -651,7 +651,7 @@ ___
 
 ### TimeoutError
 
-• **TimeoutError**: `TimeoutErrorCtor`
+• **TimeoutError**: TimeoutErrorCtor
 
 An error thrown by the {@link operators/timeout} operator.
 
@@ -666,30 +666,30 @@ ___
 
 ### UnsubscriptionError
 
-• **UnsubscriptionError**: `UnsubscriptionErrorCtor`
+• **UnsubscriptionError**: UnsubscriptionErrorCtor
 
 An error thrown when one or more errors have occurred during the
-`unsubscribe` of a [Subscription](../classes/RxJS.Subscription.md).
+`unsubscribe` of a [Subscription](../classes/rxjs.subscription.md).
 
 ___
 
 ### animationFrame
 
-• `Const` **animationFrame**: `AnimationFrameScheduler`
+• `Const` **animationFrame**: AnimationFrameScheduler
 
-**`deprecated`** Renamed to [animationFrameScheduler](RxJS.md#animationframescheduler). Will be removed in v8.
+**`deprecated`** Renamed to [animationFrameScheduler](rxjs.md#animationframescheduler). Will be removed in v8.
 
 ___
 
 ### animationFrameScheduler
 
-• `Const` **animationFrameScheduler**: `AnimationFrameScheduler`
+• `Const` **animationFrameScheduler**: AnimationFrameScheduler
 
 Animation Frame Scheduler
 
 <span class="informal">Perform task when `window.requestAnimationFrame` would fire</span>
 
-When `animationFrame` scheduler is used with delay, it will fall back to [asyncScheduler](RxJS.md#asyncscheduler) scheduler
+When `animationFrame` scheduler is used with delay, it will fall back to [asyncScheduler](rxjs.md#asyncscheduler) scheduler
 behaviour.
 
 Without delay, `animationFrame` scheduler can be used to create smooth browser animations.
@@ -718,21 +718,21 @@ ___
 
 ### asap
 
-• `Const` **asap**: `AsapScheduler`
+• `Const` **asap**: AsapScheduler
 
-**`deprecated`** Renamed to [asapScheduler](RxJS.md#asapscheduler). Will be removed in v8.
+**`deprecated`** Renamed to [asapScheduler](rxjs.md#asapscheduler). Will be removed in v8.
 
 ___
 
 ### asapScheduler
 
-• `Const` **asapScheduler**: `AsapScheduler`
+• `Const` **asapScheduler**: AsapScheduler
 
 Asap Scheduler
 
 <span class="informal">Perform task as fast as it can be performed asynchronously</span>
 
-`asap` scheduler behaves the same as [asyncScheduler](RxJS.md#asyncscheduler) scheduler when you use it to delay task
+`asap` scheduler behaves the same as [asyncScheduler](rxjs.md#asyncscheduler) scheduler when you use it to delay task
 in time. If however you set delay to `0`, `asap` will wait for current synchronously executing
 code to end and then it will try to execute given task as fast as possible.
 
@@ -764,15 +764,15 @@ ___
 
 ### async
 
-• `Const` **async**: `AsyncScheduler`
+• `Const` **async**: AsyncScheduler
 
-**`deprecated`** Renamed to [asyncScheduler](RxJS.md#asyncscheduler). Will be removed in v8.
+**`deprecated`** Renamed to [asyncScheduler](rxjs.md#asyncscheduler). Will be removed in v8.
 
 ___
 
 ### asyncScheduler
 
-• `Const` **asyncScheduler**: `AsyncScheduler`
+• `Const` **asyncScheduler**: AsyncScheduler
 
 Async Scheduler
 
@@ -784,7 +784,7 @@ in intervals.
 
 If you just want to "defer" task, that is to perform it right after currently
 executing synchronous code ends (commonly achieved by `setTimeout(deferredTask, 0)`),
-better choice will be the [asapScheduler](RxJS.md#asapscheduler) scheduler.
+better choice will be the [asapScheduler](rxjs.md#asapscheduler) scheduler.
 
 ## Examples
 Use async scheduler to delay task
@@ -822,16 +822,16 @@ ___
 
 ### config
 
-• `Const` **config**: [`GlobalConfig`](../interfaces/RxJS.GlobalConfig.md)
+• `Const` **config**: [*GlobalConfig*](../interfaces/rxjs.globalconfig.md)
 
-The [GlobalConfig](../interfaces/RxJS.GlobalConfig.md) object for RxJS. It is used to configure things
+The [GlobalConfig](../interfaces/rxjs.globalconfig.md) object for RxJS. It is used to configure things
 like how to react on unhandled errors.
 
 ___
 
 ### observable
 
-• `Const` **observable**: `string` \| `symbol`
+• `Const` **observable**: *string* \| *symbol*
 
 Symbol.observable or a string "@@observable". Used for interop
 
@@ -839,21 +839,21 @@ ___
 
 ### queue
 
-• `Const` **queue**: `QueueScheduler`
+• `Const` **queue**: QueueScheduler
 
-**`deprecated`** Renamed to [queueScheduler](RxJS.md#queuescheduler). Will be removed in v8.
+**`deprecated`** Renamed to [queueScheduler](rxjs.md#queuescheduler). Will be removed in v8.
 
 ___
 
 ### queueScheduler
 
-• `Const` **queueScheduler**: `QueueScheduler`
+• `Const` **queueScheduler**: QueueScheduler
 
 Queue Scheduler
 
 <span class="informal">Put every next task on a queue, instead of executing it immediately</span>
 
-`queue` scheduler, when used with delay, behaves the same as [asyncScheduler](RxJS.md#asyncscheduler) scheduler.
+`queue` scheduler, when used with delay, behaves the same as [asyncScheduler](rxjs.md#asyncscheduler) scheduler.
 
 When used without delay, it schedules given task synchronously - executes it right when
 it is scheduled. However when called recursively, that is when inside the scheduled task,
@@ -913,7 +913,7 @@ queueScheduler.schedule(function(state) {
 
 ### animationFrames
 
-▸ **animationFrames**(`timestampProvider?`): [`Observable`](../classes/RxJS.Observable.md)<{ `elapsed`: `number` ; `timestamp`: `number`  }\>
+▸ **animationFrames**(`timestampProvider?`: [*TimestampProvider*](../interfaces/rxjs.timestampprovider.md)): [*Observable*](../classes/rxjs.observable.md)<{ `elapsed`: *number* ; `timestamp`: *number*  }\>
 
 An observable of animation frames
 
@@ -984,27 +984,25 @@ const source$ = animationFrames(customTSProvider);
 source$.subscribe(({ elapsed }) => console.log(elapsed));
 ```
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `timestampProvider?` | [`TimestampProvider`](../interfaces/RxJS.TimestampProvider.md) | An object with a `now` method that provides a numeric timestamp |
+Name | Type | Description |
+:------ | :------ | :------ |
+`timestampProvider?` | [*TimestampProvider*](../interfaces/rxjs.timestampprovider.md) | An object with a `now` method that provides a numeric timestamp    |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<{ `elapsed`: `number` ; `timestamp`: `number`  }\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<{ `elapsed`: *number* ; `timestamp`: *number*  }\>
 
 ___
 
 ### audit
 
-▸ **audit**<`T`\>(`durationSelector`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **audit**<T\>(`durationSelector`: (`value`: T) => [*ObservableInput*](rxjs.md#observableinput)<any\>): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Ignores source values for a duration determined by another Observable, then
 emits the most recent value from the source Observable, then repeats this
 process.
 
-<span class="informal">It's like [auditTime](RxJS.md#audittime), but the silencing
+<span class="informal">It's like [auditTime](rxjs.md#audittime), but the silencing
 duration is determined by a second Observable.</span>
 
 ![](audit.png)
@@ -1032,31 +1030,29 @@ const result = clicks.pipe(audit(ev => interval(1000)));
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [auditTime](RxJS.md#audittime)
+**`see`** [auditTime](rxjs.md#audittime)
 
-**`see`** [debounce](RxJS.md#debounce)
+**`see`** [debounce](rxjs.md#debounce)
 
-**`see`** [delayWhen](RxJS.md#delaywhen)
+**`see`** [delayWhen](rxjs.md#delaywhen)
 
-**`see`** [sample](RxJS.md#sample)
+**`see`** [sample](rxjs.md#sample)
 
-**`see`** [throttle](RxJS.md#throttle)
+**`see`** [throttle](rxjs.md#throttle)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `durationSelector` | (`value`: `T`) => [`ObservableInput`](RxJS.md#observableinput)<`any`\> | A function that receives a value from the source Observable, for computing the silencing duration, returned as an Observable or a Promise. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`durationSelector` | (`value`: T) => [*ObservableInput*](rxjs.md#observableinput)<any\> | A function that receives a value from the source Observable, for computing the silencing duration, returned as an Observable or a Promise.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that performs rate-limiting of
 emissions from the source Observable.
@@ -1065,7 +1061,7 @@ ___
 
 ### auditTime
 
-▸ **auditTime**<`T`\>(`duration`, `scheduler?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **auditTime**<T\>(`duration`: *number*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Ignores source values for `duration` milliseconds, then emits the most recent
 value from the source Observable, then repeats this process.
@@ -1085,7 +1081,7 @@ source value arrives, the timer is enabled. After `duration` milliseconds (or
 the time unit determined internally by the optional `scheduler`) has passed,
 the timer is disabled, then the most recent source value is emitted on the
 output Observable, and this process repeats for the next source value.
-Optionally takes a [SchedulerLike](../interfaces/RxJS.SchedulerLike.md) for managing timers.
+Optionally takes a [SchedulerLike](../interfaces/rxjs.schedulerlike.md) for managing timers.
 
 ## Example
 
@@ -1099,32 +1095,30 @@ const result = clicks.pipe(auditTime(1000));
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [audit](RxJS.md#audit)
+**`see`** [audit](rxjs.md#audit)
 
-**`see`** [debounceTime](RxJS.md#debouncetime)
+**`see`** [debounceTime](rxjs.md#debouncetime)
 
-**`see`** [delay](RxJS.md#delay)
+**`see`** [delay](rxjs.md#delay)
 
-**`see`** [sampleTime](RxJS.md#sampletime)
+**`see`** [sampleTime](rxjs.md#sampletime)
 
-**`see`** [throttleTime](RxJS.md#throttletime)
+**`see`** [throttleTime](rxjs.md#throttletime)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `duration` | `number` | Time to wait before emitting the most recent source value, measured in milliseconds or the time unit determined internally by the optional `scheduler`. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`duration` | *number* | Time to wait before emitting the most recent source value, measured in milliseconds or the time unit determined internally by the optional `scheduler`.   |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | - |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that performs rate-limiting of
 emissions from the source Observable.
@@ -1133,131 +1127,75 @@ ___
 
 ### bindCallback
 
-▸ **bindCallback**(`callbackFunc`, `resultSelector`, `scheduler?`): (...`args`: `any`[]) => [`Observable`](../classes/RxJS.Observable.md)<`any`\>
+▸ **bindCallback**(`callbackFunc`: (...`args`: *any*[]) => *void*, `resultSelector`: (...`args`: *any*[]) => *any*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): *function*
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `callbackFunc` | (...`args`: `any`[]) => `void` |
-| `resultSelector` | (...`args`: `any`[]) => `any` |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`callbackFunc` | (...`args`: *any*[]) => *void* |
+`resultSelector` | (...`args`: *any*[]) => *any* |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
+**Returns:** (...`args`: *any*[]) => [*Observable*](../classes/rxjs.observable.md)<any\>
 
-`fn`
+▸ **bindCallback**<A, R\>(`callbackFunc`: (...`args`: [...A, (...`res`: R) => *void*]) => *void*, `schedulerLike?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): *function*
 
-▸ (...`args`): [`Observable`](../classes/RxJS.Observable.md)<`any`\>
+#### Type parameters:
 
-##### Parameters
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
+`R` | readonly *unknown*[] |
 
-| Name | Type |
-| :------ | :------ |
-| `...args` | `any`[] |
+#### Parameters:
 
-##### Returns
+Name | Type |
+:------ | :------ |
+`callbackFunc` | (...`args`: [...A, (...`res`: R) => *void*]) => *void* |
+`schedulerLike?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-[`Observable`](../classes/RxJS.Observable.md)<`any`\>
-
-▸ **bindCallback**<`A`, `R`\>(`callbackFunc`, `schedulerLike?`): (...`arg`: `A`) => [`Observable`](../classes/RxJS.Observable.md)<`R` extends [] ? `void` : `R` extends [`any`] ? `R`[``0``] : `R`\>
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
-| `R` | extends readonly `unknown`[] |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `callbackFunc` | (...`args`: [...A[], (...`res`: `R`) => `void`]) => `void` |
-| `schedulerLike?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
-
-#### Returns
-
-`fn`
-
-▸ (...`arg`): [`Observable`](../classes/RxJS.Observable.md)<`R` extends [] ? `void` : `R` extends [`any`] ? `R`[``0``] : `R`\>
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `...arg` | `A` |
-
-##### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`R` extends [] ? `void` : `R` extends [`any`] ? `R`[``0``] : `R`\>
+**Returns:** (...`arg`: A) => [*Observable*](../classes/rxjs.observable.md)<R *extends* [] ? *void* : R *extends* [*any*] ? R[*0*] : R\>
 
 ___
 
 ### bindNodeCallback
 
-▸ **bindNodeCallback**(`callbackFunc`, `resultSelector`, `scheduler?`): (...`args`: `any`[]) => [`Observable`](../classes/RxJS.Observable.md)<`any`\>
+▸ **bindNodeCallback**(`callbackFunc`: (...`args`: *any*[]) => *void*, `resultSelector`: (...`args`: *any*[]) => *any*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): *function*
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `callbackFunc` | (...`args`: `any`[]) => `void` |
-| `resultSelector` | (...`args`: `any`[]) => `any` |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`callbackFunc` | (...`args`: *any*[]) => *void* |
+`resultSelector` | (...`args`: *any*[]) => *any* |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
+**Returns:** (...`args`: *any*[]) => [*Observable*](../classes/rxjs.observable.md)<any\>
 
-`fn`
+▸ **bindNodeCallback**<A, R\>(`callbackFunc`: (...`args`: [...A, (`err`: *any*, ...`res`: R) => *void*]) => *void*, `schedulerLike?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): *function*
 
-▸ (...`args`): [`Observable`](../classes/RxJS.Observable.md)<`any`\>
+#### Type parameters:
 
-##### Parameters
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
+`R` | readonly *unknown*[] |
 
-| Name | Type |
-| :------ | :------ |
-| `...args` | `any`[] |
+#### Parameters:
 
-##### Returns
+Name | Type |
+:------ | :------ |
+`callbackFunc` | (...`args`: [...A, (`err`: *any*, ...`res`: R) => *void*]) => *void* |
+`schedulerLike?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-[`Observable`](../classes/RxJS.Observable.md)<`any`\>
-
-▸ **bindNodeCallback**<`A`, `R`\>(`callbackFunc`, `schedulerLike?`): (...`arg`: `A`) => [`Observable`](../classes/RxJS.Observable.md)<`R` extends [] ? `void` : `R` extends [`any`] ? `R`[``0``] : `R`\>
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
-| `R` | extends readonly `unknown`[] |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `callbackFunc` | (...`args`: [...A[], (`err`: `any`, ...`res`: `R`) => `void`]) => `void` |
-| `schedulerLike?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
-
-#### Returns
-
-`fn`
-
-▸ (...`arg`): [`Observable`](../classes/RxJS.Observable.md)<`R` extends [] ? `void` : `R` extends [`any`] ? `R`[``0``] : `R`\>
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `...arg` | `A` |
-
-##### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`R` extends [] ? `void` : `R` extends [`any`] ? `R`[``0``] : `R`\>
+**Returns:** (...`arg`: A) => [*Observable*](../classes/rxjs.observable.md)<R *extends* [] ? *void* : R *extends* [*any*] ? R[*0*] : R\>
 
 ___
 
 ### buffer
 
-▸ **buffer**<`T`\>(`closingNotifier`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+▸ **buffer**<T\>(`closingNotifier`: [*Observable*](../classes/rxjs.observable.md)<any\>): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
 Buffers the source Observable values until `closingNotifier` emits.
 
@@ -1285,31 +1223,29 @@ const buffered = intervalEvents.pipe(buffer(clicks));
 buffered.subscribe(x => console.log(x));
 ```
 
-**`see`** [bufferCount](RxJS.md#buffercount)
+**`see`** [bufferCount](rxjs.md#buffercount)
 
-**`see`** [bufferTime](RxJS.md#buffertime)
+**`see`** [bufferTime](rxjs.md#buffertime)
 
-**`see`** [bufferToggle](RxJS.md#buffertoggle)
+**`see`** [bufferToggle](rxjs.md#buffertoggle)
 
-**`see`** [bufferWhen](RxJS.md#bufferwhen)
+**`see`** [bufferWhen](rxjs.md#bufferwhen)
 
-**`see`** [window](RxJS.md#window)
+**`see`** [window](rxjs.md#window)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `closingNotifier` | [`Observable`](../classes/RxJS.Observable.md)<`any`\> | An Observable that signals the buffer to be emitted on the output Observable. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`closingNotifier` | [*Observable*](../classes/rxjs.observable.md)<any\> | An Observable that signals the buffer to be emitted on the output Observable.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
 A function that returns an Observable of buffers, which are arrays
 of values.
@@ -1318,7 +1254,7 @@ ___
 
 ### bufferCount
 
-▸ **bufferCount**<`T`\>(`bufferSize`, `startBufferEvery?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+▸ **bufferCount**<T\>(`bufferSize`: *number*, `startBufferEvery?`: *number* \| *null*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
 Buffers the source Observable values until the size hits the maximum
 `bufferSize` given.
@@ -1358,34 +1294,32 @@ const buffered = clicks.pipe(bufferCount(2, 1));
 buffered.subscribe(x => console.log(x));
 ```
 
-**`see`** [buffer](RxJS.md#buffer)
+**`see`** [buffer](rxjs.md#buffer)
 
-**`see`** [bufferTime](RxJS.md#buffertime)
+**`see`** [bufferTime](rxjs.md#buffertime)
 
-**`see`** [bufferToggle](RxJS.md#buffertoggle)
+**`see`** [bufferToggle](rxjs.md#buffertoggle)
 
-**`see`** [bufferWhen](RxJS.md#bufferwhen)
+**`see`** [bufferWhen](rxjs.md#bufferwhen)
 
-**`see`** [pairwise](RxJS.md#pairwise)
+**`see`** [pairwise](rxjs.md#pairwise)
 
-**`see`** [windowCount](RxJS.md#windowcount)
+**`see`** [windowCount](rxjs.md#windowcount)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `bufferSize` | `number` | The maximum size of the buffer emitted. |
-| `startBufferEvery?` | ``null`` \| `number` | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`bufferSize` | *number* | The maximum size of the buffer emitted.   |
+`startBufferEvery?` | *number* \| *null* | - |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
 A function that returns an Observable of arrays of buffered values.
 
@@ -1393,71 +1327,65 @@ ___
 
 ### bufferTime
 
-▸ **bufferTime**<`T`\>(`bufferTimeSpan`, `scheduler?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+▸ **bufferTime**<T\>(`bufferTimeSpan`: *number*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `bufferTimeSpan` | `number` |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`bufferTimeSpan` | *number* |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+▸ **bufferTime**<T\>(`bufferTimeSpan`: *number*, `bufferCreationInterval`: *number* \| *null* \| *undefined*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
-▸ **bufferTime**<`T`\>(`bufferTimeSpan`, `bufferCreationInterval`, `scheduler?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`bufferTimeSpan` | *number* |
+`bufferCreationInterval` | *number* \| *null* \| *undefined* |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-| Name | Type |
-| :------ | :------ |
-| `bufferTimeSpan` | `number` |
-| `bufferCreationInterval` | `undefined` \| ``null`` \| `number` |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
-#### Returns
+▸ **bufferTime**<T\>(`bufferTimeSpan`: *number*, `bufferCreationInterval`: *number* \| *null* \| *undefined*, `maxBufferSize`: *number*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+#### Type parameters:
 
-▸ **bufferTime**<`T`\>(`bufferTimeSpan`, `bufferCreationInterval`, `maxBufferSize`, `scheduler?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+Name |
+:------ |
+`T` |
 
-#### Type parameters
+#### Parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name | Type |
+:------ | :------ |
+`bufferTimeSpan` | *number* |
+`bufferCreationInterval` | *number* \| *null* \| *undefined* |
+`maxBufferSize` | *number* |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `bufferTimeSpan` | `number` |
-| `bufferCreationInterval` | `undefined` \| ``null`` \| `number` |
-| `maxBufferSize` | `number` |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
 ___
 
 ### bufferToggle
 
-▸ **bufferToggle**<`T`, `O`\>(`openings`, `closingSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+▸ **bufferToggle**<T, O\>(`openings`: [*ObservableInput*](rxjs.md#observableinput)<O\>, `closingSelector`: (`value`: O) => [*ObservableInput*](rxjs.md#observableinput)<any\>): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
 Buffers the source Observable values starting from an emission from
 `openings` and ending when the output of `closingSelector` emits.
@@ -1488,33 +1416,31 @@ const buffered = clicks.pipe(bufferToggle(openings, i =>
 buffered.subscribe(x => console.log(x));
 ```
 
-**`see`** [buffer](RxJS.md#buffer)
+**`see`** [buffer](rxjs.md#buffer)
 
-**`see`** [bufferCount](RxJS.md#buffercount)
+**`see`** [bufferCount](rxjs.md#buffercount)
 
-**`see`** [bufferTime](RxJS.md#buffertime)
+**`see`** [bufferTime](rxjs.md#buffertime)
 
-**`see`** [bufferWhen](RxJS.md#bufferwhen)
+**`see`** [bufferWhen](rxjs.md#bufferwhen)
 
-**`see`** [windowToggle](RxJS.md#windowtoggle)
+**`see`** [windowToggle](rxjs.md#windowtoggle)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `O` |
+Name |
+:------ |
+`T` |
+`O` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `openings` | [`ObservableInput`](RxJS.md#observableinput)<`O`\> | A Subscribable or Promise of notifications to start new buffers. |
-| `closingSelector` | (`value`: `O`) => [`ObservableInput`](RxJS.md#observableinput)<`any`\> | A function that takes the value emitted by the `openings` observable and returns a Subscribable or Promise, which, when it emits, signals that the associated buffer should be emitted and cleared. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`openings` | [*ObservableInput*](rxjs.md#observableinput)<O\> | A Subscribable or Promise of notifications to start new buffers.   |
+`closingSelector` | (`value`: O) => [*ObservableInput*](rxjs.md#observableinput)<any\> | A function that takes the value emitted by the `openings` observable and returns a Subscribable or Promise, which, when it emits, signals that the associated buffer should be emitted and cleared.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
 A function that returns an Observable of arrays of buffered values.
 
@@ -1522,7 +1448,7 @@ ___
 
 ### bufferWhen
 
-▸ **bufferWhen**<`T`\>(`closingSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+▸ **bufferWhen**<T\>(`closingSelector`: () => [*ObservableInput*](rxjs.md#observableinput)<any\>): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
 Buffers the source Observable values, using a factory function of closing
 Observables to determine when to close, emit, and reset the buffer.
@@ -1552,31 +1478,29 @@ const buffered = clicks.pipe(bufferWhen(() =>
 buffered.subscribe(x => console.log(x));
 ```
 
-**`see`** [buffer](RxJS.md#buffer)
+**`see`** [buffer](rxjs.md#buffer)
 
-**`see`** [bufferCount](RxJS.md#buffercount)
+**`see`** [bufferCount](rxjs.md#buffercount)
 
-**`see`** [bufferTime](RxJS.md#buffertime)
+**`see`** [bufferTime](rxjs.md#buffertime)
 
-**`see`** [bufferToggle](RxJS.md#buffertoggle)
+**`see`** [bufferToggle](rxjs.md#buffertoggle)
 
-**`see`** [windowWhen](RxJS.md#windowwhen)
+**`see`** [windowWhen](rxjs.md#windowwhen)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `closingSelector` | () => [`ObservableInput`](RxJS.md#observableinput)<`any`\> | A function that takes no arguments and returns an Observable that signals buffer closure. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`closingSelector` | () => [*ObservableInput*](rxjs.md#observableinput)<any\> | A function that takes no arguments and returns an Observable that signals buffer closure.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
 A function that returns an Observable of arrays of buffered values.
 
@@ -1584,399 +1508,357 @@ ___
 
 ### catchError
 
-▸ **catchError**<`T`, `O`\>(`selector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **catchError**<T, O\>(`selector`: (`err`: *any*, `caught`: [*Observable*](../classes/rxjs.observable.md)<T\>) => O): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `selector` | (`err`: `any`, `caught`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `O` |
+Name | Type |
+:------ | :------ |
+`selector` | (`err`: *any*, `caught`: [*Observable*](../classes/rxjs.observable.md)<T\>) => O |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 ___
 
 ### combineAll
 
-▸ **combineAll**<`T`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<[`ObservableInput`](RxJS.md#observableinput)<`T`\>, `T`[]\>
+▸ `Const`**combineAll**<T\>(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<[*ObservableInput*](rxjs.md#observableinput)<T\>, T[]\>
 
-**`deprecated`** Renamed to [combineLatestAll](RxJS.md#combinelatestall). Will be removed in v8.
+**`deprecated`** Renamed to [combineLatestAll](rxjs.md#combinelatestall). Will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<[*ObservableInput*](rxjs.md#observableinput)<T\>, T[]\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<[`ObservableInput`](RxJS.md#observableinput)<`T`\>, `T`[]\>
+▸ `Const`**combineAll**<T\>(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, T[]\>
 
-▸ **combineAll**<`T`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `T`[]\>
+**`deprecated`** Renamed to [combineLatestAll](rxjs.md#combinelatestall). Will be removed in v8.
 
-**`deprecated`** Renamed to [combineLatestAll](RxJS.md#combinelatestall). Will be removed in v8.
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, T[]\>
 
-#### Returns
+▸ `Const`**combineAll**<T, R\>(`project`: (...`values`: T[]) => R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<[*ObservableInput*](rxjs.md#observableinput)<T\>, R\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `T`[]\>
+**`deprecated`** Renamed to [combineLatestAll](rxjs.md#combinelatestall). Will be removed in v8.
 
-▸ **combineAll**<`T`, `R`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<[`ObservableInput`](RxJS.md#observableinput)<`T`\>, `R`\>
+#### Type parameters:
 
-**`deprecated`** Renamed to [combineLatestAll](RxJS.md#combinelatestall). Will be removed in v8.
+Name |
+:------ |
+`T` |
+`R` |
 
-#### Type parameters
+#### Parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `R` |
+Name | Type |
+:------ | :------ |
+`project` | (...`values`: T[]) => R |
 
-#### Parameters
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<[*ObservableInput*](rxjs.md#observableinput)<T\>, R\>
 
-| Name | Type |
-| :------ | :------ |
-| `project` | (...`values`: `T`[]) => `R` |
+▸ `Const`**combineAll**<R\>(`project`: (...`values`: *any*[]) => R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, R\>
 
-#### Returns
+**`deprecated`** Renamed to [combineLatestAll](rxjs.md#combinelatestall). Will be removed in v8.
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<[`ObservableInput`](RxJS.md#observableinput)<`T`\>, `R`\>
+#### Type parameters:
 
-▸ **combineAll**<`R`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `R`\>
+Name |
+:------ |
+`R` |
 
-**`deprecated`** Renamed to [combineLatestAll](RxJS.md#combinelatestall). Will be removed in v8.
+#### Parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`project` | (...`values`: *any*[]) => R |
 
-| Name |
-| :------ |
-| `R` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `project` | (...`values`: `any`[]) => `R` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, R\>
 
 ___
 
 ### combineLatest
 
-▸ **combineLatest**<`T`\>(`arg`): [`Observable`](../classes/RxJS.Observable.md)<`unknown`\>
+▸ **combineLatest**<T\>(`arg`: T): [*Observable*](../classes/rxjs.observable.md)<unknown\>
 
 You have passed `any` here, we can't figure out if it is
 an array or an object, so you're getting `unknown`. Use better types.
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends typeof `anyCatcherSymbol` |
+Name | Type |
+:------ | :------ |
+`T` | *typeof* anyCatcherSymbol |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `arg` | `T` | Something typed as `any` |
+Name | Type | Description |
+:------ | :------ | :------ |
+`arg` | T | Something typed as `any`    |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<unknown\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`unknown`\>
+▸ **combineLatest**(`sources`: []): [*Observable*](../classes/rxjs.observable.md)<never\>
 
-▸ **combineLatest**(`sources`): [`Observable`](../classes/RxJS.Observable.md)<`never`\>
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`sources` | [] |
 
-| Name | Type |
-| :------ | :------ |
-| `sources` | [] |
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<never\>
 
-#### Returns
+▸ **combineLatest**<A\>(`sources`: readonly [...ObservableInputTuple<A\>]): [*Observable*](../classes/rxjs.observable.md)<A\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`never`\>
+#### Type parameters:
 
-▸ **combineLatest**<`A`\>(`sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
 
-#### Type parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`sources` | readonly [...ObservableInputTuple<A\>] |
 
-#### Parameters
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<A\>
 
-| Name | Type |
-| :------ | :------ |
-| `sources` | readonly [[`ObservableInputTuple`](RxJS.md#observableinputtuple)<`A`\>] |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`A`\>
-
-▸ **combineLatest**<`A`, `R`\>(`sources`, `resultSelector`, `scheduler`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+▸ **combineLatest**<A, R\>(`sources`: readonly [...ObservableInputTuple<A\>], `resultSelector`: (...`values`: A) => R, `scheduler`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<R\>
 
 **`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
-| `R` | `R` |
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
+`R` | - |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `sources` | readonly [[`ObservableInputTuple`](RxJS.md#observableinputtuple)<`A`\>] |
-| `resultSelector` | (...`values`: `A`) => `R` |
-| `scheduler` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`sources` | readonly [...ObservableInputTuple<A\>] |
+`resultSelector` | (...`values`: A) => R |
+`scheduler` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<R\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`R`\>
+▸ **combineLatest**<A, R\>(`sources`: readonly [...ObservableInputTuple<A\>], `resultSelector`: (...`values`: A) => R): [*Observable*](../classes/rxjs.observable.md)<R\>
 
-▸ **combineLatest**<`A`, `R`\>(`sources`, `resultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+#### Type parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
+`R` | - |
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
-| `R` | `R` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`sources` | readonly [...ObservableInputTuple<A\>] |
+`resultSelector` | (...`values`: A) => R |
 
-| Name | Type |
-| :------ | :------ |
-| `sources` | readonly [[`ObservableInputTuple`](RxJS.md#observableinputtuple)<`A`\>] |
-| `resultSelector` | (...`values`: `A`) => `R` |
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<R\>
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`R`\>
-
-▸ **combineLatest**<`A`\>(`sources`, `scheduler`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
+▸ **combineLatest**<A\>(`sources`: readonly [...ObservableInputTuple<A\>], `scheduler`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<A\>
 
 **`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `sources` | readonly [[`ObservableInputTuple`](RxJS.md#observableinputtuple)<`A`\>] |
-| `scheduler` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`sources` | readonly [...ObservableInputTuple<A\>] |
+`scheduler` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<A\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`A`\>
-
-▸ **combineLatest**<`A`\>(...`sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
+▸ **combineLatest**<A\>(...`sources`: [...ObservableInputTuple<A\>]): [*Observable*](../classes/rxjs.observable.md)<A\>
 
 **`deprecated`** Pass an array of sources instead. The rest-parameters signature will be removed in v8. Details: https://rxjs.dev/deprecations/array-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `...sources` | [...ObservableInputTuple<A\>[]] |
+Name | Type |
+:------ | :------ |
+`...sources` | [...ObservableInputTuple<A\>] |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<A\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`A`\>
-
-▸ **combineLatest**<`A`, `R`\>(...`sourcesAndResultSelectorAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+▸ **combineLatest**<A, R\>(...`sourcesAndResultSelectorAndScheduler`: [...ObservableInputTuple<A\>, (...`values`: A) => R, [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)]): [*Observable*](../classes/rxjs.observable.md)<R\>
 
 **`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
-| `R` | `R` |
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
+`R` | - |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `...sourcesAndResultSelectorAndScheduler` | [...ObservableInputTuple<A\>[], (...`values`: `A`) => `R`, [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md)] |
+Name | Type |
+:------ | :------ |
+`...sourcesAndResultSelectorAndScheduler` | [...ObservableInputTuple<A\>, (...`values`: A) => R, [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)] |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<R\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`R`\>
-
-▸ **combineLatest**<`A`, `R`\>(...`sourcesAndResultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+▸ **combineLatest**<A, R\>(...`sourcesAndResultSelector`: [...ObservableInputTuple<A\>, (...`values`: A) => R]): [*Observable*](../classes/rxjs.observable.md)<R\>
 
 **`deprecated`** Pass an array of sources instead. The rest-parameters signature will be removed in v8. Details: https://rxjs.dev/deprecations/array-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
-| `R` | `R` |
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
+`R` | - |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `...sourcesAndResultSelector` | [...ObservableInputTuple<A\>[], (...`values`: `A`) => `R`] |
+Name | Type |
+:------ | :------ |
+`...sourcesAndResultSelector` | [...ObservableInputTuple<A\>, (...`values`: A) => R] |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<R\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`R`\>
-
-▸ **combineLatest**<`A`\>(...`sourcesAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
+▸ **combineLatest**<A\>(...`sourcesAndScheduler`: [...ObservableInputTuple<A\>, [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)]): [*Observable*](../classes/rxjs.observable.md)<A\>
 
 **`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `...sourcesAndScheduler` | [...ObservableInputTuple<A\>[], [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md)] |
+Name | Type |
+:------ | :------ |
+`...sourcesAndScheduler` | [...ObservableInputTuple<A\>, [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)] |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<A\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`A`\>
+▸ **combineLatest**(`sourcesObject`: { [K in any]: never}): [*Observable*](../classes/rxjs.observable.md)<never\>
 
-▸ **combineLatest**(`sourcesObject`): [`Observable`](../classes/RxJS.Observable.md)<`never`\>
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`sourcesObject` | { [K in any]: never} |
 
-| Name | Type |
-| :------ | :------ |
-| `sourcesObject` | `Object` |
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<never\>
 
-#### Returns
+▸ **combineLatest**<T\>(`sourcesObject`: T): [*Observable*](../classes/rxjs.observable.md)<{ [K in keyof T]: ObservedValueOf<T[K]\>}\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`never`\>
+#### Type parameters:
 
-▸ **combineLatest**<`T`\>(`sourcesObject`): [`Observable`](../classes/RxJS.Observable.md)<{ [K in keyof T]: ObservedValueOf<T[K]\> }\>
+Name | Type |
+:------ | :------ |
+`T` | *Record*<string, [*ObservableInput*](rxjs.md#observableinput)<any\>\> |
 
-#### Type parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `Record`<`string`, [`ObservableInput`](RxJS.md#observableinput)<`any`\>\> |
+Name | Type |
+:------ | :------ |
+`sourcesObject` | T |
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `sourcesObject` | `T` |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<{ [K in keyof T]: ObservedValueOf<T[K]\> }\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<{ [K in keyof T]: ObservedValueOf<T[K]\>}\>
 
 ___
 
 ### combineLatestAll
 
-▸ **combineLatestAll**<`T`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<[`ObservableInput`](RxJS.md#observableinput)<`T`\>, `T`[]\>
+▸ **combineLatestAll**<T\>(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<[*ObservableInput*](rxjs.md#observableinput)<T\>, T[]\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<[*ObservableInput*](rxjs.md#observableinput)<T\>, T[]\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<[`ObservableInput`](RxJS.md#observableinput)<`T`\>, `T`[]\>
+▸ **combineLatestAll**<T\>(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, T[]\>
 
-▸ **combineLatestAll**<`T`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `T`[]\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, T[]\>
 
-#### Returns
+▸ **combineLatestAll**<T, R\>(`project`: (...`values`: T[]) => R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<[*ObservableInput*](rxjs.md#observableinput)<T\>, R\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `T`[]\>
+#### Type parameters:
 
-▸ **combineLatestAll**<`T`, `R`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<[`ObservableInput`](RxJS.md#observableinput)<`T`\>, `R`\>
+Name |
+:------ |
+`T` |
+`R` |
 
-#### Type parameters
+#### Parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `R` |
+Name | Type |
+:------ | :------ |
+`project` | (...`values`: T[]) => R |
 
-#### Parameters
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<[*ObservableInput*](rxjs.md#observableinput)<T\>, R\>
 
-| Name | Type |
-| :------ | :------ |
-| `project` | (...`values`: `T`[]) => `R` |
+▸ **combineLatestAll**<R\>(`project`: (...`values`: *any*[]) => R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, R\>
 
-#### Returns
+#### Type parameters:
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<[`ObservableInput`](RxJS.md#observableinput)<`T`\>, `R`\>
+Name |
+:------ |
+`R` |
 
-▸ **combineLatestAll**<`R`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `R`\>
+#### Parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`project` | (...`values`: *any*[]) => R |
 
-| Name |
-| :------ |
-| `R` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `project` | (...`values`: `any`[]) => `R` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, R\>
 
 ___
 
 ### combineLatestWith
 
-▸ **combineLatestWith**<`T`, `A`\>(...`otherSources`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Cons`](RxJS.md#cons)<`T`, `A`\>\>
+▸ **combineLatestWith**<T, A\>(...`otherSources`: [...ObservableInputTuple<A\>]): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Cons*](rxjs.md#cons)<T, A\>\>
 
 Create an observable that combines the latest values from all passed observables and the source
 into arrays and emits them.
@@ -2012,22 +1894,20 @@ input1Changes$.pipe(
 
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`A` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `...otherSources` | [...ObservableInputTuple<A\>[]] | the other sources to subscribe to. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`...otherSources` | [...ObservableInputTuple<A\>] | the other sources to subscribe to.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Cons`](RxJS.md#cons)<`T`, `A`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Cons*](rxjs.md#cons)<T, A\>\>
 
 A function that returns an Observable that emits the latest
 emissions from both source and provided Observables.
@@ -2036,47 +1916,43 @@ ___
 
 ### concat
 
-▸ **concat**<`T`\>(...`inputs`): [`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
+▸ **concat**<T\>(...`inputs`: [...ObservableInputTuple<T\>]): [*Observable*](../classes/rxjs.observable.md)<T[*number*]\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`T` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `...inputs` | [...ObservableInputTuple<T\>[]] |
+Name | Type |
+:------ | :------ |
+`...inputs` | [...ObservableInputTuple<T\>] |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T[*number*]\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
+▸ **concat**<T\>(...`inputsAndScheduler`: [...ObservableInputTuple<T\>, [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)]): [*Observable*](../classes/rxjs.observable.md)<T[*number*]\>
 
-▸ **concat**<`T`\>(...`inputsAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
+#### Type parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`T` | readonly *unknown*[] |
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends readonly `unknown`[] |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`...inputsAndScheduler` | [...ObservableInputTuple<T\>, [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)] |
 
-| Name | Type |
-| :------ | :------ |
-| `...inputsAndScheduler` | [...ObservableInputTuple<T\>[], [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md)] |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T[*number*]\>
 
 ___
 
 ### concatAll
 
-▸ **concatAll**<`O`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`O`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **concatAll**<O\>(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<O, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 Converts a higher-order Observable into a first-order Observable by
 concatenating the inner Observables in order.
@@ -2120,33 +1996,31 @@ firstOrder.subscribe(x => console.log(x));
 // one click = 1000ms-> 0 -1000ms-> 1 -1000ms-> 2 -1000ms-> 3
 ```
 
-**`see`** [combineLatestAll](RxJS.md#combinelatestall)
+**`see`** [combineLatestAll](rxjs.md#combinelatestall)
 
-**`see`** [concat](RxJS.md#concat)
+**`see`** [concat](rxjs.md#concat)
 
-**`see`** [concatMap](RxJS.md#concatmap)
+**`see`** [concatMap](rxjs.md#concatmap)
 
-**`see`** [concatMapTo](RxJS.md#concatmapto)
+**`see`** [concatMapTo](rxjs.md#concatmapto)
 
-**`see`** [exhaustAll](RxJS.md#exhaustall)
+**`see`** [exhaustAll](rxjs.md#exhaustall)
 
-**`see`** [mergeAll](RxJS.md#mergeall)
+**`see`** [mergeAll](rxjs.md#mergeall)
 
-**`see`** [switchAll](RxJS.md#switchall)
+**`see`** [switchAll](rxjs.md#switchall)
 
-**`see`** [switchMap](RxJS.md#switchmap)
+**`see`** [switchMap](rxjs.md#switchmap)
 
-**`see`** [zipAll](RxJS.md#zipall)
+**`see`** [zipAll](rxjs.md#zipall)
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`O`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<O, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 A function that returns an Observable emitting values from all the
 inner Observables concatenated.
@@ -2155,145 +2029,129 @@ ___
 
 ### concatMap
 
-▸ **concatMap**<`T`, `O`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **concatMap**<T, O\>(`project`: (`value`: T, `index`: *number*) => O): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+#### Type parameters:
+
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+▸ **concatMap**<T, O\>(`project`: (`value`: T, `index`: *number*) => O, `resultSelector`: *undefined*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 **`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+`resultSelector` | *undefined* |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **concatMap**<`T`, `O`\>(`project`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
-| `resultSelector` | `undefined` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **concatMap**<`T`, `R`, `O`\>(`project`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+▸ **concatMap**<T, R, O\>(`project`: (`value`: T, `index`: *number*) => O, `resultSelector`: (`outerValue`: T, `innerValue`: [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>, `outerIndex`: *number*, `innerIndex`: *number*) => R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 **`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `R` | `R` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`R` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
-| `resultSelector` | (`outerValue`: `T`, `innerValue`: [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>, `outerIndex`: `number`, `innerIndex`: `number`) => `R` |
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+`resultSelector` | (`outerValue`: T, `innerValue`: [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>, `outerIndex`: *number*, `innerIndex`: *number*) => R |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 ___
 
 ### concatMapTo
 
-▸ **concatMapTo**<`O`\>(`observable`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **concatMapTo**<O\>(`observable`: O): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+#### Type parameters:
+
+Name | Type |
+:------ | :------ |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<unknown\> |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`observable` | O |
+
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+▸ **concatMapTo**<O\>(`observable`: O, `resultSelector`: *undefined*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 **`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`unknown`\> |
+Name | Type |
+:------ | :------ |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<unknown\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `observable` | `O` |
+Name | Type |
+:------ | :------ |
+`observable` | O |
+`resultSelector` | *undefined* |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **concatMapTo**<`O`\>(`observable`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`unknown`\> |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `observable` | `O` |
-| `resultSelector` | `undefined` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **concatMapTo**<`T`, `R`, `O`\>(`observable`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+▸ **concatMapTo**<T, R, O\>(`observable`: O, `resultSelector`: (`outerValue`: T, `innerValue`: [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>, `outerIndex`: *number*, `innerIndex`: *number*) => R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 **`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `R` | `R` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`unknown`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`R` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<unknown\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `observable` | `O` |
-| `resultSelector` | (`outerValue`: `T`, `innerValue`: [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>, `outerIndex`: `number`, `innerIndex`: `number`) => `R` |
+Name | Type |
+:------ | :------ |
+`observable` | O |
+`resultSelector` | (`outerValue`: T, `innerValue`: [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>, `outerIndex`: *number*, `innerIndex`: *number*) => R |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 ___
 
 ### concatWith
 
-▸ **concatWith**<`T`, `A`\>(...`otherSources`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
+▸ **concatWith**<T, A\>(...`otherSources`: [...ObservableInputTuple<A\>]): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| A[*number*]\>
 
 Emits all of the values from the source observable, then, once it completes, subscribes
 to each observable source provided, one at a time, emitting all of their values, and not subscribing
@@ -2330,22 +2188,20 @@ clicks$.pipe(
 // ...
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`A` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `...otherSources` | [...ObservableInputTuple<A\>[]] | Other observable sources to subscribe to, in sequence, after the original source is complete. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`...otherSources` | [...ObservableInputTuple<A\>] | Other observable sources to subscribe to, in sequence, after the original source is complete.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| A[*number*]\>
 
 A function that returns an Observable that concatenates
 subscriptions to the source and provided Observables subscribing to the next
@@ -2355,25 +2211,25 @@ ___
 
 ### connect
 
-▸ **connect**<`T`, `O`\>(`selector`, `config?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **connect**<T, O\>(`selector`: (`shared`: [*Observable*](../classes/rxjs.observable.md)<T\>) => O, `config?`: *ConnectConfig*<T\>): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 Creates an observable by multicasting the source within a function that
 allows the developer to define the usage of the multicast prior to connection.
 
 This is particularly useful if the observable source you wish to multicast could
-be synchronous or asynchronous. This sets it apart from [share](RxJS.md#share), which, in the
+be synchronous or asynchronous. This sets it apart from [share](rxjs.md#share), which, in the
 case of totally synchronous sources will fail to share a single subscription with
-multiple consumers, as by the time the subscription to the result of [share](RxJS.md#share)
+multiple consumers, as by the time the subscription to the result of [share](rxjs.md#share)
 has returned, if the source is synchronous its internal reference count will jump from
 0 to 1 back to 0 and reset.
 
 To use `connect`, you provide a `selector` function that will give you
 a multicast observable that is not yet connected. You then use that multicast observable
 to create a resulting observable that, when subscribed, will set up your multicast. This is
-generally, but not always, accomplished with [merge](RxJS.md#merge).
+generally, but not always, accomplished with [merge](rxjs.md#merge).
 
-Note that using a [takeUntil](RxJS.md#takeuntil) inside of `connect`'s `selector` _might_ mean you were looking
-to use the [takeWhile](RxJS.md#takewhile) operator instead.
+Note that using a [takeUntil](rxjs.md#takeuntil) inside of `connect`'s `selector` _might_ mean you were looking
+to use the [takeWhile](rxjs.md#takewhile) operator instead.
 
 When you subscribe to the result of `connect`, the `selector` function will be called. After
 the `selector` function returns, the observable it returns will be subscribed to, _then_ the
@@ -2423,48 +2279,44 @@ source$.pipe(
 "odd 5"
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`unknown`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<unknown\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `selector` | (`shared`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `O` | A function used to set up the multicast. Gives you a multicast observable that is not yet connected. With that, you're expected to create and return and Observable, that when subscribed to, will utilize the multicast observable. After this function is executed -- and its return value subscribed to -- the the operator will subscribe to the source, and the connection will be made. |
-| `config?` | `ConnectConfig`<`T`\> | The configuration object for `connect`. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`selector` | (`shared`: [*Observable*](../classes/rxjs.observable.md)<T\>) => O | A function used to set up the multicast. Gives you a multicast observable that is not yet connected. With that, you're expected to create and return and Observable, that when subscribed to, will utilize the multicast observable. After this function is executed -- and its return value subscribed to -- the the operator will subscribe to the source, and the connection will be made.   |
+`config?` | *ConnectConfig*<T\> | The configuration object for `connect`.    |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 ___
 
 ### connectable
 
-▸ **connectable**<`T`\>(`source`, `config?`): [`Connectable`](../interfaces/RxJS.Connectable.md)<`T`\>
+▸ **connectable**<T\>(`source`: [*ObservableInput*](rxjs.md#observableinput)<T\>, `config?`: *ConnectableConfig*<T\>): [*Connectable*](../interfaces/rxjs.connectable.md)<T\>
 
 Creates an observable that multicasts once `connect()` is called on it.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `source` | [`ObservableInput`](RxJS.md#observableinput)<`T`\> | The observable source to make connectable. |
-| `config?` | `ConnectableConfig`<`T`\> | The configuration object for `connectable`. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`source` | [*ObservableInput*](rxjs.md#observableinput)<T\> | The observable source to make connectable.   |
+`config?` | *ConnectableConfig*<T\> | The configuration object for `connectable`.   |
 
-#### Returns
-
-[`Connectable`](../interfaces/RxJS.Connectable.md)<`T`\>
+**Returns:** [*Connectable*](../interfaces/rxjs.connectable.md)<T\>
 
 A "connectable" observable, that has a `connect()` method, that you must call to
 connect the source to all consumers through the subject provided as the connector.
@@ -2473,7 +2325,7 @@ ___
 
 ### count
 
-▸ **count**<`T`\>(`predicate?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `number`\>
+▸ **count**<T\>(`predicate?`: (`value`: T, `index`: *number*) => *boolean*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, number\>
 
 Counts the number of emissions on the source and emits that number when the
 source completes.
@@ -2518,27 +2370,25 @@ result.subscribe(x => console.log(x));
 // 4
 ```
 
-**`see`** [max](RxJS.md#max)
+**`see`** [max](rxjs.md#max)
 
-**`see`** [min](RxJS.md#min)
+**`see`** [min](rxjs.md#min)
 
-**`see`** [reduce](RxJS.md#reduce)
+**`see`** [reduce](rxjs.md#reduce)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `predicate?` | (`value`: `T`, `index`: `number`) => `boolean` | A function that is used to analyze the value and the index and determine whether or not to increment the count. Return `true` to increment the count, and return `false` to keep the count the same. If the predicate is not provided, every value will be counted. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`predicate?` | (`value`: T, `index`: *number*) => *boolean* | A function that is used to analyze the value and the index and determine whether or not to increment the count. Return `true` to increment the count, and return `false` to keep the count the same. If the predicate is not provided, every value will be counted.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `number`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, number\>
 
 A function that returns an Observable that emits one number that
 represents the count of emissions.
@@ -2547,12 +2397,12 @@ ___
 
 ### debounce
 
-▸ **debounce**<`T`\>(`durationSelector`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **debounce**<T\>(`durationSelector`: (`value`: T) => [*ObservableInput*](rxjs.md#observableinput)<any\>): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Emits a notification from the source Observable only after a particular time span
 determined by another Observable has passed without another source emission.
 
-<span class="informal">It's like [debounceTime](RxJS.md#debouncetime), but the time span of
+<span class="informal">It's like [debounceTime](rxjs.md#debouncetime), but the time span of
 emission silence is determined by a second Observable.</span>
 
 ![](debounce.png)
@@ -2571,7 +2421,7 @@ is emitted before the completion event is forwarded to the output observable.
 If the error event happens during the scheduled duration or after it only the error event is
 forwarded to the output observable. The cache notification is not emitted in this case.
 
-Like [debounceTime](RxJS.md#debouncetime), this is a rate-limiting operator, and also a
+Like [debounceTime](rxjs.md#debouncetime), this is a rate-limiting operator, and also a
 delay-like operator since output emissions do not necessarily occur at the
 same time as they did on the source Observable.
 
@@ -2589,37 +2439,35 @@ const result = clicks.pipe(
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [audit](RxJS.md#audit)
+**`see`** [audit](rxjs.md#audit)
 
-**`see`** [auditTime](RxJS.md#audittime)
+**`see`** [auditTime](rxjs.md#audittime)
 
-**`see`** [debounce](RxJS.md#debounce)
+**`see`** [debounce](rxjs.md#debounce)
 
-**`see`** [delay](RxJS.md#delay)
+**`see`** [delay](rxjs.md#delay)
 
-**`see`** [sample](RxJS.md#sample)
+**`see`** [sample](rxjs.md#sample)
 
-**`see`** [sampleTime](RxJS.md#sampletime)
+**`see`** [sampleTime](rxjs.md#sampletime)
 
-**`see`** [throttle](RxJS.md#throttle)
+**`see`** [throttle](rxjs.md#throttle)
 
-**`see`** [throttleTime](RxJS.md#throttletime)
+**`see`** [throttleTime](rxjs.md#throttletime)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `durationSelector` | (`value`: `T`) => [`ObservableInput`](RxJS.md#observableinput)<`any`\> | A function that receives a value from the source Observable, for computing the timeout duration for each source value, returned as an Observable or a Promise. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`durationSelector` | (`value`: T) => [*ObservableInput*](rxjs.md#observableinput)<any\> | A function that receives a value from the source Observable, for computing the timeout duration for each source value, returned as an Observable or a Promise.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that delays the emissions of
 the source Observable by the specified duration Observable returned by
@@ -2629,12 +2477,12 @@ ___
 
 ### debounceTime
 
-▸ **debounceTime**<`T`\>(`dueTime`, `scheduler?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **debounceTime**<T\>(`dueTime`: *number*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Emits a notification from the source Observable only after a particular time span
 has passed without another source emission.
 
-<span class="informal">It's like [delay](RxJS.md#delay), but passes only the most
+<span class="informal">It's like [delay](rxjs.md#delay), but passes only the most
 recent notification from each burst of emissions.</span>
 
 ![](debounceTime.png)
@@ -2654,7 +2502,7 @@ forwarded to the output observable. The cache notification is not emitted in thi
 This is a rate-limiting operator, because it is impossible for more than one
 notification to be emitted in any time window of duration `dueTime`, but it is also
 a delay-like operator since output emissions do not occur at the same time as
-they did on the source Observable. Optionally takes a [SchedulerLike](../interfaces/RxJS.SchedulerLike.md) for
+they did on the source Observable. Optionally takes a [SchedulerLike](../interfaces/rxjs.schedulerlike.md) for
 managing timers.
 
 ## Example
@@ -2668,38 +2516,36 @@ const result = clicks.pipe(debounceTime(1000));
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [audit](RxJS.md#audit)
+**`see`** [audit](rxjs.md#audit)
 
-**`see`** [auditTime](RxJS.md#audittime)
+**`see`** [auditTime](rxjs.md#audittime)
 
-**`see`** [debounce](RxJS.md#debounce)
+**`see`** [debounce](rxjs.md#debounce)
 
-**`see`** [debounceTime](RxJS.md#debouncetime)
+**`see`** [debounceTime](rxjs.md#debouncetime)
 
-**`see`** [sample](RxJS.md#sample)
+**`see`** [sample](rxjs.md#sample)
 
-**`see`** [sampleTime](RxJS.md#sampletime)
+**`see`** [sampleTime](rxjs.md#sampletime)
 
-**`see`** [throttle](RxJS.md#throttle)
+**`see`** [throttle](rxjs.md#throttle)
 
-**`see`** [throttleTime](RxJS.md#throttletime)
+**`see`** [throttleTime](rxjs.md#throttletime)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `dueTime` | `number` | The timeout duration in milliseconds (or the time unit determined internally by the optional `scheduler`) for the window of time required to wait for emission silence before emitting the most recent source value. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`dueTime` | *number* | The timeout duration in milliseconds (or the time unit determined internally by the optional `scheduler`) for the window of time required to wait for emission silence before emitting the most recent source value.   |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | - |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that delays the emissions of
 the source Observable by the specified `dueTime`, and may drop some values
@@ -2709,7 +2555,7 @@ ___
 
 ### defaultIfEmpty
 
-▸ **defaultIfEmpty**<`T`, `R`\>(`defaultValue`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `R`\>
+▸ **defaultIfEmpty**<T, R\>(`defaultValue`: R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| R\>
 
 Emits a given value if the source Observable completes without emitting any
 `next` value, otherwise mirrors the source Observable.
@@ -2735,26 +2581,24 @@ const result = clicksBeforeFive.pipe(defaultIfEmpty('no clicks'));
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [empty](RxJS.md#empty)
+**`see`** [empty](rxjs.md#empty)
 
-**`see`** [last](RxJS.md#last)
+**`see`** [last](rxjs.md#last)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `R` |
+Name |
+:------ |
+`T` |
+`R` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `defaultValue` | `R` | The default value used if the source Observable is empty. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`defaultValue` | R | The default value used if the source Observable is empty.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| R\>
 
 A function that returns an Observable that emits either the
 specified `defaultValue` if the source Observable emits no items, or the
@@ -2764,7 +2608,7 @@ ___
 
 ### defer
 
-▸ **defer**<`R`\>(`observableFactory`): [`Observable`](../classes/RxJS.Observable.md)<[`ObservedValueOf`](RxJS.md#observedvalueof)<`R`\>\>
+▸ **defer**<R\>(`observableFactory`: () => R): [*Observable*](../classes/rxjs.observable.md)<[*ObservedValueOf*](rxjs.md#observedvalueof)<R\>\>
 
 Creates an Observable that, on subscribe, calls an Observable factory to
 make an Observable for each new Observer.
@@ -2802,23 +2646,21 @@ clicksOrInterval.subscribe(x => console.log(x));
 // than 0.5 it will emit ascending numbers, one every second(1000ms).
 ```
 
-**`see`** [Observable](../classes/RxJS.Observable.md)
+**`see`** [Observable](../classes/rxjs.observable.md)
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `R` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`R` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `observableFactory` | () => `R` | The Observable factory function to invoke for each Observer that subscribes to the output Observable. May also return a Promise, which will be converted on the fly to an Observable. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`observableFactory` | () => R | The Observable factory function to invoke for each Observer that subscribes to the output Observable. May also return a Promise, which will be converted on the fly to an Observable.   |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<[`ObservedValueOf`](RxJS.md#observedvalueof)<`R`\>\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<[*ObservedValueOf*](rxjs.md#observedvalueof)<R\>\>
 
 An Observable whose Observers' subscriptions trigger
 an invocation of the given Observable factory function.
@@ -2827,7 +2669,7 @@ ___
 
 ### delay
 
-▸ **delay**<`T`\>(`due`, `scheduler?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **delay**<T\>(`due`: *number* \| Date, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Delays the emission of items from the source Observable by a given timeout or
 until a given Date.
@@ -2866,40 +2708,38 @@ const delayedClicks = clicks.pipe(delay(date)); // click emitted only after that
 delayedClicks.subscribe(x => console.log(x));
 ```
 
-**`see`** [delayWhen](RxJS.md#delaywhen)
+**`see`** [delayWhen](rxjs.md#delaywhen)
 
-**`see`** [throttle](RxJS.md#throttle)
+**`see`** [throttle](rxjs.md#throttle)
 
-**`see`** [throttleTime](RxJS.md#throttletime)
+**`see`** [throttleTime](rxjs.md#throttletime)
 
-**`see`** [debounce](RxJS.md#debounce)
+**`see`** [debounce](rxjs.md#debounce)
 
-**`see`** [debounceTime](RxJS.md#debouncetime)
+**`see`** [debounceTime](rxjs.md#debouncetime)
 
-**`see`** [sample](RxJS.md#sample)
+**`see`** [sample](rxjs.md#sample)
 
-**`see`** [sampleTime](RxJS.md#sampletime)
+**`see`** [sampleTime](rxjs.md#sampletime)
 
-**`see`** [audit](RxJS.md#audit)
+**`see`** [audit](rxjs.md#audit)
 
-**`see`** [auditTime](RxJS.md#audittime)
+**`see`** [auditTime](rxjs.md#audittime)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `due` | `number` \| `Date` | The delay duration in milliseconds (a `number`) or a `Date` until which the emission of the source items is delayed. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`due` | *number* \| Date | The delay duration in milliseconds (a `number`) or a `Date` until which the emission of the source items is delayed.   |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | - |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that delays the emissions of
 the source Observable by the specified timeout or Date.
@@ -2908,66 +2748,62 @@ ___
 
 ### delayWhen
 
-▸ **delayWhen**<`T`\>(`delayDurationSelector`, `subscriptionDelay`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **delayWhen**<T\>(`delayDurationSelector`: (`value`: T, `index`: *number*) => [*Observable*](../classes/rxjs.observable.md)<any\>, `subscriptionDelay`: [*Observable*](../classes/rxjs.observable.md)<any\>): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 **`deprecated`** The `subscriptionDelay` parameter will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `delayDurationSelector` | (`value`: `T`, `index`: `number`) => [`Observable`](../classes/RxJS.Observable.md)<`any`\> |
-| `subscriptionDelay` | [`Observable`](../classes/RxJS.Observable.md)<`any`\> |
+Name | Type |
+:------ | :------ |
+`delayDurationSelector` | (`value`: T, `index`: *number*) => [*Observable*](../classes/rxjs.observable.md)<any\> |
+`subscriptionDelay` | [*Observable*](../classes/rxjs.observable.md)<any\> |
 
-#### Returns
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **delayWhen**<T\>(`delayDurationSelector`: (`value`: T, `index`: *number*) => [*Observable*](../classes/rxjs.observable.md)<any\>): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-▸ **delayWhen**<`T`\>(`delayDurationSelector`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`delayDurationSelector` | (`value`: T, `index`: *number*) => [*Observable*](../classes/rxjs.observable.md)<any\> |
 
-| Name | Type |
-| :------ | :------ |
-| `delayDurationSelector` | (`value`: `T`, `index`: `number`) => [`Observable`](../classes/RxJS.Observable.md)<`any`\> |
-
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 ___
 
 ### dematerialize
 
-▸ **dematerialize**<`N`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`N`, [`ValueFromNotification`](RxJS.md#valuefromnotification)<`N`\>\>
+▸ **dematerialize**<N\>(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<N, [*ValueFromNotification*](rxjs.md#valuefromnotification)<N\>\>
 
-Converts an Observable of [ObservableNotification](RxJS.md#observablenotification) objects into the emissions
+Converts an Observable of [ObservableNotification](rxjs.md#observablenotification) objects into the emissions
 that they represent.
 
-<span class="informal">Unwraps [ObservableNotification](RxJS.md#observablenotification) objects as actual `next`,
-`error` and `complete` emissions. The opposite of [materialize](RxJS.md#materialize).</span>
+<span class="informal">Unwraps [ObservableNotification](rxjs.md#observablenotification) objects as actual `next`,
+`error` and `complete` emissions. The opposite of [materialize](rxjs.md#materialize).</span>
 
 ![](dematerialize.png)
 
 `dematerialize` is assumed to operate an Observable that only emits
-[ObservableNotification](RxJS.md#observablenotification) objects as `next` emissions, and does not emit any
+[ObservableNotification](rxjs.md#observablenotification) objects as `next` emissions, and does not emit any
 `error`. Such Observable is the output of a `materialize` operation. Those
 notifications are then unwrapped using the metadata they contain, and emitted
 as `next`, `error`, and `complete` on the output Observable.
 
-Use this operator in conjunction with [materialize](RxJS.md#materialize).
+Use this operator in conjunction with [materialize](rxjs.md#materialize).
 
 ## Example
 
@@ -2995,17 +2831,15 @@ upperCase.subscribe({
 // TypeError: x.toUpperCase is not a function
 ```
 
-**`see`** [materialize](RxJS.md#materialize)
+**`see`** [materialize](rxjs.md#materialize)
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `N` | extends [`ObservableNotification`](RxJS.md#observablenotification)<`any`\> |
+Name | Type |
+:------ | :------ |
+`N` | [*ObservableNotification*](rxjs.md#observablenotification)<any\> |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`N`, [`ValueFromNotification`](RxJS.md#valuefromnotification)<`N`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<N, [*ValueFromNotification*](rxjs.md#valuefromnotification)<N\>\>
 
 A function that returns an Observable that emits items and
 notifications embedded in Notification objects emitted by the source
@@ -3015,7 +2849,7 @@ ___
 
 ### distinct
 
-▸ **distinct**<`T`, `K`\>(`keySelector?`, `flushes?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **distinct**<T, K\>(`keySelector?`: (`value`: T) => K, `flushes?`: [*Observable*](../classes/rxjs.observable.md)<any\>): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Returns an Observable that emits all items emitted by the source Observable that are distinct by comparison from previous items.
 
@@ -3076,27 +2910,25 @@ of(
 // { age: 7, name: 'Bar' }
 ```
 
-**`see`** [distinctUntilChanged](RxJS.md#distinctuntilchanged)
+**`see`** [distinctUntilChanged](rxjs.md#distinctuntilchanged)
 
-**`see`** [distinctUntilKeyChanged](RxJS.md#distinctuntilkeychanged)
+**`see`** [distinctUntilKeyChanged](rxjs.md#distinctuntilkeychanged)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `K` |
+Name |
+:------ |
+`T` |
+`K` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `keySelector?` | (`value`: `T`) => `K` |
-| `flushes?` | [`Observable`](../classes/RxJS.Observable.md)<`any`\> |
+Name | Type |
+:------ | :------ |
+`keySelector?` | (`value`: T) => K |
+`flushes?` | [*Observable*](../classes/rxjs.observable.md)<any\> |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that emits items from the
 source Observable with distinct values.
@@ -3105,9 +2937,9 @@ ___
 
 ### distinctUntilChanged
 
-▸ **distinctUntilChanged**<`T`\>(`comparator?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **distinctUntilChanged**<T\>(`comparator?`: (`previous`: T, `current`: T) => *boolean*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-Returns a result [Observable](../classes/RxJS.Observable.md) that emits all values pushed by the source observable if they
+Returns a result [Observable](../classes/rxjs.observable.md) that emits all values pushed by the source observable if they
 are distinct in comparison to the last value the result observable emitted.
 
 1. It will always emit the first value from the source.
@@ -3191,28 +3023,26 @@ recordHighs$.subscribe(console.log);
 // Logs: 30, 31, 34, 35
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `comparator?` | (`previous`: `T`, `current`: `T`) => `boolean` | A function used to compare the previous and current values for equality. Defaults to a `===` check. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`comparator?` | (`previous`: T, `current`: T) => *boolean* | A function used to compare the previous and current values for equality. Defaults to a `===` check.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that emits items from the
 source Observable with distinct values.
 
-▸ **distinctUntilChanged**<`T`, `K`\>(`comparator`, `keySelector`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **distinctUntilChanged**<T, K\>(`comparator`: (`previous`: K, `current`: K) => *boolean*, `keySelector`: (`value`: T) => K): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-Returns a result [Observable](../classes/RxJS.Observable.md) that emits all values pushed by the source observable if they
+Returns a result [Observable](../classes/rxjs.observable.md) that emits all values pushed by the source observable if they
 are distinct in comparison to the last value the result observable emitted.
 
 1. It will always emit the first value from the source.
@@ -3249,23 +3079,21 @@ changedHands$.subscribe(console.log);
 // {updatedBy: "blesh", data: Array[0]}
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `K` |
+Name |
+:------ |
+`T` |
+`K` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `comparator` | (`previous`: `K`, `current`: `K`) => `boolean` | A function used to compare the previous and current keys for equality. Defaults to a `===` check. |
-| `keySelector` | (`value`: `T`) => `K` | Used to select a key value to be passed to the `comparator`. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`comparator` | (`previous`: K, `current`: K) => *boolean* | A function used to compare the previous and current keys for equality. Defaults to a `===` check.   |
+`keySelector` | (`value`: T) => K | Used to select a key value to be passed to the `comparator`.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that emits items from the
 source Observable with distinct values.
@@ -3274,49 +3102,45 @@ ___
 
 ### distinctUntilKeyChanged
 
-▸ **distinctUntilKeyChanged**<`T`\>(`key`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **distinctUntilKeyChanged**<T\>(`key`: keyof T): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `key` | keyof `T` |
+Name | Type |
+:------ | :------ |
+`key` | keyof T |
 
-#### Returns
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **distinctUntilKeyChanged**<T, K\>(`key`: K, `compare`: (`x`: T[K], `y`: T[K]) => *boolean*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-▸ **distinctUntilKeyChanged**<`T`, `K`\>(`key`, `compare`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+#### Type parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`T` | - |
+`K` | *string* \| *number* \| *symbol* |
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `K` | extends `string` \| `number` \| `symbol` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`key` | K |
+`compare` | (`x`: T[K], `y`: T[K]) => *boolean* |
 
-| Name | Type |
-| :------ | :------ |
-| `key` | `K` |
-| `compare` | (`x`: `T`[`K`], `y`: `T`[`K`]) => `boolean` |
-
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 ___
 
 ### elementAt
 
-▸ **elementAt**<`T`, `D`\>(`index`, `defaultValue?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `D`\>
+▸ **elementAt**<T, D\>(`index`: *number*, `defaultValue?`: D): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| D\>
 
 Emits the single value at the specified `index` in a sequence of emissions
 from the source Observable.
@@ -3347,37 +3171,35 @@ result.subscribe(x => console.log(x));
 // click 3 = MouseEvent object logged to console
 ```
 
-**`see`** [first](RxJS.md#first)
+**`see`** [first](rxjs.md#first)
 
-**`see`** [last](RxJS.md#last)
+**`see`** [last](rxjs.md#last)
 
-**`see`** [skip](RxJS.md#skip)
+**`see`** [skip](rxjs.md#skip)
 
-**`see`** [single](RxJS.md#single)
+**`see`** [single](rxjs.md#single)
 
-**`see`** [take](RxJS.md#take)
+**`see`** [take](rxjs.md#take)
 
 **`throws`** {ArgumentOutOfRangeError} When using `elementAt(i)`, it delivers an
 ArgumentOutOfRangeError to the Observer's `error` callback if `i < 0` or the
 Observable has completed before emitting the i-th `next` notification.
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `D` | `T` |
+Name | Default |
+:------ | :------ |
+`T` | - |
+`D` | T |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `index` | `number` | Is the number `i` for the i-th source emission that has happened since the subscription, starting from the number `0`. |
-| `defaultValue?` | `D` | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`index` | *number* | Is the number `i` for the i-th source emission that has happened since the subscription, starting from the number `0`.   |
+`defaultValue?` | D | - |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `D`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| D\>
 
 A function that returns an Observable that emits a single item, if
 it is found. Otherwise, it will emit the default value if given. If not, it
@@ -3387,7 +3209,7 @@ ___
 
 ### empty
 
-▸ **empty**(`scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<`never`\>
+▸ **empty**(`scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<never\>
 
 Creates an Observable that emits no items to the Observer and immediately
 emits a complete notification.
@@ -3398,7 +3220,7 @@ emits a complete notification.
 
 This static operator is useful for creating a simple Observable that only
 emits the complete notification. It can be used for composing with other
-Observables, such as in a [mergeMap](RxJS.md#mergemap).
+Observables, such as in a [mergeMap](rxjs.md#mergemap).
 
 ## Examples
 
@@ -3434,25 +3256,23 @@ result.subscribe(x => console.log(x));
 // if x % 2 is not equal to 1, nothing will be output
 ```
 
-**`see`** [Observable](../classes/RxJS.Observable.md)
+**`see`** [Observable](../classes/rxjs.observable.md)
 
-**`see`** [never](RxJS.md#never)
+**`see`** [never](rxjs.md#never)
 
-**`see`** [of](RxJS.md#of)
+**`see`** [of](rxjs.md#of)
 
-**`see`** [throwError](RxJS.md#throwerror)
+**`see`** [throwError](rxjs.md#throwerror)
 
-**`deprecated`** Replaced with the [EMPTY](RxJS.md#empty) constant or [scheduled](RxJS.md#scheduled) (e.g. `scheduled([], scheduler)`). Will be removed in v8.
+**`deprecated`** Replaced with the [EMPTY](rxjs.md#empty) constant or [scheduled](rxjs.md#scheduled) (e.g. `scheduled([], scheduler)`). Will be removed in v8.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | A [SchedulerLike](../interfaces/RxJS.SchedulerLike.md) to use for scheduling the emission of the complete notification. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | A [SchedulerLike](../interfaces/rxjs.schedulerlike.md) to use for scheduling the emission of the complete notification.   |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`never`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<never\>
 
 An "empty" Observable: emits only the complete
 notification.
@@ -3461,172 +3281,156 @@ ___
 
 ### endWith
 
-▸ **endWith**<`T`\>(`scheduler`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **endWith**<T\>(`scheduler`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 **`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `concatAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `scheduler` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`scheduler` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-▸ **endWith**<`T`, `A`\>(...`valuesAndScheduler`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+▸ **endWith**<T, A\>(...`valuesAndScheduler`: [...A, [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)]): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| [*ValueFromArray*](rxjs.md#valuefromarray)<A\>\>
 
 **`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `concatAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `A` | extends `unknown`[] = `T`[] |
+Name | Type | Default |
+:------ | :------ | :------ |
+`T` | - | - |
+`A` | *unknown*[] | T[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `...valuesAndScheduler` | [...A[], [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md)] |
+Name | Type |
+:------ | :------ |
+`...valuesAndScheduler` | [...A, [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)] |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| [*ValueFromArray*](rxjs.md#valuefromarray)<A\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+▸ **endWith**<T, A\>(...`values`: A): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| [*ValueFromArray*](rxjs.md#valuefromarray)<A\>\>
 
-▸ **endWith**<`T`, `A`\>(...`values`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+#### Type parameters:
 
-#### Type parameters
+Name | Type | Default |
+:------ | :------ | :------ |
+`T` | - | - |
+`A` | *unknown*[] | T[] |
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `A` | extends `unknown`[] = `T`[] |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`...values` | A |
 
-| Name | Type |
-| :------ | :------ |
-| `...values` | `A` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| [*ValueFromArray*](rxjs.md#valuefromarray)<A\>\>
 
 ___
 
 ### every
 
-▸ **every**<`T`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `Exclude`<`T`, [`Falsy`](RxJS.md#falsy)\> extends `never` ? ``false`` : `boolean`\>
+▸ **every**<T\>(`predicate`: BooleanConstructor): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, *Exclude*<T, [*Falsy*](rxjs.md#falsy)\> *extends* *never* ? *false* : *boolean*\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
+Name | Type |
+:------ | :------ |
+`predicate` | BooleanConstructor |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, *Exclude*<T, [*Falsy*](rxjs.md#falsy)\> *extends* *never* ? *false* : *boolean*\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `Exclude`<`T`, [`Falsy`](RxJS.md#falsy)\> extends `never` ? ``false`` : `boolean`\>
-
-▸ **every**<`T`\>(`predicate`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `Exclude`<`T`, [`Falsy`](RxJS.md#falsy)\> extends `never` ? ``false`` : `boolean`\>
+▸ **every**<T\>(`predicate`: BooleanConstructor, `thisArg`: *any*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, *Exclude*<T, [*Falsy*](rxjs.md#falsy)\> *extends* *never* ? *false* : *boolean*\>
 
 **`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
-| `thisArg` | `any` |
+Name | Type |
+:------ | :------ |
+`predicate` | BooleanConstructor |
+`thisArg` | *any* |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, *Exclude*<T, [*Falsy*](rxjs.md#falsy)\> *extends* *never* ? *false* : *boolean*\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `Exclude`<`T`, [`Falsy`](RxJS.md#falsy)\> extends `never` ? ``false`` : `boolean`\>
-
-▸ **every**<`T`, `A`\>(`predicate`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `boolean`\>
+▸ **every**<T, A\>(`predicate`: (`this`: A, `value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean*, `thisArg`: A): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, boolean\>
 
 **`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `A` |
+Name |
+:------ |
+`T` |
+`A` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`this`: `A`, `value`: `T`, `index`: `number`, `source`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `boolean` |
-| `thisArg` | `A` |
+Name | Type |
+:------ | :------ |
+`predicate` | (`this`: A, `value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean* |
+`thisArg` | A |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, boolean\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `boolean`\>
+▸ **every**<T\>(`predicate`: (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, boolean\>
 
-▸ **every**<`T`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `boolean`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean* |
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `source`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `boolean` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `boolean`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, boolean\>
 
 ___
 
 ### exhaust
 
-▸ **exhaust**<`O`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`O`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ `Const`**exhaust**<O\>(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<O, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-**`deprecated`** Renamed to [exhaustAll](RxJS.md#exhaustall). Will be removed in v8.
+**`deprecated`** Renamed to [exhaustAll](rxjs.md#exhaustall). Will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`O`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<O, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 ___
 
 ### exhaustAll
 
-▸ **exhaustAll**<`O`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`O`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **exhaustAll**<O\>(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<O, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 Converts a higher-order Observable into a first-order Observable by dropping
 inner Observables while the previous inner Observable has not yet completed.
@@ -3639,7 +3443,7 @@ next inner Observables while the current inner is still executing.</span>
 `exhaust` subscribes to an Observable that emits Observables, also known as a
 higher-order Observable. Each time it observes one of these emitted inner
 Observables, the output Observable begins emitting the items emitted by that
-inner Observable. So far, it behaves like [mergeAll](RxJS.md#mergeall). However,
+inner Observable. So far, it behaves like [mergeAll](rxjs.md#mergeall). However,
 `exhaust` ignores every new inner Observable if the previous Observable has
 not yet completed. Once that one completes, it will accept and flatten the
 next inner Observable and repeat this process.
@@ -3658,29 +3462,27 @@ const result = higherOrder.pipe(exhaustAll());
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [combineLatestAll](RxJS.md#combinelatestall)
+**`see`** [combineLatestAll](rxjs.md#combinelatestall)
 
-**`see`** [concatAll](RxJS.md#concatall)
+**`see`** [concatAll](rxjs.md#concatall)
 
-**`see`** [switchAll](RxJS.md#switchall)
+**`see`** [switchAll](rxjs.md#switchall)
 
-**`see`** [switchMap](RxJS.md#switchmap)
+**`see`** [switchMap](rxjs.md#switchmap)
 
-**`see`** [mergeAll](RxJS.md#mergeall)
+**`see`** [mergeAll](rxjs.md#mergeall)
 
-**`see`** [exhaustMap](RxJS.md#exhaustmap)
+**`see`** [exhaustMap](rxjs.md#exhaustmap)
 
-**`see`** [zipAll](RxJS.md#zipall)
+**`see`** [zipAll](rxjs.md#zipall)
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`O`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<O, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 A function that returns an Observable that takes a source of
 Observables and propagates the first Observable exclusively until it
@@ -3690,235 +3492,209 @@ ___
 
 ### exhaustMap
 
-▸ **exhaustMap**<`T`, `O`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **exhaustMap**<T, O\>(`project`: (`value`: T, `index`: *number*) => O): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+#### Type parameters:
+
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+▸ **exhaustMap**<T, O\>(`project`: (`value`: T, `index`: *number*) => O, `resultSelector`: *undefined*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 **`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+`resultSelector` | *undefined* |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **exhaustMap**<`T`, `O`\>(`project`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
-| `resultSelector` | `undefined` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **exhaustMap**<`T`, `I`, `R`\>(`project`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+▸ **exhaustMap**<T, I, R\>(`project`: (`value`: T, `index`: *number*) => [*ObservableInput*](rxjs.md#observableinput)<I\>, `resultSelector`: (`outerValue`: T, `innerValue`: I, `outerIndex`: *number*, `innerIndex`: *number*) => R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 **`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `I` |
-| `R` |
+Name |
+:------ |
+`T` |
+`I` |
+`R` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => [`ObservableInput`](RxJS.md#observableinput)<`I`\> |
-| `resultSelector` | (`outerValue`: `T`, `innerValue`: `I`, `outerIndex`: `number`, `innerIndex`: `number`) => `R` |
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => [*ObservableInput*](rxjs.md#observableinput)<I\> |
+`resultSelector` | (`outerValue`: T, `innerValue`: I, `outerIndex`: *number*, `innerIndex`: *number*) => R |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 ___
 
 ### expand
 
-▸ **expand**<`T`, `O`\>(`project`, `concurrent?`, `scheduler?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **expand**<T, O\>(`project`: (`value`: T, `index`: *number*) => O, `concurrent?`: *number*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+#### Type parameters:
+
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<unknown\> |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+`concurrent?` | *number* |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
+
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+▸ **expand**<T, O\>(`project`: (`value`: T, `index`: *number*) => O, `concurrent`: *number* \| *undefined*, `scheduler`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 **`deprecated`** The `scheduler` parameter will be removed in v8. If you need to schedule the inner subscription,
 use `subscribeOn` within the projection function: `expand((value) => fn(value).pipe(subscribeOn(scheduler)))`.
 Details: Details: https://rxjs.dev/deprecations/scheduler-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`unknown`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<unknown\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
-| `concurrent?` | `number` |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+`concurrent` | *number* \| *undefined* |
+`scheduler` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **expand**<`T`, `O`\>(`project`, `concurrent`, `scheduler`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-**`deprecated`** The `scheduler` parameter will be removed in v8. If you need to schedule the inner subscription,
-use `subscribeOn` within the projection function: `expand((value) => fn(value).pipe(subscribeOn(scheduler)))`.
-Details: Details: https://rxjs.dev/deprecations/scheduler-argument
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`unknown`\> |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
-| `concurrent` | `undefined` \| `number` |
-| `scheduler` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 ___
 
 ### filter
 
-▸ **filter**<`T`, `S`, `A`\>(`predicate`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S`\>
+▸ **filter**<T, S, A\>(`predicate`: (`this`: A, `value`: T, `index`: *number*) => value is S, `thisArg`: A): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S\>
 
 **`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `S` |
-| `A` |
+Name |
+:------ |
+`T` |
+`S` |
+`A` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`this`: `A`, `value`: `T`, `index`: `number`) => value is S |
-| `thisArg` | `A` |
+Name | Type |
+:------ | :------ |
+`predicate` | (`this`: A, `value`: T, `index`: *number*) => value is S |
+`thisArg` | A |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S`\>
+▸ **filter**<T, S\>(`predicate`: (`value`: T, `index`: *number*) => value is S): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S\>
 
-▸ **filter**<`T`, `S`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
+`S` |
 
-| Name |
-| :------ |
-| `T` |
-| `S` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*) => value is S |
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`) => value is S |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S\>
 
-#### Returns
+▸ **filter**<T\>(`predicate`: BooleanConstructor): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*TruthyTypesOf*](rxjs.md#truthytypesof)<T\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S`\>
+#### Type parameters:
 
-▸ **filter**<`T`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\>\>
+Name |
+:------ |
+`T` |
 
-#### Type parameters
+#### Parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name | Type |
+:------ | :------ |
+`predicate` | BooleanConstructor |
 
-#### Parameters
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*TruthyTypesOf*](rxjs.md#truthytypesof)<T\>\>
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\>\>
-
-▸ **filter**<`T`, `A`\>(`predicate`, `thisArg`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **filter**<T, A\>(`predicate`: (`this`: A, `value`: T, `index`: *number*) => *boolean*, `thisArg`: A): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 **`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `A` |
+Name |
+:------ |
+`T` |
+`A` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`this`: `A`, `value`: `T`, `index`: `number`) => `boolean` |
-| `thisArg` | `A` |
+Name | Type |
+:------ | :------ |
+`predicate` | (`this`: A, `value`: T, `index`: *number*) => *boolean* |
+`thisArg` | A |
 
-#### Returns
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **filter**<T\>(`predicate`: (`value`: T, `index`: *number*) => *boolean*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-▸ **filter**<`T`\>(`predicate`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*) => *boolean* |
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`) => `boolean` |
-
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 ___
 
 ### finalize
 
-▸ **finalize**<`T`\>(`callback`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **finalize**<T\>(`callback`: () => *void*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Returns an Observable that mirrors the source Observable, but will call a specified function when
 the source terminates on complete or error.
@@ -3971,21 +3747,19 @@ timer(150).subscribe(() => sub.unsubscribe());
 //   '[finalize] Called'
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `callback` | () => `void` | Function to be called when source terminates. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`callback` | () => *void* | Function to be called when source terminates.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that mirrors the source, but
 will call the specified function on termination.
@@ -3994,912 +3768,820 @@ ___
 
 ### find
 
-▸ **find**<`T`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\>\>
+▸ **find**<T\>(`predicate`: BooleanConstructor): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*TruthyTypesOf*](rxjs.md#truthytypesof)<T\>\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
+Name | Type |
+:------ | :------ |
+`predicate` | BooleanConstructor |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*TruthyTypesOf*](rxjs.md#truthytypesof)<T\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\>\>
-
-▸ **find**<`T`, `S`, `A`\>(`predicate`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S` \| `undefined`\>
+▸ **find**<T, S, A\>(`predicate`: (`this`: A, `value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => value is S, `thisArg`: A): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S \| undefined\>
 
 **`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `S` |
-| `A` |
+Name |
+:------ |
+`T` |
+`S` |
+`A` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`this`: `A`, `value`: `T`, `index`: `number`, `source`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => value is S |
-| `thisArg` | `A` |
+Name | Type |
+:------ | :------ |
+`predicate` | (`this`: A, `value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => value is S |
+`thisArg` | A |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S \| undefined\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S` \| `undefined`\>
+▸ **find**<T, S\>(`predicate`: (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => value is S): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S \| undefined\>
 
-▸ **find**<`T`, `S`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S` \| `undefined`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
+`S` |
 
-| Name |
-| :------ |
-| `T` |
-| `S` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => value is S |
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `source`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => value is S |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S \| undefined\>
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S` \| `undefined`\>
-
-▸ **find**<`T`, `A`\>(`predicate`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `undefined`\>
+▸ **find**<T, A\>(`predicate`: (`this`: A, `value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean*, `thisArg`: A): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| undefined\>
 
 **`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `A` |
+Name |
+:------ |
+`T` |
+`A` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`this`: `A`, `value`: `T`, `index`: `number`, `source`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `boolean` |
-| `thisArg` | `A` |
+Name | Type |
+:------ | :------ |
+`predicate` | (`this`: A, `value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean* |
+`thisArg` | A |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| undefined\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `undefined`\>
+▸ **find**<T\>(`predicate`: (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| undefined\>
 
-▸ **find**<`T`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `undefined`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean* |
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `source`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `boolean` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `undefined`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| undefined\>
 
 ___
 
 ### findIndex
 
-▸ **findIndex**<`T`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` extends [`Falsy`](RxJS.md#falsy) ? ``-1`` : `number`\>
+▸ **findIndex**<T\>(`predicate`: BooleanConstructor): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T *extends* [*Falsy*](rxjs.md#falsy) ? *-1* : *number*\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
+Name | Type |
+:------ | :------ |
+`predicate` | BooleanConstructor |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T *extends* [*Falsy*](rxjs.md#falsy) ? *-1* : *number*\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` extends [`Falsy`](RxJS.md#falsy) ? ``-1`` : `number`\>
-
-▸ **findIndex**<`T`\>(`predicate`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` extends [`Falsy`](RxJS.md#falsy) ? ``-1`` : `number`\>
+▸ **findIndex**<T\>(`predicate`: BooleanConstructor, `thisArg`: *any*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T *extends* [*Falsy*](rxjs.md#falsy) ? *-1* : *number*\>
 
 **`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
-| `thisArg` | `any` |
+Name | Type |
+:------ | :------ |
+`predicate` | BooleanConstructor |
+`thisArg` | *any* |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T *extends* [*Falsy*](rxjs.md#falsy) ? *-1* : *number*\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` extends [`Falsy`](RxJS.md#falsy) ? ``-1`` : `number`\>
-
-▸ **findIndex**<`T`, `A`\>(`predicate`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `number`\>
+▸ **findIndex**<T, A\>(`predicate`: (`this`: A, `value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean*, `thisArg`: A): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, number\>
 
 **`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `A` |
+Name |
+:------ |
+`T` |
+`A` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`this`: `A`, `value`: `T`, `index`: `number`, `source`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `boolean` |
-| `thisArg` | `A` |
+Name | Type |
+:------ | :------ |
+`predicate` | (`this`: A, `value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean* |
+`thisArg` | A |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, number\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `number`\>
+▸ **findIndex**<T\>(`predicate`: (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, number\>
 
-▸ **findIndex**<`T`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `number`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean* |
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `source`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `boolean` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `number`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, number\>
 
 ___
 
 ### first
 
-▸ **first**<`T`, `D`\>(`predicate?`, `defaultValue?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `D`\>
+▸ **first**<T, D\>(`predicate?`: *null*, `defaultValue?`: D): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| D\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `D` | `T` |
+Name | Default |
+:------ | :------ |
+`T` | - |
+`D` | T |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate?` | ``null`` |
-| `defaultValue?` | `D` |
+Name | Type |
+:------ | :------ |
+`predicate?` | *null* |
+`defaultValue?` | D |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| D\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `D`\>
+▸ **first**<T\>(`predicate`: BooleanConstructor): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*TruthyTypesOf*](rxjs.md#truthytypesof)<T\>\>
 
-▸ **first**<`T`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\>\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`predicate` | BooleanConstructor |
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*TruthyTypesOf*](rxjs.md#truthytypesof)<T\>\>
 
-#### Returns
+▸ **first**<T, D\>(`predicate`: BooleanConstructor, `defaultValue`: D): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*TruthyTypesOf*](rxjs.md#truthytypesof)<T\> \| D\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\>\>
+#### Type parameters:
 
-▸ **first**<`T`, `D`\>(`predicate`, `defaultValue`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\> \| `D`\>
+Name |
+:------ |
+`T` |
+`D` |
 
-#### Type parameters
+#### Parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `D` |
+Name | Type |
+:------ | :------ |
+`predicate` | BooleanConstructor |
+`defaultValue` | D |
 
-#### Parameters
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*TruthyTypesOf*](rxjs.md#truthytypesof)<T\> \| D\>
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
-| `defaultValue` | `D` |
+▸ **first**<T, S\>(`predicate`: (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => value is S, `defaultValue?`: S): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S\>
 
-#### Returns
+#### Type parameters:
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\> \| `D`\>
+Name |
+:------ |
+`T` |
+`S` |
 
-▸ **first**<`T`, `S`\>(`predicate`, `defaultValue?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S`\>
+#### Parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => value is S |
+`defaultValue?` | S |
 
-| Name |
-| :------ |
-| `T` |
-| `S` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S\>
 
-#### Parameters
+▸ **first**<T, S, D\>(`predicate`: (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => value is S, `defaultValue`: D): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S \| D\>
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `source`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => value is S |
-| `defaultValue?` | `S` |
+#### Type parameters:
 
-#### Returns
+Name |
+:------ |
+`T` |
+`S` |
+`D` |
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S`\>
+#### Parameters:
 
-▸ **first**<`T`, `S`, `D`\>(`predicate`, `defaultValue`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S` \| `D`\>
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => value is S |
+`defaultValue` | D |
 
-#### Type parameters
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S \| D\>
 
-| Name |
-| :------ |
-| `T` |
-| `S` |
-| `D` |
+▸ **first**<T, D\>(`predicate`: (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean*, `defaultValue?`: D): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| D\>
 
-#### Parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `source`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => value is S |
-| `defaultValue` | `D` |
+Name | Default |
+:------ | :------ |
+`T` | - |
+`D` | T |
 
-#### Returns
+#### Parameters:
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S` \| `D`\>
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean* |
+`defaultValue?` | D |
 
-▸ **first**<`T`, `D`\>(`predicate`, `defaultValue?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `D`\>
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `D` | `T` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `source`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `boolean` |
-| `defaultValue?` | `D` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `D`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| D\>
 
 ___
 
 ### firstValueFrom
 
-▸ **firstValueFrom**<`T`, `D`\>(`source`, `config`): `Promise`<`T` \| `D`\>
+▸ **firstValueFrom**<T, D\>(`source`: [*Observable*](../classes/rxjs.observable.md)<T\>, `config`: *FirstValueFromConfig*<D\>): *Promise*<T \| D\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `D` |
+Name |
+:------ |
+`T` |
+`D` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `source` | [`Observable`](../classes/RxJS.Observable.md)<`T`\> |
-| `config` | `FirstValueFromConfig`<`D`\> |
+Name | Type |
+:------ | :------ |
+`source` | [*Observable*](../classes/rxjs.observable.md)<T\> |
+`config` | *FirstValueFromConfig*<D\> |
 
-#### Returns
+**Returns:** *Promise*<T \| D\>
 
-`Promise`<`T` \| `D`\>
+▸ **firstValueFrom**<T\>(`source`: [*Observable*](../classes/rxjs.observable.md)<T\>): *Promise*<T\>
 
-▸ **firstValueFrom**<`T`\>(`source`): `Promise`<`T`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`source` | [*Observable*](../classes/rxjs.observable.md)<T\> |
 
-| Name | Type |
-| :------ | :------ |
-| `source` | [`Observable`](../classes/RxJS.Observable.md)<`T`\> |
-
-#### Returns
-
-`Promise`<`T`\>
+**Returns:** *Promise*<T\>
 
 ___
 
 ### flatMap
 
-▸ **flatMap**<`T`, `O`\>(`project`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ `Const`**flatMap**<T, O\>(`project`: (`value`: T, `index`: *number*) => O, `concurrent?`: *number*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-**`deprecated`** Renamed to [mergeMap](RxJS.md#mergemap). Will be removed in v8.
+**`deprecated`** Renamed to [mergeMap](rxjs.md#mergemap). Will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
-| `concurrent?` | `number` |
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+`concurrent?` | *number* |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ `Const`**flatMap**<T, O\>(`project`: (`value`: T, `index`: *number*) => O, `resultSelector`: *undefined*, `concurrent?`: *number*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-▸ **flatMap**<`T`, `O`\>(`project`, `resultSelector`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**`deprecated`** Renamed to [mergeMap](rxjs.md#mergemap). Will be removed in v8.
 
-**`deprecated`** Renamed to [mergeMap](RxJS.md#mergemap). Will be removed in v8.
+#### Type parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+`resultSelector` | *undefined* |
+`concurrent?` | *number* |
 
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
-| `resultSelector` | `undefined` |
-| `concurrent?` | `number` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-#### Returns
+▸ `Const`**flatMap**<T, R, O\>(`project`: (`value`: T, `index`: *number*) => O, `resultSelector`: (`outerValue`: T, `innerValue`: [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>, `outerIndex`: *number*, `innerIndex`: *number*) => R, `concurrent?`: *number*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**`deprecated`** Renamed to [mergeMap](rxjs.md#mergemap). Will be removed in v8.
 
-▸ **flatMap**<`T`, `R`, `O`\>(`project`, `resultSelector`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+#### Type parameters:
 
-**`deprecated`** Renamed to [mergeMap](RxJS.md#mergemap). Will be removed in v8.
+Name | Type |
+:------ | :------ |
+`T` | - |
+`R` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Type parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `R` | `R` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+`resultSelector` | (`outerValue`: T, `innerValue`: [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>, `outerIndex`: *number*, `innerIndex`: *number*) => R |
+`concurrent?` | *number* |
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
-| `resultSelector` | (`outerValue`: `T`, `innerValue`: [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>, `outerIndex`: `number`, `innerIndex`: `number`) => `R` |
-| `concurrent?` | `number` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 ___
 
 ### forkJoin
 
-▸ **forkJoin**<`T`\>(`arg`): [`Observable`](../classes/RxJS.Observable.md)<`unknown`\>
+▸ **forkJoin**<T\>(`arg`: T): [*Observable*](../classes/rxjs.observable.md)<unknown\>
 
 You have passed `any` here, we can't figure out if it is
 an array or an object, so you're getting `unknown`. Use better types.
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends typeof `anyCatcherSymbol` |
+Name | Type |
+:------ | :------ |
+`T` | *typeof* anyCatcherSymbol |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `arg` | `T` | Something typed as `any` |
+Name | Type | Description |
+:------ | :------ | :------ |
+`arg` | T | Something typed as `any`    |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<unknown\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`unknown`\>
+▸ **forkJoin**(`scheduler`: *null* \| *undefined*): [*Observable*](../classes/rxjs.observable.md)<never\>
 
-▸ **forkJoin**(`scheduler`): [`Observable`](../classes/RxJS.Observable.md)<`never`\>
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`scheduler` | *null* \| *undefined* |
 
-| Name | Type |
-| :------ | :------ |
-| `scheduler` | `undefined` \| ``null`` |
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<never\>
 
-#### Returns
+▸ **forkJoin**(`sources`: readonly []): [*Observable*](../classes/rxjs.observable.md)<never\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`never`\>
+#### Parameters:
 
-▸ **forkJoin**(`sources`): [`Observable`](../classes/RxJS.Observable.md)<`never`\>
+Name | Type |
+:------ | :------ |
+`sources` | readonly [] |
 
-#### Parameters
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<never\>
 
-| Name | Type |
-| :------ | :------ |
-| `sources` | readonly [] |
+▸ **forkJoin**<A\>(`sources`: readonly [...ObservableInputTuple<A\>]): [*Observable*](../classes/rxjs.observable.md)<A\>
 
-#### Returns
+#### Type parameters:
 
-[`Observable`](../classes/RxJS.Observable.md)<`never`\>
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
 
-▸ **forkJoin**<`A`\>(`sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
+#### Parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`sources` | readonly [...ObservableInputTuple<A\>] |
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<A\>
 
-#### Parameters
+▸ **forkJoin**<A, R\>(`sources`: readonly [...ObservableInputTuple<A\>], `resultSelector`: (...`values`: A) => R): [*Observable*](../classes/rxjs.observable.md)<R\>
 
-| Name | Type |
-| :------ | :------ |
-| `sources` | readonly [[`ObservableInputTuple`](RxJS.md#observableinputtuple)<`A`\>] |
+#### Type parameters:
 
-#### Returns
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
+`R` | - |
 
-[`Observable`](../classes/RxJS.Observable.md)<`A`\>
+#### Parameters:
 
-▸ **forkJoin**<`A`, `R`\>(`sources`, `resultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+Name | Type |
+:------ | :------ |
+`sources` | readonly [...ObservableInputTuple<A\>] |
+`resultSelector` | (...`values`: A) => R |
 
-#### Type parameters
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<R\>
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
-| `R` | `R` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `sources` | readonly [[`ObservableInputTuple`](RxJS.md#observableinputtuple)<`A`\>] |
-| `resultSelector` | (...`values`: `A`) => `R` |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`R`\>
-
-▸ **forkJoin**<`A`\>(...`sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
+▸ **forkJoin**<A\>(...`sources`: [...ObservableInputTuple<A\>]): [*Observable*](../classes/rxjs.observable.md)<A\>
 
 **`deprecated`** Pass an array of sources instead. The rest-parameters signature will be removed in v8. Details: https://rxjs.dev/deprecations/array-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `...sources` | [...ObservableInputTuple<A\>[]] |
+Name | Type |
+:------ | :------ |
+`...sources` | [...ObservableInputTuple<A\>] |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<A\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`A`\>
-
-▸ **forkJoin**<`A`, `R`\>(...`sourcesAndResultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+▸ **forkJoin**<A, R\>(...`sourcesAndResultSelector`: [...ObservableInputTuple<A\>, (...`values`: A) => R]): [*Observable*](../classes/rxjs.observable.md)<R\>
 
 **`deprecated`** Pass an array of sources instead. The rest-parameters signature will be removed in v8. Details: https://rxjs.dev/deprecations/array-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
-| `R` | `R` |
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
+`R` | - |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `...sourcesAndResultSelector` | [...ObservableInputTuple<A\>[], (...`values`: `A`) => `R`] |
+Name | Type |
+:------ | :------ |
+`...sourcesAndResultSelector` | [...ObservableInputTuple<A\>, (...`values`: A) => R] |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<R\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`R`\>
+▸ **forkJoin**(`sourcesObject`: { [K in any]: never}): [*Observable*](../classes/rxjs.observable.md)<never\>
 
-▸ **forkJoin**(`sourcesObject`): [`Observable`](../classes/RxJS.Observable.md)<`never`\>
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`sourcesObject` | { [K in any]: never} |
 
-| Name | Type |
-| :------ | :------ |
-| `sourcesObject` | `Object` |
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<never\>
 
-#### Returns
+▸ **forkJoin**<T\>(`sourcesObject`: T): [*Observable*](../classes/rxjs.observable.md)<{ [K in keyof T]: ObservedValueOf<T[K]\>}\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`never`\>
+#### Type parameters:
 
-▸ **forkJoin**<`T`\>(`sourcesObject`): [`Observable`](../classes/RxJS.Observable.md)<{ [K in keyof T]: ObservedValueOf<T[K]\> }\>
+Name | Type |
+:------ | :------ |
+`T` | *Record*<string, [*ObservableInput*](rxjs.md#observableinput)<any\>\> |
 
-#### Type parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends `Record`<`string`, [`ObservableInput`](RxJS.md#observableinput)<`any`\>\> |
+Name | Type |
+:------ | :------ |
+`sourcesObject` | T |
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `sourcesObject` | `T` |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<{ [K in keyof T]: ObservedValueOf<T[K]\> }\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<{ [K in keyof T]: ObservedValueOf<T[K]\>}\>
 
 ___
 
 ### from
 
-▸ **from**<`O`\>(`input`): [`Observable`](../classes/RxJS.Observable.md)<[`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **from**<O\>(`input`: O): [*Observable*](../classes/rxjs.observable.md)<[*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+#### Type parameters:
+
+Name | Type |
+:------ | :------ |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`input` | O |
+
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<[*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+▸ **from**<O\>(`input`: O, `scheduler`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<[*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 **`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `input` | `O` |
+Name | Type |
+:------ | :------ |
+`input` | O |
+`scheduler` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<[`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **from**<`O`\>(`input`, `scheduler`): [`Observable`](../classes/RxJS.Observable.md)<[`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: https://rxjs.dev/deprecations/scheduler-argument
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `input` | `O` |
-| `scheduler` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<[`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<[*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 ___
 
 ### fromEvent
 
-▸ **fromEvent**<`T`\>(`target`, `eventName`): [`Observable`](../classes/RxJS.Observable.md)<`T`\>
+▸ **fromEvent**<T\>(`target`: *HasEventTargetAddRemove*<T\> \| *ArrayLike*<HasEventTargetAddRemove<T\>\>, `eventName`: *string*): [*Observable*](../classes/rxjs.observable.md)<T\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `target` | `HasEventTargetAddRemove`<`T`\> \| `ArrayLike`<`HasEventTargetAddRemove`<`T`\>\> |
-| `eventName` | `string` |
+Name | Type |
+:------ | :------ |
+`target` | *HasEventTargetAddRemove*<T\> \| *ArrayLike*<HasEventTargetAddRemove<T\>\> |
+`eventName` | *string* |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`T`\>
+▸ **fromEvent**<T, R\>(`target`: *HasEventTargetAddRemove*<T\> \| *ArrayLike*<HasEventTargetAddRemove<T\>\>, `eventName`: *string*, `resultSelector`: (`event`: T) => R): [*Observable*](../classes/rxjs.observable.md)<R\>
 
-▸ **fromEvent**<`T`, `R`\>(`target`, `eventName`, `resultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
+`R` |
 
-| Name |
-| :------ |
-| `T` |
-| `R` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`target` | *HasEventTargetAddRemove*<T\> \| *ArrayLike*<HasEventTargetAddRemove<T\>\> |
+`eventName` | *string* |
+`resultSelector` | (`event`: T) => R |
 
-| Name | Type |
-| :------ | :------ |
-| `target` | `HasEventTargetAddRemove`<`T`\> \| `ArrayLike`<`HasEventTargetAddRemove`<`T`\>\> |
-| `eventName` | `string` |
-| `resultSelector` | (`event`: `T`) => `R` |
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<R\>
 
-#### Returns
+▸ **fromEvent**<T\>(`target`: *HasEventTargetAddRemove*<T\> \| *ArrayLike*<HasEventTargetAddRemove<T\>\>, `eventName`: *string*, `options`: EventListenerOptions): [*Observable*](../classes/rxjs.observable.md)<T\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`R`\>
+#### Type parameters:
 
-▸ **fromEvent**<`T`\>(`target`, `eventName`, `options`): [`Observable`](../classes/RxJS.Observable.md)<`T`\>
+Name |
+:------ |
+`T` |
 
-#### Type parameters
+#### Parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name | Type |
+:------ | :------ |
+`target` | *HasEventTargetAddRemove*<T\> \| *ArrayLike*<HasEventTargetAddRemove<T\>\> |
+`eventName` | *string* |
+`options` | EventListenerOptions |
 
-#### Parameters
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T\>
 
-| Name | Type |
-| :------ | :------ |
-| `target` | `HasEventTargetAddRemove`<`T`\> \| `ArrayLike`<`HasEventTargetAddRemove`<`T`\>\> |
-| `eventName` | `string` |
-| `options` | `EventListenerOptions` |
+▸ **fromEvent**<T, R\>(`target`: *HasEventTargetAddRemove*<T\> \| *ArrayLike*<HasEventTargetAddRemove<T\>\>, `eventName`: *string*, `options`: EventListenerOptions, `resultSelector`: (`event`: T) => R): [*Observable*](../classes/rxjs.observable.md)<R\>
 
-#### Returns
+#### Type parameters:
 
-[`Observable`](../classes/RxJS.Observable.md)<`T`\>
+Name |
+:------ |
+`T` |
+`R` |
 
-▸ **fromEvent**<`T`, `R`\>(`target`, `eventName`, `options`, `resultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+#### Parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`target` | *HasEventTargetAddRemove*<T\> \| *ArrayLike*<HasEventTargetAddRemove<T\>\> |
+`eventName` | *string* |
+`options` | EventListenerOptions |
+`resultSelector` | (`event`: T) => R |
 
-| Name |
-| :------ |
-| `T` |
-| `R` |
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<R\>
 
-#### Parameters
+▸ **fromEvent**(`target`: NodeStyleEventEmitter \| *ArrayLike*<NodeStyleEventEmitter\>, `eventName`: *string*): [*Observable*](../classes/rxjs.observable.md)<unknown\>
 
-| Name | Type |
-| :------ | :------ |
-| `target` | `HasEventTargetAddRemove`<`T`\> \| `ArrayLike`<`HasEventTargetAddRemove`<`T`\>\> |
-| `eventName` | `string` |
-| `options` | `EventListenerOptions` |
-| `resultSelector` | (`event`: `T`) => `R` |
+#### Parameters:
 
-#### Returns
+Name | Type |
+:------ | :------ |
+`target` | NodeStyleEventEmitter \| *ArrayLike*<NodeStyleEventEmitter\> |
+`eventName` | *string* |
 
-[`Observable`](../classes/RxJS.Observable.md)<`R`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<unknown\>
 
-▸ **fromEvent**(`target`, `eventName`): [`Observable`](../classes/RxJS.Observable.md)<`unknown`\>
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `target` | `NodeStyleEventEmitter` \| `ArrayLike`<`NodeStyleEventEmitter`\> |
-| `eventName` | `string` |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`unknown`\>
-
-▸ **fromEvent**<`T`\>(`target`, `eventName`): [`Observable`](../classes/RxJS.Observable.md)<`T`\>
+▸ **fromEvent**<T\>(`target`: NodeStyleEventEmitter \| *ArrayLike*<NodeStyleEventEmitter\>, `eventName`: *string*): [*Observable*](../classes/rxjs.observable.md)<T\>
 
 **`deprecated`** Do not specify explicit type parameters. Signatures with type parameters that cannot be inferred will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `target` | `NodeStyleEventEmitter` \| `ArrayLike`<`NodeStyleEventEmitter`\> |
-| `eventName` | `string` |
+Name | Type |
+:------ | :------ |
+`target` | NodeStyleEventEmitter \| *ArrayLike*<NodeStyleEventEmitter\> |
+`eventName` | *string* |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`T`\>
+▸ **fromEvent**<R\>(`target`: NodeStyleEventEmitter \| *ArrayLike*<NodeStyleEventEmitter\>, `eventName`: *string*, `resultSelector`: (...`args`: *any*[]) => R): [*Observable*](../classes/rxjs.observable.md)<R\>
 
-▸ **fromEvent**<`R`\>(`target`, `eventName`, `resultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`R` |
 
-| Name |
-| :------ |
-| `R` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`target` | NodeStyleEventEmitter \| *ArrayLike*<NodeStyleEventEmitter\> |
+`eventName` | *string* |
+`resultSelector` | (...`args`: *any*[]) => R |
 
-| Name | Type |
-| :------ | :------ |
-| `target` | `NodeStyleEventEmitter` \| `ArrayLike`<`NodeStyleEventEmitter`\> |
-| `eventName` | `string` |
-| `resultSelector` | (...`args`: `any`[]) => `R` |
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<R\>
 
-#### Returns
+▸ **fromEvent**(`target`: NodeCompatibleEventEmitter \| *ArrayLike*<NodeCompatibleEventEmitter\>, `eventName`: *string*): [*Observable*](../classes/rxjs.observable.md)<unknown\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`R`\>
+#### Parameters:
 
-▸ **fromEvent**(`target`, `eventName`): [`Observable`](../classes/RxJS.Observable.md)<`unknown`\>
+Name | Type |
+:------ | :------ |
+`target` | NodeCompatibleEventEmitter \| *ArrayLike*<NodeCompatibleEventEmitter\> |
+`eventName` | *string* |
 
-#### Parameters
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<unknown\>
 
-| Name | Type |
-| :------ | :------ |
-| `target` | `NodeCompatibleEventEmitter` \| `ArrayLike`<`NodeCompatibleEventEmitter`\> |
-| `eventName` | `string` |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`unknown`\>
-
-▸ **fromEvent**<`T`\>(`target`, `eventName`): [`Observable`](../classes/RxJS.Observable.md)<`T`\>
+▸ **fromEvent**<T\>(`target`: NodeCompatibleEventEmitter \| *ArrayLike*<NodeCompatibleEventEmitter\>, `eventName`: *string*): [*Observable*](../classes/rxjs.observable.md)<T\>
 
 **`deprecated`** Do not specify explicit type parameters. Signatures with type parameters that cannot be inferred will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `target` | `NodeCompatibleEventEmitter` \| `ArrayLike`<`NodeCompatibleEventEmitter`\> |
-| `eventName` | `string` |
+Name | Type |
+:------ | :------ |
+`target` | NodeCompatibleEventEmitter \| *ArrayLike*<NodeCompatibleEventEmitter\> |
+`eventName` | *string* |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`T`\>
+▸ **fromEvent**<R\>(`target`: NodeCompatibleEventEmitter \| *ArrayLike*<NodeCompatibleEventEmitter\>, `eventName`: *string*, `resultSelector`: (...`args`: *any*[]) => R): [*Observable*](../classes/rxjs.observable.md)<R\>
 
-▸ **fromEvent**<`R`\>(`target`, `eventName`, `resultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`R` |
 
-| Name |
-| :------ |
-| `R` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`target` | NodeCompatibleEventEmitter \| *ArrayLike*<NodeCompatibleEventEmitter\> |
+`eventName` | *string* |
+`resultSelector` | (...`args`: *any*[]) => R |
 
-| Name | Type |
-| :------ | :------ |
-| `target` | `NodeCompatibleEventEmitter` \| `ArrayLike`<`NodeCompatibleEventEmitter`\> |
-| `eventName` | `string` |
-| `resultSelector` | (...`args`: `any`[]) => `R` |
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<R\>
 
-#### Returns
+▸ **fromEvent**<T\>(`target`: *JQueryStyleEventEmitter*<any, T\> \| *ArrayLike*<JQueryStyleEventEmitter<any, T\>\>, `eventName`: *string*): [*Observable*](../classes/rxjs.observable.md)<T\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`R`\>
+#### Type parameters:
 
-▸ **fromEvent**<`T`\>(`target`, `eventName`): [`Observable`](../classes/RxJS.Observable.md)<`T`\>
+Name |
+:------ |
+`T` |
 
-#### Type parameters
+#### Parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name | Type |
+:------ | :------ |
+`target` | *JQueryStyleEventEmitter*<any, T\> \| *ArrayLike*<JQueryStyleEventEmitter<any, T\>\> |
+`eventName` | *string* |
 
-#### Parameters
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T\>
 
-| Name | Type |
-| :------ | :------ |
-| `target` | `JQueryStyleEventEmitter`<`any`, `T`\> \| `ArrayLike`<`JQueryStyleEventEmitter`<`any`, `T`\>\> |
-| `eventName` | `string` |
+▸ **fromEvent**<T, R\>(`target`: *JQueryStyleEventEmitter*<any, T\> \| *ArrayLike*<JQueryStyleEventEmitter<any, T\>\>, `eventName`: *string*, `resultSelector`: (`value`: T, ...`args`: *any*[]) => R): [*Observable*](../classes/rxjs.observable.md)<R\>
 
-#### Returns
+#### Type parameters:
 
-[`Observable`](../classes/RxJS.Observable.md)<`T`\>
+Name |
+:------ |
+`T` |
+`R` |
 
-▸ **fromEvent**<`T`, `R`\>(`target`, `eventName`, `resultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+#### Parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`target` | *JQueryStyleEventEmitter*<any, T\> \| *ArrayLike*<JQueryStyleEventEmitter<any, T\>\> |
+`eventName` | *string* |
+`resultSelector` | (`value`: T, ...`args`: *any*[]) => R |
 
-| Name |
-| :------ |
-| `T` |
-| `R` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `target` | `JQueryStyleEventEmitter`<`any`, `T`\> \| `ArrayLike`<`JQueryStyleEventEmitter`<`any`, `T`\>\> |
-| `eventName` | `string` |
-| `resultSelector` | (`value`: `T`, ...`args`: `any`[]) => `R` |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`R`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<R\>
 
 ___
 
 ### fromEventPattern
 
-▸ **fromEventPattern**<`T`\>(`addHandler`, `removeHandler?`): [`Observable`](../classes/RxJS.Observable.md)<`T`\>
+▸ **fromEventPattern**<T\>(`addHandler`: (`handler`: NodeEventHandler) => *any*, `removeHandler?`: (`handler`: NodeEventHandler, `signal?`: *any*) => *void*): [*Observable*](../classes/rxjs.observable.md)<T\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `addHandler` | (`handler`: `NodeEventHandler`) => `any` |
-| `removeHandler?` | (`handler`: `NodeEventHandler`, `signal?`: `any`) => `void` |
+Name | Type |
+:------ | :------ |
+`addHandler` | (`handler`: NodeEventHandler) => *any* |
+`removeHandler?` | (`handler`: NodeEventHandler, `signal?`: *any*) => *void* |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`T`\>
+▸ **fromEventPattern**<T\>(`addHandler`: (`handler`: NodeEventHandler) => *any*, `removeHandler?`: (`handler`: NodeEventHandler, `signal?`: *any*) => *void*, `resultSelector?`: (...`args`: *any*[]) => T): [*Observable*](../classes/rxjs.observable.md)<T\>
 
-▸ **fromEventPattern**<`T`\>(`addHandler`, `removeHandler?`, `resultSelector?`): [`Observable`](../classes/RxJS.Observable.md)<`T`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`addHandler` | (`handler`: NodeEventHandler) => *any* |
+`removeHandler?` | (`handler`: NodeEventHandler, `signal?`: *any*) => *void* |
+`resultSelector?` | (...`args`: *any*[]) => T |
 
-| Name | Type |
-| :------ | :------ |
-| `addHandler` | (`handler`: `NodeEventHandler`) => `any` |
-| `removeHandler?` | (`handler`: `NodeEventHandler`, `signal?`: `any`) => `void` |
-| `resultSelector?` | (...`args`: `any`[]) => `T` |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`T`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T\>
 
 ___
 
 ### generate
 
-▸ **generate**<`T`, `S`\>(`initialState`, `condition`, `iterate`, `resultSelector`, `scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<`T`\>
+▸ **generate**<T, S\>(`initialState`: S, `condition`: *ConditionFunc*<S\>, `iterate`: *IterateFunc*<S\>, `resultSelector`: *ResultFunc*<S, T\>, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<T\>
 
 Generates an observable sequence by running a state-driven loop
 producing the sequence's elements, using the specified scheduler
@@ -4939,36 +4621,34 @@ result.subscribe(x => console.log(x));
 // 5
 ```
 
-**`see`** [from](RxJS.md#from)
+**`see`** [from](rxjs.md#from)
 
-**`see`** [Observable](../classes/RxJS.Observable.md)
+**`see`** [Observable](../classes/rxjs.observable.md)
 
 **`deprecated`** Instead of passing separate arguments, use the options argument. Signatures taking separate arguments will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `S` |
+Name |
+:------ |
+`T` |
+`S` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `initialState` | `S` | Initial state. |
-| `condition` | `ConditionFunc`<`S`\> | Condition to terminate generation (upon returning false). |
-| `iterate` | `IterateFunc`<`S`\> | Iteration step function. |
-| `resultSelector` | `ResultFunc`<`S`, `T`\> | Selector function for results produced in the sequence. (deprecated) |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`initialState` | S | Initial state.   |
+`condition` | *ConditionFunc*<S\> | Condition to terminate generation (upon returning false).   |
+`iterate` | *IterateFunc*<S\> | Iteration step function.   |
+`resultSelector` | *ResultFunc*<S, T\> | Selector function for results produced in the sequence. (deprecated)   |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | - |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`T`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T\>
 
 The generated sequence.
 
-▸ **generate**<`S`\>(`initialState`, `condition`, `iterate`, `scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<`S`\>
+▸ **generate**<S\>(`initialState`: S, `condition`: *ConditionFunc*<S\>, `iterate`: *IterateFunc*<S\>, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<S\>
 
 Generates an Observable by running a state-driven loop
 that emits an element on each iteration.
@@ -5100,34 +4780,32 @@ result.subscribe({
 // ...and never stops.
 ```
 
-**`see`** [from](RxJS.md#from)
+**`see`** [from](rxjs.md#from)
 
 **`see`** {@link index/Observable.create}
 
 **`deprecated`** Instead of passing separate arguments, use the options argument. Signatures taking separate arguments will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `S` |
+Name |
+:------ |
+`S` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `initialState` | `S` | Initial state. |
-| `condition` | `ConditionFunc`<`S`\> | Condition to terminate generation (upon returning false). |
-| `iterate` | `IterateFunc`<`S`\> | Iteration step function. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`initialState` | S | Initial state.   |
+`condition` | *ConditionFunc*<S\> | Condition to terminate generation (upon returning false).   |
+`iterate` | *IterateFunc*<S\> | Iteration step function.   |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | - |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`S`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<S\>
 
 The generated sequence.
 
-▸ **generate**<`S`\>(`options`): [`Observable`](../classes/RxJS.Observable.md)<`S`\>
+▸ **generate**<S\>(`options`: *GenerateBaseOptions*<S\>): [*Observable*](../classes/rxjs.observable.md)<S\>
 
 Generates an observable sequence by running a state-driven loop
 producing the sequence's elements, using the specified scheduler
@@ -5162,29 +4840,27 @@ result.subscribe({
 // "Complete!".
 ```
 
-**`see`** [from](RxJS.md#from)
+**`see`** [from](rxjs.md#from)
 
-**`see`** [Observable](../classes/RxJS.Observable.md)
+**`see`** [Observable](../classes/rxjs.observable.md)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `S` |
+Name |
+:------ |
+`S` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `options` | `GenerateBaseOptions`<`S`\> | Object that must contain initialState, iterate and might contain condition and scheduler. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`options` | *GenerateBaseOptions*<S\> | Object that must contain initialState, iterate and might contain condition and scheduler.   |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`S`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<S\>
 
 The generated sequence.
 
-▸ **generate**<`T`, `S`\>(`options`): [`Observable`](../classes/RxJS.Observable.md)<`T`\>
+▸ **generate**<T, S\>(`options`: *GenerateOptions*<T, S\>): [*Observable*](../classes/rxjs.observable.md)<T\>
 
 Generates an observable sequence by running a state-driven loop
 producing the sequence's elements, using the specified scheduler
@@ -5220,26 +4896,24 @@ result.subscribe({
 // "Complete!".
 ```
 
-**`see`** [from](RxJS.md#from)
+**`see`** [from](rxjs.md#from)
 
-**`see`** [Observable](../classes/RxJS.Observable.md)
+**`see`** [Observable](../classes/rxjs.observable.md)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `S` |
+Name |
+:------ |
+`T` |
+`S` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `options` | `GenerateOptions`<`T`, `S`\> | Object that must contain initialState, iterate, resultSelector and might contain condition and scheduler. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`options` | *GenerateOptions*<T, S\> | Object that must contain initialState, iterate, resultSelector and might contain condition and scheduler.   |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`T`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T\>
 
 The generated sequence.
 
@@ -5247,631 +4921,137 @@ ___
 
 ### groupBy
 
-▸ **groupBy**<`T`, `K`\>(`key`, `options`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `T`\>\>
-
-Groups the items emitted by an Observable according to a specified criterion,
-and emits these grouped items as `GroupedObservables`, one
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) per group.
-
-![](groupBy.png)
-
-When the Observable emits an item, a key is computed for this item with the key function.
-
-If a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key exists, this [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) emits. Otherwise, a new
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key is created and emits.
+▸ **groupBy**<T, K\>(`key`: (`value`: T) => K, `options`: *BasicGroupByOptions*<K, T\>): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, T\>\>
 
-A [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) represents values belonging to the same group represented by a common key. The common
-key is available as the `key` field of a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) instance.
+#### Type parameters:
 
-The elements emitted by [GroupedObservable](../interfaces/RxJS.GroupedObservable.md)s are by default the items emitted by the Observable, or elements
-returned by the element function.
+Name |
+:------ |
+`T` |
+`K` |
 
-## Examples
+#### Parameters:
 
-### Group objects by id and return as array
+Name | Type |
+:------ | :------ |
+`key` | (`value`: T) => K |
+`options` | *BasicGroupByOptions*<K, T\> |
 
-```ts
-import { of } from 'rxjs';
-import { mergeMap, groupBy, reduce } from 'rxjs/operators';
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, T\>\>
 
-of(
-  {id: 1, name: 'JavaScript'},
-  {id: 2, name: 'Parcel'},
-  {id: 2, name: 'webpack'},
-  {id: 1, name: 'TypeScript'},
-  {id: 3, name: 'TSLint'}
-).pipe(
-  groupBy(p => p.id),
-  mergeMap((group$) => group$.pipe(reduce((acc, cur) => [...acc, cur], [])))
-)
-.subscribe(p => console.log(p));
-
-// displays:
-// [ { id: 1, name: 'JavaScript'},
-//   { id: 1, name: 'TypeScript'} ]
-//
-// [ { id: 2, name: 'Parcel'},
-//   { id: 2, name: 'webpack'} ]
-//
-// [ { id: 3, name: 'TSLint'} ]
-```
-
-### Pivot data on the id field
-
-```ts
-import { of } from 'rxjs';
-import { groupBy, map, mergeMap, reduce } from 'rxjs/operators';
-
-of(
-  { id: 1, name: 'JavaScript' },
-  { id: 2, name: 'Parcel' },
-  { id: 2, name: 'webpack' },
-  { id: 1, name: 'TypeScript' },
-  { id: 3, name: 'TSLint' }
-)
-  .pipe(
-    groupBy(p => p.id, p => p.name),
-    mergeMap(group$ =>
-      group$.pipe(reduce((acc, cur) => [...acc, cur], [`${group$.key}`]))
-    ),
-    map(arr => ({ id: parseInt(arr[0], 10), values: arr.slice(1) }))
- )
- .subscribe(p => console.log(p));
-
-// displays:
-// { id: 1, values: [ 'JavaScript', 'TypeScript' ] }
-// { id: 2, values: [ 'Parcel', 'webpack' ] }
-// { id: 3, values: [ 'TSLint' ] }
-```
-
-**`deprecated`** Use the options parameter instead.
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-| `K` |
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | (`value`: `T`) => `K` | A function that extracts the key for each item. |
-| `options` | `BasicGroupByOptions`<`K`, `T`\> | - |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `T`\>\>
-
-A function that returns an Observable that emits GroupedObservables,
-each of which corresponds to a unique key value and each of which emits
-those items from the source Observable that share that key value.
-
-▸ **groupBy**<`T`, `K`, `E`\>(`key`, `options`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `E`\>\>
-
-Groups the items emitted by an Observable according to a specified criterion,
-and emits these grouped items as `GroupedObservables`, one
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) per group.
-
-![](groupBy.png)
-
-When the Observable emits an item, a key is computed for this item with the key function.
-
-If a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key exists, this [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) emits. Otherwise, a new
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key is created and emits.
+▸ **groupBy**<T, K, E\>(`key`: (`value`: T) => K, `options`: *GroupByOptionsWithElement*<K, E, T\>): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, E\>\>
 
-A [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) represents values belonging to the same group represented by a common key. The common
-key is available as the `key` field of a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) instance.
+#### Type parameters:
 
-The elements emitted by [GroupedObservable](../interfaces/RxJS.GroupedObservable.md)s are by default the items emitted by the Observable, or elements
-returned by the element function.
+Name |
+:------ |
+`T` |
+`K` |
+`E` |
 
-## Examples
+#### Parameters:
 
-### Group objects by id and return as array
+Name | Type |
+:------ | :------ |
+`key` | (`value`: T) => K |
+`options` | *GroupByOptionsWithElement*<K, E, T\> |
 
-```ts
-import { of } from 'rxjs';
-import { mergeMap, groupBy, reduce } from 'rxjs/operators';
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, E\>\>
 
-of(
-  {id: 1, name: 'JavaScript'},
-  {id: 2, name: 'Parcel'},
-  {id: 2, name: 'webpack'},
-  {id: 1, name: 'TypeScript'},
-  {id: 3, name: 'TSLint'}
-).pipe(
-  groupBy(p => p.id),
-  mergeMap((group$) => group$.pipe(reduce((acc, cur) => [...acc, cur], [])))
-)
-.subscribe(p => console.log(p));
+▸ **groupBy**<T, K\>(`key`: (`value`: T) => value is K): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<*true*, K\> \| [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<*false*, Exclude<T, K\>\>\>
 
-// displays:
-// [ { id: 1, name: 'JavaScript'},
-//   { id: 1, name: 'TypeScript'} ]
-//
-// [ { id: 2, name: 'Parcel'},
-//   { id: 2, name: 'webpack'} ]
-//
-// [ { id: 3, name: 'TSLint'} ]
-```
-
-### Pivot data on the id field
-
-```ts
-import { of } from 'rxjs';
-import { groupBy, map, mergeMap, reduce } from 'rxjs/operators';
-
-of(
-  { id: 1, name: 'JavaScript' },
-  { id: 2, name: 'Parcel' },
-  { id: 2, name: 'webpack' },
-  { id: 1, name: 'TypeScript' },
-  { id: 3, name: 'TSLint' }
-)
-  .pipe(
-    groupBy(p => p.id, p => p.name),
-    mergeMap(group$ =>
-      group$.pipe(reduce((acc, cur) => [...acc, cur], [`${group$.key}`]))
-    ),
-    map(arr => ({ id: parseInt(arr[0], 10), values: arr.slice(1) }))
- )
- .subscribe(p => console.log(p));
-
-// displays:
-// { id: 1, values: [ 'JavaScript', 'TypeScript' ] }
-// { id: 2, values: [ 'Parcel', 'webpack' ] }
-// { id: 3, values: [ 'TSLint' ] }
-```
-
-**`deprecated`** Use the options parameter instead.
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-| `K` |
-| `E` |
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | (`value`: `T`) => `K` | A function that extracts the key for each item. |
-| `options` | `GroupByOptionsWithElement`<`K`, `E`, `T`\> | - |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `E`\>\>
-
-A function that returns an Observable that emits GroupedObservables,
-each of which corresponds to a unique key value and each of which emits
-those items from the source Observable that share that key value.
-
-▸ **groupBy**<`T`, `K`\>(`key`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<``true``, `K`\> \| [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<``false``, `Exclude`<`T`, `K`\>\>\>
-
-Groups the items emitted by an Observable according to a specified criterion,
-and emits these grouped items as `GroupedObservables`, one
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) per group.
-
-![](groupBy.png)
-
-When the Observable emits an item, a key is computed for this item with the key function.
-
-If a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key exists, this [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) emits. Otherwise, a new
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key is created and emits.
-
-A [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) represents values belonging to the same group represented by a common key. The common
-key is available as the `key` field of a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) instance.
-
-The elements emitted by [GroupedObservable](../interfaces/RxJS.GroupedObservable.md)s are by default the items emitted by the Observable, or elements
-returned by the element function.
-
-## Examples
+#### Type parameters:
 
-### Group objects by id and return as array
+Name |
+:------ |
+`T` |
+`K` |
 
-```ts
-import { of } from 'rxjs';
-import { mergeMap, groupBy, reduce } from 'rxjs/operators';
+#### Parameters:
 
-of(
-  {id: 1, name: 'JavaScript'},
-  {id: 2, name: 'Parcel'},
-  {id: 2, name: 'webpack'},
-  {id: 1, name: 'TypeScript'},
-  {id: 3, name: 'TSLint'}
-).pipe(
-  groupBy(p => p.id),
-  mergeMap((group$) => group$.pipe(reduce((acc, cur) => [...acc, cur], [])))
-)
-.subscribe(p => console.log(p));
-
-// displays:
-// [ { id: 1, name: 'JavaScript'},
-//   { id: 1, name: 'TypeScript'} ]
-//
-// [ { id: 2, name: 'Parcel'},
-//   { id: 2, name: 'webpack'} ]
-//
-// [ { id: 3, name: 'TSLint'} ]
-```
-
-### Pivot data on the id field
-
-```ts
-import { of } from 'rxjs';
-import { groupBy, map, mergeMap, reduce } from 'rxjs/operators';
-
-of(
-  { id: 1, name: 'JavaScript' },
-  { id: 2, name: 'Parcel' },
-  { id: 2, name: 'webpack' },
-  { id: 1, name: 'TypeScript' },
-  { id: 3, name: 'TSLint' }
-)
-  .pipe(
-    groupBy(p => p.id, p => p.name),
-    mergeMap(group$ =>
-      group$.pipe(reduce((acc, cur) => [...acc, cur], [`${group$.key}`]))
-    ),
-    map(arr => ({ id: parseInt(arr[0], 10), values: arr.slice(1) }))
- )
- .subscribe(p => console.log(p));
-
-// displays:
-// { id: 1, values: [ 'JavaScript', 'TypeScript' ] }
-// { id: 2, values: [ 'Parcel', 'webpack' ] }
-// { id: 3, values: [ 'TSLint' ] }
-```
-
-**`deprecated`** Use the options parameter instead.
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-| `K` |
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | (`value`: `T`) => value is K | A function that extracts the key for each item. |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<``true``, `K`\> \| [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<``false``, `Exclude`<`T`, `K`\>\>\>
-
-A function that returns an Observable that emits GroupedObservables,
-each of which corresponds to a unique key value and each of which emits
-those items from the source Observable that share that key value.
-
-▸ **groupBy**<`T`, `K`\>(`key`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `T`\>\>
-
-Groups the items emitted by an Observable according to a specified criterion,
-and emits these grouped items as `GroupedObservables`, one
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) per group.
-
-![](groupBy.png)
-
-When the Observable emits an item, a key is computed for this item with the key function.
-
-If a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key exists, this [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) emits. Otherwise, a new
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key is created and emits.
-
-A [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) represents values belonging to the same group represented by a common key. The common
-key is available as the `key` field of a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) instance.
-
-The elements emitted by [GroupedObservable](../interfaces/RxJS.GroupedObservable.md)s are by default the items emitted by the Observable, or elements
-returned by the element function.
-
-## Examples
-
-### Group objects by id and return as array
-
-```ts
-import { of } from 'rxjs';
-import { mergeMap, groupBy, reduce } from 'rxjs/operators';
-
-of(
-  {id: 1, name: 'JavaScript'},
-  {id: 2, name: 'Parcel'},
-  {id: 2, name: 'webpack'},
-  {id: 1, name: 'TypeScript'},
-  {id: 3, name: 'TSLint'}
-).pipe(
-  groupBy(p => p.id),
-  mergeMap((group$) => group$.pipe(reduce((acc, cur) => [...acc, cur], [])))
-)
-.subscribe(p => console.log(p));
-
-// displays:
-// [ { id: 1, name: 'JavaScript'},
-//   { id: 1, name: 'TypeScript'} ]
-//
-// [ { id: 2, name: 'Parcel'},
-//   { id: 2, name: 'webpack'} ]
-//
-// [ { id: 3, name: 'TSLint'} ]
-```
-
-### Pivot data on the id field
-
-```ts
-import { of } from 'rxjs';
-import { groupBy, map, mergeMap, reduce } from 'rxjs/operators';
-
-of(
-  { id: 1, name: 'JavaScript' },
-  { id: 2, name: 'Parcel' },
-  { id: 2, name: 'webpack' },
-  { id: 1, name: 'TypeScript' },
-  { id: 3, name: 'TSLint' }
-)
-  .pipe(
-    groupBy(p => p.id, p => p.name),
-    mergeMap(group$ =>
-      group$.pipe(reduce((acc, cur) => [...acc, cur], [`${group$.key}`]))
-    ),
-    map(arr => ({ id: parseInt(arr[0], 10), values: arr.slice(1) }))
- )
- .subscribe(p => console.log(p));
-
-// displays:
-// { id: 1, values: [ 'JavaScript', 'TypeScript' ] }
-// { id: 2, values: [ 'Parcel', 'webpack' ] }
-// { id: 3, values: [ 'TSLint' ] }
-```
-
-**`deprecated`** Use the options parameter instead.
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-| `K` |
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | (`value`: `T`) => `K` | A function that extracts the key for each item. |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `T`\>\>
-
-A function that returns an Observable that emits GroupedObservables,
-each of which corresponds to a unique key value and each of which emits
-those items from the source Observable that share that key value.
-
-▸ **groupBy**<`T`, `K`\>(`key`, `element`, `duration`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `T`\>\>
-
-Groups the items emitted by an Observable according to a specified criterion,
-and emits these grouped items as `GroupedObservables`, one
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) per group.
-
-![](groupBy.png)
-
-When the Observable emits an item, a key is computed for this item with the key function.
-
-If a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key exists, this [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) emits. Otherwise, a new
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key is created and emits.
-
-A [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) represents values belonging to the same group represented by a common key. The common
-key is available as the `key` field of a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) instance.
-
-The elements emitted by [GroupedObservable](../interfaces/RxJS.GroupedObservable.md)s are by default the items emitted by the Observable, or elements
-returned by the element function.
-
-## Examples
-
-### Group objects by id and return as array
-
-```ts
-import { of } from 'rxjs';
-import { mergeMap, groupBy, reduce } from 'rxjs/operators';
-
-of(
-  {id: 1, name: 'JavaScript'},
-  {id: 2, name: 'Parcel'},
-  {id: 2, name: 'webpack'},
-  {id: 1, name: 'TypeScript'},
-  {id: 3, name: 'TSLint'}
-).pipe(
-  groupBy(p => p.id),
-  mergeMap((group$) => group$.pipe(reduce((acc, cur) => [...acc, cur], [])))
-)
-.subscribe(p => console.log(p));
-
-// displays:
-// [ { id: 1, name: 'JavaScript'},
-//   { id: 1, name: 'TypeScript'} ]
-//
-// [ { id: 2, name: 'Parcel'},
-//   { id: 2, name: 'webpack'} ]
-//
-// [ { id: 3, name: 'TSLint'} ]
-```
-
-### Pivot data on the id field
-
-```ts
-import { of } from 'rxjs';
-import { groupBy, map, mergeMap, reduce } from 'rxjs/operators';
-
-of(
-  { id: 1, name: 'JavaScript' },
-  { id: 2, name: 'Parcel' },
-  { id: 2, name: 'webpack' },
-  { id: 1, name: 'TypeScript' },
-  { id: 3, name: 'TSLint' }
-)
-  .pipe(
-    groupBy(p => p.id, p => p.name),
-    mergeMap(group$ =>
-      group$.pipe(reduce((acc, cur) => [...acc, cur], [`${group$.key}`]))
-    ),
-    map(arr => ({ id: parseInt(arr[0], 10), values: arr.slice(1) }))
- )
- .subscribe(p => console.log(p));
-
-// displays:
-// { id: 1, values: [ 'JavaScript', 'TypeScript' ] }
-// { id: 2, values: [ 'Parcel', 'webpack' ] }
-// { id: 3, values: [ 'TSLint' ] }
-```
+Name | Type |
+:------ | :------ |
+`key` | (`value`: T) => value is K |
+
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<*true*, K\> \| [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<*false*, Exclude<T, K\>\>\>
+
+▸ **groupBy**<T, K\>(`key`: (`value`: T) => K): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, T\>\>
+
+#### Type parameters:
+
+Name |
+:------ |
+`T` |
+`K` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`key` | (`value`: T) => K |
+
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, T\>\>
+
+▸ **groupBy**<T, K\>(`key`: (`value`: T) => K, `element`: *void*, `duration`: (`grouped`: [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, T\>) => [*Observable*](../classes/rxjs.observable.md)<any\>): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, T\>\>
 
 **`deprecated`** use the options parameter instead.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `K` |
+Name |
+:------ |
+`T` |
+`K` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | (`value`: `T`) => `K` | A function that extracts the key for each item. |
-| `element` | `void` | A function that extracts the return element for each item. |
-| `duration` | (`grouped`: [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `T`\>) => [`Observable`](../classes/RxJS.Observable.md)<`any`\> | A function that returns an Observable to determine how long each group should exist. |
+Name | Type |
+:------ | :------ |
+`key` | (`value`: T) => K |
+`element` | *void* |
+`duration` | (`grouped`: [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, T\>) => [*Observable*](../classes/rxjs.observable.md)<any\> |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, T\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `T`\>\>
-
-A function that returns an Observable that emits GroupedObservables,
-each of which corresponds to a unique key value and each of which emits
-those items from the source Observable that share that key value.
-
-▸ **groupBy**<`T`, `K`, `R`\>(`key`, `element?`, `duration?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `R`\>\>
-
-Groups the items emitted by an Observable according to a specified criterion,
-and emits these grouped items as `GroupedObservables`, one
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) per group.
-
-![](groupBy.png)
-
-When the Observable emits an item, a key is computed for this item with the key function.
-
-If a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key exists, this [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) emits. Otherwise, a new
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key is created and emits.
-
-A [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) represents values belonging to the same group represented by a common key. The common
-key is available as the `key` field of a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) instance.
-
-The elements emitted by [GroupedObservable](../interfaces/RxJS.GroupedObservable.md)s are by default the items emitted by the Observable, or elements
-returned by the element function.
-
-## Examples
-
-### Group objects by id and return as array
-
-```ts
-import { of } from 'rxjs';
-import { mergeMap, groupBy, reduce } from 'rxjs/operators';
-
-of(
-  {id: 1, name: 'JavaScript'},
-  {id: 2, name: 'Parcel'},
-  {id: 2, name: 'webpack'},
-  {id: 1, name: 'TypeScript'},
-  {id: 3, name: 'TSLint'}
-).pipe(
-  groupBy(p => p.id),
-  mergeMap((group$) => group$.pipe(reduce((acc, cur) => [...acc, cur], [])))
-)
-.subscribe(p => console.log(p));
-
-// displays:
-// [ { id: 1, name: 'JavaScript'},
-//   { id: 1, name: 'TypeScript'} ]
-//
-// [ { id: 2, name: 'Parcel'},
-//   { id: 2, name: 'webpack'} ]
-//
-// [ { id: 3, name: 'TSLint'} ]
-```
-
-### Pivot data on the id field
-
-```ts
-import { of } from 'rxjs';
-import { groupBy, map, mergeMap, reduce } from 'rxjs/operators';
-
-of(
-  { id: 1, name: 'JavaScript' },
-  { id: 2, name: 'Parcel' },
-  { id: 2, name: 'webpack' },
-  { id: 1, name: 'TypeScript' },
-  { id: 3, name: 'TSLint' }
-)
-  .pipe(
-    groupBy(p => p.id, p => p.name),
-    mergeMap(group$ =>
-      group$.pipe(reduce((acc, cur) => [...acc, cur], [`${group$.key}`]))
-    ),
-    map(arr => ({ id: parseInt(arr[0], 10), values: arr.slice(1) }))
- )
- .subscribe(p => console.log(p));
-
-// displays:
-// { id: 1, values: [ 'JavaScript', 'TypeScript' ] }
-// { id: 2, values: [ 'Parcel', 'webpack' ] }
-// { id: 3, values: [ 'TSLint' ] }
-```
+▸ **groupBy**<T, K, R\>(`key`: (`value`: T) => K, `element?`: (`value`: T) => R, `duration?`: (`grouped`: [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, R\>) => [*Observable*](../classes/rxjs.observable.md)<any\>): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, R\>\>
 
 **`deprecated`** use the options parameter instead.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `K` |
-| `R` |
+Name |
+:------ |
+`T` |
+`K` |
+`R` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | (`value`: `T`) => `K` | A function that extracts the key for each item. |
-| `element?` | (`value`: `T`) => `R` | A function that extracts the return element for each item. |
-| `duration?` | (`grouped`: [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `R`\>) => [`Observable`](../classes/RxJS.Observable.md)<`any`\> | A function that returns an Observable to determine how long each group should exist. |
+Name | Type |
+:------ | :------ |
+`key` | (`value`: T) => K |
+`element?` | (`value`: T) => R |
+`duration?` | (`grouped`: [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, R\>) => [*Observable*](../classes/rxjs.observable.md)<any\> |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, R\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `R`\>\>
-
-A function that returns an Observable that emits GroupedObservables,
-each of which corresponds to a unique key value and each of which emits
-those items from the source Observable that share that key value.
-
-▸ **groupBy**<`T`, `K`, `R`\>(`key`, `element?`, `duration?`, `connector?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `R`\>\>
+▸ **groupBy**<T, K, R\>(`key`: (`value`: T) => K, `element?`: (`value`: T) => R, `duration?`: (`grouped`: [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, R\>) => [*Observable*](../classes/rxjs.observable.md)<any\>, `connector?`: () => [*Subject*](../classes/rxjs.subject.md)<R\>): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, R\>\>
 
 Groups the items emitted by an Observable according to a specified criterion,
 and emits these grouped items as `GroupedObservables`, one
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) per group.
+[GroupedObservable](../interfaces/rxjs.groupedobservable.md) per group.
 
 ![](groupBy.png)
 
 When the Observable emits an item, a key is computed for this item with the key function.
 
-If a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key exists, this [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) emits. Otherwise, a new
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key is created and emits.
+If a [GroupedObservable](../interfaces/rxjs.groupedobservable.md) for this key exists, this [GroupedObservable](../interfaces/rxjs.groupedobservable.md) emits. Otherwise, a new
+[GroupedObservable](../interfaces/rxjs.groupedobservable.md) for this key is created and emits.
 
-A [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) represents values belonging to the same group represented by a common key. The common
-key is available as the `key` field of a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) instance.
+A [GroupedObservable](../interfaces/rxjs.groupedobservable.md) represents values belonging to the same group represented by a common key. The common
+key is available as the `key` field of a [GroupedObservable](../interfaces/rxjs.groupedobservable.md) instance.
 
-The elements emitted by [GroupedObservable](../interfaces/RxJS.GroupedObservable.md)s are by default the items emitted by the Observable, or elements
+The elements emitted by [GroupedObservable](../interfaces/rxjs.groupedobservable.md)s are by default the items emitted by the Observable, or elements
 returned by the element function.
 
 ## Examples
@@ -5934,26 +5114,24 @@ of(
 
 **`deprecated`** Use the options parameter instead.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `K` |
-| `R` |
+Name |
+:------ |
+`T` |
+`K` |
+`R` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | (`value`: `T`) => `K` | A function that extracts the key for each item. |
-| `element?` | (`value`: `T`) => `R` | A function that extracts the return element for each item. |
-| `duration?` | (`grouped`: [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `R`\>) => [`Observable`](../classes/RxJS.Observable.md)<`any`\> | A function that returns an Observable to determine how long each group should exist. |
-| `connector?` | () => [`Subject`](../classes/RxJS.Subject.md)<`R`\> | Factory function to create an intermediate Subject through which grouped elements are emitted. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`key` | (`value`: T) => K | A function that extracts the key for each item.   |
+`element?` | (`value`: T) => R | A function that extracts the return element for each item.   |
+`duration?` | (`grouped`: [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, R\>) => [*Observable*](../classes/rxjs.observable.md)<any\> |  A function that returns an Observable to determine how long each group should exist.   |
+`connector?` | () => [*Subject*](../classes/rxjs.subject.md)<R\> | Factory function to create an intermediate Subject through which grouped elements are emitted.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `R`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*GroupedObservable*](../interfaces/rxjs.groupedobservable.md)<K, R\>\>
 
 A function that returns an Observable that emits GroupedObservables,
 each of which corresponds to a unique key value and each of which emits
@@ -5963,29 +5141,27 @@ ___
 
 ### identity
 
-▸ **identity**<`T`\>(`x`): `T`
+▸ **identity**<T\>(`x`: T): T
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `x` | `T` |
+Name | Type |
+:------ | :------ |
+`x` | T |
 
-#### Returns
-
-`T`
+**Returns:** T
 
 ___
 
 ### ignoreElements
 
-▸ **ignoreElements**(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `never`\>
+▸ **ignoreElements**(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, never\>
 
 Ignores all items emitted by the source Observable and only passes calls of `complete` or `error`.
 
@@ -6015,9 +5191,7 @@ of('you', 'talking', 'to', 'me').pipe(
 // 'the end'
 ```
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `never`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, never\>
 
 A function that returns an empty Observable that only calls
 `complete` or `error`, based on which one is called by the source
@@ -6027,7 +5201,7 @@ ___
 
 ### iif
 
-▸ **iif**<`T`, `F`\>(`condition`, `trueResult`, `falseResult`): [`Observable`](../classes/RxJS.Observable.md)<`T` \| `F`\>
+▸ **iif**<T, F\>(`condition`: () => *boolean*, `trueResult`: [*ObservableInput*](rxjs.md#observableinput)<T\>, `falseResult`: [*ObservableInput*](rxjs.md#observableinput)<F\>): [*Observable*](../classes/rxjs.observable.md)<T \| F\>
 
 Checks a boolean at subscription time, and chooses between one of two observable sources
 
@@ -6038,7 +5212,7 @@ At the moment of subscription, the `condition` function is called. If the result
 subscription will be to the source passed as the `trueResult`, otherwise, the subscription will be
 to the source passed as the `falseResult`.
 
-If you need to check more than two options to choose between more than one observable, have a look at the [defer](RxJS.md#defer) creation method.
+If you need to check more than two options to choose between more than one observable, have a look at the [defer](rxjs.md#defer) creation method.
 
 ## Examples
 
@@ -6099,26 +5273,24 @@ observableIfYouHaveAccess.subscribe(
 // "The end"
 ```
 
-**`see`** [defer](RxJS.md#defer)
+**`see`** [defer](rxjs.md#defer)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `F` |
+Name |
+:------ |
+`T` |
+`F` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `condition` | () => `boolean` | Condition which Observable should be chosen. |
-| `trueResult` | [`ObservableInput`](RxJS.md#observableinput)<`T`\> | An Observable that will be subscribed if condition is true. |
-| `falseResult` | [`ObservableInput`](RxJS.md#observableinput)<`F`\> | An Observable that will be subscribed if condition is false. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`condition` | () => *boolean* | Condition which Observable should be chosen.   |
+`trueResult` | [*ObservableInput*](rxjs.md#observableinput)<T\> | An Observable that will be subscribed if condition is true.   |
+`falseResult` | [*ObservableInput*](rxjs.md#observableinput)<F\> | An Observable that will be subscribed if condition is false.   |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`T` \| `F`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T \| F\>
 
 An observable that proxies to `trueResult` or `falseResult`, depending on the result of the `condition` function.
 
@@ -6126,10 +5298,10 @@ ___
 
 ### interval
 
-▸ **interval**(`period?`, `scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<`number`\>
+▸ **interval**(`period?`: *number*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<number\>
 
 Creates an Observable that emits sequential numbers every specified
-interval of time, on a specified [SchedulerLike](../interfaces/RxJS.SchedulerLike.md).
+interval of time, on a specified [SchedulerLike](../interfaces/rxjs.schedulerlike.md).
 
 <span class="informal">Emits incremental numbers periodically in time.
 </span>
@@ -6140,8 +5312,8 @@ interval of time, on a specified [SchedulerLike](../interfaces/RxJS.SchedulerLik
 ascending integers, with a constant interval of time of your choosing
 between those emissions. The first emission is not sent immediately, but
 only after the first period has passed. By default, this operator uses the
-`async` [SchedulerLike](../interfaces/RxJS.SchedulerLike.md) to provide a notion of time, but you may pass any
-[SchedulerLike](../interfaces/RxJS.SchedulerLike.md) to it.
+`async` [SchedulerLike](../interfaces/rxjs.schedulerlike.md) to provide a notion of time, but you may pass any
+[SchedulerLike](../interfaces/rxjs.schedulerlike.md) to it.
 
 ## Example
 Emits ascending numbers, one every second (1000ms) up to the number 3
@@ -6162,20 +5334,18 @@ takeFourNumbers.subscribe(x => console.log('Next: ', x));
 // Next: 3
 ```
 
-**`see`** [timer](RxJS.md#timer)
+**`see`** [timer](rxjs.md#timer)
 
-**`see`** [delay](RxJS.md#delay)
+**`see`** [delay](rxjs.md#delay)
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `period?` | `number` |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`period?` | *number* |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`number`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<number\>
 
 An Observable that emits a sequential number each time
 interval.
@@ -6184,7 +5354,7 @@ ___
 
 ### isEmpty
 
-▸ **isEmpty**<`T`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `boolean`\>
+▸ **isEmpty**<T\>(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, boolean\>
 
 Emits `false` if the input Observable emits any values, or emits `true` if the
 input Observable completes without emitting any values.
@@ -6200,7 +5370,7 @@ value, `isEmpty` will emit a `false` and complete.  If the source Observable
 completes having not emitted anything, `isEmpty` will emit a `true` and
 complete.
 
-A similar effect could be achieved with [count](RxJS.md#count), but `isEmpty` can emit
+A similar effect could be achieved with [count](rxjs.md#count), but `isEmpty` can emit
 a `false` value sooner.
 
 ## Examples
@@ -6242,19 +5412,17 @@ result.subscribe(x => console.log(x));
 // true
 ```
 
-**`see`** [count](RxJS.md#count)
+**`see`** [count](rxjs.md#count)
 
 **`see`** {@link index/EMPTY}
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `boolean`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, boolean\>
 
 A function that returns an Observable that emits boolean value
 indicating whether the source Observable was empty or not.
@@ -6263,269 +5431,241 @@ ___
 
 ### isObservable
 
-▸ **isObservable**(`obj`): obj is Observable<unknown\>
+▸ **isObservable**(`obj`: *any*): obj is Observable<unknown\>
 
-Tests to see if the object is an RxJS [Observable](../classes/RxJS.Observable.md)
+Tests to see if the object is an RxJS [Observable](../classes/rxjs.observable.md)
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `obj` | `any` | the object to test |
+Name | Type | Description |
+:------ | :------ | :------ |
+`obj` | *any* | the object to test    |
 
-#### Returns
-
-obj is Observable<unknown\>
+**Returns:** obj is Observable<unknown\>
 
 ___
 
 ### last
 
-▸ **last**<`T`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\>\>
+▸ **last**<T\>(`predicate`: BooleanConstructor): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*TruthyTypesOf*](rxjs.md#truthytypesof)<T\>\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
+Name | Type |
+:------ | :------ |
+`predicate` | BooleanConstructor |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*TruthyTypesOf*](rxjs.md#truthytypesof)<T\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\>\>
+▸ **last**<T, D\>(`predicate`: BooleanConstructor, `defaultValue`: D): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*TruthyTypesOf*](rxjs.md#truthytypesof)<T\> \| D\>
 
-▸ **last**<`T`, `D`\>(`predicate`, `defaultValue`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\> \| `D`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
+`D` |
 
-| Name |
-| :------ |
-| `T` |
-| `D` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`predicate` | BooleanConstructor |
+`defaultValue` | D |
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
-| `defaultValue` | `D` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*TruthyTypesOf*](rxjs.md#truthytypesof)<T\> \| D\>
 
-#### Returns
+▸ **last**<T, D\>(`predicate?`: *null*, `defaultValue?`: D): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| D\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\> \| `D`\>
+#### Type parameters:
 
-▸ **last**<`T`, `D`\>(`predicate?`, `defaultValue?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `D`\>
+Name | Default |
+:------ | :------ |
+`T` | - |
+`D` | T |
 
-#### Type parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `D` | `T` |
+Name | Type |
+:------ | :------ |
+`predicate?` | *null* |
+`defaultValue?` | D |
 
-#### Parameters
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| D\>
 
-| Name | Type |
-| :------ | :------ |
-| `predicate?` | ``null`` |
-| `defaultValue?` | `D` |
+▸ **last**<T, S\>(`predicate`: (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => value is S, `defaultValue?`: S): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S\>
 
-#### Returns
+#### Type parameters:
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `D`\>
+Name |
+:------ |
+`T` |
+`S` |
 
-▸ **last**<`T`, `S`\>(`predicate`, `defaultValue?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S`\>
+#### Parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => value is S |
+`defaultValue?` | S |
 
-| Name |
-| :------ |
-| `T` |
-| `S` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S\>
 
-#### Parameters
+▸ **last**<T, D\>(`predicate`: (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean*, `defaultValue?`: D): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| D\>
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `source`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => value is S |
-| `defaultValue?` | `S` |
+#### Type parameters:
 
-#### Returns
+Name | Default |
+:------ | :------ |
+`T` | - |
+`D` | T |
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S`\>
+#### Parameters:
 
-▸ **last**<`T`, `D`\>(`predicate`, `defaultValue?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `D`\>
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean* |
+`defaultValue?` | D |
 
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `D` | `T` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`, `source`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `boolean` |
-| `defaultValue?` | `D` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `D`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| D\>
 
 ___
 
 ### lastValueFrom
 
-▸ **lastValueFrom**<`T`, `D`\>(`source`, `config`): `Promise`<`T` \| `D`\>
+▸ **lastValueFrom**<T, D\>(`source`: [*Observable*](../classes/rxjs.observable.md)<T\>, `config`: *LastValueFromConfig*<D\>): *Promise*<T \| D\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `D` |
+Name |
+:------ |
+`T` |
+`D` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `source` | [`Observable`](../classes/RxJS.Observable.md)<`T`\> |
-| `config` | `LastValueFromConfig`<`D`\> |
+Name | Type |
+:------ | :------ |
+`source` | [*Observable*](../classes/rxjs.observable.md)<T\> |
+`config` | *LastValueFromConfig*<D\> |
 
-#### Returns
+**Returns:** *Promise*<T \| D\>
 
-`Promise`<`T` \| `D`\>
+▸ **lastValueFrom**<T\>(`source`: [*Observable*](../classes/rxjs.observable.md)<T\>): *Promise*<T\>
 
-▸ **lastValueFrom**<`T`\>(`source`): `Promise`<`T`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`source` | [*Observable*](../classes/rxjs.observable.md)<T\> |
 
-| Name | Type |
-| :------ | :------ |
-| `source` | [`Observable`](../classes/RxJS.Observable.md)<`T`\> |
-
-#### Returns
-
-`Promise`<`T`\>
+**Returns:** *Promise*<T\>
 
 ___
 
 ### map
 
-▸ **map**<`T`, `R`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+▸ **map**<T, R\>(`project`: (`value`: T, `index`: *number*) => R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
+
+#### Type parameters:
+
+Name |
+:------ |
+`T` |
+`R` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => R |
+
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
+
+▸ **map**<T, R, A\>(`project`: (`this`: A, `value`: T, `index`: *number*) => R, `thisArg`: A): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 **`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `R` |
+Name |
+:------ |
+`T` |
+`R` |
+`A` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `R` |
+Name | Type |
+:------ | :------ |
+`project` | (`this`: A, `value`: T, `index`: *number*) => R |
+`thisArg` | A |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
-
-▸ **map**<`T`, `R`, `A`\>(`project`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
-
-**`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-| `R` |
-| `A` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `project` | (`this`: `A`, `value`: `T`, `index`: `number`) => `R` |
-| `thisArg` | `A` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 ___
 
 ### mapTo
 
-▸ **mapTo**<`R`\>(`value`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `R`\>
+▸ **mapTo**<R\>(`value`: R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, R\>
+
+#### Type parameters:
+
+Name |
+:------ |
+`R` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`value` | R |
+
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, R\>
+
+▸ **mapTo**<T, R\>(`value`: R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 **`deprecated`** Do not specify explicit type parameters. Signatures with type parameters that cannot be inferred will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `R` |
+Name |
+:------ |
+`T` |
+`R` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `R` |
+Name | Type |
+:------ | :------ |
+`value` | R |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `R`\>
-
-▸ **mapTo**<`T`, `R`\>(`value`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
-
-**`deprecated`** Do not specify explicit type parameters. Signatures with type parameters that cannot be inferred will be removed in v8.
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-| `R` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `value` | `R` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 ___
 
 ### materialize
 
-▸ **materialize**<`T`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Notification`](../classes/RxJS.Notification.md)<`T`\> & [`ObservableNotification`](RxJS.md#observablenotification)<`T`\>\>
+▸ **materialize**<T\>(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Notification*](../classes/rxjs.notification.md)<T\> & [*ObservableNotification*](rxjs.md#observablenotification)<T\>\>
 
 Represents all of the notifications from the source Observable as `next`
-emissions marked with their original types within [Notification](../classes/RxJS.Notification.md)
+emissions marked with their original types within [Notification](../classes/rxjs.notification.md)
 objects.
 
 <span class="informal">Wraps `next`, `error` and `complete` emissions in
-[Notification](../classes/RxJS.Notification.md) objects, emitted as `next` on the output Observable.
+[Notification](../classes/rxjs.notification.md) objects, emitted as `next` on the output Observable.
 </span>
 
 ![](materialize.png)
@@ -6539,7 +5679,7 @@ Notification of type "error", and then `complete`.
 
 This operator is useful for producing metadata of the source Observable, to
 be consumed as `next` emissions. Use it in conjunction with
-[dematerialize](RxJS.md#dematerialize).
+[dematerialize](rxjs.md#dematerialize).
 
 ## Example
 
@@ -6562,29 +5702,27 @@ materialized.subscribe(x => console.log(x));
 //   [as project] (http://1…, hasValue: false}
 ```
 
-**`see`** [Notification](../classes/RxJS.Notification.md)
+**`see`** [Notification](../classes/rxjs.notification.md)
 
-**`see`** [dematerialize](RxJS.md#dematerialize)
+**`see`** [dematerialize](rxjs.md#dematerialize)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Notification`](../classes/RxJS.Notification.md)<`T`\> & [`ObservableNotification`](RxJS.md#observablenotification)<`T`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Notification*](../classes/rxjs.notification.md)<T\> & [*ObservableNotification*](rxjs.md#observablenotification)<T\>\>
 
 A function that returns an Observable that emits
-[Notification](../classes/RxJS.Notification.md) objects that wrap the original emissions from the
+[Notification](../classes/rxjs.notification.md) objects that wrap the original emissions from the
 source Observable with metadata.
 
 ___
 
 ### max
 
-▸ **max**<`T`\>(`comparer?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **max**<T\>(`comparer?`: (`x`: T, `y`: T) => *number*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 The Max operator operates on an Observable that emits numbers (or items that can be compared with a provided function),
 and when source Observable completes it emits a single item: the item with the largest value.
@@ -6622,23 +5760,21 @@ of(
 .subscribe((x: Person) => console.log(x.name)); // -> 'Beer'
 ```
 
-**`see`** [min](RxJS.md#min)
+**`see`** [min](rxjs.md#min)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `comparer?` | (`x`: `T`, `y`: `T`) => `number` |
+Name | Type |
+:------ | :------ |
+`comparer?` | (`x`: T, `y`: T) => *number* |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that emits item with the
 largest value.
@@ -6647,91 +5783,79 @@ ___
 
 ### merge
 
-▸ **merge**<`A`\>(...`sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
+▸ **merge**<A\>(...`sources`: [...ObservableInputTuple<A\>]): [*Observable*](../classes/rxjs.observable.md)<A[*number*]\>
+
+#### Type parameters:
+
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`...sources` | [...ObservableInputTuple<A\>] |
+
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<A[*number*]\>
+
+▸ **merge**<A\>(...`sourcesAndConcurrency`: [...ObservableInputTuple<A\>, number?]): [*Observable*](../classes/rxjs.observable.md)<A[*number*]\>
+
+#### Type parameters:
+
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`...sourcesAndConcurrency` | [...ObservableInputTuple<A\>, number?] |
+
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<A[*number*]\>
+
+▸ **merge**<A\>(...`sourcesAndScheduler`: [...ObservableInputTuple<A\>, SchedulerLike?]): [*Observable*](../classes/rxjs.observable.md)<A[*number*]\>
 
 **`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `...sources` | [...ObservableInputTuple<A\>[]] |
+Name | Type |
+:------ | :------ |
+`...sourcesAndScheduler` | [...ObservableInputTuple<A\>, SchedulerLike?] |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<A[*number*]\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
-
-▸ **merge**<`A`\>(...`sourcesAndConcurrency`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
+▸ **merge**<A\>(...`sourcesAndConcurrencyAndScheduler`: [...ObservableInputTuple<A\>, number?, SchedulerLike?]): [*Observable*](../classes/rxjs.observable.md)<A[*number*]\>
 
 **`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `...sourcesAndConcurrency` | [...ObservableInputTuple<A\>[], number?] |
+Name | Type |
+:------ | :------ |
+`...sourcesAndConcurrencyAndScheduler` | [...ObservableInputTuple<A\>, number?, SchedulerLike?] |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
-
-▸ **merge**<`A`\>(...`sourcesAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
-
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `...sourcesAndScheduler` | [...ObservableInputTuple<A\>[], SchedulerLike?] |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
-
-▸ **merge**<`A`\>(...`sourcesAndConcurrencyAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
-
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `...sourcesAndConcurrencyAndScheduler` | [...ObservableInputTuple<A\>[], number?, SchedulerLike?] |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<A[*number*]\>
 
 ___
 
 ### mergeAll
 
-▸ **mergeAll**<`O`\>(`concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`O`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **mergeAll**<O\>(`concurrent?`: *number*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<O, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 Converts a higher-order Observable into a first-order Observable which
 concurrently delivers all values that are emitted on the inner Observables.
@@ -6772,41 +5896,39 @@ const firstOrder = higherOrder.pipe(mergeAll(2));
 firstOrder.subscribe(x => console.log(x));
 ```
 
-**`see`** [combineLatestAll](RxJS.md#combinelatestall)
+**`see`** [combineLatestAll](rxjs.md#combinelatestall)
 
-**`see`** [concatAll](RxJS.md#concatall)
+**`see`** [concatAll](rxjs.md#concatall)
 
-**`see`** [exhaustAll](RxJS.md#exhaustall)
+**`see`** [exhaustAll](rxjs.md#exhaustall)
 
-**`see`** [merge](RxJS.md#merge)
+**`see`** [merge](rxjs.md#merge)
 
-**`see`** [mergeMap](RxJS.md#mergemap)
+**`see`** [mergeMap](rxjs.md#mergemap)
 
-**`see`** [mergeMapTo](RxJS.md#mergemapto)
+**`see`** [mergeMapTo](rxjs.md#mergemapto)
 
-**`see`** [mergeScan](RxJS.md#mergescan)
+**`see`** [mergeScan](rxjs.md#mergescan)
 
-**`see`** [switchAll](RxJS.md#switchall)
+**`see`** [switchAll](rxjs.md#switchall)
 
-**`see`** [switchMap](RxJS.md#switchmap)
+**`see`** [switchMap](rxjs.md#switchmap)
 
-**`see`** [zipAll](RxJS.md#zipall)
+**`see`** [zipAll](rxjs.md#zipall)
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `concurrent?` | `number` |
+Name | Type |
+:------ | :------ |
+`concurrent?` | *number* |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`O`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<O, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 A function that returns an Observable that emits values coming from
 all the inner Observables emitted by the source Observable.
@@ -6815,135 +5937,121 @@ ___
 
 ### mergeMap
 
-▸ **mergeMap**<`T`, `O`\>(`project`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **mergeMap**<T, O\>(`project`: (`value`: T, `index`: *number*) => O, `concurrent?`: *number*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+#### Type parameters:
+
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+`concurrent?` | *number* |
+
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+▸ **mergeMap**<T, O\>(`project`: (`value`: T, `index`: *number*) => O, `resultSelector`: *undefined*, `concurrent?`: *number*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 **`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
-| `concurrent?` | `number` |
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+`resultSelector` | *undefined* |
+`concurrent?` | *number* |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **mergeMap**<`T`, `O`\>(`project`, `resultSelector`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
-| `resultSelector` | `undefined` |
-| `concurrent?` | `number` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **mergeMap**<`T`, `R`, `O`\>(`project`, `resultSelector`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+▸ **mergeMap**<T, R, O\>(`project`: (`value`: T, `index`: *number*) => O, `resultSelector`: (`outerValue`: T, `innerValue`: [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>, `outerIndex`: *number*, `innerIndex`: *number*) => R, `concurrent?`: *number*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 **`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `R` | `R` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`R` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
-| `resultSelector` | (`outerValue`: `T`, `innerValue`: [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>, `outerIndex`: `number`, `innerIndex`: `number`) => `R` |
-| `concurrent?` | `number` |
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+`resultSelector` | (`outerValue`: T, `innerValue`: [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>, `outerIndex`: *number*, `innerIndex`: *number*) => R |
+`concurrent?` | *number* |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 ___
 
 ### mergeMapTo
 
-▸ **mergeMapTo**<`O`\>(`innerObservable`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **mergeMapTo**<O\>(`innerObservable`: O, `concurrent?`: *number*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+#### Type parameters:
+
+Name | Type |
+:------ | :------ |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<unknown\> |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`innerObservable` | O |
+`concurrent?` | *number* |
+
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+▸ **mergeMapTo**<T, R, O\>(`innerObservable`: O, `resultSelector`: (`outerValue`: T, `innerValue`: [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>, `outerIndex`: *number*, `innerIndex`: *number*) => R, `concurrent?`: *number*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 **`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`unknown`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`R` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<unknown\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `innerObservable` | `O` |
-| `concurrent?` | `number` |
+Name | Type |
+:------ | :------ |
+`innerObservable` | O |
+`resultSelector` | (`outerValue`: T, `innerValue`: [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>, `outerIndex`: *number*, `innerIndex`: *number*) => R |
+`concurrent?` | *number* |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **mergeMapTo**<`T`, `R`, `O`\>(`innerObservable`, `resultSelector`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
-
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `R` | `R` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`unknown`\> |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `innerObservable` | `O` |
-| `resultSelector` | (`outerValue`: `T`, `innerValue`: [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>, `outerIndex`: `number`, `innerIndex`: `number`) => `R` |
-| `concurrent?` | `number` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 ___
 
 ### mergeScan
 
-▸ **mergeScan**<`T`, `R`\>(`accumulator`, `seed`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+▸ **mergeScan**<T, R\>(`accumulator`: (`acc`: R, `value`: T, `index`: *number*) => [*ObservableInput*](rxjs.md#observableinput)<R\>, `seed`: R, `concurrent?`: *number*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 Applies an accumulator function over the source Observable where the
 accumulator function itself returns an Observable, then each intermediate
 Observable returned is merged into the output Observable.
 
-<span class="informal">It's like [scan](RxJS.md#scan), but the Observables returned
+<span class="informal">It's like [scan](rxjs.md#scan), but the Observables returned
 by the accumulator are merged into the outer Observable.</span>
 
 The first parameter of the `mergeScan` is an `accumulator` function which is
@@ -6992,28 +6100,26 @@ count$.subscribe(x => console.log(x));
 // ...and so on for each click
 ```
 
-**`see`** [scan](RxJS.md#scan)
+**`see`** [scan](rxjs.md#scan)
 
-**`see`** [switchScan](RxJS.md#switchscan)
+**`see`** [switchScan](rxjs.md#switchscan)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `R` |
+Name |
+:------ |
+`T` |
+`R` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `accumulator` | (`acc`: `R`, `value`: `T`, `index`: `number`) => [`ObservableInput`](RxJS.md#observableinput)<`R`\> | The accumulator function called on each source value. |
-| `seed` | `R` | The initial accumulation value. |
-| `concurrent?` | `number` | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`accumulator` | (`acc`: R, `value`: T, `index`: *number*) => [*ObservableInput*](rxjs.md#observableinput)<R\> |  The accumulator function called on each source value.   |
+`seed` | R | The initial accumulation value.   |
+`concurrent?` | *number* | - |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 A function that returns an Observable of the accumulated values.
 
@@ -7021,7 +6127,7 @@ ___
 
 ### mergeWith
 
-▸ **mergeWith**<`T`, `A`\>(...`otherSources`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
+▸ **mergeWith**<T, A\>(...`otherSources`: [...ObservableInputTuple<A\>]): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| A[*number*]\>
 
 Merge the values from all observables to an single observable result.
 
@@ -7059,22 +6165,20 @@ mousemoves$.pipe(
 // "dblclick"
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`A` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `...otherSources` | [...ObservableInputTuple<A\>[]] | the sources to combine the current source with. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`...otherSources` | [...ObservableInputTuple<A\>] | the sources to combine the current source with.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| A[*number*]\>
 
 A function that returns an Observable that merges the values from
 all given Observables.
@@ -7083,7 +6187,7 @@ ___
 
 ### min
 
-▸ **min**<`T`\>(`comparer?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **min**<T\>(`comparer?`: (`x`: T, `y`: T) => *number*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 The Min operator operates on an Observable that emits numbers (or items that can be compared with a provided function),
 and when source Observable completes it emits a single item: the item with the smallest value.
@@ -7121,23 +6225,21 @@ of(
 .subscribe((x: Person) => console.log(x.name)); // -> 'Bar'
 ```
 
-**`see`** [max](RxJS.md#max)
+**`see`** [max](rxjs.md#max)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `comparer?` | (`x`: `T`, `y`: `T`) => `number` |
+Name | Type |
+:------ | :------ |
+`comparer?` | (`x`: T, `y`: T) => *number* |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that emits item with the
 smallest value.
@@ -7146,125 +6248,117 @@ ___
 
 ### multicast
 
-▸ **multicast**<`T`\>(`subject`): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`ConnectableObservable`](../classes/RxJS.ConnectableObservable.md)<`T`\>\>
+▸ **multicast**<T\>(`subject`: [*Subject*](../classes/rxjs.subject.md)<T\>): [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<[*Observable*](../classes/rxjs.observable.md)<T\>, [*ConnectableObservable*](../classes/rxjs.connectableobservable.md)<T\>\>
 
-An operator that creates a [ConnectableObservable](../classes/RxJS.ConnectableObservable.md), that when connected,
+An operator that creates a [ConnectableObservable](../classes/rxjs.connectableobservable.md), that when connected,
 with the `connect` method, will use the provided subject to multicast the values
 from the source to all consumers.
 
-**`deprecated`** Will be removed in v8. To create a connectable observable, use [connectable](RxJS.md#connectable).
-If you're using [refCount](RxJS.md#refcount) after `multicast`, use the [share](RxJS.md#share) operator instead.
+**`deprecated`** Will be removed in v8. To create a connectable observable, use [connectable](rxjs.md#connectable).
+If you're using [refCount](rxjs.md#refcount) after `multicast`, use the [share](rxjs.md#share) operator instead.
 `multicast(subject), refCount()` is equivalent to
 `share({ connector: () => subject, resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false })`.
 Details: https://rxjs.dev/deprecations/multicasting
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `subject` | [`Subject`](../classes/RxJS.Subject.md)<`T`\> | The subject to multicast through. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`subject` | [*Subject*](../classes/rxjs.subject.md)<T\> | The subject to multicast through.   |
 
-#### Returns
+**Returns:** [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<[*Observable*](../classes/rxjs.observable.md)<T\>, [*ConnectableObservable*](../classes/rxjs.connectableobservable.md)<T\>\>
 
-[`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`ConnectableObservable`](../classes/RxJS.ConnectableObservable.md)<`T`\>\>
+A function that returns a [ConnectableObservable](../classes/rxjs.connectableobservable.md)
 
-A function that returns a [ConnectableObservable](../classes/RxJS.ConnectableObservable.md)
+▸ **multicast**<T, O\>(`subject`: [*Subject*](../classes/rxjs.subject.md)<T\>, `selector`: (`shared`: [*Observable*](../classes/rxjs.observable.md)<T\>) => O): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-▸ **multicast**<`T`, `O`\>(`subject`, `selector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-Because this is deprecated in favor of the [connect](RxJS.md#connect) operator, and was otherwise poorly documented,
+Because this is deprecated in favor of the [connect](rxjs.md#connect) operator, and was otherwise poorly documented,
 rather than duplicate the effort of documenting the same behavior, please see documentation for the
-[connect](RxJS.md#connect) operator.
+[connect](rxjs.md#connect) operator.
 
-**`deprecated`** Will be removed in v8. Use the [connect](RxJS.md#connect) operator instead.
+**`deprecated`** Will be removed in v8. Use the [connect](rxjs.md#connect) operator instead.
 `multicast(subject, selector)` is equivalent to
 `connect(selector, { connector: () => subject })`.
 Details: https://rxjs.dev/deprecations/multicasting
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `subject` | [`Subject`](../classes/RxJS.Subject.md)<`T`\> | The subject used to multicast. |
-| `selector` | (`shared`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `O` | A setup function to setup the multicast |
+Name | Type | Description |
+:------ | :------ | :------ |
+`subject` | [*Subject*](../classes/rxjs.subject.md)<T\> | The subject used to multicast.   |
+`selector` | (`shared`: [*Observable*](../classes/rxjs.observable.md)<T\>) => O | A setup function to setup the multicast   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 A function that returns an observable that mirrors the observable returned by the selector.
 
-▸ **multicast**<`T`\>(`subjectFactory`): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`ConnectableObservable`](../classes/RxJS.ConnectableObservable.md)<`T`\>\>
+▸ **multicast**<T\>(`subjectFactory`: () => [*Subject*](../classes/rxjs.subject.md)<T\>): [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<[*Observable*](../classes/rxjs.observable.md)<T\>, [*ConnectableObservable*](../classes/rxjs.connectableobservable.md)<T\>\>
 
-An operator that creates a [ConnectableObservable](../classes/RxJS.ConnectableObservable.md), that when connected,
+An operator that creates a [ConnectableObservable](../classes/rxjs.connectableobservable.md), that when connected,
 with the `connect` method, will use the provided subject to multicast the values
 from the source to all consumers.
 
-**`deprecated`** Will be removed in v8. To create a connectable observable, use [connectable](RxJS.md#connectable).
-If you're using [refCount](RxJS.md#refcount) after `multicast`, use the [share](RxJS.md#share) operator instead.
+**`deprecated`** Will be removed in v8. To create a connectable observable, use [connectable](rxjs.md#connectable).
+If you're using [refCount](rxjs.md#refcount) after `multicast`, use the [share](rxjs.md#share) operator instead.
 `multicast(() => new BehaviorSubject('test')), refCount()` is equivalent to
 `share({ connector: () => new BehaviorSubject('test') })`.
 Details: https://rxjs.dev/deprecations/multicasting
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `subjectFactory` | () => [`Subject`](../classes/RxJS.Subject.md)<`T`\> | A factory that will be called to create the subject. Passing a function here will cause the underlying subject to be "reset" on error, completion, or refCounted unsubscription of the source. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`subjectFactory` | () => [*Subject*](../classes/rxjs.subject.md)<T\> | A factory that will be called to create the subject. Passing a function here will cause the underlying subject to be "reset" on error, completion, or refCounted unsubscription of the source.   |
 
-#### Returns
+**Returns:** [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<[*Observable*](../classes/rxjs.observable.md)<T\>, [*ConnectableObservable*](../classes/rxjs.connectableobservable.md)<T\>\>
 
-[`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`ConnectableObservable`](../classes/RxJS.ConnectableObservable.md)<`T`\>\>
+A function that returns a [ConnectableObservable](../classes/rxjs.connectableobservable.md)
 
-A function that returns a [ConnectableObservable](../classes/RxJS.ConnectableObservable.md)
+▸ **multicast**<T, O\>(`subjectFactory`: () => [*Subject*](../classes/rxjs.subject.md)<T\>, `selector`: (`shared`: [*Observable*](../classes/rxjs.observable.md)<T\>) => O): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-▸ **multicast**<`T`, `O`\>(`subjectFactory`, `selector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-Because this is deprecated in favor of the [connect](RxJS.md#connect) operator, and was otherwise poorly documented,
+Because this is deprecated in favor of the [connect](rxjs.md#connect) operator, and was otherwise poorly documented,
 rather than duplicate the effort of documenting the same behavior, please see documentation for the
-[connect](RxJS.md#connect) operator.
+[connect](rxjs.md#connect) operator.
 
-**`deprecated`** Will be removed in v8. Use the [connect](RxJS.md#connect) operator instead.
+**`deprecated`** Will be removed in v8. Use the [connect](rxjs.md#connect) operator instead.
 `multicast(subjectFactory, selector)` is equivalent to
 `connect(selector, { connector: subjectFactory })`.
 Details: https://rxjs.dev/deprecations/multicasting
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `subjectFactory` | () => [`Subject`](../classes/RxJS.Subject.md)<`T`\> | A factory that creates the subject used to multicast. |
-| `selector` | (`shared`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `O` | A function to setup the multicast and select the output. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`subjectFactory` | () => [*Subject*](../classes/rxjs.subject.md)<T\> | A factory that creates the subject used to multicast.   |
+`selector` | (`shared`: [*Observable*](../classes/rxjs.observable.md)<T\>) => O | A function to setup the multicast and select the output.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 A function that returns an observable that mirrors the observable returned by the selector.
 
@@ -7272,29 +6366,25 @@ ___
 
 ### never
 
-▸ **never**(): [`Observable`](../classes/RxJS.Observable.md)<`never`\>
+▸ **never**(): [*Observable*](../classes/rxjs.observable.md)<never\>
 
-**`deprecated`** Replaced with the [NEVER](RxJS.md#never) constant. Will be removed in v8.
+**`deprecated`** Replaced with the [NEVER](rxjs.md#never) constant. Will be removed in v8.
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`never`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<never\>
 
 ___
 
 ### noop
 
-▸ **noop**(): `void`
+▸ **noop**(): *void*
 
-#### Returns
-
-`void`
+**Returns:** *void*
 
 ___
 
 ### observeOn
 
-▸ **observeOn**<`T`\>(`scheduler`, `delay?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **observeOn**<T\>(`scheduler`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md), `delay?`: *number*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Re-emits all notifications from source Observable with specified scheduler.
 
@@ -7314,7 +6404,7 @@ Observable directly (usually into the operator that creates it). `observeOn` sim
 little bit more, to ensure that they are emitted at expected moments.
 
 As a matter of fact, `observeOn` accepts second parameter, which specifies in milliseconds with what delay notifications
-will be emitted. The main difference between [delay](RxJS.md#delay) operator and `observeOn` is that `observeOn`
+will be emitted. The main difference between [delay](rxjs.md#delay) operator and `observeOn` is that `observeOn`
 will delay all notifications - including error notifications - while `delay` will pass through error
 from source Observable immediately when it is emitted. In general it is highly recommended to use `delay` operator
 for any kind of delaying of values in the stream, while using `observeOn` to specify which scheduler should be used
@@ -7339,24 +6429,22 @@ intervals.pipe(
 });
 ```
 
-**`see`** [delay](RxJS.md#delay)
+**`see`** [delay](rxjs.md#delay)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `scheduler` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | Scheduler that will be used to reschedule notifications from source Observable. |
-| `delay?` | `number` | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`scheduler` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | Scheduler that will be used to reschedule notifications from source Observable.   |
+`delay?` | *number* | - |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that emits the same
 notifications as the source Observable, but with provided scheduler.
@@ -7365,247 +6453,219 @@ ___
 
 ### of
 
-▸ **of**(`value`): [`Observable`](../classes/RxJS.Observable.md)<``null``\>
+▸ **of**(`value`: *null*): [*Observable*](../classes/rxjs.observable.md)<*null*\>
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `value` | ``null`` |
+Name | Type |
+:------ | :------ |
+`value` | *null* |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<*null*\>
 
-[`Observable`](../classes/RxJS.Observable.md)<``null``\>
+▸ **of**(`value`: *undefined*): [*Observable*](../classes/rxjs.observable.md)<undefined\>
 
-▸ **of**(`value`): [`Observable`](../classes/RxJS.Observable.md)<`undefined`\>
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`value` | *undefined* |
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `undefined` |
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<undefined\>
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`undefined`\>
-
-▸ **of**(`scheduler`): [`Observable`](../classes/RxJS.Observable.md)<`never`\>
+▸ **of**(`scheduler`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<never\>
 
 **`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `scheduler` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`scheduler` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<never\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`never`\>
-
-▸ **of**<`A`\>(...`valuesAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<[`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+▸ **of**<A\>(...`valuesAndScheduler`: [...A, [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)]): [*Observable*](../classes/rxjs.observable.md)<[*ValueFromArray*](rxjs.md#valuefromarray)<A\>\>
 
 **`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `...valuesAndScheduler` | [...A[], [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md)] |
+Name | Type |
+:------ | :------ |
+`...valuesAndScheduler` | [...A, [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)] |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<[*ValueFromArray*](rxjs.md#valuefromarray)<A\>\>
 
-[`Observable`](../classes/RxJS.Observable.md)<[`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+▸ **of**(): [*Observable*](../classes/rxjs.observable.md)<never\>
 
-▸ **of**(): [`Observable`](../classes/RxJS.Observable.md)<`never`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<never\>
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`never`\>
-
-▸ **of**<`T`\>(): [`Observable`](../classes/RxJS.Observable.md)<`T`\>
+▸ **of**<T\>(): [*Observable*](../classes/rxjs.observable.md)<T\>
 
 **`deprecated`** Do not specify explicit type parameters. Signatures with type parameters that cannot be inferred will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`T`\>
+▸ **of**<T\>(`value`: T): [*Observable*](../classes/rxjs.observable.md)<T\>
 
-▸ **of**<`T`\>(`value`): [`Observable`](../classes/RxJS.Observable.md)<`T`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`value` | T |
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `T` |
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T\>
 
-#### Returns
+▸ **of**<A\>(...`values`: A): [*Observable*](../classes/rxjs.observable.md)<[*ValueFromArray*](rxjs.md#valuefromarray)<A\>\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`T`\>
+#### Type parameters:
 
-▸ **of**<`A`\>(...`values`): [`Observable`](../classes/RxJS.Observable.md)<[`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
 
-#### Type parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`...values` | A |
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `...values` | `A` |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<[`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<[*ValueFromArray*](rxjs.md#valuefromarray)<A\>\>
 
 ___
 
 ### onErrorResumeNext
 
-▸ **onErrorResumeNext**<`A`\>(`sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
+▸ **onErrorResumeNext**<A\>(`sources`: [...ObservableInputTuple<A\>]): [*Observable*](../classes/rxjs.observable.md)<A[*number*]\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `sources` | [...ObservableInputTuple<A\>[]] |
+Name | Type |
+:------ | :------ |
+`sources` | [...ObservableInputTuple<A\>] |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<A[*number*]\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
+▸ **onErrorResumeNext**<A\>(...`sources`: [...ObservableInputTuple<A\>]): [*Observable*](../classes/rxjs.observable.md)<A[*number*]\>
 
-▸ **onErrorResumeNext**<`A`\>(...`sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
+#### Type parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`...sources` | [...ObservableInputTuple<A\>] |
 
-| Name | Type |
-| :------ | :------ |
-| `...sources` | [...ObservableInputTuple<A\>[]] |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<A[*number*]\>
 
 ___
 
 ### pairs
 
-▸ **pairs**<`T`\>(`arr`, `scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<[`string`, `T`]\>
+▸ **pairs**<T\>(`arr`: readonly T[], `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<[*string*, T]\>
 
 **`deprecated`** Use `from(Object.entries(obj))` instead. Will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `arr` | readonly `T`[] |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`arr` | readonly T[] |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<[*string*, T]\>
 
-[`Observable`](../classes/RxJS.Observable.md)<[`string`, `T`]\>
-
-▸ **pairs**<`O`\>(`obj`, `scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<[keyof `O`, `O`[keyof `O`]]\>
+▸ **pairs**<O\>(`obj`: O, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<[keyof O, O[keyof O]]\>
 
 **`deprecated`** Use `from(Object.entries(obj))` instead. Will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `O` | extends `Record`<`string`, `unknown`\> |
+Name | Type |
+:------ | :------ |
+`O` | *Record*<string, unknown\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `obj` | `O` |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`obj` | O |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<[keyof O, O[keyof O]]\>
 
-[`Observable`](../classes/RxJS.Observable.md)<[keyof `O`, `O`[keyof `O`]]\>
-
-▸ **pairs**<`T`\>(`iterable`, `scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<[`string`, `T`]\>
+▸ **pairs**<T\>(`iterable`: *Iterable*<T\>, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<[*string*, T]\>
 
 **`deprecated`** Use `from(Object.entries(obj))` instead. Will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `iterable` | `Iterable`<`T`\> |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`iterable` | *Iterable*<T\> |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<[*string*, T]\>
 
-[`Observable`](../classes/RxJS.Observable.md)<[`string`, `T`]\>
-
-▸ **pairs**(`n`, `scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<[`never`, `never`]\>
+▸ **pairs**(`n`: *number* \| *bigint* \| *boolean* \| (...`args`: *any*[]) => *any* \| *symbol*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<[*never*, *never*]\>
 
 **`deprecated`** Use `from(Object.entries(obj))` instead. Will be removed in v8.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `n` | `number` \| `bigint` \| `boolean` \| `symbol` \| (...`args`: `any`[]) => `any` |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`n` | *number* \| *bigint* \| *boolean* \| (...`args`: *any*[]) => *any* \| *symbol* |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<[`never`, `never`]\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<[*never*, *never*]\>
 
 ___
 
 ### pairwise
 
-▸ **pairwise**<`T`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`T`, `T`]\>
+▸ **pairwise**<T\>(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [T, T]\>
 
 Groups pairs of consecutive emissions together and emits them as an array of
 two values.
@@ -7641,19 +6701,17 @@ const distance = pairs.pipe(
 distance.subscribe(x => console.log(x));
 ```
 
-**`see`** [buffer](RxJS.md#buffer)
+**`see`** [buffer](rxjs.md#buffer)
 
-**`see`** [bufferCount](RxJS.md#buffercount)
+**`see`** [bufferCount](rxjs.md#buffercount)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`T`, `T`]\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [T, T]\>
 
 A function that returns an Observable of pairs (as arrays) of
 consecutive values from the source Observable.
@@ -7662,681 +6720,629 @@ ___
 
 ### partition
 
-▸ **partition**<`T`, `U`, `A`\>(`source`, `predicate`, `thisArg`): [[`Observable`](../classes/RxJS.Observable.md)<`U`\>, [`Observable`](../classes/RxJS.Observable.md)<`Exclude`<`T`, `U`\>\>]
+▸ **partition**<T, U, A\>(`source`: [*ObservableInput*](rxjs.md#observableinput)<T\>, `predicate`: (`this`: A, `value`: T, `index`: *number*) => value is U, `thisArg`: A): [[*Observable*](../classes/rxjs.observable.md)<U\>, [*Observable*](../classes/rxjs.observable.md)<Exclude<T, U\>\>]
 
 **`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `U` |
-| `A` |
+Name |
+:------ |
+`T` |
+`U` |
+`A` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `source` | [`ObservableInput`](RxJS.md#observableinput)<`T`\> |
-| `predicate` | (`this`: `A`, `value`: `T`, `index`: `number`) => value is U |
-| `thisArg` | `A` |
+Name | Type |
+:------ | :------ |
+`source` | [*ObservableInput*](rxjs.md#observableinput)<T\> |
+`predicate` | (`this`: A, `value`: T, `index`: *number*) => value is U |
+`thisArg` | A |
 
-#### Returns
+**Returns:** [[*Observable*](../classes/rxjs.observable.md)<U\>, [*Observable*](../classes/rxjs.observable.md)<Exclude<T, U\>\>]
 
-[[`Observable`](../classes/RxJS.Observable.md)<`U`\>, [`Observable`](../classes/RxJS.Observable.md)<`Exclude`<`T`, `U`\>\>]
+▸ **partition**<T, U\>(`source`: [*ObservableInput*](rxjs.md#observableinput)<T\>, `predicate`: (`value`: T, `index`: *number*) => value is U): [[*Observable*](../classes/rxjs.observable.md)<U\>, [*Observable*](../classes/rxjs.observable.md)<Exclude<T, U\>\>]
 
-▸ **partition**<`T`, `U`\>(`source`, `predicate`): [[`Observable`](../classes/RxJS.Observable.md)<`U`\>, [`Observable`](../classes/RxJS.Observable.md)<`Exclude`<`T`, `U`\>\>]
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
+`U` |
 
-| Name |
-| :------ |
-| `T` |
-| `U` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`source` | [*ObservableInput*](rxjs.md#observableinput)<T\> |
+`predicate` | (`value`: T, `index`: *number*) => value is U |
 
-| Name | Type |
-| :------ | :------ |
-| `source` | [`ObservableInput`](RxJS.md#observableinput)<`T`\> |
-| `predicate` | (`value`: `T`, `index`: `number`) => value is U |
+**Returns:** [[*Observable*](../classes/rxjs.observable.md)<U\>, [*Observable*](../classes/rxjs.observable.md)<Exclude<T, U\>\>]
 
-#### Returns
-
-[[`Observable`](../classes/RxJS.Observable.md)<`U`\>, [`Observable`](../classes/RxJS.Observable.md)<`Exclude`<`T`, `U`\>\>]
-
-▸ **partition**<`T`, `A`\>(`source`, `predicate`, `thisArg`): [[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`Observable`](../classes/RxJS.Observable.md)<`T`\>]
+▸ **partition**<T, A\>(`source`: [*ObservableInput*](rxjs.md#observableinput)<T\>, `predicate`: (`this`: A, `value`: T, `index`: *number*) => *boolean*, `thisArg`: A): [[*Observable*](../classes/rxjs.observable.md)<T\>, [*Observable*](../classes/rxjs.observable.md)<T\>]
 
 **`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `A` |
+Name |
+:------ |
+`T` |
+`A` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `source` | [`ObservableInput`](RxJS.md#observableinput)<`T`\> |
-| `predicate` | (`this`: `A`, `value`: `T`, `index`: `number`) => `boolean` |
-| `thisArg` | `A` |
+Name | Type |
+:------ | :------ |
+`source` | [*ObservableInput*](rxjs.md#observableinput)<T\> |
+`predicate` | (`this`: A, `value`: T, `index`: *number*) => *boolean* |
+`thisArg` | A |
 
-#### Returns
+**Returns:** [[*Observable*](../classes/rxjs.observable.md)<T\>, [*Observable*](../classes/rxjs.observable.md)<T\>]
 
-[[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`Observable`](../classes/RxJS.Observable.md)<`T`\>]
+▸ **partition**<T\>(`source`: [*ObservableInput*](rxjs.md#observableinput)<T\>, `predicate`: (`value`: T, `index`: *number*) => *boolean*): [[*Observable*](../classes/rxjs.observable.md)<T\>, [*Observable*](../classes/rxjs.observable.md)<T\>]
 
-▸ **partition**<`T`\>(`source`, `predicate`): [[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`Observable`](../classes/RxJS.Observable.md)<`T`\>]
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`source` | [*ObservableInput*](rxjs.md#observableinput)<T\> |
+`predicate` | (`value`: T, `index`: *number*) => *boolean* |
 
-| Name | Type |
-| :------ | :------ |
-| `source` | [`ObservableInput`](RxJS.md#observableinput)<`T`\> |
-| `predicate` | (`value`: `T`, `index`: `number`) => `boolean` |
-
-#### Returns
-
-[[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`Observable`](../classes/RxJS.Observable.md)<`T`\>]
+**Returns:** [[*Observable*](../classes/rxjs.observable.md)<T\>, [*Observable*](../classes/rxjs.observable.md)<T\>]
 
 ___
 
 ### pipe
 
-▸ **pipe**(): typeof [`identity`](RxJS.md#identity)
+▸ **pipe**(): *typeof* [*identity*](rxjs.md#identity)
 
-#### Returns
+**Returns:** *typeof* [*identity*](rxjs.md#identity)
 
-typeof [`identity`](RxJS.md#identity)
+▸ **pipe**<T, A\>(`fn1`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\>): [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\>
 
-▸ **pipe**<`T`, `A`\>(`fn1`): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `A`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
+`A` |
 
-| Name |
-| :------ |
-| `T` |
-| `A` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`fn1` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\> |
 
-| Name | Type |
-| :------ | :------ |
-| `fn1` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `A`\> |
+**Returns:** [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\>
 
-#### Returns
+▸ **pipe**<T, A, B\>(`fn1`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\>, `fn2`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\>): [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, B\>
 
-[`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `A`\>
+#### Type parameters:
 
-▸ **pipe**<`T`, `A`, `B`\>(`fn1`, `fn2`): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `B`\>
+Name |
+:------ |
+`T` |
+`A` |
+`B` |
 
-#### Type parameters
+#### Parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `A` |
-| `B` |
+Name | Type |
+:------ | :------ |
+`fn1` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\> |
+`fn2` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\> |
 
-#### Parameters
+**Returns:** [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, B\>
 
-| Name | Type |
-| :------ | :------ |
-| `fn1` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `A`\> |
-| `fn2` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`A`, `B`\> |
+▸ **pipe**<T, A, B, C\>(`fn1`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\>, `fn2`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\>, `fn3`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\>): [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, C\>
 
-#### Returns
+#### Type parameters:
 
-[`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `B`\>
+Name |
+:------ |
+`T` |
+`A` |
+`B` |
+`C` |
 
-▸ **pipe**<`T`, `A`, `B`, `C`\>(`fn1`, `fn2`, `fn3`): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `C`\>
+#### Parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`fn1` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\> |
+`fn2` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\> |
+`fn3` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\> |
 
-| Name |
-| :------ |
-| `T` |
-| `A` |
-| `B` |
-| `C` |
+**Returns:** [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, C\>
 
-#### Parameters
+▸ **pipe**<T, A, B, C, D\>(`fn1`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\>, `fn2`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\>, `fn3`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\>, `fn4`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<C, D\>): [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, D\>
 
-| Name | Type |
-| :------ | :------ |
-| `fn1` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `A`\> |
-| `fn2` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`A`, `B`\> |
-| `fn3` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`B`, `C`\> |
+#### Type parameters:
 
-#### Returns
+Name |
+:------ |
+`T` |
+`A` |
+`B` |
+`C` |
+`D` |
 
-[`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `C`\>
+#### Parameters:
 
-▸ **pipe**<`T`, `A`, `B`, `C`, `D`\>(`fn1`, `fn2`, `fn3`, `fn4`): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `D`\>
+Name | Type |
+:------ | :------ |
+`fn1` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\> |
+`fn2` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\> |
+`fn3` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\> |
+`fn4` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<C, D\> |
 
-#### Type parameters
+**Returns:** [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, D\>
 
-| Name |
-| :------ |
-| `T` |
-| `A` |
-| `B` |
-| `C` |
-| `D` |
+▸ **pipe**<T, A, B, C, D, E\>(`fn1`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\>, `fn2`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\>, `fn3`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\>, `fn4`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<C, D\>, `fn5`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<D, E\>): [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, E\>
 
-#### Parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `fn1` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `A`\> |
-| `fn2` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`A`, `B`\> |
-| `fn3` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`B`, `C`\> |
-| `fn4` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`C`, `D`\> |
+Name |
+:------ |
+`T` |
+`A` |
+`B` |
+`C` |
+`D` |
+`E` |
 
-#### Returns
+#### Parameters:
 
-[`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `D`\>
-
-▸ **pipe**<`T`, `A`, `B`, `C`, `D`, `E`\>(`fn1`, `fn2`, `fn3`, `fn4`, `fn5`): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `E`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-| `A` |
-| `B` |
-| `C` |
-| `D` |
-| `E` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `fn1` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `A`\> |
-| `fn2` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`A`, `B`\> |
-| `fn3` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`B`, `C`\> |
-| `fn4` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`C`, `D`\> |
-| `fn5` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`D`, `E`\> |
-
-#### Returns
-
-[`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `E`\>
-
-▸ **pipe**<`T`, `A`, `B`, `C`, `D`, `E`, `F`\>(`fn1`, `fn2`, `fn3`, `fn4`, `fn5`, `fn6`): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `F`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-| `A` |
-| `B` |
-| `C` |
-| `D` |
-| `E` |
-| `F` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `fn1` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `A`\> |
-| `fn2` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`A`, `B`\> |
-| `fn3` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`B`, `C`\> |
-| `fn4` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`C`, `D`\> |
-| `fn5` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`D`, `E`\> |
-| `fn6` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`E`, `F`\> |
-
-#### Returns
-
-[`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `F`\>
-
-▸ **pipe**<`T`, `A`, `B`, `C`, `D`, `E`, `F`, `G`\>(`fn1`, `fn2`, `fn3`, `fn4`, `fn5`, `fn6`, `fn7`): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `G`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-| `A` |
-| `B` |
-| `C` |
-| `D` |
-| `E` |
-| `F` |
-| `G` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `fn1` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `A`\> |
-| `fn2` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`A`, `B`\> |
-| `fn3` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`B`, `C`\> |
-| `fn4` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`C`, `D`\> |
-| `fn5` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`D`, `E`\> |
-| `fn6` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`E`, `F`\> |
-| `fn7` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`F`, `G`\> |
-
-#### Returns
-
-[`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `G`\>
-
-▸ **pipe**<`T`, `A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`\>(`fn1`, `fn2`, `fn3`, `fn4`, `fn5`, `fn6`, `fn7`, `fn8`): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `H`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-| `A` |
-| `B` |
-| `C` |
-| `D` |
-| `E` |
-| `F` |
-| `G` |
-| `H` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `fn1` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `A`\> |
-| `fn2` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`A`, `B`\> |
-| `fn3` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`B`, `C`\> |
-| `fn4` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`C`, `D`\> |
-| `fn5` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`D`, `E`\> |
-| `fn6` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`E`, `F`\> |
-| `fn7` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`F`, `G`\> |
-| `fn8` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`G`, `H`\> |
-
-#### Returns
-
-[`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `H`\>
-
-▸ **pipe**<`T`, `A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`, `I`\>(`fn1`, `fn2`, `fn3`, `fn4`, `fn5`, `fn6`, `fn7`, `fn8`, `fn9`): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `I`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-| `A` |
-| `B` |
-| `C` |
-| `D` |
-| `E` |
-| `F` |
-| `G` |
-| `H` |
-| `I` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `fn1` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `A`\> |
-| `fn2` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`A`, `B`\> |
-| `fn3` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`B`, `C`\> |
-| `fn4` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`C`, `D`\> |
-| `fn5` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`D`, `E`\> |
-| `fn6` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`E`, `F`\> |
-| `fn7` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`F`, `G`\> |
-| `fn8` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`G`, `H`\> |
-| `fn9` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`H`, `I`\> |
-
-#### Returns
-
-[`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `I`\>
-
-▸ **pipe**<`T`, `A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`, `I`\>(`fn1`, `fn2`, `fn3`, `fn4`, `fn5`, `fn6`, `fn7`, `fn8`, `fn9`, ...`fns`): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `unknown`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-| `A` |
-| `B` |
-| `C` |
-| `D` |
-| `E` |
-| `F` |
-| `G` |
-| `H` |
-| `I` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `fn1` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `A`\> |
-| `fn2` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`A`, `B`\> |
-| `fn3` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`B`, `C`\> |
-| `fn4` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`C`, `D`\> |
-| `fn5` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`D`, `E`\> |
-| `fn6` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`E`, `F`\> |
-| `fn7` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`F`, `G`\> |
-| `fn8` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`G`, `H`\> |
-| `fn9` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`H`, `I`\> |
-| `...fns` | [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`any`, `any`\>[] |
-
-#### Returns
-
-[`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `unknown`\>
+Name | Type |
+:------ | :------ |
+`fn1` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\> |
+`fn2` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\> |
+`fn3` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\> |
+`fn4` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<C, D\> |
+`fn5` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<D, E\> |
+
+**Returns:** [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, E\>
+
+▸ **pipe**<T, A, B, C, D, E, F\>(`fn1`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\>, `fn2`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\>, `fn3`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\>, `fn4`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<C, D\>, `fn5`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<D, E\>, `fn6`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<E, F\>): [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, F\>
+
+#### Type parameters:
+
+Name |
+:------ |
+`T` |
+`A` |
+`B` |
+`C` |
+`D` |
+`E` |
+`F` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`fn1` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\> |
+`fn2` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\> |
+`fn3` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\> |
+`fn4` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<C, D\> |
+`fn5` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<D, E\> |
+`fn6` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<E, F\> |
+
+**Returns:** [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, F\>
+
+▸ **pipe**<T, A, B, C, D, E, F, G\>(`fn1`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\>, `fn2`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\>, `fn3`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\>, `fn4`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<C, D\>, `fn5`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<D, E\>, `fn6`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<E, F\>, `fn7`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<F, G\>): [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, G\>
+
+#### Type parameters:
+
+Name |
+:------ |
+`T` |
+`A` |
+`B` |
+`C` |
+`D` |
+`E` |
+`F` |
+`G` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`fn1` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\> |
+`fn2` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\> |
+`fn3` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\> |
+`fn4` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<C, D\> |
+`fn5` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<D, E\> |
+`fn6` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<E, F\> |
+`fn7` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<F, G\> |
+
+**Returns:** [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, G\>
+
+▸ **pipe**<T, A, B, C, D, E, F, G, H\>(`fn1`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\>, `fn2`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\>, `fn3`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\>, `fn4`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<C, D\>, `fn5`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<D, E\>, `fn6`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<E, F\>, `fn7`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<F, G\>, `fn8`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<G, H\>): [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, H\>
+
+#### Type parameters:
+
+Name |
+:------ |
+`T` |
+`A` |
+`B` |
+`C` |
+`D` |
+`E` |
+`F` |
+`G` |
+`H` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`fn1` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\> |
+`fn2` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\> |
+`fn3` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\> |
+`fn4` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<C, D\> |
+`fn5` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<D, E\> |
+`fn6` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<E, F\> |
+`fn7` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<F, G\> |
+`fn8` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<G, H\> |
+
+**Returns:** [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, H\>
+
+▸ **pipe**<T, A, B, C, D, E, F, G, H, I\>(`fn1`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\>, `fn2`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\>, `fn3`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\>, `fn4`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<C, D\>, `fn5`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<D, E\>, `fn6`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<E, F\>, `fn7`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<F, G\>, `fn8`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<G, H\>, `fn9`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<H, I\>): [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, I\>
+
+#### Type parameters:
+
+Name |
+:------ |
+`T` |
+`A` |
+`B` |
+`C` |
+`D` |
+`E` |
+`F` |
+`G` |
+`H` |
+`I` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`fn1` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\> |
+`fn2` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\> |
+`fn3` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\> |
+`fn4` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<C, D\> |
+`fn5` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<D, E\> |
+`fn6` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<E, F\> |
+`fn7` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<F, G\> |
+`fn8` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<G, H\> |
+`fn9` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<H, I\> |
+
+**Returns:** [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, I\>
+
+▸ **pipe**<T, A, B, C, D, E, F, G, H, I\>(`fn1`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\>, `fn2`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\>, `fn3`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\>, `fn4`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<C, D\>, `fn5`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<D, E\>, `fn6`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<E, F\>, `fn7`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<F, G\>, `fn8`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<G, H\>, `fn9`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<H, I\>, ...`fns`: [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<any, any\>[]): [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, unknown\>
+
+#### Type parameters:
+
+Name |
+:------ |
+`T` |
+`A` |
+`B` |
+`C` |
+`D` |
+`E` |
+`F` |
+`G` |
+`H` |
+`I` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`fn1` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, A\> |
+`fn2` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<A, B\> |
+`fn3` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<B, C\> |
+`fn4` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<C, D\> |
+`fn5` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<D, E\> |
+`fn6` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<E, F\> |
+`fn7` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<F, G\> |
+`fn8` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<G, H\> |
+`fn9` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<H, I\> |
+`...fns` | [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<any, any\>[] |
+
+**Returns:** [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<T, unknown\>
 
 ___
 
 ### pluck
 
-▸ **pluck**<`T`, `K1`\>(`k1`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`]\>
+▸ **pluck**<T, K1\>(`k1`: K1): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[K1]\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `K1` | extends `string` \| `number` \| `symbol` |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`K1` | *string* \| *number* \| *symbol* |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `k1` | `K1` |
+Name | Type |
+:------ | :------ |
+`k1` | K1 |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[K1]\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`]\>
+▸ **pluck**<T, K1, K2\>(`k1`: K1, `k2`: K2): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[K1][K2]\>
 
-▸ **pluck**<`T`, `K1`, `K2`\>(`k1`, `k2`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`]\>
+#### Type parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`T` | - |
+`K1` | *string* \| *number* \| *symbol* |
+`K2` | *string* \| *number* \| *symbol* |
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `K1` | extends `string` \| `number` \| `symbol` |
-| `K2` | extends `string` \| `number` \| `symbol` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`k1` | K1 |
+`k2` | K2 |
 
-| Name | Type |
-| :------ | :------ |
-| `k1` | `K1` |
-| `k2` | `K2` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[K1][K2]\>
 
-#### Returns
+▸ **pluck**<T, K1, K2, K3\>(`k1`: K1, `k2`: K2, `k3`: K3): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[K1][K2][K3]\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`]\>
+#### Type parameters:
 
-▸ **pluck**<`T`, `K1`, `K2`, `K3`\>(`k1`, `k2`, `k3`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`][`K3`]\>
+Name | Type |
+:------ | :------ |
+`T` | - |
+`K1` | *string* \| *number* \| *symbol* |
+`K2` | *string* \| *number* \| *symbol* |
+`K3` | *string* \| *number* \| *symbol* |
 
-#### Type parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `K1` | extends `string` \| `number` \| `symbol` |
-| `K2` | extends `string` \| `number` \| `symbol` |
-| `K3` | extends `string` \| `number` \| `symbol` |
+Name | Type |
+:------ | :------ |
+`k1` | K1 |
+`k2` | K2 |
+`k3` | K3 |
 
-#### Parameters
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[K1][K2][K3]\>
 
-| Name | Type |
-| :------ | :------ |
-| `k1` | `K1` |
-| `k2` | `K2` |
-| `k3` | `K3` |
+▸ **pluck**<T, K1, K2, K3, K4\>(`k1`: K1, `k2`: K2, `k3`: K3, `k4`: K4): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[K1][K2][K3][K4]\>
 
-#### Returns
+#### Type parameters:
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`][`K3`]\>
+Name | Type |
+:------ | :------ |
+`T` | - |
+`K1` | *string* \| *number* \| *symbol* |
+`K2` | *string* \| *number* \| *symbol* |
+`K3` | *string* \| *number* \| *symbol* |
+`K4` | *string* \| *number* \| *symbol* |
 
-▸ **pluck**<`T`, `K1`, `K2`, `K3`, `K4`\>(`k1`, `k2`, `k3`, `k4`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`][`K3`][`K4`]\>
+#### Parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`k1` | K1 |
+`k2` | K2 |
+`k3` | K3 |
+`k4` | K4 |
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `K1` | extends `string` \| `number` \| `symbol` |
-| `K2` | extends `string` \| `number` \| `symbol` |
-| `K3` | extends `string` \| `number` \| `symbol` |
-| `K4` | extends `string` \| `number` \| `symbol` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[K1][K2][K3][K4]\>
 
-#### Parameters
+▸ **pluck**<T, K1, K2, K3, K4, K5\>(`k1`: K1, `k2`: K2, `k3`: K3, `k4`: K4, `k5`: K5): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[K1][K2][K3][K4][K5]\>
 
-| Name | Type |
-| :------ | :------ |
-| `k1` | `K1` |
-| `k2` | `K2` |
-| `k3` | `K3` |
-| `k4` | `K4` |
+#### Type parameters:
 
-#### Returns
+Name | Type |
+:------ | :------ |
+`T` | - |
+`K1` | *string* \| *number* \| *symbol* |
+`K2` | *string* \| *number* \| *symbol* |
+`K3` | *string* \| *number* \| *symbol* |
+`K4` | *string* \| *number* \| *symbol* |
+`K5` | *string* \| *number* \| *symbol* |
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`][`K3`][`K4`]\>
+#### Parameters:
 
-▸ **pluck**<`T`, `K1`, `K2`, `K3`, `K4`, `K5`\>(`k1`, `k2`, `k3`, `k4`, `k5`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`][`K3`][`K4`][`K5`]\>
+Name | Type |
+:------ | :------ |
+`k1` | K1 |
+`k2` | K2 |
+`k3` | K3 |
+`k4` | K4 |
+`k5` | K5 |
 
-#### Type parameters
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[K1][K2][K3][K4][K5]\>
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `K1` | extends `string` \| `number` \| `symbol` |
-| `K2` | extends `string` \| `number` \| `symbol` |
-| `K3` | extends `string` \| `number` \| `symbol` |
-| `K4` | extends `string` \| `number` \| `symbol` |
-| `K5` | extends `string` \| `number` \| `symbol` |
+▸ **pluck**<T, K1, K2, K3, K4, K5, K6\>(`k1`: K1, `k2`: K2, `k3`: K3, `k4`: K4, `k5`: K5, `k6`: K6): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[K1][K2][K3][K4][K5][K6]\>
 
-#### Parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `k1` | `K1` |
-| `k2` | `K2` |
-| `k3` | `K3` |
-| `k4` | `K4` |
-| `k5` | `K5` |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`K1` | *string* \| *number* \| *symbol* |
+`K2` | *string* \| *number* \| *symbol* |
+`K3` | *string* \| *number* \| *symbol* |
+`K4` | *string* \| *number* \| *symbol* |
+`K5` | *string* \| *number* \| *symbol* |
+`K6` | *string* \| *number* \| *symbol* |
 
-#### Returns
+#### Parameters:
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`][`K3`][`K4`][`K5`]\>
+Name | Type |
+:------ | :------ |
+`k1` | K1 |
+`k2` | K2 |
+`k3` | K3 |
+`k4` | K4 |
+`k5` | K5 |
+`k6` | K6 |
 
-▸ **pluck**<`T`, `K1`, `K2`, `K3`, `K4`, `K5`, `K6`\>(`k1`, `k2`, `k3`, `k4`, `k5`, `k6`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`][`K3`][`K4`][`K5`][`K6`]\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[K1][K2][K3][K4][K5][K6]\>
 
-#### Type parameters
+▸ **pluck**<T, K1, K2, K3, K4, K5, K6\>(`k1`: K1, `k2`: K2, `k3`: K3, `k4`: K4, `k5`: K5, `k6`: K6, ...`rest`: *string*[]): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, unknown\>
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `K1` | extends `string` \| `number` \| `symbol` |
-| `K2` | extends `string` \| `number` \| `symbol` |
-| `K3` | extends `string` \| `number` \| `symbol` |
-| `K4` | extends `string` \| `number` \| `symbol` |
-| `K5` | extends `string` \| `number` \| `symbol` |
-| `K6` | extends `string` \| `number` \| `symbol` |
+#### Type parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`T` | - |
+`K1` | *string* \| *number* \| *symbol* |
+`K2` | *string* \| *number* \| *symbol* |
+`K3` | *string* \| *number* \| *symbol* |
+`K4` | *string* \| *number* \| *symbol* |
+`K5` | *string* \| *number* \| *symbol* |
+`K6` | *string* \| *number* \| *symbol* |
 
-| Name | Type |
-| :------ | :------ |
-| `k1` | `K1` |
-| `k2` | `K2` |
-| `k3` | `K3` |
-| `k4` | `K4` |
-| `k5` | `K5` |
-| `k6` | `K6` |
+#### Parameters:
 
-#### Returns
+Name | Type |
+:------ | :------ |
+`k1` | K1 |
+`k2` | K2 |
+`k3` | K3 |
+`k4` | K4 |
+`k5` | K5 |
+`k6` | K6 |
+`...rest` | *string*[] |
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`][`K3`][`K4`][`K5`][`K6`]\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, unknown\>
 
-▸ **pluck**<`T`, `K1`, `K2`, `K3`, `K4`, `K5`, `K6`\>(`k1`, `k2`, `k3`, `k4`, `k5`, `k6`, ...`rest`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `unknown`\>
+▸ **pluck**<T\>(...`properties`: *string*[]): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, unknown\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `K1` | extends `string` \| `number` \| `symbol` |
-| `K2` | extends `string` \| `number` \| `symbol` |
-| `K3` | extends `string` \| `number` \| `symbol` |
-| `K4` | extends `string` \| `number` \| `symbol` |
-| `K5` | extends `string` \| `number` \| `symbol` |
-| `K6` | extends `string` \| `number` \| `symbol` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `k1` | `K1` |
-| `k2` | `K2` |
-| `k3` | `K3` |
-| `k4` | `K4` |
-| `k5` | `K5` |
-| `k6` | `K6` |
-| `...rest` | `string`[] |
+Name | Type |
+:------ | :------ |
+`...properties` | *string*[] |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `unknown`\>
-
-▸ **pluck**<`T`\>(...`properties`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `unknown`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `...properties` | `string`[] |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `unknown`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, unknown\>
 
 ___
 
 ### publish
 
-▸ **publish**<`T`\>(): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`ConnectableObservable`](../classes/RxJS.ConnectableObservable.md)<`T`\>\>
+▸ **publish**<T\>(): [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<[*Observable*](../classes/rxjs.observable.md)<T\>, [*ConnectableObservable*](../classes/rxjs.connectableobservable.md)<T\>\>
 
 Returns a connectable observable that, when connected, will multicast
-all values through a single underlying [Subject](../classes/RxJS.Subject.md) instance.
+all values through a single underlying [Subject](../classes/rxjs.subject.md) instance.
 
-**`deprecated`** Will be removed in v8. To create a connectable observable, use [connectable](RxJS.md#connectable).
+**`deprecated`** Will be removed in v8. To create a connectable observable, use [connectable](rxjs.md#connectable).
 `source.pipe(publish())` is equivalent to
 `connectable(source, { connector: () => new Subject(), resetOnDisconnect: false })`.
-If you're using [refCount](RxJS.md#refcount) after `publish`, use [share](RxJS.md#share) operator instead.
+If you're using [refCount](rxjs.md#refcount) after `publish`, use [share](rxjs.md#share) operator instead.
 `source.pipe(publish(), refCount())` is equivalent to
 `source.pipe(share({ resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))`.
 Details: https://rxjs.dev/deprecations/multicasting
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Returns
+**Returns:** [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<[*Observable*](../classes/rxjs.observable.md)<T\>, [*ConnectableObservable*](../classes/rxjs.connectableobservable.md)<T\>\>
 
-[`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`ConnectableObservable`](../classes/RxJS.ConnectableObservable.md)<`T`\>\>
+▸ **publish**<T, O\>(`selector`: (`shared`: [*Observable*](../classes/rxjs.observable.md)<T\>) => O): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-▸ **publish**<`T`, `O`\>(`selector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-Returns an observable, that when subscribed to, creates an underlying [Subject](../classes/RxJS.Subject.md),
+Returns an observable, that when subscribed to, creates an underlying [Subject](../classes/rxjs.subject.md),
 provides an observable view of it to a `selector` function, takes the observable result of
 that selector function and subscribes to it, sending its values to the consumer, _then_ connects
 the subject to the original source.
 
-**`deprecated`** Will be removed in v8. Use the [connect](RxJS.md#connect) operator instead.
+**`deprecated`** Will be removed in v8. Use the [connect](rxjs.md#connect) operator instead.
 `publish(selector)` is equivalent to `connect(selector)`.
 Details: https://rxjs.dev/deprecations/multicasting
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `selector` | (`shared`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `O` | A function used to setup multicasting prior to automatic connection. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`selector` | (`shared`: [*Observable*](../classes/rxjs.observable.md)<T\>) => O | A function used to setup multicasting prior to automatic connection.    |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 ___
 
 ### publishBehavior
 
-▸ **publishBehavior**<`T`\>(`initialValue`): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`ConnectableObservable`](../classes/RxJS.ConnectableObservable.md)<`T`\>\>
+▸ **publishBehavior**<T\>(`initialValue`: T): [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<[*Observable*](../classes/rxjs.observable.md)<T\>, [*ConnectableObservable*](../classes/rxjs.connectableobservable.md)<T\>\>
 
-Creates a [ConnectableObservable](../classes/RxJS.ConnectableObservable.md) that utilizes a [BehaviorSubject](../classes/RxJS.BehaviorSubject.md).
+Creates a [ConnectableObservable](../classes/rxjs.connectableobservable.md) that utilizes a [BehaviorSubject](../classes/rxjs.behaviorsubject.md).
 
 **`deprecated`** Will be removed in v8. To create a connectable observable that uses a
-[BehaviorSubject](../classes/RxJS.BehaviorSubject.md) under the hood, use [connectable](RxJS.md#connectable).
+[BehaviorSubject](../classes/rxjs.behaviorsubject.md) under the hood, use [connectable](rxjs.md#connectable).
 `source.pipe(publishBehavior(initValue))` is equivalent to
 `connectable(source, { connector: () => new BehaviorSubject(initValue), resetOnDisconnect: false })`.
-If you're using [refCount](RxJS.md#refcount) after `publishBehavior`, use the [share](RxJS.md#share) operator instead.
+If you're using [refCount](rxjs.md#refcount) after `publishBehavior`, use the [share](rxjs.md#share) operator instead.
 `source.pipe(publishBehavior(initValue), refCount())` is equivalent to
 `source.pipe(share({ connector: () => new BehaviorSubject(initValue), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false  }))`.
 Details: https://rxjs.dev/deprecations/multicasting
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `initialValue` | `T` | The initial value passed to the [BehaviorSubject](../classes/RxJS.BehaviorSubject.md). |
+Name | Type | Description |
+:------ | :------ | :------ |
+`initialValue` | T | The initial value passed to the [BehaviorSubject](../classes/rxjs.behaviorsubject.md).   |
 
-#### Returns
+**Returns:** [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<[*Observable*](../classes/rxjs.observable.md)<T\>, [*ConnectableObservable*](../classes/rxjs.connectableobservable.md)<T\>\>
 
-[`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`ConnectableObservable`](../classes/RxJS.ConnectableObservable.md)<`T`\>\>
-
-A function that returns a [ConnectableObservable](../classes/RxJS.ConnectableObservable.md)
+A function that returns a [ConnectableObservable](../classes/rxjs.connectableobservable.md)
 
 ___
 
 ### publishLast
 
-▸ **publishLast**<`T`\>(): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`ConnectableObservable`](../classes/RxJS.ConnectableObservable.md)<`T`\>\>
+▸ **publishLast**<T\>(): [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<[*Observable*](../classes/rxjs.observable.md)<T\>, [*ConnectableObservable*](../classes/rxjs.connectableobservable.md)<T\>\>
 
 Returns a connectable observable sequence that shares a single subscription to the
 underlying sequence containing only the last notification.
 
 ![](publishLast.png)
 
-Similar to [publish](RxJS.md#publish), but it waits until the source observable completes and stores
+Similar to [publish](rxjs.md#publish), but it waits until the source observable completes and stores
 the last emitted value.
-Similarly to [publishReplay](RxJS.md#publishreplay) and [publishBehavior](RxJS.md#publishbehavior), this keeps storing the last
+Similarly to [publishReplay](rxjs.md#publishreplay) and [publishBehavior](rxjs.md#publishbehavior), this keeps storing the last
 value even if it has no more subscribers. If subsequent subscriptions happen, they will
 immediately get that last stored value and complete.
 
@@ -8375,32 +7381,30 @@ connectable.connect();
 //    "Sub. B Complete"
 ```
 
-**`see`** [ConnectableObservable](../classes/RxJS.ConnectableObservable.md)
+**`see`** [ConnectableObservable](../classes/rxjs.connectableobservable.md)
 
-**`see`** [publish](RxJS.md#publish)
+**`see`** [publish](rxjs.md#publish)
 
-**`see`** [publishReplay](RxJS.md#publishreplay)
+**`see`** [publishReplay](rxjs.md#publishreplay)
 
-**`see`** [publishBehavior](RxJS.md#publishbehavior)
+**`see`** [publishBehavior](rxjs.md#publishbehavior)
 
 **`deprecated`** Will be removed in v8. To create a connectable observable with an
-[AsyncSubject](../classes/RxJS.AsyncSubject.md) under the hood, use [connectable](RxJS.md#connectable).
+[AsyncSubject](../classes/rxjs.asyncsubject.md) under the hood, use [connectable](rxjs.md#connectable).
 `source.pipe(publishLast())` is equivalent to
 `connectable(source, { connector: () => new AsyncSubject(), resetOnDisconnect: false })`.
-If you're using [refCount](RxJS.md#refcount) after `publishLast`, use the [share](RxJS.md#share) operator instead.
+If you're using [refCount](rxjs.md#refcount) after `publishLast`, use the [share](rxjs.md#share) operator instead.
 `source.pipe(publishLast(), refCount())` is equivalent to
 `source.pipe(share({ connector: () => new AsyncSubject(), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false }))`.
 Details: https://rxjs.dev/deprecations/multicasting
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Returns
-
-[`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`ConnectableObservable`](../classes/RxJS.ConnectableObservable.md)<`T`\>\>
+**Returns:** [*UnaryFunction*](../interfaces/rxjs.unaryfunction.md)<[*Observable*](../classes/rxjs.observable.md)<T\>, [*ConnectableObservable*](../classes/rxjs.connectableobservable.md)<T\>\>
 
 A function that returns an Observable that emits elements of a
 sequence produced by multicasting the source sequence.
@@ -8409,151 +7413,141 @@ ___
 
 ### publishReplay
 
-▸ **publishReplay**<`T`\>(`bufferSize?`, `windowTime?`, `timestampProvider?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **publishReplay**<T\>(`bufferSize?`: *number*, `windowTime?`: *number*, `timestampProvider?`: [*TimestampProvider*](../interfaces/rxjs.timestampprovider.md)): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-Creates a [ConnectableObservable](../classes/RxJS.ConnectableObservable.md) that uses a [ReplaySubject](../classes/RxJS.ReplaySubject.md)
+Creates a [ConnectableObservable](../classes/rxjs.connectableobservable.md) that uses a [ReplaySubject](../classes/rxjs.replaysubject.md)
 internally.
 
 **`deprecated`** Will be removed in v8. To create a connectable observable that uses a
-[ReplaySubject](../classes/RxJS.ReplaySubject.md) under the hood, use [connectable](RxJS.md#connectable).
+[ReplaySubject](../classes/rxjs.replaysubject.md) under the hood, use [connectable](rxjs.md#connectable).
 `source.pipe(publishReplay(size, time, scheduler))` is equivalent to
 `connectable(source, { connector: () => new ReplaySubject(size, time, scheduler), resetOnDisconnect: false })`.
-If you're using [refCount](RxJS.md#refcount) after `publishReplay`, use the [share](RxJS.md#share) operator instead.
+If you're using [refCount](rxjs.md#refcount) after `publishReplay`, use the [share](rxjs.md#share) operator instead.
 `publishReplay(size, time, scheduler), refCount()` is equivalent to
 `share({ connector: () => new ReplaySubject(size, time, scheduler), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false })`.
 Details: https://rxjs.dev/deprecations/multicasting
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `bufferSize?` | `number` | The buffer size for the underlying [ReplaySubject](../classes/RxJS.ReplaySubject.md). |
-| `windowTime?` | `number` | The window time for the underlying [ReplaySubject](../classes/RxJS.ReplaySubject.md). |
-| `timestampProvider?` | [`TimestampProvider`](../interfaces/RxJS.TimestampProvider.md) | The timestamp provider for the underlying [ReplaySubject](../classes/RxJS.ReplaySubject.md). |
+Name | Type | Description |
+:------ | :------ | :------ |
+`bufferSize?` | *number* | The buffer size for the underlying [ReplaySubject](../classes/rxjs.replaysubject.md).   |
+`windowTime?` | *number* | The window time for the underlying [ReplaySubject](../classes/rxjs.replaysubject.md).   |
+`timestampProvider?` | [*TimestampProvider*](../interfaces/rxjs.timestampprovider.md) | The timestamp provider for the underlying [ReplaySubject](../classes/rxjs.replaysubject.md).   |
 
-#### Returns
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **publishReplay**<T, O\>(`bufferSize`: *number* \| *undefined*, `windowTime`: *number* \| *undefined*, `selector`: (`shared`: [*Observable*](../classes/rxjs.observable.md)<T\>) => O, `timestampProvider?`: [*TimestampProvider*](../interfaces/rxjs.timestampprovider.md)): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-▸ **publishReplay**<`T`, `O`\>(`bufferSize`, `windowTime`, `selector`, `timestampProvider?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-Creates an observable, that when subscribed to, will create a [ReplaySubject](../classes/RxJS.ReplaySubject.md),
+Creates an observable, that when subscribed to, will create a [ReplaySubject](../classes/rxjs.replaysubject.md),
 and pass an observable from it (using [asObservable](api/index/class/Subject#asObservable)) to
 the `selector` function, which then returns an observable that is subscribed to before
 "connecting" the source to the internal `ReplaySubject`.
 
-Since this is deprecated, for additional details see the documentation for [connect](RxJS.md#connect).
+Since this is deprecated, for additional details see the documentation for [connect](rxjs.md#connect).
 
-**`deprecated`** Will be removed in v8. Use the [connect](RxJS.md#connect) operator instead.
+**`deprecated`** Will be removed in v8. Use the [connect](rxjs.md#connect) operator instead.
 `source.pipe(publishReplay(size, window, selector, scheduler))` is equivalent to
 `source.pipe(connect(selector, { connector: () => new ReplaySubject(size, window, scheduler) }))`.
 Details: https://rxjs.dev/deprecations/multicasting
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `bufferSize` | `undefined` \| `number` | The buffer size for the underlying [ReplaySubject](../classes/RxJS.ReplaySubject.md). |
-| `windowTime` | `undefined` \| `number` | The window time for the underlying [ReplaySubject](../classes/RxJS.ReplaySubject.md). |
-| `selector` | (`shared`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `O` | A function used to setup the multicast. |
-| `timestampProvider?` | [`TimestampProvider`](../interfaces/RxJS.TimestampProvider.md) | The timestamp provider for the underlying [ReplaySubject](../classes/RxJS.ReplaySubject.md). |
+Name | Type | Description |
+:------ | :------ | :------ |
+`bufferSize` | *number* \| *undefined* | The buffer size for the underlying [ReplaySubject](../classes/rxjs.replaysubject.md).   |
+`windowTime` | *number* \| *undefined* | The window time for the underlying [ReplaySubject](../classes/rxjs.replaysubject.md).   |
+`selector` | (`shared`: [*Observable*](../classes/rxjs.observable.md)<T\>) => O | A function used to setup the multicast.   |
+`timestampProvider?` | [*TimestampProvider*](../interfaces/rxjs.timestampprovider.md) | The timestamp provider for the underlying [ReplaySubject](../classes/rxjs.replaysubject.md).   |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **publishReplay**<T, O\>(`bufferSize`: *number* \| *undefined*, `windowTime`: *number* \| *undefined*, `selector`: *undefined*, `timestampProvider`: [*TimestampProvider*](../interfaces/rxjs.timestampprovider.md)): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-▸ **publishReplay**<`T`, `O`\>(`bufferSize`, `windowTime`, `selector`, `timestampProvider`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-Creates a [ConnectableObservable](../classes/RxJS.ConnectableObservable.md) that uses a [ReplaySubject](../classes/RxJS.ReplaySubject.md)
+Creates a [ConnectableObservable](../classes/rxjs.connectableobservable.md) that uses a [ReplaySubject](../classes/rxjs.replaysubject.md)
 internally.
 
 **`deprecated`** Will be removed in v8. To create a connectable observable that uses a
-[ReplaySubject](../classes/RxJS.ReplaySubject.md) under the hood, use [connectable](RxJS.md#connectable).
+[ReplaySubject](../classes/rxjs.replaysubject.md) under the hood, use [connectable](rxjs.md#connectable).
 `source.pipe(publishReplay(size, time, scheduler))` is equivalent to
 `connectable(source, { connector: () => new ReplaySubject(size, time, scheduler), resetOnDisconnect: false })`.
-If you're using [refCount](RxJS.md#refcount) after `publishReplay`, use the [share](RxJS.md#share) operator instead.
+If you're using [refCount](rxjs.md#refcount) after `publishReplay`, use the [share](rxjs.md#share) operator instead.
 `publishReplay(size, time, scheduler), refCount()` is equivalent to
 `share({ connector: () => new ReplaySubject(size, time, scheduler), resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false })`.
 Details: https://rxjs.dev/deprecations/multicasting
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `bufferSize` | `undefined` \| `number` | The buffer size for the underlying [ReplaySubject](../classes/RxJS.ReplaySubject.md). |
-| `windowTime` | `undefined` \| `number` | The window time for the underlying [ReplaySubject](../classes/RxJS.ReplaySubject.md). |
-| `selector` | `undefined` | Passing `undefined` here determines that this operator will return a [ConnectableObservable](../classes/RxJS.ConnectableObservable.md). |
-| `timestampProvider` | [`TimestampProvider`](../interfaces/RxJS.TimestampProvider.md) | The timestamp provider for the underlying [ReplaySubject](../classes/RxJS.ReplaySubject.md). |
+Name | Type | Description |
+:------ | :------ | :------ |
+`bufferSize` | *number* \| *undefined* | The buffer size for the underlying [ReplaySubject](../classes/rxjs.replaysubject.md).   |
+`windowTime` | *number* \| *undefined* | The window time for the underlying [ReplaySubject](../classes/rxjs.replaysubject.md).   |
+`selector` | *undefined* | Passing `undefined` here determines that this operator will return a [ConnectableObservable](../classes/rxjs.connectableobservable.md).   |
+`timestampProvider` | [*TimestampProvider*](../interfaces/rxjs.timestampprovider.md) | The timestamp provider for the underlying [ReplaySubject](../classes/rxjs.replaysubject.md).   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 ___
 
 ### race
 
-▸ **race**<`T`\>(`inputs`): [`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
+▸ **race**<T\>(`inputs`: [...ObservableInputTuple<T\>]): [*Observable*](../classes/rxjs.observable.md)<T[*number*]\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`T` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `inputs` | [...ObservableInputTuple<T\>[]] |
+Name | Type |
+:------ | :------ |
+`inputs` | [...ObservableInputTuple<T\>] |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T[*number*]\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
+▸ **race**<T\>(...`inputs`: [...ObservableInputTuple<T\>]): [*Observable*](../classes/rxjs.observable.md)<T[*number*]\>
 
-▸ **race**<`T`\>(...`inputs`): [`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
+#### Type parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`T` | readonly *unknown*[] |
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends readonly `unknown`[] |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`...inputs` | [...ObservableInputTuple<T\>] |
 
-| Name | Type |
-| :------ | :------ |
-| `...inputs` | [...ObservableInputTuple<T\>[]] |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T[*number*]\>
 
 ___
 
 ### raceWith
 
-▸ **raceWith**<`T`, `A`\>(...`otherSources`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
+▸ **raceWith**<T, A\>(...`otherSources`: [...ObservableInputTuple<A\>]): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| A[*number*]\>
 
 Creates an Observable that mirrors the first source Observable to emit a next,
 error or complete notification from the combination of the Observable to which
@@ -8579,22 +7573,20 @@ obs2.pipe(
 // a series of 'fast one'
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`A` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `...otherSources` | [...ObservableInputTuple<A\>[]] | Sources used to race for which Observable emits first. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`...otherSources` | [...ObservableInputTuple<A\>] | Sources used to race for which Observable emits first.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| A[*number*]\>
 
 A function that returns an Observable that mirrors the output of the
 first Observable to emit an item.
@@ -8603,108 +7595,96 @@ ___
 
 ### range
 
-▸ **range**(`start`, `count?`): [`Observable`](../classes/RxJS.Observable.md)<`number`\>
+▸ **range**(`start`: *number*, `count?`: *number*): [*Observable*](../classes/rxjs.observable.md)<number\>
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`start` | *number* |
+`count?` | *number* |
+
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<number\>
+
+▸ **range**(`start`: *number*, `count`: *number* \| *undefined*, `scheduler`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<number\>
 
 **`deprecated`** The `scheduler` parameter will be removed in v8. Use `range(start, count).pipe(observeOn(scheduler))` instead. Details: Details: https://rxjs.dev/deprecations/scheduler-argument
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `start` | `number` |
-| `count?` | `number` |
+Name | Type |
+:------ | :------ |
+`start` | *number* |
+`count` | *number* \| *undefined* |
+`scheduler` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`number`\>
-
-▸ **range**(`start`, `count`, `scheduler`): [`Observable`](../classes/RxJS.Observable.md)<`number`\>
-
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `range(start, count).pipe(observeOn(scheduler))` instead. Details: Details: https://rxjs.dev/deprecations/scheduler-argument
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `start` | `number` |
-| `count` | `undefined` \| `number` |
-| `scheduler` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`number`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<number\>
 
 ___
 
 ### reduce
 
-▸ **reduce**<`V`, `A`\>(`accumulator`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`V`, `V` \| `A`\>
+▸ **reduce**<V, A\>(`accumulator`: (`acc`: A \| V, `value`: V, `index`: *number*) => A): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<V, V \| A\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `V` | `V` |
-| `A` | `V` |
+Name | Default |
+:------ | :------ |
+`V` | - |
+`A` | V |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `accumulator` | (`acc`: `V` \| `A`, `value`: `V`, `index`: `number`) => `A` |
+Name | Type |
+:------ | :------ |
+`accumulator` | (`acc`: A \| V, `value`: V, `index`: *number*) => A |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<V, V \| A\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`V`, `V` \| `A`\>
+▸ **reduce**<V, A\>(`accumulator`: (`acc`: A, `value`: V, `index`: *number*) => A, `seed`: A): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<V, A\>
 
-▸ **reduce**<`V`, `A`\>(`accumulator`, `seed`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`V`, `A`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`V` |
+`A` |
 
-| Name |
-| :------ |
-| `V` |
-| `A` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`accumulator` | (`acc`: A, `value`: V, `index`: *number*) => A |
+`seed` | A |
 
-| Name | Type |
-| :------ | :------ |
-| `accumulator` | (`acc`: `A`, `value`: `V`, `index`: `number`) => `A` |
-| `seed` | `A` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<V, A\>
 
-#### Returns
+▸ **reduce**<V, A, S\>(`accumulator`: (`acc`: A \| S, `value`: V, `index`: *number*) => A, `seed`: S): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<V, A\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`V`, `A`\>
+#### Type parameters:
 
-▸ **reduce**<`V`, `A`, `S`\>(`accumulator`, `seed`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`V`, `A`\>
+Name | Default |
+:------ | :------ |
+`V` | - |
+`A` | - |
+`S` | A |
 
-#### Type parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `V` | `V` |
-| `A` | `A` |
-| `S` | `A` |
+Name | Type |
+:------ | :------ |
+`accumulator` | (`acc`: A \| S, `value`: V, `index`: *number*) => A |
+`seed` | S |
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `accumulator` | (`acc`: `A` \| `S`, `value`: `V`, `index`: `number`) => `A` |
-| `seed` | `S` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`V`, `A`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<V, A\>
 
 ___
 
 ### refCount
 
-▸ **refCount**<`T`\>(): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **refCount**<T\>(): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-Make a [ConnectableObservable](../classes/RxJS.ConnectableObservable.md) behave like a ordinary observable and automates the way
+Make a [ConnectableObservable](../classes/rxjs.connectableobservable.md) behave like a ordinary observable and automates the way
 you can connect to it.
 
 Internally it counts the subscriptions to the observable and subscribes (only once) to the source if
@@ -8713,7 +7693,7 @@ unsubscribes from the source. This way you can make sure that everything before 
 refCount has only a single subscription independently of the number of subscribers to the target
 observable.
 
-Note that using the [share](RxJS.md#share) operator is exactly the same as using the `multicast(() => new Subject())` operator
+Note that using the [share](rxjs.md#share) operator is exactly the same as using the `multicast(() => new Subject())` operator
 (making the observable hot) and the *refCount* operator in a sequence.
 
 ![](refCount.png)
@@ -8752,26 +7732,24 @@ publishedInterval.subscribe();
 // Nothing happens until you call .connect() on the observable.
 ```
 
-**`see`** [ConnectableObservable](../classes/RxJS.ConnectableObservable.md)
+**`see`** [ConnectableObservable](../classes/rxjs.connectableobservable.md)
 
-**`see`** [share](RxJS.md#share)
+**`see`** [share](rxjs.md#share)
 
-**`see`** [publish](RxJS.md#publish)
+**`see`** [publish](rxjs.md#publish)
 
-**`deprecated`** Replaced with the [share](RxJS.md#share) operator. How `share` is used
+**`deprecated`** Replaced with the [share](rxjs.md#share) operator. How `share` is used
 will depend on the connectable observable you created just prior to the
 `refCount` operator.
 Details: https://rxjs.dev/deprecations/multicasting
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that automates the connection
 to ConnectableObservable.
@@ -8780,15 +7758,15 @@ ___
 
 ### repeat
 
-▸ **repeat**<`T`\>(`count?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **repeat**<T\>(`count?`: *number*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Returns an Observable that will resubscribe to the source stream when the source stream completes, at most count times.
 
-<span class="informal">Repeats all values emitted on the source. It's like [retry](RxJS.md#retry), but for non error cases.</span>
+<span class="informal">Repeats all values emitted on the source. It's like [retry](rxjs.md#retry), but for non error cases.</span>
 
 ![](repeat.png)
 
-Similar to [retry](RxJS.md#retry), this operator repeats the stream of items emitted by the source for non error cases.
+Similar to [retry](rxjs.md#retry), this operator repeats the stream of items emitted by the source for non error cases.
 Repeat can be useful for creating observables that are meant to have some repeated pattern or rhythm.
 
 Note: `repeat(0)` returns an empty observable and `repeat()` will repeat forever
@@ -8827,25 +7805,23 @@ example.subscribe(x => console.log(x));
 // 2
 ```
 
-**`see`** [repeatWhen](RxJS.md#repeatwhen)
+**`see`** [repeatWhen](rxjs.md#repeatwhen)
 
-**`see`** [retry](RxJS.md#retry)
+**`see`** [retry](rxjs.md#retry)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `count?` | `number` |
+Name | Type |
+:------ | :------ |
+`count?` | *number* |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that will resubscribe to the
 source stream when the source stream completes, at most `count` times.
@@ -8854,7 +7830,7 @@ ___
 
 ### repeatWhen
 
-▸ **repeatWhen**<`T`\>(`notifier`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **repeatWhen**<T\>(`notifier`: (`notifications`: [*Observable*](../classes/rxjs.observable.md)<void\>) => [*Observable*](../classes/rxjs.observable.md)<any\>): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Returns an Observable that mirrors the source Observable with the exception of a `complete`. If the source
 Observable calls `complete`, this method will emit to the Observable returned from `notifier`. If that Observable
@@ -8876,27 +7852,25 @@ source.pipe(repeatWhen(() => documentClick$)
 ).subscribe(data => console.log(data))
 ```
 
-**`see`** [repeat](RxJS.md#repeat)
+**`see`** [repeat](rxjs.md#repeat)
 
-**`see`** [retry](RxJS.md#retry)
+**`see`** [retry](rxjs.md#retry)
 
-**`see`** [retryWhen](RxJS.md#retrywhen)
+**`see`** [retryWhen](rxjs.md#retrywhen)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `notifier` | (`notifications`: [`Observable`](../classes/RxJS.Observable.md)<`void`\>) => [`Observable`](../classes/RxJS.Observable.md)<`any`\> | Receives an Observable of notifications with which a user can `complete` or `error`, aborting the repetition. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`notifier` | (`notifications`: [*Observable*](../classes/rxjs.observable.md)<void\>) => [*Observable*](../classes/rxjs.observable.md)<any\> | Receives an Observable of notifications with which a user can `complete` or `error`, aborting the repetition.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that that mirrors the source
 Observable with the exception of a `complete`.
@@ -8905,7 +7879,7 @@ ___
 
 ### retry
 
-▸ **retry**<`T`\>(`count?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **retry**<T\>(`count?`: *number*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Returns an Observable that mirrors the source Observable with the exception of an `error`. If the source Observable
 calls `error`, this method will resubscribe to the source Observable for a maximum of `count` resubscriptions (given
@@ -8947,52 +7921,48 @@ const subscribe = example.subscribe({
 // "Error!: Retried 2 times then quit!"
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `count?` | `number` | Number of retry attempts before failing. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`count?` | *number* | Number of retry attempts before failing.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that will resubscribe to the
 source stream when the source stream errors, at most `count` times.
 
-▸ **retry**<`T`\>(`config`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **retry**<T\>(`config`: RetryConfig): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Returns an observable that mirrors the source observable unless it errors. If it errors, the source observable
 will be resubscribed to (or "retried") based on the configuration passed here. See documentation
 for {@link RetryConfig} for more details.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `config` | `RetryConfig` | The retry configuration |
+Name | Type | Description |
+:------ | :------ | :------ |
+`config` | RetryConfig | The retry configuration    |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 ___
 
 ### retryWhen
 
-▸ **retryWhen**<`T`\>(`notifier`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **retryWhen**<T\>(`notifier`: (`errors`: [*Observable*](../classes/rxjs.observable.md)<any\>) => [*Observable*](../classes/rxjs.observable.md)<any\>): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Returns an Observable that mirrors the source Observable with the exception of an `error`. If the source Observable
 calls `error`, this method will emit the Throwable that caused the error to the Observable returned from `notifier`.
@@ -9040,21 +8010,19 @@ const subscribe = example.subscribe(val => console.log(val));
 //  --Wait 5 seconds then repeat
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `notifier` | (`errors`: [`Observable`](../classes/RxJS.Observable.md)<`any`\>) => [`Observable`](../classes/RxJS.Observable.md)<`any`\> | Receives an Observable of notifications with which a user can `complete` or `error`, aborting the retry. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`notifier` | (`errors`: [*Observable*](../classes/rxjs.observable.md)<any\>) => [*Observable*](../classes/rxjs.observable.md)<any\> | Receives an Observable of notifications with which a user can `complete` or `error`, aborting the retry.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that mirrors the source
 Observable with the exception of an `error`.
@@ -9063,12 +8031,12 @@ ___
 
 ### sample
 
-▸ **sample**<`T`\>(`notifier`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **sample**<T\>(`notifier`: [*Observable*](../classes/rxjs.observable.md)<any\>): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Emits the most recently emitted value from the source Observable whenever
 another Observable, the `notifier`, emits.
 
-<span class="informal">It's like [sampleTime](RxJS.md#sampletime), but samples whenever
+<span class="informal">It's like [sampleTime](rxjs.md#sampletime), but samples whenever
 the `notifier` Observable emits something.</span>
 
 ![](sample.png)
@@ -9091,29 +8059,27 @@ const result = seconds.pipe(sample(clicks));
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [audit](RxJS.md#audit)
+**`see`** [audit](rxjs.md#audit)
 
-**`see`** [debounce](RxJS.md#debounce)
+**`see`** [debounce](rxjs.md#debounce)
 
-**`see`** [sampleTime](RxJS.md#sampletime)
+**`see`** [sampleTime](rxjs.md#sampletime)
 
-**`see`** [throttle](RxJS.md#throttle)
+**`see`** [throttle](rxjs.md#throttle)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `notifier` | [`Observable`](../classes/RxJS.Observable.md)<`any`\> | The Observable to use for sampling the source Observable. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`notifier` | [*Observable*](../classes/rxjs.observable.md)<any\> | The Observable to use for sampling the source Observable.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that emits the results of
 sampling the values emitted by the source Observable whenever the notifier
@@ -9123,7 +8089,7 @@ ___
 
 ### sampleTime
 
-▸ **sampleTime**<`T`\>(`period`, `scheduler?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **sampleTime**<T\>(`period`: *number*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Emits the most recently emitted value from the source Observable within
 periodic time intervals.
@@ -9151,32 +8117,30 @@ const result = clicks.pipe(sampleTime(1000));
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [auditTime](RxJS.md#audittime)
+**`see`** [auditTime](rxjs.md#audittime)
 
-**`see`** [debounceTime](RxJS.md#debouncetime)
+**`see`** [debounceTime](rxjs.md#debouncetime)
 
-**`see`** [delay](RxJS.md#delay)
+**`see`** [delay](rxjs.md#delay)
 
-**`see`** [sample](RxJS.md#sample)
+**`see`** [sample](rxjs.md#sample)
 
-**`see`** [throttleTime](RxJS.md#throttletime)
+**`see`** [throttleTime](rxjs.md#throttletime)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `period` | `number` | The sampling period expressed in milliseconds or the time unit determined internally by the optional `scheduler`. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`period` | *number* | The sampling period expressed in milliseconds or the time unit determined internally by the optional `scheduler`.   |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | - |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that emits the results of
 sampling the values emitted by the source Observable at the specified time
@@ -9186,101 +8150,93 @@ ___
 
 ### scan
 
-▸ **scan**<`V`, `A`\>(`accumulator`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`V`, `V` \| `A`\>
+▸ **scan**<V, A\>(`accumulator`: (`acc`: A \| V, `value`: V, `index`: *number*) => A): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<V, V \| A\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `V` | `V` |
-| `A` | `V` |
+Name | Default |
+:------ | :------ |
+`V` | - |
+`A` | V |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `accumulator` | (`acc`: `V` \| `A`, `value`: `V`, `index`: `number`) => `A` |
+Name | Type |
+:------ | :------ |
+`accumulator` | (`acc`: A \| V, `value`: V, `index`: *number*) => A |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<V, V \| A\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`V`, `V` \| `A`\>
+▸ **scan**<V, A\>(`accumulator`: (`acc`: A, `value`: V, `index`: *number*) => A, `seed`: A): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<V, A\>
 
-▸ **scan**<`V`, `A`\>(`accumulator`, `seed`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`V`, `A`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`V` |
+`A` |
 
-| Name |
-| :------ |
-| `V` |
-| `A` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`accumulator` | (`acc`: A, `value`: V, `index`: *number*) => A |
+`seed` | A |
 
-| Name | Type |
-| :------ | :------ |
-| `accumulator` | (`acc`: `A`, `value`: `V`, `index`: `number`) => `A` |
-| `seed` | `A` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<V, A\>
 
-#### Returns
+▸ **scan**<V, A, S\>(`accumulator`: (`acc`: A \| S, `value`: V, `index`: *number*) => A, `seed`: S): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<V, A\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`V`, `A`\>
+#### Type parameters:
 
-▸ **scan**<`V`, `A`, `S`\>(`accumulator`, `seed`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`V`, `A`\>
+Name |
+:------ |
+`V` |
+`A` |
+`S` |
 
-#### Type parameters
+#### Parameters:
 
-| Name |
-| :------ |
-| `V` |
-| `A` |
-| `S` |
+Name | Type |
+:------ | :------ |
+`accumulator` | (`acc`: A \| S, `value`: V, `index`: *number*) => A |
+`seed` | S |
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `accumulator` | (`acc`: `A` \| `S`, `value`: `V`, `index`: `number`) => `A` |
-| `seed` | `S` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`V`, `A`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<V, A\>
 
 ___
 
 ### scheduled
 
-▸ **scheduled**<`T`\>(`input`, `scheduler`): [`Observable`](../classes/RxJS.Observable.md)<`T`\>
+▸ **scheduled**<T\>(`input`: [*ObservableInput*](rxjs.md#observableinput)<T\>, `scheduler`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<T\>
 
-Converts from a common [ObservableInput](RxJS.md#observableinput) type to an observable where subscription and emissions
+Converts from a common [ObservableInput](rxjs.md#observableinput) type to an observable where subscription and emissions
 are scheduled on the provided scheduler.
 
-**`see`** [from](RxJS.md#from)
+**`see`** [from](rxjs.md#from)
 
-**`see`** [of](RxJS.md#of)
+**`see`** [of](rxjs.md#of)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `input` | [`ObservableInput`](RxJS.md#observableinput)<`T`\> | The observable, array, promise, iterable, etc you would like to schedule |
-| `scheduler` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The scheduler to use to schedule the subscription and emissions from the returned observable. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`input` | [*ObservableInput*](rxjs.md#observableinput)<T\> | The observable, array, promise, iterable, etc you would like to schedule   |
+`scheduler` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | The scheduler to use to schedule the subscription and emissions from the returned observable.    |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`T`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<T\>
 
 ___
 
 ### sequenceEqual
 
-▸ **sequenceEqual**<`T`\>(`compareTo`, `comparator?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `boolean`\>
+▸ **sequenceEqual**<T\>(`compareTo`: [*Observable*](../classes/rxjs.observable.md)<T\>, `comparator?`: (`a`: T, `b`: T) => *boolean*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, boolean\>
 
 Compares all values of two observables in sequence using an optional comparator function
 and returns an observable of a single boolean value representing whether or not the two sequences
@@ -9327,28 +8283,26 @@ const matches = keys.pipe(
 matches.subscribe(matched => console.log('Successful cheat at Contra? ', matched));
 ```
 
-**`see`** [combineLatest](RxJS.md#combinelatest)
+**`see`** [combineLatest](rxjs.md#combinelatest)
 
-**`see`** [zip](RxJS.md#zip)
+**`see`** [zip](rxjs.md#zip)
 
-**`see`** [withLatestFrom](RxJS.md#withlatestfrom)
+**`see`** [withLatestFrom](rxjs.md#withlatestfrom)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `compareTo` | [`Observable`](../classes/RxJS.Observable.md)<`T`\> | The observable sequence to compare the source sequence to. |
-| `comparator?` | (`a`: `T`, `b`: `T`) => `boolean` | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`compareTo` | [*Observable*](../classes/rxjs.observable.md)<T\> | The observable sequence to compare the source sequence to.   |
+`comparator?` | (`a`: T, `b`: T) => *boolean* | - |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `boolean`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, boolean\>
 
 A function that returns an Observable that emits a single boolean
 value representing whether or not the values emitted by the source
@@ -9358,123 +8312,111 @@ ___
 
 ### share
 
-▸ **share**<`T`\>(): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **share**<T\>(): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Returns
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **share**<T\>(`options`: *ShareConfig*<T\>): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-▸ **share**<`T`\>(`options`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`options` | *ShareConfig*<T\> |
 
-| Name | Type |
-| :------ | :------ |
-| `options` | `ShareConfig`<`T`\> |
-
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 ___
 
 ### shareReplay
 
-▸ **shareReplay**<`T`\>(`config`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **shareReplay**<T\>(`config`: ShareReplayConfig): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `config` | `ShareReplayConfig` |
+Name | Type |
+:------ | :------ |
+`config` | ShareReplayConfig |
 
-#### Returns
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **shareReplay**<T\>(`bufferSize?`: *number*, `windowTime?`: *number*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-▸ **shareReplay**<`T`\>(`bufferSize?`, `windowTime?`, `scheduler?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`bufferSize?` | *number* |
+`windowTime?` | *number* |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-| Name | Type |
-| :------ | :------ |
-| `bufferSize?` | `number` |
-| `windowTime?` | `number` |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
-
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 ___
 
 ### single
 
-▸ **single**<`T`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\>\>
+▸ **single**<T\>(`predicate`: BooleanConstructor): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*TruthyTypesOf*](rxjs.md#truthytypesof)<T\>\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
+Name | Type |
+:------ | :------ |
+`predicate` | BooleanConstructor |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*TruthyTypesOf*](rxjs.md#truthytypesof)<T\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\>\>
+▸ **single**<T\>(`predicate?`: (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-▸ **single**<`T`\>(`predicate?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`predicate?` | (`value`: T, `index`: *number*, `source`: [*Observable*](../classes/rxjs.observable.md)<T\>) => *boolean* |
 
-| Name | Type |
-| :------ | :------ |
-| `predicate?` | (`value`: `T`, `index`: `number`, `source`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `boolean` |
-
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 ___
 
 ### skip
 
-▸ **skip**<`T`\>(`count`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **skip**<T\>(`count`: *number*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Returns an Observable that skips the first `count` items emitted by the source Observable.
 
@@ -9497,29 +8439,27 @@ const example = source.pipe(skip(10));
 const subscribe = example.subscribe(val => console.log(val));
 ```
 
-**`see`** [last](RxJS.md#last)
+**`see`** [last](rxjs.md#last)
 
-**`see`** [skipWhile](RxJS.md#skipwhile)
+**`see`** [skipWhile](rxjs.md#skipwhile)
 
-**`see`** [skipUntil](RxJS.md#skipuntil)
+**`see`** [skipUntil](rxjs.md#skipuntil)
 
-**`see`** [skipLast](RxJS.md#skiplast)
+**`see`** [skipLast](rxjs.md#skiplast)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `count` | `number` | The number of times, items emitted by source Observable should be skipped. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`count` | *number* | The number of times, items emitted by source Observable should be skipped.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that skips the first `count`
 values emitted by the source Observable.
@@ -9528,7 +8468,7 @@ ___
 
 ### skipLast
 
-▸ **skipLast**<`T`\>(`skipCount`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **skipLast**<T\>(`skipCount`: *number*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Skip a specified number of values before the completion of an observable.
 
@@ -9563,29 +8503,27 @@ skipLastTwo.subscribe(x => console.log(x));
 // (4 and 5 are skipped)
 ```
 
-**`see`** [skip](RxJS.md#skip)
+**`see`** [skip](rxjs.md#skip)
 
-**`see`** [skipUntil](RxJS.md#skipuntil)
+**`see`** [skipUntil](rxjs.md#skipuntil)
 
-**`see`** [skipWhile](RxJS.md#skipwhile)
+**`see`** [skipWhile](rxjs.md#skipwhile)
 
-**`see`** [take](RxJS.md#take)
+**`see`** [take](rxjs.md#take)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `skipCount` | `number` | Number of elements to skip from the end of the source Observable. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`skipCount` | *number* | Number of elements to skip from the end of the source Observable.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that skips the last `count`
 values emitted by the source Observable.
@@ -9594,7 +8532,7 @@ ___
 
 ### skipUntil
 
-▸ **skipUntil**<`T`\>(`notifier`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **skipUntil**<T\>(`notifier`: [*Observable*](../classes/rxjs.observable.md)<any\>): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Returns an Observable that skips items emitted by the source Observable until a second Observable emits an item.
 
@@ -9627,21 +8565,19 @@ const emitAfterClick = intervalObservable.pipe(
 const subscribe = emitAfterClick.subscribe(value => console.log(value));
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `notifier` | [`Observable`](../classes/RxJS.Observable.md)<`any`\> | The second Observable that has to emit an item before the source Observable's elements begin to be mirrored by the resulting Observable. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`notifier` | [*Observable*](../classes/rxjs.observable.md)<any\> | The second Observable that has to emit an item before the source Observable's elements begin to be mirrored by the resulting Observable.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that skips items from the
 source Observable until the second Observable emits an item, then emits the
@@ -9651,147 +8587,133 @@ ___
 
 ### skipWhile
 
-▸ **skipWhile**<`T`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `Extract`<`T`, [`Falsy`](RxJS.md#falsy)\> extends `never` ? `never` : `T`\>
+▸ **skipWhile**<T\>(`predicate`: BooleanConstructor): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, *Extract*<T, [*Falsy*](rxjs.md#falsy)\> *extends* *never* ? *never* : T\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
+Name | Type |
+:------ | :------ |
+`predicate` | BooleanConstructor |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, *Extract*<T, [*Falsy*](rxjs.md#falsy)\> *extends* *never* ? *never* : T\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `Extract`<`T`, [`Falsy`](RxJS.md#falsy)\> extends `never` ? `never` : `T`\>
+▸ **skipWhile**<T\>(`predicate`: (`value`: T, `index`: *number*) => *true*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, never\>
 
-▸ **skipWhile**<`T`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `never`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*) => *true* |
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`) => ``true`` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, never\>
 
-#### Returns
+▸ **skipWhile**<T\>(`predicate`: (`value`: T, `index`: *number*) => *boolean*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `never`\>
+#### Type parameters:
 
-▸ **skipWhile**<`T`\>(`predicate`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+Name |
+:------ |
+`T` |
 
-#### Type parameters
+#### Parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*) => *boolean* |
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`) => `boolean` |
-
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 ___
 
 ### startWith
 
-▸ **startWith**<`T`\>(`value`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| ``null``\>
+▸ **startWith**<T\>(`value`: *null*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| *null*\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `value` | ``null`` |
+Name | Type |
+:------ | :------ |
+`value` | *null* |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| *null*\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| ``null``\>
+▸ **startWith**<T\>(`value`: *undefined*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| undefined\>
 
-▸ **startWith**<`T`\>(`value`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `undefined`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`value` | *undefined* |
 
-| Name | Type |
-| :------ | :------ |
-| `value` | `undefined` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| undefined\>
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `undefined`\>
-
-▸ **startWith**<`T`, `A`\>(...`valuesAndScheduler`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+▸ **startWith**<T, A\>(...`valuesAndScheduler`: [...A, [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)]): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| [*ValueFromArray*](rxjs.md#valuefromarray)<A\>\>
 
 **`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `concatAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `A` | extends readonly `unknown`[] = `T`[] |
+Name | Type | Default |
+:------ | :------ | :------ |
+`T` | - | - |
+`A` | readonly *unknown*[] | T[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `...valuesAndScheduler` | [...A[], [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md)] |
+Name | Type |
+:------ | :------ |
+`...valuesAndScheduler` | [...A, [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)] |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| [*ValueFromArray*](rxjs.md#valuefromarray)<A\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+▸ **startWith**<T, A\>(...`values`: A): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| [*ValueFromArray*](rxjs.md#valuefromarray)<A\>\>
 
-▸ **startWith**<`T`, `A`\>(...`values`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+#### Type parameters:
 
-#### Type parameters
+Name | Type | Default |
+:------ | :------ | :------ |
+`T` | - | - |
+`A` | readonly *unknown*[] | T[] |
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `A` | extends readonly `unknown`[] = `T`[] |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`...values` | A |
 
-| Name | Type |
-| :------ | :------ |
-| `...values` | `A` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| [*ValueFromArray*](rxjs.md#valuefromarray)<A\>\>
 
 ___
 
 ### subscribeOn
 
-▸ **subscribeOn**<`T`\>(`scheduler`, `delay?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **subscribeOn**<T\>(`scheduler`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md), `delay?`: *number*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-Asynchronously subscribes Observers to this Observable on the specified [SchedulerLike](../interfaces/RxJS.SchedulerLike.md).
+Asynchronously subscribes Observers to this Observable on the specified [SchedulerLike](../interfaces/rxjs.schedulerlike.md).
 
 With `subscribeOn` you can decide what type of scheduler a specific Observable will be using when it is subscribed to.
 
@@ -9822,7 +8744,7 @@ merge(a, b).subscribe(console.log);
 
 Both Observable `a` and `b` will emit their values directly and synchronously once they are subscribed to.
 
-If we instead use the `subscribeOn` operator declaring that we want to use the [asyncScheduler](RxJS.md#asyncscheduler) for values emited by Observable `a`:
+If we instead use the `subscribeOn` operator declaring that we want to use the [asyncScheduler](rxjs.md#asyncscheduler) for values emited by Observable `a`:
 
 ```ts
 import { of, merge, asyncScheduler } from 'rxjs';
@@ -9843,33 +8765,31 @@ merge(a, b).subscribe(console.log);
 ```
 
 The reason for this is that Observable `b` emits its values directly and synchronously like before
-but the emissions from `a` are scheduled on the event loop because we are now using the [asyncScheduler](RxJS.md#asyncscheduler) for that specific Observable.
+but the emissions from `a` are scheduled on the event loop because we are now using the [asyncScheduler](rxjs.md#asyncscheduler) for that specific Observable.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `scheduler` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The [SchedulerLike](../interfaces/RxJS.SchedulerLike.md) to perform subscription actions on. |
-| `delay?` | `number` | A delay to pass to the scheduler to delay subscriptions |
+Name | Type | Description |
+:------ | :------ | :------ |
+`scheduler` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | The [SchedulerLike](../interfaces/rxjs.schedulerlike.md) to perform subscription actions on.   |
+`delay?` | *number* | A delay to pass to the scheduler to delay subscriptions   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable modified so that its
-subscriptions happen on the specified [SchedulerLike](../interfaces/RxJS.SchedulerLike.md).
+subscriptions happen on the specified [SchedulerLike](../interfaces/rxjs.schedulerlike.md).
 
 ___
 
 ### switchAll
 
-▸ **switchAll**<`O`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`O`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **switchAll**<O\>(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<O, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 Converts a higher-order Observable into a first-order Observable
 producing values only from the most recent observable sequence
@@ -9917,27 +8837,25 @@ source.pipe(
 // ...
 ```
 
-**`see`** [combineLatestAll](RxJS.md#combinelatestall)
+**`see`** [combineLatestAll](rxjs.md#combinelatestall)
 
-**`see`** [concatAll](RxJS.md#concatall)
+**`see`** [concatAll](rxjs.md#concatall)
 
-**`see`** [exhaustAll](RxJS.md#exhaustall)
+**`see`** [exhaustAll](rxjs.md#exhaustall)
 
-**`see`** [switchMap](RxJS.md#switchmap)
+**`see`** [switchMap](rxjs.md#switchmap)
 
-**`see`** [switchMapTo](RxJS.md#switchmapto)
+**`see`** [switchMapTo](rxjs.md#switchmapto)
 
-**`see`** [mergeAll](RxJS.md#mergeall)
+**`see`** [mergeAll](rxjs.md#mergeall)
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`O`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<O, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 A function that returns an Observable that converts a higher-order
 Observable into a first-order Observable producing values only from the most
@@ -9947,177 +8865,159 @@ ___
 
 ### switchMap
 
-▸ **switchMap**<`T`, `O`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **switchMap**<T, O\>(`project`: (`value`: T, `index`: *number*) => O): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+#### Type parameters:
+
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+▸ **switchMap**<T, O\>(`project`: (`value`: T, `index`: *number*) => O, `resultSelector`: *undefined*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 **`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+`resultSelector` | *undefined* |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **switchMap**<`T`, `O`\>(`project`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
-| `resultSelector` | `undefined` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **switchMap**<`T`, `R`, `O`\>(`project`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+▸ **switchMap**<T, R, O\>(`project`: (`value`: T, `index`: *number*) => O, `resultSelector`: (`outerValue`: T, `innerValue`: [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>, `outerIndex`: *number*, `innerIndex`: *number*) => R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 **`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `R` | `R` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`R` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `project` | (`value`: `T`, `index`: `number`) => `O` |
-| `resultSelector` | (`outerValue`: `T`, `innerValue`: [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>, `outerIndex`: `number`, `innerIndex`: `number`) => `R` |
+Name | Type |
+:------ | :------ |
+`project` | (`value`: T, `index`: *number*) => O |
+`resultSelector` | (`outerValue`: T, `innerValue`: [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>, `outerIndex`: *number*, `innerIndex`: *number*) => R |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 ___
 
 ### switchMapTo
 
-▸ **switchMapTo**<`O`\>(`observable`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **switchMapTo**<O\>(`observable`: O): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+#### Type parameters:
+
+Name | Type |
+:------ | :------ |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<unknown\> |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`observable` | O |
+
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
+
+▸ **switchMapTo**<O\>(`observable`: O, `resultSelector`: *undefined*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 **`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`unknown`\> |
+Name | Type |
+:------ | :------ |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<unknown\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `observable` | `O` |
+Name | Type |
+:------ | :------ |
+`observable` | O |
+`resultSelector` | *undefined* |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **switchMapTo**<`O`\>(`observable`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`unknown`\> |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `observable` | `O` |
-| `resultSelector` | `undefined` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **switchMapTo**<`T`, `R`, `O`\>(`observable`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+▸ **switchMapTo**<T, R, O\>(`observable`: O, `resultSelector`: (`outerValue`: T, `innerValue`: [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>, `outerIndex`: *number*, `innerIndex`: *number*) => R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 **`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `R` | `R` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`unknown`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`R` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<unknown\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `observable` | `O` |
-| `resultSelector` | (`outerValue`: `T`, `innerValue`: [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>, `outerIndex`: `number`, `innerIndex`: `number`) => `R` |
+Name | Type |
+:------ | :------ |
+`observable` | O |
+`resultSelector` | (`outerValue`: T, `innerValue`: [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>, `outerIndex`: *number*, `innerIndex`: *number*) => R |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 ___
 
 ### switchScan
 
-▸ **switchScan**<`T`, `R`, `O`\>(`accumulator`, `seed`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **switchScan**<T, R, O\>(`accumulator`: (`acc`: R, `value`: T, `index`: *number*) => O, `seed`: R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 Applies an accumulator function over the source Observable where the
 accumulator function itself returns an Observable, emitting values
 only from the most recently returned Observable.
 
-<span class="informal">It's like [scan](RxJS.md#scan), but only the most recent
+<span class="informal">It's like [scan](rxjs.md#scan), but only the most recent
 Observable returned by the accumulator is merged into the outer Observable.</span>
 
-**`see`** [scan](RxJS.md#scan)
+**`see`** [scan](rxjs.md#scan)
 
-**`see`** [mergeScan](RxJS.md#mergescan)
+**`see`** [mergeScan](rxjs.md#mergescan)
 
-**`see`** [switchMap](RxJS.md#switchmap)
+**`see`** [switchMap](rxjs.md#switchmap)
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `R` | `R` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`R` | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `accumulator` | (`acc`: `R`, `value`: `T`, `index`: `number`) => `O` | The accumulator function called on each source value. |
-| `seed` | `R` | The initial accumulation value. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`accumulator` | (`acc`: R, `value`: T, `index`: *number*) => O |  The accumulator function called on each source value.   |
+`seed` | R | The initial accumulation value.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 A function that returns an observable of the accumulated values.
 
@@ -10125,7 +9025,7 @@ ___
 
 ### take
 
-▸ **take**<`T`\>(`count`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **take**<T\>(`count`: *number*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Emits only the first `count` values emitted by the source Observable.
 
@@ -10157,29 +9057,27 @@ takeFive.subscribe(x => console.log(x));
 // 4
 ```
 
-**`see`** [takeLast](RxJS.md#takelast)
+**`see`** [takeLast](rxjs.md#takelast)
 
-**`see`** [takeUntil](RxJS.md#takeuntil)
+**`see`** [takeUntil](rxjs.md#takeuntil)
 
-**`see`** [takeWhile](RxJS.md#takewhile)
+**`see`** [takeWhile](rxjs.md#takewhile)
 
-**`see`** [skip](RxJS.md#skip)
+**`see`** [skip](rxjs.md#skip)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `count` | `number` | The maximum number of `next` values to emit. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`count` | *number* | The maximum number of `next` values to emit.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that emits only the first
 `count` values emitted by the source Observable, or all of the values from
@@ -10189,7 +9087,7 @@ ___
 
 ### takeLast
 
-▸ **takeLast**<`T`\>(`count`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **takeLast**<T\>(`count`: *number*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Waits for the source to complete, then emits the last N values from the source,
 as specified by the `count` argument.
@@ -10220,29 +9118,27 @@ const lastThree = many.pipe(takeLast(3));
 lastThree.subscribe(x => console.log(x));
 ```
 
-**`see`** [take](RxJS.md#take)
+**`see`** [take](rxjs.md#take)
 
-**`see`** [takeUntil](RxJS.md#takeuntil)
+**`see`** [takeUntil](rxjs.md#takeuntil)
 
-**`see`** [takeWhile](RxJS.md#takewhile)
+**`see`** [takeWhile](rxjs.md#takewhile)
 
-**`see`** [skip](RxJS.md#skip)
+**`see`** [skip](rxjs.md#skip)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `count` | `number` | The maximum number of values to emit from the end of the sequence of values emitted by the source Observable. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`count` | *number* | The maximum number of values to emit from the end of the sequence of values emitted by the source Observable.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that emits at most the last
 `count` values emitted by the source Observable.
@@ -10251,7 +9147,7 @@ ___
 
 ### takeUntil
 
-▸ **takeUntil**<`T`\>(`notifier`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **takeUntil**<T\>(`notifier`: [*ObservableInput*](rxjs.md#observableinput)<any\>): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Emits the values emitted by the source Observable until a `notifier`
 Observable emits a value.
@@ -10279,29 +9175,27 @@ const result = source.pipe(takeUntil(clicks));
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [take](RxJS.md#take)
+**`see`** [take](rxjs.md#take)
 
-**`see`** [takeLast](RxJS.md#takelast)
+**`see`** [takeLast](rxjs.md#takelast)
 
-**`see`** [takeWhile](RxJS.md#takewhile)
+**`see`** [takeWhile](rxjs.md#takewhile)
 
-**`see`** [skip](RxJS.md#skip)
+**`see`** [skip](rxjs.md#skip)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `notifier` | [`ObservableInput`](RxJS.md#observableinput)<`any`\> | The Observable whose first emitted value will cause the output Observable of `takeUntil` to stop emitting values from the source Observable. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`notifier` | [*ObservableInput*](rxjs.md#observableinput)<any\> | The Observable whose first emitted value will cause the output Observable of `takeUntil` to stop emitting values from the source Observable.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that emits the values from the
 source Observable until `notifier` emits its first value.
@@ -10310,197 +9204,175 @@ ___
 
 ### takeWhile
 
-▸ **takeWhile**<`T`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `Exclude`<`T`, [`Falsy`](RxJS.md#falsy)\> extends `never` ? `never` : `T`\>
+▸ **takeWhile**<T\>(`predicate`: BooleanConstructor): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, *Exclude*<T, [*Falsy*](rxjs.md#falsy)\> *extends* *never* ? *never* : T\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
+Name | Type |
+:------ | :------ |
+`predicate` | BooleanConstructor |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, *Exclude*<T, [*Falsy*](rxjs.md#falsy)\> *extends* *never* ? *never* : T\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `Exclude`<`T`, [`Falsy`](RxJS.md#falsy)\> extends `never` ? `never` : `T`\>
+▸ **takeWhile**<T\>(`predicate`: BooleanConstructor, `inclusive`: *false*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, *Exclude*<T, [*Falsy*](rxjs.md#falsy)\> *extends* *never* ? *never* : T\>
 
-▸ **takeWhile**<`T`\>(`predicate`, `inclusive`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `Exclude`<`T`, [`Falsy`](RxJS.md#falsy)\> extends `never` ? `never` : `T`\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`predicate` | BooleanConstructor |
+`inclusive` | *false* |
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
-| `inclusive` | ``false`` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, *Exclude*<T, [*Falsy*](rxjs.md#falsy)\> *extends* *never* ? *never* : T\>
 
-#### Returns
+▸ **takeWhile**<T\>(`predicate`: BooleanConstructor, `inclusive`: *true*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `Exclude`<`T`, [`Falsy`](RxJS.md#falsy)\> extends `never` ? `never` : `T`\>
+#### Type parameters:
 
-▸ **takeWhile**<`T`\>(`predicate`, `inclusive`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+Name |
+:------ |
+`T` |
 
-#### Type parameters
+#### Parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name | Type |
+:------ | :------ |
+`predicate` | BooleanConstructor |
+`inclusive` | *true* |
 
-#### Parameters
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
-| `inclusive` | ``true`` |
+▸ **takeWhile**<T, S\>(`predicate`: (`value`: T, `index`: *number*) => value is S): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S\>
 
-#### Returns
+#### Type parameters:
 
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+Name |
+:------ |
+`T` |
+`S` |
 
-▸ **takeWhile**<`T`, `S`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S`\>
+#### Parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*) => value is S |
 
-| Name |
-| :------ |
-| `T` |
-| `S` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S\>
 
-#### Parameters
+▸ **takeWhile**<T, S\>(`predicate`: (`value`: T, `index`: *number*) => value is S, `inclusive`: *false*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S\>
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`) => value is S |
+#### Type parameters:
 
-#### Returns
+Name |
+:------ |
+`T` |
+`S` |
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S`\>
+#### Parameters:
 
-▸ **takeWhile**<`T`, `S`\>(`predicate`, `inclusive`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S`\>
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*) => value is S |
+`inclusive` | *false* |
 
-#### Type parameters
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, S\>
 
-| Name |
-| :------ |
-| `T` |
-| `S` |
+▸ **takeWhile**<T\>(`predicate`: (`value`: T, `index`: *number*) => *boolean*, `inclusive?`: *boolean*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-#### Parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`) => value is S |
-| `inclusive` | ``false`` |
+Name |
+:------ |
+`T` |
 
-#### Returns
+#### Parameters:
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S`\>
+Name | Type |
+:------ | :------ |
+`predicate` | (`value`: T, `index`: *number*) => *boolean* |
+`inclusive?` | *boolean* |
 
-▸ **takeWhile**<`T`\>(`predicate`, `inclusive?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `predicate` | (`value`: `T`, `index`: `number`) => `boolean` |
-| `inclusive?` | `boolean` |
-
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 ___
 
 ### tap
 
-▸ **tap**<`T`\>(`observer?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **tap**<T\>(`observer?`: *Partial*<TapObserver<T\>\>): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
+
+#### Type parameters:
+
+Name |
+:------ |
+`T` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`observer?` | *Partial*<TapObserver<T\>\> |
+
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
+
+▸ **tap**<T\>(`next`: (`value`: T) => *void*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
+
+#### Type parameters:
+
+Name |
+:------ |
+`T` |
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`next` | (`value`: T) => *void* |
+
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
+
+▸ **tap**<T\>(`next?`: (`value`: T) => *void* \| *null*, `error?`: (`error`: *any*) => *void* \| *null*, `complete?`: () => *void* \| *null*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 **`deprecated`** Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `observer?` | `Partial`<`TapObserver`<`T`\>\> |
+Name | Type |
+:------ | :------ |
+`next?` | (`value`: T) => *void* \| *null* |
+`error?` | (`error`: *any*) => *void* \| *null* |
+`complete?` | () => *void* \| *null* |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-▸ **tap**<`T`\>(`next`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-**`deprecated`** Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `next` | (`value`: `T`) => `void` |
-
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-▸ **tap**<`T`\>(`next?`, `error?`, `complete?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-**`deprecated`** Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `next?` | ``null`` \| (`value`: `T`) => `void` |
-| `error?` | ``null`` \| (`error`: `any`) => `void` |
-| `complete?` | ``null`` \| () => `void` |
-
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 ___
 
 ### throttle
 
-▸ **throttle**<`T`\>(`durationSelector`, `config?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **throttle**<T\>(`durationSelector`: (`value`: T) => [*ObservableInput*](rxjs.md#observableinput)<any\>, `__namedParameters?`: ThrottleConfig): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Emits a value from the source Observable, then ignores subsequent source
 values for a duration determined by another Observable, then repeats this
 process.
 
-<span class="informal">It's like [throttleTime](RxJS.md#throttletime), but the silencing
+<span class="informal">It's like [throttleTime](rxjs.md#throttletime), but the silencing
 duration is determined by a second Observable.</span>
 
 ![](throttle.png)
@@ -10525,32 +9397,30 @@ const result = clicks.pipe(throttle(ev => interval(1000)));
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [audit](RxJS.md#audit)
+**`see`** [audit](rxjs.md#audit)
 
-**`see`** [debounce](RxJS.md#debounce)
+**`see`** [debounce](rxjs.md#debounce)
 
-**`see`** [delayWhen](RxJS.md#delaywhen)
+**`see`** [delayWhen](rxjs.md#delaywhen)
 
-**`see`** [sample](RxJS.md#sample)
+**`see`** [sample](rxjs.md#sample)
 
-**`see`** [throttleTime](RxJS.md#throttletime)
+**`see`** [throttleTime](rxjs.md#throttletime)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `durationSelector` | (`value`: `T`) => [`ObservableInput`](RxJS.md#observableinput)<`any`\> | A function that receives a value from the source Observable, for computing the silencing duration for each source value, returned as an Observable or a Promise. |
-| `config?` | `ThrottleConfig` | a configuration object to define `leading` and `trailing` behavior. Defaults to `{ leading: true, trailing: false }`. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`durationSelector` | (`value`: T) => [*ObservableInput*](rxjs.md#observableinput)<any\> | A function that receives a value from the source Observable, for computing the silencing duration for each source value, returned as an Observable or a Promise.   |
+`__namedParameters?` | ThrottleConfig | - |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that performs the throttle
 operation to limit the rate of emissions from the source.
@@ -10559,7 +9429,7 @@ ___
 
 ### throttleTime
 
-▸ **throttleTime**<`T`\>(`duration`, `scheduler?`, `config?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **throttleTime**<T\>(`duration`: *number*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md), `config?`: ThrottleConfig): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Emits a value from the source Observable, then ignores subsequent source
 values for `duration` milliseconds, then repeats this process.
@@ -10576,7 +9446,7 @@ value arrives, it is forwarded to the output Observable, and then the timer
 is enabled. After `duration` milliseconds (or the time unit determined
 internally by the optional `scheduler`) has passed, the timer is disabled,
 and this process repeats for the next source value. Optionally takes a
-[SchedulerLike](../interfaces/RxJS.SchedulerLike.md) for managing timers.
+[SchedulerLike](../interfaces/rxjs.schedulerlike.md) for managing timers.
 
 ## Examples
 
@@ -10621,33 +9491,31 @@ doubleClick.subscribe((throttleValue: Event) => {
 If you enable the `leading` parameter in this example, the output would be the primary click and
 the double click, but restricts additional clicks within 400ms.
 
-**`see`** [auditTime](RxJS.md#audittime)
+**`see`** [auditTime](rxjs.md#audittime)
 
-**`see`** [debounceTime](RxJS.md#debouncetime)
+**`see`** [debounceTime](rxjs.md#debouncetime)
 
-**`see`** [delay](RxJS.md#delay)
+**`see`** [delay](rxjs.md#delay)
 
-**`see`** [sampleTime](RxJS.md#sampletime)
+**`see`** [sampleTime](rxjs.md#sampletime)
 
-**`see`** [throttle](RxJS.md#throttle)
+**`see`** [throttle](rxjs.md#throttle)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `duration` | `number` | Time to wait before emitting another value after emitting the last value, measured in milliseconds or the time unit determined internally by the optional `scheduler`. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The [SchedulerLike](../interfaces/RxJS.SchedulerLike.md) to use for managing the timers that handle the throttling. Defaults to [asyncScheduler](RxJS.md#asyncscheduler). |
-| `config?` | `ThrottleConfig` | a configuration object to define `leading` and `trailing` behavior. Defaults to `{ leading: true, trailing: false }`. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`duration` | *number* | Time to wait before emitting another value after emitting the last value, measured in milliseconds or the time unit determined internally by the optional `scheduler`.   |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | The [SchedulerLike](../interfaces/rxjs.schedulerlike.md) to use for managing the timers that handle the throttling. Defaults to [asyncScheduler](rxjs.md#asyncscheduler).   |
+`config?` | ThrottleConfig | a configuration object to define `leading` and `trailing` behavior. Defaults to `{ leading: true, trailing: false }`.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that performs the throttle
 operation to limit the rate of emissions from the source.
@@ -10656,7 +9524,7 @@ ___
 
 ### throwError
 
-▸ **throwError**(`errorFactory`): [`Observable`](../classes/RxJS.Observable.md)<`never`\>
+▸ **throwError**(`errorFactory`: () => *any*): [*Observable*](../classes/rxjs.observable.md)<never\>
 
 Creates an observable that will create an error instance and push it to the consumer as an error
 immediately upon subscription.
@@ -10667,8 +9535,8 @@ immediately upon subscription.
 
 This creation function is useful for creating an observable that will create an error and error every
 time it is subscribed to. Generally, inside of most operators when you might want to return an errored
-observable, this is unnecessary. In most cases, such as in the inner return of [concatMap](RxJS.md#concatmap),
-[mergeMap](RxJS.md#mergemap), [defer](RxJS.md#defer), and many others, you can simply throw the error, and RxJS will pick
+observable, this is unnecessary. In most cases, such as in the inner return of [concatMap](rxjs.md#concatmap),
+[mergeMap](rxjs.md#mergemap), [defer](rxjs.md#defer), and many others, you can simply throw the error, and RxJS will pick
 that up and notify the consumer of the error.
 
 ## Example
@@ -10749,17 +9617,15 @@ delays$.pipe(
 });
 ```
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `errorFactory` | () => `any` | A factory function that will create the error instance that is pushed. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`errorFactory` | () => *any* | A factory function that will create the error instance that is pushed.    |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<never\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`never`\>
-
-▸ **throwError**(`error`): [`Observable`](../classes/RxJS.Observable.md)<`never`\>
+▸ **throwError**(`error`: *any*): [*Observable*](../classes/rxjs.observable.md)<never\>
 
 Returns an observable that will error with the specified error immediately upon subscription.
 
@@ -10767,44 +9633,40 @@ Returns an observable that will error with the specified error immediately upon 
 because it will create the error at the moment it should be created and capture a more appropriate stack trace. If
 for some reason you need to create the error ahead of time, you can still do that: `const err = new Error('test'); throwError(() => err);`.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `error` | `any` | The error instance to emit |
+Name | Type | Description |
+:------ | :------ | :------ |
+`error` | *any* | The error instance to emit   |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<never\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`never`\>
-
-▸ **throwError**(`errorOrErrorFactory`, `scheduler`): [`Observable`](../classes/RxJS.Observable.md)<`never`\>
+▸ **throwError**(`errorOrErrorFactory`: *any*, `scheduler`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<never\>
 
 Notifies the consumer of an error using a given scheduler by scheduling it at delay `0` upon subscription.
 
 **`deprecated`** The `scheduler` parameter will be removed in v8.
-Use `throwError` in combination with [observeOn](RxJS.md#observeon): `throwError(() => new Error('test')).pipe(observeOn(scheduler));`.
+Use `throwError` in combination with [observeOn](rxjs.md#observeon): `throwError(() => new Error('test')).pipe(observeOn(scheduler));`.
 Details: https://rxjs.dev/deprecations/scheduler-argument
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `errorOrErrorFactory` | `any` | An error instance or error factory |
-| `scheduler` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | A scheduler to use to schedule the error notification |
+Name | Type | Description |
+:------ | :------ | :------ |
+`errorOrErrorFactory` | *any* | An error instance or error factory   |
+`scheduler` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | A scheduler to use to schedule the error notification   |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`never`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<never\>
 
 ___
 
 ### throwIfEmpty
 
-▸ **throwIfEmpty**<`T`\>(`errorFactory?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **throwIfEmpty**<T\>(`errorFactory?`: () => *any*): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 If the source observable completes without emitting a value, it will emit
 an error. The error will be created at that time by the optional
-`errorFactory` argument, otherwise, the error will be [EmptyError](../interfaces/RxJS.EmptyError.md).
+`errorFactory` argument, otherwise, the error will be [EmptyError](../interfaces/rxjs.emptyerror.md).
 
 ![](throwIfEmpty.png)
 
@@ -10827,21 +9689,19 @@ click$.pipe(
 });
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `errorFactory?` | () => `any` | A factory function called to produce the error to be thrown when the source observable completes without emitting a value. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`errorFactory?` | () => *any* | A factory function called to produce the error to be thrown when the source observable completes without emitting a value.   |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 A function that returns an Observable that throws an error if the
 source Observable completed without emitting.
@@ -10850,13 +9710,13 @@ ___
 
 ### timeInterval
 
-▸ **timeInterval**<`T`\>(`scheduler?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `TimeInterval`<`T`\>\>
+▸ **timeInterval**<T\>(`scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, TimeInterval<T\>\>
 
 Emits an object containing the current value, and the time that has
 passed between emitting the current value and the previous value, which is
 calculated by using the provided `scheduler`'s `now()` method to retrieve
 the current time at each emission, then calculating the difference. The `scheduler`
-defaults to [asyncScheduler](RxJS.md#asyncscheduler), so by default, the `interval` will be in
+defaults to [asyncScheduler](rxjs.md#asyncscheduler), so by default, the `interval` will be in
 milliseconds.
 
 <span class="informal">Convert an Observable that emits items into one that
@@ -10891,21 +9751,19 @@ seconds.pipe(timeout(900))
 // {value: 2, interval: 1000}
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `TimeInterval`<`T`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, TimeInterval<T\>\>
 
 A function that returns an Observable that emits information about
 value and interval.
@@ -10914,7 +9772,7 @@ ___
 
 ### timeout
 
-▸ **timeout**<`T`, `O`, `M`\>(`config`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **timeout**<T, O, M\>(`config`: *TimeoutConfig*<T, O, M\> & { `with`: (`info`: *TimeoutInfo*<T, M\>) => O  }): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
 If `with` is provided, this will return an observable that will switch to a different observable if the source
 does not push values within the specified time parameters.
@@ -10922,7 +9780,7 @@ does not push values within the specified time parameters.
 <span class="informal">The most flexible option for creating a timeout behavior.</span>
 
 The first thing to know about the configuration is if you do not provide a `with` property to the configuration,
-when timeout conditions are met, this operator will emit a [TimeoutError](../interfaces/RxJS.TimeoutError.md). Otherwise, it will use the factory
+when timeout conditions are met, this operator will emit a [TimeoutError](../interfaces/rxjs.timeouterror.md). Otherwise, it will use the factory
 function provided by `with`, and switch your subscription to the result of that. Timeout conditions are provided by
 the settings in `first` and `each`.
 
@@ -10984,25 +9842,23 @@ slow$.pipe(
 .subscribe(console.log)
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends [`ObservableInput`](RxJS.md#observableinput)<`unknown`\> |
-| `M` | `unknown` |
+Name | Type | Default |
+:------ | :------ | :------ |
+`T` | - | - |
+`O` | [*ObservableInput*](rxjs.md#observableinput)<unknown\> | - |
+`M` | - | *unknown* |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `config` | `TimeoutConfig`<`T`, `O`, `M`\> & { `with`: (`info`: `TimeoutInfo`<`T`, `M`\>) => `O`  } | The configuration for the timeout. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`config` | *TimeoutConfig*<T, O, M\> & { `with`: (`info`: *TimeoutInfo*<T, M\>) => O  } | The configuration for the timeout.    |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| [*ObservedValueOf*](rxjs.md#observedvalueof)<O\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-▸ **timeout**<`T`, `M`\>(`config`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`\>
+▸ **timeout**<T, M\>(`config`: *Omit*<TimeoutConfig<T, any, M\>, *with*\>): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T\>
 
 Returns an observable that will error or switch to a different observable if the source does not push values
 within the specified time parameters.
@@ -11010,7 +9866,7 @@ within the specified time parameters.
 <span class="informal">The most flexible option for creating a timeout behavior.</span>
 
 The first thing to know about the configuration is if you do not provide a `with` property to the configuration,
-when timeout conditions are met, this operator will emit a [TimeoutError](../interfaces/RxJS.TimeoutError.md). Otherwise, it will use the factory
+when timeout conditions are met, this operator will emit a [TimeoutError](../interfaces/rxjs.timeouterror.md). Otherwise, it will use the factory
 function provided by `with`, and switch your subscription to the result of that. Timeout conditions are provided by
 the settings in `first` and `each`.
 
@@ -11026,9 +9882,9 @@ value and all subsequent values. If `first` _is_ provided, `each` will only be u
 
 ### Handling TimeoutErrors
 
-If no `with` property was provided, subscriptions to the resulting observable may emit an error of [TimeoutError](../interfaces/RxJS.TimeoutError.md).
+If no `with` property was provided, subscriptions to the resulting observable may emit an error of [TimeoutError](../interfaces/rxjs.timeouterror.md).
 The timeout error provides useful information you can examine when you're handling the error. The most common way to handle
-the error would be with [catchError](RxJS.md#catcherror), although you could use [tap](RxJS.md#tap) or just the error handler in your `subscribe` call
+the error would be with [catchError](rxjs.md#catcherror), although you could use [tap](rxjs.md#tap) or just the error handler in your `subscribe` call
 directly, if your error handling is only a side effect (such as notifying the user, or logging).
 
 In this case, you would check the error for `instanceof TimeoutError` to validate that the error was indeed from `timeout`, and
@@ -11036,7 +9892,7 @@ not from some other source. If it's not from `timeout`, you should probably reth
 
 ### Example
 
-Emit a [TimeoutError](../interfaces/RxJS.TimeoutError.md) if the first value, and _only_ the first value, does not arrive within 5 seconds
+Emit a [TimeoutError](../interfaces/rxjs.timeouterror.md) if the first value, and _only_ the first value, does not arrive within 5 seconds
 
 ```ts
 import { interval } from 'rxjs';
@@ -11053,7 +9909,7 @@ source$.pipe(
 
 ### Example
 
-Emit a [TimeoutError](../interfaces/RxJS.TimeoutError.md) if the source waits longer than 5 seconds between any two values or the first value
+Emit a [TimeoutError](../interfaces/rxjs.timeouterror.md) if the source waits longer than 5 seconds between any two values or the first value
 and subscription.
 
 ```ts
@@ -11075,7 +9931,7 @@ source$.pipe(
 
 ### Example
 
-Emit a [TimeoutError](../interfaces/RxJS.TimeoutError.md) if the the source does not emit before 7 seconds, _or_ if the source waits longer than
+Emit a [TimeoutError](../interfaces/rxjs.timeouterror.md) if the the source does not emit before 7 seconds, _or_ if the source waits longer than
 5 seconds between any two values after the first.
 
 ```ts
@@ -11095,24 +9951,22 @@ source$.pipe(
 .subscribe(console.log);
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `M` | `unknown` |
+Name | Default |
+:------ | :------ |
+`T` | - |
+`M` | *unknown* |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `config` | `Omit`<`TimeoutConfig`<`T`, `any`, `M`\>, ``"with"``\> |
+Name | Type |
+:------ | :------ |
+`config` | *Omit*<TimeoutConfig<T, any, M\>, *with*\> |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`\>
-
-▸ **timeout**<`T`\>(`first`, `scheduler?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **timeout**<T\>(`first`: Date, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Returns an observable that will error if the source does not push its first value before the specified time passed as a `Date`.
 This is functionally the same as `timeout({ first: someDate })`.
@@ -11121,24 +9975,22 @@ This is functionally the same as `timeout({ first: someDate })`.
 
 ![](timeout.png)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `first` | `Date` | The date to at which the resulting observable will timeout if the source observable does not emit at least one value. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The scheduler to use. Defaults to [asyncScheduler](RxJS.md#asyncscheduler). |
+Name | Type | Description |
+:------ | :------ | :------ |
+`first` | Date | The date to at which the resulting observable will timeout if the source observable does not emit at least one value.   |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | The scheduler to use. Defaults to [asyncScheduler](rxjs.md#asyncscheduler).    |
 
-#### Returns
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-▸ **timeout**<`T`\>(`each`, `scheduler?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **timeout**<T\>(`each`: *number*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 Returns an observable that will error if the source does not push a value within the specified time in milliseconds.
 This is functionally the same as `timeout({ each: milliseconds })`.
@@ -11147,63 +9999,55 @@ This is functionally the same as `timeout({ each: milliseconds })`.
 
 ![](timeout.png)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `each` | `number` | The time allowed between each pushed value from the source before the resulting observable will timeout. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The scheduler to use. Defaults to [asyncScheduler](RxJS.md#asyncscheduler). |
+Name | Type | Description |
+:------ | :------ | :------ |
+`each` | *number* | The time allowed between each pushed value from the source before the resulting observable will timeout.   |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | The scheduler to use. Defaults to [asyncScheduler](rxjs.md#asyncscheduler).    |
 
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+**Returns:** [*MonoTypeOperatorFunction*](../interfaces/rxjs.monotypeoperatorfunction.md)<T\>
 
 ___
 
 ### timeoutWith
 
-▸ **timeoutWith**<`T`, `R`\>(`dueBy`, `switchTo`, `scheduler?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `R`\>
+▸ **timeoutWith**<T, R\>(`dueBy`: Date, `switchTo`: [*ObservableInput*](rxjs.md#observableinput)<R\>, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| R\>
 
 If the time of the Date object passed arrives before the first value arrives from the source, it will unsubscribe
 from the source and switch the subscription to another observable.
 
 <span class="informal">Use to switch to a different observable if the first value doesn't arrive by a specific time</span>
 
-Can be used to set a timeout only for the first value, however it's recommended to use the [timeout](RxJS.md#timeout) operator with
+Can be used to set a timeout only for the first value, however it's recommended to use the [timeout](rxjs.md#timeout) operator with
 the `first` configuration to get that effect.
 
-**`deprecated`** Replaced with [timeout](RxJS.md#timeout). Instead of `timeoutWith(someDate, a$, scheduler)`, use the configuration object `timeout({ first: someDate, with: () => a$, scheduler })`. Will be removed in v8.
+**`deprecated`** Replaced with [timeout](rxjs.md#timeout). Instead of `timeoutWith(someDate, a$, scheduler)`, use the configuration object `timeout({ first: someDate, with: () => a$, scheduler })`. Will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `R` |
+Name |
+:------ |
+`T` |
+`R` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `dueBy` | `Date` | The exact time, as a `Date`, at which the timeout will be triggered if the first value does not arrive. |
-| `switchTo` | [`ObservableInput`](RxJS.md#observableinput)<`R`\> | The observable to switch to when timeout occurs. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The scheduler to use with time-related operations within this operator. Defaults to [asyncScheduler](RxJS.md#asyncscheduler) |
+Name | Type | Description |
+:------ | :------ | :------ |
+`dueBy` | Date | The exact time, as a `Date`, at which the timeout will be triggered if the first value does not arrive.   |
+`switchTo` | [*ObservableInput*](rxjs.md#observableinput)<R\> | The observable to switch to when timeout occurs.   |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | The scheduler to use with time-related operations within this operator. Defaults to [asyncScheduler](rxjs.md#asyncscheduler)   |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| R\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `R`\>
-
-A function that returns an Observable that mirrors behaviour of the
-source Observable, unless timeout happens when it starts emitting values
-from the Observable passed as a second parameter.
-
-▸ **timeoutWith**<`T`, `R`\>(`waitFor`, `switchTo`, `scheduler?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `R`\>
+▸ **timeoutWith**<T, R\>(`waitFor`: *number*, `switchTo`: [*ObservableInput*](rxjs.md#observableinput)<R\>, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| R\>
 
 When the passed timespan ellapses before the source emits any given value, it will unsubscribe from the source,
 and switch the subscription to another observable.
@@ -11214,8 +10058,8 @@ Useful in cases where:
 
 - You want to switch to a different source that may be faster
 - You want to notify a user that the data stream is slow
-- You want to emit a custom error rather than the [TimeoutError](../interfaces/RxJS.TimeoutError.md) emitted
-  by the default usage of [timeout](RxJS.md#timeout).
+- You want to emit a custom error rather than the [TimeoutError](../interfaces/rxjs.timeouterror.md) emitted
+  by the default usage of [timeout](rxjs.md#timeout).
 
 ## Example
 
@@ -11259,26 +10103,24 @@ slow$.pipe(
 })
 ```
 
-**`deprecated`** Replaced with [timeout](RxJS.md#timeout). Instead of `timeoutWith(100, a$, scheduler)`, use the configuration object `timeout({ each: 100, with: () => a$, scheduler })`. Will be removed in v8.
+**`deprecated`** Replaced with [timeout](rxjs.md#timeout). Instead of `timeoutWith(100, a$, scheduler)`, use the configuration object `timeout({ each: 100, with: () => a$, scheduler })`. Will be removed in v8.
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `R` |
+Name |
+:------ |
+`T` |
+`R` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `waitFor` | `number` | The time allowed between values from the source before timeout is triggered. |
-| `switchTo` | [`ObservableInput`](RxJS.md#observableinput)<`R`\> | The observable to switch to when timeout occurs. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The scheduler to use with time-related operations within this operator. Defaults to [asyncScheduler](RxJS.md#asyncscheduler) |
+Name | Type | Description |
+:------ | :------ | :------ |
+`waitFor` | *number* | The time allowed between values from the source before timeout is triggered.   |
+`switchTo` | [*ObservableInput*](rxjs.md#observableinput)<R\> | The observable to switch to when timeout occurs.   |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | The scheduler to use with time-related operations within this operator. Defaults to [asyncScheduler](rxjs.md#asyncscheduler)   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T \| R\>
 
 A function that returns an Observable that mirrors behaviour of the
 source Observable, unless timeout happens when it starts emitting values
@@ -11288,7 +10130,7 @@ ___
 
 ### timer
 
-▸ **timer**(`due`, `scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<``0``\>
+▸ **timer**(`due`: *number* \| Date, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<*0*\>
 
 Creates an observable that will wait for a specified time period, or exact date, before
 emitting the number 0.
@@ -11307,7 +10149,7 @@ create a different behavior.
 
 You might want to use `timer` to delay subscription to an
 observable by a set amount of time. Here we use a timer with
-[concatMapTo](RxJS.md#concatmapto) or [concatMap](RxJS.md#concatmap) in order to wait
+[concatMapTo](rxjs.md#concatmapto) or [concatMap](rxjs.md#concatmap) in order to wait
 a few seconds and start a subscription to a source.
 
 ```ts
@@ -11329,7 +10171,7 @@ Using the a date as the trigger for the first emission, you can
 do things like wait until midnight to fire an event, or in this case,
 wait until a new minute starts (chosen so the example wouldn't take
 too long to run) in order to stop watching a stream. Leveraging
-[takeUntil](RxJS.md#takeuntil).
+[takeUntil](rxjs.md#takeuntil).
 
 ```ts
 import { interval, timer } from 'rxjs';
@@ -11358,25 +10200,23 @@ result.subscribe(console.log);
 
 ### Known Limitations
 
-- The [asyncScheduler](RxJS.md#asyncscheduler) uses `setTimeout` which has limitations for how far in the future it can be scheduled.
+- The [asyncScheduler](rxjs.md#asyncscheduler) uses `setTimeout` which has limitations for how far in the future it can be scheduled.
 
 - If a `scheduler` is provided that returns a timestamp other than an epoch from `now()`, and
 a `Date` object is passed to the `dueTime` argument, the calculation for when the first emission
 should occur will be incorrect. In this case, it would be best to do your own calculations
 ahead of time, and pass a `number` in as the `dueTime`.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `due` | `number` \| `Date` | If a `number`, the amount of time in milliseconds to wait before emitting. If a `Date`, the exact time at which to emit. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The scheduler to use to schedule the delay. Defaults to [asyncScheduler](RxJS.md#asyncscheduler). |
+Name | Type | Description |
+:------ | :------ | :------ |
+`due` | *number* \| Date | If a `number`, the amount of time in milliseconds to wait before emitting. If a `Date`, the exact time at which to emit.   |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | The scheduler to use to schedule the delay. Defaults to [asyncScheduler](rxjs.md#asyncscheduler).    |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<*0*\>
 
-[`Observable`](../classes/RxJS.Observable.md)<``0``\>
-
-▸ **timer**(`startDue`, `intervalDuration`, `scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<`number`\>
+▸ **timer**(`startDue`: *number* \| Date, `intervalDuration`: *number*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<number\>
 
 Creates an observable that starts an interval after a specified delay, emitting incrementing numbers -- starting at `0` --
 on each interval after words.
@@ -11404,46 +10244,42 @@ interval(1000).subscribe(n => console.log('interval', n));
 
 ### Known Limitations
 
-- The [asyncScheduler](RxJS.md#asyncscheduler) uses `setTimeout` which has limitations for how far in the future it can be scheduled.
+- The [asyncScheduler](rxjs.md#asyncscheduler) uses `setTimeout` which has limitations for how far in the future it can be scheduled.
 
 - If a `scheduler` is provided that returns a timestamp other than an epoch from `now()`, and
 a `Date` object is passed to the `dueTime` argument, the calculation for when the first emission
 should occur will be incorrect. In this case, it would be best to do your own calculations
 ahead of time, and pass a `number` in as the `startDue`.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `startDue` | `number` \| `Date` | If a `number`, is the time to wait before starting the interval. If a `Date`, is the exact time at which to start the interval. |
-| `intervalDuration` | `number` | The delay between each value emitted in the interval. Passing a negative number here will result in immediate completion after the first value is emitted, as though no `intervalDuration` was passed at all. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The scheduler to use to schedule the delay. Defaults to [asyncScheduler](RxJS.md#asyncscheduler). |
+Name | Type | Description |
+:------ | :------ | :------ |
+`startDue` | *number* \| Date | If a `number`, is the time to wait before starting the interval. If a `Date`, is the exact time at which to start the interval.   |
+`intervalDuration` | *number* | The delay between each value emitted in the interval. Passing a negative number here will result in immediate completion after the first value is emitted, as though no `intervalDuration` was passed at all.   |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) | The scheduler to use to schedule the delay. Defaults to [asyncScheduler](rxjs.md#asyncscheduler).    |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<number\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`number`\>
-
-▸ **timer**(`dueTime`, `unused`, `scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<``0``\>
+▸ **timer**(`dueTime`: *number* \| Date, `unused`: *undefined*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*Observable*](../classes/rxjs.observable.md)<*0*\>
 
 **`deprecated`** The signature allowing `undefined` to be passed for `intervalDuration` will be removed in v8. Use the `timer(dueTime, scheduler?)` signature instead.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `dueTime` | `number` \| `Date` |
-| `unused` | `undefined` |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`dueTime` | *number* \| Date |
+`unused` | *undefined* |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<``0``\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<*0*\>
 
 ___
 
 ### timestamp
 
-▸ **timestamp**<`T`\>(`timestampProvider?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Timestamp`](../interfaces/RxJS.Timestamp.md)<`T`\>\>
+▸ **timestamp**<T\>(`timestampProvider?`: [*TimestampProvider*](../interfaces/rxjs.timestampprovider.md)): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Timestamp*](../interfaces/rxjs.timestamp.md)<T\>\>
 
 Attaches a timestamp to each item emitted by an observable indicating when it was emitted
 
@@ -11473,21 +10309,19 @@ clickWithTimestamp.subscribe(data => {
 });
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `timestampProvider?` | [`TimestampProvider`](../interfaces/RxJS.TimestampProvider.md) | An object with a `now()` method used to get the current timestamp. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`timestampProvider?` | [*TimestampProvider*](../interfaces/rxjs.timestampprovider.md) | An object with a `now()` method used to get the current timestamp.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Timestamp`](../interfaces/RxJS.Timestamp.md)<`T`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Timestamp*](../interfaces/rxjs.timestamp.md)<T\>\>
 
 A function that returns an Observable that attaches a timestamp to
 each item emitted by the source Observable indicating when it was emitted.
@@ -11496,7 +10330,7 @@ ___
 
 ### toArray
 
-▸ **toArray**<`T`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+▸ **toArray**<T\>(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
 Collects all source emissions and emits them as an array when the source completes.
 
@@ -11524,15 +10358,13 @@ const subscribe = example.subscribe(val => console.log(val));
 // output: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[]\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, T[]\>
 
 A function that returns an Observable that emits an array of items
 emitted by the source Observable when source completes.
@@ -11541,7 +10373,7 @@ ___
 
 ### using
 
-▸ **using**<`T`\>(`resourceFactory`, `observableFactory`): [`Observable`](../classes/RxJS.Observable.md)<[`ObservedValueOf`](RxJS.md#observedvalueof)<`T`\>\>
+▸ **using**<T\>(`resourceFactory`: () => [*Unsubscribable*](../interfaces/rxjs.unsubscribable.md) \| *void*, `observableFactory`: (`resource`: [*Unsubscribable*](../interfaces/rxjs.unsubscribable.md) \| *void*) => T \| *void*): [*Observable*](../classes/rxjs.observable.md)<[*ObservedValueOf*](rxjs.md#observedvalueof)<T\>\>
 
 Creates an Observable that uses a resource which will be disposed at the same time as the Observable.
 
@@ -11561,24 +10393,22 @@ otherwise would have to be handled by hand. Note that complete or error notifica
 cancels subscription to an Observable via `unsubscribe`, so `using` can be used as a hook, allowing you to make
 sure that all resources which need to exist during an Observable execution will be disposed at appropriate time.
 
-**`see`** [defer](RxJS.md#defer)
+**`see`** [defer](rxjs.md#defer)
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | extends [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
+Name | Type |
+:------ | :------ |
+`T` | [*ObservableInput*](rxjs.md#observableinput)<any\> |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `resourceFactory` | () => `void` \| [`Unsubscribable`](../interfaces/RxJS.Unsubscribable.md) | A function which creates any resource object that implements `unsubscribe` method. |
-| `observableFactory` | (`resource`: `void` \| [`Unsubscribable`](../interfaces/RxJS.Unsubscribable.md)) => `void` \| `T` | A function which creates an Observable, that can use injected resource object. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`resourceFactory` | () => [*Unsubscribable*](../interfaces/rxjs.unsubscribable.md) \| *void* | A function which creates any resource object that implements `unsubscribe` method.   |
+`observableFactory` | (`resource`: [*Unsubscribable*](../interfaces/rxjs.unsubscribable.md) \| *void*) => T \| *void* | A function which creates an Observable, that can use injected resource object.   |
 
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<[`ObservedValueOf`](RxJS.md#observedvalueof)<`T`\>\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<[*ObservedValueOf*](rxjs.md#observedvalueof)<T\>\>
 
 An Observable that behaves the same as Observable returned by `observableFactory`, but
 which - when completed, errored or unsubscribed - will also call `unsubscribe` on created resource object.
@@ -11587,12 +10417,12 @@ ___
 
 ### window
 
-▸ **window**<`T`\>(`windowBoundaries`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Observable`](../classes/RxJS.Observable.md)<`T`\>\>
+▸ **window**<T\>(`windowBoundaries`: [*Observable*](../classes/rxjs.observable.md)<any\>): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Observable*](../classes/rxjs.observable.md)<T\>\>
 
 Branch out the source Observable values as a nested Observable whenever
 `windowBoundaries` emits.
 
-<span class="informal">It's like [buffer](RxJS.md#buffer), but emits a nested Observable
+<span class="informal">It's like [buffer](rxjs.md#buffer), but emits a nested Observable
 instead of an array.</span>
 
 ![](window.png)
@@ -11619,31 +10449,29 @@ import { window, mergeAll, map, take } from 'rxjs/operators';
  result.subscribe(x => console.log(x));
 ```
 
-**`see`** [windowCount](RxJS.md#windowcount)
+**`see`** [windowCount](rxjs.md#windowcount)
 
-**`see`** [windowTime](RxJS.md#windowtime)
+**`see`** [windowTime](rxjs.md#windowtime)
 
-**`see`** [windowToggle](RxJS.md#windowtoggle)
+**`see`** [windowToggle](rxjs.md#windowtoggle)
 
-**`see`** [windowWhen](RxJS.md#windowwhen)
+**`see`** [windowWhen](rxjs.md#windowwhen)
 
-**`see`** [buffer](RxJS.md#buffer)
+**`see`** [buffer](rxjs.md#buffer)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `windowBoundaries` | [`Observable`](../classes/RxJS.Observable.md)<`any`\> | An Observable that completes the previous window and starts a new window. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`windowBoundaries` | [*Observable*](../classes/rxjs.observable.md)<any\> | An Observable that completes the previous window and starts a new window.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Observable`](../classes/RxJS.Observable.md)<`T`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Observable*](../classes/rxjs.observable.md)<T\>\>
 
 A function that returns an Observable of windows, which are
 Observables emitting values of the source Observable.
@@ -11652,12 +10480,12 @@ ___
 
 ### windowCount
 
-▸ **windowCount**<`T`\>(`windowSize`, `startWindowEvery?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Observable`](../classes/RxJS.Observable.md)<`T`\>\>
+▸ **windowCount**<T\>(`windowSize`: *number*, `startWindowEvery?`: *number*): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Observable*](../classes/rxjs.observable.md)<T\>\>
 
 Branch out the source Observable values as a nested Observable with each
 nested Observable emitting at most `windowSize` values.
 
-<span class="informal">It's like [bufferCount](RxJS.md#buffercount), but emits a nested
+<span class="informal">It's like [bufferCount](rxjs.md#buffercount), but emits a nested
 Observable instead of an array.</span>
 
 ![](windowCount.png)
@@ -11699,32 +10527,30 @@ const result = clicks.pipe(
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [window](RxJS.md#window)
+**`see`** [window](rxjs.md#window)
 
-**`see`** [windowTime](RxJS.md#windowtime)
+**`see`** [windowTime](rxjs.md#windowtime)
 
-**`see`** [windowToggle](RxJS.md#windowtoggle)
+**`see`** [windowToggle](rxjs.md#windowtoggle)
 
-**`see`** [windowWhen](RxJS.md#windowwhen)
+**`see`** [windowWhen](rxjs.md#windowwhen)
 
-**`see`** [bufferCount](RxJS.md#buffercount)
+**`see`** [bufferCount](rxjs.md#buffercount)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `windowSize` | `number` | The maximum number of values emitted by each window. |
-| `startWindowEvery?` | `number` | - |
+Name | Type | Description |
+:------ | :------ | :------ |
+`windowSize` | *number* | The maximum number of values emitted by each window.   |
+`startWindowEvery?` | *number* | - |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Observable`](../classes/RxJS.Observable.md)<`T`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Observable*](../classes/rxjs.observable.md)<T\>\>
 
 A function that returns an Observable of windows, which in turn are
 Observable of values.
@@ -11733,77 +10559,71 @@ ___
 
 ### windowTime
 
-▸ **windowTime**<`T`\>(`windowTimeSpan`, `scheduler?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Observable`](../classes/RxJS.Observable.md)<`T`\>\>
+▸ **windowTime**<T\>(`windowTimeSpan`: *number*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Observable*](../classes/rxjs.observable.md)<T\>\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `windowTimeSpan` | `number` |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+Name | Type |
+:------ | :------ |
+`windowTimeSpan` | *number* |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Observable*](../classes/rxjs.observable.md)<T\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Observable`](../classes/RxJS.Observable.md)<`T`\>\>
+▸ **windowTime**<T\>(`windowTimeSpan`: *number*, `windowCreationInterval`: *number*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Observable*](../classes/rxjs.observable.md)<T\>\>
 
-▸ **windowTime**<`T`\>(`windowTimeSpan`, `windowCreationInterval`, `scheduler?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Observable`](../classes/RxJS.Observable.md)<`T`\>\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`windowTimeSpan` | *number* |
+`windowCreationInterval` | *number* |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-| Name | Type |
-| :------ | :------ |
-| `windowTimeSpan` | `number` |
-| `windowCreationInterval` | `number` |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Observable*](../classes/rxjs.observable.md)<T\>\>
 
-#### Returns
+▸ **windowTime**<T\>(`windowTimeSpan`: *number*, `windowCreationInterval`: *number* \| *null* \| *void*, `maxWindowSize`: *number*, `scheduler?`: [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md)): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Observable*](../classes/rxjs.observable.md)<T\>\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Observable`](../classes/RxJS.Observable.md)<`T`\>\>
+#### Type parameters:
 
-▸ **windowTime**<`T`\>(`windowTimeSpan`, `windowCreationInterval`, `maxWindowSize`, `scheduler?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Observable`](../classes/RxJS.Observable.md)<`T`\>\>
+Name |
+:------ |
+`T` |
 
-#### Type parameters
+#### Parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name | Type |
+:------ | :------ |
+`windowTimeSpan` | *number* |
+`windowCreationInterval` | *number* \| *null* \| *void* |
+`maxWindowSize` | *number* |
+`scheduler?` | [*SchedulerLike*](../interfaces/rxjs.schedulerlike.md) |
 
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `windowTimeSpan` | `number` |
-| `windowCreationInterval` | ``null`` \| `number` \| `void` |
-| `maxWindowSize` | `number` |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Observable`](../classes/RxJS.Observable.md)<`T`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Observable*](../classes/rxjs.observable.md)<T\>\>
 
 ___
 
 ### windowToggle
 
-▸ **windowToggle**<`T`, `O`\>(`openings`, `closingSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Observable`](../classes/RxJS.Observable.md)<`T`\>\>
+▸ **windowToggle**<T, O\>(`openings`: [*ObservableInput*](rxjs.md#observableinput)<O\>, `closingSelector`: (`openValue`: O) => [*ObservableInput*](rxjs.md#observableinput)<any\>): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Observable*](../classes/rxjs.observable.md)<T\>\>
 
 Branch out the source Observable values as a nested Observable starting from
 an emission from `openings` and ending when the output of `closingSelector`
 emits.
 
-<span class="informal">It's like [bufferToggle](RxJS.md#buffertoggle), but emits a nested
+<span class="informal">It's like [bufferToggle](rxjs.md#buffertoggle), but emits a nested
 Observable instead of an array.</span>
 
 ![](windowToggle.png)
@@ -11829,33 +10649,31 @@ const result = clicks.pipe(
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [window](RxJS.md#window)
+**`see`** [window](rxjs.md#window)
 
-**`see`** [windowCount](RxJS.md#windowcount)
+**`see`** [windowCount](rxjs.md#windowcount)
 
-**`see`** [windowTime](RxJS.md#windowtime)
+**`see`** [windowTime](rxjs.md#windowtime)
 
-**`see`** [windowWhen](RxJS.md#windowwhen)
+**`see`** [windowWhen](rxjs.md#windowwhen)
 
-**`see`** [bufferToggle](RxJS.md#buffertoggle)
+**`see`** [bufferToggle](rxjs.md#buffertoggle)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `O` |
+Name |
+:------ |
+`T` |
+`O` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `openings` | [`ObservableInput`](RxJS.md#observableinput)<`O`\> | An observable of notifications to start new windows. |
-| `closingSelector` | (`openValue`: `O`) => [`ObservableInput`](RxJS.md#observableinput)<`any`\> | A function that takes the value emitted by the `openings` observable and returns an Observable, which, when it emits a next notification, signals that the associated window should complete. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`openings` | [*ObservableInput*](rxjs.md#observableinput)<O\> | An observable of notifications to start new windows.   |
+`closingSelector` | (`openValue`: O) => [*ObservableInput*](rxjs.md#observableinput)<any\> | A function that takes the value emitted by the `openings` observable and returns an Observable, which, when it emits a next notification, signals that the associated window should complete.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Observable`](../classes/RxJS.Observable.md)<`T`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Observable*](../classes/rxjs.observable.md)<T\>\>
 
 A function that returns an Observable of windows, which in turn are
 Observables.
@@ -11864,13 +10682,13 @@ ___
 
 ### windowWhen
 
-▸ **windowWhen**<`T`\>(`closingSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Observable`](../classes/RxJS.Observable.md)<`T`\>\>
+▸ **windowWhen**<T\>(`closingSelector`: () => [*ObservableInput*](rxjs.md#observableinput)<any\>): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Observable*](../classes/rxjs.observable.md)<T\>\>
 
 Branch out the source Observable values as a nested Observable using a
 factory function of closing Observables to determine when to start a new
 window.
 
-<span class="informal">It's like [bufferWhen](RxJS.md#bufferwhen), but emits a nested
+<span class="informal">It's like [bufferWhen](rxjs.md#bufferwhen), but emits a nested
 Observable instead of an array.</span>
 
 ![](windowWhen.png)
@@ -11896,31 +10714,29 @@ const result = clicks.pipe(
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [window](RxJS.md#window)
+**`see`** [window](rxjs.md#window)
 
-**`see`** [windowCount](RxJS.md#windowcount)
+**`see`** [windowCount](rxjs.md#windowcount)
 
-**`see`** [windowTime](RxJS.md#windowtime)
+**`see`** [windowTime](rxjs.md#windowtime)
 
-**`see`** [windowToggle](RxJS.md#windowtoggle)
+**`see`** [windowToggle](rxjs.md#windowtoggle)
 
-**`see`** [bufferWhen](RxJS.md#bufferwhen)
+**`see`** [bufferWhen](rxjs.md#bufferwhen)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `closingSelector` | () => [`ObservableInput`](RxJS.md#observableinput)<`any`\> | A function that takes no arguments and returns an Observable that signals (on either `next` or `complete`) when to close the previous window and start a new one. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`closingSelector` | () => [*ObservableInput*](rxjs.md#observableinput)<any\> | A function that takes no arguments and returns an Observable that signals (on either `next` or `complete`) when to close the previous window and start a new one.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Observable`](../classes/RxJS.Observable.md)<`T`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Observable*](../classes/rxjs.observable.md)<T\>\>
 
 A function that returns an Observable of windows, which in turn are
 Observables.
@@ -11929,202 +10745,182 @@ ___
 
 ### withLatestFrom
 
-▸ **withLatestFrom**<`T`, `O`\>(...`inputs`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`T`, ...O]\>
+▸ **withLatestFrom**<T, O\>(...`inputs`: [...ObservableInputTuple<O\>]): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [T, ...O]\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends `unknown`[] |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `...inputs` | [...ObservableInputTuple<O\>[]] |
+Name | Type |
+:------ | :------ |
+`...inputs` | [...ObservableInputTuple<O\>] |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [T, ...O]\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`T`, ...O]\>
+▸ **withLatestFrom**<T, O, R\>(...`inputs`: [...ObservableInputTuple<O\>, (...`value`: [T, ...O]) => R]): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
-▸ **withLatestFrom**<`T`, `O`, `R`\>(...`inputs`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+#### Type parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`T` | - |
+`O` | *unknown*[] |
+`R` | - |
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `O` | extends `unknown`[] |
-| `R` | `R` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`...inputs` | [...ObservableInputTuple<O\>, (...`value`: [T, ...O]) => R] |
 
-| Name | Type |
-| :------ | :------ |
-| `...inputs` | [...ObservableInputTuple<O\>[], (...`value`: [`T`, ...O[]]) => `R`] |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, R\>
 
 ___
 
 ### zip
 
-▸ **zip**<`A`\>(`sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
+▸ **zip**<A\>(`sources`: [...ObservableInputTuple<A\>]): [*Observable*](../classes/rxjs.observable.md)<A\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `sources` | [...ObservableInputTuple<A\>[]] |
+Name | Type |
+:------ | :------ |
+`sources` | [...ObservableInputTuple<A\>] |
 
-#### Returns
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<A\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`A`\>
+▸ **zip**<A, R\>(`sources`: [...ObservableInputTuple<A\>], `resultSelector`: (...`values`: A) => R): [*Observable*](../classes/rxjs.observable.md)<R\>
 
-▸ **zip**<`A`, `R`\>(`sources`, `resultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+#### Type parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
+`R` | - |
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
-| `R` | `R` |
+#### Parameters:
 
-#### Parameters
+Name | Type |
+:------ | :------ |
+`sources` | [...ObservableInputTuple<A\>] |
+`resultSelector` | (...`values`: A) => R |
 
-| Name | Type |
-| :------ | :------ |
-| `sources` | [...ObservableInputTuple<A\>[]] |
-| `resultSelector` | (...`values`: `A`) => `R` |
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<R\>
 
-#### Returns
+▸ **zip**<A\>(...`sources`: [...ObservableInputTuple<A\>]): [*Observable*](../classes/rxjs.observable.md)<A\>
 
-[`Observable`](../classes/RxJS.Observable.md)<`R`\>
+#### Type parameters:
 
-▸ **zip**<`A`\>(...`sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
 
-#### Type parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`...sources` | [...ObservableInputTuple<A\>] |
 
-#### Parameters
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<A\>
 
-| Name | Type |
-| :------ | :------ |
-| `...sources` | [...ObservableInputTuple<A\>[]] |
+▸ **zip**<A, R\>(...`sourcesAndResultSelector`: [...ObservableInputTuple<A\>, (...`values`: A) => R]): [*Observable*](../classes/rxjs.observable.md)<R\>
 
-#### Returns
+#### Type parameters:
 
-[`Observable`](../classes/RxJS.Observable.md)<`A`\>
+Name | Type |
+:------ | :------ |
+`A` | readonly *unknown*[] |
+`R` | - |
 
-▸ **zip**<`A`, `R`\>(...`sourcesAndResultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+#### Parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`...sourcesAndResultSelector` | [...ObservableInputTuple<A\>, (...`values`: A) => R] |
 
-| Name | Type |
-| :------ | :------ |
-| `A` | extends readonly `unknown`[] |
-| `R` | `R` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `...sourcesAndResultSelector` | [...ObservableInputTuple<A\>[], (...`values`: `A`) => `R`] |
-
-#### Returns
-
-[`Observable`](../classes/RxJS.Observable.md)<`R`\>
+**Returns:** [*Observable*](../classes/rxjs.observable.md)<R\>
 
 ___
 
 ### zipAll
 
-▸ **zipAll**<`T`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<[`ObservableInput`](RxJS.md#observableinput)<`T`\>, `T`[]\>
+▸ **zipAll**<T\>(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<[*ObservableInput*](rxjs.md#observableinput)<T\>, T[]\>
 
 Collects all observable inner sources from the source, once the source completes,
 it will subscribe to all inner sources, combining their values by index and emitting
 them.
 
-**`see`** [zipWith](RxJS.md#zipwith)
+**`see`** [zipWith](rxjs.md#zipwith)
 
-**`see`** [zip](RxJS.md#zip)
+**`see`** [zip](rxjs.md#zip)
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Returns
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<[*ObservableInput*](rxjs.md#observableinput)<T\>, T[]\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<[`ObservableInput`](RxJS.md#observableinput)<`T`\>, `T`[]\>
+▸ **zipAll**<T\>(): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, T[]\>
 
-▸ **zipAll**<`T`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `T`[]\>
+#### Type parameters:
 
-#### Type parameters
+Name |
+:------ |
+`T` |
 
-| Name |
-| :------ |
-| `T` |
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, T[]\>
 
-#### Returns
+▸ **zipAll**<T, R\>(`project`: (...`values`: T[]) => R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<[*ObservableInput*](rxjs.md#observableinput)<T\>, R\>
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `T`[]\>
+#### Type parameters:
 
-▸ **zipAll**<`T`, `R`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<[`ObservableInput`](RxJS.md#observableinput)<`T`\>, `R`\>
+Name |
+:------ |
+`T` |
+`R` |
 
-#### Type parameters
+#### Parameters:
 
-| Name |
-| :------ |
-| `T` |
-| `R` |
+Name | Type |
+:------ | :------ |
+`project` | (...`values`: T[]) => R |
 
-#### Parameters
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<[*ObservableInput*](rxjs.md#observableinput)<T\>, R\>
 
-| Name | Type |
-| :------ | :------ |
-| `project` | (...`values`: `T`[]) => `R` |
+▸ **zipAll**<R\>(`project`: (...`values`: *any*[]) => R): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, R\>
 
-#### Returns
+#### Type parameters:
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<[`ObservableInput`](RxJS.md#observableinput)<`T`\>, `R`\>
+Name |
+:------ |
+`R` |
 
-▸ **zipAll**<`R`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `R`\>
+#### Parameters:
 
-#### Type parameters
+Name | Type |
+:------ | :------ |
+`project` | (...`values`: *any*[]) => R |
 
-| Name |
-| :------ |
-| `R` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `project` | (...`values`: `any`[]) => `R` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `R`\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<any, R\>
 
 ___
 
 ### zipWith
 
-▸ **zipWith**<`T`, `A`\>(...`otherInputs`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Cons`](RxJS.md#cons)<`T`, `A`\>\>
+▸ **zipWith**<T, A\>(...`otherInputs`: [...ObservableInputTuple<A\>]): [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Cons*](rxjs.md#cons)<T, A\>\>
 
 Subscribes to the source, and the observable inputs provided as arguments, and combines their values, by index, into arrays.
 
@@ -12143,22 +10939,20 @@ at a similar pace, or finite streams of known length.
 
 In many cases, authors want `combineLatestWith` and not `zipWith`.
 
-#### Type parameters
+#### Type parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `T` | `T` |
-| `A` | extends readonly `unknown`[] |
+Name | Type |
+:------ | :------ |
+`T` | - |
+`A` | readonly *unknown*[] |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `...otherInputs` | [...ObservableInputTuple<A\>[]] | other observable inputs to collate values from. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`...otherInputs` | [...ObservableInputTuple<A\>] | other observable inputs to collate values from.   |
 
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Cons`](RxJS.md#cons)<`T`, `A`\>\>
+**Returns:** [*OperatorFunction*](../interfaces/rxjs.operatorfunction.md)<T, [*Cons*](rxjs.md#cons)<T, A\>\>
 
 A function that returns an Observable that emits items by index
 combined from the source Observable and provided Observables, in form of an

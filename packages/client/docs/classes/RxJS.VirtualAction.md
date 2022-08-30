@@ -1,212 +1,189 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / VirtualAction
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / VirtualAction
 
 # Class: VirtualAction<T\>
 
-[RxJS](../modules/RxJS.md).VirtualAction
+[RxJS](../modules/rxjs.md).VirtualAction
 
 ## Type parameters
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
 ## Hierarchy
 
-- `AsyncAction`<`T`\>
+* *AsyncAction*<T\>
 
-  ↳ **`VirtualAction`**
+  ↳ **VirtualAction**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](RxJS.VirtualAction.md#constructor)
+- [constructor](rxjs.virtualaction.md#constructor)
 
 ### Properties
 
-- [active](RxJS.VirtualAction.md#active)
-- [closed](RxJS.VirtualAction.md#closed)
-- [delay](RxJS.VirtualAction.md#delay)
-- [id](RxJS.VirtualAction.md#id)
-- [index](RxJS.VirtualAction.md#index)
-- [pending](RxJS.VirtualAction.md#pending)
-- [scheduler](RxJS.VirtualAction.md#scheduler)
-- [state](RxJS.VirtualAction.md#state)
-- [work](RxJS.VirtualAction.md#work)
-- [EMPTY](RxJS.VirtualAction.md#empty)
+- [active](rxjs.virtualaction.md#active)
+- [closed](rxjs.virtualaction.md#closed)
+- [delay](rxjs.virtualaction.md#delay)
+- [id](rxjs.virtualaction.md#id)
+- [index](rxjs.virtualaction.md#index)
+- [pending](rxjs.virtualaction.md#pending)
+- [scheduler](rxjs.virtualaction.md#scheduler)
+- [state](rxjs.virtualaction.md#state)
+- [work](rxjs.virtualaction.md#work)
+- [EMPTY](rxjs.virtualaction.md#empty)
 
 ### Methods
 
-- [\_execute](RxJS.VirtualAction.md#_execute)
-- [add](RxJS.VirtualAction.md#add)
-- [execute](RxJS.VirtualAction.md#execute)
-- [recycleAsyncId](RxJS.VirtualAction.md#recycleasyncid)
-- [remove](RxJS.VirtualAction.md#remove)
-- [requestAsyncId](RxJS.VirtualAction.md#requestasyncid)
-- [schedule](RxJS.VirtualAction.md#schedule)
-- [unsubscribe](RxJS.VirtualAction.md#unsubscribe)
+- [\_execute](rxjs.virtualaction.md#_execute)
+- [add](rxjs.virtualaction.md#add)
+- [execute](rxjs.virtualaction.md#execute)
+- [recycleAsyncId](rxjs.virtualaction.md#recycleasyncid)
+- [remove](rxjs.virtualaction.md#remove)
+- [requestAsyncId](rxjs.virtualaction.md#requestasyncid)
+- [schedule](rxjs.virtualaction.md#schedule)
+- [unsubscribe](rxjs.virtualaction.md#unsubscribe)
 
 ## Constructors
 
 ### constructor
 
-• **new VirtualAction**<`T`\>(`scheduler`, `work`, `index?`)
+\+ **new VirtualAction**<T\>(`scheduler`: [*VirtualTimeScheduler*](rxjs.virtualtimescheduler.md), `work`: (`state?`: T) => *void*, `index?`: *number*): [*VirtualAction*](rxjs.virtualaction.md)<T\>
 
-#### Type parameters
+#### Type parameters:
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `scheduler` | [`VirtualTimeScheduler`](RxJS.VirtualTimeScheduler.md) |
-| `work` | (`this`: [`SchedulerAction`](../interfaces/RxJS.SchedulerAction.md)<`T`\>, `state?`: `T`) => `void` |
-| `index?` | `number` |
+Name | Type |
+:------ | :------ |
+`scheduler` | [*VirtualTimeScheduler*](rxjs.virtualtimescheduler.md) |
+`work` | (`state?`: T) => *void* |
+`index?` | *number* |
 
-#### Overrides
+**Returns:** [*VirtualAction*](rxjs.virtualaction.md)<T\>
 
-AsyncAction&lt;T\&gt;.constructor
+Overrides: void
 
 ## Properties
 
 ### active
 
-• `Protected` **active**: `boolean`
+• `Protected` **active**: *boolean*
 
 ___
 
 ### closed
 
-• **closed**: `boolean`
+• **closed**: *boolean*
 
 A flag to indicate whether this Subscription has already been unsubscribed.
 
-#### Inherited from
-
-AsyncAction.closed
+Inherited from: void
 
 ___
 
 ### delay
 
-• **delay**: `number`
+• **delay**: *number*
 
-#### Inherited from
-
-AsyncAction.delay
+Inherited from: void
 
 ___
 
 ### id
 
-• **id**: `any`
+• **id**: *any*
 
-#### Inherited from
-
-AsyncAction.id
+Inherited from: void
 
 ___
 
 ### index
 
-• `Protected` **index**: `number`
+• `Protected` **index**: *number*
 
 ___
 
 ### pending
 
-• `Protected` **pending**: `boolean`
+• `Protected` **pending**: *boolean*
 
-#### Inherited from
-
-AsyncAction.pending
+Inherited from: void
 
 ___
 
 ### scheduler
 
-• `Protected` **scheduler**: [`VirtualTimeScheduler`](RxJS.VirtualTimeScheduler.md)
+• `Protected` **scheduler**: [*VirtualTimeScheduler*](rxjs.virtualtimescheduler.md)
 
-#### Overrides
-
-AsyncAction.scheduler
+Overrides: void
 
 ___
 
 ### state
 
-• `Optional` **state**: `T`
+• `Optional` **state**: T
 
-#### Inherited from
-
-AsyncAction.state
+Inherited from: void
 
 ___
 
 ### work
 
-• `Protected` **work**: (`this`: [`SchedulerAction`](../interfaces/RxJS.SchedulerAction.md)<`T`\>, `state?`: `T`) => `void`
+• `Protected` **work**: (`state?`: T) => *void*
 
-#### Type declaration
+#### Type declaration:
 
-▸ (`this`, `state?`): `void`
+▸ (`state?`: T): *void*
 
-##### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `this` | [`SchedulerAction`](../interfaces/RxJS.SchedulerAction.md)<`T`\> |
-| `state?` | `T` |
+Name | Type |
+:------ | :------ |
+`state?` | T |
 
-##### Returns
+**Returns:** *void*
 
-`void`
-
-#### Overrides
-
-AsyncAction.work
+Overrides: void
 
 ___
 
 ### EMPTY
 
-▪ `Static` **EMPTY**: [`Subscription`](RxJS.Subscription.md)
+▪ `Static` **EMPTY**: [*Subscription*](rxjs.subscription.md)
 
-**`nocollapse`**
+**`nocollapse`** 
 
-#### Inherited from
-
-AsyncAction.EMPTY
+Inherited from: void
 
 ## Methods
 
 ### \_execute
 
-▸ `Protected` **_execute**(`state`, `delay`): `any`
+▸ `Protected`**_execute**(`state`: T, `delay`: *number*): *any*
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `state` | `T` |
-| `delay` | `number` |
+Name | Type |
+:------ | :------ |
+`state` | T |
+`delay` | *number* |
 
-#### Returns
+**Returns:** *any*
 
-`any`
-
-#### Overrides
-
-AsyncAction.\_execute
+Overrides: void
 
 ___
 
 ### add
 
-▸ **add**(`teardown`): `void`
+▸ **add**(`teardown`: [*TeardownLogic*](../modules/rxjs.md#teardownlogic)): *void*
 
 Adds a teardown to this subscription, so that teardown will be unsubscribed/called
 when this subscription is unsubscribed. If this subscription is already {@link #closed},
@@ -220,73 +197,61 @@ Adding a subscription to itself, or adding `null` or `undefined` will not perfor
 operation at all. (A noop).
 
 `Subscription` instances that are added to this instance will automatically remove themselves
-if they are unsubscribed. Functions and [Unsubscribable](../interfaces/RxJS.Unsubscribable.md) objects that you wish to remove
+if they are unsubscribed. Functions and [Unsubscribable](../interfaces/rxjs.unsubscribable.md) objects that you wish to remove
 will need to be removed manually with {@link #remove}
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `teardown` | [`TeardownLogic`](../modules/RxJS.md#teardownlogic) | The teardown logic to add to this subscription. |
+Name | Type | Description |
+:------ | :------ | :------ |
+`teardown` | [*TeardownLogic*](../modules/rxjs.md#teardownlogic) | The teardown logic to add to this subscription.    |
 
-#### Returns
+**Returns:** *void*
 
-`void`
-
-#### Inherited from
-
-AsyncAction.add
+Inherited from: void
 
 ___
 
 ### execute
 
-▸ **execute**(`state`, `delay`): `any`
+▸ **execute**(`state`: T, `delay`: *number*): *any*
 
 Immediately executes this action and the `work` it contains.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `state` | `T` |
-| `delay` | `number` |
+Name | Type |
+:------ | :------ |
+`state` | T |
+`delay` | *number* |
 
-#### Returns
+**Returns:** *any*
 
-`any`
-
-#### Inherited from
-
-AsyncAction.execute
+Inherited from: void
 
 ___
 
 ### recycleAsyncId
 
-▸ `Protected` **recycleAsyncId**(`scheduler`, `id?`, `delay?`): `any`
+▸ `Protected`**recycleAsyncId**(`scheduler`: [*VirtualTimeScheduler*](rxjs.virtualtimescheduler.md), `id?`: *any*, `delay?`: *number*): *any*
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `scheduler` | [`VirtualTimeScheduler`](RxJS.VirtualTimeScheduler.md) |
-| `id?` | `any` |
-| `delay?` | `number` |
+Name | Type |
+:------ | :------ |
+`scheduler` | [*VirtualTimeScheduler*](rxjs.virtualtimescheduler.md) |
+`id?` | *any* |
+`delay?` | *number* |
 
-#### Returns
+**Returns:** *any*
 
-`any`
-
-#### Overrides
-
-AsyncAction.recycleAsyncId
+Overrides: void
 
 ___
 
 ### remove
 
-▸ **remove**(`teardown`): `void`
+▸ **remove**(`teardown`: [*Subscription*](rxjs.subscription.md) \| [*Unsubscribable*](../interfaces/rxjs.unsubscribable.md) \| () => *void*): *void*
 
 Removes a teardown from this subscription that was previously added with the {@link #add} method.
 
@@ -299,73 +264,57 @@ more than once, you will need to call `remove` the same number of times to remov
 
 All teardown instances are removed to free up memory upon unsubscription.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `teardown` | [`Subscription`](RxJS.Subscription.md) \| [`Unsubscribable`](../interfaces/RxJS.Unsubscribable.md) \| () => `void` | The teardown to remove from this subscription |
+Name | Type | Description |
+:------ | :------ | :------ |
+`teardown` | [*Subscription*](rxjs.subscription.md) \| [*Unsubscribable*](../interfaces/rxjs.unsubscribable.md) \| () => *void* | The teardown to remove from this subscription    |
 
-#### Returns
+**Returns:** *void*
 
-`void`
-
-#### Inherited from
-
-AsyncAction.remove
+Inherited from: void
 
 ___
 
 ### requestAsyncId
 
-▸ `Protected` **requestAsyncId**(`scheduler`, `id?`, `delay?`): `any`
+▸ `Protected`**requestAsyncId**(`scheduler`: [*VirtualTimeScheduler*](rxjs.virtualtimescheduler.md), `id?`: *any*, `delay?`: *number*): *any*
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `scheduler` | [`VirtualTimeScheduler`](RxJS.VirtualTimeScheduler.md) |
-| `id?` | `any` |
-| `delay?` | `number` |
+Name | Type |
+:------ | :------ |
+`scheduler` | [*VirtualTimeScheduler*](rxjs.virtualtimescheduler.md) |
+`id?` | *any* |
+`delay?` | *number* |
 
-#### Returns
+**Returns:** *any*
 
-`any`
-
-#### Overrides
-
-AsyncAction.requestAsyncId
+Overrides: void
 
 ___
 
 ### schedule
 
-▸ **schedule**(`state?`, `delay?`): [`Subscription`](RxJS.Subscription.md)
+▸ **schedule**(`state?`: T, `delay?`: *number*): [*Subscription*](rxjs.subscription.md)
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `state?` | `T` |
-| `delay?` | `number` |
+Name | Type |
+:------ | :------ |
+`state?` | T |
+`delay?` | *number* |
 
-#### Returns
+**Returns:** [*Subscription*](rxjs.subscription.md)
 
-[`Subscription`](RxJS.Subscription.md)
-
-#### Overrides
-
-AsyncAction.schedule
+Overrides: void
 
 ___
 
 ### unsubscribe
 
-▸ **unsubscribe**(): `void`
+▸ **unsubscribe**(): *void*
 
-#### Returns
+**Returns:** *void*
 
-`void`
-
-#### Inherited from
-
-AsyncAction.unsubscribe
+Inherited from: void

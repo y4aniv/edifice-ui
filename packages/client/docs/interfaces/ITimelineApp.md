@@ -6,149 +6,137 @@
 
 ### Properties
 
-- [flashMessages](ITimelineApp.md#flashmessages)
-- [hasMorePage](ITimelineApp.md#hasmorepage)
-- [isLoading](ITimelineApp.md#isloading)
-- [notificationTypes](ITimelineApp.md#notificationtypes)
-- [notifications](ITimelineApp.md#notifications)
-- [page](ITimelineApp.md#page)
-- [preferences](ITimelineApp.md#preferences)
-- [selectedNotificationTypes](ITimelineApp.md#selectednotificationtypes)
-- [showMine](ITimelineApp.md#showmine)
+- [flashMessages](itimelineapp.md#flashmessages)
+- [hasMorePage](itimelineapp.md#hasmorepage)
+- [isLoading](itimelineapp.md#isloading)
+- [notificationTypes](itimelineapp.md#notificationtypes)
+- [notifications](itimelineapp.md#notifications)
+- [page](itimelineapp.md#page)
+- [preferences](itimelineapp.md#preferences)
+- [selectedNotificationTypes](itimelineapp.md#selectednotificationtypes)
+- [showMine](itimelineapp.md#showmine)
 
 ### Methods
 
-- [initialize](ITimelineApp.md#initialize)
-- [loadFlashMessages](ITimelineApp.md#loadflashmessages)
-- [loadNotifications](ITimelineApp.md#loadnotifications)
-- [markAsRead](ITimelineApp.md#markasread)
-- [resetPagination](ITimelineApp.md#resetpagination)
-- [savePreferences](ITimelineApp.md#savepreferences)
+- [initialize](itimelineapp.md#initialize)
+- [loadFlashMessages](itimelineapp.md#loadflashmessages)
+- [loadNotifications](itimelineapp.md#loadnotifications)
+- [markAsRead](itimelineapp.md#markasread)
+- [resetPagination](itimelineapp.md#resetpagination)
+- [savePreferences](itimelineapp.md#savepreferences)
 
 ## Properties
 
 ### flashMessages
 
-• `Readonly` **flashMessages**: [`IFlashMessageModel`](IFlashMessageModel.md)[]
+• `Readonly` **flashMessages**: [*IFlashMessageModel*](iflashmessagemodel.md)[]
 
 ___
 
 ### hasMorePage
 
-• `Readonly` **hasMorePage**: `boolean`
+• `Readonly` **hasMorePage**: *boolean*
 
 ___
 
 ### isLoading
 
-• `Readonly` **isLoading**: `boolean`
+• `Readonly` **isLoading**: *boolean*
 
 ___
 
 ### notificationTypes
 
-• `Readonly` **notificationTypes**: `string`[]
+• `Readonly` **notificationTypes**: *string*[]
 
 ___
 
 ### notifications
 
-• `Readonly` **notifications**: [`ITimelineNotification`](ITimelineNotification.md)[]
+• `Readonly` **notifications**: [*ITimelineNotification*](itimelinenotification.md)[]
 
 ___
 
 ### page
 
-• `Readonly` **page**: `number`
+• `Readonly` **page**: *number*
 
 ___
 
 ### preferences
 
-• `Readonly` **preferences**: `any`
+• `Readonly` **preferences**: *any*
 
 ___
 
 ### selectedNotificationTypes
 
-• `Readonly` **selectedNotificationTypes**: `string`[]
+• `Readonly` **selectedNotificationTypes**: *string*[]
 
 ___
 
 ### showMine
 
-• **showMine**: `boolean`
+• **showMine**: *boolean*
 
 ## Methods
 
 ### initialize
 
-▸ **initialize**(): `Promise`<`void`\>
+▸ **initialize**(): *Promise*<void\>
 
-#### Returns
-
-`Promise`<`void`\>
+**Returns:** *Promise*<void\>
 
 ___
 
 ### loadFlashMessages
 
-▸ **loadFlashMessages**(): `Promise`<`void`\>
+▸ **loadFlashMessages**(): *Promise*<void\>
 
-#### Returns
-
-`Promise`<`void`\>
+**Returns:** *Promise*<void\>
 
 ___
 
 ### loadNotifications
 
-▸ **loadNotifications**(`force?`): `Promise`<`void`\>
+▸ **loadNotifications**(`force?`: *boolean*): *Promise*<void\>
 
 Load more notifications, or force loading more by virtually incrementing the page.
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `force?` | `boolean` |
+Name | Type |
+:------ | :------ |
+`force?` | *boolean* |
 
-#### Returns
-
-`Promise`<`void`\>
+**Returns:** *Promise*<void\>
 
 ___
 
 ### markAsRead
 
-▸ **markAsRead**(`msg`): `Promise`<`void`\>
+▸ **markAsRead**(`msg`: [*IFlashMessageModel*](iflashmessagemodel.md)): *Promise*<void\>
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `msg` | [`IFlashMessageModel`](IFlashMessageModel.md) |
+Name | Type |
+:------ | :------ |
+`msg` | [*IFlashMessageModel*](iflashmessagemodel.md) |
 
-#### Returns
-
-`Promise`<`void`\>
+**Returns:** *Promise*<void\>
 
 ___
 
 ### resetPagination
 
-▸ **resetPagination**(): `void`
+▸ **resetPagination**(): *void*
 
-#### Returns
-
-`void`
+**Returns:** *void*
 
 ___
 
 ### savePreferences
 
-▸ **savePreferences**(): `Promise`<`void`\>
+▸ **savePreferences**(): *Promise*<void\>
 
-#### Returns
-
-`Promise`<`void`\>
+**Returns:** *Promise*<void\>

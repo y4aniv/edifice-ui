@@ -6,24 +6,24 @@
 
 ### Properties
 
-- [\_id](IThemeDesc.md#_id)
-- [displayName](IThemeDesc.md#displayname)
-- [path](IThemeDesc.md#path)
+- [\_id](ithemedesc.md#_id)
+- [displayName](ithemedesc.md#displayname)
+- [path](ithemedesc.md#path)
 
 ## Properties
 
 ### \_id
 
-• **\_id**: `string`
+• **\_id**: *string*
 
 ___
 
 ### displayName
 
-• **displayName**: `string`
+• **displayName**: *string*
 
 ___
 
 ### path
 
-• **path**: `string`
+• **path**: *string*

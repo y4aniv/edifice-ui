@@ -1,33 +1,33 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / Timestamp
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / Timestamp
 
 # Interface: Timestamp<T\>
 
-[RxJS](../modules/RxJS.md).Timestamp
+[RxJS](../modules/rxjs.md).Timestamp
 
 A value and the time at which it was emitted.
 
 Emitted by the `timestamp` operator
 
-**`see`** [timestamp](RxJS.Timestamp.md#timestamp)
+**`see`** [timestamp](rxjs.timestamp.md#timestamp)
 
 ## Type parameters
 
-| Name |
-| :------ |
-| `T` |
+Name |
+:------ |
+`T` |
 
 ## Table of contents
 
 ### Properties
 
-- [timestamp](RxJS.Timestamp.md#timestamp)
-- [value](RxJS.Timestamp.md#value)
+- [timestamp](rxjs.timestamp.md#timestamp)
+- [value](rxjs.timestamp.md#value)
 
 ## Properties
 
 ### timestamp
 
-• **timestamp**: `number`
+• **timestamp**: *number*
 
 The timestamp. By default, this is in epoch milliseconds.
 Could vary based on the timestamp provider passed to the operator.
@@ -36,4 +36,4 @@ ___
 
 ### value
 
-• **value**: `T`
+• **value**: T
