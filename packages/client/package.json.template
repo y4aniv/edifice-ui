@@ -1,6 +1,6 @@
 {
-  "name": "${modname}",
-  "version": "${npmVersion}",
+  "name": "ode-ts-client",
+  "version": "1.0.1-feat-produit.%generateVersion%",
   "description": "Foundation frameworks by Open Digital Education",
   "main": "dist/ts/index.js",
   "types": "dist/ts/index.d.ts",
@@ -10,7 +10,7 @@
     "test": "npm run compile && npx jasmine --config=src/test/config/jasmine.json",
     "docs": "npx rimraf ./docs/ && npx typedoc src/ts/index.ts --excludePrivate --disableSources --plugin typedoc-plugin-markdown",
     "build": "npx webpack",
-    "watch": "npx webpack --config webpack.config.watch.js --env build_target=${webpackWatchSpringboard}/assets/js/ode-ts-client --watch"
+    "watch": "npx webpack --config webpack.config.watch.js --env build_target=${npm_config_watch_springboard}/assets/js/ode-ts-client --watch"
   },
   "repository": {
     "type": "git",

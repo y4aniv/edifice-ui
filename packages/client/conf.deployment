@@ -1,6 +1,6 @@
 {
-  "name":"%FULLY-QUALIFIED-VERSION%",
+  "name":"com.opendigitaleducation~%MODNAME%~%VERSION%",
   "type": "js",
-  "waitDeploy": true
-  ,"extension":"-tar.tar.gz"
+  "waitDeploy": true,
+  "extension":"-tar.tar.gz"
 }
