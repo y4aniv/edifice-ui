@@ -29,6 +29,8 @@
 - [IBusAgent](interfaces/IBusAgent.md)
 - [IConfigurationFramework](interfaces/IConfigurationFramework.md)
 - [IContext](interfaces/IContext.md)
+- [IEmailValidationInfos](interfaces/IEmailValidationInfos.md)
+- [IEmailValidationState](interfaces/IEmailValidationState.md)
 - [IExplorerContext](interfaces/IExplorerContext.md)
 - [IExplorerFramework](interfaces/IExplorerFramework.md)
 - [IFilter](interfaces/IFilter.md)
@@ -782,7 +784,10 @@ ___
 | `AGENDA` | ``"agenda-widget"`` |
 | `BIRTHDAY` | ``"birthday"`` |
 | `BOOKMARK` | ``"bookmark-widget"`` |
+<<<<<<< HEAD
 | `BRIEFME` | ``"briefme-widget"`` |
+=======
+>>>>>>> d350f58 (feat: #WB-965, #WB-878, email validation)
 | `CALENDAR` | ``"calendar-widget"`` |
 | `CARNET` | ``"carnet-de-bord"`` |
 | `CURSUS` | ``"cursus-widget"`` |
@@ -796,7 +801,10 @@ ___
 | `RECORD` | ``"record-me"`` |
 | `RSS` | ``"rss-widget"`` |
 | `SCHOOL` | ``"school-widget"`` |
+<<<<<<< HEAD
 | `UNIVERSALIS` | ``"universalis-widget"`` |
+=======
+>>>>>>> d350f58 (feat: #WB-965, #WB-878, email validation)
 
 ___
 

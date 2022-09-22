@@ -16,8 +16,11 @@
 
 ### Methods
 
+- [checkEmail](ISession.md#checkemail)
+- [getEmailValidationInfos](ISession.md#getemailvalidationinfos)
 - [hasRight](ISession.md#hasright)
 - [hasWorkflow](ISession.md#hasworkflow)
+- [tryEmailValidation](ISession.md#tryemailvalidation)
 
 ## Properties
 
@@ -78,6 +81,37 @@ Basic information about the connected user.
 
 ## Methods
 
+### checkEmail
+
+▸ **checkEmail**(`email`): `Promise`<`void`\>
+
+Send a 6-digits code to an email address to validate it.
+=> when resolved successfully, the email validation infos will switch to the "pending" state.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `email` | `String` |
+
+#### Returns
+
+`Promise`<`void`\>
+
+___
+
+### getEmailValidationInfos
+
+▸ **getEmailValidationInfos**(): `Promise`<[`IEmailValidationInfos`](IEmailValidationInfos.md)\>
+
+Verify if the logged-in user has a valid email address.
+
+#### Returns
+
+`Promise`<[`IEmailValidationInfos`](IEmailValidationInfos.md)\>
+
+___
+
 ### hasRight
 
 ▸ **hasRight**(`resource`, `right`): `boolean`
@@ -108,3 +142,24 @@ ___
 #### Returns
 
 `boolean`
+<<<<<<< HEAD
+=======
+
+___
+
+### tryEmailValidation
+
+▸ **tryEmailValidation**(`code`): `Promise`<[`IEmailValidationState`](IEmailValidationState.md)\>
+
+Send a 6-digits code to the server to try validating the pending email address.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `code` | `String` |
+
+#### Returns
+
+`Promise`<[`IEmailValidationState`](IEmailValidationState.md)\>
+>>>>>>> d350f58 (feat: #WB-965, #WB-878, email validation)

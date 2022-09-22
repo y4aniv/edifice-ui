@@ -105,6 +105,10 @@ audit () {
   docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "npm audit"
 }
 
+doc () {
+  docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "npm run docs"
+}
+
 publishNPM () {
   LOCAL_BRANCH=`echo $GIT_BRANCH | sed -e "s|origin/||g"`
   docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "npm publish --tag $LOCAL_BRANCH"
@@ -152,6 +156,9 @@ do
       ;;
     build)
       build
+      ;;
+    doc)
+      doc
       ;;
     install)
       build && archive && publishMavenLocal && rm -rf build

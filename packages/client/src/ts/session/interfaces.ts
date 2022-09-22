@@ -40,6 +40,16 @@ export interface ISession {
 
   hasWorkflow( workflowName:string ):boolean;
   hasRight(resource:any, right:any):boolean;
+
+  /** Verify if the logged-in user has a valid email address. */
+  getEmailValidationInfos():Promise<IEmailValidationInfos>;
+  /** 
+   * Send a 6-digits code to an email address to validate it.
+   * => when resolved successfully, the email validation infos will switch to the "pending" state.
+   */
+  checkEmail(email:String):Promise<void>;
+  /** Send a 6-digits code to the server to try validating the pending email address. */
+  tryEmailValidation(code:String):Promise<IEmailValidationState>;
 }
 
 export type Hobby = {
@@ -175,3 +185,24 @@ export interface IWorkflowAuth {
   type: string;
 }
 
+export interface IEmailValidationInfos {
+  /** The current email address of the user (maybe not verified) */
+  email: string,
+  /** State of the current email address. */
+  emailState: IEmailValidationState|null,
+  /** Suggested time to wait for the validation mail to be sent (platform configuration) */
+  waitInSeconds: number
+}
+
+export interface IEmailValidationState {
+  /** Validation state */
+  state: "unchecked" | "outdated" | "pending" | "valid";
+  /** Last known valid email address, or empty string. */
+  valid: string;
+  /** (optional) Current pending (or outdated) email address being checked. */
+  pending?: string;
+  /** (optional) Seconds remaining for the user to type in the correct validation code. */
+  ttl?: number;
+  /** (optional) Remaining number of times a validation code can be typed in. */
+  tries?: number;
+}
