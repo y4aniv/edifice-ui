@@ -29,7 +29,7 @@
     "husky": "~7.0.2",
     "jasmine": "^3.6.4",
     "rimraf": "^3.0.2",
-    "terser-webpack-plugin": "5.1.4",
+    "terser-webpack-plugin": "5.3.6",
     "ts-loader": "^8.0.18",
     "typedoc": "0.22.13",
     "typedoc-plugin-markdown": "3.11.14",
