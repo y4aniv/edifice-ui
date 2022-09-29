@@ -95,9 +95,17 @@ const defaultDiacriticsRemovalMap = [
 
 export class Idiom implements IIdiom {
 
-    translate( key:string ):string {
+    translate( key:string, params?:{[param:string]:any} ):string {
         key = key ?? '';
-        return bundle[key] === undefined ? key : bundle[key];
+        let txt:string = bundle[key] === undefined ? key : bundle[key];
+        if( params && typeof params === "object" ) {
+            for( let member in params ) {
+                if( typeof params[member]!=="undefined" ) {
+                    txt = txt.replace(new RegExp('\\${'+member+'}', 'g'), ''+params[member]);
+                }
+            }
+        }
+        return txt;
     }
 
     addBundlePromise(path:string):Promise<void> {

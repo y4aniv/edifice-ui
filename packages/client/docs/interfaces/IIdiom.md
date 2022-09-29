@@ -128,15 +128,16 @@ ___
 
 ### translate
 
-▸ **translate**(`key`): `string`
+▸ **translate**(`key`, `params?`): `string`
 
 Get the translation of a given key.
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `key` | `string` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `key` | `string` | - |
+| `params?` | `Object` | (optional) map of key/value variables. Ex: Given "variabilized.i18n.key"="Limit to ${limit} bytes" translate('variabilized.i18n.key', {limit:50}) will return "Limit to 50 bytes". |
 
 #### Returns
 
