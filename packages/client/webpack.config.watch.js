@@ -4,7 +4,12 @@ const TerserPlugin = require("terser-webpack-plugin");
 module.exports = env => ({
   mode: "development",
   entry: {
-    'ode-ts-client': './src/ts/index.ts',
+    "ode-ts-client": {
+      import: "./src/ts/index.ts",
+      library: {
+        type: 'commonjs2'
+      },
+    },
   },
   output: {
     filename: '[name].js',
@@ -19,7 +24,7 @@ module.exports = env => ({
   optimization: {
     minimize: true,
     minimizer: [new TerserPlugin({
-        extractComments: false,
+      extractComments: false,
     })],
   },
   module: {

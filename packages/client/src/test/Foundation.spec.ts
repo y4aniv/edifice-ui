@@ -1,6 +1,6 @@
 import "jasmine";
 import * as UserInfoData from './mocks/data/userinfo.json';
-import { APP, explorer, IContext, IExplorerContext, ISearchResults, RESOURCE } from "../ts/index";
+import { APP, ExplorerFrameworkFactory, IContext, IExplorerContext, ISearchResults, RESOURCE } from "../ts/index";
 import { ExplorerFramework } from "../ts/explore/Framework";
 import { MockedAgentLoader } from "./mocks/agents/MockedAgentLoader";
 import { Subscription } from "rxjs";
@@ -8,6 +8,7 @@ import { Subscription } from "rxjs";
 /** Test the fundations of the framework. */
 describe("Foundation", function() {
     var context:IExplorerContext|null = null;
+    const explorer = ExplorerFrameworkFactory.instance();
     const userinfo = UserInfoData;
     var subscription:Subscription|undefined;
     var latestResult:ISearchResults|null = null;

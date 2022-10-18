@@ -34,7 +34,7 @@ then
 fi
 
 # options
-SPRINGBOARD="recette"
+SPRINGBOARD=""
 for i in "$@"
 do
 case $i in
@@ -94,11 +94,20 @@ build () {
 }
 
 watch () {
-  docker-compose run \
-    --rm \
-    -u "$USER_UID:$GROUP_GID" \
-    -v $PWD/../$SPRINGBOARD:/home/node/springboard \
-    node sh -c "npm run watch --watch_springboard=/home/node/springboard"
+  if [ -z $SPRINGBOARD ]; then
+    echo "Watching => ./dist folder"
+    docker-compose run \
+      --rm \
+      -u "$USER_UID:$GROUP_GID" \
+      node sh -c "npm run watch --watch_springboard=dist"
+  else
+    echo "Watching => springboard $SPRINGBOARD"
+    docker-compose run \
+      --rm \
+      -u "$USER_UID:$GROUP_GID" \
+      -v $PWD/../$SPRINGBOARD:/home/node/springboard \
+      node sh -c "npm run watch --watch_springboard=/home/node/springboard"
+  fi
 }
 
 audit () {

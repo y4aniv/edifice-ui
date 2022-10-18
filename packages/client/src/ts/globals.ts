@@ -3,32 +3,32 @@
 //-------------------------------------
 
 //------------------------- Data types
-//-- Error codes 
+//-- Error codes
 export const ERROR_CODE = {
-  SUCCESS:          "0000"
- ,UNKNOWN:          "0010"
- ,NOT_INITIALIZED:  "0020"
- ,NOT_SUPPORTED:    "0030"
- ,APP_NOT_FOUND:    "0040"
- ,AGENT_NOT_FOUND:  "0050"
- ,TRANSPORT_ERROR:  "0060"
- ,TIME_OUT:         "0070"
- ,MALFORMED_DATA:   "0080"
+  SUCCESS: "0000",
+  UNKNOWN: "0010",
+  NOT_INITIALIZED: "0020",
+  NOT_SUPPORTED: "0030",
+  APP_NOT_FOUND: "0040",
+  AGENT_NOT_FOUND: "0050",
+  TRANSPORT_ERROR: "0060",
+  TIME_OUT: "0070",
+  MALFORMED_DATA: "0080",
 } as const;
 export type ErrorCode = typeof ERROR_CODE[keyof typeof ERROR_CODE];
 
 //-- Applications
 export const APP = {
-  EXPLORER:   "explorer"
- ,PORTAL:     "portal"
- ,BLOG:       "blog"
- ,EXERCIZER:  "exercizer"
- ,TIMELINE:   "timeline"
- ,CAS:        "cas"
- ,VIDEO:      "video"
+  EXPLORER: "explorer",
+  PORTAL: "portal",
+  BLOG: "blog",
+  EXERCIZER: "exercizer",
+  TIMELINE: "timeline",
+  CAS: "cas",
+  VIDEO: "video",
 
- // TODO compléter/trier les apps suivantes
-/*
+  // TODO compléter/trier les apps suivantes
+  /*
   "competences"
   "cahier-textes"
   "poll"
@@ -80,16 +80,16 @@ export const APP = {
   "sacoche"
 */
 } as const;
-export type App = typeof APP[keyof typeof APP];   // type App = "explorer" | "blog" | "exercizer"...
+export type App = typeof APP[keyof typeof APP]; // type App = "explorer" | "blog" | "exercizer"...
 
 //-- User preferences keys
 export const USER_PREFS = {
-  APPS:       "apps"
- ,WIDGETS:    "widgets"
- ,LANGUAGE:   "language"
- ,AUTH_CONNECTOR_ACCESSED: "authenticatedConnectorsAccessed"
- ,CURSUS:     "cursus"
- ,INFOTIP:      "infotip"
- ,RGPD_COOKIES: "rgpdCookies"
- // TODO compléter
+  APPS: "apps",
+  WIDGETS: "widgets",
+  LANGUAGE: "language",
+  AUTH_CONNECTOR_ACCESSED: "authenticatedConnectorsAccessed",
+  CURSUS: "cursus",
+  INFOTIP: "infotip",
+  RGPD_COOKIES: "rgpdCookies",
+  // TODO compléter
 } as const;

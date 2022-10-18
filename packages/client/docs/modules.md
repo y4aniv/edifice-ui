@@ -149,7 +149,6 @@
 - [WIDGET\_NAME](modules.md#widget_name)
 - [WIDGET\_POSITION](modules.md#widget_position)
 - [appNameForResource](modules.md#appnameforresource)
-- [explorer](modules.md#explorer)
 
 ## Type aliases
 
@@ -822,11 +821,3 @@ ___
 ### appNameForResource
 
 • `Const` **appNameForResource**: { [R in ResourceType]: App }
-
-___
-
-### explorer
-
-• `Const` **explorer**: [`IExplorerFramework`](interfaces/IExplorerFramework.md)
-
-The whole framework is a singleton.
