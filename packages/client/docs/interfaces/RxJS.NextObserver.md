@@ -1,76 +1,73 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / NextObserver
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / NextObserver
 
 # Interface: NextObserver<T\>
 
-[RxJS](../modules/rxjs.md).NextObserver
+[RxJS](../modules/RxJS.md).NextObserver
 
 OBSERVER INTERFACES
 
 ## Type parameters
 
-Name |
-:------ |
-`T` |
+| Name |
+| :------ |
+| `T` |
 
 ## Table of contents
 
 ### Properties
 
-- [closed](rxjs.nextobserver.md#closed)
-- [complete](rxjs.nextobserver.md#complete)
-- [error](rxjs.nextobserver.md#error)
-- [next](rxjs.nextobserver.md#next)
+- [closed](RxJS.NextObserver.md#closed)
+
+### Methods
+
+- [complete](RxJS.NextObserver.md#complete)
+- [error](RxJS.NextObserver.md#error)
+- [next](RxJS.NextObserver.md#next)
 
 ## Properties
 
 ### closed
 
-• `Optional` **closed**: *boolean*
+• `Optional` **closed**: `boolean`
 
-___
+## Methods
 
 ### complete
 
-• `Optional` **complete**: () => *void*
+▸ `Optional` **complete**(): `void`
 
-#### Type declaration:
+#### Returns
 
-▸ (): *void*
-
-**Returns:** *void*
+`void`
 
 ___
 
 ### error
 
-• `Optional` **error**: (`err`: *any*) => *void*
+▸ `Optional` **error**(`err`): `void`
 
-#### Type declaration:
+#### Parameters
 
-▸ (`err`: *any*): *void*
+| Name | Type |
+| :------ | :------ |
+| `err` | `any` |
 
-#### Parameters:
+#### Returns
 
-Name | Type |
-:------ | :------ |
-`err` | *any* |
-
-**Returns:** *void*
+`void`
 
 ___
 
 ### next
 
-• **next**: (`value`: T) => *void*
+▸ **next**(`value`): `void`
 
-#### Type declaration:
+#### Parameters
 
-▸ (`value`: T): *void*
+| Name | Type |
+| :------ | :------ |
+| `value` | `T` |
 
-#### Parameters:
+#### Returns
 
-Name | Type |
-:------ | :------ |
-`value` | T |
-
-**Returns:** *void*
+`void`

@@ -4,56 +4,55 @@
 
 ## Type parameters
 
-Name |
-:------ |
-`T` |
+| Name |
+| :------ |
+| `T` |
 
 ## Table of contents
 
 ### Properties
 
-- [promise](ipromisified.md#promise)
-- [reject](ipromisified.md#reject)
-- [resolve](ipromisified.md#resolve)
+- [promise](IPromisified.md#promise)
+
+### Methods
+
+- [reject](IPromisified.md#reject)
+- [resolve](IPromisified.md#resolve)
 
 ## Properties
 
 ### promise
 
-• `Readonly` **promise**: *Promise*<T\>
+• `Readonly` **promise**: `Promise`<`T`\>
 
-___
+## Methods
 
 ### reject
 
-• **reject**: (`reason?`: *any*) => *void*
+▸ **reject**(`reason?`): `void`
 
-#### Type declaration:
+#### Parameters
 
-▸ (`reason?`: *any*): *void*
+| Name | Type |
+| :------ | :------ |
+| `reason?` | `any` |
 
-#### Parameters:
+#### Returns
 
-Name | Type |
-:------ | :------ |
-`reason?` | *any* |
-
-**Returns:** *void*
+`void`
 
 ___
 
 ### resolve
 
-• **resolve**: (`value`: T \| *PromiseLike*<T\>) => *void*
+▸ **resolve**(`value`): `void`
 
-#### Type declaration:
+#### Parameters
 
-▸ (`value`: T \| *PromiseLike*<T\>): *void*
+| Name | Type |
+| :------ | :------ |
+| `value` | `T` \| `PromiseLike`<`T`\> |
 
-#### Parameters:
+#### Returns
 
-Name | Type |
-:------ | :------ |
-`value` | T \| *PromiseLike*<T\> |
-
-**Returns:** *void*
+`void`

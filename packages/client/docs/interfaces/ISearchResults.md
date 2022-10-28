@@ -4,32 +4,32 @@
 
 ## Hierarchy
 
-* **ISearchResults**
+- **`ISearchResults`**
 
-  ↳ [*IContext*](icontext.md)
+  ↳ [`IContext`](IContext.md)
 
 ## Table of contents
 
 ### Properties
 
-- [folders](isearchresults.md#folders)
-- [pagination](isearchresults.md#pagination)
-- [resources](isearchresults.md#resources)
+- [folders](ISearchResults.md#folders)
+- [pagination](ISearchResults.md#pagination)
+- [resources](ISearchResults.md#resources)
 
 ## Properties
 
 ### folders
 
-• **folders**: [*IFolder*](ifolder.md)[]
+• **folders**: [`IFolder`](IFolder.md)[]
 
 ___
 
 ### pagination
 
-• **pagination**: [*IPagination*](ipagination.md)
+• **pagination**: [`IPagination`](IPagination.md)
 
 ___
 
 ### resources
 
-• **resources**: [*IResource*](iresource.md)[]
+• **resources**: [`IResource`](IResource.md)[]

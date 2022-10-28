@@ -6,10 +6,10 @@
 
 ### Properties
 
-- [userId](recipient.md#userid)
+- [userId](Recipient.md#userid)
 
 ## Properties
 
 ### userId
 
-• **userId**: *string*
+• **userId**: `string`

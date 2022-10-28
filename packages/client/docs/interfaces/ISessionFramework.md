@@ -6,22 +6,24 @@
 
 ### Properties
 
-- [session](isessionframework.md#session)
+- [session](ISessionFramework.md#session)
 
 ### Methods
 
-- [initialize](isessionframework.md#initialize)
+- [initialize](ISessionFramework.md#initialize)
 
 ## Properties
 
 ### session
 
-• **session**: [*ISession*](isession.md)
+• **session**: [`ISession`](ISession.md)
 
 ## Methods
 
 ### initialize
 
-▸ **initialize**(): *Promise*<void\>
+▸ **initialize**(): `Promise`<`void`\>
 
-**Returns:** *Promise*<void\>
+#### Returns
+
+`Promise`<`void`\>

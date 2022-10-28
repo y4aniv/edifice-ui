@@ -1,101 +1,102 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / SubjectLike
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / SubjectLike
 
 # Interface: SubjectLike<T\>
 
-[RxJS](../modules/rxjs.md).SubjectLike
+[RxJS](../modules/RxJS.md).SubjectLike
 
 ## Type parameters
 
-Name |
-:------ |
-`T` |
+| Name |
+| :------ |
+| `T` |
 
 ## Hierarchy
 
-* [*Observer*](rxjs.observer.md)<T\>
+- [`Observer`](RxJS.Observer.md)<`T`\>
 
-* [*Subscribable*](rxjs.subscribable.md)<T\>
+- [`Subscribable`](RxJS.Subscribable.md)<`T`\>
 
-  ↳ **SubjectLike**
+  ↳ **`SubjectLike`**
 
 ## Table of contents
 
-### Properties
-
-- [complete](rxjs.subjectlike.md#complete)
-- [error](rxjs.subjectlike.md#error)
-- [next](rxjs.subjectlike.md#next)
-
 ### Methods
 
-- [subscribe](rxjs.subjectlike.md#subscribe)
+- [complete](RxJS.SubjectLike.md#complete)
+- [error](RxJS.SubjectLike.md#error)
+- [next](RxJS.SubjectLike.md#next)
+- [subscribe](RxJS.SubjectLike.md#subscribe)
 
-## Properties
+## Methods
 
 ### complete
 
-• **complete**: () => *void*
+▸ **complete**(): `void`
 
-#### Type declaration:
+#### Returns
 
-▸ (): *void*
+`void`
 
-**Returns:** *void*
+#### Inherited from
 
-Inherited from: [Observer](rxjs.observer.md).[complete](rxjs.observer.md#complete)
+[Observer](RxJS.Observer.md).[complete](RxJS.Observer.md#complete)
 
 ___
 
 ### error
 
-• **error**: (`err`: *any*) => *void*
+▸ **error**(`err`): `void`
 
-#### Type declaration:
+#### Parameters
 
-▸ (`err`: *any*): *void*
+| Name | Type |
+| :------ | :------ |
+| `err` | `any` |
 
-#### Parameters:
+#### Returns
 
-Name | Type |
-:------ | :------ |
-`err` | *any* |
+`void`
 
-**Returns:** *void*
+#### Inherited from
 
-Inherited from: [Observer](rxjs.observer.md).[error](rxjs.observer.md#error)
+[Observer](RxJS.Observer.md).[error](RxJS.Observer.md#error)
 
 ___
 
 ### next
 
-• **next**: (`value`: T) => *void*
+▸ **next**(`value`): `void`
 
-#### Type declaration:
+#### Parameters
 
-▸ (`value`: T): *void*
+| Name | Type |
+| :------ | :------ |
+| `value` | `T` |
 
-#### Parameters:
+#### Returns
 
-Name | Type |
-:------ | :------ |
-`value` | T |
+`void`
 
-**Returns:** *void*
+#### Inherited from
 
-Inherited from: [Observer](rxjs.observer.md).[next](rxjs.observer.md#next)
+[Observer](RxJS.Observer.md).[next](RxJS.Observer.md#next)
 
-## Methods
+___
 
 ### subscribe
 
-▸ **subscribe**(`observer`: *Partial*<[*Observer*](rxjs.observer.md)<T\>\>): [*Unsubscribable*](rxjs.unsubscribable.md)
+▸ **subscribe**(`observer`): [`Unsubscribable`](RxJS.Unsubscribable.md)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`observer` | *Partial*<[*Observer*](rxjs.observer.md)<T\>\> |
+| Name | Type |
+| :------ | :------ |
+| `observer` | `Partial`<[`Observer`](RxJS.Observer.md)<`T`\>\> |
 
-**Returns:** [*Unsubscribable*](rxjs.unsubscribable.md)
+#### Returns
 
-Inherited from: [Subscribable](rxjs.subscribable.md)
+[`Unsubscribable`](RxJS.Unsubscribable.md)
+
+#### Inherited from
+
+[Subscribable](RxJS.Subscribable.md).[subscribe](RxJS.Subscribable.md#subscribe)

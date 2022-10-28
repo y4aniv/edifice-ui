@@ -6,24 +6,24 @@
 
 ### Properties
 
-- [maxIdx](ipagination.md#maxidx)
-- [pageSize](ipagination.md#pagesize)
-- [startIdx](ipagination.md#startidx)
+- [maxIdx](IPagination.md#maxidx)
+- [pageSize](IPagination.md#pagesize)
+- [startIdx](IPagination.md#startidx)
 
 ## Properties
 
 ### maxIdx
 
-• `Optional` **maxIdx**: *number*
+• `Optional` **maxIdx**: `number`
 
 ___
 
 ### pageSize
 
-• **pageSize**: *number*
+• **pageSize**: `number`
 
 ___
 
 ### startIdx
 
-• **startIdx**: *number*
+• **startIdx**: `number`

@@ -6,244 +6,244 @@
 
 ### Properties
 
-- [apps](iuserinfo.md#apps)
-- [authorizedActions](iuserinfo.md#authorizedactions)
-- [birthDate](iuserinfo.md#birthdate)
-- [children](iuserinfo.md#children)
-- [childrenIds](iuserinfo.md#childrenids)
-- [classNames](iuserinfo.md#classnames)
-- [classes](iuserinfo.md#classes)
-- [deletePending](iuserinfo.md#deletepending)
-- [externalId](iuserinfo.md#externalid)
-- [federated](iuserinfo.md#federated)
-- [federatedIDP](iuserinfo.md#federatedidp)
-- [firstName](iuserinfo.md#firstname)
-- [forceChangePassword](iuserinfo.md#forcechangepassword)
-- [functions](iuserinfo.md#functions)
-- [groupsIds](iuserinfo.md#groupsids)
-- [hasApp](iuserinfo.md#hasapp)
-- [hasPw](iuserinfo.md#haspw)
-- [lastName](iuserinfo.md#lastname)
-- [level](iuserinfo.md#level)
-- [login](iuserinfo.md#login)
-- [needRevalidateTerms](iuserinfo.md#needrevalidateterms)
-- [optionEnabled](iuserinfo.md#optionenabled)
-- [preferences](iuserinfo.md#preferences)
-- [sessionMetadata](iuserinfo.md#sessionmetadata)
-- [structureNames](iuserinfo.md#structurenames)
-- [structures](iuserinfo.md#structures)
-- [type](iuserinfo.md#type)
-- [uai](iuserinfo.md#uai)
-- [userId](iuserinfo.md#userid)
-- [username](iuserinfo.md#username)
-- [widgets](iuserinfo.md#widgets)
+- [apps](IUserInfo.md#apps)
+- [authorizedActions](IUserInfo.md#authorizedactions)
+- [birthDate](IUserInfo.md#birthdate)
+- [children](IUserInfo.md#children)
+- [childrenIds](IUserInfo.md#childrenids)
+- [classNames](IUserInfo.md#classnames)
+- [classes](IUserInfo.md#classes)
+- [deletePending](IUserInfo.md#deletepending)
+- [externalId](IUserInfo.md#externalid)
+- [federated](IUserInfo.md#federated)
+- [federatedIDP](IUserInfo.md#federatedidp)
+- [firstName](IUserInfo.md#firstname)
+- [forceChangePassword](IUserInfo.md#forcechangepassword)
+- [functions](IUserInfo.md#functions)
+- [groupsIds](IUserInfo.md#groupsids)
+- [hasApp](IUserInfo.md#hasapp)
+- [hasPw](IUserInfo.md#haspw)
+- [lastName](IUserInfo.md#lastname)
+- [level](IUserInfo.md#level)
+- [login](IUserInfo.md#login)
+- [needRevalidateTerms](IUserInfo.md#needrevalidateterms)
+- [optionEnabled](IUserInfo.md#optionenabled)
+- [preferences](IUserInfo.md#preferences)
+- [sessionMetadata](IUserInfo.md#sessionmetadata)
+- [structureNames](IUserInfo.md#structurenames)
+- [structures](IUserInfo.md#structures)
+- [type](IUserInfo.md#type)
+- [uai](IUserInfo.md#uai)
+- [userId](IUserInfo.md#userid)
+- [username](IUserInfo.md#username)
+- [widgets](IUserInfo.md#widgets)
 
 ## Properties
 
 ### apps
 
-• **apps**: [*IWebApp*](iwebapp.md)[]
+• **apps**: [`IWebApp`](IWebApp.md)[]
 
 ___
 
 ### authorizedActions
 
-• **authorizedActions**: [*IWorkflowAuth*](iworkflowauth.md)[]
+• **authorizedActions**: [`IWorkflowAuth`](IWorkflowAuth.md)[]
 
 ___
 
 ### birthDate
 
-• **birthDate**: *string*
+• **birthDate**: `string`
 
 ___
 
 ### children
 
-• **children**: *any*
+• **children**: `any`
 
 ___
 
 ### childrenIds
 
-• **childrenIds**: *string*[]
+• **childrenIds**: `string`[]
 
 ___
 
 ### classNames
 
-• **classNames**: *string*[]
+• **classNames**: `string`[]
 
 ___
 
 ### classes
 
-• **classes**: *any*[]
+• **classes**: `any`[]
 
 ___
 
 ### deletePending
 
-• **deletePending**: *boolean*
+• **deletePending**: `boolean`
 
 ___
 
 ### externalId
 
-• **externalId**: *string*
+• **externalId**: `string`
 
 ___
 
 ### federated
 
-• `Optional` **federated**: *any*
+• `Optional` **federated**: `any`
 
 ___
 
 ### federatedIDP
 
-• `Optional` **federatedIDP**: *any*
+• `Optional` **federatedIDP**: `any`
 
 ___
 
 ### firstName
 
-• **firstName**: *string*
+• **firstName**: `string`
 
 ___
 
 ### forceChangePassword
 
-• `Optional` **forceChangePassword**: *any*
+• `Optional` **forceChangePassword**: `any`
 
 ___
 
 ### functions
 
-• **functions**: *object*
+• **functions**: `Object`
 
-#### Type declaration:
+#### Type declaration
 
-Name | Type |
-:------ | :------ |
-`ADMIN_LOCAL`? | *object* |
-`ADMIN_LOCAL.code` | *string* |
-`ADMIN_LOCAL.scope` | *string*[] |
-`SUPER_ADMIN` | *object* |
-`SUPER_ADMIN.code` | *string* |
-`SUPER_ADMIN.scope` | *string*[] |
+| Name | Type |
+| :------ | :------ |
+| `ADMIN_LOCAL?` | { `code`: `string` ; `scope`: `string`[]  } |
+| `ADMIN_LOCAL.code` | `string` |
+| `ADMIN_LOCAL.scope` | `string`[] |
+| `SUPER_ADMIN` | { `code`: `string` ; `scope`: `string`[]  } |
+| `SUPER_ADMIN.code` | `string` |
+| `SUPER_ADMIN.scope` | `string`[] |
 
 ___
 
 ### groupsIds
 
-• **groupsIds**: *string*[]
+• **groupsIds**: `string`[]
 
 ___
 
 ### hasApp
 
-• **hasApp**: *boolean*
+• **hasApp**: `boolean`
 
 ___
 
 ### hasPw
 
-• **hasPw**: *boolean*
+• **hasPw**: `boolean`
 
 ___
 
 ### lastName
 
-• **lastName**: *string*
+• **lastName**: `string`
 
 ___
 
 ### level
 
-• **level**: *string*
+• **level**: `string`
 
 ___
 
 ### login
 
-• **login**: *string*
+• **login**: `string`
 
 ___
 
 ### needRevalidateTerms
 
-• **needRevalidateTerms**: *any*
+• **needRevalidateTerms**: `any`
 
 ___
 
 ### optionEnabled
 
-• **optionEnabled**: *any*[]
+• **optionEnabled**: `any`[]
 
 ___
 
 ### preferences
 
-• `Optional` **preferences**: *object*
+• `Optional` **preferences**: `Object`
 
-#### Type declaration:
+#### Type declaration
 
-Name | Type |
-:------ | :------ |
-`save` | (`pref`: *any*, `data`: *any*) => *void* |
+| Name | Type |
+| :------ | :------ |
+| `save` | (`pref`: `any`, `data`: `any`) => `void` |
 
 ___
 
 ### sessionMetadata
 
-• **sessionMetadata**: *object*
+• **sessionMetadata**: `Object`
 
-#### Type declaration:
+#### Type declaration
 
-Name | Type |
-:------ | :------ |
-`_id` | *string* |
-`userId` | *string* |
+| Name | Type |
+| :------ | :------ |
+| `_id` | `string` |
+| `userId` | `string` |
 
 ___
 
 ### structureNames
 
-• **structureNames**: *string*[]
+• **structureNames**: `string`[]
 
 ___
 
 ### structures
 
-• **structures**: *string*[]
+• **structures**: `string`[]
 
 ___
 
 ### type
 
-• **type**: *ENSEIGNANT* \| *ELEVE* \| *PERSRELELEVE* \| *SUPERADMIN* \| *PERSEDUCNAT*
+• **type**: ``"ENSEIGNANT"`` \| ``"ELEVE"`` \| ``"PERSRELELEVE"`` \| ``"SUPERADMIN"`` \| ``"PERSEDUCNAT"``
 
 ___
 
 ### uai
 
-• **uai**: *any*[]
+• **uai**: `any`[]
 
 ___
 
 ### userId
 
-• **userId**: *string*
+• **userId**: `string`
 
 ___
 
 ### username
 
-• **username**: *string*
+• **username**: `string`
 
 ___
 
 ### widgets
 
-• **widgets**: [*IWidgetModel*](iwidgetmodel.md)[]
+• **widgets**: [`IWidgetModel`](IWidgetModel.md)[]

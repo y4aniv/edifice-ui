@@ -6,14 +6,14 @@
 
 ### Properties
 
-- [quota](iquotaandusage.md#quota)
-- [storage](iquotaandusage.md#storage)
+- [quota](IQuotaAndUsage.md#quota)
+- [storage](IQuotaAndUsage.md#storage)
 
 ## Properties
 
 ### quota
 
-• **quota**: *number*
+• **quota**: `number`
 
 Maximum use of the storage space.
 
@@ -21,6 +21,6 @@ ___
 
 ### storage
 
-• **storage**: *number*
+• **storage**: `number`
 
 Current use of the storage space.

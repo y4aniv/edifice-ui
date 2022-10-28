@@ -6,60 +6,60 @@
 
 ### Properties
 
-- [bootstrapVersion](ithemeconfoverriding.md#bootstrapversion)
-- [child](ithemeconfoverriding.md#child)
-- [edumedia](ithemeconfoverriding.md#edumedia)
-- [group](ithemeconfoverriding.md#group)
-- [help](ithemeconfoverriding.md#help)
-- [parent](ithemeconfoverriding.md#parent)
-- [skins](ithemeconfoverriding.md#skins)
+- [bootstrapVersion](IThemeConfOverriding.md#bootstrapversion)
+- [child](IThemeConfOverriding.md#child)
+- [edumedia](IThemeConfOverriding.md#edumedia)
+- [group](IThemeConfOverriding.md#group)
+- [help](IThemeConfOverriding.md#help)
+- [parent](IThemeConfOverriding.md#parent)
+- [skins](IThemeConfOverriding.md#skins)
 
 ## Properties
 
 ### bootstrapVersion
 
-• **bootstrapVersion**: *string*
+• **bootstrapVersion**: `string`
 
 ___
 
 ### child
 
-• **child**: *string*
+• **child**: `string`
 
 ___
 
 ### edumedia
 
-• **edumedia**: *object*
+• **edumedia**: `Object`
 
-#### Type declaration:
+#### Type declaration
 
-Name | Type |
-:------ | :------ |
-`ignoreSubjects`? | *string*[] |
-`pattern` | *string* |
-`uri` | *string* |
+| Name | Type |
+| :------ | :------ |
+| `ignoreSubjects?` | `string`[] |
+| `pattern` | `string` |
+| `uri` | `string` |
 
 ___
 
 ### group
 
-• `Optional` **group**: *string*
+• `Optional` **group**: `string`
 
 ___
 
 ### help
 
-• **help**: *string*
+• **help**: `string`
 
 ___
 
 ### parent
 
-• **parent**: *panda* \| *theme-open-ent*
+• **parent**: ``"panda"`` \| ``"theme-open-ent"``
 
 ___
 
 ### skins
 
-• **skins**: *string*[]
+• **skins**: `string`[]

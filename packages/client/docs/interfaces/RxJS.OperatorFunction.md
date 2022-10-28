@@ -1,32 +1,36 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / OperatorFunction
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / OperatorFunction
 
 # Interface: OperatorFunction<T, R\>
 
-[RxJS](../modules/rxjs.md).OperatorFunction
+[RxJS](../modules/RxJS.md).OperatorFunction
 
 ## Type parameters
 
-Name |
-:------ |
-`T` |
-`R` |
+| Name |
+| :------ |
+| `T` |
+| `R` |
 
 ## Hierarchy
 
-* [*UnaryFunction*](rxjs.unaryfunction.md)<[*Observable*](../classes/rxjs.observable.md)<T\>, [*Observable*](../classes/rxjs.observable.md)<R\>\>
+- [`UnaryFunction`](RxJS.UnaryFunction.md)<[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`Observable`](../classes/RxJS.Observable.md)<`R`\>\>
 
-  ↳ **OperatorFunction**
+  ↳ **`OperatorFunction`**
 
-  ↳↳ [*MonoTypeOperatorFunction*](rxjs.monotypeoperatorfunction.md)
+  ↳↳ [`MonoTypeOperatorFunction`](RxJS.MonoTypeOperatorFunction.md)
 
 ## Callable
 
-▸ **OperatorFunction**(`source`: [*Observable*](../classes/rxjs.observable.md)<T\>): [*Observable*](../classes/rxjs.observable.md)<R\>
+### OperatorFunction
 
-#### Parameters:
+▸ **OperatorFunction**(`source`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
 
-Name | Type |
-:------ | :------ |
-`source` | [*Observable*](../classes/rxjs.observable.md)<T\> |
+#### Parameters
 
-**Returns:** [*Observable*](../classes/rxjs.observable.md)<R\>
+| Name | Type |
+| :------ | :------ |
+| `source` | [`Observable`](../classes/RxJS.Observable.md)<`T`\> |
+
+#### Returns
+
+[`Observable`](../classes/RxJS.Observable.md)<`R`\>

@@ -1,27 +1,29 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / Unsubscribable
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / Unsubscribable
 
 # Interface: Unsubscribable
 
-[RxJS](../modules/rxjs.md).Unsubscribable
+[RxJS](../modules/RxJS.md).Unsubscribable
 
 SUBSCRIPTION INTERFACES
 
 ## Hierarchy
 
-* **Unsubscribable**
+- **`Unsubscribable`**
 
-  ↳ [*SubscriptionLike*](rxjs.subscriptionlike.md)
+  ↳ [`SubscriptionLike`](RxJS.SubscriptionLike.md)
 
 ## Table of contents
 
 ### Methods
 
-- [unsubscribe](rxjs.unsubscribable.md#unsubscribe)
+- [unsubscribe](RxJS.Unsubscribable.md#unsubscribe)
 
 ## Methods
 
 ### unsubscribe
 
-▸ **unsubscribe**(): *void*
+▸ **unsubscribe**(): `void`
 
-**Returns:** *void*
+#### Returns
+
+`void`

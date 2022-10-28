@@ -1,49 +1,51 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / SchedulerAction
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / SchedulerAction
 
 # Interface: SchedulerAction<T\>
 
-[RxJS](../modules/rxjs.md).SchedulerAction
+[RxJS](../modules/RxJS.md).SchedulerAction
 
 ## Type parameters
 
-Name |
-:------ |
-`T` |
+| Name |
+| :------ |
+| `T` |
 
 ## Hierarchy
 
-* [*Subscription*](../classes/rxjs.subscription.md)
+- [`Subscription`](../classes/RxJS.Subscription.md)
 
-  ↳ **SchedulerAction**
+  ↳ **`SchedulerAction`**
 
 ## Table of contents
 
 ### Properties
 
-- [closed](rxjs.scheduleraction.md#closed)
+- [closed](RxJS.SchedulerAction.md#closed)
 
 ### Methods
 
-- [add](rxjs.scheduleraction.md#add)
-- [remove](rxjs.scheduleraction.md#remove)
-- [schedule](rxjs.scheduleraction.md#schedule)
-- [unsubscribe](rxjs.scheduleraction.md#unsubscribe)
+- [add](RxJS.SchedulerAction.md#add)
+- [remove](RxJS.SchedulerAction.md#remove)
+- [schedule](RxJS.SchedulerAction.md#schedule)
+- [unsubscribe](RxJS.SchedulerAction.md#unsubscribe)
 
 ## Properties
 
 ### closed
 
-• **closed**: *boolean*
+• **closed**: `boolean`
 
 A flag to indicate whether this Subscription has already been unsubscribed.
 
-Inherited from: [Subscription](../classes/rxjs.subscription.md).[closed](../classes/rxjs.subscription.md#closed)
+#### Inherited from
+
+[Subscription](../classes/RxJS.Subscription.md).[closed](../classes/RxJS.Subscription.md#closed)
 
 ## Methods
 
 ### add
 
-▸ **add**(`teardown`: [*TeardownLogic*](../modules/rxjs.md#teardownlogic)): *void*
+▸ **add**(`teardown`): `void`
 
 Adds a teardown to this subscription, so that teardown will be unsubscribed/called
 when this subscription is unsubscribed. If this subscription is already {@link #closed},
@@ -57,24 +59,28 @@ Adding a subscription to itself, or adding `null` or `undefined` will not perfor
 operation at all. (A noop).
 
 `Subscription` instances that are added to this instance will automatically remove themselves
-if they are unsubscribed. Functions and [Unsubscribable](rxjs.unsubscribable.md) objects that you wish to remove
+if they are unsubscribed. Functions and [Unsubscribable](RxJS.Unsubscribable.md) objects that you wish to remove
 will need to be removed manually with {@link #remove}
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`teardown` | [*TeardownLogic*](../modules/rxjs.md#teardownlogic) | The teardown logic to add to this subscription.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `teardown` | [`TeardownLogic`](../modules/RxJS.md#teardownlogic) | The teardown logic to add to this subscription. |
 
-**Returns:** *void*
+#### Returns
 
-Inherited from: [Subscription](../classes/rxjs.subscription.md)
+`void`
+
+#### Inherited from
+
+[Subscription](../classes/RxJS.Subscription.md).[add](../classes/RxJS.Subscription.md#add)
 
 ___
 
 ### remove
 
-▸ **remove**(`teardown`: [*Subscription*](../classes/rxjs.subscription.md) \| [*Unsubscribable*](rxjs.unsubscribable.md) \| () => *void*): *void*
+▸ **remove**(`teardown`): `void`
 
 Removes a teardown from this subscription that was previously added with the {@link #add} method.
 
@@ -87,41 +93,51 @@ more than once, you will need to call `remove` the same number of times to remov
 
 All teardown instances are removed to free up memory upon unsubscription.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`teardown` | [*Subscription*](../classes/rxjs.subscription.md) \| [*Unsubscribable*](rxjs.unsubscribable.md) \| () => *void* | The teardown to remove from this subscription    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `teardown` | [`Subscription`](../classes/RxJS.Subscription.md) \| [`Unsubscribable`](RxJS.Unsubscribable.md) \| () => `void` | The teardown to remove from this subscription |
 
-**Returns:** *void*
+#### Returns
 
-Inherited from: [Subscription](../classes/rxjs.subscription.md)
+`void`
+
+#### Inherited from
+
+[Subscription](../classes/RxJS.Subscription.md).[remove](../classes/RxJS.Subscription.md#remove)
 
 ___
 
 ### schedule
 
-▸ **schedule**(`state?`: T, `delay?`: *number*): [*Subscription*](../classes/rxjs.subscription.md)
+▸ **schedule**(`state?`, `delay?`): [`Subscription`](../classes/RxJS.Subscription.md)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`state?` | T |
-`delay?` | *number* |
+| Name | Type |
+| :------ | :------ |
+| `state?` | `T` |
+| `delay?` | `number` |
 
-**Returns:** [*Subscription*](../classes/rxjs.subscription.md)
+#### Returns
+
+[`Subscription`](../classes/RxJS.Subscription.md)
 
 ___
 
 ### unsubscribe
 
-▸ **unsubscribe**(): *void*
+▸ **unsubscribe**(): `void`
 
 Disposes the resources held by the subscription. May, for instance, cancel
 an ongoing Observable execution or cancel any other type of work that
 started when the Subscription was created.
 
-**Returns:** *void*
+#### Returns
 
-Inherited from: [Subscription](../classes/rxjs.subscription.md)
+`void`
+
+#### Inherited from
+
+[Subscription](../classes/RxJS.Subscription.md).[unsubscribe](../classes/RxJS.Subscription.md#unsubscribe)

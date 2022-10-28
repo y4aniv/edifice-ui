@@ -4,66 +4,72 @@
 
 ## Hierarchy
 
-* [*ISearchResults*](isearchresults.md)
+- [`ISearchResults`](ISearchResults.md)
 
-  ↳ **IContext**
+  ↳ **`IContext`**
 
 ## Table of contents
 
 ### Properties
 
-- [actions](icontext.md#actions)
-- [filters](icontext.md#filters)
-- [folders](icontext.md#folders)
-- [orders](icontext.md#orders)
-- [pagination](icontext.md#pagination)
-- [preferences](icontext.md#preferences)
-- [resources](icontext.md#resources)
+- [actions](IContext.md#actions)
+- [filters](IContext.md#filters)
+- [folders](IContext.md#folders)
+- [orders](IContext.md#orders)
+- [pagination](IContext.md#pagination)
+- [preferences](IContext.md#preferences)
+- [resources](IContext.md#resources)
 
 ## Properties
 
 ### actions
 
-• **actions**: [*IAction*](iaction.md)[]
+• **actions**: [`IAction`](IAction.md)[]
 
 ___
 
 ### filters
 
-• **filters**: [*IFilter*](ifilter.md)[]
+• **filters**: [`IFilter`](IFilter.md)[]
 
 ___
 
 ### folders
 
-• **folders**: [*IFolder*](ifolder.md)[]
+• **folders**: [`IFolder`](IFolder.md)[]
 
-Inherited from: [ISearchResults](isearchresults.md).[folders](isearchresults.md#folders)
+#### Inherited from
+
+[ISearchResults](ISearchResults.md).[folders](ISearchResults.md#folders)
 
 ___
 
 ### orders
 
-• **orders**: [*IOrder*](iorder.md)[]
+• **orders**: [`IOrder`](IOrder.md)[]
 
 ___
 
 ### pagination
 
-• **pagination**: [*IPagination*](ipagination.md)
+• **pagination**: [`IPagination`](IPagination.md)
 
-Inherited from: [ISearchResults](isearchresults.md).[pagination](isearchresults.md#pagination)
+#### Inherited from
+
+[ISearchResults](ISearchResults.md).[pagination](ISearchResults.md#pagination)
 
 ___
 
 ### preferences
 
-• **preferences**: [*IPreferences*](ipreferences.md)
+• **preferences**: [`IPreferences`](IPreferences.md)
 
 ___
 
 ### resources
 
-• **resources**: [*IResource*](iresource.md)[]
+• **resources**: [`IResource`](IResource.md)[]
 
-Inherited from: [ISearchResults](isearchresults.md).[resources](isearchresults.md#resources)
+#### Inherited from
+
+[ISearchResults](ISearchResults.md).[resources](ISearchResults.md#resources)

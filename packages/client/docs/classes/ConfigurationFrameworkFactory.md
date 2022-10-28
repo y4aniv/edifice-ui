@@ -6,24 +6,24 @@
 
 ### Constructors
 
-- [constructor](configurationframeworkfactory.md#constructor)
+- [constructor](ConfigurationFrameworkFactory.md#constructor)
 
 ### Methods
 
-- [instance](configurationframeworkfactory.md#instance)
+- [instance](ConfigurationFrameworkFactory.md#instance)
 
 ## Constructors
 
 ### constructor
 
-\+ **new ConfigurationFrameworkFactory**(): [*ConfigurationFrameworkFactory*](configurationframeworkfactory.md)
-
-**Returns:** [*ConfigurationFrameworkFactory*](configurationframeworkfactory.md)
+• **new ConfigurationFrameworkFactory**()
 
 ## Methods
 
 ### instance
 
-▸ `Static`**instance**(): [*IConfigurationFramework*](../interfaces/iconfigurationframework.md)
+▸ `Static` **instance**(): [`IConfigurationFramework`](../interfaces/IConfigurationFramework.md)
 
-**Returns:** [*IConfigurationFramework*](../interfaces/iconfigurationframework.md)
+#### Returns
+
+[`IConfigurationFramework`](../interfaces/IConfigurationFramework.md)

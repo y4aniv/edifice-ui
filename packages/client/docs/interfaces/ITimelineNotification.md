@@ -6,56 +6,64 @@
 
 ### Properties
 
-- [\_id](itimelinenotification.md#_id)
-- [model](itimelinenotification.md#model)
+- [\_id](ITimelineNotification.md#_id)
+- [model](ITimelineNotification.md#model)
 
 ### Methods
 
-- [delete](itimelinenotification.md#delete)
-- [discard](itimelinenotification.md#discard)
-- [isUnread](itimelinenotification.md#isunread)
-- [report](itimelinenotification.md#report)
+- [delete](ITimelineNotification.md#delete)
+- [discard](ITimelineNotification.md#discard)
+- [isUnread](ITimelineNotification.md#isunread)
+- [report](ITimelineNotification.md#report)
 
 ## Properties
 
 ### \_id
 
-• `Readonly` **\_id**: *string*
+• `Readonly` **\_id**: `string`
 
 ___
 
 ### model
 
-• `Readonly` **model**: [*NotificationModel*](../modules.md#notificationmodel)
+• `Readonly` **model**: [`NotificationModel`](../modules.md#notificationmodel)
 
 ## Methods
 
 ### delete
 
-▸ **delete**(): *Promise*<void\>
+▸ **delete**(): `Promise`<`void`\>
 
-**Returns:** *Promise*<void\>
+#### Returns
+
+`Promise`<`void`\>
 
 ___
 
 ### discard
 
-▸ **discard**(): *Promise*<void\>
+▸ **discard**(): `Promise`<`void`\>
 
-**Returns:** *Promise*<void\>
+#### Returns
+
+`Promise`<`void`\>
 
 ___
 
 ### isUnread
 
-▸ **isUnread**(): *boolean*
+▸ **isUnread**(): `boolean`
 
-**Returns:** *boolean*
+#### Returns
+
+`boolean`
 
 ___
 
 ### report
 
-▸ **report**(): *Promise*<void\>
+▸ **report**(): `Promise`<`void`\>
 
-**Returns:** *Promise*<void\>
+#### Returns
+
+`Promise`<`void`\>

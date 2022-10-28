@@ -4,28 +4,30 @@
 
 ## Implemented by
 
-* [*AbstractBusAgent*](../classes/abstractbusagent.md)
+- [`AbstractBusAgent`](../classes/AbstractBusAgent.md)
 
 ## Table of contents
 
 ### Methods
 
-- [activate](ibusagent.md#activate)
+- [activate](IBusAgent.md#activate)
 
 ## Methods
 
 ### activate
 
-▸ **activate**(`res`: [*ResourceType*](../modules.md#resourcetype), `action`: [*ActionType*](../modules.md#actiontype), `parameters`: [*IActionParameters*](iactionparameters.md)): *Promise*<[*IActionResult*](iactionresult.md)\>
+▸ **activate**(`res`, `action`, `parameters`): `Promise`<[`IActionResult`](IActionResult.md)\>
 
 Ask this agent to resolve an action.
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`res` | [*ResourceType*](../modules.md#resourcetype) |
-`action` | [*ActionType*](../modules.md#actiontype) |
-`parameters` | [*IActionParameters*](iactionparameters.md) |
+| Name | Type |
+| :------ | :------ |
+| `res` | [`ResourceType`](../modules.md#resourcetype) |
+| `action` | [`ActionType`](../modules.md#actiontype) |
+| `parameters` | [`IActionParameters`](IActionParameters.md) |
 
-**Returns:** *Promise*<[*IActionResult*](iactionresult.md)\>
+#### Returns
+
+`Promise`<[`IActionResult`](IActionResult.md)\>

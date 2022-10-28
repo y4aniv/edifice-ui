@@ -1,42 +1,46 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / SubscriptionLike
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / SubscriptionLike
 
 # Interface: SubscriptionLike
 
-[RxJS](../modules/rxjs.md).SubscriptionLike
+[RxJS](../modules/RxJS.md).SubscriptionLike
 
 ## Hierarchy
 
-* [*Unsubscribable*](rxjs.unsubscribable.md)
+- [`Unsubscribable`](RxJS.Unsubscribable.md)
 
-  ↳ **SubscriptionLike**
+  ↳ **`SubscriptionLike`**
 
 ## Implemented by
 
-* [*Subject*](../classes/rxjs.subject.md)
-* [*Subscription*](../classes/rxjs.subscription.md)
+- [`Subject`](../classes/RxJS.Subject.md)
+- [`Subscription`](../classes/RxJS.Subscription.md)
 
 ## Table of contents
 
 ### Properties
 
-- [closed](rxjs.subscriptionlike.md#closed)
+- [closed](RxJS.SubscriptionLike.md#closed)
 
 ### Methods
 
-- [unsubscribe](rxjs.subscriptionlike.md#unsubscribe)
+- [unsubscribe](RxJS.SubscriptionLike.md#unsubscribe)
 
 ## Properties
 
 ### closed
 
-• `Readonly` **closed**: *boolean*
+• `Readonly` **closed**: `boolean`
 
 ## Methods
 
 ### unsubscribe
 
-▸ **unsubscribe**(): *void*
+▸ **unsubscribe**(): `void`
 
-**Returns:** *void*
+#### Returns
 
-Overrides: [Unsubscribable](rxjs.unsubscribable.md)
+`void`
+
+#### Overrides
+
+[Unsubscribable](RxJS.Unsubscribable.md).[unsubscribe](RxJS.Unsubscribable.md#unsubscribe)

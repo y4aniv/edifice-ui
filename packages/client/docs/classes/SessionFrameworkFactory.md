@@ -6,24 +6,24 @@
 
 ### Constructors
 
-- [constructor](sessionframeworkfactory.md#constructor)
+- [constructor](SessionFrameworkFactory.md#constructor)
 
 ### Methods
 
-- [instance](sessionframeworkfactory.md#instance)
+- [instance](SessionFrameworkFactory.md#instance)
 
 ## Constructors
 
 ### constructor
 
-\+ **new SessionFrameworkFactory**(): [*SessionFrameworkFactory*](sessionframeworkfactory.md)
-
-**Returns:** [*SessionFrameworkFactory*](sessionframeworkfactory.md)
+• **new SessionFrameworkFactory**()
 
 ## Methods
 
 ### instance
 
-▸ `Static`**instance**(): [*ISessionFramework*](../interfaces/isessionframework.md)
+▸ `Static` **instance**(): [`ISessionFramework`](../interfaces/ISessionFramework.md)
 
-**Returns:** [*ISessionFramework*](../interfaces/isessionframework.md)
+#### Returns
+
+[`ISessionFramework`](../interfaces/ISessionFramework.md)

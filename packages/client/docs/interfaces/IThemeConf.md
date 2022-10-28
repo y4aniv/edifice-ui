@@ -6,31 +6,31 @@
 
 ### Properties
 
-- [dependencies](ithemeconf.md#dependencies)
-- [emitWrapper](ithemeconf.md#emitwrapper)
-- [overriding](ithemeconf.md#overriding)
+- [dependencies](IThemeConf.md#dependencies)
+- [emitWrapper](IThemeConf.md#emitwrapper)
+- [overriding](IThemeConf.md#overriding)
 
 ## Properties
 
 ### dependencies
 
-• **dependencies**: *object*
+• **dependencies**: `Object`
 
-#### Type declaration:
+#### Type declaration
 
-Name | Type |
-:------ | :------ |
-`themes` | *object* |
-`widgets` | *object* |
+| Name | Type |
+| :------ | :------ |
+| `themes` | { `[name: string]`: `string`;  } |
+| `widgets` | { `[name: string]`: `string`;  } |
 
 ___
 
 ### emitWrapper
 
-• **emitWrapper**: *boolean*
+• **emitWrapper**: `boolean`
 
 ___
 
 ### overriding
 
-• **overriding**: [*IThemeConfOverriding*](ithemeconfoverriding.md)[]
+• **overriding**: [`IThemeConfOverriding`](IThemeConfOverriding.md)[]

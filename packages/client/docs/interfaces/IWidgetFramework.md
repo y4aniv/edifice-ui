@@ -6,19 +6,19 @@
 
 ### Properties
 
-- [list](iwidgetframework.md#list)
+- [list](IWidgetFramework.md#list)
 
 ### Methods
 
-- [initialize](iwidgetframework.md#initialize)
-- [lookup](iwidgetframework.md#lookup)
-- [saveUserPrefs](iwidgetframework.md#saveuserprefs)
+- [initialize](IWidgetFramework.md#initialize)
+- [lookup](IWidgetFramework.md#lookup)
+- [saveUserPrefs](IWidgetFramework.md#saveuserprefs)
 
 ## Properties
 
 ### list
 
-• `Readonly` **list**: [*IWidget*](iwidget.md)[]
+• `Readonly` **list**: [`IWidget`](IWidget.md)[]
 
 List widgets that are visible to the connected user.
 
@@ -26,41 +26,47 @@ List widgets that are visible to the connected user.
 
 ### initialize
 
-▸ **initialize**(`version`: *null* \| *string*, `cdnDomain`: *null* \| *string*): *Promise*<void\>
+▸ **initialize**(`version`, `cdnDomain`): `Promise`<`void`\>
 
 Loads the widget configuration.
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`version` | *null* \| *string* |
-`cdnDomain` | *null* \| *string* |
+| Name | Type |
+| :------ | :------ |
+| `version` | ``null`` \| `string` |
+| `cdnDomain` | ``null`` \| `string` |
 
-**Returns:** *Promise*<void\>
+#### Returns
+
+`Promise`<`void`\>
 
 ___
 
 ### lookup
 
-▸ **lookup**(`widgetName`: *string*): *undefined* \| [*IWidget*](iwidget.md)
+▸ **lookup**(`widgetName`): `undefined` \| [`IWidget`](IWidget.md)
 
 Retrieve a widget by name.
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`widgetName` | *string* |
+| Name | Type |
+| :------ | :------ |
+| `widgetName` | `string` |
 
-**Returns:** *undefined* \| [*IWidget*](iwidget.md)
+#### Returns
+
+`undefined` \| [`IWidget`](IWidget.md)
 
 ___
 
 ### saveUserPrefs
 
-▸ **saveUserPrefs**(): *Promise*<any\>
+▸ **saveUserPrefs**(): `Promise`<`any`\>
 
 Save user preferences
 
-**Returns:** *Promise*<any\>
+#### Returns
+
+`Promise`<`any`\>

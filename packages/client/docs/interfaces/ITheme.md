@@ -6,33 +6,33 @@
 
 ### Properties
 
-- [basePath](itheme.md#basepath)
-- [is1D](itheme.md#is1d)
-- [is2D](itheme.md#is2d)
-- [logoutCallback](itheme.md#logoutcallback)
-- [portalTemplate](itheme.md#portaltemplate)
-- [skin](itheme.md#skin)
-- [skinName](itheme.md#skinname)
-- [skins](itheme.md#skins)
-- [themeName](itheme.md#themename)
-- [themeUrl](itheme.md#themeurl)
+- [basePath](ITheme.md#basepath)
+- [is1D](ITheme.md#is1d)
+- [is2D](ITheme.md#is2d)
+- [logoutCallback](ITheme.md#logoutcallback)
+- [portalTemplate](ITheme.md#portaltemplate)
+- [skin](ITheme.md#skin)
+- [skinName](ITheme.md#skinname)
+- [skins](ITheme.md#skins)
+- [themeName](ITheme.md#themename)
+- [themeUrl](ITheme.md#themeurl)
 
 ### Methods
 
-- [getConf](itheme.md#getconf)
-- [getHelpPath](itheme.md#gethelppath)
-- [listSkins](itheme.md#listskins)
-- [listThemes](itheme.md#listthemes)
-- [onFullyReady](itheme.md#onfullyready)
-- [onOverrideReady](itheme.md#onoverrideready)
-- [onSkinReady](itheme.md#onskinready)
-- [setDefaultTheme](itheme.md#setdefaulttheme)
+- [getConf](ITheme.md#getconf)
+- [getHelpPath](ITheme.md#gethelppath)
+- [listSkins](ITheme.md#listskins)
+- [listThemes](ITheme.md#listthemes)
+- [onFullyReady](ITheme.md#onfullyready)
+- [onOverrideReady](ITheme.md#onoverrideready)
+- [onSkinReady](ITheme.md#onskinready)
+- [setDefaultTheme](ITheme.md#setdefaulttheme)
 
 ## Properties
 
 ### basePath
 
-• `Readonly` **basePath**: *string*
+• `Readonly` **basePath**: `string`
 
 (legacy) URL to the folder containing assets.
 
@@ -40,7 +40,7 @@ ___
 
 ### is1D
 
-• `Readonly` **is1D**: *boolean*
+• `Readonly` **is1D**: `boolean`
 
 Check if the "school degree" of the current theme is 1D ("panda", or an override of it).
 
@@ -48,7 +48,7 @@ ___
 
 ### is2D
 
-• `Readonly` **is2D**: *boolean*
+• `Readonly` **is2D**: `boolean`
 
 Check if the "school degree" of the current theme is 2D ("theme-open-ent" or an override of it).
 
@@ -56,7 +56,7 @@ ___
 
 ### logoutCallback
 
-• `Readonly` **logoutCallback**: *string*
+• `Readonly` **logoutCallback**: `string`
 
 (legacy) URL where the user is redirected after logout.
 
@@ -64,7 +64,7 @@ ___
 
 ### portalTemplate
 
-• `Readonly` **portalTemplate**: *string*
+• `Readonly` **portalTemplate**: `string`
 
 (legacy) URL to the currently active portal.html template. Used in infra-front.
 
@@ -72,7 +72,7 @@ ___
 
 ### skin
 
-• `Readonly` **skin**: *string*
+• `Readonly` **skin**: `string`
 
 (legacy) FIXME Seems to be equal to themeName.
 
@@ -80,7 +80,7 @@ ___
 
 ### skinName
 
-• `Readonly` **skinName**: *string*
+• `Readonly` **skinName**: `string`
 
 (legacy) Name of the currently active skin (user's choice in /timeline) : "default" by default, or another available name.
 
@@ -88,7 +88,7 @@ ___
 
 ### skins
 
-• `Readonly` **skins**: [*IThemeConfOverriding*](ithemeconfoverriding.md)[]
+• `Readonly` **skins**: [`IThemeConfOverriding`](IThemeConfOverriding.md)[]
 
 Available skins configuration (also called "overrides").
 
@@ -96,7 +96,7 @@ ___
 
 ### themeName
 
-• `Readonly` **themeName**: *string*
+• `Readonly` **themeName**: `string`
 
 (legacy) Name of the currently active theme, derived from a parent which is classified as 1D (panda) or 2D(theme-open-ent). This is a domain-level configurated value.
 
@@ -104,7 +104,7 @@ ___
 
 ### themeUrl
 
-• `Readonly` **themeUrl**: *string*
+• `Readonly` **themeUrl**: `string`
 
 (legacy) URL to the currently active theme/skin folder.
 
@@ -112,90 +112,106 @@ ___
 
 ### getConf
 
-▸ **getConf**(`version?`: *string*): *Promise*<[*IThemeConf*](ithemeconf.md)\>
+▸ **getConf**(`version?`): `Promise`<[`IThemeConf`](IThemeConf.md)\>
 
 Get the theme/skin configuration.
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`version?` | *string* |
+| Name | Type |
+| :------ | :------ |
+| `version?` | `string` |
 
-**Returns:** *Promise*<[*IThemeConf*](ithemeconf.md)\>
+#### Returns
+
+`Promise`<[`IThemeConf`](IThemeConf.md)\>
 
 ___
 
 ### getHelpPath
 
-▸ **getHelpPath**(): *Promise*<String\>
+▸ **getHelpPath**(): `Promise`<`String`\>
 
 Get the help path, which can be dedicated to 1D or 2D.
 
-**Returns:** *Promise*<String\>
+#### Returns
+
+`Promise`<`String`\>
 
 ___
 
 ### listSkins
 
-▸ **listSkins**(): *Promise*<[*IThemeConfOverriding*](ithemeconfoverriding.md)[]\>
+▸ **listSkins**(): `Promise`<[`IThemeConfOverriding`](IThemeConfOverriding.md)[]\>
 
 List available skins.
 
-**Returns:** *Promise*<[*IThemeConfOverriding*](ithemeconfoverriding.md)[]\>
+#### Returns
+
+`Promise`<[`IThemeConfOverriding`](IThemeConfOverriding.md)[]\>
 
 ___
 
 ### listThemes
 
-▸ **listThemes**(): *Promise*<[*IThemeDesc*](ithemedesc.md)[]\>
+▸ **listThemes**(): `Promise`<[`IThemeDesc`](IThemeDesc.md)[]\>
 
 List available themes.
 
-**Returns:** *Promise*<[*IThemeDesc*](ithemedesc.md)[]\>
+#### Returns
+
+`Promise`<[`IThemeDesc`](IThemeDesc.md)[]\>
 
 ___
 
 ### onFullyReady
 
-▸ **onFullyReady**(): *Promise*<[*ITheme*](itheme.md)\>
+▸ **onFullyReady**(): `Promise`<[`ITheme`](ITheme.md)\>
 
 Await for theme to be fully loaded (skin, overrides, degrees...).
 
-**Returns:** *Promise*<[*ITheme*](itheme.md)\>
+#### Returns
+
+`Promise`<[`ITheme`](ITheme.md)\>
 
 ___
 
 ### onOverrideReady
 
-▸ **onOverrideReady**(): *Promise*<[*IThemeOverrides*](../modules.md#ithemeoverrides)\>
+▸ **onOverrideReady**(): `Promise`<[`IThemeOverrides`](../modules.md#ithemeoverrides)\>
 
 Await for overrides conf to be loaded.
 
-**Returns:** *Promise*<[*IThemeOverrides*](../modules.md#ithemeoverrides)\>
+#### Returns
+
+`Promise`<[`IThemeOverrides`](../modules.md#ithemeoverrides)\>
 
 ___
 
 ### onSkinReady
 
-▸ **onSkinReady**(): *Promise*<[*ITheme*](itheme.md)\>
+▸ **onSkinReady**(): `Promise`<[`ITheme`](ITheme.md)\>
 
 Await for skin conf to be loaded.
 
-**Returns:** *Promise*<[*ITheme*](itheme.md)\>
+#### Returns
+
+`Promise`<[`ITheme`](ITheme.md)\>
 
 ___
 
 ### setDefaultTheme
 
-▸ **setDefaultTheme**(`theme`: [*IThemeDesc*](ithemedesc.md)): *void*
+▸ **setDefaultTheme**(`theme`): `void`
 
 Configure UI with this theme by default.
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`theme` | [*IThemeDesc*](ithemedesc.md) |
+| Name | Type |
+| :------ | :------ |
+| `theme` | [`IThemeDesc`](IThemeDesc.md) |
 
-**Returns:** *void*
+#### Returns
+
+`void`

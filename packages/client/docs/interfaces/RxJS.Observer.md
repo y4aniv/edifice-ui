@@ -1,77 +1,71 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / Observer
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / Observer
 
 # Interface: Observer<T\>
 
-[RxJS](../modules/rxjs.md).Observer
+[RxJS](../modules/RxJS.md).Observer
 
 ## Type parameters
 
-Name |
-:------ |
-`T` |
+| Name |
+| :------ |
+| `T` |
 
 ## Hierarchy
 
-* **Observer**
+- **`Observer`**
 
-  ↳ [*SubjectLike*](rxjs.subjectlike.md)
+  ↳ [`SubjectLike`](RxJS.SubjectLike.md)
 
 ## Implemented by
 
-* [*Subscriber*](../classes/rxjs.subscriber.md)
+- [`Subscriber`](../classes/RxJS.Subscriber.md)
 
 ## Table of contents
 
-### Properties
+### Methods
 
-- [complete](rxjs.observer.md#complete)
-- [error](rxjs.observer.md#error)
-- [next](rxjs.observer.md#next)
+- [complete](RxJS.Observer.md#complete)
+- [error](RxJS.Observer.md#error)
+- [next](RxJS.Observer.md#next)
 
-## Properties
+## Methods
 
 ### complete
 
-• **complete**: () => *void*
+▸ **complete**(): `void`
 
-#### Type declaration:
+#### Returns
 
-▸ (): *void*
-
-**Returns:** *void*
+`void`
 
 ___
 
 ### error
 
-• **error**: (`err`: *any*) => *void*
+▸ **error**(`err`): `void`
 
-#### Type declaration:
+#### Parameters
 
-▸ (`err`: *any*): *void*
+| Name | Type |
+| :------ | :------ |
+| `err` | `any` |
 
-#### Parameters:
+#### Returns
 
-Name | Type |
-:------ | :------ |
-`err` | *any* |
-
-**Returns:** *void*
+`void`
 
 ___
 
 ### next
 
-• **next**: (`value`: T) => *void*
+▸ **next**(`value`): `void`
 
-#### Type declaration:
+#### Parameters
 
-▸ (`value`: T): *void*
+| Name | Type |
+| :------ | :------ |
+| `value` | `T` |
 
-#### Parameters:
+#### Returns
 
-Name | Type |
-:------ | :------ |
-`value` | T |
-
-**Returns:** *void*
+`void`

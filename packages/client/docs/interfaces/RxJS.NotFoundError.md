@@ -1,43 +1,49 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / NotFoundError
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / NotFoundError
 
 # Interface: NotFoundError
 
-[RxJS](../modules/rxjs.md).NotFoundError
+[RxJS](../modules/RxJS.md).NotFoundError
 
 ## Hierarchy
 
-* *Error*
+- `Error`
 
-  ↳ **NotFoundError**
+  ↳ **`NotFoundError`**
 
 ## Table of contents
 
 ### Properties
 
-- [message](rxjs.notfounderror.md#message)
-- [name](rxjs.notfounderror.md#name)
-- [stack](rxjs.notfounderror.md#stack)
+- [message](RxJS.NotFoundError.md#message)
+- [name](RxJS.NotFoundError.md#name)
+- [stack](RxJS.NotFoundError.md#stack)
 
 ## Properties
 
 ### message
 
-• **message**: *string*
+• **message**: `string`
 
-Inherited from: void
+#### Inherited from
+
+Error.message
 
 ___
 
 ### name
 
-• **name**: *string*
+• **name**: `string`
 
-Inherited from: void
+#### Inherited from
+
+Error.name
 
 ___
 
 ### stack
 
-• `Optional` **stack**: *string*
+• `Optional` **stack**: `string`
 
-Inherited from: void
+#### Inherited from
+
+Error.stack

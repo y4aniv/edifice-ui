@@ -6,17 +6,17 @@
 
 ### Properties
 
-- [http](itransportframework.md#http)
+- [http](ITransportFramework.md#http)
 
 ### Methods
 
-- [newHttpInstance](itransportframework.md#newhttpinstance)
+- [newHttpInstance](ITransportFramework.md#newhttpinstance)
 
 ## Properties
 
 ### http
 
-• `Readonly` **http**: [*IHttp*](ihttp.md)
+• `Readonly` **http**: [`IHttp`](IHttp.md)
 
 Default instance.
 
@@ -24,14 +24,16 @@ Default instance.
 
 ### newHttpInstance
 
-▸ **newHttpInstance**(`params?`: *any*): [*IHttp*](ihttp.md)
+▸ **newHttpInstance**(`params?`): [`IHttp`](IHttp.md)
 
 Creates a new IHttp object with a custom configuration;
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`params?` | *any* | see available options at https://axios-http.com/docs/req_config    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `params?` | `any` | see available options at https://axios-http.com/docs/req_config |
 
-**Returns:** [*IHttp*](ihttp.md)
+#### Returns
+
+[`IHttp`](IHttp.md)

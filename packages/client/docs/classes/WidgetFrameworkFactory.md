@@ -6,24 +6,24 @@
 
 ### Constructors
 
-- [constructor](widgetframeworkfactory.md#constructor)
+- [constructor](WidgetFrameworkFactory.md#constructor)
 
 ### Methods
 
-- [instance](widgetframeworkfactory.md#instance)
+- [instance](WidgetFrameworkFactory.md#instance)
 
 ## Constructors
 
 ### constructor
 
-\+ **new WidgetFrameworkFactory**(): [*WidgetFrameworkFactory*](widgetframeworkfactory.md)
-
-**Returns:** [*WidgetFrameworkFactory*](widgetframeworkfactory.md)
+• **new WidgetFrameworkFactory**()
 
 ## Methods
 
 ### instance
 
-▸ `Static`**instance**(): [*IWidgetFramework*](../interfaces/iwidgetframework.md)
+▸ `Static` **instance**(): [`IWidgetFramework`](../interfaces/IWidgetFramework.md)
 
-**Returns:** [*IWidgetFramework*](../interfaces/iwidgetframework.md)
+#### Returns
+
+[`IWidgetFramework`](../interfaces/IWidgetFramework.md)

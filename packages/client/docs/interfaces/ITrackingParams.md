@@ -4,23 +4,23 @@
 
 ## Hierarchy
 
-* **ITrackingParams**
+- **`ITrackingParams`**
 
-  ↳ [*IMatomoTrackingParams*](imatomotrackingparams.md)
+  ↳ [`IMatomoTrackingParams`](IMatomoTrackingParams.md)
 
 ## Table of contents
 
 ### Properties
 
-- [detailApps](itrackingparams.md#detailapps)
-- [doNotTrack](itrackingparams.md#donottrack)
-- [trackOnly](itrackingparams.md#trackonly)
+- [detailApps](ITrackingParams.md#detailapps)
+- [doNotTrack](ITrackingParams.md#donottrack)
+- [trackOnly](ITrackingParams.md#trackonly)
 
 ## Properties
 
 ### detailApps
 
-• **detailApps**: *boolean*
+• **detailApps**: `boolean`
 
 Set to true if state changes of the Single Page App need to be tracked.
 
@@ -28,7 +28,7 @@ ___
 
 ### doNotTrack
 
-• **doNotTrack**: *string*[]
+• **doNotTrack**: `string`[]
 
 Blacklist of events not to track, in the form "app" or "app.eventName" or "*.eventName".
 
@@ -36,6 +36,6 @@ ___
 
 ### trackOnly
 
-• **trackOnly**: *string*[]
+• **trackOnly**: `string`[]
 
 Whitelist of events to track, in the form "app" or "app.eventName" or "*.eventName".

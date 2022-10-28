@@ -1,43 +1,49 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / EmptyError
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / EmptyError
 
 # Interface: EmptyError
 
-[RxJS](../modules/rxjs.md).EmptyError
+[RxJS](../modules/RxJS.md).EmptyError
 
 ## Hierarchy
 
-* *Error*
+- `Error`
 
-  ↳ **EmptyError**
+  ↳ **`EmptyError`**
 
 ## Table of contents
 
 ### Properties
 
-- [message](rxjs.emptyerror.md#message)
-- [name](rxjs.emptyerror.md#name)
-- [stack](rxjs.emptyerror.md#stack)
+- [message](RxJS.EmptyError.md#message)
+- [name](RxJS.EmptyError.md#name)
+- [stack](RxJS.EmptyError.md#stack)
 
 ## Properties
 
 ### message
 
-• **message**: *string*
+• **message**: `string`
 
-Inherited from: void
+#### Inherited from
+
+Error.message
 
 ___
 
 ### name
 
-• **name**: *string*
+• **name**: `string`
 
-Inherited from: void
+#### Inherited from
+
+Error.name
 
 ___
 
 ### stack
 
-• `Optional` **stack**: *string*
+• `Optional` **stack**: `string`
 
-Inherited from: void
+#### Inherited from
+
+Error.stack

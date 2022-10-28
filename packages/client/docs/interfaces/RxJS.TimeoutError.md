@@ -1,38 +1,38 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / TimeoutError
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / TimeoutError
 
 # Interface: TimeoutError<T, M\>
 
-[RxJS](../modules/rxjs.md).TimeoutError
+[RxJS](../modules/RxJS.md).TimeoutError
 
 An error emitted when a timeout occurs.
 
 ## Type parameters
 
-Name | Default |
-:------ | :------ |
-`T` | *unknown* |
-`M` | *unknown* |
+| Name | Type |
+| :------ | :------ |
+| `T` | `unknown` |
+| `M` | `unknown` |
 
 ## Hierarchy
 
-* *Error*
+- `Error`
 
-  ↳ **TimeoutError**
+  ↳ **`TimeoutError`**
 
 ## Table of contents
 
 ### Properties
 
-- [info](rxjs.timeouterror.md#info)
-- [message](rxjs.timeouterror.md#message)
-- [name](rxjs.timeouterror.md#name)
-- [stack](rxjs.timeouterror.md#stack)
+- [info](RxJS.TimeoutError.md#info)
+- [message](RxJS.TimeoutError.md#message)
+- [name](RxJS.TimeoutError.md#name)
+- [stack](RxJS.TimeoutError.md#stack)
 
 ## Properties
 
 ### info
 
-• **info**: *null* \| *TimeoutInfo*<T, M\>
+• **info**: ``null`` \| `TimeoutInfo`<`T`, `M`\>
 
 The information provided to the error by the timeout
 operation that created the error. Will be `null` if
@@ -44,22 +44,28 @@ ___
 
 ### message
 
-• **message**: *string*
+• **message**: `string`
 
-Inherited from: void
+#### Inherited from
+
+Error.message
 
 ___
 
 ### name
 
-• **name**: *string*
+• **name**: `string`
 
-Inherited from: void
+#### Inherited from
+
+Error.name
 
 ___
 
 ### stack
 
-• `Optional` **stack**: *string*
+• `Optional` **stack**: `string`
 
-Inherited from: void
+#### Inherited from
+
+Error.stack

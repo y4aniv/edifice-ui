@@ -1,69 +1,71 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / VirtualTimeScheduler
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / VirtualTimeScheduler
 
 # Class: VirtualTimeScheduler
 
-[RxJS](../modules/rxjs.md).VirtualTimeScheduler
+[RxJS](../modules/RxJS.md).VirtualTimeScheduler
 
 ## Hierarchy
 
-* *AsyncScheduler*
+- `AsyncScheduler`
 
-  ↳ **VirtualTimeScheduler**
+  ↳ **`VirtualTimeScheduler`**
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](rxjs.virtualtimescheduler.md#constructor)
+- [constructor](RxJS.VirtualTimeScheduler.md#constructor)
 
 ### Properties
 
-- [actions](rxjs.virtualtimescheduler.md#actions)
-- [frame](rxjs.virtualtimescheduler.md#frame)
-- [index](rxjs.virtualtimescheduler.md#index)
-- [maxFrames](rxjs.virtualtimescheduler.md#maxframes)
-- [now](rxjs.virtualtimescheduler.md#now)
-- [frameTimeFactor](rxjs.virtualtimescheduler.md#frametimefactor)
-- [now](rxjs.virtualtimescheduler.md#now)
+- [actions](RxJS.VirtualTimeScheduler.md#actions)
+- [frame](RxJS.VirtualTimeScheduler.md#frame)
+- [index](RxJS.VirtualTimeScheduler.md#index)
+- [maxFrames](RxJS.VirtualTimeScheduler.md#maxframes)
+- [now](RxJS.VirtualTimeScheduler.md#now)
+- [frameTimeFactor](RxJS.VirtualTimeScheduler.md#frametimefactor)
+- [now](RxJS.VirtualTimeScheduler.md#now)
 
 ### Methods
 
-- [flush](rxjs.virtualtimescheduler.md#flush)
-- [schedule](rxjs.virtualtimescheduler.md#schedule)
+- [flush](RxJS.VirtualTimeScheduler.md#flush)
+- [schedule](RxJS.VirtualTimeScheduler.md#schedule)
 
 ## Constructors
 
 ### constructor
 
-\+ **new VirtualTimeScheduler**(`schedulerActionCtor?`: *typeof* AsyncAction, `maxFrames?`: *number*): [*VirtualTimeScheduler*](rxjs.virtualtimescheduler.md)
+• **new VirtualTimeScheduler**(`schedulerActionCtor?`, `maxFrames?`)
 
 This creates an instance of a `VirtualTimeScheduler`. Experts only. The signature of
 this constructor is likely to change in the long run.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`schedulerActionCtor?` | *typeof* AsyncAction | The type of Action to initialize when initializing actions during scheduling.   |
-`maxFrames?` | *number* | The maximum number of frames to process before stopping. Used to prevent endless flush cycles.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `schedulerActionCtor?` | typeof `AsyncAction` | The type of Action to initialize when initializing actions during scheduling. |
+| `maxFrames?` | `number` | The maximum number of frames to process before stopping. Used to prevent endless flush cycles. |
 
-**Returns:** [*VirtualTimeScheduler*](rxjs.virtualtimescheduler.md)
+#### Overrides
 
-Overrides: void
+AsyncScheduler.constructor
 
 ## Properties
 
 ### actions
 
-• **actions**: *AsyncAction*<any\>[]
+• **actions**: `AsyncAction`<`any`\>[]
 
-Inherited from: void
+#### Inherited from
+
+AsyncScheduler.actions
 
 ___
 
 ### frame
 
-• **frame**: *number*
+• **frame**: `number`
 
 The current frame for the state of the virtual scheduler instance. The the difference
 between two "frames" is synonymous with the passage of "virtual time units". So if
@@ -74,7 +76,7 @@ ___
 
 ### index
 
-• **index**: *number*
+• **index**: `number`
 
 Used internally to examine the current virtual action index being processed.
 
@@ -84,35 +86,39 @@ ___
 
 ### maxFrames
 
-• **maxFrames**: *number*
+• **maxFrames**: `number`
 
 ___
 
 ### now
 
-• **now**: () => *number*
+• **now**: () => `number`
+
+#### Type declaration
+
+▸ (): `number`
 
 A getter method that returns a number representing the current time
 (at the time this function was called) according to the scheduler's own
 internal clock.
 
-**`returns`** A number that represents the current time. May or may not
+##### Returns
+
+`number`
+
+A number that represents the current time. May or may not
 have a relation to wall-clock time. May or may not refer to a time unit
 (e.g. milliseconds).
 
-#### Type declaration:
+#### Inherited from
 
-▸ (): *number*
-
-**Returns:** *number*
-
-Inherited from: void
+AsyncScheduler.now
 
 ___
 
 ### frameTimeFactor
 
-▪ `Static` **frameTimeFactor**: *number*
+▪ `Static` **frameTimeFactor**: `number`
 
 **`deprecated`** Not used in VirtualTimeScheduler directly. Will be removed in v8.
 
@@ -120,34 +126,42 @@ ___
 
 ### now
 
-▪ `Static` **now**: () => *number*
+▪ `Static` **now**: () => `number`
 
-#### Type declaration:
+#### Type declaration
 
-▸ (): *number*
+▸ (): `number`
 
-**Returns:** *number*
+##### Returns
 
-Inherited from: void
+`number`
+
+#### Inherited from
+
+AsyncScheduler.now
 
 ## Methods
 
 ### flush
 
-▸ **flush**(): *void*
+▸ **flush**(): `void`
 
 Prompt the Scheduler to execute all of its queued actions, therefore
 clearing its queue.
 
-**Returns:** *void*
+#### Returns
 
-Overrides: void
+`void`
+
+#### Overrides
+
+AsyncScheduler.flush
 
 ___
 
 ### schedule
 
-▸ **schedule**<T\>(`work`: (`state?`: T) => *void*, `delay?`: *number*, `state?`: T): [*Subscription*](rxjs.subscription.md)
+▸ **schedule**<`T`\>(`work`, `delay?`, `state?`): [`Subscription`](RxJS.Subscription.md)
 
 Schedules a function, `work`, for execution. May happen at some point in
 the future, according to the `delay` parameter, if specified. May be passed
@@ -156,23 +170,27 @@ some context object, `state`, which will be passed to the `work` function.
 The given arguments will be processed an stored as an Action object in a
 queue of actions.
 
-#### Type parameters:
+#### Type parameters
 
-Name |
-:------ |
-`T` |
+| Name |
+| :------ |
+| `T` |
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`work` | (`state?`: T) => *void* | A function representing a task, or some unit of work to be executed by the Scheduler.   |
-`delay?` | *number* | - |
-`state?` | T | - |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `work` | (`this`: [`SchedulerAction`](../interfaces/RxJS.SchedulerAction.md)<`T`\>, `state?`: `T`) => `void` | A function representing a task, or some unit of work to be executed by the Scheduler. |
+| `delay?` | `number` | - |
+| `state?` | `T` | - |
 
-**Returns:** [*Subscription*](rxjs.subscription.md)
+#### Returns
+
+[`Subscription`](RxJS.Subscription.md)
 
 A subscription in order to be able to unsubscribe
 the scheduled work.
 
-Inherited from: void
+#### Inherited from
+
+AsyncScheduler.schedule

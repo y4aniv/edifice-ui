@@ -1,31 +1,29 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / InteropObservable
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / InteropObservable
 
 # Interface: InteropObservable<T\>
 
-[RxJS](../modules/rxjs.md).InteropObservable
+[RxJS](../modules/RxJS.md).InteropObservable
 
 An object that implements the `Symbol.observable` interface.
 
 ## Type parameters
 
-Name |
-:------ |
-`T` |
+| Name |
+| :------ |
+| `T` |
 
 ## Table of contents
 
-### Properties
+### Methods
 
-- [[Symbol.observable]](rxjs.interopobservable.md#[symbol.observable])
+- [[Symbol.observable]](RxJS.InteropObservable.md#[symbol.observable])
 
-## Properties
+## Methods
 
 ### [Symbol.observable]
 
-• **[Symbol.observable]**: () => [*Subscribable*](rxjs.subscribable.md)<T\>
+▸ **[Symbol.observable]**(): [`Subscribable`](RxJS.Subscribable.md)<`T`\>
 
-#### Type declaration:
+#### Returns
 
-▸ (): [*Subscribable*](rxjs.subscribable.md)<T\>
-
-**Returns:** [*Subscribable*](rxjs.subscribable.md)<T\>
+[`Subscribable`](RxJS.Subscribable.md)<`T`\>

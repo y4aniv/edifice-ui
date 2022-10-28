@@ -6,10 +6,10 @@
 
 ### Properties
 
-- [view](ipreferences.md#view)
+- [view](IPreferences.md#view)
 
 ## Properties
 
 ### view
 
-• **view**: *card* \| *list*
+• **view**: ``"card"`` \| ``"list"``

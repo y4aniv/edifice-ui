@@ -6,72 +6,70 @@ Manage a generic RESOURCE
 
 ## Implements
 
-* [*IBusAgent*](../interfaces/ibusagent.md)
+- [`IBusAgent`](../interfaces/IBusAgent.md)
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](abstractbusagent.md#constructor)
+- [constructor](AbstractBusAgent.md#constructor)
 
 ### Properties
 
-- [handlerFor](abstractbusagent.md#handlerfor)
-- [managedResource](abstractbusagent.md#managedresource)
-- [defaultHandler](abstractbusagent.md#defaulthandler)
+- [handlerFor](AbstractBusAgent.md#handlerfor)
+- [managedResource](AbstractBusAgent.md#managedresource)
+- [defaultHandler](AbstractBusAgent.md#defaulthandler)
 
 ### Methods
 
-- [activate](abstractbusagent.md#activate)
-- [getHandler](abstractbusagent.md#gethandler)
-- [initialize](abstractbusagent.md#initialize)
-- [registerHandlers](abstractbusagent.md#registerhandlers)
-- [setHandler](abstractbusagent.md#sethandler)
+- [activate](AbstractBusAgent.md#activate)
+- [getHandler](AbstractBusAgent.md#gethandler)
+- [initialize](AbstractBusAgent.md#initialize)
+- [registerHandlers](AbstractBusAgent.md#registerhandlers)
+- [setHandler](AbstractBusAgent.md#sethandler)
 
 ## Constructors
 
 ### constructor
 
-\+ **new AbstractBusAgent**(`managedResource`: [*ResourceType*](../modules.md#resourcetype)): [*AbstractBusAgent*](abstractbusagent.md)
+• **new AbstractBusAgent**(`managedResource`)
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`managedResource` | [*ResourceType*](../modules.md#resourcetype) |
-
-**Returns:** [*AbstractBusAgent*](abstractbusagent.md)
+| Name | Type |
+| :------ | :------ |
+| `managedResource` | [`ResourceType`](../modules.md#resourcetype) |
 
 ## Properties
 
 ### handlerFor
 
-• `Protected` **handlerFor**: *object*
+• `Protected` **handlerFor**: `Object`
 
-#### Type declaration:
+#### Type declaration
 
-Name | Type |
-:------ | :------ |
-`comment` | (`parameters`: [*IActionParameters*](../interfaces/iactionparameters.md)) => *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\> |
-`copy` | (`parameters`: [*IActionParameters*](../interfaces/iactionparameters.md)) => *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\> |
-`create` | (`parameters`: [*IActionParameters*](../interfaces/iactionparameters.md)) => *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\> |
-`delete` | (`parameters`: [*IActionParameters*](../interfaces/iactionparameters.md)) => *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\> |
-`export` | (`parameters`: [*IActionParameters*](../interfaces/iactionparameters.md)) => *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\> |
-`initialize` | (`parameters`: [*IActionParameters*](../interfaces/iactionparameters.md)) => *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\> |
-`manage` | (`parameters`: [*IActionParameters*](../interfaces/iactionparameters.md)) => *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\> |
-`move` | (`parameters`: [*IActionParameters*](../interfaces/iactionparameters.md)) => *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\> |
-`open` | (`parameters`: [*IActionParameters*](../interfaces/iactionparameters.md)) => *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\> |
-`print` | (`parameters`: [*IActionParameters*](../interfaces/iactionparameters.md)) => *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\> |
-`properties` | (`parameters`: [*IActionParameters*](../interfaces/iactionparameters.md)) => *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\> |
-`publish` | (`parameters`: [*IActionParameters*](../interfaces/iactionparameters.md)) => *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\> |
-`search` | (`parameters`: [*IActionParameters*](../interfaces/iactionparameters.md)) => *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\> |
-`share` | (`parameters`: [*IActionParameters*](../interfaces/iactionparameters.md)) => *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\> |
+| Name | Type |
+| :------ | :------ |
+| `comment` | `IHandler` |
+| `copy` | `IHandler` |
+| `create` | `IHandler` |
+| `delete` | `IHandler` |
+| `export` | `IHandler` |
+| `initialize` | `IHandler` |
+| `manage` | `IHandler` |
+| `move` | `IHandler` |
+| `open` | `IHandler` |
+| `print` | `IHandler` |
+| `properties` | `IHandler` |
+| `publish` | `IHandler` |
+| `search` | `IHandler` |
+| `share` | `IHandler` |
 
 ___
 
 ### managedResource
 
-• `Protected` **managedResource**: [*ResourceType*](../modules.md#resourcetype)
+• `Protected` **managedResource**: [`ResourceType`](../modules.md#resourcetype)
 
 Type of resource this agent can manage.
 
@@ -79,71 +77,83 @@ ___
 
 ### defaultHandler
 
-▪ `Static` `Protected` **defaultHandler**: IHandler
+▪ `Static` `Protected` **defaultHandler**: `IHandler`
 
 ## Methods
 
 ### activate
 
-▸ **activate**(`res`: [*ResourceType*](../modules.md#resourcetype), `action`: [*ActionType*](../modules.md#actiontype), `parameters`: [*IActionParameters*](../interfaces/iactionparameters.md)): *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\>
+▸ **activate**(`res`, `action`, `parameters`): `Promise`<[`IActionResult`](../interfaces/IActionResult.md)\>
 
 Ask this agent to resolve an action.
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`res` | [*ResourceType*](../modules.md#resourcetype) |
-`action` | [*ActionType*](../modules.md#actiontype) |
-`parameters` | [*IActionParameters*](../interfaces/iactionparameters.md) |
+| Name | Type |
+| :------ | :------ |
+| `res` | [`ResourceType`](../modules.md#resourcetype) |
+| `action` | [`ActionType`](../modules.md#actiontype) |
+| `parameters` | [`IActionParameters`](../interfaces/IActionParameters.md) |
 
-**Returns:** *Promise*<[*IActionResult*](../interfaces/iactionresult.md)\>
+#### Returns
 
-Implementation of: [IBusAgent](../interfaces/ibusagent.md)
+`Promise`<[`IActionResult`](../interfaces/IActionResult.md)\>
+
+#### Implementation of
+
+[IBusAgent](../interfaces/IBusAgent.md).[activate](../interfaces/IBusAgent.md#activate)
 
 ___
 
 ### getHandler
 
-▸ `Protected`**getHandler**(`action`: [*ActionType*](../modules.md#actiontype)): IHandler
+▸ `Protected` **getHandler**(`action`): `IHandler`
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`action` | [*ActionType*](../modules.md#actiontype) |
+| Name | Type |
+| :------ | :------ |
+| `action` | [`ActionType`](../modules.md#actiontype) |
 
-**Returns:** IHandler
+#### Returns
+
+`IHandler`
 
 ___
 
 ### initialize
 
-▸ `Protected`**initialize**(): *void*
+▸ `Protected` **initialize**(): `void`
 
-**Returns:** *void*
+#### Returns
+
+`void`
 
 ___
 
 ### registerHandlers
 
-▸ `Protected` `Abstract`**registerHandlers**(): *void*
+▸ `Protected` `Abstract` **registerHandlers**(): `void`
 
 Override to register handlers for actions this agent support.
 
-**Returns:** *void*
+#### Returns
+
+`void`
 
 ___
 
 ### setHandler
 
-▸ `Protected`**setHandler**(`action`: [*ActionType*](../modules.md#actiontype), `handler`: IHandler): *void*
+▸ `Protected` **setHandler**(`action`, `handler`): `void`
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`action` | [*ActionType*](../modules.md#actiontype) |
-`handler` | IHandler |
+| Name | Type |
+| :------ | :------ |
+| `action` | [`ActionType`](../modules.md#actiontype) |
+| `handler` | `IHandler` |
 
-**Returns:** *void*
+#### Returns
+
+`void`

@@ -6,17 +6,17 @@
 
 ### Properties
 
-- [available](iaction.md#available)
-- [id](iaction.md#id)
+- [available](IAction.md#available)
+- [id](IAction.md#id)
 
 ## Properties
 
 ### available
 
-• **available**: *boolean*
+• **available**: `boolean`
 
 ___
 
 ### id
 
-• **id**: [*ActionType*](../modules.md#actiontype)
+• **id**: [`ActionType`](../modules.md#actiontype)

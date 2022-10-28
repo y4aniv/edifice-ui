@@ -1,34 +1,36 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / UnaryFunction
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / UnaryFunction
 
 # Interface: UnaryFunction<T, R\>
 
-[RxJS](../modules/rxjs.md).UnaryFunction
-
-OPERATOR INTERFACES
+[RxJS](../modules/RxJS.md).UnaryFunction
 
 ## Type parameters
 
-Name |
-:------ |
-`T` |
-`R` |
+| Name |
+| :------ |
+| `T` |
+| `R` |
 
 ## Hierarchy
 
-* **UnaryFunction**
+- **`UnaryFunction`**
 
-  ↳ [*OperatorFunction*](rxjs.operatorfunction.md)
+  ↳ [`OperatorFunction`](RxJS.OperatorFunction.md)
 
 ## Callable
 
-▸ **UnaryFunction**(`source`: T): R
+### UnaryFunction
+
+▸ **UnaryFunction**(`source`): `R`
 
 OPERATOR INTERFACES
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`source` | T |
+| Name | Type |
+| :------ | :------ |
+| `source` | `T` |
 
-**Returns:** R
+#### Returns
+
+`R`

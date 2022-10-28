@@ -1,98 +1,100 @@
-[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/rxjs.md) / Subscriber
+[ode-ts-client](../README.md) / [Exports](../modules.md) / [RxJS](../modules/RxJS.md) / Subscriber
 
 # Class: Subscriber<T\>
 
-[RxJS](../modules/rxjs.md).Subscriber
+[RxJS](../modules/RxJS.md).Subscriber
 
-Implements the [Observer](../interfaces/rxjs.observer.md) interface and extends the
-[Subscription](rxjs.subscription.md) class. While the [Observer](../interfaces/rxjs.observer.md) is the public API for
-consuming the values of an [Observable](rxjs.observable.md), all Observers get converted to
+Implements the [Observer](../interfaces/RxJS.Observer.md) interface and extends the
+[Subscription](RxJS.Subscription.md) class. While the [Observer](../interfaces/RxJS.Observer.md) is the public API for
+consuming the values of an [Observable](RxJS.Observable.md), all Observers get converted to
 a Subscriber, in order to provide Subscription-like capabilities such as
 `unsubscribe`. Subscriber is a common type in RxJS, and crucial for
 implementing operators, but it is rarely used as a public API.
 
 ## Type parameters
 
-Name |
-:------ |
-`T` |
+| Name |
+| :------ |
+| `T` |
 
 ## Hierarchy
 
-* [*Subscription*](rxjs.subscription.md)
+- [`Subscription`](RxJS.Subscription.md)
 
-  ↳ **Subscriber**
+  ↳ **`Subscriber`**
 
 ## Implements
 
-* [*Observer*](../interfaces/rxjs.observer.md)<T\>
+- [`Observer`](../interfaces/RxJS.Observer.md)<`T`\>
 
 ## Table of contents
 
 ### Constructors
 
-- [constructor](rxjs.subscriber.md#constructor)
+- [constructor](RxJS.Subscriber.md#constructor)
 
 ### Properties
 
-- [closed](rxjs.subscriber.md#closed)
-- [destination](rxjs.subscriber.md#destination)
-- [isStopped](rxjs.subscriber.md#isstopped)
-- [EMPTY](rxjs.subscriber.md#empty)
+- [closed](RxJS.Subscriber.md#closed)
+- [destination](RxJS.Subscriber.md#destination)
+- [isStopped](RxJS.Subscriber.md#isstopped)
+- [EMPTY](RxJS.Subscriber.md#empty)
 
 ### Methods
 
-- [\_complete](rxjs.subscriber.md#_complete)
-- [\_error](rxjs.subscriber.md#_error)
-- [\_next](rxjs.subscriber.md#_next)
-- [add](rxjs.subscriber.md#add)
-- [complete](rxjs.subscriber.md#complete)
-- [error](rxjs.subscriber.md#error)
-- [next](rxjs.subscriber.md#next)
-- [remove](rxjs.subscriber.md#remove)
-- [unsubscribe](rxjs.subscriber.md#unsubscribe)
-- [create](rxjs.subscriber.md#create)
+- [\_complete](RxJS.Subscriber.md#_complete)
+- [\_error](RxJS.Subscriber.md#_error)
+- [\_next](RxJS.Subscriber.md#_next)
+- [add](RxJS.Subscriber.md#add)
+- [complete](RxJS.Subscriber.md#complete)
+- [error](RxJS.Subscriber.md#error)
+- [next](RxJS.Subscriber.md#next)
+- [remove](RxJS.Subscriber.md#remove)
+- [unsubscribe](RxJS.Subscriber.md#unsubscribe)
+- [create](RxJS.Subscriber.md#create)
 
 ## Constructors
 
 ### constructor
 
-\+ **new Subscriber**<T\>(`destination?`: [*Subscriber*](rxjs.subscriber.md)<any\> \| [*Observer*](../interfaces/rxjs.observer.md)<any\>): [*Subscriber*](rxjs.subscriber.md)<T\>
+• **new Subscriber**<`T`\>(`destination?`)
 
 **`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
 There is no reason to directly create an instance of Subscriber. This type is exported for typings reasons.
 
-#### Type parameters:
+#### Type parameters
 
-Name |
-:------ |
-`T` |
+| Name |
+| :------ |
+| `T` |
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`destination?` | [*Subscriber*](rxjs.subscriber.md)<any\> \| [*Observer*](../interfaces/rxjs.observer.md)<any\> |
+| Name | Type |
+| :------ | :------ |
+| `destination?` | [`Subscriber`](RxJS.Subscriber.md)<`any`\> \| [`Observer`](../interfaces/RxJS.Observer.md)<`any`\> |
 
-**Returns:** [*Subscriber*](rxjs.subscriber.md)<T\>
+#### Overrides
 
-Overrides: [Subscription](rxjs.subscription.md)
+[Subscription](RxJS.Subscription.md).[constructor](RxJS.Subscription.md#constructor)
 
 ## Properties
 
 ### closed
 
-• **closed**: *boolean*
+• **closed**: `boolean`
 
 A flag to indicate whether this Subscription has already been unsubscribed.
 
-Inherited from: [Subscription](rxjs.subscription.md).[closed](rxjs.subscription.md#closed)
+#### Inherited from
+
+[Subscription](RxJS.Subscription.md).[closed](RxJS.Subscription.md#closed)
 
 ___
 
 ### destination
 
-• `Protected` **destination**: [*Subscriber*](rxjs.subscriber.md)<any\> \| [*Observer*](../interfaces/rxjs.observer.md)<any\>
+• `Protected` **destination**: [`Subscriber`](RxJS.Subscriber.md)<`any`\> \| [`Observer`](../interfaces/RxJS.Observer.md)<`any`\>
 
 **`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
 
@@ -100,7 +102,7 @@ ___
 
 ### isStopped
 
-• `Protected` **isStopped**: *boolean*
+• `Protected` **isStopped**: `boolean`
 
 **`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
 
@@ -108,53 +110,61 @@ ___
 
 ### EMPTY
 
-▪ `Static` **EMPTY**: [*Subscription*](rxjs.subscription.md)
+▪ `Static` **EMPTY**: [`Subscription`](RxJS.Subscription.md)
 
-**`nocollapse`** 
+**`nocollapse`**
 
-Inherited from: [Subscription](rxjs.subscription.md).[EMPTY](rxjs.subscription.md#empty)
+#### Inherited from
+
+[Subscription](RxJS.Subscription.md).[EMPTY](RxJS.Subscription.md#empty)
 
 ## Methods
 
 ### \_complete
 
-▸ `Protected`**_complete**(): *void*
+▸ `Protected` **_complete**(): `void`
 
-**Returns:** *void*
+#### Returns
+
+`void`
 
 ___
 
 ### \_error
 
-▸ `Protected`**_error**(`err`: *any*): *void*
+▸ `Protected` **_error**(`err`): `void`
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`err` | *any* |
+| Name | Type |
+| :------ | :------ |
+| `err` | `any` |
 
-**Returns:** *void*
+#### Returns
+
+`void`
 
 ___
 
 ### \_next
 
-▸ `Protected`**_next**(`value`: T): *void*
+▸ `Protected` **_next**(`value`): `void`
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`value` | T |
+| Name | Type |
+| :------ | :------ |
+| `value` | `T` |
 
-**Returns:** *void*
+#### Returns
+
+`void`
 
 ___
 
 ### add
 
-▸ **add**(`teardown`: [*TeardownLogic*](../modules/rxjs.md#teardownlogic)): *void*
+▸ **add**(`teardown`): `void`
 
 Adds a teardown to this subscription, so that teardown will be unsubscribed/called
 when this subscription is unsubscribed. If this subscription is already {@link #closed},
@@ -168,78 +178,94 @@ Adding a subscription to itself, or adding `null` or `undefined` will not perfor
 operation at all. (A noop).
 
 `Subscription` instances that are added to this instance will automatically remove themselves
-if they are unsubscribed. Functions and [Unsubscribable](../interfaces/rxjs.unsubscribable.md) objects that you wish to remove
+if they are unsubscribed. Functions and [Unsubscribable](../interfaces/RxJS.Unsubscribable.md) objects that you wish to remove
 will need to be removed manually with {@link #remove}
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`teardown` | [*TeardownLogic*](../modules/rxjs.md#teardownlogic) | The teardown logic to add to this subscription.    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `teardown` | [`TeardownLogic`](../modules/RxJS.md#teardownlogic) | The teardown logic to add to this subscription. |
 
-**Returns:** *void*
+#### Returns
 
-Inherited from: [Subscription](rxjs.subscription.md)
+`void`
+
+#### Inherited from
+
+[Subscription](RxJS.Subscription.md).[add](RxJS.Subscription.md#add)
 
 ___
 
 ### complete
 
-▸ **complete**(): *void*
+▸ **complete**(): `void`
 
-The [Observer](../interfaces/rxjs.observer.md) callback to receive a valueless notification of type
+The [Observer](../interfaces/RxJS.Observer.md) callback to receive a valueless notification of type
 `complete` from the Observable. Notifies the Observer that the Observable
 has finished sending push-based notifications.
 
-**Returns:** *void*
+#### Returns
 
-Implementation of: void
+`void`
+
+#### Implementation of
+
+[Observer](../interfaces/RxJS.Observer.md).[complete](../interfaces/RxJS.Observer.md#complete)
 
 ___
 
 ### error
 
-▸ **error**(`err?`: *any*): *void*
+▸ **error**(`err?`): `void`
 
-The [Observer](../interfaces/rxjs.observer.md) callback to receive notifications of type `error` from
+The [Observer](../interfaces/RxJS.Observer.md) callback to receive notifications of type `error` from
 the Observable, with an attached `Error`. Notifies the Observer that
 the Observable has experienced an error condition.
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`err?` | *any* |
+| Name | Type |
+| :------ | :------ |
+| `err?` | `any` |
 
-**Returns:** *void*
+#### Returns
 
-Implementation of: void
+`void`
+
+#### Implementation of
+
+[Observer](../interfaces/RxJS.Observer.md).[error](../interfaces/RxJS.Observer.md#error)
 
 ___
 
 ### next
 
-▸ **next**(`value?`: T): *void*
+▸ **next**(`value?`): `void`
 
-The [Observer](../interfaces/rxjs.observer.md) callback to receive notifications of type `next` from
+The [Observer](../interfaces/RxJS.Observer.md) callback to receive notifications of type `next` from
 the Observable, with a value. The Observable may call this method 0 or more
 times.
 
-#### Parameters:
+#### Parameters
 
-Name | Type |
-:------ | :------ |
-`value?` | T |
+| Name | Type |
+| :------ | :------ |
+| `value?` | `T` |
 
-**Returns:** *void*
+#### Returns
 
-Implementation of: void
+`void`
+
+#### Implementation of
+
+[Observer](../interfaces/RxJS.Observer.md).[next](../interfaces/RxJS.Observer.md#next)
 
 ___
 
 ### remove
 
-▸ **remove**(`teardown`: [*Subscription*](rxjs.subscription.md) \| [*Unsubscribable*](../interfaces/rxjs.unsubscribable.md) \| () => *void*): *void*
+▸ **remove**(`teardown`): `void`
 
 Removes a teardown from this subscription that was previously added with the {@link #add} method.
 
@@ -252,56 +278,70 @@ more than once, you will need to call `remove` the same number of times to remov
 
 All teardown instances are removed to free up memory upon unsubscription.
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`teardown` | [*Subscription*](rxjs.subscription.md) \| [*Unsubscribable*](../interfaces/rxjs.unsubscribable.md) \| () => *void* | The teardown to remove from this subscription    |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `teardown` | [`Subscription`](RxJS.Subscription.md) \| [`Unsubscribable`](../interfaces/RxJS.Unsubscribable.md) \| () => `void` | The teardown to remove from this subscription |
 
-**Returns:** *void*
+#### Returns
 
-Inherited from: [Subscription](rxjs.subscription.md)
+`void`
+
+#### Inherited from
+
+[Subscription](RxJS.Subscription.md).[remove](RxJS.Subscription.md#remove)
 
 ___
 
 ### unsubscribe
 
-▸ **unsubscribe**(): *void*
+▸ **unsubscribe**(): `void`
 
-**Returns:** *void*
+Disposes the resources held by the subscription. May, for instance, cancel
+an ongoing Observable execution or cancel any other type of work that
+started when the Subscription was created.
 
-Overrides: [Subscription](rxjs.subscription.md)
+#### Returns
+
+`void`
+
+#### Overrides
+
+[Subscription](RxJS.Subscription.md).[unsubscribe](RxJS.Subscription.md#unsubscribe)
 
 ___
 
 ### create
 
-▸ `Static`**create**<T\>(`next?`: (`x?`: T) => *void*, `error?`: (`e?`: *any*) => *void*, `complete?`: () => *void*): [*Subscriber*](rxjs.subscriber.md)<T\>
+▸ `Static` **create**<`T`\>(`next?`, `error?`, `complete?`): [`Subscriber`](RxJS.Subscriber.md)<`T`\>
 
 A static factory for a Subscriber, given a (potentially partial) definition
 of an Observer.
 
-**`nocollapse`** 
+**`nocollapse`**
 
 **`deprecated`** Do not use. Will be removed in v8. There is no replacement for this
 method, and there is no reason to be creating instances of `Subscriber` directly.
 If you have a specific use case, please file an issue.
 
-#### Type parameters:
+#### Type parameters
 
-Name |
-:------ |
-`T` |
+| Name |
+| :------ |
+| `T` |
 
-#### Parameters:
+#### Parameters
 
-Name | Type | Description |
-:------ | :------ | :------ |
-`next?` | (`x?`: T) => *void* | The `next` callback of an Observer.   |
-`error?` | (`e?`: *any*) => *void* | The `error` callback of an Observer.   |
-`complete?` | () => *void* | The `complete` callback of an Observer.   |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `next?` | (`x?`: `T`) => `void` | The `next` callback of an Observer. |
+| `error?` | (`e?`: `any`) => `void` | The `error` callback of an Observer. |
+| `complete?` | () => `void` | The `complete` callback of an Observer. |
 
-**Returns:** [*Subscriber*](rxjs.subscriber.md)<T\>
+#### Returns
+
+[`Subscriber`](RxJS.Subscriber.md)<`T`\>
 
 A Subscriber wrapping the (partially defined)
 Observer represented by the given arguments.
