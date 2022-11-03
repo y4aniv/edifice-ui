@@ -413,6 +413,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
+| `UAI` | `string` |
 | `classes` | `string`[] |
 | `id` | `string` |
 | `name` | `string` |
@@ -793,6 +794,7 @@ ___
 | `RECORD` | ``"record-me"`` |
 | `RSS` | ``"rss-widget"`` |
 | `SCHOOL` | ``"school-widget"`` |
+| `UNIVERSALIS` | ``"universalis"`` |
 
 ___
 
