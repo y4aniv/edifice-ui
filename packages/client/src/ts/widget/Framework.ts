@@ -36,6 +36,7 @@ const defaultWidgetPosition:{ [name in WidgetName]: WidgetPosition} = {
     "agenda-widget":        WIDGET_POSITION.LEFT,       // Agenda
     "cursus-widget":        WIDGET_POSITION.LEFT,
     "maxicours-widget":     WIDGET_POSITION.RIGHT,
+    "universalis":          WIDGET_POSITION.RIGHT,
     "school-widget":        WIDGET_POSITION.LEFT
 }
 
@@ -47,6 +48,7 @@ const defaultWidgetOrder:{ [name in WidgetName]: number} = {
     "last-infos-widget":    20,       // Actualités
     "qwant":                30,
     "qwant-junior":         30,
+    "universalis":          35,
     "agenda-widget":        40,       // Agenda
     "bookmark-widget":      50,
     "carnet-de-bord":       60,
