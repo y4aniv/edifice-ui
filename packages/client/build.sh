@@ -99,14 +99,14 @@ watch () {
     docker-compose run \
       --rm \
       -u "$USER_UID:$GROUP_GID" \
-      node sh -c "npm run watch --watch_springboard=dist"
+      node sh -c "npm run watch --watch_output=dist"
   else
     echo "Watching => springboard $SPRINGBOARD"
     docker-compose run \
       --rm \
       -u "$USER_UID:$GROUP_GID" \
       -v $PWD/../$SPRINGBOARD:/home/node/springboard \
-      node sh -c "npm run watch --watch_springboard=/home/node/springboard"
+      node sh -c "npm run watch --watch_output=/home/node/springboard/assets/js/ode-ts-client"
   fi
 }
 
