@@ -4,15 +4,25 @@ const TerserPlugin = require("terser-webpack-plugin");
 module.exports = {
   mode: "production",
   entry: {
-    "ode-ts-client": {
+    "ode-ts-client.js": "./src/ts/index.ts",
+    "ode-ts-client.mjs": {
+      import: "./src/ts/index.ts",
+			library: {
+				type: 'module'
+			},
+    },
+    "ode-ts-client.cjs": {
       import: "./src/ts/index.ts",
 			library: {
 				type: 'commonjs2'
 			},
     },
   },
+  experiments: {
+    outputModule: true,
+  },
   output: {
-    filename: "[name].js",
+    filename: "[name]",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
