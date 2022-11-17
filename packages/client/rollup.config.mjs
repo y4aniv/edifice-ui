@@ -14,7 +14,7 @@ const outputDir = process.env.build_target ? process.env.build_target : 'dist';
 //console.log( "////////////////"+JSON.stringify(process.env) );
 
 export default outputFormats.map( format => {
-  const input = isWatching ? "src/ts/index.ts" : `transpiled/${format}/ts/index.js`;
+  const input = isWatching ? "src/ts/index.ts" : `transpiled/${format}/ts/index${format=='cjs'?'.cjs':''}.js`;
   const plugins = [];
   if( isWatching ) {
     const tsConfig = {
