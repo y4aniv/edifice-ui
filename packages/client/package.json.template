@@ -7,11 +7,11 @@
   "types": "dist/ts/index.d.ts",
   "scripts": {
     "prepare": "npx husky install",
-    "compile": "npx tsc --build ./tsconfig.esm.json ./tsconfig.cjs.json",
+    "compile": "npx tsc --build ./tsconfig.es.json ./tsconfig.cjs.json",
     "test": "npm run compile && npx jasmine --config=src/test/config/jasmine.json",
     "docs": "npx rimraf ./docs/ && npx typedoc src/ts/index.ts --excludePrivate --disableSources --plugin typedoc-plugin-markdown",
-    "build": "npx yarn rollup --config ",
-    "watch": "npx webpack --env mode=dev --env build_target=${npm_config_build_target} --watch"
+    "build": "npx yarn rollup -c ",
+    "watch": "format=${npm_config_format}; build_target=${npm_config_build_target}; npx yarn rollup -c --watch "
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-json": "^5.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^9.0.2",
     "@types/jasmine": "^3.6.3",
     "@types/node": "^14.14.28",
     "husky": "~7.0.2",
