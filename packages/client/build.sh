@@ -100,14 +100,14 @@ watch () {
     docker-compose run \
       --rm \
       -u "$USER_UID:$GROUP_GID" \
-      node sh -c "npm run watch --build_target=dist --format=es"
+      node sh -c "npm run watch --build_target=dist"
   else
     echo "Watching => $SPRINGBOARD springboard"
     docker-compose run \
       --rm \
       -u "$USER_UID:$GROUP_GID" \
       -v $PWD/../$SPRINGBOARD:/home/node/springboard \
-      node sh -c "npm run watch --build_target=/home/node/springboard/assets/js/ode-ts-client --format=cjs"
+      node sh -c "npm run watch --build_target=/home/node/springboard/assets/js/ode-ts-client"
   fi
 }
 

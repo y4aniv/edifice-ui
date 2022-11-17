@@ -7,22 +7,29 @@ import json from '@rollup/plugin-json';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
 import { terser } from 'rollup-plugin-terser';
 
-const outputFormats = process.env.format==='es' ? ['es'] : (process.env.format==='cjs') ? ['cjs'] : ['es', 'cjs'];
+const isWatching = process.env.watch=='true';
+const outputFormats = isWatching ? ['es'] : ['es', 'cjs'];
 const outputDir = process.env.build_target ? process.env.build_target : 'dist';
 
+//console.log( "////////////////"+JSON.stringify(process.env) );
+
 export default outputFormats.map( format => {
+  const input = isWatching ? "src/ts/index.ts" : `transpiled/${format}/ts/index.js`;
   const plugins = [];
-  if( process.env.watch ) {
-    plugins.push( typescript({tsconfig:`./tsconfig.${format}.json`}) );
+  if( isWatching ) {
+    const tsConfig = {
+      tsconfig:`./tsconfig.${format}.json`
+    };
+    plugins.push( typescript(tsConfig) );
   }
   if( format==='es' ) {
-    plugins.push( commonjs(), nodeResolve({browser: true}), json({compact: true}), terser() );
+    plugins.push( commonjs({extensions:['.js','.ts']}), nodeResolve({browser: true}), json({compact: true}), terser() );
   } else {
-    plugins.push( commonjs(), nodePolyfills(), nodeResolve(), json({compact: true}), terser() );
+    plugins.push( commonjs({extensions:['.js','.ts']}), nodePolyfills(), nodeResolve(), json({compact: true}), terser() );
   }
 
   return {
-    input: `transpiled/${format}/ts/index.js`,
+    input: input,
     output: {
       file: outputDir+"/"+ (format==='es' ? "ode-ts-client.mjs" : "ode-ts-client.js"),
       format: format,
