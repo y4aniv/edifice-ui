@@ -1,7 +1,6 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { ConfigurationFrameworkFactory } from "..";
 import { ERROR_CODE } from "../globals";
-import { notify } from "../notify/Framework";
 import { IHttp, IHttpParams, IHttpResponse } from "./interfaces";
 
 const loadedScripts: { [url: string]: boolean } = {};
@@ -202,8 +201,7 @@ export class Http implements IHttp {
             .then( r => this.mapAxiosResponse(r,params) )
             .then( r => {
                 try {
-                    // FIXME ne semble pas bien fonctionner car SyntaxError. Tester avec point d'arrêt dans le navigateur.
-                    const securedScript = `"use strict";var ${resultName};${r};return ${resultName};`;
+                    const securedScript = `"use strict";var ${resultName.split('.')[0]}={};${r};return ${resultName};`;
                     const result = Function(securedScript)();
                     return result;
                 } catch( e ) {

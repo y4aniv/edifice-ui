@@ -6,4 +6,4 @@ package-lock.json
 deployment/
 *.tsbuildinfo
 .husky
-build/
+transpiled/

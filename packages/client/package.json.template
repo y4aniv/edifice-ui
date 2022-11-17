@@ -5,23 +5,13 @@
   "main": "dist/ode-ts-client.js",
   "module": "dist/ode-ts-client.mjs",
   "types": "dist/ts/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/ts/index.d.ts",
-      "script": "./dist/ode-ts-client.js",
-      "node": "./dist/ode-ts-client.cjs",
-      "require": "./dist/ode-ts-client.cjs",
-      "es2015": "./dist/ode-ts-client.mjs",
-      "default": "./dist/ode-ts-client.mjs"
-    }
-  },
   "scripts": {
     "prepare": "npx husky install",
-    "compile": "npx tsc --build ./tsconfig.json",
+    "compile": "npx tsc --build ./tsconfig.esm.json ./tsconfig.cjs.json",
     "test": "npm run compile && npx jasmine --config=src/test/config/jasmine.json",
     "docs": "npx rimraf ./docs/ && npx typedoc src/ts/index.ts --excludePrivate --disableSources --plugin typedoc-plugin-markdown",
-    "build": "npx webpack",
-    "watch": "npx webpack --config webpack.config.watch.js --env build_target=${npm_config_watch_output} --watch"
+    "build": "npx yarn rollup --config ",
+    "watch": "npx webpack --env mode=dev --env build_target=${npm_config_build_target} --watch"
   },
   "repository": {
     "type": "git",
@@ -34,19 +24,20 @@
   },
   "homepage": "https://github.com/opendigitaleducation/ode-ts-client#readme",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-json": "^5.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/jasmine": "^3.6.3",
     "@types/node": "^14.14.28",
-    "file-loader": "~6.2.0",
     "husky": "~7.0.2",
     "jasmine": "^3.6.4",
     "rimraf": "^3.0.2",
-    "terser-webpack-plugin": "5.3.6",
-    "ts-loader": "^8.0.18",
+    "rollup": "^3.3.0",
+    "rollup-plugin-node-polyfills": "^0.2.1",
+    "rollup-plugin-terser": "^7.0.2",
     "typedoc": "0.22.13",
     "typedoc-plugin-markdown": "3.11.14",
-    "typescript": "4.2.2",
-    "webpack": "5.75.0",
-    "webpack-cli": "4.10.0"
+    "typescript": "4.2.2"
   },
   "dependencies": {
     "axios": "~0.21.1",

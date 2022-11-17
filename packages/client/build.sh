@@ -48,14 +48,7 @@ esac
 done
 
 clean () {
-  rm -rf node_modules 
-  rm -rf dist 
-  rm -rf .husky 
-  rm -rf .gradle 
-  rm -rf package.json 
-  rm -rf package-lock.json 
-  rm -rf deployment
-  rm -rf yarn.lock
+  rm -rf node_modules dist transpiled .husky .gradle package.json package-lock.json deployment yarn.lock
 }
 
 init () {
@@ -81,6 +74,14 @@ init () {
   docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "yarn install --production=false && npm run prepare && npx husky add .husky/pre-commit \"$PRECOMMIT_CMD\"" # && git add .husky/pre-commit"
 }
 
+compile () {
+  docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "npm run compile"
+}
+
+tests () {
+  docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "npm run test"
+}
+
 build () {
   docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "npm run test && npm run build"
   status=$?
@@ -99,14 +100,14 @@ watch () {
     docker-compose run \
       --rm \
       -u "$USER_UID:$GROUP_GID" \
-      node sh -c "npm run watch --watch_output=dist"
+      node sh -c "npm run watch --build_target=dist"
   else
-    echo "Watching => springboard $SPRINGBOARD"
+    echo "Watching => $SPRINGBOARD springboard"
     docker-compose run \
       --rm \
       -u "$USER_UID:$GROUP_GID" \
       -v $PWD/../$SPRINGBOARD:/home/node/springboard \
-      node sh -c "npm run watch --watch_output=/home/node/springboard/assets/js/ode-ts-client"
+      node sh -c "npm run watch --build_target=/home/node/springboard/assets/js/ode-ts-client"
   fi
 }
 
@@ -163,17 +164,23 @@ do
     init)
       init
       ;;
+    compile)
+      compile
+      ;;
     build)
       build
+      ;;
+    test)
+      tests
+      ;;
+    watch)
+      watch
       ;;
     doc)
       doc
       ;;
     install)
       build && archive && publishMavenLocal && rm -rf build
-      ;;
-    watch)
-      watch
       ;;
     audit)
       audit
