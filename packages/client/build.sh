@@ -90,6 +90,12 @@ build () {
     exit $status
   fi
 
+  # Add definition files
+  cd transpiled/es
+  cp -a --parents ts/*.d.ts ../../dist
+  cp -a --parents ts/**/*.d.ts ../../dist
+  cd ../..
+
   VERSION=`grep "version="  gradle.properties| sed 's/version=//g'`
   echo "ode-ts-client=$VERSION `date +'%d/%m/%Y %H:%M:%S'`" >> dist/version.txt
 }
