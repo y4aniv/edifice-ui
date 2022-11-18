@@ -5,6 +5,15 @@
   "main": "dist/ode-ts-client.js",
   "module": "dist/ode-ts-client.mjs",
   "types": "dist/ts/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./ts/index.d.ts",
+      "node": "./ode-ts-client.js",
+      "require": "./ode-ts-client.js",
+      "es2015": "./ode-ts-client.mjs",
+      "import": "./ode-ts-client.mjs"
+    }
+  },
   "scripts": {
     "prepare": "npx husky install",
     "compile": "npx tsc --build ./tsconfig.es.json ./tsconfig.cjs.json",
