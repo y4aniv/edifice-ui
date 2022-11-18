@@ -3,7 +3,7 @@ import { notify } from "../notify/Framework";
 import { IEmailValidationInfos, IEmailValidationState, IMfaCodeState, IMfaInfos, IMobileValidationInfos, IMobileValidationState, IQuotaAndUsage, ISession, IUserDescription, IUserInfo } from "./interfaces";
 import { ConfigurationFramework, configure } from "../configure/Framework";
 import { ConfigurationFrameworkFactory } from "../configure/interfaces";
-import { App } from "../globals";
+import { App, ERROR_CODE } from "../globals";
 
 const http = transport.http;
 
@@ -49,9 +49,13 @@ export class Session implements ISession {
         return configure.Platform.apps.currentApp;
     }
 
-    public initialize():Promise<void> {
-        return http.get<IUserInfo>( '/auth/oauth2/userinfo' )
-        .then( u => { 
+    public async initialize():Promise<void> {
+        return http.get<IUserInfo>('/auth/oauth2/userinfo')
+        .then( u => {
+            if (http.latestResponse.status < 200 || http.latestResponse.status >= 300) {
+                // Backend tries to redirect the user => not logged in !
+                throw ERROR_CODE.NOT_LOGGED_IN;
+            }
             this.setCurrentModel( u );
             return this._notLoggedIn ? this.loadDefaultLanguage() : this.loadUserLanguage();
         })
@@ -61,8 +65,10 @@ export class Session implements ISession {
         }).then( ()=>{
             notify.onSessionReady().resolve( this._me );
         })
-        .catch( (e:Error) => {
-            // Note : do not log error in the browser console here, since this code may run outside a browser !
+        .catch( e => {
+            if( e === ERROR_CODE.NOT_LOGGED_IN ) {
+                return Promise.resolve(); // backend is reachable, login can occur.
+            }
             notify.onSessionReady().reject( e );
         });
     }

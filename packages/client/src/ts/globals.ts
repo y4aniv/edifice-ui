@@ -14,6 +14,7 @@ export const ERROR_CODE = {
   TRANSPORT_ERROR: "0060",
   TIME_OUT: "0070",
   MALFORMED_DATA: "0080",
+  NOT_LOGGED_IN: "0090",
 } as const;
 export type ErrorCode = typeof ERROR_CODE[keyof typeof ERROR_CODE];
 

@@ -13,8 +13,30 @@ export abstract class SessionFrameworkFactory {
 //-------------------------------------
 export interface ISessionFramework {
 //-------------------------------------
-  initialize():Promise<void>;
-  session:ISession;
+  /** Initialize once before use. */
+  initialize(): Promise<void>;
+
+  /** The current user session. */
+  session: ISession;
+
+  /** Log the current user in. */
+  login(email: string, password: string, rememberMe?: boolean, secureLocation?: boolean): Promise<void>;
+
+  /** Close the current user session. */
+  logout(): Promise<void>;
+}
+
+//-------------------------------------
+export interface ILoginModel {
+  //-------------------------------------
+  email: string;
+  password: string;
+  rememberMe?: boolean;
+  secureLocation?: boolean;
+  /* Let's drop these old features.
+  callBack?: string;
+  details?: string;
+  */
 }
 
 //-------------------------------------
