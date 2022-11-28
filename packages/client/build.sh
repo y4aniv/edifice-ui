@@ -74,27 +74,17 @@ init () {
   docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "yarn install --production=false && npm run prepare && npx husky add .husky/pre-commit \"$PRECOMMIT_CMD\"" # && git add .husky/pre-commit"
 }
 
-compile () {
-  docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "npm run compile"
-}
-
 tests () {
   docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "npm run test"
 }
 
 build () {
-  docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "npm run test && npm run build"
+  docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "npm run build"
   status=$?
   if [ $status != 0 ];
   then
     exit $status
   fi
-
-  # Add definition files
-  cd transpiled/es
-  cp -a --parents ts/*.d.ts ../../dist
-  cp -a --parents ts/**/*.d.ts ../../dist
-  cd ../..
 
   VERSION=`grep "version="  gradle.properties| sed 's/version=//g'`
   echo "ode-ts-client=$VERSION `date +'%d/%m/%Y %H:%M:%S'`" >> dist/version.txt
@@ -169,9 +159,6 @@ do
       ;;
     init)
       init
-      ;;
-    compile)
-      compile
       ;;
     build)
       build

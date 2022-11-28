@@ -12,7 +12,7 @@ export interface IAgentLoader {
 /**
  * Default implementation of the loader.
  */
- export class AgentLoader implements IAgentLoader {
+export class AgentLoader implements IAgentLoader {
     private http:IHttp = new Http();
 
     load(res: ResourceType): Promise<void> {

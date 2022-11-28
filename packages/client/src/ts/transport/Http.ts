@@ -205,7 +205,7 @@ export class Http implements IHttp {
                     const result = Function(securedScript)();
                     return result;
                 } catch( e ) {
-                    const result = eval(r);
+                    const result = r;
                     return result;
                 }
             })

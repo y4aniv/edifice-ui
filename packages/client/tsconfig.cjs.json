@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "module": "CommonJS",
-    "target": "es2015",
-    "downlevelIteration": true,  //TODO challenge this
-    "outDir": "transpiled/cjs"
-  }
-}

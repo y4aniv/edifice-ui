@@ -1,7 +1,5 @@
-import { SessionFrameworkFactory } from "../../session/interfaces";
 import { session } from "../../session/Framework";
 import { transport } from "../../transport/Framework";
-import { TransportFrameworkFactory } from "../../transport/interfaces";
 import { ITimelineNotification, NotificationModel } from "./interfaces";
 
 /* const http = TransportFrameworkFactory.instance().http;
