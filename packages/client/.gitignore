@@ -6,6 +6,6 @@ package-lock.json
 deployment/
 *.tsbuildinfo
 .husky
-transpiled/
+test/
 .DS_Store
 yarn-error.log
