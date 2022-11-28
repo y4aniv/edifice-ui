@@ -7,13 +7,16 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./dist/ode-ts-client.js",
       "require": "./dist/ode-ts-client.js",
+      "es2015": "./dist/ode-ts-client.mjs",
       "import": "./dist/ode-ts-client.mjs"
     }
   },
   "scripts": {
     "prepare": "npx husky install",
-    "test": "npm run build && npx jasmine --config=src/test/config/jasmine.json",
+    "test": "node scripts/test.mjs && npx jasmine --config=src/test/config/jasmine.json",
     "docs": "npx rimraf ./docs/ && npx typedoc src/ts/index.ts --excludePrivate --disableSources --plugin typedoc-plugin-markdown",
     "build": "node scripts/build.mjs",
     "watch": "export build_target=${npm_config_build_target}; export watch=true; npx yarn rollup -c --watch "
