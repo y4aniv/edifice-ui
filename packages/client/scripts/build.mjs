@@ -8,12 +8,12 @@ const __dirname = fileURLToPath(new URL("..", import.meta.url));
 const config = [
   {
     entry: path.resolve(__dirname, "./src/ts/index.cjs.ts"),
-    fileName: "ode-ts-client",
-    formats: ["cjs"],
+    fileName: () => `ode-ts-client.js`,
+    formats: ["umd"],
+    name: "ode-ts-client"
   },
   {
     entry: path.resolve(__dirname, "./src/ts/index.ts"),
-    fileName: "ode-ts-client",
     formats: ["es"],
   },
 ];

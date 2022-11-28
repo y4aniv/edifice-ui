@@ -48,7 +48,7 @@ esac
 done
 
 clean () {
-  rm -rf node_modules dist transpiled .husky .gradle package.json package-lock.json deployment yarn.lock
+  rm -rf node_modules dist test .husky .gradle package.json package-lock.json deployment yarn.lock
 }
 
 init () {
