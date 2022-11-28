@@ -781,6 +781,7 @@ ___
 | `AGENDA` | ``"agenda-widget"`` |
 | `BIRTHDAY` | ``"birthday"`` |
 | `BOOKMARK` | ``"bookmark-widget"`` |
+| `BRIEFME` | ``"briefme-widget"`` |
 | `CALENDAR` | ``"calendar-widget"`` |
 | `CARNET` | ``"carnet-de-bord"`` |
 | `CURSUS` | ``"cursus-widget"`` |
@@ -794,7 +795,7 @@ ___
 | `RECORD` | ``"record-me"`` |
 | `RSS` | ``"rss-widget"`` |
 | `SCHOOL` | ``"school-widget"`` |
-| `UNIVERSALIS` | ``"universalis"`` |
+| `UNIVERSALIS` | ``"universalis-widget"`` |
 
 ___
 
