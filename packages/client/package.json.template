@@ -7,10 +7,7 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "node": "./dist/ode-ts-client.js",
       "require": "./dist/ode-ts-client.js",
-      "es2015": "./dist/ode-ts-client.mjs",
       "import": "./dist/ode-ts-client.mjs"
     }
   },
