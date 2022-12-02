@@ -52,6 +52,7 @@ export type School = {
   id: string;             // "09772a06-1362-4802-a475-66a87d9cb679"
   name: string;           // "MY DEV SCHOOL"
   UAI: string;            // "1111888G"
+  exports: string[];      // ["GAR-P0"]
 }
 //-------------------------------------
 export interface IUserDescription {

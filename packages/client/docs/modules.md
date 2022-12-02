@@ -415,6 +415,7 @@ ___
 | :------ | :------ |
 | `UAI` | `string` |
 | `classes` | `string`[] |
+| `exports` | `string`[] |
 | `id` | `string` |
 | `name` | `string` |
 
