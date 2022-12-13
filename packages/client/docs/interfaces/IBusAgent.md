@@ -2,10 +2,6 @@
 
 # Interface: IBusAgent
 
-## Implemented by
-
-- [`AbstractBusAgent`](../classes/AbstractBusAgent.md)
-
 ## Table of contents
 
 ### Methods

@@ -389,6 +389,9 @@ export type UpdateFolderParameters = IActionParameters & {
 , parentId: ID|"default"
 , name: string
 };
+export type OpenParameters = IActionParameters & {
+  resourceId:ID
+};
 export type CopyParameters = IActionParameters & {
   folderId:ID
 , resourceIds:ID[]

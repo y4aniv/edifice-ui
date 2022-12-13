@@ -10,7 +10,6 @@
 
 ### Classes
 
-- [AbstractBusAgent](classes/AbstractBusAgent.md)
 - [ConfigurationFrameworkFactory](classes/ConfigurationFrameworkFactory.md)
 - [ExplorerFrameworkFactory](classes/ExplorerFrameworkFactory.md)
 - [ITimelineFactory](classes/ITimelineFactory.md)
@@ -106,6 +105,7 @@
 - [ManagePropertiesResult](modules.md#managepropertiesresult)
 - [MoveParameters](modules.md#moveparameters)
 - [NotificationModel](modules.md#notificationmodel)
+- [OpenParameters](modules.md#openparameters)
 - [OrderValues](modules.md#ordervalues)
 - [PropFormatType](modules.md#propformattype)
 - [PropKeyType](modules.md#propkeytype)
@@ -372,6 +372,12 @@ ___
 | `resource` | `string` |
 | `sender` | `string` |
 | `type` | `string` |
+
+___
+
+### OpenParameters
+
+Ƭ **OpenParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `resourceId`: [`ID`](modules.md#id)  }
 
 ___
 

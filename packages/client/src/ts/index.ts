@@ -8,13 +8,6 @@ export * from "./globals";
  */
 export * from "./explore/interfaces";
 
-/* These utility classes offer, from the applications' perspective :
- * CURRENTLY BEING TESTED, WILL PROBABLY BE REFACTORED
- * => Agents will register themselves instead of having the bus asking for it.
- *    The framework would then export a method for agents to register their supported Actions.
- */
-export { AbstractBusAgent } from "./explore/Agent";
-
 //---------------------------------- NOTIFY ----------------------------------
 export * from "./notify/interfaces";
 // We export RxJS because so that you don't need to bundle it again elsewhere : it is there for you.
