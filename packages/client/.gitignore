@@ -9,3 +9,5 @@ deployment/
 test/
 .DS_Store
 yarn-error.log
+test/Foundation.spec.mjs
+yarn.lock
