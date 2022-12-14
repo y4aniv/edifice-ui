@@ -10,6 +10,7 @@ export class AppConf {
   //-------------------------------------
   private _publicConf: { [key in App]?: any } = {};
   private _currentApp?: App;
+  private _appsList: any = {};
 
   /**
    * Get the currently initialized App.
@@ -38,6 +39,13 @@ export class AppConf {
       });
     }
     return this._publicConf[app];
+  }
+
+  public async getAppsList(): Promise<any> {
+    if (this._appsList) {
+      this._appsList = await http.get<any>(`/applications-list`);
+    }
+    return this._appsList;
   }
 
   public loadI18n(app: App): Promise<void> {

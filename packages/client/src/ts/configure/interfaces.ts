@@ -28,6 +28,7 @@ export interface IConfigurationFramework {
         initialize(app:App, alternativeApp?:boolean):Promise<void>;
         /** Load and return the public conf of an app. */
         getPublicConf(app:App):Promise<any>;
+        getAppsList():Promise<any>
         /** Load the i18n of an app. */
         loadI18n(app:App):Promise<void>;
       };

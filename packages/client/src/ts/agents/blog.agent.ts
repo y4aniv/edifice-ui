@@ -7,7 +7,6 @@ declare var window:any;
 
 console.log("Blog agent loading....");
 
-
 class BlogAgent extends AbstractBusAgent {
     constructor() {
         super( RESOURCE.BLOG );
