@@ -1,6 +1,6 @@
 {
   "name": "ode-ts-client",
-  "version": "1.1.2",
+  "version": "1.1.0-dev.%generateVersion%",
   "description": "Foundation frameworks by Open Digital Education",
   "main": "dist/ts/index.js",
   "types": "dist/ts/index.d.ts",
