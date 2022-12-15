@@ -345,22 +345,25 @@ export interface IGenericProperty extends IProperty {
 //-------------------------------------
 export interface IResource {
 //-------------------------------------
-  id: ID;
-  name: string;
-  thumbnail: string;   // URL : requis; ou bien déductible d’une convention ?
   application: App;
-  createdAt: string;  // FIXME: S'entendre sur un format de date
+  assetId: string;
   authorId: string;
-  authorName: string;
+  creatorName: string;
+  comments?: number;
+  createdAt: string;  // FIXME: S'entendre sur un format de date
+  favorite?: boolean;
+  folderId?: ID;      // TODO à confirmer
+  id: ID;
+  modifiedAt: string; // FIXME: S'entendre sur un format de date
   modifierId: ID;
   modifierName: string;
-  modifiedAt: string; // FIXME: S'entendre sur un format de date
-  folderId?: ID;      // TODO à confirmer
+  name: string;
   public?: boolean;
   shared?: boolean;
-  favorite?: boolean;
+  thumbnail: string;   // URL : requis; ou bien déductible d’une convention ?
+  updatedAt: string;
   views?: number;
-  comments?: number;
+
 }
 
 //-------------------------------------

@@ -31,11 +31,12 @@ class BlogAgent extends AbstractBusAgent {
     }
 
     openBlog( parameters:OpenParameters ): void {
-        window.open( `/blog#/view/${parameters.resourceId}` );
+        console.log('parameters', parameters)
+        window.open( `/blog#/view/${parameters.resourceId}`, "_self" );
     }
 
     createBlog( parameters:IActionParameters ): void {
-        window.open( `/blog#/edit/new` );
+        window.open( `/blog#/edit/new`, "_self" );
     }
 
     onManage( parameters:ManagePropertiesParameters ): Promise<ManagePropertiesResult> {

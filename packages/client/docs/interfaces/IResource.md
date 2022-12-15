@@ -7,10 +7,11 @@
 ### Properties
 
 - [application](IResource.md#application)
+- [assetId](IResource.md#assetid)
 - [authorId](IResource.md#authorid)
-- [authorName](IResource.md#authorname)
 - [comments](IResource.md#comments)
 - [createdAt](IResource.md#createdat)
+- [creatorName](IResource.md#creatorname)
 - [favorite](IResource.md#favorite)
 - [folderId](IResource.md#folderid)
 - [id](IResource.md#id)
@@ -21,6 +22,7 @@
 - [public](IResource.md#public)
 - [shared](IResource.md#shared)
 - [thumbnail](IResource.md#thumbnail)
+- [updatedAt](IResource.md#updatedat)
 - [views](IResource.md#views)
 
 ## Properties
@@ -31,15 +33,15 @@
 
 ___
 
-### authorId
+### assetId
 
-• **authorId**: `string`
+• **assetId**: `string`
 
 ___
 
-### authorName
+### authorId
 
-• **authorName**: `string`
+• **authorId**: `string`
 
 ___
 
@@ -52,6 +54,12 @@ ___
 ### createdAt
 
 • **createdAt**: `string`
+
+___
+
+### creatorName
+
+• **creatorName**: `string`
 
 ___
 
@@ -112,6 +120,12 @@ ___
 ### thumbnail
 
 • **thumbnail**: `string`
+
+___
+
+### updatedAt
+
+• **updatedAt**: `string`
 
 ___
 
