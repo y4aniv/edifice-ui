@@ -69,19 +69,19 @@ class FolderAgent extends AbstractBusAgent {
     /** Move resources/folders to a folder. */
     moveToFolder( parameters:MoveParameters ): Promise<IActionResult> {
         return this.http.post<IActionResult>( `/explorer/folders/${parameters.folderId}/move`, this.moveToBodyParams(parameters) )
-        .then( this.checkHttpResponse );;
+        .then( this.checkHttpResponse );
     }
 
     /** List subfolders of a parent folder. */
     listSubfolders( folderId:ID ): Promise<GetSubFoldersResult> {
         return this.http.get<GetSubFoldersResult>( `/explorer/folders/${folderId}/move` )
-        .then( this.checkHttpResponse );;
+        .then( this.checkHttpResponse );
     }
 
     /** Delete folders and/or resources. */
     deleteFolders( parameters:DeleteParameters ): Promise<IActionResult> {
         return this.http.deleteJson<IActionResult>( `/explorer/folders`, parameters )
-        .then( this.checkHttpResponse );;
+        .then( this.checkHttpResponse );
     }
 
     onManage( parameters:ManagePropertiesParameters ): Promise<ManagePropertiesResult> {
