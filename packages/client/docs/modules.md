@@ -784,10 +784,7 @@ ___
 | `AGENDA` | ``"agenda-widget"`` |
 | `BIRTHDAY` | ``"birthday"`` |
 | `BOOKMARK` | ``"bookmark-widget"`` |
-<<<<<<< HEAD
 | `BRIEFME` | ``"briefme-widget"`` |
-=======
->>>>>>> d350f58 (feat: #WB-965, #WB-878, email validation)
 | `CALENDAR` | ``"calendar-widget"`` |
 | `CARNET` | ``"carnet-de-bord"`` |
 | `CURSUS` | ``"cursus-widget"`` |
@@ -801,10 +798,7 @@ ___
 | `RECORD` | ``"record-me"`` |
 | `RSS` | ``"rss-widget"`` |
 | `SCHOOL` | ``"school-widget"`` |
-<<<<<<< HEAD
 | `UNIVERSALIS` | ``"universalis-widget"`` |
-=======
->>>>>>> d350f58 (feat: #WB-965, #WB-878, email validation)
 
 ___
 

@@ -142,8 +142,6 @@ ___
 #### Returns
 
 `boolean`
-<<<<<<< HEAD
-=======
 
 ___
 
@@ -162,4 +160,3 @@ Send a 6-digits code to the server to try validating the pending email address.
 #### Returns
 
 `Promise`<[`IEmailValidationState`](IEmailValidationState.md)\>
->>>>>>> d350f58 (feat: #WB-965, #WB-878, email validation)
