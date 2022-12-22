@@ -8320,8 +8320,8 @@ function requireJasmine() {
       jasmine2.createSpyObj = function(baseName, methodNames, propertyNames) {
         return env.createSpyObj(baseName, methodNames, propertyNames);
       };
-      jasmine2.addSpyStrategy = function(name2, factory) {
-        return env.addSpyStrategy(name2, factory);
+      jasmine2.addSpyStrategy = function(name2, factory2) {
+        return env.addSpyStrategy(name2, factory2);
       };
       jasmine2.setDefaultSpyStrategy = function(defaultStrategyFn) {
         return env.setDefaultSpyStrategy(defaultStrategyFn);
@@ -8769,9 +8769,9 @@ function requireJasmine() {
           return self2.getSpy();
         };
       }
-      function createCustomPlan(factory) {
+      function createCustomPlan(factory2) {
         return function() {
-          var plan = factory.apply(null, arguments);
+          var plan = factory2.apply(null, arguments);
           if (!j$2.isFunction_(plan)) {
             throw new Error("Spy strategy must return a function");
           }
@@ -11051,6 +11051,1268 @@ const APP = {
   CAS: "cas",
   VIDEO: "video"
 };
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+var extendStatics = function(d, b) {
+  extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+    d2.__proto__ = b2;
+  } || function(d2, b2) {
+    for (var p in b2)
+      if (Object.prototype.hasOwnProperty.call(b2, p))
+        d2[p] = b2[p];
+  };
+  return extendStatics(d, b);
+};
+function __extends(d, b) {
+  if (typeof b !== "function" && b !== null)
+    throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+  extendStatics(d, b);
+  function __() {
+    this.constructor = d;
+  }
+  d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+function __values(o) {
+  var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i2 = 0;
+  if (m)
+    return m.call(o);
+  if (o && typeof o.length === "number")
+    return {
+      next: function() {
+        if (o && i2 >= o.length)
+          o = void 0;
+        return { value: o && o[i2++], done: !o };
+      }
+    };
+  throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+}
+function __read(o, n) {
+  var m = typeof Symbol === "function" && o[Symbol.iterator];
+  if (!m)
+    return o;
+  var i2 = m.call(o), r, ar = [], e;
+  try {
+    while ((n === void 0 || n-- > 0) && !(r = i2.next()).done)
+      ar.push(r.value);
+  } catch (error) {
+    e = { error };
+  } finally {
+    try {
+      if (r && !r.done && (m = i2["return"]))
+        m.call(i2);
+    } finally {
+      if (e)
+        throw e.error;
+    }
+  }
+  return ar;
+}
+function __spreadArray(to, from) {
+  for (var i2 = 0, il = from.length, j = to.length; i2 < il; i2++, j++)
+    to[j] = from[i2];
+  return to;
+}
+function isFunction$1(value) {
+  return typeof value === "function";
+}
+function createErrorClass(createImpl) {
+  var _super = function(instance) {
+    Error.call(instance);
+    instance.stack = new Error().stack;
+  };
+  var ctorFunc = createImpl(_super);
+  ctorFunc.prototype = Object.create(Error.prototype);
+  ctorFunc.prototype.constructor = ctorFunc;
+  return ctorFunc;
+}
+var UnsubscriptionError = createErrorClass(function(_super) {
+  return function UnsubscriptionErrorImpl(errors) {
+    _super(this);
+    this.message = errors ? errors.length + " errors occurred during unsubscription:\n" + errors.map(function(err, i2) {
+      return i2 + 1 + ") " + err.toString();
+    }).join("\n  ") : "";
+    this.name = "UnsubscriptionError";
+    this.errors = errors;
+  };
+});
+function arrRemove(arr, item) {
+  if (arr) {
+    var index = arr.indexOf(item);
+    0 <= index && arr.splice(index, 1);
+  }
+}
+var Subscription = function() {
+  function Subscription2(initialTeardown) {
+    this.initialTeardown = initialTeardown;
+    this.closed = false;
+    this._parentage = null;
+    this._teardowns = null;
+  }
+  Subscription2.prototype.unsubscribe = function() {
+    var e_1, _a2, e_2, _b;
+    var errors;
+    if (!this.closed) {
+      this.closed = true;
+      var _parentage = this._parentage;
+      if (_parentage) {
+        this._parentage = null;
+        if (Array.isArray(_parentage)) {
+          try {
+            for (var _parentage_1 = __values(_parentage), _parentage_1_1 = _parentage_1.next(); !_parentage_1_1.done; _parentage_1_1 = _parentage_1.next()) {
+              var parent_1 = _parentage_1_1.value;
+              parent_1.remove(this);
+            }
+          } catch (e_1_1) {
+            e_1 = { error: e_1_1 };
+          } finally {
+            try {
+              if (_parentage_1_1 && !_parentage_1_1.done && (_a2 = _parentage_1.return))
+                _a2.call(_parentage_1);
+            } finally {
+              if (e_1)
+                throw e_1.error;
+            }
+          }
+        } else {
+          _parentage.remove(this);
+        }
+      }
+      var initialTeardown = this.initialTeardown;
+      if (isFunction$1(initialTeardown)) {
+        try {
+          initialTeardown();
+        } catch (e) {
+          errors = e instanceof UnsubscriptionError ? e.errors : [e];
+        }
+      }
+      var _teardowns = this._teardowns;
+      if (_teardowns) {
+        this._teardowns = null;
+        try {
+          for (var _teardowns_1 = __values(_teardowns), _teardowns_1_1 = _teardowns_1.next(); !_teardowns_1_1.done; _teardowns_1_1 = _teardowns_1.next()) {
+            var teardown_1 = _teardowns_1_1.value;
+            try {
+              execTeardown(teardown_1);
+            } catch (err) {
+              errors = errors !== null && errors !== void 0 ? errors : [];
+              if (err instanceof UnsubscriptionError) {
+                errors = __spreadArray(__spreadArray([], __read(errors)), __read(err.errors));
+              } else {
+                errors.push(err);
+              }
+            }
+          }
+        } catch (e_2_1) {
+          e_2 = { error: e_2_1 };
+        } finally {
+          try {
+            if (_teardowns_1_1 && !_teardowns_1_1.done && (_b = _teardowns_1.return))
+              _b.call(_teardowns_1);
+          } finally {
+            if (e_2)
+              throw e_2.error;
+          }
+        }
+      }
+      if (errors) {
+        throw new UnsubscriptionError(errors);
+      }
+    }
+  };
+  Subscription2.prototype.add = function(teardown) {
+    var _a2;
+    if (teardown && teardown !== this) {
+      if (this.closed) {
+        execTeardown(teardown);
+      } else {
+        if (teardown instanceof Subscription2) {
+          if (teardown.closed || teardown._hasParent(this)) {
+            return;
+          }
+          teardown._addParent(this);
+        }
+        (this._teardowns = (_a2 = this._teardowns) !== null && _a2 !== void 0 ? _a2 : []).push(teardown);
+      }
+    }
+  };
+  Subscription2.prototype._hasParent = function(parent) {
+    var _parentage = this._parentage;
+    return _parentage === parent || Array.isArray(_parentage) && _parentage.includes(parent);
+  };
+  Subscription2.prototype._addParent = function(parent) {
+    var _parentage = this._parentage;
+    this._parentage = Array.isArray(_parentage) ? (_parentage.push(parent), _parentage) : _parentage ? [_parentage, parent] : parent;
+  };
+  Subscription2.prototype._removeParent = function(parent) {
+    var _parentage = this._parentage;
+    if (_parentage === parent) {
+      this._parentage = null;
+    } else if (Array.isArray(_parentage)) {
+      arrRemove(_parentage, parent);
+    }
+  };
+  Subscription2.prototype.remove = function(teardown) {
+    var _teardowns = this._teardowns;
+    _teardowns && arrRemove(_teardowns, teardown);
+    if (teardown instanceof Subscription2) {
+      teardown._removeParent(this);
+    }
+  };
+  Subscription2.EMPTY = function() {
+    var empty = new Subscription2();
+    empty.closed = true;
+    return empty;
+  }();
+  return Subscription2;
+}();
+var EMPTY_SUBSCRIPTION = Subscription.EMPTY;
+function isSubscription(value) {
+  return value instanceof Subscription || value && "closed" in value && isFunction$1(value.remove) && isFunction$1(value.add) && isFunction$1(value.unsubscribe);
+}
+function execTeardown(teardown) {
+  if (isFunction$1(teardown)) {
+    teardown();
+  } else {
+    teardown.unsubscribe();
+  }
+}
+var config = {
+  onUnhandledError: null,
+  onStoppedNotification: null,
+  Promise: void 0,
+  useDeprecatedSynchronousErrorHandling: false,
+  useDeprecatedNextContext: false
+};
+var timeoutProvider = {
+  setTimeout: function() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+      args[_i] = arguments[_i];
+    }
+    var delegate = timeoutProvider.delegate;
+    return ((delegate === null || delegate === void 0 ? void 0 : delegate.setTimeout) || setTimeout).apply(void 0, __spreadArray([], __read(args)));
+  },
+  clearTimeout: function(handle) {
+    var delegate = timeoutProvider.delegate;
+    return ((delegate === null || delegate === void 0 ? void 0 : delegate.clearTimeout) || clearTimeout)(handle);
+  },
+  delegate: void 0
+};
+function reportUnhandledError(err) {
+  timeoutProvider.setTimeout(function() {
+    {
+      throw err;
+    }
+  });
+}
+function noop() {
+}
+var context = null;
+function errorContext(cb) {
+  if (config.useDeprecatedSynchronousErrorHandling) {
+    var isRoot = !context;
+    if (isRoot) {
+      context = { errorThrown: false, error: null };
+    }
+    cb();
+    if (isRoot) {
+      var _a2 = context, errorThrown = _a2.errorThrown, error = _a2.error;
+      context = null;
+      if (errorThrown) {
+        throw error;
+      }
+    }
+  } else {
+    cb();
+  }
+}
+var Subscriber = function(_super) {
+  __extends(Subscriber2, _super);
+  function Subscriber2(destination) {
+    var _this = _super.call(this) || this;
+    _this.isStopped = false;
+    if (destination) {
+      _this.destination = destination;
+      if (isSubscription(destination)) {
+        destination.add(_this);
+      }
+    } else {
+      _this.destination = EMPTY_OBSERVER;
+    }
+    return _this;
+  }
+  Subscriber2.create = function(next, error, complete) {
+    return new SafeSubscriber(next, error, complete);
+  };
+  Subscriber2.prototype.next = function(value) {
+    if (this.isStopped)
+      ;
+    else {
+      this._next(value);
+    }
+  };
+  Subscriber2.prototype.error = function(err) {
+    if (this.isStopped)
+      ;
+    else {
+      this.isStopped = true;
+      this._error(err);
+    }
+  };
+  Subscriber2.prototype.complete = function() {
+    if (this.isStopped)
+      ;
+    else {
+      this.isStopped = true;
+      this._complete();
+    }
+  };
+  Subscriber2.prototype.unsubscribe = function() {
+    if (!this.closed) {
+      this.isStopped = true;
+      _super.prototype.unsubscribe.call(this);
+      this.destination = null;
+    }
+  };
+  Subscriber2.prototype._next = function(value) {
+    this.destination.next(value);
+  };
+  Subscriber2.prototype._error = function(err) {
+    try {
+      this.destination.error(err);
+    } finally {
+      this.unsubscribe();
+    }
+  };
+  Subscriber2.prototype._complete = function() {
+    try {
+      this.destination.complete();
+    } finally {
+      this.unsubscribe();
+    }
+  };
+  return Subscriber2;
+}(Subscription);
+var SafeSubscriber = function(_super) {
+  __extends(SafeSubscriber2, _super);
+  function SafeSubscriber2(observerOrNext, error, complete) {
+    var _this = _super.call(this) || this;
+    var next;
+    if (isFunction$1(observerOrNext)) {
+      next = observerOrNext;
+    } else if (observerOrNext) {
+      next = observerOrNext.next, error = observerOrNext.error, complete = observerOrNext.complete;
+      var context_1;
+      if (_this && config.useDeprecatedNextContext) {
+        context_1 = Object.create(observerOrNext);
+        context_1.unsubscribe = function() {
+          return _this.unsubscribe();
+        };
+      } else {
+        context_1 = observerOrNext;
+      }
+      next = next === null || next === void 0 ? void 0 : next.bind(context_1);
+      error = error === null || error === void 0 ? void 0 : error.bind(context_1);
+      complete = complete === null || complete === void 0 ? void 0 : complete.bind(context_1);
+    }
+    _this.destination = {
+      next: next ? wrapForErrorHandling(next) : noop,
+      error: wrapForErrorHandling(error !== null && error !== void 0 ? error : defaultErrorHandler),
+      complete: complete ? wrapForErrorHandling(complete) : noop
+    };
+    return _this;
+  }
+  return SafeSubscriber2;
+}(Subscriber);
+function wrapForErrorHandling(handler, instance) {
+  return function() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+      args[_i] = arguments[_i];
+    }
+    try {
+      handler.apply(void 0, __spreadArray([], __read(args)));
+    } catch (err) {
+      {
+        reportUnhandledError(err);
+      }
+    }
+  };
+}
+function defaultErrorHandler(err) {
+  throw err;
+}
+var EMPTY_OBSERVER = {
+  closed: true,
+  next: noop,
+  error: defaultErrorHandler,
+  complete: noop
+};
+var observable = function() {
+  return typeof Symbol === "function" && Symbol.observable || "@@observable";
+}();
+function identity(x) {
+  return x;
+}
+function pipeFromArray(fns) {
+  if (fns.length === 0) {
+    return identity;
+  }
+  if (fns.length === 1) {
+    return fns[0];
+  }
+  return function piped(input) {
+    return fns.reduce(function(prev, fn) {
+      return fn(prev);
+    }, input);
+  };
+}
+var Observable = function() {
+  function Observable2(subscribe) {
+    if (subscribe) {
+      this._subscribe = subscribe;
+    }
+  }
+  Observable2.prototype.lift = function(operator) {
+    var observable2 = new Observable2();
+    observable2.source = this;
+    observable2.operator = operator;
+    return observable2;
+  };
+  Observable2.prototype.subscribe = function(observerOrNext, error, complete) {
+    var _this = this;
+    var subscriber = isSubscriber(observerOrNext) ? observerOrNext : new SafeSubscriber(observerOrNext, error, complete);
+    errorContext(function() {
+      var _a2 = _this, operator = _a2.operator, source = _a2.source;
+      subscriber.add(operator ? operator.call(subscriber, source) : source ? _this._subscribe(subscriber) : _this._trySubscribe(subscriber));
+    });
+    return subscriber;
+  };
+  Observable2.prototype._trySubscribe = function(sink) {
+    try {
+      return this._subscribe(sink);
+    } catch (err) {
+      sink.error(err);
+    }
+  };
+  Observable2.prototype.forEach = function(next, promiseCtor) {
+    var _this = this;
+    promiseCtor = getPromiseCtor(promiseCtor);
+    return new promiseCtor(function(resolve, reject) {
+      var subscription;
+      subscription = _this.subscribe(function(value) {
+        try {
+          next(value);
+        } catch (err) {
+          reject(err);
+          subscription === null || subscription === void 0 ? void 0 : subscription.unsubscribe();
+        }
+      }, reject, resolve);
+    });
+  };
+  Observable2.prototype._subscribe = function(subscriber) {
+    var _a2;
+    return (_a2 = this.source) === null || _a2 === void 0 ? void 0 : _a2.subscribe(subscriber);
+  };
+  Observable2.prototype[observable] = function() {
+    return this;
+  };
+  Observable2.prototype.pipe = function() {
+    var operations = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+      operations[_i] = arguments[_i];
+    }
+    return pipeFromArray(operations)(this);
+  };
+  Observable2.prototype.toPromise = function(promiseCtor) {
+    var _this = this;
+    promiseCtor = getPromiseCtor(promiseCtor);
+    return new promiseCtor(function(resolve, reject) {
+      var value;
+      _this.subscribe(function(x) {
+        return value = x;
+      }, function(err) {
+        return reject(err);
+      }, function() {
+        return resolve(value);
+      });
+    });
+  };
+  Observable2.create = function(subscribe) {
+    return new Observable2(subscribe);
+  };
+  return Observable2;
+}();
+function getPromiseCtor(promiseCtor) {
+  var _a2;
+  return (_a2 = promiseCtor !== null && promiseCtor !== void 0 ? promiseCtor : config.Promise) !== null && _a2 !== void 0 ? _a2 : Promise;
+}
+function isObserver(value) {
+  return value && isFunction$1(value.next) && isFunction$1(value.error) && isFunction$1(value.complete);
+}
+function isSubscriber(value) {
+  return value && value instanceof Subscriber || isObserver(value) && isSubscription(value);
+}
+function hasLift(source) {
+  return isFunction$1(source === null || source === void 0 ? void 0 : source.lift);
+}
+function operate(init) {
+  return function(source) {
+    if (hasLift(source)) {
+      return source.lift(function(liftedSource) {
+        try {
+          return init(liftedSource, this);
+        } catch (err) {
+          this.error(err);
+        }
+      });
+    }
+    throw new TypeError("Unable to lift unknown Observable type");
+  };
+}
+var OperatorSubscriber = function(_super) {
+  __extends(OperatorSubscriber2, _super);
+  function OperatorSubscriber2(destination, onNext, onComplete, onError, onFinalize) {
+    var _this = _super.call(this, destination) || this;
+    _this.onFinalize = onFinalize;
+    _this._next = onNext ? function(value) {
+      try {
+        onNext(value);
+      } catch (err) {
+        destination.error(err);
+      }
+    } : _super.prototype._next;
+    _this._error = onError ? function(err) {
+      try {
+        onError(err);
+      } catch (err2) {
+        destination.error(err2);
+      } finally {
+        this.unsubscribe();
+      }
+    } : _super.prototype._error;
+    _this._complete = onComplete ? function() {
+      try {
+        onComplete();
+      } catch (err) {
+        destination.error(err);
+      } finally {
+        this.unsubscribe();
+      }
+    } : _super.prototype._complete;
+    return _this;
+  }
+  OperatorSubscriber2.prototype.unsubscribe = function() {
+    var _a2;
+    var closed = this.closed;
+    _super.prototype.unsubscribe.call(this);
+    !closed && ((_a2 = this.onFinalize) === null || _a2 === void 0 ? void 0 : _a2.call(this));
+  };
+  return OperatorSubscriber2;
+}(Subscriber);
+var ObjectUnsubscribedError = createErrorClass(function(_super) {
+  return function ObjectUnsubscribedErrorImpl() {
+    _super(this);
+    this.name = "ObjectUnsubscribedError";
+    this.message = "object unsubscribed";
+  };
+});
+var Subject = function(_super) {
+  __extends(Subject2, _super);
+  function Subject2() {
+    var _this = _super.call(this) || this;
+    _this.closed = false;
+    _this.observers = [];
+    _this.isStopped = false;
+    _this.hasError = false;
+    _this.thrownError = null;
+    return _this;
+  }
+  Subject2.prototype.lift = function(operator) {
+    var subject = new AnonymousSubject(this, this);
+    subject.operator = operator;
+    return subject;
+  };
+  Subject2.prototype._throwIfClosed = function() {
+    if (this.closed) {
+      throw new ObjectUnsubscribedError();
+    }
+  };
+  Subject2.prototype.next = function(value) {
+    var _this = this;
+    errorContext(function() {
+      var e_1, _a2;
+      _this._throwIfClosed();
+      if (!_this.isStopped) {
+        var copy = _this.observers.slice();
+        try {
+          for (var copy_1 = __values(copy), copy_1_1 = copy_1.next(); !copy_1_1.done; copy_1_1 = copy_1.next()) {
+            var observer = copy_1_1.value;
+            observer.next(value);
+          }
+        } catch (e_1_1) {
+          e_1 = { error: e_1_1 };
+        } finally {
+          try {
+            if (copy_1_1 && !copy_1_1.done && (_a2 = copy_1.return))
+              _a2.call(copy_1);
+          } finally {
+            if (e_1)
+              throw e_1.error;
+          }
+        }
+      }
+    });
+  };
+  Subject2.prototype.error = function(err) {
+    var _this = this;
+    errorContext(function() {
+      _this._throwIfClosed();
+      if (!_this.isStopped) {
+        _this.hasError = _this.isStopped = true;
+        _this.thrownError = err;
+        var observers = _this.observers;
+        while (observers.length) {
+          observers.shift().error(err);
+        }
+      }
+    });
+  };
+  Subject2.prototype.complete = function() {
+    var _this = this;
+    errorContext(function() {
+      _this._throwIfClosed();
+      if (!_this.isStopped) {
+        _this.isStopped = true;
+        var observers = _this.observers;
+        while (observers.length) {
+          observers.shift().complete();
+        }
+      }
+    });
+  };
+  Subject2.prototype.unsubscribe = function() {
+    this.isStopped = this.closed = true;
+    this.observers = null;
+  };
+  Object.defineProperty(Subject2.prototype, "observed", {
+    get: function() {
+      var _a2;
+      return ((_a2 = this.observers) === null || _a2 === void 0 ? void 0 : _a2.length) > 0;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Subject2.prototype._trySubscribe = function(subscriber) {
+    this._throwIfClosed();
+    return _super.prototype._trySubscribe.call(this, subscriber);
+  };
+  Subject2.prototype._subscribe = function(subscriber) {
+    this._throwIfClosed();
+    this._checkFinalizedStatuses(subscriber);
+    return this._innerSubscribe(subscriber);
+  };
+  Subject2.prototype._innerSubscribe = function(subscriber) {
+    var _a2 = this, hasError = _a2.hasError, isStopped = _a2.isStopped, observers = _a2.observers;
+    return hasError || isStopped ? EMPTY_SUBSCRIPTION : (observers.push(subscriber), new Subscription(function() {
+      return arrRemove(observers, subscriber);
+    }));
+  };
+  Subject2.prototype._checkFinalizedStatuses = function(subscriber) {
+    var _a2 = this, hasError = _a2.hasError, thrownError = _a2.thrownError, isStopped = _a2.isStopped;
+    if (hasError) {
+      subscriber.error(thrownError);
+    } else if (isStopped) {
+      subscriber.complete();
+    }
+  };
+  Subject2.prototype.asObservable = function() {
+    var observable2 = new Observable();
+    observable2.source = this;
+    return observable2;
+  };
+  Subject2.create = function(destination, source) {
+    return new AnonymousSubject(destination, source);
+  };
+  return Subject2;
+}(Observable);
+var AnonymousSubject = function(_super) {
+  __extends(AnonymousSubject2, _super);
+  function AnonymousSubject2(destination, source) {
+    var _this = _super.call(this) || this;
+    _this.destination = destination;
+    _this.source = source;
+    return _this;
+  }
+  AnonymousSubject2.prototype.next = function(value) {
+    var _a2, _b;
+    (_b = (_a2 = this.destination) === null || _a2 === void 0 ? void 0 : _a2.next) === null || _b === void 0 ? void 0 : _b.call(_a2, value);
+  };
+  AnonymousSubject2.prototype.error = function(err) {
+    var _a2, _b;
+    (_b = (_a2 = this.destination) === null || _a2 === void 0 ? void 0 : _a2.error) === null || _b === void 0 ? void 0 : _b.call(_a2, err);
+  };
+  AnonymousSubject2.prototype.complete = function() {
+    var _a2, _b;
+    (_b = (_a2 = this.destination) === null || _a2 === void 0 ? void 0 : _a2.complete) === null || _b === void 0 ? void 0 : _b.call(_a2);
+  };
+  AnonymousSubject2.prototype._subscribe = function(subscriber) {
+    var _a2, _b;
+    return (_b = (_a2 = this.source) === null || _a2 === void 0 ? void 0 : _a2.subscribe(subscriber)) !== null && _b !== void 0 ? _b : EMPTY_SUBSCRIPTION;
+  };
+  return AnonymousSubject2;
+}(Subject);
+function filter(predicate, thisArg) {
+  return operate(function(source, subscriber) {
+    var index = 0;
+    source.subscribe(new OperatorSubscriber(subscriber, function(value) {
+      return predicate.call(thisArg, value, index++) && subscriber.next(value);
+    }));
+  });
+}
+class Bus {
+  constructor() {
+    __publicField(this, "agents", {});
+    __publicField(this, "comm", new Subject());
+  }
+  setAgentFor(res, action, agent) {
+    let agentByAction = this.getActionMapping(res);
+    agentByAction[action] = agent;
+  }
+  getAgentFor(res, action) {
+    return this.getActionMapping(res)[action];
+  }
+  publish(res, action, parameters) {
+    return Promise.resolve().then(() => {
+      var _a2;
+      return (_a2 = this.getAgentFor(res, action)) != null ? _a2 : explorer.requestAgentFor(res, action);
+    }).then((agent) => {
+      const result = agent.activate(res, action, parameters);
+      this.comm.next({
+        res,
+        action,
+        input: parameters,
+        output: result
+      });
+      return result;
+    });
+  }
+  subscribe(res, action) {
+    return this.comm.asObservable().pipe(filter((msg) => msg.res === res && msg.action === action));
+  }
+  getActionMapping(res) {
+    let agentByAction = this.agents[res];
+    if (typeof agentByAction === "undefined") {
+      agentByAction = {};
+      for (let a of Object.values(ACTION)) {
+        agentByAction[a] = null;
+      }
+      this.agents[res] = agentByAction;
+    }
+    return agentByAction;
+  }
+}
+class BusFactory {
+  static get instance() {
+    return this._instance = this._instance || new Bus();
+  }
+}
+__publicField(BusFactory, "_instance");
+const _AbstractBusAgent = class {
+  constructor(managedResource) {
+    __publicField(this, "managedResource");
+    __publicField(this, "handlerFor", {
+      comment: _AbstractBusAgent.defaultHandler,
+      copy: _AbstractBusAgent.defaultHandler,
+      create: _AbstractBusAgent.defaultHandler,
+      delete: _AbstractBusAgent.defaultHandler,
+      export: _AbstractBusAgent.defaultHandler,
+      initialize: _AbstractBusAgent.defaultHandler,
+      manage: _AbstractBusAgent.defaultHandler,
+      properties: _AbstractBusAgent.defaultHandler,
+      move: _AbstractBusAgent.defaultHandler,
+      open: _AbstractBusAgent.defaultHandler,
+      print: _AbstractBusAgent.defaultHandler,
+      publish: _AbstractBusAgent.defaultHandler,
+      search: _AbstractBusAgent.defaultHandler,
+      share: _AbstractBusAgent.defaultHandler
+    });
+    this.managedResource = managedResource;
+    this.initialize();
+  }
+  initialize() {
+    for (let action in Object.values(ACTION)) {
+      this.handlerFor[action] = _AbstractBusAgent.defaultHandler;
+    }
+    this.registerHandlers();
+  }
+  setHandler(action, handler) {
+    BusFactory.instance.setAgentFor(this.managedResource, action, this);
+    this.handlerFor[action] = handler;
+  }
+  getHandler(action) {
+    return this.handlerFor[action];
+  }
+  activate(res, action, parameters) {
+    return Promise.resolve().then(() => this.getHandler(action).bind(this)(parameters));
+  }
+};
+let AbstractBusAgent = _AbstractBusAgent;
+__publicField(AbstractBusAgent, "defaultHandler", function(parameters) {
+  throw new Error(ERROR_CODE.NOT_SUPPORTED);
+});
+console.log("Blog agent loading....");
+class BlogAgent extends AbstractBusAgent {
+  constructor() {
+    super(RESOURCE.BLOG);
+    __publicField(this, "ctx", null);
+    __publicField(this, "http", TransportFrameworkFactory.instance().newHttpInstance());
+    __publicField(this, "checkHttpResponse", (result) => {
+      if (this.http.latestResponse.status >= 300) {
+        throw this.http.latestResponse.statusText;
+      }
+      return result;
+    });
+    this.registerHandlers();
+    console.log("Blog agent initialized!");
+  }
+  registerHandlers() {
+    this.setHandler(ACTION.OPEN, this.openBlog);
+    this.setHandler(ACTION.CREATE, this.createBlog);
+    this.setHandler(ACTION.MANAGE, this.onManage);
+    this.setHandler(ACTION.UPD_PROPS, this.onUpdateProps);
+  }
+  openBlog(parameters) {
+    console.log("parameters", parameters);
+    window.open(`/blog#/view/${parameters.resourceId}`, "_self");
+  }
+  createBlog(parameters) {
+    window.open(`/blog#/edit/new`, "_self");
+  }
+  onManage(parameters) {
+    const res = {
+      genericProps: [{
+        key: PROP_KEY.TITLE
+      }, {
+        key: PROP_KEY.IMAGE
+      }, {
+        key: PROP_KEY.URL
+      }]
+    };
+    return Promise.resolve().then(() => res);
+  }
+  onUpdateProps(parameters) {
+    const res = {
+      resources: parameters.resources
+    };
+    alert("TODO: update properties");
+    return Promise.resolve().then(() => res);
+  }
+}
+const factory$1 = () => new BlogAgent();
+console.log("explorer agent loading....");
+class FolderAgent extends AbstractBusAgent {
+  constructor() {
+    super(RESOURCE.FOLDER);
+    __publicField(this, "ctx", null);
+    __publicField(this, "http", TransportFrameworkFactory.instance().newHttpInstance({
+      paramsSerializer: function(params2) {
+        return Object.entries(params2).map((p) => {
+          if (p[1] instanceof Array) {
+            return p[1].map((value) => `${p[0]}=${encodeURIComponent(value)}`).join("&");
+          } else if (["string", "number", "boolean"].indexOf(typeof p[1]) >= 0) {
+            return `${p[0]}=${encodeURIComponent(p[1])}`;
+          }
+          return "";
+        }).join("&");
+      }
+    }));
+    __publicField(this, "checkHttpResponse", (result) => {
+      if (this.http.latestResponse.status >= 300) {
+        throw this.http.latestResponse.statusText;
+      }
+      return result;
+    });
+    this.registerHandlers();
+    console.log("explorer agent initialized....");
+  }
+  registerHandlers() {
+    this.setHandler(ACTION.INITIALIZE, this.createContext);
+    this.setHandler(ACTION.SEARCH, this.searchContext);
+    this.setHandler(ACTION.CREATE, this.createFolder);
+    this.setHandler(ACTION.OPEN, this.listSubfolders);
+    this.setHandler(ACTION.MOVE, this.moveToFolder);
+    this.setHandler(ACTION.DELETE, this.deleteFolders);
+    this.setHandler(ACTION.MANAGE, this.onManage);
+  }
+  createContext(parameters) {
+    return this.http.get("/explorer/context", {
+      queryParams: this.toQueryParams(parameters)
+    }).then(this.checkHttpResponse);
+  }
+  searchContext(parameters) {
+    return this.http.get("/explorer/resources", {
+      queryParams: this.toQueryParams(parameters)
+    }).then(this.checkHttpResponse);
+  }
+  createFolder(parameters) {
+    return this.http.post("/explorer/folders", this.createFolderToBodyParams(parameters)).then(this.checkHttpResponse);
+  }
+  moveToFolder(parameters) {
+    return this.http.post(`/explorer/folders/${parameters.folderId}/move`, this.moveToBodyParams(parameters)).then(this.checkHttpResponse);
+  }
+  listSubfolders(folderId) {
+    return this.http.get(`/explorer/folders/${folderId}/move`).then(this.checkHttpResponse);
+  }
+  deleteFolders(parameters) {
+    return this.http.deleteJson(`/explorer/folders`, parameters).then(this.checkHttpResponse);
+  }
+  onManage(parameters) {
+    const res = {
+      genericProps: [{
+        key: PROP_KEY.TITLE
+      }, {
+        key: PROP_KEY.IMAGE
+      }, {
+        key: PROP_KEY.URL
+      }]
+    };
+    return Promise.resolve().then(() => res);
+  }
+  toQueryParams(p) {
+    let ret = {
+      application: p.app,
+      start_idx: p.pagination.startIdx,
+      page_size: p.pagination.pageSize,
+      resource_type: p.types
+    };
+    if (p.orders) {
+      ret.order_by = Object.entries(p.orders).map((entry) => `${entry[0]}:${entry[1]}`);
+    }
+    if (p.filters) {
+      Object.assign(ret, p.filters);
+    }
+    if (typeof p.search === "string") {
+      ret.search = p.search;
+    }
+    return ret;
+  }
+  createFolderToBodyParams(p) {
+    return {
+      application: p.app,
+      resourceType: p.type,
+      parentId: p.parentId,
+      name: p.name
+    };
+  }
+  moveToBodyParams(p) {
+    return {
+      resourceIds: p.resourceIds,
+      folderIds: p.folderIds
+    };
+  }
+}
+const factory = () => new FolderAgent();
+class AgentLoader {
+  load(res) {
+    let appName = appNameForResource[res];
+    if (typeof appName !== "string") {
+      throw new Error(`The resource type ${res} is not supported yet.`);
+    }
+    switch (appName) {
+      case APP.EXPLORER:
+        factory();
+        break;
+      case APP.BLOG:
+        factory$1();
+        break;
+      default:
+        throw new Error(`The resource type ${res} is not supported yet.`);
+    }
+    return Promise.resolve();
+  }
+}
+class ExplorerContext {
+  constructor(types, app) {
+    __publicField(this, "searchParameters");
+    __publicField(this, "context");
+    __publicField(this, "bus");
+    __publicField(this, "latestResults", new Subject());
+    this.context = null;
+    this.bus = ExplorerFrameworkFactory.instance().getBus();
+    this.searchParameters = {
+      types,
+      app,
+      filters: {},
+      pagination: {
+        startIdx: 0,
+        pageSize: 20
+      }
+    };
+  }
+  clear() {
+    this.searchParameters.filters = {
+      owner: true,
+      shared: true,
+      public: true
+    };
+    this.searchParameters.pagination.startIdx = 0;
+    this.searchParameters.pagination.pageSize = 20;
+    this.context = null;
+  }
+  isInitialized() {
+    return this.context !== null;
+  }
+  getContext() {
+    if (this.context !== null) {
+      return this.context;
+    }
+  }
+  getSearchParameters() {
+    return this.searchParameters;
+  }
+  duplicateSearchParameters() {
+    return JSON.parse(JSON.stringify(this.searchParameters));
+  }
+  latestResources() {
+    return this.latestResults.asObservable();
+  }
+  initialize() {
+    const parameters = this.duplicateSearchParameters();
+    return Promise.resolve().then(() => this.bus.publish(RESOURCE.FOLDER, ACTION.INITIALIZE, parameters)).then((ar) => {
+      this.context = ar;
+      if (!this.context) {
+        throw new Error(ERROR_CODE.UNKNOWN);
+      }
+      this.latestResults.next({ input: parameters, output: this.context });
+      return this.context;
+    });
+  }
+  getResources() {
+    const parameters = this.duplicateSearchParameters();
+    return this.bus.publish(RESOURCE.FOLDER, ACTION.SEARCH, parameters).then((ar) => {
+      let result = ar;
+      if (!result)
+        throw new Error(ERROR_CODE.UNKNOWN);
+      this.latestResults.next({ input: parameters, output: result });
+      return result;
+    });
+  }
+  getSubFolders(parentId) {
+    throw new Error("Method not implemented.");
+  }
+  createFolder(resourceType, parentId, name2) {
+    const parameters = {
+      app: this.searchParameters.app,
+      name: name2,
+      parentId,
+      type: resourceType
+    };
+    return this.bus.publish(RESOURCE.FOLDER, ACTION.CREATE, parameters).then((ar) => {
+      let result = ar;
+      if (!result)
+        throw new Error(ERROR_CODE.UNKNOWN);
+      return result;
+    });
+  }
+  updateFolder(folderId, resourceType, parentId, name2) {
+    const parameters = {
+      folderId,
+      app: this.searchParameters.app,
+      name: name2,
+      parentId,
+      type: resourceType
+    };
+    return this.bus.publish(RESOURCE.FOLDER, ACTION.UPD_PROPS, parameters).then((ar) => {
+      let result = ar;
+      if (!result)
+        throw new Error(ERROR_CODE.UNKNOWN);
+      return result;
+    });
+  }
+  copy(targetId, resourceIds, folderIds) {
+    const parameters = {
+      folderId: targetId,
+      resourceIds,
+      folderIds
+    };
+    return this.bus.publish(RESOURCE.FOLDER, ACTION.COPY, parameters).then((ar) => {
+    });
+  }
+  move(targetId, resourceIds, folderIds) {
+    const parameters = {
+      folderId: targetId,
+      resourceIds,
+      folderIds
+    };
+    return this.bus.publish(RESOURCE.FOLDER, ACTION.MOVE, parameters).then((ar) => {
+    });
+  }
+  delete(resourceIds, folderIds) {
+    const parameters = {
+      resourceIds,
+      folderIds
+    };
+    return this.bus.publish(RESOURCE.FOLDER, ACTION.DELETE, parameters).then((ar) => {
+    });
+  }
+  manageProperties(resourceType, resources2) {
+    const params2 = { resources: resources2 };
+    return this.bus.publish(resourceType, ACTION.MANAGE, params2).then((ar) => {
+      let result = ar;
+      if (!result)
+        throw new Error(ERROR_CODE.UNKNOWN);
+      return result;
+    });
+  }
+  updateProperties(resourceType, resources2, props) {
+    const params2 = { resources: resources2, props };
+    return this.bus.publish(resourceType, ACTION.UPD_PROPS, params2).then((ar) => {
+      let result = ar;
+      if (!result)
+        throw new Error(ERROR_CODE.UNKNOWN);
+      return result;
+    });
+  }
+}
+class ExplorerFramework {
+  constructor() {
+    __publicField(this, "_agentLoader");
+  }
+  get agentLoader() {
+    if (!this._agentLoader) {
+      this._agentLoader = new AgentLoader();
+    }
+    return this._agentLoader;
+  }
+  setAgentLoader(loader2) {
+    if (loader2) {
+      this._agentLoader = loader2;
+    }
+  }
+  requestAgentFor(resource, action) {
+    return this.agentLoader.load(resource).then(() => {
+      let agent = this.getBus().getAgentFor(resource, action);
+      if (!agent) {
+        throw new Error(ERROR_CODE.AGENT_NOT_FOUND);
+      }
+      return agent;
+    });
+  }
+  createContext(types, app) {
+    return new ExplorerContext(types, app);
+  }
+  getBus() {
+    return BusFactory.instance;
+  }
+}
+const explorer = new ExplorerFramework();
+class ExplorerFrameworkFactory {
+  static instance() {
+    return explorer;
+  }
+}
+const RESOURCE = {
+  FOLDER: "folder",
+  BLOG: "blog",
+  EXERCISE: "exercise"
+};
+const appNameForResource = {
+  "folder": APP.EXPLORER,
+  "blog": APP.BLOG,
+  "exercise": APP.EXERCIZER
+};
+const ACTION = {
+  INITIALIZE: "initialize",
+  SEARCH: "search",
+  CREATE: "create",
+  OPEN: "open",
+  MANAGE: "manage",
+  UPD_PROPS: "properties",
+  COMMENT: "comment",
+  DELETE: "delete",
+  MOVE: "move",
+  COPY: "copy",
+  EXPORT: "export",
+  SHARE: "share",
+  PUBLISH: "publish",
+  PRINT: "print"
+};
+const PROP_KEY = {
+  TITLE: "title",
+  IMAGE: "image",
+  COLOR: "color",
+  DESCRIPTION: "description",
+  URL: "url"
+};
+const ASYNC_DATA_NAME = {
+  SESSION_READY: "sessionReady",
+  LANG_READY: "langReady",
+  SKIN_READY: "skinReady",
+  OVERRIDE_READY: "overrideReady"
+};
+class Promisified {
+  constructor() {
+    __publicField(this, "_resolution");
+    __publicField(this, "_rejection");
+    __publicField(this, "_promise", new Promise((_resolve, _reject) => {
+      this._resolution = _resolve;
+      this._rejection = _reject;
+    }));
+  }
+  get promise() {
+    return this._promise;
+  }
+  resolve(value) {
+    this._resolution && this._resolution(value);
+  }
+  reject(reason) {
+    this._rejection && this._rejection(reason);
+  }
+}
+class NotifyFramework {
+  constructor() {
+    __publicField(this, "promises", {});
+    __publicField(this, "subject", new Subject());
+  }
+  asyncData(asyncDataName) {
+    if (typeof this.promises[asyncDataName] === "undefined") {
+      this.promises[asyncDataName] = new Promisified();
+    }
+    return this.promises[asyncDataName];
+  }
+  onSessionReady() {
+    return this.asyncData(ASYNC_DATA_NAME.SESSION_READY);
+  }
+  onLangReady() {
+    return this.asyncData(ASYNC_DATA_NAME.LANG_READY);
+  }
+  onSkinReady() {
+    return this.asyncData(ASYNC_DATA_NAME.SKIN_READY);
+  }
+  onOverridesReady() {
+    return this.asyncData(ASYNC_DATA_NAME.OVERRIDE_READY);
+  }
+  promisify() {
+    return new Promisified();
+  }
+  events() {
+    return this.subject;
+  }
+}
+const notify = new NotifyFramework();
 var axios$3 = { exports: {} };
 var axios$2 = { exports: {} };
 var bind$2 = function bind2(fn, thisArg) {
@@ -11113,11 +12375,11 @@ function isFile(val) {
 function isBlob(val) {
   return toString.call(val) === "[object Blob]";
 }
-function isFunction$1(val) {
+function isFunction(val) {
   return toString.call(val) === "[object Function]";
 }
 function isStream(val) {
-  return isObject(val) && isFunction$1(val.pipe);
+  return isObject(val) && isFunction(val.pipe);
 }
 function isURLSearchParams(val) {
   return typeof URLSearchParams !== "undefined" && val instanceof URLSearchParams;
@@ -11198,7 +12460,7 @@ var utils$9 = {
   isDate,
   isFile,
   isBlob,
-  isFunction: isFunction$1,
+  isFunction,
   isStream,
   isURLSearchParams,
   isStandardBrowserEnv,
@@ -12438,1102 +13700,6 @@ class Http {
     });
   }
 }
-class AgentLoader {
-  constructor() {
-    __publicField(this, "http", new Http());
-  }
-  load(res) {
-    let appName = appNameForResource[res];
-    if (typeof appName !== "string") {
-      throw new Error(`The resource type ${res} is not supported yet.`);
-    }
-    return this.http.loadScript(`${appName}/public/js/explorer.agent.js`);
-  }
-}
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-var extendStatics = function(d, b) {
-  extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
-    d2.__proto__ = b2;
-  } || function(d2, b2) {
-    for (var p in b2)
-      if (Object.prototype.hasOwnProperty.call(b2, p))
-        d2[p] = b2[p];
-  };
-  return extendStatics(d, b);
-};
-function __extends(d, b) {
-  if (typeof b !== "function" && b !== null)
-    throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-  extendStatics(d, b);
-  function __() {
-    this.constructor = d;
-  }
-  d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-}
-function __values(o) {
-  var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i2 = 0;
-  if (m)
-    return m.call(o);
-  if (o && typeof o.length === "number")
-    return {
-      next: function() {
-        if (o && i2 >= o.length)
-          o = void 0;
-        return { value: o && o[i2++], done: !o };
-      }
-    };
-  throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
-}
-function __read(o, n) {
-  var m = typeof Symbol === "function" && o[Symbol.iterator];
-  if (!m)
-    return o;
-  var i2 = m.call(o), r, ar = [], e;
-  try {
-    while ((n === void 0 || n-- > 0) && !(r = i2.next()).done)
-      ar.push(r.value);
-  } catch (error) {
-    e = { error };
-  } finally {
-    try {
-      if (r && !r.done && (m = i2["return"]))
-        m.call(i2);
-    } finally {
-      if (e)
-        throw e.error;
-    }
-  }
-  return ar;
-}
-function __spreadArray(to, from) {
-  for (var i2 = 0, il = from.length, j = to.length; i2 < il; i2++, j++)
-    to[j] = from[i2];
-  return to;
-}
-function isFunction(value) {
-  return typeof value === "function";
-}
-function createErrorClass(createImpl) {
-  var _super = function(instance) {
-    Error.call(instance);
-    instance.stack = new Error().stack;
-  };
-  var ctorFunc = createImpl(_super);
-  ctorFunc.prototype = Object.create(Error.prototype);
-  ctorFunc.prototype.constructor = ctorFunc;
-  return ctorFunc;
-}
-var UnsubscriptionError = createErrorClass(function(_super) {
-  return function UnsubscriptionErrorImpl(errors) {
-    _super(this);
-    this.message = errors ? errors.length + " errors occurred during unsubscription:\n" + errors.map(function(err, i2) {
-      return i2 + 1 + ") " + err.toString();
-    }).join("\n  ") : "";
-    this.name = "UnsubscriptionError";
-    this.errors = errors;
-  };
-});
-function arrRemove(arr, item) {
-  if (arr) {
-    var index = arr.indexOf(item);
-    0 <= index && arr.splice(index, 1);
-  }
-}
-var Subscription = function() {
-  function Subscription2(initialTeardown) {
-    this.initialTeardown = initialTeardown;
-    this.closed = false;
-    this._parentage = null;
-    this._teardowns = null;
-  }
-  Subscription2.prototype.unsubscribe = function() {
-    var e_1, _a2, e_2, _b;
-    var errors;
-    if (!this.closed) {
-      this.closed = true;
-      var _parentage = this._parentage;
-      if (_parentage) {
-        this._parentage = null;
-        if (Array.isArray(_parentage)) {
-          try {
-            for (var _parentage_1 = __values(_parentage), _parentage_1_1 = _parentage_1.next(); !_parentage_1_1.done; _parentage_1_1 = _parentage_1.next()) {
-              var parent_1 = _parentage_1_1.value;
-              parent_1.remove(this);
-            }
-          } catch (e_1_1) {
-            e_1 = { error: e_1_1 };
-          } finally {
-            try {
-              if (_parentage_1_1 && !_parentage_1_1.done && (_a2 = _parentage_1.return))
-                _a2.call(_parentage_1);
-            } finally {
-              if (e_1)
-                throw e_1.error;
-            }
-          }
-        } else {
-          _parentage.remove(this);
-        }
-      }
-      var initialTeardown = this.initialTeardown;
-      if (isFunction(initialTeardown)) {
-        try {
-          initialTeardown();
-        } catch (e) {
-          errors = e instanceof UnsubscriptionError ? e.errors : [e];
-        }
-      }
-      var _teardowns = this._teardowns;
-      if (_teardowns) {
-        this._teardowns = null;
-        try {
-          for (var _teardowns_1 = __values(_teardowns), _teardowns_1_1 = _teardowns_1.next(); !_teardowns_1_1.done; _teardowns_1_1 = _teardowns_1.next()) {
-            var teardown_1 = _teardowns_1_1.value;
-            try {
-              execTeardown(teardown_1);
-            } catch (err) {
-              errors = errors !== null && errors !== void 0 ? errors : [];
-              if (err instanceof UnsubscriptionError) {
-                errors = __spreadArray(__spreadArray([], __read(errors)), __read(err.errors));
-              } else {
-                errors.push(err);
-              }
-            }
-          }
-        } catch (e_2_1) {
-          e_2 = { error: e_2_1 };
-        } finally {
-          try {
-            if (_teardowns_1_1 && !_teardowns_1_1.done && (_b = _teardowns_1.return))
-              _b.call(_teardowns_1);
-          } finally {
-            if (e_2)
-              throw e_2.error;
-          }
-        }
-      }
-      if (errors) {
-        throw new UnsubscriptionError(errors);
-      }
-    }
-  };
-  Subscription2.prototype.add = function(teardown) {
-    var _a2;
-    if (teardown && teardown !== this) {
-      if (this.closed) {
-        execTeardown(teardown);
-      } else {
-        if (teardown instanceof Subscription2) {
-          if (teardown.closed || teardown._hasParent(this)) {
-            return;
-          }
-          teardown._addParent(this);
-        }
-        (this._teardowns = (_a2 = this._teardowns) !== null && _a2 !== void 0 ? _a2 : []).push(teardown);
-      }
-    }
-  };
-  Subscription2.prototype._hasParent = function(parent) {
-    var _parentage = this._parentage;
-    return _parentage === parent || Array.isArray(_parentage) && _parentage.includes(parent);
-  };
-  Subscription2.prototype._addParent = function(parent) {
-    var _parentage = this._parentage;
-    this._parentage = Array.isArray(_parentage) ? (_parentage.push(parent), _parentage) : _parentage ? [_parentage, parent] : parent;
-  };
-  Subscription2.prototype._removeParent = function(parent) {
-    var _parentage = this._parentage;
-    if (_parentage === parent) {
-      this._parentage = null;
-    } else if (Array.isArray(_parentage)) {
-      arrRemove(_parentage, parent);
-    }
-  };
-  Subscription2.prototype.remove = function(teardown) {
-    var _teardowns = this._teardowns;
-    _teardowns && arrRemove(_teardowns, teardown);
-    if (teardown instanceof Subscription2) {
-      teardown._removeParent(this);
-    }
-  };
-  Subscription2.EMPTY = function() {
-    var empty = new Subscription2();
-    empty.closed = true;
-    return empty;
-  }();
-  return Subscription2;
-}();
-var EMPTY_SUBSCRIPTION = Subscription.EMPTY;
-function isSubscription(value) {
-  return value instanceof Subscription || value && "closed" in value && isFunction(value.remove) && isFunction(value.add) && isFunction(value.unsubscribe);
-}
-function execTeardown(teardown) {
-  if (isFunction(teardown)) {
-    teardown();
-  } else {
-    teardown.unsubscribe();
-  }
-}
-var config = {
-  onUnhandledError: null,
-  onStoppedNotification: null,
-  Promise: void 0,
-  useDeprecatedSynchronousErrorHandling: false,
-  useDeprecatedNextContext: false
-};
-var timeoutProvider = {
-  setTimeout: function() {
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-      args[_i] = arguments[_i];
-    }
-    var delegate = timeoutProvider.delegate;
-    return ((delegate === null || delegate === void 0 ? void 0 : delegate.setTimeout) || setTimeout).apply(void 0, __spreadArray([], __read(args)));
-  },
-  clearTimeout: function(handle) {
-    var delegate = timeoutProvider.delegate;
-    return ((delegate === null || delegate === void 0 ? void 0 : delegate.clearTimeout) || clearTimeout)(handle);
-  },
-  delegate: void 0
-};
-function reportUnhandledError(err) {
-  timeoutProvider.setTimeout(function() {
-    {
-      throw err;
-    }
-  });
-}
-function noop() {
-}
-var context = null;
-function errorContext(cb) {
-  if (config.useDeprecatedSynchronousErrorHandling) {
-    var isRoot = !context;
-    if (isRoot) {
-      context = { errorThrown: false, error: null };
-    }
-    cb();
-    if (isRoot) {
-      var _a2 = context, errorThrown = _a2.errorThrown, error = _a2.error;
-      context = null;
-      if (errorThrown) {
-        throw error;
-      }
-    }
-  } else {
-    cb();
-  }
-}
-var Subscriber = function(_super) {
-  __extends(Subscriber2, _super);
-  function Subscriber2(destination) {
-    var _this = _super.call(this) || this;
-    _this.isStopped = false;
-    if (destination) {
-      _this.destination = destination;
-      if (isSubscription(destination)) {
-        destination.add(_this);
-      }
-    } else {
-      _this.destination = EMPTY_OBSERVER;
-    }
-    return _this;
-  }
-  Subscriber2.create = function(next, error, complete) {
-    return new SafeSubscriber(next, error, complete);
-  };
-  Subscriber2.prototype.next = function(value) {
-    if (this.isStopped)
-      ;
-    else {
-      this._next(value);
-    }
-  };
-  Subscriber2.prototype.error = function(err) {
-    if (this.isStopped)
-      ;
-    else {
-      this.isStopped = true;
-      this._error(err);
-    }
-  };
-  Subscriber2.prototype.complete = function() {
-    if (this.isStopped)
-      ;
-    else {
-      this.isStopped = true;
-      this._complete();
-    }
-  };
-  Subscriber2.prototype.unsubscribe = function() {
-    if (!this.closed) {
-      this.isStopped = true;
-      _super.prototype.unsubscribe.call(this);
-      this.destination = null;
-    }
-  };
-  Subscriber2.prototype._next = function(value) {
-    this.destination.next(value);
-  };
-  Subscriber2.prototype._error = function(err) {
-    try {
-      this.destination.error(err);
-    } finally {
-      this.unsubscribe();
-    }
-  };
-  Subscriber2.prototype._complete = function() {
-    try {
-      this.destination.complete();
-    } finally {
-      this.unsubscribe();
-    }
-  };
-  return Subscriber2;
-}(Subscription);
-var SafeSubscriber = function(_super) {
-  __extends(SafeSubscriber2, _super);
-  function SafeSubscriber2(observerOrNext, error, complete) {
-    var _this = _super.call(this) || this;
-    var next;
-    if (isFunction(observerOrNext)) {
-      next = observerOrNext;
-    } else if (observerOrNext) {
-      next = observerOrNext.next, error = observerOrNext.error, complete = observerOrNext.complete;
-      var context_1;
-      if (_this && config.useDeprecatedNextContext) {
-        context_1 = Object.create(observerOrNext);
-        context_1.unsubscribe = function() {
-          return _this.unsubscribe();
-        };
-      } else {
-        context_1 = observerOrNext;
-      }
-      next = next === null || next === void 0 ? void 0 : next.bind(context_1);
-      error = error === null || error === void 0 ? void 0 : error.bind(context_1);
-      complete = complete === null || complete === void 0 ? void 0 : complete.bind(context_1);
-    }
-    _this.destination = {
-      next: next ? wrapForErrorHandling(next) : noop,
-      error: wrapForErrorHandling(error !== null && error !== void 0 ? error : defaultErrorHandler),
-      complete: complete ? wrapForErrorHandling(complete) : noop
-    };
-    return _this;
-  }
-  return SafeSubscriber2;
-}(Subscriber);
-function wrapForErrorHandling(handler, instance) {
-  return function() {
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-      args[_i] = arguments[_i];
-    }
-    try {
-      handler.apply(void 0, __spreadArray([], __read(args)));
-    } catch (err) {
-      {
-        reportUnhandledError(err);
-      }
-    }
-  };
-}
-function defaultErrorHandler(err) {
-  throw err;
-}
-var EMPTY_OBSERVER = {
-  closed: true,
-  next: noop,
-  error: defaultErrorHandler,
-  complete: noop
-};
-var observable = function() {
-  return typeof Symbol === "function" && Symbol.observable || "@@observable";
-}();
-function identity(x) {
-  return x;
-}
-function pipeFromArray(fns) {
-  if (fns.length === 0) {
-    return identity;
-  }
-  if (fns.length === 1) {
-    return fns[0];
-  }
-  return function piped(input) {
-    return fns.reduce(function(prev, fn) {
-      return fn(prev);
-    }, input);
-  };
-}
-var Observable = function() {
-  function Observable2(subscribe) {
-    if (subscribe) {
-      this._subscribe = subscribe;
-    }
-  }
-  Observable2.prototype.lift = function(operator) {
-    var observable2 = new Observable2();
-    observable2.source = this;
-    observable2.operator = operator;
-    return observable2;
-  };
-  Observable2.prototype.subscribe = function(observerOrNext, error, complete) {
-    var _this = this;
-    var subscriber = isSubscriber(observerOrNext) ? observerOrNext : new SafeSubscriber(observerOrNext, error, complete);
-    errorContext(function() {
-      var _a2 = _this, operator = _a2.operator, source = _a2.source;
-      subscriber.add(operator ? operator.call(subscriber, source) : source ? _this._subscribe(subscriber) : _this._trySubscribe(subscriber));
-    });
-    return subscriber;
-  };
-  Observable2.prototype._trySubscribe = function(sink) {
-    try {
-      return this._subscribe(sink);
-    } catch (err) {
-      sink.error(err);
-    }
-  };
-  Observable2.prototype.forEach = function(next, promiseCtor) {
-    var _this = this;
-    promiseCtor = getPromiseCtor(promiseCtor);
-    return new promiseCtor(function(resolve, reject) {
-      var subscription;
-      subscription = _this.subscribe(function(value) {
-        try {
-          next(value);
-        } catch (err) {
-          reject(err);
-          subscription === null || subscription === void 0 ? void 0 : subscription.unsubscribe();
-        }
-      }, reject, resolve);
-    });
-  };
-  Observable2.prototype._subscribe = function(subscriber) {
-    var _a2;
-    return (_a2 = this.source) === null || _a2 === void 0 ? void 0 : _a2.subscribe(subscriber);
-  };
-  Observable2.prototype[observable] = function() {
-    return this;
-  };
-  Observable2.prototype.pipe = function() {
-    var operations = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-      operations[_i] = arguments[_i];
-    }
-    return pipeFromArray(operations)(this);
-  };
-  Observable2.prototype.toPromise = function(promiseCtor) {
-    var _this = this;
-    promiseCtor = getPromiseCtor(promiseCtor);
-    return new promiseCtor(function(resolve, reject) {
-      var value;
-      _this.subscribe(function(x) {
-        return value = x;
-      }, function(err) {
-        return reject(err);
-      }, function() {
-        return resolve(value);
-      });
-    });
-  };
-  Observable2.create = function(subscribe) {
-    return new Observable2(subscribe);
-  };
-  return Observable2;
-}();
-function getPromiseCtor(promiseCtor) {
-  var _a2;
-  return (_a2 = promiseCtor !== null && promiseCtor !== void 0 ? promiseCtor : config.Promise) !== null && _a2 !== void 0 ? _a2 : Promise;
-}
-function isObserver(value) {
-  return value && isFunction(value.next) && isFunction(value.error) && isFunction(value.complete);
-}
-function isSubscriber(value) {
-  return value && value instanceof Subscriber || isObserver(value) && isSubscription(value);
-}
-function hasLift(source) {
-  return isFunction(source === null || source === void 0 ? void 0 : source.lift);
-}
-function operate(init) {
-  return function(source) {
-    if (hasLift(source)) {
-      return source.lift(function(liftedSource) {
-        try {
-          return init(liftedSource, this);
-        } catch (err) {
-          this.error(err);
-        }
-      });
-    }
-    throw new TypeError("Unable to lift unknown Observable type");
-  };
-}
-var OperatorSubscriber = function(_super) {
-  __extends(OperatorSubscriber2, _super);
-  function OperatorSubscriber2(destination, onNext, onComplete, onError, onFinalize) {
-    var _this = _super.call(this, destination) || this;
-    _this.onFinalize = onFinalize;
-    _this._next = onNext ? function(value) {
-      try {
-        onNext(value);
-      } catch (err) {
-        destination.error(err);
-      }
-    } : _super.prototype._next;
-    _this._error = onError ? function(err) {
-      try {
-        onError(err);
-      } catch (err2) {
-        destination.error(err2);
-      } finally {
-        this.unsubscribe();
-      }
-    } : _super.prototype._error;
-    _this._complete = onComplete ? function() {
-      try {
-        onComplete();
-      } catch (err) {
-        destination.error(err);
-      } finally {
-        this.unsubscribe();
-      }
-    } : _super.prototype._complete;
-    return _this;
-  }
-  OperatorSubscriber2.prototype.unsubscribe = function() {
-    var _a2;
-    var closed = this.closed;
-    _super.prototype.unsubscribe.call(this);
-    !closed && ((_a2 = this.onFinalize) === null || _a2 === void 0 ? void 0 : _a2.call(this));
-  };
-  return OperatorSubscriber2;
-}(Subscriber);
-var ObjectUnsubscribedError = createErrorClass(function(_super) {
-  return function ObjectUnsubscribedErrorImpl() {
-    _super(this);
-    this.name = "ObjectUnsubscribedError";
-    this.message = "object unsubscribed";
-  };
-});
-var Subject = function(_super) {
-  __extends(Subject2, _super);
-  function Subject2() {
-    var _this = _super.call(this) || this;
-    _this.closed = false;
-    _this.observers = [];
-    _this.isStopped = false;
-    _this.hasError = false;
-    _this.thrownError = null;
-    return _this;
-  }
-  Subject2.prototype.lift = function(operator) {
-    var subject = new AnonymousSubject(this, this);
-    subject.operator = operator;
-    return subject;
-  };
-  Subject2.prototype._throwIfClosed = function() {
-    if (this.closed) {
-      throw new ObjectUnsubscribedError();
-    }
-  };
-  Subject2.prototype.next = function(value) {
-    var _this = this;
-    errorContext(function() {
-      var e_1, _a2;
-      _this._throwIfClosed();
-      if (!_this.isStopped) {
-        var copy = _this.observers.slice();
-        try {
-          for (var copy_1 = __values(copy), copy_1_1 = copy_1.next(); !copy_1_1.done; copy_1_1 = copy_1.next()) {
-            var observer = copy_1_1.value;
-            observer.next(value);
-          }
-        } catch (e_1_1) {
-          e_1 = { error: e_1_1 };
-        } finally {
-          try {
-            if (copy_1_1 && !copy_1_1.done && (_a2 = copy_1.return))
-              _a2.call(copy_1);
-          } finally {
-            if (e_1)
-              throw e_1.error;
-          }
-        }
-      }
-    });
-  };
-  Subject2.prototype.error = function(err) {
-    var _this = this;
-    errorContext(function() {
-      _this._throwIfClosed();
-      if (!_this.isStopped) {
-        _this.hasError = _this.isStopped = true;
-        _this.thrownError = err;
-        var observers = _this.observers;
-        while (observers.length) {
-          observers.shift().error(err);
-        }
-      }
-    });
-  };
-  Subject2.prototype.complete = function() {
-    var _this = this;
-    errorContext(function() {
-      _this._throwIfClosed();
-      if (!_this.isStopped) {
-        _this.isStopped = true;
-        var observers = _this.observers;
-        while (observers.length) {
-          observers.shift().complete();
-        }
-      }
-    });
-  };
-  Subject2.prototype.unsubscribe = function() {
-    this.isStopped = this.closed = true;
-    this.observers = null;
-  };
-  Object.defineProperty(Subject2.prototype, "observed", {
-    get: function() {
-      var _a2;
-      return ((_a2 = this.observers) === null || _a2 === void 0 ? void 0 : _a2.length) > 0;
-    },
-    enumerable: false,
-    configurable: true
-  });
-  Subject2.prototype._trySubscribe = function(subscriber) {
-    this._throwIfClosed();
-    return _super.prototype._trySubscribe.call(this, subscriber);
-  };
-  Subject2.prototype._subscribe = function(subscriber) {
-    this._throwIfClosed();
-    this._checkFinalizedStatuses(subscriber);
-    return this._innerSubscribe(subscriber);
-  };
-  Subject2.prototype._innerSubscribe = function(subscriber) {
-    var _a2 = this, hasError = _a2.hasError, isStopped = _a2.isStopped, observers = _a2.observers;
-    return hasError || isStopped ? EMPTY_SUBSCRIPTION : (observers.push(subscriber), new Subscription(function() {
-      return arrRemove(observers, subscriber);
-    }));
-  };
-  Subject2.prototype._checkFinalizedStatuses = function(subscriber) {
-    var _a2 = this, hasError = _a2.hasError, thrownError = _a2.thrownError, isStopped = _a2.isStopped;
-    if (hasError) {
-      subscriber.error(thrownError);
-    } else if (isStopped) {
-      subscriber.complete();
-    }
-  };
-  Subject2.prototype.asObservable = function() {
-    var observable2 = new Observable();
-    observable2.source = this;
-    return observable2;
-  };
-  Subject2.create = function(destination, source) {
-    return new AnonymousSubject(destination, source);
-  };
-  return Subject2;
-}(Observable);
-var AnonymousSubject = function(_super) {
-  __extends(AnonymousSubject2, _super);
-  function AnonymousSubject2(destination, source) {
-    var _this = _super.call(this) || this;
-    _this.destination = destination;
-    _this.source = source;
-    return _this;
-  }
-  AnonymousSubject2.prototype.next = function(value) {
-    var _a2, _b;
-    (_b = (_a2 = this.destination) === null || _a2 === void 0 ? void 0 : _a2.next) === null || _b === void 0 ? void 0 : _b.call(_a2, value);
-  };
-  AnonymousSubject2.prototype.error = function(err) {
-    var _a2, _b;
-    (_b = (_a2 = this.destination) === null || _a2 === void 0 ? void 0 : _a2.error) === null || _b === void 0 ? void 0 : _b.call(_a2, err);
-  };
-  AnonymousSubject2.prototype.complete = function() {
-    var _a2, _b;
-    (_b = (_a2 = this.destination) === null || _a2 === void 0 ? void 0 : _a2.complete) === null || _b === void 0 ? void 0 : _b.call(_a2);
-  };
-  AnonymousSubject2.prototype._subscribe = function(subscriber) {
-    var _a2, _b;
-    return (_b = (_a2 = this.source) === null || _a2 === void 0 ? void 0 : _a2.subscribe(subscriber)) !== null && _b !== void 0 ? _b : EMPTY_SUBSCRIPTION;
-  };
-  return AnonymousSubject2;
-}(Subject);
-function filter(predicate, thisArg) {
-  return operate(function(source, subscriber) {
-    var index = 0;
-    source.subscribe(new OperatorSubscriber(subscriber, function(value) {
-      return predicate.call(thisArg, value, index++) && subscriber.next(value);
-    }));
-  });
-}
-class Bus {
-  constructor() {
-    __publicField(this, "agents", {});
-    __publicField(this, "comm", new Subject());
-  }
-  setAgentFor(res, action, agent) {
-    let agentByAction = this.getActionMapping(res);
-    agentByAction[action] = agent;
-  }
-  getAgentFor(res, action) {
-    return this.getActionMapping(res)[action];
-  }
-  publish(res, action, parameters) {
-    return Promise.resolve().then(() => {
-      var _a2;
-      return (_a2 = this.getAgentFor(res, action)) != null ? _a2 : explorer.requestAgentFor(res, action);
-    }).then((agent) => {
-      const result = agent.activate(res, action, parameters);
-      this.comm.next({
-        res,
-        action,
-        input: parameters,
-        output: result
-      });
-      return result;
-    });
-  }
-  subscribe(res, action) {
-    return this.comm.asObservable().pipe(filter((msg) => msg.res === res && msg.action === action));
-  }
-  getActionMapping(res) {
-    let agentByAction = this.agents[res];
-    if (typeof agentByAction === "undefined") {
-      agentByAction = {};
-      for (let a of Object.values(ACTION)) {
-        agentByAction[a] = null;
-      }
-      this.agents[res] = agentByAction;
-    }
-    return agentByAction;
-  }
-}
-class BusFactory {
-  static get instance() {
-    return this._instance = this._instance || new Bus();
-  }
-}
-__publicField(BusFactory, "_instance");
-class ExplorerContext {
-  constructor(types, app) {
-    __publicField(this, "searchParameters");
-    __publicField(this, "context");
-    __publicField(this, "bus");
-    __publicField(this, "latestResults", new Subject());
-    this.context = null;
-    this.bus = ExplorerFrameworkFactory.instance().getBus();
-    this.searchParameters = {
-      types,
-      app,
-      filters: {},
-      pagination: {
-        startIdx: 0,
-        pageSize: 20
-      }
-    };
-  }
-  clear() {
-    this.searchParameters.filters = {
-      owner: true,
-      shared: true,
-      public: true
-    };
-    this.searchParameters.pagination.startIdx = 0;
-    this.searchParameters.pagination.pageSize = 20;
-    this.context = null;
-  }
-  isInitialized() {
-    return this.context !== null;
-  }
-  getContext() {
-    if (this.context !== null) {
-      return this.context;
-    }
-  }
-  getSearchParameters() {
-    return this.searchParameters;
-  }
-  duplicateSearchParameters() {
-    return JSON.parse(JSON.stringify(this.searchParameters));
-  }
-  latestResources() {
-    return this.latestResults.asObservable();
-  }
-  initialize() {
-    const parameters = this.duplicateSearchParameters();
-    return Promise.resolve().then(() => this.bus.publish(RESOURCE.FOLDER, ACTION.INITIALIZE, parameters)).then((ar) => {
-      this.context = ar;
-      if (!this.context) {
-        throw new Error(ERROR_CODE.UNKNOWN);
-      }
-      this.latestResults.next({ input: parameters, output: this.context });
-      return this.context;
-    });
-  }
-  getResources() {
-    const parameters = this.duplicateSearchParameters();
-    return this.bus.publish(RESOURCE.FOLDER, ACTION.SEARCH, parameters).then((ar) => {
-      let result = ar;
-      if (!result)
-        throw new Error(ERROR_CODE.UNKNOWN);
-      this.latestResults.next({ input: parameters, output: result });
-      return result;
-    });
-  }
-  getSubFolders(parentId) {
-    throw new Error("Method not implemented.");
-  }
-  createFolder(resourceType, parentId, name2) {
-    const parameters = {
-      app: this.searchParameters.app,
-      name: name2,
-      parentId,
-      type: resourceType
-    };
-    return this.bus.publish(RESOURCE.FOLDER, ACTION.CREATE, parameters).then((ar) => {
-      let result = ar;
-      if (!result)
-        throw new Error(ERROR_CODE.UNKNOWN);
-      return result;
-    });
-  }
-  updateFolder(folderId, resourceType, parentId, name2) {
-    const parameters = {
-      folderId,
-      app: this.searchParameters.app,
-      name: name2,
-      parentId,
-      type: resourceType
-    };
-    return this.bus.publish(RESOURCE.FOLDER, ACTION.UPD_PROPS, parameters).then((ar) => {
-      let result = ar;
-      if (!result)
-        throw new Error(ERROR_CODE.UNKNOWN);
-      return result;
-    });
-  }
-  copy(targetId, resourceIds, folderIds) {
-    const parameters = {
-      folderId: targetId,
-      resourceIds,
-      folderIds
-    };
-    return this.bus.publish(RESOURCE.FOLDER, ACTION.COPY, parameters).then((ar) => {
-    });
-  }
-  move(targetId, resourceIds, folderIds) {
-    const parameters = {
-      folderId: targetId,
-      resourceIds,
-      folderIds
-    };
-    return this.bus.publish(RESOURCE.FOLDER, ACTION.MOVE, parameters).then((ar) => {
-    });
-  }
-  delete(resourceIds, folderIds) {
-    const parameters = {
-      resourceIds,
-      folderIds
-    };
-    return this.bus.publish(RESOURCE.FOLDER, ACTION.DELETE, parameters).then((ar) => {
-    });
-  }
-  manageProperties(resourceType, resources2) {
-    const params2 = { resources: resources2 };
-    return this.bus.publish(resourceType, ACTION.MANAGE, params2).then((ar) => {
-      let result = ar;
-      if (!result)
-        throw new Error(ERROR_CODE.UNKNOWN);
-      return result;
-    });
-  }
-  updateProperties(resourceType, resources2, props) {
-    const params2 = { resources: resources2, props };
-    return this.bus.publish(resourceType, ACTION.UPD_PROPS, params2).then((ar) => {
-      let result = ar;
-      if (!result)
-        throw new Error(ERROR_CODE.UNKNOWN);
-      return result;
-    });
-  }
-}
-class ExplorerFramework {
-  constructor() {
-    __publicField(this, "_agentLoader");
-  }
-  get agentLoader() {
-    if (!this._agentLoader) {
-      this._agentLoader = new AgentLoader();
-    }
-    return this._agentLoader;
-  }
-  setAgentLoader(loader2) {
-    if (loader2) {
-      this._agentLoader = loader2;
-    }
-  }
-  requestAgentFor(resource, action) {
-    return this.agentLoader.load(resource).then(() => {
-      let agent = this.getBus().getAgentFor(resource, action);
-      if (!agent) {
-        throw new Error(ERROR_CODE.AGENT_NOT_FOUND);
-      }
-      return agent;
-    });
-  }
-  createContext(types, app) {
-    return new ExplorerContext(types, app);
-  }
-  getBus() {
-    return BusFactory.instance;
-  }
-}
-const explorer = new ExplorerFramework();
-class ExplorerFrameworkFactory {
-  static instance() {
-    return explorer;
-  }
-}
-const RESOURCE = {
-  FOLDER: "folder",
-  BLOG: "blog",
-  EXERCISE: "exercise"
-};
-const appNameForResource = {
-  "folder": APP.EXPLORER,
-  "blog": APP.BLOG,
-  "exercise": APP.EXERCIZER
-};
-const ACTION = {
-  INITIALIZE: "initialize",
-  SEARCH: "search",
-  CREATE: "create",
-  OPEN: "open",
-  MANAGE: "manage",
-  UPD_PROPS: "properties",
-  COMMENT: "comment",
-  DELETE: "delete",
-  MOVE: "move",
-  COPY: "copy",
-  EXPORT: "export",
-  SHARE: "share",
-  PUBLISH: "publish",
-  PRINT: "print"
-};
-const _AbstractBusAgent = class {
-  constructor(managedResource) {
-    __publicField(this, "managedResource");
-    __publicField(this, "handlerFor", {
-      comment: _AbstractBusAgent.defaultHandler,
-      copy: _AbstractBusAgent.defaultHandler,
-      create: _AbstractBusAgent.defaultHandler,
-      delete: _AbstractBusAgent.defaultHandler,
-      export: _AbstractBusAgent.defaultHandler,
-      initialize: _AbstractBusAgent.defaultHandler,
-      manage: _AbstractBusAgent.defaultHandler,
-      properties: _AbstractBusAgent.defaultHandler,
-      move: _AbstractBusAgent.defaultHandler,
-      open: _AbstractBusAgent.defaultHandler,
-      print: _AbstractBusAgent.defaultHandler,
-      publish: _AbstractBusAgent.defaultHandler,
-      search: _AbstractBusAgent.defaultHandler,
-      share: _AbstractBusAgent.defaultHandler
-    });
-    this.managedResource = managedResource;
-    this.initialize();
-  }
-  initialize() {
-    for (let action in Object.values(ACTION)) {
-      this.handlerFor[action] = _AbstractBusAgent.defaultHandler;
-    }
-    this.registerHandlers();
-  }
-  setHandler(action, handler) {
-    BusFactory.instance.setAgentFor(this.managedResource, action, this);
-    this.handlerFor[action] = handler;
-  }
-  getHandler(action) {
-    return this.handlerFor[action];
-  }
-  activate(res, action, parameters) {
-    return Promise.resolve().then(() => this.getHandler(action).bind(this)(parameters));
-  }
-};
-let AbstractBusAgent = _AbstractBusAgent;
-__publicField(AbstractBusAgent, "defaultHandler", function(parameters) {
-  throw new Error(ERROR_CODE.NOT_SUPPORTED);
-});
-const ASYNC_DATA_NAME = {
-  SESSION_READY: "sessionReady",
-  LANG_READY: "langReady",
-  SKIN_READY: "skinReady",
-  OVERRIDE_READY: "overrideReady"
-};
-class Promisified {
-  constructor() {
-    __publicField(this, "_resolution");
-    __publicField(this, "_rejection");
-    __publicField(this, "_promise", new Promise((_resolve, _reject) => {
-      this._resolution = _resolve;
-      this._rejection = _reject;
-    }));
-  }
-  get promise() {
-    return this._promise;
-  }
-  resolve(value) {
-    this._resolution && this._resolution(value);
-  }
-  reject(reason) {
-    this._rejection && this._rejection(reason);
-  }
-}
-class NotifyFramework {
-  constructor() {
-    __publicField(this, "promises", {});
-    __publicField(this, "subject", new Subject());
-  }
-  asyncData(asyncDataName) {
-    if (typeof this.promises[asyncDataName] === "undefined") {
-      this.promises[asyncDataName] = new Promisified();
-    }
-    return this.promises[asyncDataName];
-  }
-  onSessionReady() {
-    return this.asyncData(ASYNC_DATA_NAME.SESSION_READY);
-  }
-  onLangReady() {
-    return this.asyncData(ASYNC_DATA_NAME.LANG_READY);
-  }
-  onSkinReady() {
-    return this.asyncData(ASYNC_DATA_NAME.SKIN_READY);
-  }
-  onOverridesReady() {
-    return this.asyncData(ASYNC_DATA_NAME.OVERRIDE_READY);
-  }
-  promisify() {
-    return new Promisified();
-  }
-  events() {
-    return this.subject;
-  }
-}
-const notify = new NotifyFramework();
 class TransportFramework {
   constructor() {
     __publicField(this, "_http", new Http());
@@ -13546,6 +13712,11 @@ class TransportFramework {
   }
 }
 const transport = new TransportFramework();
+class TransportFrameworkFactory {
+  static instance() {
+    return transport;
+  }
+}
 const http$1 = transport.http;
 class Session {
   constructor() {
@@ -14171,6 +14342,7 @@ class AppConf {
   constructor() {
     __publicField(this, "_publicConf", {});
     __publicField(this, "_currentApp");
+    __publicField(this, "_appConf", {});
   }
   get currentApp() {
     var _a2;
@@ -14196,6 +14368,26 @@ class AppConf {
         });
       }
       return this._publicConf[app];
+    });
+  }
+  getWebAppConf(app) {
+    return __async(this, null, function* () {
+      var _a2;
+      let found;
+      if (!this._appConf[app]) {
+        const list = yield http.get(`/applications-list`);
+        list.apps.forEach((conf) => {
+          if (conf == null ? void 0 : conf.prefix) {
+            const a = conf.prefix.replace("/", "");
+            this._appConf[a] = conf;
+          } else if (conf == null ? void 0 : conf.name) {
+            if (conf.name.toLowerCase() == app) {
+              found = conf;
+            }
+          }
+        });
+      }
+      return (_a2 = this._appConf[app]) != null ? _a2 : found;
     });
   }
   loadI18n(app) {
