@@ -28,9 +28,9 @@
 | `analytics.status` | [`AnalyticStatus`](../modules.md#analyticstatus) | Check the status, if something goes wrong. |
 | `analytics.parameters` | [object Object] | Get a tracker parameters. |
 | `analytics.xiti` | [object Object] | Get the XiTi configuration. This method awaits for the session to be be fully loaded. //FIXME refactor xiti configuration |
-| `apps` | { `getAppsList`: () => `Promise`<`any`\> ; `getPublicConf`: (`app`: [`App`](../modules.md#app)) => `Promise`<`any`\> ; `initialize`: (`app`: [`App`](../modules.md#app), `alternativeApp?`: `boolean`) => `Promise`<`void`\> ; `loadI18n`: (`app`: [`App`](../modules.md#app)) => `Promise`<`void`\>  } | - |
-| `apps.getAppsList` | [object Object] | - |
+| `apps` | { `getPublicConf`: (`app`: [`App`](../modules.md#app)) => `Promise`<`any`\> ; `getWebAppConf`: (`app`: [`App`](../modules.md#app)) => `Promise`<`undefined` \| [`IWebApp`](IWebApp.md)\> ; `initialize`: (`app`: [`App`](../modules.md#app), `alternativeApp?`: `boolean`) => `Promise`<`void`\> ; `loadI18n`: (`app`: [`App`](../modules.md#app)) => `Promise`<`void`\>  } | - |
 | `apps.getPublicConf` | [object Object] | Load and return the public conf of an app. |
+| `apps.getWebAppConf` | [object Object] | Load and return the server conf of an app. |
 | `apps.initialize` | [object Object] | Initialize an app (preload its public conf and i18n) |
 | `apps.loadI18n` | [object Object] | Load the i18n of an app. |
 | `cdnDomain` | `string` | - |

@@ -2,6 +2,7 @@ import { transport } from "../transport/Framework";
 import { App } from "../globals";
 import { configure } from "./Framework";
 import { notify } from "../notify/Framework";
+import { IWebApp } from "../index.cjs";
 
 const http = transport?.http;
 
@@ -10,7 +11,7 @@ export class AppConf {
   //-------------------------------------
   private _publicConf: { [key in App]?: any } = {};
   private _currentApp?: App;
-  private _appsList: any = {};
+  private _appConf: { [key in App]?: IWebApp } = {};
 
   /**
    * Get the currently initialized App.
@@ -41,11 +42,23 @@ export class AppConf {
     return this._publicConf[app];
   }
 
-  public async getAppsList(): Promise<any> {
-    if (this._appsList) {
-      this._appsList = await http.get<any>(`/applications-list`);
+  public async getWebAppConf(app: App): Promise<IWebApp|undefined> {
+    let found: IWebApp|undefined;
+    if (!this._appConf[app]) {
+      const list = await http.get<{apps:Array<IWebApp>}>(`/applications-list`);
+      list.apps.forEach( conf => {
+        if( conf?.prefix ) {
+          const a:App = conf.prefix.replace("/", "") as App;
+          this._appConf[a] = conf;
+        } else if( conf?.name ) {
+          /* Try to extract name from another field than prefix. */
+          if( conf.name.toLowerCase() == app ) {
+            found = conf;
+          }
+        }
+      });
     }
-    return this._appsList;
+    return this._appConf[app] ?? found;
   }
 
   public loadI18n(app: App): Promise<void> {
