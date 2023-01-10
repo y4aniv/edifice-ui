@@ -294,6 +294,7 @@ export interface IAction {
 export interface IFolder {
 //-------------------------------------
   id: ID;
+  parentId: ID;
   name: string;
   type: FolderType | ID;
   childNumber: number; // à minima, 0 ou 1...
