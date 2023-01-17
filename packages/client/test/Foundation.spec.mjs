@@ -11893,9 +11893,15 @@ class BlogAgent extends AbstractBusAgent {
     this.setHandler(ACTION.CREATE, this.createBlog);
     this.setHandler(ACTION.MANAGE, this.onManage);
     this.setHandler(ACTION.UPD_PROPS, this.onUpdateProps);
+    this.setHandler(ACTION.PRINT, this.onPrint);
+  }
+  onPrint(parameters) {
+    window.open(
+      `/blog/print/blog#/print/${parameters.resourceId}?comments=${parameters.withComments || true}`,
+      "_blank"
+    );
   }
   openBlog(parameters) {
-    console.log("parameters", parameters);
     window.open(`/blog#/view/${parameters.resourceId}`, "_self");
   }
   createBlog(parameters) {
@@ -12019,6 +12025,8 @@ class FolderAgent extends AbstractBusAgent {
   }
   moveToBodyParams(p) {
     return {
+      application: "explorer",
+      resourceType: this.managedResource,
       resourceIds: p.resourceIds,
       folderIds: p.folderIds
     };

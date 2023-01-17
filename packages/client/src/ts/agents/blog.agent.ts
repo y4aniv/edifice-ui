@@ -1,5 +1,5 @@
 import { AgentFactory } from '.';
-import { ACTION, IActionParameters, IContext, IHttp, ManagePropertiesParameters, ManagePropertiesResult, PROP_KEY, RESOURCE, UpdatePropertiesParameters, UpdatePropertiesResult, TransportFrameworkFactory, OpenParameters } from '..';
+import { ACTION, IActionParameters, IContext, IHttp, ManagePropertiesParameters, ManagePropertiesResult, PROP_KEY, RESOURCE, UpdatePropertiesParameters, UpdatePropertiesResult, TransportFrameworkFactory, OpenParameters, PrintParameters } from '..';
 import { AbstractBusAgent, IHandler } from '../explore/Agent';
 
 declare var console:any;
@@ -28,10 +28,17 @@ class BlogAgent extends AbstractBusAgent {
         this.setHandler( ACTION.CREATE,   	this.createBlog as unknown as IHandler );
         this.setHandler( ACTION.MANAGE,     this.onManage as unknown as IHandler );
         this.setHandler( ACTION.UPD_PROPS,  this.onUpdateProps as unknown as IHandler );
+        this.setHandler( ACTION.PRINT,  this.onPrint as unknown as IHandler );
+    }
+
+    onPrint(parameters: PrintParameters):void{
+        window.open(
+            `/blog/print/blog#/print/${parameters.resourceId}?comments=${parameters.withComments || true}`,
+            "_blank"
+          );
     }
 
     openBlog( parameters:OpenParameters ): void {
-        console.log('parameters', parameters)
         window.open( `/blog#/view/${parameters.resourceId}`, "_self" );
     }
 

@@ -396,6 +396,10 @@ export type UpdateFolderParameters = IActionParameters & {
 export type OpenParameters = IActionParameters & {
   resourceId:ID
 };
+export type PrintParameters = IActionParameters & {
+  resourceId:ID,
+  withComments?:boolean
+};
 export type CopyParameters = IActionParameters & {
   folderId:ID
 , resourceIds:ID[]
