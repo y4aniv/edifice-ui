@@ -163,8 +163,12 @@ export const ACTION = {
  ,COPY:       "copy"
  ,EXPORT:     "export"
  ,SHARE:      "share"
- ,PUBLISH:    "publish"
- ,PRINT:      "print"
+ ,PUBLISH_LIBRARY:  "publish_library"
+ ,PRINT:       "print"
+ ,PAGES_LIST:  "pages_list"
+ ,DISTRIBUTE:   "distribute"
+ ,REGISTER:     "register"
+ ,PUBLISH:      "publish"    // publish moodle
 } as const;
 export type ActionType = typeof ACTION[keyof typeof ACTION];
 

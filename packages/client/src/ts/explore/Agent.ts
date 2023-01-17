@@ -29,9 +29,13 @@ export abstract class AbstractBusAgent implements IBusAgent {
         move:       AbstractBusAgent.defaultHandler,
         open:       AbstractBusAgent.defaultHandler,
         print:      AbstractBusAgent.defaultHandler,
-        publish:    AbstractBusAgent.defaultHandler,
+        publish_library:    AbstractBusAgent.defaultHandler,
         search:     AbstractBusAgent.defaultHandler,
-        share:      AbstractBusAgent.defaultHandler
+        share:      AbstractBusAgent.defaultHandler,
+        distribute: AbstractBusAgent.defaultHandler,
+        pages_list: AbstractBusAgent.defaultHandler,
+        publish:    AbstractBusAgent.defaultHandler,
+        register: AbstractBusAgent.defaultHandler,
     };
 
     protected initialize(): void {
