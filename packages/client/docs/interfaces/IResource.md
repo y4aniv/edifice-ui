@@ -22,6 +22,7 @@
 - [public](IResource.md#public)
 - [shared](IResource.md#shared)
 - [thumbnail](IResource.md#thumbnail)
+- [trashed](IResource.md#trashed)
 - [updatedAt](IResource.md#updatedat)
 - [views](IResource.md#views)
 
@@ -120,6 +121,12 @@ ___
 ### thumbnail
 
 • **thumbnail**: `string`
+
+___
+
+### trashed
+
+• **trashed**: `boolean`
 
 ___
 

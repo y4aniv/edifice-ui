@@ -14,6 +14,18 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
+var __objRest = (source, exclude) => {
+  var target = {};
+  for (var prop in source)
+    if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
+      target[prop] = source[prop];
+  if (source != null && __getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(source)) {
+      if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
+        target[prop] = source[prop];
+    }
+  return target;
+};
 var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
@@ -38,7 +50,7 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-var _a;
+var _c;
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
 function getDefaultExportFromCjs(x) {
   return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
@@ -11161,7 +11173,7 @@ var Subscription = function() {
     this._teardowns = null;
   }
   Subscription2.prototype.unsubscribe = function() {
-    var e_1, _a2, e_2, _b;
+    var e_1, _a, e_2, _b;
     var errors;
     if (!this.closed) {
       this.closed = true;
@@ -11178,8 +11190,8 @@ var Subscription = function() {
             e_1 = { error: e_1_1 };
           } finally {
             try {
-              if (_parentage_1_1 && !_parentage_1_1.done && (_a2 = _parentage_1.return))
-                _a2.call(_parentage_1);
+              if (_parentage_1_1 && !_parentage_1_1.done && (_a = _parentage_1.return))
+                _a.call(_parentage_1);
             } finally {
               if (e_1)
                 throw e_1.error;
@@ -11232,7 +11244,7 @@ var Subscription = function() {
     }
   };
   Subscription2.prototype.add = function(teardown) {
-    var _a2;
+    var _a;
     if (teardown && teardown !== this) {
       if (this.closed) {
         execTeardown(teardown);
@@ -11243,7 +11255,7 @@ var Subscription = function() {
           }
           teardown._addParent(this);
         }
-        (this._teardowns = (_a2 = this._teardowns) !== null && _a2 !== void 0 ? _a2 : []).push(teardown);
+        (this._teardowns = (_a = this._teardowns) !== null && _a !== void 0 ? _a : []).push(teardown);
       }
     }
   };
@@ -11328,7 +11340,7 @@ function errorContext(cb) {
     }
     cb();
     if (isRoot) {
-      var _a2 = context, errorThrown = _a2.errorThrown, error = _a2.error;
+      var _a = context, errorThrown = _a.errorThrown, error = _a.error;
       context = null;
       if (errorThrown) {
         throw error;
@@ -11495,7 +11507,7 @@ var Observable = function() {
     var _this = this;
     var subscriber = isSubscriber(observerOrNext) ? observerOrNext : new SafeSubscriber(observerOrNext, error, complete);
     errorContext(function() {
-      var _a2 = _this, operator = _a2.operator, source = _a2.source;
+      var _a = _this, operator = _a.operator, source = _a.source;
       subscriber.add(operator ? operator.call(subscriber, source) : source ? _this._subscribe(subscriber) : _this._trySubscribe(subscriber));
     });
     return subscriber;
@@ -11523,8 +11535,8 @@ var Observable = function() {
     });
   };
   Observable2.prototype._subscribe = function(subscriber) {
-    var _a2;
-    return (_a2 = this.source) === null || _a2 === void 0 ? void 0 : _a2.subscribe(subscriber);
+    var _a;
+    return (_a = this.source) === null || _a === void 0 ? void 0 : _a.subscribe(subscriber);
   };
   Observable2.prototype[observable] = function() {
     return this;
@@ -11556,8 +11568,8 @@ var Observable = function() {
   return Observable2;
 }();
 function getPromiseCtor(promiseCtor) {
-  var _a2;
-  return (_a2 = promiseCtor !== null && promiseCtor !== void 0 ? promiseCtor : config.Promise) !== null && _a2 !== void 0 ? _a2 : Promise;
+  var _a;
+  return (_a = promiseCtor !== null && promiseCtor !== void 0 ? promiseCtor : config.Promise) !== null && _a !== void 0 ? _a : Promise;
 }
 function isObserver(value) {
   return value && isFunction$1(value.next) && isFunction$1(value.error) && isFunction$1(value.complete);
@@ -11615,10 +11627,10 @@ var OperatorSubscriber = function(_super) {
     return _this;
   }
   OperatorSubscriber2.prototype.unsubscribe = function() {
-    var _a2;
+    var _a;
     var closed = this.closed;
     _super.prototype.unsubscribe.call(this);
-    !closed && ((_a2 = this.onFinalize) === null || _a2 === void 0 ? void 0 : _a2.call(this));
+    !closed && ((_a = this.onFinalize) === null || _a === void 0 ? void 0 : _a.call(this));
   };
   return OperatorSubscriber2;
 }(Subscriber);
@@ -11653,7 +11665,7 @@ var Subject = function(_super) {
   Subject2.prototype.next = function(value) {
     var _this = this;
     errorContext(function() {
-      var e_1, _a2;
+      var e_1, _a;
       _this._throwIfClosed();
       if (!_this.isStopped) {
         var copy = _this.observers.slice();
@@ -11666,8 +11678,8 @@ var Subject = function(_super) {
           e_1 = { error: e_1_1 };
         } finally {
           try {
-            if (copy_1_1 && !copy_1_1.done && (_a2 = copy_1.return))
-              _a2.call(copy_1);
+            if (copy_1_1 && !copy_1_1.done && (_a = copy_1.return))
+              _a.call(copy_1);
           } finally {
             if (e_1)
               throw e_1.error;
@@ -11709,8 +11721,8 @@ var Subject = function(_super) {
   };
   Object.defineProperty(Subject2.prototype, "observed", {
     get: function() {
-      var _a2;
-      return ((_a2 = this.observers) === null || _a2 === void 0 ? void 0 : _a2.length) > 0;
+      var _a;
+      return ((_a = this.observers) === null || _a === void 0 ? void 0 : _a.length) > 0;
     },
     enumerable: false,
     configurable: true
@@ -11725,13 +11737,13 @@ var Subject = function(_super) {
     return this._innerSubscribe(subscriber);
   };
   Subject2.prototype._innerSubscribe = function(subscriber) {
-    var _a2 = this, hasError = _a2.hasError, isStopped = _a2.isStopped, observers = _a2.observers;
+    var _a = this, hasError = _a.hasError, isStopped = _a.isStopped, observers = _a.observers;
     return hasError || isStopped ? EMPTY_SUBSCRIPTION : (observers.push(subscriber), new Subscription(function() {
       return arrRemove(observers, subscriber);
     }));
   };
   Subject2.prototype._checkFinalizedStatuses = function(subscriber) {
-    var _a2 = this, hasError = _a2.hasError, thrownError = _a2.thrownError, isStopped = _a2.isStopped;
+    var _a = this, hasError = _a.hasError, thrownError = _a.thrownError, isStopped = _a.isStopped;
     if (hasError) {
       subscriber.error(thrownError);
     } else if (isStopped) {
@@ -11757,20 +11769,20 @@ var AnonymousSubject = function(_super) {
     return _this;
   }
   AnonymousSubject2.prototype.next = function(value) {
-    var _a2, _b;
-    (_b = (_a2 = this.destination) === null || _a2 === void 0 ? void 0 : _a2.next) === null || _b === void 0 ? void 0 : _b.call(_a2, value);
+    var _a, _b;
+    (_b = (_a = this.destination) === null || _a === void 0 ? void 0 : _a.next) === null || _b === void 0 ? void 0 : _b.call(_a, value);
   };
   AnonymousSubject2.prototype.error = function(err) {
-    var _a2, _b;
-    (_b = (_a2 = this.destination) === null || _a2 === void 0 ? void 0 : _a2.error) === null || _b === void 0 ? void 0 : _b.call(_a2, err);
+    var _a, _b;
+    (_b = (_a = this.destination) === null || _a === void 0 ? void 0 : _a.error) === null || _b === void 0 ? void 0 : _b.call(_a, err);
   };
   AnonymousSubject2.prototype.complete = function() {
-    var _a2, _b;
-    (_b = (_a2 = this.destination) === null || _a2 === void 0 ? void 0 : _a2.complete) === null || _b === void 0 ? void 0 : _b.call(_a2);
+    var _a, _b;
+    (_b = (_a = this.destination) === null || _a === void 0 ? void 0 : _a.complete) === null || _b === void 0 ? void 0 : _b.call(_a);
   };
   AnonymousSubject2.prototype._subscribe = function(subscriber) {
-    var _a2, _b;
-    return (_b = (_a2 = this.source) === null || _a2 === void 0 ? void 0 : _a2.subscribe(subscriber)) !== null && _b !== void 0 ? _b : EMPTY_SUBSCRIPTION;
+    var _a, _b;
+    return (_b = (_a = this.source) === null || _a === void 0 ? void 0 : _a.subscribe(subscriber)) !== null && _b !== void 0 ? _b : EMPTY_SUBSCRIPTION;
   };
   return AnonymousSubject2;
 }(Subject);
@@ -11796,8 +11808,8 @@ class Bus {
   }
   publish(res, action, parameters) {
     return Promise.resolve().then(() => {
-      var _a2;
-      return (_a2 = this.getAgentFor(res, action)) != null ? _a2 : explorer.requestAgentFor(res, action);
+      var _a;
+      return (_a = this.getAgentFor(res, action)) != null ? _a : explorer.requestAgentFor(res, action);
     }).then((agent) => {
       const result = agent.activate(res, action, parameters);
       this.comm.next({
@@ -11847,7 +11859,8 @@ const _AbstractBusAgent = class {
       print: _AbstractBusAgent.defaultHandler,
       publish: _AbstractBusAgent.defaultHandler,
       search: _AbstractBusAgent.defaultHandler,
-      share: _AbstractBusAgent.defaultHandler
+      share: _AbstractBusAgent.defaultHandler,
+      trash: _AbstractBusAgent.defaultHandler
     });
     this.managedResource = managedResource;
     this.initialize();
@@ -11932,6 +11945,7 @@ console.log("explorer agent loading....");
 class FolderAgent extends AbstractBusAgent {
   constructor() {
     super(RESOURCE.FOLDER);
+    __publicField(this, "application", "explorer");
     __publicField(this, "ctx", null);
     __publicField(this, "http", TransportFrameworkFactory.instance().newHttpInstance({
       paramsSerializer: function(params2) {
@@ -11961,6 +11975,7 @@ class FolderAgent extends AbstractBusAgent {
     this.setHandler(ACTION.OPEN, this.listSubfolders);
     this.setHandler(ACTION.MOVE, this.moveToFolder);
     this.setHandler(ACTION.DELETE, this.deleteFolders);
+    this.setHandler(ACTION.TRASH, this.trashFolders);
     this.setHandler(ACTION.MANAGE, this.onManage);
   }
   createContext(parameters) {
@@ -11983,7 +11998,11 @@ class FolderAgent extends AbstractBusAgent {
     return this.http.get(`/explorer/folders/${folderId}/move`).then(this.checkHttpResponse);
   }
   deleteFolders(parameters) {
-    return this.http.deleteJson(`/explorer/folders`, parameters).then(this.checkHttpResponse);
+    return this.http.deleteJson(`/explorer`, parameters).then(this.checkHttpResponse);
+  }
+  trashFolders(_a) {
+    var _b = _a, { trash, resourceType } = _b, parameters = __objRest(_b, ["trash", "resourceType"]);
+    return this.http.putJson(`/explorer/${trash ? "" : "un"}trash`, parameters).then(this.checkHttpResponse);
   }
   onManage(parameters) {
     const res = {
@@ -12025,7 +12044,7 @@ class FolderAgent extends AbstractBusAgent {
   }
   moveToBodyParams(p) {
     return {
-      application: "explorer",
+      application: this.application,
       resourceType: this.managedResource,
       resourceIds: p.resourceIds,
       folderIds: p.folderIds
@@ -12170,10 +12189,23 @@ class ExplorerContext {
   }
   delete(resourceIds, folderIds) {
     const parameters = {
+      application: this.searchParameters.app,
+      resourceType: this.searchParameters.types[0],
       resourceIds,
       folderIds
     };
     return this.bus.publish(RESOURCE.FOLDER, ACTION.DELETE, parameters).then((ar) => {
+    });
+  }
+  trash(trash, resourceIds, folderIds) {
+    const parameters = {
+      trash,
+      application: this.searchParameters.app,
+      resourceType: this.searchParameters.types[0],
+      resourceIds,
+      folderIds
+    };
+    return this.bus.publish(RESOURCE.FOLDER, ACTION.TRASH, parameters).then((ar) => {
     });
   }
   manageProperties(resourceType, resources2) {
@@ -12251,6 +12283,7 @@ const ACTION = {
   UPD_PROPS: "properties",
   COMMENT: "comment",
   DELETE: "delete",
+  TRASH: "trash",
   MOVE: "move",
   COPY: "copy",
   EXPORT: "export",
@@ -13682,7 +13715,7 @@ class Http {
     return this.axios.delete(url, this.toAxiosConfig(params2)).then((r) => this.mapAxiosResponse(r, params2)).catch((e) => this.mapAxiosError(e, params2));
   }
   deleteJson(url, json) {
-    return this.axios.delete(url, json).then((r) => this.mapAxiosResponse(r)).catch((e) => this.mapAxiosError(e));
+    return this.axios.delete(url, { data: json }).then((r) => this.mapAxiosResponse(r)).catch((e) => this.mapAxiosError(e));
   }
   getScript(url, params2, variableName) {
     const resultName = variableName != null ? variableName : "exports";
@@ -13782,8 +13815,8 @@ class Session {
     this._notLoggedIn = me && me.sessionMetadata && me.sessionMetadata.userId ? false : true;
   }
   hasWorkflow(workflowName) {
-    var _a2;
-    return workflowName === void 0 || ((_a2 = this._me) == null ? void 0 : _a2.authorizedActions.findIndex((workflowRight) => {
+    var _a;
+    return workflowName === void 0 || ((_a = this._me) == null ? void 0 : _a.authorizedActions.findIndex((workflowRight) => {
       return workflowRight.name === workflowName;
     })) !== -1;
   }
@@ -13938,8 +13971,8 @@ class Theme {
   }
   getConf(version2) {
     return __async(this, null, function* () {
-      var _a2;
-      this._conf = (_a2 = this._conf) != null ? _a2 : yield transport.http.getScript(
+      var _a;
+      this._conf = (_a = this._conf) != null ? _a : yield transport.http.getScript(
         "/assets/theme-conf.js",
         { queryParams: { v: version2 != null ? version2 : this.version } },
         "exports.conf"
@@ -13951,9 +13984,9 @@ class Theme {
     version2 = version2 != null ? version2 : this.version;
     if (!this._loaded) {
       this._loaded = (session.session.notLoggedIn ? this.loadDisconnected(version2) : this.loadConnected(version2)).then(() => __async(this, null, function* () {
-        var _a2, _b;
+        var _a, _b;
         const skins = yield this.listSkins();
-        this.is1D = ((_a2 = skins.find((s) => s.child === this.skin)) == null ? void 0 : _a2.parent) === "panda";
+        this.is1D = ((_a = skins.find((s) => s.child === this.skin)) == null ? void 0 : _a.parent) === "panda";
         this.is2D = ((_b = skins.find((s) => s.child === this.skin)) == null ? void 0 : _b.parent) === "theme-open-ent";
       }));
     }
@@ -14048,10 +14081,10 @@ class Theme {
   }
   getHelpPath() {
     return __async(this, null, function* () {
-      var _a2;
+      var _a;
       const overrides = yield this.listSkins();
       const override = overrides.find((t) => t.child === this.skin);
-      return (_a2 = override == null ? void 0 : override.help) != null ? _a2 : "/help";
+      return (_a = override == null ? void 0 : override.help) != null ? _a : "/help";
     });
   }
 }
@@ -14353,8 +14386,8 @@ class AppConf {
     __publicField(this, "_appConf", {});
   }
   get currentApp() {
-    var _a2;
-    return (_a2 = this._currentApp) != null ? _a2 : null;
+    var _a;
+    return (_a = this._currentApp) != null ? _a : null;
   }
   setCurrentApp(app) {
     this._currentApp = app;
@@ -14380,7 +14413,7 @@ class AppConf {
   }
   getWebAppConf(app) {
     return __async(this, null, function* () {
-      var _a2;
+      var _a;
       let found;
       if (!this._appConf[app]) {
         const list = yield http.get(`/applications-list`);
@@ -14395,7 +14428,7 @@ class AppConf {
           }
         });
       }
-      return (_a2 = this._appConf[app]) != null ? _a2 : found;
+      return (_a = this._appConf[app]) != null ? _a : found;
     });
   }
   loadI18n(app) {
@@ -14434,19 +14467,19 @@ class Analytics {
         transport.http.get("/analyticsConf"),
         transport.http.get("/xiti/config")
       ]).then((tuple) => __async(this, null, function* () {
-        var _a2;
+        var _a;
         if (!tuple || !tuple[0] || !tuple[0].type) {
           throw ERROR_CODE.MALFORMED_DATA;
         }
         if (tuple[1] && tuple[1].active) {
           tuple[0].xiti = yield this.initializeXiti(tuple[1]);
         }
-        (_a2 = this._params) == null ? void 0 : _a2.resolve(tuple[0]);
+        (_a = this._params) == null ? void 0 : _a.resolve(tuple[0]);
         this._status = "ready";
       })).catch((e) => {
-        var _a2;
+        var _a;
         this._status = "failed";
-        (_a2 = this._params) == null ? void 0 : _a2.reject();
+        (_a = this._params) == null ? void 0 : _a.reject();
         throw e;
       });
     }
@@ -14454,7 +14487,7 @@ class Analytics {
   }
   initializeXiti(xitiConf) {
     return __async(this, null, function* () {
-      var _a2;
+      var _a;
       if (!xitiConf.structureMap || !configure.Platform.apps.currentApp)
         return;
       const me = yield notify.onSessionReady().promise;
@@ -14503,7 +14536,7 @@ class Analytics {
         EXPLOITANT: xitiConf.ID_EXPLOITANT,
         PLATFORME: structure.plateformeId ? structure.plateformeId : xitiConf.ID_PLATEFORME,
         ID_PERSO: pseudonymization(me.userId),
-        PROFILE: desc.profiles && desc.profiles.length > 0 ? (_a2 = profileMap[desc.profiles[0]]) != null ? _a2 : "" : ""
+        PROFILE: desc.profiles && desc.profiles.length > 0 ? (_a = profileMap[desc.profiles[0]]) != null ? _a : "" : ""
       };
     });
   }
@@ -14557,7 +14590,7 @@ class ConfigurationFrameworkFactory {
   }
 }
 transport == null ? void 0 : transport.http;
-(_a = session == null ? void 0 : session.session) == null ? void 0 : _a.user;
+(_c = session == null ? void 0 : session.session) == null ? void 0 : _c.user;
 const folders = [];
 const filters = [];
 const orders = [

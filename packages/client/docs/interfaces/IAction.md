@@ -8,6 +8,7 @@
 
 - [available](IAction.md#available)
 - [id](IAction.md#id)
+- [target](IAction.md#target)
 
 ## Properties
 
@@ -20,3 +21,9 @@ ___
 ### id
 
 • **id**: [`ActionType`](../modules.md#actiontype)
+
+___
+
+### target
+
+• `Optional` **target**: ``"actionbar"``

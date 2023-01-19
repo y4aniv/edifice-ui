@@ -187,8 +187,7 @@ export class Http implements IHttp {
             .catch<R>(e => this.mapAxiosError(e,params));
     }
     deleteJson<R=any>(url: string, json: any): Promise<R> {
-        // TODO code review, Is this used ?
-        return this.axios.delete<R>(url, json)
+        return this.axios.delete<R>(url, {data: json})
             .then(r => this.mapAxiosResponse(r))
             .catch<R>(e => this.mapAxiosError(e));
     }

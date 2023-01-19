@@ -10,6 +10,7 @@
 - [id](IFolder.md#id)
 - [name](IFolder.md#name)
 - [parentId](IFolder.md#parentid)
+- [trashed](IFolder.md#trashed)
 - [type](IFolder.md#type)
 
 ## Properties
@@ -35,6 +36,12 @@ ___
 ### parentId
 
 • **parentId**: `string`
+
+___
+
+### trashed
+
+• **trashed**: `boolean`
 
 ___
 

@@ -114,6 +114,14 @@ export interface IExplorerContext {
    */
   delete( resourceIds:ID[], folderIds:ID[] ): Promise<void>; //FIXME 1 seul tableau en paramètres ?
 
+  /**
+   * Trash / Untrash resources and folders.
+   * @param trash boolean set status trash or untrash
+   * @param resourceIds Array of resources ID to delete.
+   * @param folderIds Array of folders ID to delete.
+   */
+  trash(trash:boolean, resourceIds:ID[], folderIds:ID[] ): Promise<void>;
+
   /** Retrieves which properties of the resource(s) are manageable. */
   manageProperties( resourceType:ResourceType, resources:IResource[] ): Promise<ManagePropertiesResult>;
   /** Update managed properties. */
@@ -159,6 +167,7 @@ export const ACTION = {
  ,UPD_PROPS:  "properties"  // Update properties
  ,COMMENT:    "comment"
  ,DELETE:     "delete"
+ ,TRASH:     "trash"
  ,MOVE:       "move"
  ,COPY:       "copy"
  ,EXPORT:     "export"
@@ -291,6 +300,7 @@ export interface IAction {
 //-------------------------------------
   id: ActionType,
   available: boolean  // L'utilisateur a le droit workflow ou pas
+  target?: "actionbar"
   //FIXME comment relier les actions aux behaviours, qu'on va remplacer.
 }
 
@@ -302,6 +312,7 @@ export interface IFolder {
   name: string;
   type: FolderType | ID;
   childNumber: number; // à minima, 0 ou 1...
+  trashed: boolean;
 }
 
 //-------------------------------------
@@ -368,6 +379,7 @@ export interface IResource {
   thumbnail: string;   // URL : requis; ou bien déductible d’une convention ?
   updatedAt: string;
   views?: number;
+  trashed: boolean;
 
 }
 
@@ -415,6 +427,15 @@ export type MoveParameters = IActionParameters & {
 , folderIds:ID[]
 };
 export type DeleteParameters = IActionParameters & {
+  application: string
+  resourceType: string
+  resourceIds:ID[]
+, folderIds:ID[]
+};
+export type TrashParameters = IActionParameters & {
+  trash: boolean
+  application: string
+  resourceType: string
   resourceIds:ID[]
 , folderIds:ID[]
 };

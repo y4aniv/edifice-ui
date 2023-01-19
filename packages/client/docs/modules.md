@@ -120,6 +120,7 @@
 - [StringFilterType](modules.md#stringfiltertype)
 - [StringFilterValue](modules.md#stringfiltervalue)
 - [TrackingType](modules.md#trackingtype)
+- [TrashParameters](modules.md#trashparameters)
 - [UpdateFolderParameters](modules.md#updatefolderparameters)
 - [UpdateFolderResult](modules.md#updatefolderresult)
 - [UpdatePropertiesParameters](modules.md#updatepropertiesparameters)
@@ -212,7 +213,7 @@ ___
 
 ### DeleteParameters
 
-Ƭ **DeleteParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `folderIds`: [`ID`](modules.md#id)[] ; `resourceIds`: [`ID`](modules.md#id)[]  }
+Ƭ **DeleteParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `application`: `string` ; `folderIds`: [`ID`](modules.md#id)[] ; `resourceIds`: [`ID`](modules.md#id)[] ; `resourceType`: `string`  }
 
 ___
 
@@ -498,6 +499,12 @@ ___
 
 ___
 
+### TrashParameters
+
+Ƭ **TrashParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `application`: `string` ; `folderIds`: [`ID`](modules.md#id)[] ; `resourceIds`: [`ID`](modules.md#id)[] ; `resourceType`: `string` ; `trash`: `boolean`  }
+
+___
+
 ### UpdateFolderParameters
 
 Ƭ **UpdateFolderParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `app`: [`App`](modules.md#app) ; `folderId`: [`ID`](modules.md#id) ; `name`: `string` ; `parentId`: [`ID`](modules.md#id) \| ``"default"`` ; `type`: [`ResourceType`](modules.md#resourcetype)  }
@@ -577,6 +584,7 @@ ___
 | `REGISTER` | ``"register"`` |
 | `SEARCH` | ``"search"`` |
 | `SHARE` | ``"share"`` |
+| `TRASH` | ``"trash"`` |
 | `UPD_PROPS` | ``"properties"`` |
 
 ___

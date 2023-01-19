@@ -1,11 +1,12 @@
 import { AgentFactory } from '.';
-import { ACTION, CreateFolderParameters, CreateFolderResult, DeleteParameters, GetContextParameters, GetContextResult, GetSubFoldersResult, IActionResult, IContext, ID, IHttp, ISearchResults, ManagePropertiesParameters, ManagePropertiesResult, MoveParameters, PROP_KEY, RESOURCE, TransportFrameworkFactory } from '..';
+import { ACTION, CreateFolderParameters, CreateFolderResult, DeleteParameters, GetContextParameters, GetContextResult, GetSubFoldersResult, IActionResult, IContext, ID, IHttp, ISearchResults, ManagePropertiesParameters, ManagePropertiesResult, MoveParameters, PROP_KEY, RESOURCE, TransportFrameworkFactory, TrashParameters } from '..';
 import { AbstractBusAgent, IHandler } from '../explore/Agent';
 
 declare var console:any;
 console.log("explorer agent loading....");
 
 class FolderAgent extends AbstractBusAgent {
+    private application = "explorer";
     constructor() {
         super( RESOURCE.FOLDER );
 		this.registerHandlers();	
@@ -41,6 +42,7 @@ class FolderAgent extends AbstractBusAgent {
         this.setHandler( ACTION.OPEN,       this.listSubfolders as unknown as IHandler );
         this.setHandler( ACTION.MOVE,       this.moveToFolder as unknown as IHandler );
         this.setHandler( ACTION.DELETE,     this.deleteFolders as unknown as IHandler );
+        this.setHandler( ACTION.TRASH,     this.trashFolders as unknown as IHandler );
         this.setHandler( ACTION.MANAGE,     this.onManage as unknown as IHandler );
     }
 
@@ -80,7 +82,13 @@ class FolderAgent extends AbstractBusAgent {
 
     /** Delete folders and/or resources. */
     deleteFolders( parameters:DeleteParameters ): Promise<IActionResult> {
-        return this.http.deleteJson<IActionResult>( `/explorer/folders`, parameters )
+        return this.http.deleteJson<IActionResult>( `/explorer`, parameters )
+        .then( this.checkHttpResponse );
+    }
+
+    /** Trash folders and/or resources. */
+    trashFolders( {trash, resourceType, ...parameters}:TrashParameters): Promise<IActionResult> {
+        return this.http.putJson<IActionResult>( `/explorer/${trash?'':'un'}trash`, parameters )
         .then( this.checkHttpResponse );
     }
 
@@ -126,7 +134,7 @@ class FolderAgent extends AbstractBusAgent {
     }
     private moveToBodyParams(p:MoveParameters) {
         return {
-            application:    "explorer",
+            application:    this.application,
             resourceType:   this.managedResource,
             resourceIds:    p.resourceIds,
             folderIds:      p.folderIds

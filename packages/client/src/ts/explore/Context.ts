@@ -1,6 +1,6 @@
 import { Observable, Subject } from "rxjs";
 import { App, ERROR_CODE } from "../globals";
-import { IContext, IExplorerContext, ISearchParameters, ResourceType, IBus, ACTION, GetResourcesResult, GetSubFoldersResult, CreateFolderResult, UpdateFolderResult, ExplorerFrameworkFactory, GetContextResult, RESOURCE, CreateFolderParameters, ID, ISearchResults, IResource, ManagePropertiesResult, ManagePropertiesParameters, UpdatePropertiesResult, UpdatePropertiesParameters, UpdateFolderParameters, CopyParameters, MoveParameters, DeleteParameters, PropKeyType } from "./interfaces";
+import { IContext, IExplorerContext, ISearchParameters, ResourceType, IBus, ACTION, GetResourcesResult, GetSubFoldersResult, CreateFolderResult, UpdateFolderResult, ExplorerFrameworkFactory, GetContextResult, RESOURCE, CreateFolderParameters, ID, ISearchResults, IResource, ManagePropertiesResult, ManagePropertiesParameters, UpdatePropertiesResult, UpdatePropertiesParameters, UpdateFolderParameters, CopyParameters, MoveParameters, DeleteParameters, PropKeyType, TrashParameters } from "./interfaces";
 
 export class ExplorerContext implements IExplorerContext {
     private searchParameters: ISearchParameters;
@@ -140,11 +140,28 @@ export class ExplorerContext implements IExplorerContext {
         });
     }
     delete(resourceIds:string[], folderIds:string[]): Promise<void> {
+        //TODO what if we have multi types apps?
         const parameters:DeleteParameters = {
+            application: this.searchParameters.app,
+            resourceType: this.searchParameters.types[0],
             resourceIds: resourceIds,
             folderIds: folderIds
         };
         return this.bus.publish( RESOURCE.FOLDER, ACTION.DELETE, parameters )
+        .then( (ar) => {
+            // void
+        });
+    }
+    trash(trash:boolean, resourceIds:string[], folderIds:string[]): Promise<void> {
+        //TODO what if we have multi types apps?
+        const parameters:TrashParameters = {
+            trash,
+            application: this.searchParameters.app,
+            resourceType: this.searchParameters.types[0],
+            resourceIds,
+            folderIds
+        };
+        return this.bus.publish( RESOURCE.FOLDER, ACTION.TRASH, parameters )
         .then( (ar) => {
             // void
         });

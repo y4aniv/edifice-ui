@@ -21,6 +21,7 @@ Context to explore resources from an application.
 - [latestResources](IExplorerContext.md#latestresources)
 - [manageProperties](IExplorerContext.md#manageproperties)
 - [move](IExplorerContext.md#move)
+- [trash](IExplorerContext.md#trash)
 - [updateFolder](IExplorerContext.md#updatefolder)
 - [updateProperties](IExplorerContext.md#updateproperties)
 
@@ -223,6 +224,26 @@ Move resources and folders into a folder.
 | `targetId` | `string` | ID of the destination folder. |
 | `resourceIds` | `string`[] | Array of resources ID to move. |
 | `folderIds` | `string`[] | Array of folders ID to move. |
+
+#### Returns
+
+`Promise`<`void`\>
+
+___
+
+### trash
+
+▸ **trash**(`trash`, `resourceIds`, `folderIds`): `Promise`<`void`\>
+
+Trash / Untrash resources and folders.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `trash` | `boolean` | boolean set status trash or untrash |
+| `resourceIds` | `string`[] | Array of resources ID to delete. |
+| `folderIds` | `string`[] | Array of folders ID to delete. |
 
 #### Returns
 
