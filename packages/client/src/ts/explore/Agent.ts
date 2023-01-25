@@ -37,6 +37,7 @@ export abstract class AbstractBusAgent implements IBusAgent {
         register:   AbstractBusAgent.defaultHandler,
         trash:      AbstractBusAgent.defaultHandler,
         publish_moodle: AbstractBusAgent.defaultHandler,
+        restore:      AbstractBusAgent.defaultHandler
     };
 
     protected initialize(): void {

@@ -88,7 +88,7 @@ class FolderAgent extends AbstractBusAgent {
 
     /** Trash folders and/or resources. */
     trashFolders( {trash, resourceType, ...parameters}:TrashParameters): Promise<IActionResult> {
-        return this.http.putJson<IActionResult>( `/explorer/${trash?'':'un'}trash`, parameters )
+        return this.http.putJson<IActionResult>( `/explorer/${trash?'trash':'restore'}`, parameters )
         .then( this.checkHttpResponse );
     }
 

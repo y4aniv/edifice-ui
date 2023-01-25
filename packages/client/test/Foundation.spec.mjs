@@ -11857,14 +11857,10 @@ const _AbstractBusAgent = class {
       move: _AbstractBusAgent.defaultHandler,
       open: _AbstractBusAgent.defaultHandler,
       print: _AbstractBusAgent.defaultHandler,
-      publish: _AbstractBusAgent.defaultHandler,
+      publish_library: _AbstractBusAgent.defaultHandler,
       search: _AbstractBusAgent.defaultHandler,
       share: _AbstractBusAgent.defaultHandler,
-      distribute: _AbstractBusAgent.defaultHandler,
-      pages_list: _AbstractBusAgent.defaultHandler,
-      register: _AbstractBusAgent.defaultHandler,
-      trash: _AbstractBusAgent.defaultHandler,
-      publish_moodle: _AbstractBusAgent.defaultHandler
+      trash: _AbstractBusAgent.defaultHandler
     });
     this.managedResource = managedResource;
     this.initialize();
@@ -12045,7 +12041,7 @@ class FolderAgent extends AbstractBusAgent {
   }
   trashFolders(_a) {
     var _b = _a, { trash, resourceType } = _b, parameters = __objRest(_b, ["trash", "resourceType"]);
-    return this.http.putJson(`/explorer/${trash ? "" : "un"}trash`, parameters).then(this.checkHttpResponse);
+    return this.http.putJson(`/explorer/${trash ? "trash" : "restore"}`, parameters).then(this.checkHttpResponse);
   }
   onManage(parameters) {
     const res = {
@@ -12335,16 +12331,13 @@ const ACTION = {
   COMMENT: "comment",
   DELETE: "delete",
   TRASH: "trash",
+  RESTORE: "restore",
   MOVE: "move",
   COPY: "copy",
   EXPORT: "export",
   SHARE: "share",
-  PRINT: "print",
-  PAGES_LIST: "pages_list",
-  DISTRIBUTE: "distribute",
-  REGISTER: "register",
   PUBLISH: "publish",
-  PUBLISH_MOODLE: "publish_moodle"
+  PRINT: "print"
 };
 const PROP_KEY = {
   TITLE: "title",

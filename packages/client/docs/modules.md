@@ -604,6 +604,7 @@ ___
 | `PUBLISH` | ``"publish"`` |
 | `PUBLISH_MOODLE` | ``"publish_moodle"`` |
 | `REGISTER` | ``"register"`` |
+| `RESTORE` | ``"restore"`` |
 | `SEARCH` | ``"search"`` |
 | `SHARE` | ``"share"`` |
 | `TRASH` | ``"trash"`` |

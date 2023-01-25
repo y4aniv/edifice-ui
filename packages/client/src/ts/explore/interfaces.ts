@@ -170,7 +170,8 @@ export const ACTION = {
  ,UPD_PROPS:  "properties"  // Update properties
  ,COMMENT:    "comment"
  ,DELETE:     "delete"
- ,TRASH:      "trash"
+ ,TRASH:     "trash"
+ ,RESTORE:     "restore"
  ,MOVE:       "move"
  ,COPY:       "copy"
  ,EXPORT:     "export"
