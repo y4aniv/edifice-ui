@@ -1,6 +1,6 @@
 import { Observable, Subject } from "rxjs";
 import { App, ERROR_CODE } from "../globals";
-import { IContext, IExplorerContext, ISearchParameters, ResourceType, IBus, ACTION, GetResourcesResult, GetSubFoldersResult, CreateFolderResult, UpdateFolderResult, ExplorerFrameworkFactory, GetContextResult, RESOURCE, CreateFolderParameters, ID, ISearchResults, IResource, ManagePropertiesResult, ManagePropertiesParameters, UpdatePropertiesResult, UpdatePropertiesParameters, UpdateFolderParameters, CopyParameters, MoveParameters, DeleteParameters, PropKeyType, TrashParameters } from "./interfaces";
+import { IContext, IExplorerContext, ISearchParameters, ResourceType, IBus, ACTION, GetResourcesResult, GetSubFoldersResult, CreateFolderResult, UpdateFolderResult, ExplorerFrameworkFactory, GetContextResult, RESOURCE, CreateFolderParameters, ID, ISearchResults, IResource, ManagePropertiesResult, ManagePropertiesParameters, UpdatePropertiesResult, UpdatePropertiesParameters, UpdateFolderParameters, CopyParameters, MoveParameters, DeleteParameters, PropKeyType, TrashParameters, PublishParameters, PublishResult } from "./interfaces";
 
 export class ExplorerContext implements IExplorerContext {
     private searchParameters: ISearchParameters;
@@ -182,6 +182,16 @@ export class ExplorerContext implements IExplorerContext {
         return this.bus.publish( resourceType, ACTION.UPD_PROPS, params )
         .then( (ar) => {
             let result = ar as UpdatePropertiesResult;
+            // TODO data sanity check
+            if( !result )
+                throw new Error( ERROR_CODE.UNKNOWN );
+            return result;
+        });
+    }
+    publish(resourceType:ResourceType, parameters: PublishParameters): Promise<PublishResult> {
+        return this.bus.publish( resourceType, ACTION.PUBLISH, parameters )
+        .then( (ar) => {
+            let result = ar as PublishResult;
             // TODO data sanity check
             if( !result )
                 throw new Error( ERROR_CODE.UNKNOWN );

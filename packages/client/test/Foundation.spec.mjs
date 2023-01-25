@@ -11860,7 +11860,11 @@ const _AbstractBusAgent = class {
       publish: _AbstractBusAgent.defaultHandler,
       search: _AbstractBusAgent.defaultHandler,
       share: _AbstractBusAgent.defaultHandler,
-      trash: _AbstractBusAgent.defaultHandler
+      distribute: _AbstractBusAgent.defaultHandler,
+      pages_list: _AbstractBusAgent.defaultHandler,
+      register: _AbstractBusAgent.defaultHandler,
+      trash: _AbstractBusAgent.defaultHandler,
+      publish_moodle: _AbstractBusAgent.defaultHandler
     });
     this.managedResource = managedResource;
     this.initialize();
@@ -11907,6 +11911,7 @@ class BlogAgent extends AbstractBusAgent {
     this.setHandler(ACTION.MANAGE, this.onManage);
     this.setHandler(ACTION.UPD_PROPS, this.onUpdateProps);
     this.setHandler(ACTION.PRINT, this.onPrint);
+    this.setHandler(ACTION.PUBLISH, this.onPublish);
   }
   onPrint(parameters) {
     window.open(
@@ -11938,6 +11943,44 @@ class BlogAgent extends AbstractBusAgent {
     };
     alert("TODO: update properties");
     return Promise.resolve().then(() => res);
+  }
+  onPublish(parameters) {
+    return __async(this, null, function* () {
+      const publicationAsFormData = new FormData();
+      publicationAsFormData.append("title", parameters.title);
+      publicationAsFormData.append("cover", parameters.cover);
+      publicationAsFormData.append("coverName", parameters.cover.name);
+      publicationAsFormData.append("coverType", parameters.cover.type);
+      publicationAsFormData.append("teacherAvatar", parameters.teacherAvatar);
+      publicationAsFormData.append(
+        "teacherAvatarName",
+        parameters.teacherAvatar.name || `teacherAvatar_${parameters.userId}`
+      );
+      publicationAsFormData.append("teacherAvatarType", parameters.teacherAvatar.type);
+      publicationAsFormData.append("language", parameters.language);
+      parameters.activityType.forEach((activityType) => {
+        publicationAsFormData.append("activityType[]", activityType);
+      });
+      parameters.subjectArea.forEach((subjectArea) => {
+        publicationAsFormData.append("subjectArea[]", subjectArea);
+      });
+      parameters.age.forEach((age) => {
+        publicationAsFormData.append("age[]", age.toString());
+      });
+      publicationAsFormData.append("description", parameters.description);
+      let keyWordsArray = parameters.keyWords.split(",");
+      keyWordsArray.forEach((keyWord) => {
+        publicationAsFormData.append("keyWords[]", keyWord.trim());
+      });
+      publicationAsFormData.append("licence", parameters.licence);
+      publicationAsFormData.append("pdfUri", `/blog/print/blog#/print/${parameters.resourceId}`);
+      publicationAsFormData.append("application", parameters.application);
+      publicationAsFormData.append("resourceId", parameters.resourceId);
+      publicationAsFormData.append("teacherSchool", parameters.userStructureName);
+      return this.http.post("/appregistry/library/resource", publicationAsFormData, {
+        headers: { "Content-Type": "multipart/form-data" }
+      });
+    });
   }
 }
 const factory$1 = () => new BlogAgent();
@@ -12226,6 +12269,14 @@ class ExplorerContext {
       return result;
     });
   }
+  publish(resourceType, parameters) {
+    return this.bus.publish(resourceType, ACTION.PUBLISH, parameters).then((ar) => {
+      let result = ar;
+      if (!result)
+        throw new Error(ERROR_CODE.UNKNOWN);
+      return result;
+    });
+  }
 }
 class ExplorerFramework {
   constructor() {
@@ -12288,8 +12339,12 @@ const ACTION = {
   COPY: "copy",
   EXPORT: "export",
   SHARE: "share",
+  PRINT: "print",
+  PAGES_LIST: "pages_list",
+  DISTRIBUTE: "distribute",
+  REGISTER: "register",
   PUBLISH: "publish",
-  PRINT: "print"
+  PUBLISH_MOODLE: "publish_moodle"
 };
 const PROP_KEY = {
   TITLE: "title",
@@ -13638,6 +13693,9 @@ class Http {
       if (params2.headers) {
         p.headers = Object.assign({}, this.axios.defaults.headers);
         Object.assign(p.headers, params2.headers);
+      }
+      if (params2.responseType) {
+        p.responseType = params2.responseType;
       }
       if (params2.queryParams) {
         p.params = Object.assign({}, params2.queryParams);

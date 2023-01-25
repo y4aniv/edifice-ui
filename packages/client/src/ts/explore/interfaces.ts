@@ -130,6 +130,9 @@ export interface IExplorerContext {
   /* Share resources */
   //share( resourceIds:ID[] /*, rights:IGroupUserRight[]*/ ): Promise<void>;
 
+  /** Publish to Library */
+  publish(resourceType:ResourceType, parameters: PublishParameters): Promise<PublishResult>;
+
 
 /*//TODO ajouter des méthodes pour les autres actions du toaster ?
   CREATE:     "create"
@@ -167,17 +170,17 @@ export const ACTION = {
  ,UPD_PROPS:  "properties"  // Update properties
  ,COMMENT:    "comment"
  ,DELETE:     "delete"
- ,TRASH:     "trash"
+ ,TRASH:      "trash"
  ,MOVE:       "move"
  ,COPY:       "copy"
  ,EXPORT:     "export"
  ,SHARE:      "share"
- ,PUBLISH_LIBRARY:  "publish_library"
- ,PRINT:       "print"
- ,PAGES_LIST:  "pages_list"
- ,DISTRIBUTE:   "distribute"
- ,REGISTER:     "register"
- ,PUBLISH:      "publish"    // publish moodle
+ ,PRINT:      "print"
+ ,PAGES_LIST: "pages_list"
+ ,DISTRIBUTE: "distribute"
+ ,REGISTER:   "register"
+ ,PUBLISH:    "publish"
+ ,PUBLISH_MOODLE: "publish_moodle"
 } as const;
 export type ActionType = typeof ACTION[keyof typeof ACTION];
 
@@ -445,6 +448,23 @@ export type UpdatePropertiesParameters = IActionParameters & {
 , props:{[key in PropKeyType]?:string}
 };
 
+export type PublishParameters = IActionParameters & {
+  userId: string | undefined
+  title: string
+  cover: Blob
+  language: string
+  activityType: string[]
+  subjectArea: string[]
+  age: [number, number]
+  description: string
+  keyWords: string
+  application: string
+  licence: string
+  teacherAvatar: Blob
+  resourceId: string
+  userStructureName: string
+}
+
 /* NOT USED AT THE MOMENT (and probably never)
 //-------------------------------------
 export interface IGroupUserRight {
@@ -480,7 +500,19 @@ export type UpdateFolderResult = CreateFolderResult & {
 };
 export type ManagePropertiesResult = IActionResult & { genericProps:IProperty[]; };
 export type UpdatePropertiesResult = IActionResult & { resources:IResource[]; };
-
+export type PublishResult = IActionResult & {
+  details: {
+    application: string,
+    created_at: string,
+    description: string,
+    front_url: string,
+    id: string,
+    title: string
+  };
+  message: string;
+  reason: string;
+  success: boolean;
+};
 
 //-------------------------------------
 //-------------------- API (LOW-LEVEL)
