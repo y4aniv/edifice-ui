@@ -1,6 +1,6 @@
 import { transport } from "../transport/Framework";
 import { notify } from "../notify/Framework";
-import { IEmailValidationInfos, IEmailValidationState, IQuotaAndUsage, ISession, IUserDescription, IUserInfo } from "./interfaces";
+import { IEmailValidationInfos, IEmailValidationState, IMobileValidationInfos, IMobileValidationState, IQuotaAndUsage, ISession, IUserDescription, IUserInfo } from "./interfaces";
 import { ConfigurationFramework, configure } from "../configure/Framework";
 import { ConfigurationFrameworkFactory } from "../configure/interfaces";
 import { App } from "../globals";
@@ -198,12 +198,23 @@ export class Session implements ISession {
         return http.get<IEmailValidationInfos>('/directory/user/mailstate');
     }
 
+    public getMobileValidationInfos():Promise<IMobileValidationInfos> {
+        return http.get<IMobileValidationInfos>('/directory/user/mobilestate');
+    }
+
     public checkEmail(email:String):Promise<void> {
         return http.put<void>('/directory/user/mailstate', {email:email});
+    }
+
+    public checkMobile(mobile:String):Promise<void> {
+        return http.put<void>('/directory/user/mobilestate', {mobile:mobile});
     }
 
     public tryEmailValidation(code:String):Promise<IEmailValidationState> {
         return http.post<IEmailValidationState>('/directory/user/mailstate', {key:code});
     }
 
+    public tryMobileValidation(code:String):Promise<IMobileValidationState> {
+        return http.post<IMobileValidationState>('/directory/user/mobilestate', {key:code});
+    }
 }

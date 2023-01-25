@@ -50,6 +50,16 @@ export interface ISession {
   checkEmail(email:String):Promise<void>;
   /** Send a 6-digits code to the server to try validating the pending email address. */
   tryEmailValidation(code:String):Promise<IEmailValidationState>;
+
+  /** Verify if the logged-in user has a valid phone number. */
+  getMobileValidationInfos():Promise<IMobileValidationInfos>;
+  /** 
+   * Send a 6-digits code to a phone number to validate it.
+   * => when resolved successfully, the phone number infos will switch to the "pending" state.
+   */
+  checkMobile(mobile:String):Promise<void>;
+  /** Send a 6-digits code to the server to try validating the pending phone number. */
+  tryMobileValidation(code:String):Promise<IMobileValidationState>;
 }
 
 export type Hobby = {
@@ -194,12 +204,34 @@ export interface IEmailValidationInfos {
   waitInSeconds: number
 }
 
+export interface IMobileValidationInfos {
+  /** The current phone number of the user (maybe not verified) */
+  mobile: string,
+  /** State of the current phone number. */
+  mobileState: IMobileValidationState|null,
+  /** Suggested time to wait for the validation phone number to be sent (platform configuration) */
+  waitInSeconds: number
+}
+
 export interface IEmailValidationState {
   /** Validation state */
   state: "unchecked" | "outdated" | "pending" | "valid";
   /** Last known valid email address, or empty string. */
   valid: string;
   /** (optional) Current pending (or outdated) email address being checked. */
+  pending?: string;
+  /** (optional) Seconds remaining for the user to type in the correct validation code. */
+  ttl?: number;
+  /** (optional) Remaining number of times a validation code can be typed in. */
+  tries?: number;
+}
+
+export interface IMobileValidationState {
+  /** Validation state */
+  state: "unchecked" | "outdated" | "pending" | "valid";
+  /** Last known valid phone number, or empty string. */
+  valid: string;
+  /** (optional) Current pending (or outdated) phone number being checked. */
   pending?: string;
   /** (optional) Seconds remaining for the user to type in the correct validation code. */
   ttl?: number;

@@ -17,10 +17,13 @@
 ### Methods
 
 - [checkEmail](ISession.md#checkemail)
+- [checkMobile](ISession.md#checkmobile)
 - [getEmailValidationInfos](ISession.md#getemailvalidationinfos)
+- [getMobileValidationInfos](ISession.md#getmobilevalidationinfos)
 - [hasRight](ISession.md#hasright)
 - [hasWorkflow](ISession.md#hasworkflow)
 - [tryEmailValidation](ISession.md#tryemailvalidation)
+- [tryMobileValidation](ISession.md#trymobilevalidation)
 
 ## Properties
 
@@ -100,6 +103,25 @@ Send a 6-digits code to an email address to validate it.
 
 ___
 
+### checkMobile
+
+▸ **checkMobile**(`mobile`): `Promise`<`void`\>
+
+Send a 6-digits code to a phone number to validate it.
+=> when resolved successfully, the phone number infos will switch to the "pending" state.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `mobile` | `String` |
+
+#### Returns
+
+`Promise`<`void`\>
+
+___
+
 ### getEmailValidationInfos
 
 ▸ **getEmailValidationInfos**(): `Promise`<[`IEmailValidationInfos`](IEmailValidationInfos.md)\>
@@ -109,6 +131,18 @@ Verify if the logged-in user has a valid email address.
 #### Returns
 
 `Promise`<[`IEmailValidationInfos`](IEmailValidationInfos.md)\>
+
+___
+
+### getMobileValidationInfos
+
+▸ **getMobileValidationInfos**(): `Promise`<[`IMobileValidationInfos`](IMobileValidationInfos.md)\>
+
+Verify if the logged-in user has a valid phone number.
+
+#### Returns
+
+`Promise`<[`IMobileValidationInfos`](IMobileValidationInfos.md)\>
 
 ___
 
@@ -160,3 +194,21 @@ Send a 6-digits code to the server to try validating the pending email address.
 #### Returns
 
 `Promise`<[`IEmailValidationState`](IEmailValidationState.md)\>
+
+___
+
+### tryMobileValidation
+
+▸ **tryMobileValidation**(`code`): `Promise`<[`IMobileValidationState`](IMobileValidationState.md)\>
+
+Send a 6-digits code to the server to try validating the pending phone number.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `code` | `String` |
+
+#### Returns
+
+`Promise`<[`IMobileValidationState`](IMobileValidationState.md)\>
