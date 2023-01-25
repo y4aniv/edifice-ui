@@ -58,6 +58,10 @@ export class Http implements IHttp {
                 Object.assign(p.headers, params.headers);
             }
 
+            if (params.responseType) {
+                p.responseType = params.responseType;
+            }
+
             if( params.queryParams ) {
                 // Axios will serialize parameters, see https://github.com/axios/axios#request-config
                 p.params = Object.assign({}, params.queryParams);

@@ -21,6 +21,7 @@ Context to explore resources from an application.
 - [latestResources](IExplorerContext.md#latestresources)
 - [manageProperties](IExplorerContext.md#manageproperties)
 - [move](IExplorerContext.md#move)
+- [publish](IExplorerContext.md#publish)
 - [trash](IExplorerContext.md#trash)
 - [updateFolder](IExplorerContext.md#updatefolder)
 - [updateProperties](IExplorerContext.md#updateproperties)
@@ -228,6 +229,25 @@ Move resources and folders into a folder.
 #### Returns
 
 `Promise`<`void`\>
+
+___
+
+### publish
+
+▸ **publish**(`resourceType`, `parameters`): `Promise`<[`PublishResult`](../modules.md#publishresult)\>
+
+Publish to Library
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `resourceType` | [`ResourceType`](../modules.md#resourcetype) |
+| `parameters` | [`PublishParameters`](../modules.md#publishparameters) |
+
+#### Returns
+
+`Promise`<[`PublishResult`](../modules.md#publishresult)\>
 
 ___
 

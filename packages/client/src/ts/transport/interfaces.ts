@@ -71,6 +71,14 @@ export interface IHttp {
     setCdn(url:string):void;
 }
 
+export type IHttpParamsResponseType =
+    | 'arraybuffer'
+    | 'blob'
+    | 'document'
+    | 'json'
+    | 'text'
+    | 'stream'
+
 //-------------------------------------
 export type IHttpParams = {
 //-------------------------------------
@@ -82,6 +90,8 @@ export type IHttpParams = {
     readonly headers?: {[key:string]: /*value*/string;};
     /** Object to serialize as query parameters and append to the request URL. */
     readonly queryParams?: {[key:string]: /*value*/any;};
+    /** Response Type */
+    readonly responseType?: IHttpParamsResponseType;
 
     //readonly matrixParams: {[key:string]: /*value*/any;}; // TODO maybe later ?
 };

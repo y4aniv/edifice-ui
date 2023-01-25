@@ -98,6 +98,7 @@
 - [Hobby](modules.md#hobby)
 - [ID](modules.md#id)
 - [IHttpParams](modules.md#ihttpparams)
+- [IHttpParamsResponseType](modules.md#ihttpparamsresponsetype)
 - [IHttpResponse](modules.md#ihttpresponse)
 - [IThemeOverrides](modules.md#ithemeoverrides)
 - [LayerName](modules.md#layername)
@@ -112,6 +113,8 @@
 - [PropKeyType](modules.md#propkeytype)
 - [PropModeType](modules.md#propmodetype)
 - [PropTypeType](modules.md#proptypetype)
+- [PublishParameters](modules.md#publishparameters)
+- [PublishResult](modules.md#publishresult)
 - [ResourceType](modules.md#resourcetype)
 - [School](modules.md#school)
 - [SearchResultHandler](modules.md#searchresulthandler)
@@ -303,6 +306,13 @@ ___
 | `headers?` | { `[key: string]`: `string`;  } | HTTP headers to apply to the request. |
 | `queryParams?` | { `[key: string]`: `any`;  } | Object to serialize as query parameters and append to the request URL. |
 | `requestName?` | `string` | Request the API to send a notification when done. |
+| `responseType?` | [`IHttpParamsResponseType`](modules.md#ihttpparamsresponsetype) | Response Type |
+
+___
+
+### IHttpParamsResponseType
+
+Ƭ **IHttpParamsResponseType**: ``"arraybuffer"`` \| ``"blob"`` \| ``"document"`` \| ``"json"`` \| ``"text"`` \| ``"stream"``
 
 ___
 
@@ -416,6 +426,18 @@ ___
 ### PropTypeType
 
 Ƭ **PropTypeType**: typeof [`PROP_TYPE`](modules.md#prop_type)[keyof typeof [`PROP_TYPE`](modules.md#prop_type)]
+
+___
+
+### PublishParameters
+
+Ƭ **PublishParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `activityType`: `string`[] ; `age`: [`number`, `number`] ; `application`: `string` ; `cover`: `Blob` ; `description`: `string` ; `keyWords`: `string` ; `language`: `string` ; `licence`: `string` ; `resourceId`: `string` ; `subjectArea`: `string`[] ; `teacherAvatar`: `Blob` ; `title`: `string` ; `userId`: `string` \| `undefined` ; `userStructureName`: `string`  }
+
+___
+
+### PublishResult
+
+Ƭ **PublishResult**: [`IActionResult`](interfaces/IActionResult.md) & { `details`: { `application`: `string` ; `created_at`: `string` ; `description`: `string` ; `front_url`: `string` ; `id`: `string` ; `title`: `string`  } ; `message`: `string` ; `reason`: `string` ; `success`: `boolean`  }
 
 ___
 
@@ -580,7 +602,7 @@ ___
 | `PAGES_LIST` | ``"pages_list"`` |
 | `PRINT` | ``"print"`` |
 | `PUBLISH` | ``"publish"`` |
-| `PUBLISH_LIBRARY` | ``"publish_library"`` |
+| `PUBLISH_MOODLE` | ``"publish_moodle"`` |
 | `REGISTER` | ``"register"`` |
 | `SEARCH` | ``"search"`` |
 | `SHARE` | ``"share"`` |
