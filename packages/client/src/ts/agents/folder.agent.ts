@@ -6,7 +6,6 @@ declare var console:any;
 console.log("explorer agent loading....");
 
 class FolderAgent extends AbstractBusAgent {
-    private application = "explorer";
     constructor() {
         super( RESOURCE.FOLDER );
 		this.registerHandlers();	
@@ -134,7 +133,7 @@ class FolderAgent extends AbstractBusAgent {
     }
     private moveToBodyParams(p:MoveParameters) {
         return {
-            application:    this.application,
+            application:    p.application,
             resourceType:   this.managedResource,
             resourceIds:    p.resourceIds,
             folderIds:      p.folderIds

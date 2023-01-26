@@ -198,7 +198,7 @@ ___
 
 ### CopyParameters
 
-Ƭ **CopyParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `folderId`: [`ID`](modules.md#id) ; `folderIds`: [`ID`](modules.md#id)[] ; `resourceIds`: [`ID`](modules.md#id)[]  }
+Ƭ **CopyParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `application`: `string` ; `folderId`: [`ID`](modules.md#id) ; `folderIds`: [`ID`](modules.md#id)[] ; `resourceIds`: [`ID`](modules.md#id)[]  }
 
 ___
 
@@ -356,7 +356,7 @@ ___
 
 ### MoveParameters
 
-Ƭ **MoveParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `folderId`: [`ID`](modules.md#id) ; `folderIds`: [`ID`](modules.md#id)[] ; `resourceIds`: [`ID`](modules.md#id)[]  }
+Ƭ **MoveParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `application`: `string` ; `folderId`: [`ID`](modules.md#id) ; `folderIds`: [`ID`](modules.md#id)[] ; `resourceIds`: [`ID`](modules.md#id)[]  }
 
 ___
 

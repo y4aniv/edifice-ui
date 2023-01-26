@@ -421,11 +421,13 @@ export type PrintParameters = IActionParameters & {
   withComments?:boolean
 };
 export type CopyParameters = IActionParameters & {
+  application: string
   folderId:ID
 , resourceIds:ID[]
 , folderIds:ID[]
 };
 export type MoveParameters = IActionParameters & {
+  application: string
   folderId:ID
 , resourceIds:ID[]
 , folderIds:ID[]

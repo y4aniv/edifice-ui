@@ -119,6 +119,7 @@ export class ExplorerContext implements IExplorerContext {
     }
     copy(targetId:string, resourceIds:ID[], folderIds:ID[]): Promise<void> {
         const parameters:CopyParameters = {
+            application: this.searchParameters.app,
             folderId: targetId,
             resourceIds: resourceIds,
             folderIds: folderIds
@@ -130,6 +131,7 @@ export class ExplorerContext implements IExplorerContext {
     }
     move(targetId:string, resourceIds:ID[], folderIds:ID[]): Promise<void> {
         const parameters:MoveParameters = {
+            application: this.searchParameters.app,
             folderId: targetId,
             resourceIds: resourceIds,
             folderIds: folderIds
