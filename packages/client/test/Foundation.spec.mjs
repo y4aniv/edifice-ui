@@ -11857,10 +11857,15 @@ const _AbstractBusAgent = class {
       move: _AbstractBusAgent.defaultHandler,
       open: _AbstractBusAgent.defaultHandler,
       print: _AbstractBusAgent.defaultHandler,
-      publish_library: _AbstractBusAgent.defaultHandler,
+      publish: _AbstractBusAgent.defaultHandler,
       search: _AbstractBusAgent.defaultHandler,
       share: _AbstractBusAgent.defaultHandler,
-      trash: _AbstractBusAgent.defaultHandler
+      distribute: _AbstractBusAgent.defaultHandler,
+      pages_list: _AbstractBusAgent.defaultHandler,
+      register: _AbstractBusAgent.defaultHandler,
+      trash: _AbstractBusAgent.defaultHandler,
+      publish_moodle: _AbstractBusAgent.defaultHandler,
+      restore: _AbstractBusAgent.defaultHandler
     });
     this.managedResource = managedResource;
     this.initialize();
@@ -11984,7 +11989,6 @@ console.log("explorer agent loading....");
 class FolderAgent extends AbstractBusAgent {
   constructor() {
     super(RESOURCE.FOLDER);
-    __publicField(this, "application", "explorer");
     __publicField(this, "ctx", null);
     __publicField(this, "http", TransportFrameworkFactory.instance().newHttpInstance({
       paramsSerializer: function(params2) {
@@ -12016,6 +12020,7 @@ class FolderAgent extends AbstractBusAgent {
     this.setHandler(ACTION.DELETE, this.deleteFolders);
     this.setHandler(ACTION.TRASH, this.trashFolders);
     this.setHandler(ACTION.MANAGE, this.onManage);
+    this.setHandler(ACTION.UPD_PROPS, this.updateFolder);
   }
   createContext(parameters) {
     return this.http.get("/explorer/context", {
@@ -12029,6 +12034,9 @@ class FolderAgent extends AbstractBusAgent {
   }
   createFolder(parameters) {
     return this.http.post("/explorer/folders", this.createFolderToBodyParams(parameters)).then(this.checkHttpResponse);
+  }
+  updateFolder(parameters) {
+    return this.http.put(`/explorer/folders/${parameters.folderId}`, this.createFolderToBodyParams(parameters)).then(this.checkHttpResponse);
   }
   moveToFolder(parameters) {
     return this.http.post(`/explorer/folders/${parameters.folderId}/move`, this.moveToBodyParams(parameters)).then(this.checkHttpResponse);
@@ -12083,7 +12091,7 @@ class FolderAgent extends AbstractBusAgent {
   }
   moveToBodyParams(p) {
     return {
-      application: this.application,
+      application: p.application,
       resourceType: this.managedResource,
       resourceIds: p.resourceIds,
       folderIds: p.folderIds
@@ -12210,6 +12218,7 @@ class ExplorerContext {
   }
   copy(targetId, resourceIds, folderIds) {
     const parameters = {
+      application: this.searchParameters.app,
       folderId: targetId,
       resourceIds,
       folderIds
@@ -12219,6 +12228,7 @@ class ExplorerContext {
   }
   move(targetId, resourceIds, folderIds) {
     const parameters = {
+      application: this.searchParameters.app,
       folderId: targetId,
       resourceIds,
       folderIds
@@ -12336,8 +12346,12 @@ const ACTION = {
   COPY: "copy",
   EXPORT: "export",
   SHARE: "share",
+  PRINT: "print",
+  PAGES_LIST: "pages_list",
+  DISTRIBUTE: "distribute",
+  REGISTER: "register",
   PUBLISH: "publish",
-  PRINT: "print"
+  PUBLISH_MOODLE: "publish_moodle"
 };
 const PROP_KEY = {
   TITLE: "title",

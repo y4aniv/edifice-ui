@@ -1,5 +1,5 @@
 import { AgentFactory } from '.';
-import { ACTION, CreateFolderParameters, CreateFolderResult, DeleteParameters, GetContextParameters, GetContextResult, GetSubFoldersResult, IActionResult, IContext, ID, IHttp, ISearchResults, ManagePropertiesParameters, ManagePropertiesResult, MoveParameters, PROP_KEY, RESOURCE, TransportFrameworkFactory, TrashParameters } from '..';
+import { ACTION, CreateFolderParameters, CreateFolderResult, DeleteParameters, GetContextParameters, GetContextResult, GetSubFoldersResult, IActionResult, IContext, ID, IHttp, ISearchResults, ManagePropertiesParameters, ManagePropertiesResult, MoveParameters, PROP_KEY, RESOURCE, TransportFrameworkFactory, TrashParameters, UpdateFolderParameters } from '..';
 import { AbstractBusAgent, IHandler } from '../explore/Agent';
 
 declare var console:any;
@@ -43,6 +43,7 @@ class FolderAgent extends AbstractBusAgent {
         this.setHandler( ACTION.DELETE,     this.deleteFolders as unknown as IHandler );
         this.setHandler( ACTION.TRASH,     this.trashFolders as unknown as IHandler );
         this.setHandler( ACTION.MANAGE,     this.onManage as unknown as IHandler );
+        this.setHandler( ACTION.UPD_PROPS,     this.updateFolder as unknown as IHandler );
     }
 
     /** Create a search context. */
@@ -64,6 +65,12 @@ class FolderAgent extends AbstractBusAgent {
     /** Create a new folder. */
     createFolder( parameters:CreateFolderParameters ): Promise<CreateFolderResult> {
         return this.http.post<CreateFolderResult>( '/explorer/folders', this.createFolderToBodyParams(parameters) )
+        .then( this.checkHttpResponse );
+    }
+
+    /** Create a new folder. */
+    updateFolder( parameters:UpdateFolderParameters ): Promise<CreateFolderResult> {
+        return this.http.put<CreateFolderResult>( `/explorer/folders/${parameters.folderId}`, this.createFolderToBodyParams(parameters) )
         .then( this.checkHttpResponse );
     }
 
