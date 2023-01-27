@@ -458,10 +458,10 @@ export type PublishParameters = IActionParameters & {
   language: string
   activityType: string[]
   subjectArea: string[]
-  age: [number, number]
+  age: [string, string]
   description: string
   keyWords: string
-  application: string
+  application: string | undefined
   licence: string
   teacherAvatar: Blob
   resourceId: string

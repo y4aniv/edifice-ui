@@ -100,7 +100,7 @@ class BlogAgent extends AbstractBusAgent {
         });
         publicationAsFormData.append("licence", parameters.licence);
         publicationAsFormData.append("pdfUri", `/blog/print/blog#/print/${parameters.resourceId}`);
-        publicationAsFormData.append("application", parameters.application);
+        publicationAsFormData.append("application", parameters.application ? parameters.application : "");
         publicationAsFormData.append("resourceId", parameters.resourceId);
         publicationAsFormData.append("teacherSchool", parameters.userStructureName);
 
