@@ -19,10 +19,12 @@
 - [checkEmail](ISession.md#checkemail)
 - [checkMobile](ISession.md#checkmobile)
 - [getEmailValidationInfos](ISession.md#getemailvalidationinfos)
+- [getMfaInfos](ISession.md#getmfainfos)
 - [getMobileValidationInfos](ISession.md#getmobilevalidationinfos)
 - [hasRight](ISession.md#hasright)
 - [hasWorkflow](ISession.md#hasworkflow)
 - [tryEmailValidation](ISession.md#tryemailvalidation)
+- [tryMfaCode](ISession.md#trymfacode)
 - [tryMobileValidation](ISession.md#trymobilevalidation)
 
 ## Properties
@@ -134,6 +136,18 @@ Verify if the logged-in user has a valid email address.
 
 ___
 
+### getMfaInfos
+
+▸ **getMfaInfos**(): `Promise`<[`IMfaInfos`](IMfaInfos.md)\>
+
+Start an MFA for the logged-in user, unless already pending or done.
+
+#### Returns
+
+`Promise`<[`IMfaInfos`](IMfaInfos.md)\>
+
+___
+
 ### getMobileValidationInfos
 
 ▸ **getMobileValidationInfos**(): `Promise`<[`IMobileValidationInfos`](IMobileValidationInfos.md)\>
@@ -194,6 +208,24 @@ Send a 6-digits code to the server to try validating the pending email address.
 #### Returns
 
 `Promise`<[`IEmailValidationState`](IEmailValidationState.md)\>
+
+___
+
+### tryMfaCode
+
+▸ **tryMfaCode**(`code`): `Promise`<[`IMfaCodeState`](IMfaCodeState.md)\>
+
+Send a 6-digits code to the server to validate a pending MFA.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `code` | `String` |
+
+#### Returns
+
+`Promise`<[`IMfaCodeState`](IMfaCodeState.md)\>
 
 ___
 

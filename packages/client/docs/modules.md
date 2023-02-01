@@ -40,6 +40,8 @@
 - [IIdiom](interfaces/IIdiom.md)
 - [ILastInfosModel](interfaces/ILastInfosModel.md)
 - [IMatomoTrackingParams](interfaces/IMatomoTrackingParams.md)
+- [IMfaCodeState](interfaces/IMfaCodeState.md)
+- [IMfaInfos](interfaces/IMfaInfos.md)
 - [IMobileValidationInfos](interfaces/IMobileValidationInfos.md)
 - [IMobileValidationState](interfaces/IMobileValidationState.md)
 - [INotifyFramework](interfaces/INotifyFramework.md)

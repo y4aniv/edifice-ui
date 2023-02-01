@@ -60,6 +60,11 @@ export interface ISession {
   checkMobile(mobile:String):Promise<void>;
   /** Send a 6-digits code to the server to try validating the pending phone number. */
   tryMobileValidation(code:String):Promise<IMobileValidationState>;
+
+  /** Start an MFA for the logged-in user, unless already pending or done. */
+  getMfaInfos():Promise<IMfaInfos>;
+  /** Send a 6-digits code to the server to validate a pending MFA. */
+  tryMfaCode(code:String):Promise<IMfaCodeState>;
 }
 
 export type Hobby = {
@@ -165,7 +170,9 @@ export const WIDGET_POSITION = {
 } as const;
 export type WidgetPosition = typeof WIDGET_POSITION[keyof typeof WIDGET_POSITION];
 
+//-------------------------------------
 export interface IWidgetModel {
+//-------------------------------------
   application?: string;   // "Actualites"
   position?: WidgetPosition;  
   i18n: string;           // "/actualites/public/widgets/last-infos-widget/i18n"
@@ -176,7 +183,9 @@ export interface IWidgetModel {
   path: string;           // "/actualites/public/widgets/last-infos-widget/last-infos-widget.html"
 }
 
+//-------------------------------------
 export interface IWebApp {
+//-------------------------------------
   address: string;        // "/mindmap"
   casType?: string;       // "null"
   display: boolean;       // true
@@ -189,13 +198,17 @@ export interface IWebApp {
   target?: any;           // "_blank"
 }
 
+//-------------------------------------
 export interface IWorkflowAuth {
+//-------------------------------------
   displayName: string;
   name: string;
   type: string;
 }
 
+//-------------------------------------
 export interface IEmailValidationInfos {
+//-------------------------------------
   /** The current email address of the user (maybe not verified) */
   email: string,
   /** State of the current email address. */
@@ -203,17 +216,9 @@ export interface IEmailValidationInfos {
   /** Suggested time to wait for the validation mail to be sent (platform configuration) */
   waitInSeconds: number
 }
-
-export interface IMobileValidationInfos {
-  /** The current phone number of the user (maybe not verified) */
-  mobile: string,
-  /** State of the current phone number. */
-  mobileState: IMobileValidationState|null,
-  /** Suggested time to wait for the validation phone number to be sent (platform configuration) */
-  waitInSeconds: number
-}
-
+//-------------------------------------
 export interface IEmailValidationState {
+//-------------------------------------
   /** Validation state */
   state: "unchecked" | "outdated" | "pending" | "valid";
   /** Last known valid email address, or empty string. */
@@ -226,7 +231,19 @@ export interface IEmailValidationState {
   tries?: number;
 }
 
+//-------------------------------------
+export interface IMobileValidationInfos {
+//-------------------------------------
+  /** The current phone number of the user (maybe not verified) */
+  mobile: string,
+  /** State of the current phone number. */
+  mobileState: IMobileValidationState|null,
+  /** Suggested time to wait for the validation phone number to be sent (platform configuration) */
+  waitInSeconds: number
+}
+//-------------------------------------
 export interface IMobileValidationState {
+//-------------------------------------
   /** Validation state */
   state: "unchecked" | "outdated" | "pending" | "valid";
   /** Last known valid phone number, or empty string. */
@@ -236,5 +253,26 @@ export interface IMobileValidationState {
   /** (optional) Seconds remaining for the user to type in the correct validation code. */
   ttl?: number;
   /** (optional) Remaining number of times a validation code can be typed in. */
+  tries?: number;
+}
+
+//-------------------------------------
+export interface IMfaInfos {
+//-------------------------------------
+  /** The type of MFA used. */
+  type: "sms" | "email",
+  /** State of the generated MFA code. */
+  state: IMfaCodeState|null,
+  /** Suggested time to wait for the MFA code to be sent (platform configuration) */
+  waitInSeconds: number
+}
+//-------------------------------------
+export interface IMfaCodeState {
+//-------------------------------------
+  /** Validation state */
+  state: "outdated" | "pending" | "valid";
+  /** (optional) Seconds remaining for the user to type in the correct code. */
+  ttl?: number;
+  /** (optional) Remaining number of times a code can be typed in. */
   tries?: number;
 }
