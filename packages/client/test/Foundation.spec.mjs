@@ -11974,13 +11974,13 @@ class BlogAgent extends AbstractBusAgent {
         publicationAsFormData.append("keyWords[]", keyWord.trim());
       });
       publicationAsFormData.append("licence", parameters.licence);
-      publicationAsFormData.append("pdfUri", `/blog/print/blog#/print/${parameters.resourceId}`);
-      publicationAsFormData.append("application", parameters.application);
+      publicationAsFormData.append("pdfUri", `${window.location.origin}/blog/print/blog#/print/${parameters.resourceId}`);
+      publicationAsFormData.append("application", parameters.application ? parameters.application : "");
       publicationAsFormData.append("resourceId", parameters.resourceId);
       publicationAsFormData.append("teacherSchool", parameters.userStructureName);
       return this.http.post("/appregistry/library/resource", publicationAsFormData, {
         headers: { "Content-Type": "multipart/form-data" }
-      });
+      }).then(this.checkHttpResponse);
     });
   }
 }
