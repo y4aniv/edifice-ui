@@ -16,13 +16,13 @@ An object that implements the `Symbol.observable` interface.
 
 ### Methods
 
-- [[observable]](RxJS.InteropObservable.md#[observable])
+- [[Symbol.observable]](RxJS.InteropObservable.md#[symbol.observable])
 
 ## Methods
 
-### [observable]
+### [Symbol.observable]
 
-▸ **[observable]**(): [`Subscribable`](RxJS.Subscribable.md)<`T`\>
+▸ **[Symbol.observable]**(): [`Subscribable`](RxJS.Subscribable.md)<`T`\>
 
 #### Returns
 

@@ -28,7 +28,7 @@ export class ConfigurationFramework implements IConfigurationFramework {
 
   async initialize(
     version?: string | null,
-    cdnDomain?: string | null
+    cdnDomain?: string | null,
   ): Promise<void> {
     // If version is undefined, default to a new tag every day.
     if (!version) {
@@ -54,7 +54,7 @@ export class ConfigurationFramework implements IConfigurationFramework {
       notify
         .onSessionReady()
         .promise.then((userInfo) =>
-          this.Platform.idiom.addBundlePromise("/i18n")
+          this.Platform.idiom.addBundlePromise("/i18n"),
         ),
       //TODO this.School.initialize( v ),
       this.User.initialize(v),

@@ -1,4 +1,4 @@
-export * from "./index"
+export * from "./index";
 
 /** Hack pour rendre compatible le module commonjs/es2015 avec une balise <script> dans un navigateur. */
 declare var window: any;

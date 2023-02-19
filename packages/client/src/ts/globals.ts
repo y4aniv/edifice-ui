@@ -16,7 +16,7 @@ export const ERROR_CODE = {
   MALFORMED_DATA: "0080",
   NOT_LOGGED_IN: "0090",
 } as const;
-export type ErrorCode = typeof ERROR_CODE[keyof typeof ERROR_CODE];
+export type ErrorCode = (typeof ERROR_CODE)[keyof typeof ERROR_CODE];
 
 //-- Applications
 export const APP = {
@@ -81,7 +81,7 @@ export const APP = {
   "sacoche"
 */
 } as const;
-export type App = typeof APP[keyof typeof APP]; // type App = "explorer" | "blog" | "exercizer"...
+export type App = (typeof APP)[keyof typeof APP]; // type App = "explorer" | "blog" | "exercizer"...
 
 //-- User preferences keys
 export const USER_PREFS = {

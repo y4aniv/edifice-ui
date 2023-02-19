@@ -42,17 +42,19 @@ export class AppConf {
     return this._publicConf[app];
   }
 
-  public async getWebAppConf(app: App): Promise<IWebApp|undefined> {
-    let found: IWebApp|undefined;
+  public async getWebAppConf(app: App): Promise<IWebApp | undefined> {
+    let found: IWebApp | undefined;
     if (!this._appConf[app]) {
-      const list = await http.get<{apps:Array<IWebApp>}>(`/applications-list`);
-      list.apps.forEach( conf => {
-        if( conf?.prefix ) {
-          const a:App = conf.prefix.replace("/", "") as App;
+      const list = await http.get<{ apps: Array<IWebApp> }>(
+        `/applications-list`,
+      );
+      list.apps.forEach((conf) => {
+        if (conf?.prefix) {
+          const a: App = conf.prefix.replace("/", "") as App;
           this._appConf[a] = conf;
-        } else if( conf?.name ) {
+        } else if (conf?.name) {
           /* Try to extract name from another field than prefix. */
-          if( conf.name.toLowerCase() == app ) {
+          if (conf.name.toLowerCase() == app) {
             found = conf;
           }
         }

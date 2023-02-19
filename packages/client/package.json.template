@@ -16,7 +16,10 @@
     "test": "node scripts/test.mjs && npx jasmine --config=src/test/config/jasmine.json",
     "docs": "npx rimraf ./docs/ && npx typedoc src/ts/index.ts --excludePrivate --disableSources --plugin typedoc-plugin-markdown",
     "build": "node scripts/build.mjs",
-    "watch": "export build_target=${npm_config_build_target}; export watch=true; npx yarn rollup -c --watch "
+    "watch": "export build_target=${npm_config_build_target}; export watch=true; npx yarn rollup -c --watch",
+    "format:check": "prettier --check \"src/ts/**/*.ts\"",
+    "format:write": "prettier --write \"src/ts/**/*.ts\"",
+    "format": "yarn format:check && yarn format:write"
   },
   "repository": {
     "type": "git",
@@ -31,6 +34,7 @@
   "devDependencies": {
     "@types/jasmine": "^3.6.3",
     "@types/node": "^14.14.28",
+    "prettier": "2.8.4",
     "husky": "~7.0.2",
     "jasmine": "^3.6.4",
     "rimraf": "^3.0.2",

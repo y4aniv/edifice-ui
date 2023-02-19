@@ -37,7 +37,7 @@ class Bus implements IBus {
   publish(
     res: ResourceType,
     action: ActionType,
-    parameters: any
+    parameters: any,
   ): Promise<IActionResult> {
     return Promise.resolve()
       .then(() => {
@@ -61,7 +61,7 @@ class Bus implements IBus {
 
   subscribe(
     res: ResourceType,
-    action: ActionType
+    action: ActionType,
   ): Observable<{ input: IActionParameters; output: IActionResult }> {
     return this.comm
       .asObservable()
