@@ -129,6 +129,7 @@
 - [UpdatePropertiesParameters](modules.md#updatepropertiesparameters)
 - [UpdatePropertiesResult](modules.md#updatepropertiesresult)
 - [UserPreferenceKey](modules.md#userpreferencekey)
+- [UserProfile](modules.md#userprofile)
 - [WidgetName](modules.md#widgetname)
 - [WidgetPosition](modules.md#widgetposition)
 - [WidgetSpecificUserPrefs](modules.md#widgetspecificuserprefs)
@@ -554,6 +555,12 @@ ___
 ### UserPreferenceKey
 
 Ƭ **UserPreferenceKey**: typeof [`USER_PREFS`](modules.md#user_prefs)[keyof typeof [`USER_PREFS`](modules.md#user_prefs)] \| [`App`](modules.md#app)
+
+___
+
+### UserProfile
+
+Ƭ **UserProfile**: (``"Student"`` \| ``"Teacher"`` \| ``"Relative"`` \| ``"Personnel"`` \| ``"Guest"``)[]
 
 ___
 

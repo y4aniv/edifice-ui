@@ -53,6 +53,8 @@ export interface ISession {
   readonly notLoggedIn: boolean;
   /** Additional information about the connected user. */
   readonly description: IUserDescription;
+  /** Additional profile user information. */
+  readonly profile: UserProfile;
   /**
    * Get the connected user's avatar URL, or a default one.
    * Append a query parameter to this URL for it to get resized, for example "?thumbnail=48x48"
@@ -67,6 +69,9 @@ export interface ISession {
 
   hasWorkflow(workflowName: string): boolean;
   hasRight(resource: any, right: any): boolean;
+
+  /** Get User Profile */
+  getUserProfile(): Promise<UserProfile>;
 
   /** Verify if the logged-in user has a valid email address. */
   getEmailValidationInfos(): Promise<IEmailValidationInfos>;
@@ -106,6 +111,9 @@ export type School = {
   UAI: string; // "1111888G"
   exports: string[]; // ["GAR-P0"]
 };
+export type UserProfile = Array<
+  "Student" | "Teacher" | "Relative" | "Personnel" | "Guest"
+>;
 //-------------------------------------
 export interface IUserDescription {
   //-------------------------------------
@@ -148,7 +156,7 @@ export interface IUserDescription {
   relatedType?: any; // null
   schools: Array<School>;
   tel: string;
-  profiles: Array<"Student" | "Teacher" | "Relative" | "Personnel" | "Guest">; // NOTE: initial field name is "type", but it is renamed to "profiles" internally.
+  profiles: UserProfile; // NOTE: initial field name is "type", but it is renamed to "profiles" internally.
   userId: string; // "12345678-9abc-def0-1234-56789abcdef0"
   visibleInfos: Array<string>; // ["SHOW_BIRTHDATE"]
 }

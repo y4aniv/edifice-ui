@@ -11,6 +11,7 @@ import {
   ISession,
   IUserDescription,
   IUserInfo,
+  UserProfile,
 } from "./interfaces";
 
 import { configure } from "../configure/Framework";
@@ -32,6 +33,7 @@ export class Session implements ISession {
   private _currentLanguage: string = "";
   private _notLoggedIn: boolean = true;
   private _description?: IUserDescription;
+  private _profile?: UserProfile;
 
   get currentLanguage(): string {
     return this._currentLanguage;
@@ -83,6 +85,9 @@ export class Session implements ISession {
       .then((lang) => {
         this.setCurrentLanguage(lang);
         return this.loadDescription();
+      })
+      .then(() => {
+        return this.getUserProfile();
       })
       .then(() => {
         notify.onSessionReady().resolve(this._me);
@@ -231,6 +236,20 @@ export class Session implements ISession {
       Object.assign(this._description, results[1]);
       return this._description;
     });
+  }
+
+  get profile(): UserProfile {
+    // will be undefined if initialize() was not called.
+    return this._profile as unknown as UserProfile;
+  }
+
+  public getUserProfile(): Promise<UserProfile> {
+    return http
+      .get<any>("/userbook/api/person")
+      .then((data) => data.result)
+      .then((user) => {
+        return (this._profile = user[0].type);
+      });
   }
 
   private loadUserLanguage(): Promise<string> {

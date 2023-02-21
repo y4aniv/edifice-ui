@@ -129,7 +129,7 @@ ___
 
 ### profiles
 
-• **profiles**: (``"Student"`` \| ``"Teacher"`` \| ``"Relative"`` \| ``"Personnel"`` \| ``"Guest"``)[]
+• **profiles**: [`UserProfile`](../modules.md#userprofile)
 
 ___
 

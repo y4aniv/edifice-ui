@@ -12,6 +12,7 @@
 - [description](ISession.md#description)
 - [latestQuotaAndUsage](ISession.md#latestquotaandusage)
 - [notLoggedIn](ISession.md#notloggedin)
+- [profile](ISession.md#profile)
 - [user](ISession.md#user)
 
 ### Methods
@@ -21,6 +22,7 @@
 - [getEmailValidationInfos](ISession.md#getemailvalidationinfos)
 - [getMfaInfos](ISession.md#getmfainfos)
 - [getMobileValidationInfos](ISession.md#getmobilevalidationinfos)
+- [getUserProfile](ISession.md#getuserprofile)
 - [hasRight](ISession.md#hasright)
 - [hasWorkflow](ISession.md#hasworkflow)
 - [tryEmailValidation](ISession.md#tryemailvalidation)
@@ -75,6 +77,14 @@ ___
 • `Readonly` **notLoggedIn**: `boolean`
 
 Truthy when no user is connected.
+
+___
+
+### profile
+
+• `Readonly` **profile**: [`UserProfile`](../modules.md#userprofile)
+
+Additional profile user information.
 
 ___
 
@@ -157,6 +167,18 @@ Verify if the logged-in user has a valid phone number.
 #### Returns
 
 `Promise`<[`IMobileValidationInfos`](IMobileValidationInfos.md)\>
+
+___
+
+### getUserProfile
+
+▸ **getUserProfile**(): `Promise`<[`UserProfile`](../modules.md#userprofile)\>
+
+Get User Profile
+
+#### Returns
+
+`Promise`<[`UserProfile`](../modules.md#userprofile)\>
 
 ___
 

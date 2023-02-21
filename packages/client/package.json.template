@@ -17,9 +17,9 @@
     "docs": "npx rimraf ./docs/ && npx typedoc src/ts/index.ts --excludePrivate --disableSources --plugin typedoc-plugin-markdown",
     "build": "node scripts/build.mjs",
     "watch": "export build_target=${npm_config_build_target}; export watch=true; npx yarn rollup -c --watch",
-    "format:check": "prettier --check \"src/ts/**/*.ts\"",
-    "format:write": "prettier --write \"src/ts/**/*.ts\"",
-    "format": "yarn format:check && yarn format:write"
+    "format:check": "npx prettier --check \"src/ts/**/*.ts\"",
+    "format:write": "npx prettier --write \"src/ts/**/*.ts\"",
+    "format": "yarn format:write && yarn format:check"
   },
   "repository": {
     "type": "git",
