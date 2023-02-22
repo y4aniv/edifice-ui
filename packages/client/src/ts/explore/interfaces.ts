@@ -331,6 +331,7 @@ export interface IAction {
   id: ActionType;
   available: boolean; // L'utilisateur a le droit workflow ou pas
   target?: "actionbar";
+  workflow: string; // Droit workflow
   //FIXME comment relier les actions aux behaviours, qu'on va remplacer.
 }
 
