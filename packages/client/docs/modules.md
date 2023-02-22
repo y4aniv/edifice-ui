@@ -74,6 +74,7 @@
 - [IWorkflowAuth](interfaces/IWorkflowAuth.md)
 - [IXitiTrackingParams](interfaces/IXitiTrackingParams.md)
 - [Recipient](interfaces/Recipient.md)
+- [ResourceRight](interfaces/ResourceRight.md)
 
 ### Type aliases
 
@@ -116,6 +117,9 @@
 - [PublishParameters](modules.md#publishparameters)
 - [PublishResult](modules.md#publishresult)
 - [ResourceType](modules.md#resourcetype)
+- [RightRole](modules.md#rightrole)
+- [RightStringified](modules.md#rightstringified)
+- [RightSubject](modules.md#rightsubject)
 - [School](modules.md#school)
 - [SearchResultHandler](modules.md#searchresulthandler)
 - [SortByType](modules.md#sortbytype)
@@ -156,6 +160,7 @@
 - [WIDGET\_NAME](modules.md#widget_name)
 - [WIDGET\_POSITION](modules.md#widget_position)
 - [appNameForResource](modules.md#appnameforresource)
+- [ode](modules.md#ode)
 
 ## Type aliases
 
@@ -445,6 +450,24 @@ ___
 ### ResourceType
 
 Ƭ **ResourceType**: typeof [`RESOURCE`](modules.md#resource)[keyof typeof [`RESOURCE`](modules.md#resource)]
+
+___
+
+### RightRole
+
+Ƭ **RightRole**: ``"read"`` \| ``"contrib"`` \| ``"manage"`` \| ``"creator"``
+
+___
+
+### RightStringified
+
+Ƭ **RightStringified**: `string`
+
+___
+
+### RightSubject
+
+Ƭ **RightSubject**: ``"user"`` \| ``"group"`` \| ``"creator"``
 
 ___
 
@@ -878,3 +901,9 @@ ___
 ### appNameForResource
 
 • `Const` **appNameForResource**: { [R in ResourceType]: App }
+
+___
+
+### ode
+
+• `Const` **ode**: `OdeContextImpl`

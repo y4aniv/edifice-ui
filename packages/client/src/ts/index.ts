@@ -29,3 +29,6 @@ export * from "./widget/interfaces";
 
 //---------------------------------- APPS ----------------------------------
 export * from "./apps/timeline/interfaces";
+
+//---------------------------------- SERVICES ----------------------------------
+export * from "./services";

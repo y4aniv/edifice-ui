@@ -8,7 +8,9 @@
 
 - [available](IAction.md#available)
 - [id](IAction.md#id)
+- [right](IAction.md#right)
 - [target](IAction.md#target)
+- [workflow](IAction.md#workflow)
 
 ## Properties
 
@@ -24,6 +26,18 @@ ___
 
 ___
 
+### right
+
+• `Optional` **right**: [`RightRole`](../modules.md#rightrole)
+
+___
+
 ### target
 
 • `Optional` **target**: ``"actionbar"``
+
+___
+
+### workflow
+
+• **workflow**: `string`

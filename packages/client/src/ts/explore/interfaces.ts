@@ -1,5 +1,6 @@
 import { Observable } from "rxjs";
-import { APP, App } from "../globals";
+import { APP, App } from "../globals"
+import { RightRole } from "../services";
 import { explorer } from "./Framework";
 
 //-------------------------------------
@@ -332,6 +333,7 @@ export interface IAction {
   available: boolean; // L'utilisateur a le droit workflow ou pas
   target?: "actionbar";
   workflow: string; // Droit workflow
+  right?: RightRole
   //FIXME comment relier les actions aux behaviours, qu'on va remplacer.
 }
 
@@ -412,7 +414,10 @@ export interface IResource {
   updatedAt: string;
   views?: number;
   trashed: boolean;
+  rights: RightStringified[]
 }
+
+export type RightStringified = string;
 
 //-------------------------------------
 export interface IPreferences {

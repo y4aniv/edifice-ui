@@ -20,6 +20,7 @@
 - [modifierName](IResource.md#modifiername)
 - [name](IResource.md#name)
 - [public](IResource.md#public)
+- [rights](IResource.md#rights)
 - [shared](IResource.md#shared)
 - [thumbnail](IResource.md#thumbnail)
 - [trashed](IResource.md#trashed)
@@ -109,6 +110,12 @@ ___
 ### public
 
 • `Optional` **public**: `boolean`
+
+___
+
+### rights
+
+• **rights**: `string`[]
 
 ___
 

@@ -8,19 +8,19 @@
   }
  ]
  ,"actions":[
-      {"id":"comment",  "available":false}
-     ,{"id":"copy",     "available":false}
-     ,{"id":"create",   "available":false}
-     ,{"id":"delete",   "available":false}
-     ,{"id":"export",   "available":false}
-     ,{"id":"initialize", "available":true}
-     ,{"id":"manage",   "available":false}
-     ,{"id":"move",     "available":false}
-     ,{"id":"open",     "available":false}
-     ,{"id":"print",    "available":false}
-     ,{"id":"publish",  "available":false}
-     ,{"id":"search",   "available":true}
-     ,{"id":"share",    "available":false}
+      {"id":"comment",  "available":false, "workflow": ""}
+     ,{"id":"copy",     "available":false, "workflow": ""}
+     ,{"id":"create",   "available":false, "workflow": ""}
+     ,{"id":"delete",   "available":false, "workflow": ""}
+     ,{"id":"export",   "available":false, "workflow": ""}
+     ,{"id":"initialize", "available":true, "workflow": ""}
+     ,{"id":"manage",   "available":false, "workflow": ""}
+     ,{"id":"move",     "available":false, "workflow": ""}
+     ,{"id":"open",     "available":false, "workflow": ""}
+     ,{"id":"print",    "available":false, "workflow": ""}
+     ,{"id":"publish",  "available":false, "workflow": ""}
+     ,{"id":"search",   "available":true, "workflow": ""}
+     ,{"id":"share",    "available":false, "workflow": ""}
     ]
  ,"pagination":{
      "startIdx": 0

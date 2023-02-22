@@ -7,8 +7,9 @@ export class SessionService {
   constructor(private context: OdeContext) {}
 
   get http() {
-    return this.context.transport().http();
+    return this.context.http();
   }
+  
   public async getUser(): Promise<IUserInfo | undefined> {
     if (this._me) {
       return this._me;

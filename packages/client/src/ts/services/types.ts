@@ -8,10 +8,6 @@ export interface OdeContext {
   conf(): ConfService;
   rights(): RightService;
   session(): SessionService;
-  storage(): {
-    workspace(): WorkspaceService;
-  };
-  transport(): {
-    http(): HttpService;
-  };
+  workspace(): WorkspaceService;
+  http(): HttpService;
 }

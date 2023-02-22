@@ -1,4 +1,5 @@
 import { OdeContext } from "./types";
+import { RightStringified } from "../explore/interfaces";
 
 export class RightService {
   constructor(private context: OdeContext) {}
@@ -14,22 +15,22 @@ export class RightService {
    * @param right  a concat right
    * @returns Right parsed
    */
-  parseResourceRight(right: string): Right | undefined {
+  parseResourceRight(right: RightStringified): ResourceRight | undefined {
     const parts = right.split(":");
     if (parts.length === 2) {
       if (parts[0] === "creator") {
         return {
           id: parts[1],
-          right: "manage",
+          right: "creator",
           type: "creator",
-        } as Right;
+        } as ResourceRight;
       }
     } else if (parts.length === 3) {
       return {
         id: parts[1],
         right: parts[2],
         type: parts[0],
-      } as Right;
+      } as ResourceRight;
     } else {
       return undefined;
     }
@@ -43,14 +44,14 @@ export class RightService {
    * @param rights  a list of concat rights
    * @returns Array of Right parsed
    */
-  parseResourceRights(rights: string[]): Right[] {
+  parseResourceRights(rights: RightStringified[]): ResourceRight[] {
     const parsed = rights
       .map((right) => {
         return this.parseResourceRight(right);
       })
       .filter((right) => {
         return right !== undefined;
-      }) as Right[];
+      }) as ResourceRight[];
     return parsed;
   }
 
@@ -63,8 +64,8 @@ export class RightService {
    */
   hasResourceRight(
     { id, groupIds }: { id: string; groupIds: string[] },
-    expect: RightAction,
-    rights: Right[] | string[]
+    expect: RightRole,
+    rights: ResourceRight[] | RightStringified[]
   ) {
     const safeRights = rights
       .map((right) => {
@@ -75,7 +76,7 @@ export class RightService {
       })
       .filter((right) => {
         return right !== undefined;
-      }) as Right[];
+      }) as ResourceRight[];
     for (const right of safeRights) {
       if (right.id === id && right.type === "creator") {
         return true;
@@ -102,13 +103,13 @@ export class RightService {
    * @returns true if has rights
    */
   async sessionHasResourceRight(
-    expect: RightAction,
-    rights: Right[] | string[]
-  ) {
+    expect: RightRole,
+    rights: ResourceRight[] | RightStringified[]
+  ): Promise<boolean> {
     try {
       const user = await this.session.getUser();
       return (
-        user &&
+        !!user &&
         this.hasResourceRight(
           { groupIds: user.groupsIds, id: user.userId },
           expect,
@@ -119,6 +120,74 @@ export class RightService {
       console.error(e);
       return false;
     }
+  }
+  /**
+   * Check wether the current user have at least one of resource right expected
+   * @param expects array of expected right to check
+   * @param rights array of Right for the resource
+   * @returns true if has rights
+   */
+  async sessionHasAtLeastOneResourceRight(
+    expects: RightRole[],
+    rights: ResourceRight[] | RightStringified[]
+  ): Promise<boolean> {
+    for (const expect of expects) {
+      const hasRight = await this.sessionHasResourceRight(expect, rights);
+      if (hasRight) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Check wether the current user has resource right for each right list
+   * @param expect expected right to check
+   * @param rightsArray array of array of Right for multiple resources
+   * @returns true if has rights
+   */
+  async sessionHasResourceRightForEachList(
+    expect: RightRole,
+    rightsArray: ResourceRight[][] | RightStringified[][]
+  ): Promise<boolean> {
+    let count = 0;
+    for (const rights of rightsArray) {
+      const hasRight = await this.sessionHasResourceRight(expect, rights);
+      if (hasRight) {
+        count++;
+      }
+    }
+    //each list has right
+    if (count === rightsArray.length) {
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Check wether the current user have at least one of resource right for each right list
+   * @param expects array of expected right to check
+   * @param rightsArray array of array of Right for multiple resources
+   * @returns true if has rights
+   */
+  async sessionHasAtLeastOneResourceRightForEachList(
+    expects: RightRole[],
+    rightsArray: ResourceRight[][] | RightStringified[][]
+  ): Promise<boolean> {
+    for (const expect of expects) {
+      let count = 0;
+      for (const rights of rightsArray) {
+        const hasRight = await this.sessionHasResourceRight(expect, rights);
+        if (hasRight) {
+          count++;
+        }
+      }
+      //each list has right
+      if (count === rightsArray.length) {
+        return true;
+      }
+    }
+    return false;
   }
 
   hasWorkflowRight(expect: string, right: string[]) {
@@ -148,10 +217,10 @@ export class RightService {
 
 export type RightSubject = "user" | "group" | "creator";
 
-export type RightAction = "read" | "contrib" | "manage";
+export type RightRole = "read" | "contrib" | "manage" | "creator";
 
-export interface Right {
+export interface ResourceRight {
   type: RightSubject;
   id: string;
-  right: RightAction;
+  right: RightRole;
 }

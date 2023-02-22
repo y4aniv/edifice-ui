@@ -84,7 +84,7 @@ export class HttpService {
   }
 
   private toCdnUrl(url: string) {
-    const CDN_DOMAIN: string | undefined = this.context.conf().getCdnUrl();
+    const CDN_DOMAIN: string = this.context.conf().getCdnUrl() || "";
     // If CDN domain is defined, and requested url is not /public/conf (SKIP PUBLIC CONF)
     if (CDN_DOMAIN!.length > 0 && url !== "/conf/public") {
       const originalURL = "" + url;
@@ -106,6 +106,7 @@ export class HttpService {
   }
 
   private mapAxiosError<R>(error: AxiosError<R>, params?: IHttpParams): R {
+    console.error("[HttpService]", error);
     // AxiosError.response and our HttpResponse share the same properties.
     // So we can use it directly, saving CPU and memory.
     // Otherwise, we would map the axios response to our own model.

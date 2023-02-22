@@ -3,6 +3,9 @@ import { OdeContext } from "./types";
 
 export class WorkspaceService {
   constructor(private context: OdeContext) {}
+  get http() {
+    return this.context.http();
+  }
   async saveFile(
     file: Blob | File,
     params?: {
@@ -46,13 +49,10 @@ export class WorkspaceService {
       args.push(`parentId=${params.parentId}`);
     }
     //make query
-    const res = await this.context
-      .transport()
-      .http()
-      .postFile<WorkspaceElement>(
-        `/workspace/document?${args.join("&")}`,
-        formData
-      );
+    const res = await this.http.postFile<WorkspaceElement>(
+      `/workspace/document?${args.join("&")}`,
+      formData
+    );
     return res;
   }
 }
