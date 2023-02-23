@@ -3,7 +3,7 @@ import { OdeContext } from "./types";
 
 export class WorkspaceService {
   constructor(private context: OdeContext) {}
-  get http() {
+  private get http() {
     return this.context.http();
   }
   async saveFile(

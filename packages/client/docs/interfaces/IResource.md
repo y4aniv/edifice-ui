@@ -12,6 +12,7 @@
 - [comments](IResource.md#comments)
 - [createdAt](IResource.md#createdat)
 - [creatorName](IResource.md#creatorname)
+- [description](IResource.md#description)
 - [favorite](IResource.md#favorite)
 - [folderId](IResource.md#folderid)
 - [id](IResource.md#id)
@@ -22,6 +23,7 @@
 - [public](IResource.md#public)
 - [rights](IResource.md#rights)
 - [shared](IResource.md#shared)
+- [slug](IResource.md#slug)
 - [thumbnail](IResource.md#thumbnail)
 - [trashed](IResource.md#trashed)
 - [updatedAt](IResource.md#updatedat)
@@ -62,6 +64,12 @@ ___
 ### creatorName
 
 • **creatorName**: `string`
+
+___
+
+### description
+
+• **description**: `string`
 
 ___
 
@@ -122,6 +130,12 @@ ___
 ### shared
 
 • `Optional` **shared**: `boolean`
+
+___
+
+### slug
+
+• `Optional` **slug**: `string`
 
 ___
 

@@ -9,6 +9,9 @@ import {
 import { SessionService } from "./SessionService";
 import { OdeContext } from "./types";
 import { WorkspaceService } from "./WorkspaceService";
+// TODO should be loaded from app in future
+import "../resources/BlogResourceService";
+import { ResourceService, UpdateParameters } from "./ResourceService";
 
 class OdeContextImpl implements OdeContext {
   private _http: HttpService;
@@ -29,6 +32,9 @@ class OdeContextImpl implements OdeContext {
   rights() {
     return this._rights;
   }
+  resource(application: string, resourceType: string): ResourceService {
+    return ResourceService.findService({ application, resourceType }, this);
+  }
   session() {
     return this._session;
   }
@@ -41,4 +47,4 @@ class OdeContextImpl implements OdeContext {
 }
 
 export const ode = new OdeContextImpl();
-export type { ResourceRight, RightRole, RightSubject };
+export type { ResourceRight, RightRole, RightSubject, UpdateParameters };

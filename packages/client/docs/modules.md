@@ -75,6 +75,7 @@
 - [IXitiTrackingParams](interfaces/IXitiTrackingParams.md)
 - [Recipient](interfaces/Recipient.md)
 - [ResourceRight](interfaces/ResourceRight.md)
+- [UpdateParameters](interfaces/UpdateParameters.md)
 
 ### Type aliases
 
