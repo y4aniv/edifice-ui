@@ -15688,55 +15688,68 @@ const orders = [
 const actions = [
   {
     id: "comment",
-    available: false
+    available: false,
+    workflow: ""
   },
   {
     id: "copy",
-    available: false
+    available: false,
+    workflow: ""
   },
   {
     id: "create",
-    available: false
+    available: false,
+    workflow: ""
   },
   {
     id: "delete",
-    available: false
+    available: false,
+    workflow: ""
   },
   {
     id: "export",
-    available: false
+    available: false,
+    workflow: ""
   },
   {
     id: "initialize",
-    available: true
+    available: true,
+    workflow: ""
   },
   {
     id: "manage",
-    available: false
+    available: false,
+    workflow: ""
   },
   {
     id: "move",
-    available: false
+    available: false,
+    workflow: ""
   },
   {
     id: "open",
-    available: false
+    available: false,
+    workflow: ""
   },
   {
     id: "print",
-    available: false
+    available: false,
+    workflow: ""
   },
   {
     id: "publish",
-    available: false
+    available: false,
+    workflow: ""
   },
   {
     id: "search",
-    available: true
+    available: true,
+    workflow: ""
   },
   {
     id: "share",
-    available: false
+    available: false,
+    workflow: ""
   }
 ];
 const pagination = {

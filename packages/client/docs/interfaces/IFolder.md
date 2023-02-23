@@ -10,6 +10,7 @@
 - [id](IFolder.md#id)
 - [name](IFolder.md#name)
 - [parentId](IFolder.md#parentid)
+- [rights](IFolder.md#rights)
 - [trashed](IFolder.md#trashed)
 - [type](IFolder.md#type)
 
@@ -36,6 +37,12 @@ ___
 ### parentId
 
 • **parentId**: `string`
+
+___
+
+### rights
+
+• **rights**: `string`[]
 
 ___
 

@@ -346,6 +346,7 @@ export interface IFolder {
   type: FolderType | ID;
   childNumber: number; // à minima, 0 ou 1...
   trashed: boolean;
+  rights: string[]
 }
 
 //-------------------------------------
