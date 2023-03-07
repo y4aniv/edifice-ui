@@ -14,7 +14,9 @@ export class ConfService {
   }
 
   async getPreference<T>(key: string): Promise<T> {
-    const res = await this.http.get<T>(`/userbook/preference/${key}`);
-    return res;
+    const res = await this.http.get<{ preference: string }>(
+      `/userbook/preference/${key}`,
+    );
+    return JSON.parse(res.preference) as T;
   }
 }
