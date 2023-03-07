@@ -1,15 +1,15 @@
 import { ERROR_CODE } from "../globals";
 import { IUserInfo } from "../session/interfaces";
-import { OdeContext } from "./types";
+import { OdeServices } from "./OdeServices";
 
 export class SessionService {
   private _me: IUserInfo | undefined;
-  constructor(private context: OdeContext) {}
+  constructor(private context: OdeServices) {}
 
   get http() {
     return this.context.http();
   }
-  
+
   public async getUser(): Promise<IUserInfo | undefined> {
     if (this._me) {
       return this._me;

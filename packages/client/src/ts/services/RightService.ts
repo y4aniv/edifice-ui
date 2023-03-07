@@ -1,8 +1,8 @@
-import { OdeContext } from "./types";
 import { RightStringified } from "../explore/interfaces";
+import { OdeServices } from "./OdeServices";
 
 export class RightService {
-  constructor(private context: OdeContext) {}
+  constructor(private context: OdeServices) {}
   get session() {
     return this.context.session();
   }
@@ -65,7 +65,7 @@ export class RightService {
   hasResourceRight(
     { id, groupIds }: { id: string; groupIds: string[] },
     expect: RightRole,
-    rights: ResourceRight[] | RightStringified[]
+    rights: ResourceRight[] | RightStringified[],
   ) {
     const safeRights = rights
       .map((right) => {
@@ -104,7 +104,7 @@ export class RightService {
    */
   async sessionHasResourceRight(
     expect: RightRole,
-    rights: ResourceRight[] | RightStringified[]
+    rights: ResourceRight[] | RightStringified[],
   ): Promise<boolean> {
     try {
       const user = await this.session.getUser();
@@ -113,7 +113,7 @@ export class RightService {
         this.hasResourceRight(
           { groupIds: user.groupsIds, id: user.userId },
           expect,
-          rights
+          rights,
         )
       );
     } catch (e) {
@@ -129,7 +129,7 @@ export class RightService {
    */
   async sessionHasAtLeastOneResourceRight(
     expects: RightRole[],
-    rights: ResourceRight[] | RightStringified[]
+    rights: ResourceRight[] | RightStringified[],
   ): Promise<boolean> {
     for (const expect of expects) {
       const hasRight = await this.sessionHasResourceRight(expect, rights);
@@ -148,7 +148,7 @@ export class RightService {
    */
   async sessionHasResourceRightForEachList(
     expect: RightRole,
-    rightsArray: ResourceRight[][] | RightStringified[][]
+    rightsArray: ResourceRight[][] | RightStringified[][],
   ): Promise<boolean> {
     let count = 0;
     for (const rights of rightsArray) {
@@ -172,7 +172,7 @@ export class RightService {
    */
   async sessionHasAtLeastOneResourceRightForEachList(
     expects: RightRole[],
-    rightsArray: ResourceRight[][] | RightStringified[][]
+    rightsArray: ResourceRight[][] | RightStringified[][],
   ): Promise<boolean> {
     for (const expect of expects) {
       let count = 0;
@@ -205,7 +205,7 @@ export class RightService {
         user &&
         this.hasWorkflowRight(
           expect,
-          user.authorizedActions.map((e) => e.name)
+          user.authorizedActions.map((e) => e.name),
         )
       );
     } catch (e) {

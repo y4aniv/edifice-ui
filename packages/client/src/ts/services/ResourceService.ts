@@ -15,7 +15,7 @@ import {
   DeleteParameters,
   ResourceType,
 } from "..";
-import { OdeContext } from "./types";
+import { OdeServices } from "./OdeServices";
 
 export abstract class ResourceService {
   //
@@ -23,7 +23,7 @@ export abstract class ResourceService {
   //
   private static registry = new Map<
     string,
-    (context: OdeContext) => ResourceService
+    (context: OdeServices) => ResourceService
   >();
 
   static register(
@@ -31,7 +31,7 @@ export abstract class ResourceService {
       application,
       resourceType,
     }: { application: string; resourceType: string },
-    service: (context: OdeContext) => ResourceService,
+    service: (context: OdeServices) => ResourceService,
   ) {
     ResourceService.registry.set(`${application}:${resourceType}`, service);
   }
@@ -40,7 +40,7 @@ export abstract class ResourceService {
       application,
       resourceType,
     }: { application: string; resourceType: string },
-    context: OdeContext,
+    context: OdeServices,
   ): ResourceService {
     const found = ResourceService.registry.get(
       `${application}:${resourceType}`,
@@ -53,7 +53,7 @@ export abstract class ResourceService {
   //
   // IMPLEMENTATION
   //
-  constructor(protected context: OdeContext) {}
+  constructor(protected context: OdeServices) {}
 
   protected get http() {
     return this.context.http();

@@ -5,8 +5,8 @@ import axios, {
   AxiosResponse,
 } from "axios";
 import { ERROR_CODE } from "../globals";
-import { OdeContext } from "./types";
 import { IHttpResponse, IHttpParams } from "../transport/interfaces";
+import { OdeServices } from "./OdeServices";
 
 const loadedScripts: { [url: string]: boolean } = {};
 
@@ -16,7 +16,7 @@ export class HttpService {
 
   private _latestResponse: any;
 
-  constructor(private context: OdeContext, params?: any) {
+  constructor(private context: OdeServices, params?: any) {
     this.axios = axios.create(params);
   }
 
@@ -143,7 +143,7 @@ export class HttpService {
 
   private mapAxiosResponse<R>(
     response: AxiosResponse<R>,
-    params?: IHttpParams
+    params?: IHttpParams,
   ): R {
     // AxiosResponse and our HttpResponse share the same properties.
     // So we can use it directly, saving CPU and memory.
@@ -162,7 +162,7 @@ export class HttpService {
     try {
       const r = await this.axios.get<R>(
         this.toCdnUrl(url),
-        this.toAxiosConfig(params)
+        this.toAxiosConfig(params),
       );
       return this.mapAxiosResponse(r, params);
     } catch (e) {
@@ -174,7 +174,7 @@ export class HttpService {
   async post<R = any>(
     url: string,
     data?: any,
-    params?: IHttpParams
+    params?: IHttpParams,
   ): Promise<R> {
     try {
       const r = await this.axios.post<R>(url, data, this.toAxiosConfig(params));
@@ -188,7 +188,7 @@ export class HttpService {
   async postFile<R = any>(
     url: string,
     data: any,
-    params?: IHttpParams
+    params?: IHttpParams,
   ): Promise<R> {
     const p = this.toAxiosConfig(params);
     if (p.headers["Content-Type"]) {
@@ -211,7 +211,7 @@ export class HttpService {
   async postJson<R = any>(
     url: string,
     json: any,
-    params?: IHttpParams
+    params?: IHttpParams,
   ): Promise<R> {
     const p = this.toAxiosConfig();
     p.headers["Content-Type"] = "application/json";
@@ -227,7 +227,7 @@ export class HttpService {
   async put<R = any>(
     url: string,
     data?: any,
-    params?: IHttpParams
+    params?: IHttpParams,
   ): Promise<R> {
     try {
       const r = await this.axios.put<R>(url, data, this.toAxiosConfig(params));
@@ -260,7 +260,7 @@ export class HttpService {
   async putJson<R = any>(
     url: string,
     json: any,
-    params?: IHttpParams
+    params?: IHttpParams,
   ): Promise<R> {
     const p = this.toAxiosConfig(params);
     p.headers["Content-Type"] = "application/json";
@@ -295,7 +295,7 @@ export class HttpService {
   getScript<R = any>(
     url: string,
     params?: IHttpParams,
-    variableName?: string
+    variableName?: string,
   ): Promise<R> {
     const resultName = variableName ?? "exports";
     const p = this.toAxiosConfig(params);

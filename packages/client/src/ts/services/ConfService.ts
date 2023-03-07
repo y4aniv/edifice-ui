@@ -1,7 +1,7 @@
-import { OdeContext } from "./types";
+import { OdeServices } from "./OdeServices";
 
 export class ConfService {
-  constructor(private context: OdeContext) {}
+  constructor(private context: OdeServices) {}
   getCdnUrl(): string | undefined {
     console.warn("[getCdnUrl] Not implemented yet");
     return undefined;

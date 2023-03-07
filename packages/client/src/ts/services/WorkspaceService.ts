@@ -1,8 +1,8 @@
 import { FileTypeUtils } from "../utils/FileTypeUtils";
-import { OdeContext } from "./types";
+import { OdeServices } from "./OdeServices";
 
 export class WorkspaceService {
-  constructor(private context: OdeContext) {}
+  constructor(private context: OdeServices) {}
   private get http() {
     return this.context.http();
   }
@@ -12,7 +12,7 @@ export class WorkspaceService {
       parentId?: string;
       visibility?: "public" | "protected";
       application?: string;
-    }
+    },
   ) {
     //prepare metadata
     const tmpName = (file as File).name || "";
@@ -51,7 +51,7 @@ export class WorkspaceService {
     //make query
     const res = await this.http.postFile<WorkspaceElement>(
       `/workspace/document?${args.join("&")}`,
-      formData
+      formData,
     );
     return res;
   }

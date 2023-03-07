@@ -75,6 +75,8 @@
 - [IXitiTrackingParams](interfaces/IXitiTrackingParams.md)
 - [Recipient](interfaces/Recipient.md)
 - [ResourceRight](interfaces/ResourceRight.md)
+- [ShareRight](interfaces/ShareRight.md)
+- [ShareRightAction](interfaces/ShareRightAction.md)
 - [UpdateParameters](interfaces/UpdateParameters.md)
 
 ### Type aliases
@@ -123,6 +125,8 @@
 - [RightSubject](modules.md#rightsubject)
 - [School](modules.md#school)
 - [SearchResultHandler](modules.md#searchresulthandler)
+- [ShareRightActionDisplayName](modules.md#sharerightactiondisplayname)
+- [ShareRightType](modules.md#sharerighttype)
 - [SortByType](modules.md#sortbytype)
 - [SortOrderType](modules.md#sortordertype)
 - [StringFilterType](modules.md#stringfiltertype)
@@ -161,7 +165,7 @@
 - [WIDGET\_NAME](modules.md#widget_name)
 - [WIDGET\_POSITION](modules.md#widget_position)
 - [appNameForResource](modules.md#appnameforresource)
-- [ode](modules.md#ode)
+- [odeServices](modules.md#odeservices)
 
 ## Type aliases
 
@@ -506,6 +510,18 @@ ___
 ##### Returns
 
 `void`
+
+___
+
+### ShareRightActionDisplayName
+
+Ƭ **ShareRightActionDisplayName**: ``"read"`` \| ``"contrib"`` \| ``"manage"`` \| ``"creator"``
+
+___
+
+### ShareRightType
+
+Ƭ **ShareRightType**: ``"user"`` \| ``"group"`` \| ``"sharebookmark"``
 
 ___
 
@@ -905,6 +921,6 @@ ___
 
 ___
 
-### ode
+### odeServices
 
-• `Const` **ode**: `OdeContextImpl`
+• `Const` **odeServices**: `OdeServices`
