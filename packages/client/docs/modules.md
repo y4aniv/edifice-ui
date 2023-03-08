@@ -923,4 +923,4 @@ ___
 
 ### odeServices
 
-• `Const` **odeServices**: `OdeServices`
+• `Const` **odeServices**: `IOdeServices`

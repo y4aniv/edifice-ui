@@ -1,9 +1,9 @@
 import { ERROR_CODE } from "../globals";
 import { IUserInfo } from "../session/interfaces";
-import { OdeServices } from "./OdeServices";
+import { IOdeServices } from "./OdeServices";
 
 export class SessionService {
-  constructor(private context: OdeServices) {}
+  constructor(private context: IOdeServices) {}
 
   get cache() {
     return this.context.cache();

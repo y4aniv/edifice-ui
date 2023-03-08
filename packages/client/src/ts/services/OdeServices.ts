@@ -8,7 +8,7 @@ import { SessionService } from "./SessionService";
 import { ShareService } from "./ShareService";
 import { WorkspaceService } from "./WorkspaceService";
 
-export interface OdeServices {
+export interface IOdeServices {
   cache(): CacheService;
   conf(): ConfService;
   directory(): DirectoryService;
@@ -20,7 +20,7 @@ export interface OdeServices {
   workspace(): WorkspaceService;
 }
 
-export class OdeServicesImpl implements OdeServices {
+export class OdeServices implements IOdeServices {
   private _cache: CacheService;
   private _conf: ConfService;
   private _directory: DirectoryService;

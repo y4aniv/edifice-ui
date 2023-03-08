@@ -8,9 +8,9 @@ import {
   ShareRightActionDisplayName,
   ShareRightType,
 } from "./ShareService";
-import { OdeServices, OdeServicesImpl } from "./OdeServices";
+import { IOdeServices, OdeServices } from "./OdeServices";
 
-export const odeServices: OdeServices = new OdeServicesImpl();
+export const odeServices: IOdeServices = new OdeServices();
 
 export type {
   ResourceRight,
