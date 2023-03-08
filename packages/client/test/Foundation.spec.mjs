@@ -11962,14 +11962,20 @@ class BlogAgent extends AbstractBusAgent {
       const publicationAsFormData = new FormData();
       publicationAsFormData.append("title", parameters.title);
       publicationAsFormData.append("cover", parameters.cover);
-      publicationAsFormData.append("coverName", parameters.cover.name);
+      publicationAsFormData.append(
+        "coverName",
+        parameters.cover.name
+      );
       publicationAsFormData.append("coverType", parameters.cover.type);
       publicationAsFormData.append("teacherAvatar", parameters.teacherAvatar);
       publicationAsFormData.append(
         "teacherAvatarName",
         parameters.teacherAvatar.name || `teacherAvatar_${parameters.userId}`
       );
-      publicationAsFormData.append("teacherAvatarType", parameters.teacherAvatar.type);
+      publicationAsFormData.append(
+        "teacherAvatarType",
+        parameters.teacherAvatar.type
+      );
       publicationAsFormData.append("language", parameters.language);
       parameters.activityType.forEach((activityType) => {
         publicationAsFormData.append("activityType[]", activityType);
@@ -11986,8 +11992,14 @@ class BlogAgent extends AbstractBusAgent {
         publicationAsFormData.append("keyWords[]", keyWord.trim());
       });
       publicationAsFormData.append("licence", parameters.licence);
-      publicationAsFormData.append("pdfUri", `${window.location.origin}/blog/print/blog#/print/${parameters.resourceId}`);
-      publicationAsFormData.append("application", parameters.application ? parameters.application : "");
+      publicationAsFormData.append(
+        "pdfUri",
+        `${window.location.origin}/blog/print/blog#/print/${parameters.resourceId}`
+      );
+      publicationAsFormData.append(
+        "application",
+        parameters.application ? parameters.application : ""
+      );
       publicationAsFormData.append("resourceId", parameters.resourceId);
       publicationAsFormData.append("teacherSchool", parameters.userStructureName);
       return this.http.post("/appregistry/library/resource", publicationAsFormData, {
@@ -15219,12 +15231,15 @@ class ConfService {
   constructor(context2) {
     this.context = context2;
   }
+  get http() {
+    return this.context.http();
+  }
+  get cdnDomain() {
+    return configure.Platform.cdnDomain;
+  }
   getCdnUrl() {
     console.warn("[getCdnUrl] Not implemented yet");
     return void 0;
-  }
-  get http() {
-    return this.context.http();
   }
   savePreference(key, value) {
     return __async(this, null, function* () {
@@ -15237,6 +15252,45 @@ class ConfService {
         `/userbook/preference/${key}`
       );
       return JSON.parse(res.preference);
+    });
+  }
+  getConf(version2) {
+    return __async(this, null, function* () {
+      const res = yield this.http.getScript(
+        "/assets/theme-conf.js",
+        { queryParams: { v: version2 } },
+        "exports.conf"
+      );
+      return res;
+    });
+  }
+  loadTheme(version2) {
+    return __async(this, null, function* () {
+      const theme = yield this.http.get("/theme", {
+        queryParams: { _: version2 }
+      });
+      const conf = yield this.getConf();
+      const skin = theme.themeName;
+      const skins = conf == null ? void 0 : conf.overriding.find(
+        (item) => item.child === skin
+      ).skins;
+      const bootstrapVersion = conf == null ? void 0 : conf.overriding.find(
+        (item) => item.child === skin
+      ).bootstrapVersion;
+      const is1d = (conf == null ? void 0 : conf.overriding.find((item) => item.child === skin).parent) === "panda";
+      const bootstrapPath = `${this.cdnDomain}/assets/themes/${bootstrapVersion}`;
+      return {
+        basePath: `${this.cdnDomain}${theme.skin}../../`,
+        logoutCallback: theme.logoutCallback,
+        skin: theme.skin.split("/assets/themes/")[1].split("/")[0],
+        skinName: theme.skinName,
+        skins,
+        themeName: theme.themeName,
+        themeUrl: theme.skin,
+        bootstrapVersion,
+        bootstrapPath,
+        is1d
+      };
     });
   }
 }
@@ -15744,6 +15798,20 @@ class ShareService {
   get cache() {
     return this.context.cache();
   }
+  getShareMapping(app) {
+    return __async(this, null, function* () {
+      const sharingMap = yield this.cache.httpGetJson(
+        `/${app}/rights/sharing`
+      );
+      for (const key of Object.keys(sharingMap)) {
+        const newKey = key.split(".")[1];
+        const value = sharingMap[key];
+        delete sharingMap[key];
+        sharingMap[newKey] = value;
+      }
+      return sharingMap;
+    });
+  }
   getActionsAvailableFor({ id, type: type2 }, payload, mapping) {
     const usafeRights = type2 === "user" ? payload.users.checked[id] : payload.groups.checked[id];
     const rights = usafeRights || [];
@@ -15765,9 +15833,7 @@ class ShareService {
       const rights = yield this.cache.httpGetJson(
         `/${app}/share/json/${resourceId}`
       );
-      const sharingMap = yield this.cache.httpGetJson(
-        `/${app}/rights/sharing`
-      );
+      const sharingMap = yield this.getShareMapping(app);
       const sharingRights = yield this.cache.httpGetJson(
         "/infra/public/json/sharing-rights.json"
       );
@@ -15845,9 +15911,7 @@ class ShareService {
       const sharingRights = yield this.cache.httpGetJson(
         "/infra/public/json/sharing-rights.json"
       );
-      const sharingMap = yield this.cache.httpGetJson(
-        `/${app}/rights/sharing`
-      );
+      const sharingMap = yield this.getShareMapping(app);
       const rightActions = Object.keys(sharingRights).map((key) => {
         const value = sharingRights[key];
         return {
@@ -16233,7 +16297,7 @@ class WorkspaceService {
     });
   }
 }
-class OdeServicesImpl {
+class OdeServices {
   constructor() {
     __publicField(this, "_cache");
     __publicField(this, "_conf");
@@ -16280,7 +16344,7 @@ class OdeServicesImpl {
     return this._workspace;
   }
 }
-new OdeServicesImpl();
+new OdeServices();
 const folders = [];
 const filters = [];
 const orders = [

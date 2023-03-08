@@ -20,7 +20,7 @@ ___
 
 ### id
 
-• **id**: `string`
+• **id**: [`ShareRightActionDisplayName`](../modules.md#sharerightactiondisplayname)
 
 ___
 

@@ -155,8 +155,42 @@ export class ShareService {
     return [...userRights, ...groupRights];
   }
 
-  saveRights(resourceId: string, rights: ShareRight[]) {
-    //TODO implement
+  async saveRights(
+    app: string,
+    resourceId: string,
+    rights: ShareRight[],
+  ): Promise<PutShareResponse> {
+    // get mapping between action and java names
+    const mapping = await this.getShareMapping(app);
+    const payload: PutSharePayload = {
+      bookmarks: {},
+      groups: {},
+      users: {},
+    };
+    for (const right of rights) {
+      // get java rights for each available actions
+      const rightWithDuplicates = right.actions
+        .map((action) => {
+          return mapping[action.id];
+        })
+        .reduce((previous, current) => {
+          return [...previous, ...current];
+        });
+      const rights = [...new Set(rightWithDuplicates)];
+      // for each user/group/bookmark add a record
+      if (right.type === "user") {
+        payload.users[right.id] = rights;
+      } else if (right.type === "group") {
+        payload.groups[right.id] = rights;
+      } else {
+        payload.bookmarks[right.id] = rights;
+      }
+    }
+    const res = await this.http.putJson<PutShareResponse>(
+      `/${app}/share/json/${resourceId}`,
+      payload,
+    );
+    return res;
   }
 
   async getActionsForApp(app: string): Promise<ShareRightAction[]> {
@@ -171,7 +205,7 @@ export class ShareService {
         const value = sharingRights[key as ShareRightActionDisplayName];
         return {
           displayName: key as ShareRightActionDisplayName,
-          id: key,
+          id: key as ShareRightActionDisplayName,
           priority: value.priority,
         };
       })
@@ -203,7 +237,7 @@ export interface ShareRight {
 export type ShareRightType = "user" | "group" | "sharebookmark";
 
 export interface ShareRightAction {
-  id: string;
+  id: ShareRightActionDisplayName;
   displayName: ShareRightActionDisplayName;
   priority?: number;
 }
@@ -256,4 +290,14 @@ interface ResourceRightPayload {
     }>;
     checked: Record<string, string[]>;
   };
+}
+
+interface PutSharePayload {
+  users: Record<string, string[]>;
+  groups: Record<string, string[]>;
+  bookmarks: Record<string, string[]>;
+}
+
+export interface PutShareResponse {
+  "notify-timeline-array": Array<{ groupId: string } | { userId: string }>;
 }
