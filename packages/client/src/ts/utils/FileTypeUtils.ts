@@ -8,7 +8,7 @@ export class FileTypeUtils {
   static getFileType(
     fileType: string,
     previewRole: boolean = false,
-    extension?: string
+    extension?: string,
   ) {
     extension && (extension = extension.trim());
     if (!fileType) return "unknown";
@@ -94,5 +94,5 @@ export class FileTypeUtils {
 
 export type ContentTypeToFileType = (
   contentType: string,
-  previewRole: boolean
+  previewRole: boolean,
 ) => string | undefined;

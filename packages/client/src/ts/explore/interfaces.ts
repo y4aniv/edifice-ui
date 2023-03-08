@@ -173,7 +173,7 @@ export const RESOURCE = {
   BLOG: "blog",
   EXERCISE: "exercise",
 } as const;
-export type ResourceType = typeof RESOURCE[keyof typeof RESOURCE];
+export type ResourceType = (typeof RESOURCE)[keyof typeof RESOURCE];
 
 //-- App/Resource link
 export const appNameForResource: { [R in ResourceType]: App } = {
@@ -205,14 +205,14 @@ export const ACTION = {
   PUBLISH: "publish",
   PUBLISH_MOODLE: "publish_moodle",
 } as const;
-export type ActionType = typeof ACTION[keyof typeof ACTION];
+export type ActionType = (typeof ACTION)[keyof typeof ACTION];
 
 //-- Folders
 export const FOLDER = {
   BIN: "bin",
   DEFAULT: "default",
 } as const;
-export type FolderType = typeof FOLDER[keyof typeof FOLDER];
+export type FolderType = (typeof FOLDER)[keyof typeof FOLDER];
 
 //-- Filters
 export const BOOLEAN_FILTER = {
@@ -222,18 +222,19 @@ export const BOOLEAN_FILTER = {
   FAVORITE: "favorite",
 } as const;
 export type BooleanFilterType =
-  typeof BOOLEAN_FILTER[keyof typeof BOOLEAN_FILTER];
+  (typeof BOOLEAN_FILTER)[keyof typeof BOOLEAN_FILTER];
 export const STRING_FILTER = {
   //  FOLDER:     "folder" // is instead an ID
 } as const;
-export type StringFilterType = typeof STRING_FILTER[keyof typeof STRING_FILTER];
+export type StringFilterType =
+  (typeof STRING_FILTER)[keyof typeof STRING_FILTER];
 
 //-- Sort orders
 export const SORT_ORDER = {
   ASC: "asc",
   DESC: "desc",
 } as const;
-export type SortOrderType = typeof SORT_ORDER[keyof typeof SORT_ORDER];
+export type SortOrderType = (typeof SORT_ORDER)[keyof typeof SORT_ORDER];
 export const SORT_BY = {
   NAME: "name",
   MODIFY_DATE: "modifiedAt",
@@ -253,7 +254,7 @@ export const SORT_BY = {
   comments?: number;
 */
 } as const;
-export type SortByType = typeof SORT_BY[keyof typeof SORT_BY];
+export type SortByType = (typeof SORT_BY)[keyof typeof SORT_BY];
 
 //-- Semantique
 export type ID = string;
@@ -271,13 +272,13 @@ export const PROP_KEY = {
   URL: "url",
   //  ,GENERIC:     "generic"   //NOT USED AT THE MOMENT
 } as const;
-export type PropKeyType = typeof PROP_KEY[keyof typeof PROP_KEY];
+export type PropKeyType = (typeof PROP_KEY)[keyof typeof PROP_KEY];
 
 export const PROP_MODE = {
   READONLY: "RO",
   READWRITE: "RW",
 } as const;
-export type PropModeType = typeof PROP_MODE[keyof typeof PROP_MODE];
+export type PropModeType = (typeof PROP_MODE)[keyof typeof PROP_MODE];
 
 export const PROP_TYPE = {
   TEXT: "text",
@@ -286,13 +287,13 @@ export const PROP_TYPE = {
   IMAGE: "image",
   // TODO more types ? Currencies...
 } as const;
-export type PropTypeType = typeof PROP_TYPE[keyof typeof PROP_TYPE];
+export type PropTypeType = (typeof PROP_TYPE)[keyof typeof PROP_TYPE];
 
 export const PROP_FORMAT = {
   PLAIN: "plain", // Plain text or number value, no formatting
   // TODO more format to come ? Full dates, months only, timestamps, regexp....
 } as const;
-export type PropFormatType = typeof PROP_FORMAT[keyof typeof PROP_FORMAT];
+export type PropFormatType = (typeof PROP_FORMAT)[keyof typeof PROP_FORMAT];
 
 //------------------------- Data models
 export type SearchResultHandler = (

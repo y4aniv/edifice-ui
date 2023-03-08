@@ -57,46 +57,46 @@ export class MimeTypeUtils {
     this.fileExtensionMap.set("dot", "application/msword");
     this.fileExtensionMap.set(
       "docx",
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     );
     this.fileExtensionMap.set(
       "dotx",
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.template"
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.template",
     );
     this.fileExtensionMap.set(
       "docm",
-      "application/vnd.ms-word.document.macroEnabled.12"
+      "application/vnd.ms-word.document.macroEnabled.12",
     );
     this.fileExtensionMap.set(
       "dotm",
-      "application/vnd.ms-word.template.macroEnabled.12"
+      "application/vnd.ms-word.template.macroEnabled.12",
     );
     this.fileExtensionMap.set("xls", "application/vnd.ms-excel");
     this.fileExtensionMap.set("xlt", "application/vnd.ms-excel");
     this.fileExtensionMap.set("xla", "application/vnd.ms-excel");
     this.fileExtensionMap.set(
       "xlsx",
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     );
     this.fileExtensionMap.set(
       "xltx",
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.template"
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.template",
     );
     this.fileExtensionMap.set(
       "xlsm",
-      "application/vnd.ms-excel.sheet.macroEnabled.12"
+      "application/vnd.ms-excel.sheet.macroEnabled.12",
     );
     this.fileExtensionMap.set(
       "xltm",
-      "application/vnd.ms-excel.template.macroEnabled.12"
+      "application/vnd.ms-excel.template.macroEnabled.12",
     );
     this.fileExtensionMap.set(
       "xlam",
-      "application/vnd.ms-excel.addin.macroEnabled.12"
+      "application/vnd.ms-excel.addin.macroEnabled.12",
     );
     this.fileExtensionMap.set(
       "xlsb",
-      "application/vnd.ms-excel.sheet.binary.macroEnabled.12"
+      "application/vnd.ms-excel.sheet.binary.macroEnabled.12",
     );
     this.fileExtensionMap.set("ppt", "application/vnd.ms-powerpoint");
     this.fileExtensionMap.set("pot", "application/vnd.ms-powerpoint");
@@ -104,85 +104,85 @@ export class MimeTypeUtils {
     this.fileExtensionMap.set("ppa", "application/vnd.ms-powerpoint");
     this.fileExtensionMap.set(
       "pptx",
-      "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation",
     );
     this.fileExtensionMap.set(
       "potx",
-      "application/vnd.openxmlformats-officedocument.presentationml.template"
+      "application/vnd.openxmlformats-officedocument.presentationml.template",
     );
     this.fileExtensionMap.set(
       "ppsx",
-      "application/vnd.openxmlformats-officedocument.presentationml.slideshow"
+      "application/vnd.openxmlformats-officedocument.presentationml.slideshow",
     );
     this.fileExtensionMap.set(
       "ppam",
-      "application/vnd.ms-powerpoint.addin.macroEnabled.12"
+      "application/vnd.ms-powerpoint.addin.macroEnabled.12",
     );
     this.fileExtensionMap.set(
       "pptm",
-      "application/vnd.ms-powerpoint.presentation.macroEnabled.12"
+      "application/vnd.ms-powerpoint.presentation.macroEnabled.12",
     );
     this.fileExtensionMap.set(
       "potm",
-      "application/vnd.ms-powerpoint.presentation.macroEnabled.12"
+      "application/vnd.ms-powerpoint.presentation.macroEnabled.12",
     );
     this.fileExtensionMap.set(
       "ppsm",
-      "application/vnd.ms-powerpoint.slideshow.macroEnabled.12"
+      "application/vnd.ms-powerpoint.slideshow.macroEnabled.12",
     );
     // Open Office
     this.fileExtensionMap.set("odt", "application/vnd.oasis.opendocument.text");
     this.fileExtensionMap.set(
       "ott",
-      "application/vnd.oasis.opendocument.text-template"
+      "application/vnd.oasis.opendocument.text-template",
     );
     this.fileExtensionMap.set(
       "oth",
-      "application/vnd.oasis.opendocument.text-web"
+      "application/vnd.oasis.opendocument.text-web",
     );
     this.fileExtensionMap.set(
       "odm",
-      "application/vnd.oasis.opendocument.text-master"
+      "application/vnd.oasis.opendocument.text-master",
     );
     this.fileExtensionMap.set(
       "odg",
-      "application/vnd.oasis.opendocument.graphics"
+      "application/vnd.oasis.opendocument.graphics",
     );
     this.fileExtensionMap.set(
       "otg",
-      "application/vnd.oasis.opendocument.graphics-template"
+      "application/vnd.oasis.opendocument.graphics-template",
     );
     this.fileExtensionMap.set(
       "odp",
-      "application/vnd.oasis.opendocument.presentation"
+      "application/vnd.oasis.opendocument.presentation",
     );
     this.fileExtensionMap.set(
       "otp",
-      "application/vnd.oasis.opendocument.presentation-template"
+      "application/vnd.oasis.opendocument.presentation-template",
     );
     this.fileExtensionMap.set(
       "ods",
-      "application/vnd.oasis.opendocument.spreadsheet"
+      "application/vnd.oasis.opendocument.spreadsheet",
     );
     this.fileExtensionMap.set(
       "ots",
-      "application/vnd.oasis.opendocument.spreadsheet-template"
+      "application/vnd.oasis.opendocument.spreadsheet-template",
     );
     this.fileExtensionMap.set(
       "odc",
-      "application/vnd.oasis.opendocument.chart"
+      "application/vnd.oasis.opendocument.chart",
     );
     this.fileExtensionMap.set(
       "odf",
-      "application/vnd.oasis.opendocument.formula"
+      "application/vnd.oasis.opendocument.formula",
     );
     this.fileExtensionMap.set(
       "odb",
-      "application/vnd.oasis.opendocument.database"
+      "application/vnd.oasis.opendocument.database",
     );
     this.fileExtensionMap.set(
       "odi",
-      "application/vnd.oasis.opendocument.image"
+      "application/vnd.oasis.opendocument.image",
     );
     this.fileExtensionMap.set("oxt", "application/vnd.openofficeorg.extension");
     //

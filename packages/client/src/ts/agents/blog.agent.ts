@@ -102,42 +102,58 @@ class BlogAgent extends AbstractBusAgent {
     return Promise.resolve().then(() => res);
   }
 
-    async onPublish(parameters: PublishParameters): Promise<PublishResult> {
-        const publicationAsFormData = new FormData();
-        publicationAsFormData.append("title", parameters.title);
-        publicationAsFormData.append("cover", parameters.cover);
-        publicationAsFormData.append("coverName", (parameters.cover as any as Blob).name);
-        publicationAsFormData.append("coverType", parameters.cover.type);
-        publicationAsFormData.append("teacherAvatar", parameters.teacherAvatar);
-        publicationAsFormData.append("teacherAvatarName", 
-            (parameters.teacherAvatar as any as Blob).name || `teacherAvatar_${parameters.userId}`
-        );
-        publicationAsFormData.append("teacherAvatarType", parameters.teacherAvatar.type);
-        publicationAsFormData.append("language", parameters.language);
-        parameters.activityType.forEach(activityType => {
-            publicationAsFormData.append("activityType[]", activityType);
-        });
-        parameters.subjectArea.forEach(subjectArea => {
-            publicationAsFormData.append("subjectArea[]", subjectArea);
-        });
-        parameters.age.forEach(age => {
-            publicationAsFormData.append("age[]", age.toString());
-        });
-        publicationAsFormData.append("description", parameters.description);
-        let keyWordsArray = parameters.keyWords.split(',')
-        keyWordsArray.forEach(keyWord => {
-            publicationAsFormData.append("keyWords[]", keyWord.trim());
-        });
-        publicationAsFormData.append("licence", parameters.licence);
-        publicationAsFormData.append("pdfUri", `${window.location.origin}/blog/print/blog#/print/${parameters.resourceId}`);
-        publicationAsFormData.append("application", parameters.application ? parameters.application : "");
-        publicationAsFormData.append("resourceId", parameters.resourceId);
-        publicationAsFormData.append("teacherSchool", parameters.userStructureName);
+  async onPublish(parameters: PublishParameters): Promise<PublishResult> {
+    const publicationAsFormData = new FormData();
+    publicationAsFormData.append("title", parameters.title);
+    publicationAsFormData.append("cover", parameters.cover);
+    publicationAsFormData.append(
+      "coverName",
+      (parameters.cover as any as Blob).name,
+    );
+    publicationAsFormData.append("coverType", parameters.cover.type);
+    publicationAsFormData.append("teacherAvatar", parameters.teacherAvatar);
+    publicationAsFormData.append(
+      "teacherAvatarName",
+      (parameters.teacherAvatar as any as Blob).name ||
+        `teacherAvatar_${parameters.userId}`,
+    );
+    publicationAsFormData.append(
+      "teacherAvatarType",
+      parameters.teacherAvatar.type,
+    );
+    publicationAsFormData.append("language", parameters.language);
+    parameters.activityType.forEach((activityType) => {
+      publicationAsFormData.append("activityType[]", activityType);
+    });
+    parameters.subjectArea.forEach((subjectArea) => {
+      publicationAsFormData.append("subjectArea[]", subjectArea);
+    });
+    parameters.age.forEach((age) => {
+      publicationAsFormData.append("age[]", age.toString());
+    });
+    publicationAsFormData.append("description", parameters.description);
+    let keyWordsArray = parameters.keyWords.split(",");
+    keyWordsArray.forEach((keyWord) => {
+      publicationAsFormData.append("keyWords[]", keyWord.trim());
+    });
+    publicationAsFormData.append("licence", parameters.licence);
+    publicationAsFormData.append(
+      "pdfUri",
+      `${window.location.origin}/blog/print/blog#/print/${parameters.resourceId}`,
+    );
+    publicationAsFormData.append(
+      "application",
+      parameters.application ? parameters.application : "",
+    );
+    publicationAsFormData.append("resourceId", parameters.resourceId);
+    publicationAsFormData.append("teacherSchool", parameters.userStructureName);
 
-        return this.http.post("/appregistry/library/resource", publicationAsFormData, {
-            headers: {'Content-Type': 'multipart/form-data'}
-        }).then( this.checkHttpResponse );
-    }
+    return this.http
+      .post("/appregistry/library/resource", publicationAsFormData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then(this.checkHttpResponse);
+  }
 }
 
 export const factory: AgentFactory = () => new BlogAgent();
