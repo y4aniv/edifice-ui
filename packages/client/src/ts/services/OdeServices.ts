@@ -1,3 +1,4 @@
+import { CacheService } from "./CacheService";
 import { ConfService } from "./ConfService";
 import { DirectoryService } from "./DirectoryService";
 import { HttpService } from "./HttpService";
@@ -8,6 +9,7 @@ import { ShareService } from "./ShareService";
 import { WorkspaceService } from "./WorkspaceService";
 
 export interface OdeServices {
+  cache(): CacheService;
   conf(): ConfService;
   directory(): DirectoryService;
   http(): HttpService;
@@ -19,6 +21,7 @@ export interface OdeServices {
 }
 
 export class OdeServicesImpl implements OdeServices {
+  private _cache: CacheService;
   private _conf: ConfService;
   private _directory: DirectoryService;
   private _http: HttpService;
@@ -28,13 +31,18 @@ export class OdeServicesImpl implements OdeServices {
   private _workspace: WorkspaceService;
 
   constructor() {
+    this._cache = new CacheService(this);
     this._conf = new ConfService(this);
     this._directory = new DirectoryService();
     this._http = new HttpService(this);
     this._rights = new RightService(this);
     this._session = new SessionService(this);
-    this._share = new ShareService();
+    this._share = new ShareService(this);
     this._workspace = new WorkspaceService(this);
+  }
+
+  cache() {
+    return this._cache;
   }
 
   conf() {

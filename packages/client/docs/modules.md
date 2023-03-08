@@ -515,7 +515,7 @@ ___
 
 ### ShareRightActionDisplayName
 
-Ƭ **ShareRightActionDisplayName**: ``"read"`` \| ``"contrib"`` \| ``"manage"`` \| ``"creator"``
+Ƭ **ShareRightActionDisplayName**: ``"read"`` \| ``"contrib"`` \| ``"manage"`` \| ``"publish"`` \| ``"manager"`` \| ``"comment"``
 
 ___
 

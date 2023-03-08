@@ -14884,6 +14884,19 @@ class ConfService {
   get http() {
     return this.context.http();
   }
+  savePreference(key, value) {
+    return __async(this, null, function* () {
+      this.http.putJson(`/userbook/preference/${key}`, value);
+    });
+  }
+  getPreference(key) {
+    return __async(this, null, function* () {
+      const res = yield this.http.get(
+        `/userbook/preference/${key}`
+      );
+      return JSON.parse(res.preference);
+    });
+  }
 }
 const loadedScripts = {};
 class HttpService {
@@ -15259,23 +15272,20 @@ class RightService {
 }
 class SessionService {
   constructor(context2) {
-    __publicField(this, "_me");
     this.context = context2;
   }
-  get http() {
-    return this.context.http();
+  get cache() {
+    return this.context.cache();
   }
   getUser() {
     return __async(this, null, function* () {
-      if (this._me) {
-        return this._me;
-      }
-      const res = yield this.http.get("/auth/oauth2/userinfo");
-      if (this.http.latestResponse.status < 200 || this.http.latestResponse.status >= 300) {
+      const { response, value } = yield this.cache.httpGet(
+        "/auth/oauth2/userinfo"
+      );
+      if (response.status < 200 || response.status >= 300) {
         throw ERROR_CODE.NOT_LOGGED_IN;
       } else {
-        this._me = res;
-        return this._me;
+        return value;
       }
     });
   }
@@ -15646,21 +15656,539 @@ class WorkspaceService {
     });
   }
 }
+const _ResourceService = class {
+  constructor(context2) {
+    __publicField(this, "checkHttpResponse", (result) => {
+      if (this.http.latestResponse.status >= 300) {
+        throw this.http.latestResponse.statusText;
+      }
+      return result;
+    });
+    this.context = context2;
+  }
+  static register({
+    application,
+    resourceType
+  }, service) {
+    _ResourceService.registry.set(`${application}:${resourceType}`, service);
+  }
+  static findService({
+    application,
+    resourceType
+  }, context2) {
+    const found = _ResourceService.registry.get(
+      `${application}:${resourceType}`
+    );
+    if (found === void 0) {
+      throw `Service not found: ${application}:${resourceType}`;
+    }
+    return found(context2);
+  }
+  get http() {
+    return this.context.http();
+  }
+  gotoPrint(resourceId, withComment) {
+    window.open(this.getPrintUrl(resourceId, withComment), "_blank");
+  }
+  gotoView(resourceId) {
+    window.open(this.getViewUrl(resourceId), "_self");
+  }
+  gotoForm() {
+    window.open(this.getFormUrl(), "_self");
+  }
+  publish(parameters) {
+    return __async(this, null, function* () {
+      const publicationAsFormData = new FormData();
+      publicationAsFormData.append("title", parameters.title);
+      publicationAsFormData.append("cover", parameters.cover);
+      publicationAsFormData.append("coverName", parameters.cover.name);
+      publicationAsFormData.append("coverType", parameters.cover.type);
+      publicationAsFormData.append("teacherAvatar", parameters.teacherAvatar);
+      publicationAsFormData.append(
+        "teacherAvatarName",
+        parameters.teacherAvatar.name || `teacherAvatar_${parameters.userId}`
+      );
+      publicationAsFormData.append(
+        "teacherAvatarType",
+        parameters.teacherAvatar.type
+      );
+      publicationAsFormData.append("language", parameters.language);
+      parameters.activityType.forEach((activityType) => {
+        publicationAsFormData.append("activityType[]", activityType);
+      });
+      parameters.subjectArea.forEach((subjectArea) => {
+        publicationAsFormData.append("subjectArea[]", subjectArea);
+      });
+      parameters.age.forEach((age) => {
+        publicationAsFormData.append("age[]", age.toString());
+      });
+      publicationAsFormData.append("description", parameters.description);
+      let keyWordsArray = parameters.keyWords.split(",");
+      keyWordsArray.forEach((keyWord) => {
+        publicationAsFormData.append("keyWords[]", keyWord.trim());
+      });
+      publicationAsFormData.append("licence", parameters.licence);
+      publicationAsFormData.append(
+        "pdfUri",
+        `${window.location.origin}${this.getPrintUrl(parameters.resourceId)}`
+      );
+      publicationAsFormData.append(
+        "application",
+        parameters.application ? parameters.application : ""
+      );
+      publicationAsFormData.append("resourceId", parameters.resourceId);
+      publicationAsFormData.append("teacherSchool", parameters.userStructureName);
+      const res = yield this.http.post(
+        "/appregistry/library/resource",
+        publicationAsFormData,
+        {
+          headers: { "Content-Type": "multipart/form-data" }
+        }
+      );
+      return this.checkHttpResponse(res);
+    });
+  }
+  createContext(parameters) {
+    return __async(this, null, function* () {
+      const result = yield this.http.get("/explorer/context", {
+        queryParams: this.toQueryParams(parameters)
+      });
+      return this.checkHttpResponse(result);
+    });
+  }
+  searchContext(parameters) {
+    return __async(this, null, function* () {
+      const result = yield this.http.get(
+        "/explorer/resources",
+        {
+          queryParams: this.toQueryParams(parameters)
+        }
+      );
+      return this.checkHttpResponse(result);
+    });
+  }
+  createFolder(parameters) {
+    return __async(this, null, function* () {
+      const result = yield this.http.post(
+        "/explorer/folders",
+        this.createFolderToBodyParams(parameters)
+      );
+      return this.checkHttpResponse(result);
+    });
+  }
+  updateFolder(parameters) {
+    return __async(this, null, function* () {
+      const result = yield this.http.put(
+        `/explorer/folders/${parameters.folderId}`,
+        this.createFolderToBodyParams(parameters)
+      );
+      return this.checkHttpResponse(result);
+    });
+  }
+  moveToFolder(parameters) {
+    return __async(this, null, function* () {
+      const result = yield this.http.post(
+        `/explorer/folders/${parameters.folderId}/move`,
+        this.moveToBodyParams(parameters)
+      );
+      return this.checkHttpResponse(result);
+    });
+  }
+  listSubfolders(folderId) {
+    return __async(this, null, function* () {
+      const result = yield this.http.get(
+        `/explorer/folders/${folderId}/move`
+      );
+      return this.checkHttpResponse(result);
+    });
+  }
+  deleteFolders(parameters) {
+    return __async(this, null, function* () {
+      const result = yield this.http.deleteJson(
+        `/explorer`,
+        parameters
+      );
+      return this.checkHttpResponse(result);
+    });
+  }
+  trashFolders(_d) {
+    return __async(this, null, function* () {
+      var _e = _d, {
+        trash,
+        resourceType
+      } = _e, parameters = __objRest(_e, [
+        "trash",
+        "resourceType"
+      ]);
+      const result = yield this.http.putJson(
+        `/explorer/${trash ? "trash" : "restore"}`,
+        parameters
+      );
+      return this.checkHttpResponse(result);
+    });
+  }
+  getThumbnailPath(thumb) {
+    return __async(this, null, function* () {
+      if (typeof thumb === "undefined") {
+        return thumb;
+      } else if (typeof thumb === "string") {
+        if (thumb.startsWith("blob:")) {
+          const blob = yield fetch(thumb).then((r) => r.blob());
+          const res = yield this.context.workspace().saveFile(blob, {
+            visibility: "protected",
+            application: this.getApplication()
+          });
+          return `/workspace/document/${res._id}`;
+        } else {
+          return thumb;
+        }
+      } else {
+        const res = yield this.context.workspace().saveFile(thumb, {
+          visibility: "protected",
+          application: this.getApplication()
+        });
+        return `/workspace/document/${res._id}`;
+      }
+    });
+  }
+  toQueryParams(p) {
+    let ret = {
+      application: p.app,
+      start_idx: p.pagination.startIdx,
+      page_size: p.pagination.pageSize,
+      resource_type: p.types
+    };
+    if (p.orders) {
+      ret.order_by = Object.entries(p.orders).map(
+        (entry) => `${entry[0]}:${entry[1]}`
+      );
+    }
+    if (p.filters) {
+      Object.assign(ret, p.filters);
+    }
+    if (typeof p.search === "string") {
+      ret.search = p.search;
+    }
+    return ret;
+  }
+  createFolderToBodyParams(p) {
+    return {
+      application: p.app,
+      resourceType: p.type,
+      parentId: p.parentId,
+      name: p.name
+    };
+  }
+  moveToBodyParams(p) {
+    return {
+      application: p.application,
+      resourceType: this.getResourceType(),
+      resourceIds: p.resourceIds,
+      folderIds: p.folderIds
+    };
+  }
+};
+let ResourceService = _ResourceService;
+__publicField(ResourceService, "registry", /* @__PURE__ */ new Map());
+class BlogResourceService extends ResourceService {
+  update(parameters) {
+    return __async(this, null, function* () {
+      const fixThumb = yield this.getThumbnailPath(parameters.thumbnail);
+      const res = yield this.http.put(`/blog/${parameters.entId}`, {
+        trashed: parameters.trashed,
+        _id: parameters.entId,
+        title: parameters.name,
+        thumbnail: fixThumb,
+        description: parameters.description,
+        visibility: parameters.public ? "PUBLIC" : "OWNER",
+        slug: parameters.public ? parameters.slug : "",
+        "publish-type": "RESTRAINT",
+        "comment-type": "IMMEDIATE"
+      });
+      this.checkHttpResponse(res);
+      return { thumbnail: fixThumb, entId: parameters.entId };
+    });
+  }
+  getResourceType() {
+    return RESOURCE.BLOG;
+  }
+  getApplication() {
+    return APP.BLOG;
+  }
+  getFormUrl() {
+    return `/blog#/edit/new`;
+  }
+  getViewUrl(resourceId) {
+    return `/blog#/view/${resourceId}`;
+  }
+  getPrintUrl(resourceId, withComment) {
+    return `/blog/print/blog#/print/${resourceId}?comments=${withComment || true}`;
+  }
+}
+ResourceService.register(
+  { application: RESOURCE.BLOG, resourceType: RESOURCE.BLOG },
+  (context2) => new BlogResourceService(context2)
+);
+class ShareService {
+  constructor(context2) {
+    this.context = context2;
+  }
+  get http() {
+    return this.context.http();
+  }
+  get cache() {
+    return this.context.cache();
+  }
+  getActionsAvailableFor({ id, type: type2 }, payload, mapping) {
+    const usafeRights = type2 === "user" ? payload.users.checked[id] : payload.groups.checked[id];
+    const rights = usafeRights || [];
+    const actions2 = Object.keys(mapping);
+    const actionAvailable = [];
+    for (const action of actions2) {
+      const rightsForAction = mapping[action];
+      const intersection = rightsForAction.filter(
+        (right) => rights.includes(right)
+      );
+      if (intersection.length > 0) {
+        actionAvailable.push(action);
+      }
+    }
+    return actionAvailable;
+  }
+  getRightsForResource(app, resourceId) {
+    return __async(this, null, function* () {
+      const rights = yield this.cache.httpGetJson(
+        `/${app}/share/json/${resourceId}`
+      );
+      const sharingMap = yield this.cache.httpGetJson(
+        `/${app}/share/mapping`
+      );
+      const sharingRights = yield this.cache.httpGetJson(
+        "/infra/public/json/sharing-rights.json"
+      );
+      const userRights = Object.keys(rights.users.checked).map((userId2) => {
+        const user = rights.users.visibles.find((user2) => user2.id === userId2);
+        return user;
+      }).filter((user) => {
+        return user !== void 0;
+      }).map((user) => {
+        const actions2 = this.getActionsAvailableFor(
+          { id: user.id, type: "user" },
+          rights,
+          sharingMap
+        );
+        const right = {
+          id: user.id,
+          type: "user",
+          displayName: user.username,
+          profile: user.profile,
+          link: `/userbook/annuaire#/${user.id}`,
+          actions: actions2.map((action) => {
+            const act = sharingRights[action];
+            return {
+              displayName: action,
+              id: action,
+              priority: act.priority
+            };
+          })
+        };
+        return right;
+      }).sort((a, b) => {
+        return (a.displayName || "").localeCompare(b.displayName);
+      });
+      const groupRights = Object.keys(rights.groups.checked).map((groupId) => {
+        const group = rights.groups.visibles.find(
+          (group2) => group2.id === groupId
+        );
+        return group;
+      }).filter((group) => {
+        return group !== void 0;
+      }).map((group) => {
+        const actions2 = this.getActionsAvailableFor(
+          { id: group.id, type: "group" },
+          rights,
+          sharingMap
+        );
+        const right = {
+          id: group.id,
+          type: "group",
+          displayName: group.name,
+          profile: void 0,
+          link: `/userbook/annuaire#/group-view/${group.id}`,
+          actions: actions2.map((action) => {
+            const act = sharingRights[action];
+            return {
+              displayName: action,
+              id: action,
+              priority: act.priority
+            };
+          })
+        };
+        return right;
+      }).sort((a, b) => {
+        return (a.displayName || "").localeCompare(b.displayName);
+      });
+      return [...userRights, ...groupRights];
+    });
+  }
+  saveRights(resourceId, rights) {
+  }
+  getActionsForApp(app) {
+    return __async(this, null, function* () {
+      const sharingRights = yield this.cache.httpGetJson(
+        "/infra/public/json/sharing-rights.json"
+      );
+      const sharingMap = yield this.cache.httpGetJson(
+        `/${app}/share/mapping`
+      );
+      const rightActions = Object.keys(sharingRights).map((key) => {
+        const value = sharingRights[key];
+        return {
+          displayName: key,
+          id: key,
+          priority: value.priority
+        };
+      }).filter((right) => {
+        if (sharingMap[right.id].length > 0) {
+          return true;
+        }
+        return false;
+      }).sort((a, b) => {
+        return a.priority - b.priority;
+      });
+      return rightActions;
+    });
+  }
+}
+class DirectoryService {
+  constructor() {
+  }
+  findUsers(search) {
+  }
+  getUsers() {
+    const mockUser = {
+      id: "user_1",
+      displayName: "mock.user.1"
+    };
+    return Promise.resolve([mockUser]);
+  }
+  getGroups() {
+    const mockGroup = {
+      id: "group_1",
+      displayName: "mock.group.1"
+    };
+    return Promise.resolve([mockGroup]);
+  }
+  getBookMarks() {
+    const mockBookmark = {
+      id: "bookmark_1",
+      displayName: "mock.bookmark.1"
+    };
+    return Promise.resolve([mockBookmark]);
+  }
+}
+const globalCache = {};
+const mutexPromise = {};
+class CacheService {
+  constructor(context2) {
+    this.context = context2;
+  }
+  get http() {
+    return this.context.http();
+  }
+  fromCacheIfPossible(key, task, shouldCache) {
+    return __async(this, null, function* () {
+      if (globalCache[key]) {
+        return globalCache[key];
+      }
+      try {
+        const promise = task();
+        mutexPromise[key] = promise;
+        const res = yield promise;
+        if (shouldCache(res)) {
+          globalCache[key] = res;
+        }
+        return res;
+      } catch (e) {
+        console.error(`Failed to retrieve value for: ${key}`, e);
+        throw e;
+      }
+    });
+  }
+  clearCache(key) {
+    if (key) {
+      delete globalCache[key];
+    } else {
+      for (const key2 in globalCache) {
+        if (globalCache.hasOwnProperty(key2)) {
+          delete globalCache[key2];
+        }
+      }
+    }
+  }
+  httpGet(url, params2) {
+    return __async(this, null, function* () {
+      return this.fromCacheIfPossible(
+        url,
+        () => __async(this, null, function* () {
+          const value = yield this.http.get(url, params2);
+          const response = __spreadValues({}, this.http.latestResponse);
+          return { value, response };
+        }),
+        ({ response }) => {
+          if (response.status < 200 || response.status >= 300) {
+            return false;
+          } else {
+            return true;
+          }
+        }
+      );
+    });
+  }
+  httpGetJson(url, params2) {
+    return __async(this, null, function* () {
+      const { response, value } = yield this.httpGet(url, params2);
+      if (response.status < 200 || response.status >= 300) {
+        throw `Bad http status (${response.status}) for url: ${url}`;
+      } else {
+        return value;
+      }
+    });
+  }
+}
 class OdeContextImpl {
   constructor() {
-    __publicField(this, "_http");
-    __publicField(this, "_workspace");
-    __publicField(this, "_session");
-    __publicField(this, "_rights");
+    __publicField(this, "_cache");
     __publicField(this, "_conf");
+    __publicField(this, "_directory");
+    __publicField(this, "_http");
+    __publicField(this, "_rights");
+    __publicField(this, "_session");
+    __publicField(this, "_share");
+    __publicField(this, "_workspace");
+    this._cache = new CacheService(this);
     this._conf = new ConfService(this);
+    this._directory = new DirectoryService();
     this._http = new HttpService(this);
     this._rights = new RightService(this);
     this._session = new SessionService(this);
+    this._share = new ShareService(this);
     this._workspace = new WorkspaceService(this);
   }
   conf() {
     return this._conf;
+  }
+  cache() {
+    return this._cache;
+  }
+  directory() {
+    return this._directory;
+  }
+  http() {
+    return this._http;
+  }
+  resource(application, resourceType) {
+    return ResourceService.findService({ application, resourceType }, this);
   }
   rights() {
     return this._rights;
@@ -15668,11 +16196,11 @@ class OdeContextImpl {
   session() {
     return this._session;
   }
+  share() {
+    return this._share;
+  }
   workspace() {
     return this._workspace;
-  }
-  http() {
-    return this._http;
   }
 }
 new OdeContextImpl();

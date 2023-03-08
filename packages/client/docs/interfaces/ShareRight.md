@@ -7,12 +7,11 @@
 ### Properties
 
 - [actions](ShareRight.md#actions)
-- [hide](ShareRight.md#hide)
+- [displayName](ShareRight.md#displayname)
 - [id](ShareRight.md#id)
-- [name](ShareRight.md#name)
+- [link](ShareRight.md#link)
 - [profile](ShareRight.md#profile)
 - [type](ShareRight.md#type)
-- [username](ShareRight.md#username)
 
 ## Properties
 
@@ -22,9 +21,9 @@
 
 ___
 
-### hide
+### displayName
 
-• **hide**: `boolean`
+• **displayName**: `string`
 
 ___
 
@@ -34,9 +33,9 @@ ___
 
 ___
 
-### name
+### link
 
-• **name**: `string`
+• **link**: `string`
 
 ___
 
@@ -49,9 +48,3 @@ ___
 ### type
 
 • **type**: [`ShareRightType`](../modules.md#sharerighttype)
-
-___
-
-### username
-
-• **username**: `string`
