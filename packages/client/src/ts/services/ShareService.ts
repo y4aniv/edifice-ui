@@ -32,7 +32,7 @@ export class ShareService {
 
   getActionsAvailableFor(
     { id, type }: { id: string; type: "user" | "group" },
-    payload: ResourceRightPayload,
+    payload: GetResourceRightPayload,
     mapping: ShareMapping,
   ): ShareRightActionDisplayName[] {
     // get rights affected to this user or group
@@ -60,7 +60,7 @@ export class ShareService {
     resourceId: string,
   ): Promise<ShareRight[]> {
     // get rights for this ressources
-    const rights = await this.cache.httpGetJson<ResourceRightPayload>(
+    const rights = await this.cache.httpGetJson<GetResourceRightPayload>(
       `/${app}/share/json/${resourceId}`,
     );
     // get mapping between rights and normalized rights
@@ -264,7 +264,7 @@ type SharingRight = Record<
 >;
 type ShareMapping = Record<ShareRightActionDisplayName, string[]>;
 
-interface ResourceRightPayload {
+interface GetResourceRightPayload {
   actions: Array<{
     name: string[];
     displayName: string; //'app.right'

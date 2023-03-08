@@ -15904,7 +15904,35 @@ class ShareService {
       return [...userRights, ...groupRights];
     });
   }
-  saveRights(resourceId, rights) {
+  saveRights(app, resourceId, rights) {
+    return __async(this, null, function* () {
+      const mapping = yield this.getShareMapping(app);
+      const payload = {
+        bookmarks: {},
+        groups: {},
+        users: {}
+      };
+      for (const right of rights) {
+        const rightWithDuplicates = right.actions.map((action) => {
+          return mapping[action.id];
+        }).reduce((previous, current) => {
+          return [...previous, ...current];
+        });
+        const rights2 = [...new Set(rightWithDuplicates)];
+        if (right.type === "user") {
+          payload.users[right.id] = rights2;
+        } else if (right.type === "group") {
+          payload.groups[right.id] = rights2;
+        } else {
+          payload.bookmarks[right.id] = rights2;
+        }
+      }
+      const res = yield this.http.putJson(
+        `/${app}/share/json/${resourceId}`,
+        payload
+      );
+      return res;
+    });
   }
   getActionsForApp(app) {
     return __async(this, null, function* () {
