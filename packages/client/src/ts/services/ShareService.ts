@@ -6,6 +6,9 @@ export class ShareService {
   //
   constructor(protected context: OdeServices) {}
 
+  get directory() {
+    return this.context.directory();
+  }
   get http() {
     return this.context.http();
   }
@@ -78,7 +81,8 @@ export class ShareService {
           type: "user",
           displayName: user!.username,
           profile: user!.profile,
-          link: `/userbook/annuaire#/${user!.id}`,
+          avatarUrl: this.directory.getAvatarUrl(user!.id, "user"),
+          directoryUrl: this.directory.getDirectoryUrl(user!.id, "user"),
           actions: actions.map((action) => {
             const act = sharingRights[action];
             return {
@@ -119,7 +123,8 @@ export class ShareService {
           type: "group",
           displayName: group!.name,
           profile: undefined,
-          link: `/userbook/annuaire#/group-view/${group!.id}`,
+          avatarUrl: this.directory.getAvatarUrl(group!.id, "group"),
+          directoryUrl: this.directory.getDirectoryUrl(group!.id, "group"),
           actions: actions.map((action) => {
             const act = sharingRights[action];
             return {
@@ -135,11 +140,12 @@ export class ShareService {
         // sort by group name ASC
         return (a.displayName || "").localeCompare(b.displayName);
       });
-    //TODO  finish all others methods + tests + create new route for mapping
     return [...userRights, ...groupRights];
   }
 
-  saveRights(resourceId: string, rights: ShareRight[]) {}
+  saveRights(resourceId: string, rights: ShareRight[]) {
+    //TODO implement
+  }
 
   async getActionsForApp(app: string): Promise<ShareRightAction[]> {
     // get normalized rights infos
@@ -179,7 +185,8 @@ export interface ShareRight {
   type: ShareRightType;
   displayName: string;
   profile?: string; // if type is user
-  link: string;
+  avatarUrl: string;
+  directoryUrl: string;
   actions: ShareRightAction[];
 }
 

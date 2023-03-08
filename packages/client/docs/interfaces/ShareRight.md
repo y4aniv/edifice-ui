@@ -7,9 +7,10 @@
 ### Properties
 
 - [actions](ShareRight.md#actions)
+- [avatarUrl](ShareRight.md#avatarurl)
+- [directoryUrl](ShareRight.md#directoryurl)
 - [displayName](ShareRight.md#displayname)
 - [id](ShareRight.md#id)
-- [link](ShareRight.md#link)
 - [profile](ShareRight.md#profile)
 - [type](ShareRight.md#type)
 
@@ -18,6 +19,18 @@
 ### actions
 
 • **actions**: [`ShareRightAction`](ShareRightAction.md)[]
+
+___
+
+### avatarUrl
+
+• **avatarUrl**: `string`
+
+___
+
+### directoryUrl
+
+• **directoryUrl**: `string`
 
 ___
 
@@ -30,12 +43,6 @@ ___
 ### id
 
 • **id**: `string`
-
-___
-
-### link
-
-• **link**: `string`
 
 ___
 

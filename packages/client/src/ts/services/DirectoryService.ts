@@ -1,3 +1,5 @@
+import { OdeServices } from "./OdeServices";
+
 export interface User {
   id: string;
   displayName: string;
@@ -13,12 +15,38 @@ export interface Bookmark {
   displayName: string;
 }
 
-export class DirectoryService {
-  constructor() {}
+export interface BookmarkWithMembers extends Bookmark {
+  members: string[];
+}
 
-  findUsers(search: string) {}
+export interface BookmarkWithDetails extends Bookmark {
+  users: User[];
+  groups: Group[];
+}
+
+export class DirectoryService {
+  constructor(private odeServices: OdeServices) {}
+  private get http() {
+    return this.odeServices.http();
+  }
+
+  getAvatarUrl(id: string, type: "user" | "group", size = "100x100") {
+    return type === "user"
+      ? `/userbook/avatar/${id}?thumbnail=${size}`
+      : `/assets/img/illustrations/group-avatar.svg`;
+  }
+  getDirectoryUrl(id: string, type: "user" | "group") {
+    return type === "user"
+      ? `/userbook/annuaire#/${id}`
+      : `/userbook/annuaire#/group-view/${id}`;
+  }
+
+  findUsers(search: string) {
+    //TODO implement
+  }
 
   getUsers(): Promise<User[]> {
+    //TODO implement
     const mockUser: User = {
       id: "user_1",
       displayName: "mock.user.1",
@@ -27,6 +55,7 @@ export class DirectoryService {
   }
 
   getGroups(): Promise<Group[]> {
+    //TODO implement
     const mockGroup: Group = {
       id: "group_1",
       displayName: "mock.group.1",
@@ -34,11 +63,107 @@ export class DirectoryService {
     return Promise.resolve([mockGroup]);
   }
 
-  getBookMarks(): Promise<Bookmark[]> {
-    const mockBookmark: Bookmark = {
-      id: "bookmark_1",
-      displayName: "mock.bookmark.1",
-    };
-    return Promise.resolve([mockBookmark]);
+  async getBookMarks(): Promise<Bookmark[]> {
+    const all = await this.http.get<BookmarkGetResponse[]>(
+      `/directory/sharebookmark/all`,
+    );
+    return all.map(({ id, name }) => {
+      return {
+        id,
+        displayName: name,
+        members: [], // this api does not return members
+      };
+    });
   }
+
+  async getBookMarkById(idBookmark: string): Promise<BookmarkWithDetails> {
+    const { groups, id, name, users } =
+      await this.http.get<BookmarkGetResponse>(
+        `/directory/sharebookmark/${idBookmark}`,
+      );
+    return {
+      id,
+      displayName: name,
+      groups: groups.map(({ name, id }) => {
+        return {
+          displayName: name,
+          id,
+        };
+      }),
+      users: users.map(({ displayName, id }) => {
+        return {
+          displayName,
+          id,
+        };
+      }),
+    };
+  }
+
+  async saveBookmarks(
+    name: string,
+    {
+      bookmarks,
+      groups,
+      users,
+    }: {
+      users: string[] | User[];
+      groups: string[] | Group[];
+      bookmarks: BookmarkWithMembers[];
+    },
+  ): Promise<BookmarkWithMembers> {
+    // get user ids
+    const userIds = users.map((user) => {
+      return typeof user === "string" ? user : user.id;
+    });
+    // get group ids
+    const groupIds = groups.map((group) => {
+      return typeof group === "string" ? group : group.id;
+    });
+    // get members ids in bookmarks
+    const memberIds = bookmarks
+      .map((bookmark) => {
+        return bookmark.members;
+      })
+      .reduce((previous, current) => {
+        return [...previous, ...current];
+      });
+    // generate payload
+    const data = {
+      name,
+      members: [...userIds, ...groupIds, ...memberIds],
+    };
+
+    const { id } = await this.http.postJson<BookmarkSaveResponse>(
+      "/directory/sharebookmark",
+      data,
+    );
+    return {
+      id,
+      displayName: name,
+      members: data.members,
+    };
+  }
+}
+
+interface BookmarkSaveResponse {
+  id: string;
+}
+
+interface BookmarkGetResponse {
+  id: string;
+  name: string;
+  groups: Array<{
+    id: string;
+    name: string;
+    activationCode: boolean;
+    groupType: string;
+    profile: string;
+    sortName: string;
+  }>;
+  users: Array<{
+    displayName: string;
+    profile: string;
+    id: string;
+    activationCode: boolean;
+  }>;
 }

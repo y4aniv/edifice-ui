@@ -33,7 +33,7 @@ export class OdeServices implements IOdeServices {
   constructor() {
     this._cache = new CacheService(this);
     this._conf = new ConfService(this);
-    this._directory = new DirectoryService();
+    this._directory = new DirectoryService(this);
     this._http = new HttpService(this);
     this._rights = new RightService(this);
     this._session = new SessionService(this);

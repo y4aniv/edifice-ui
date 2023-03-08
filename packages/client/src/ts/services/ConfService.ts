@@ -27,6 +27,7 @@ export class ConfService {
   }
 
   getCdnUrl(): string | undefined {
+    //TODO to implement
     console.warn("[getCdnUrl] Not implemented yet");
     return undefined;
   }
