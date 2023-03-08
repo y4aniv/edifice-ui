@@ -16,10 +16,24 @@ export class ShareService {
     return this.context.cache();
   }
 
+  async getShareMapping(app: string) {
+    const sharingMap = await this.cache.httpGetJson<ShareMapping>(
+      `/${app}/rights/sharing`,
+    );
+    //fix keys app.role => role
+    for (const key of Object.keys(sharingMap)) {
+      const newKey = key.split(".")[1];
+      const value = (sharingMap as any)[key];
+      delete (sharingMap as any)[key];
+      (sharingMap as any)[newKey] = value;
+    }
+    return sharingMap;
+  }
+
   getActionsAvailableFor(
     { id, type }: { id: string; type: "user" | "group" },
     payload: ResourceRightPayload,
-    mapping: SharingMap,
+    mapping: ShareMapping,
   ): ShareRightActionDisplayName[] {
     // get rights affected to this user or group
     const usafeRights =
@@ -50,9 +64,7 @@ export class ShareService {
       `/${app}/share/json/${resourceId}`,
     );
     // get mapping between rights and normalized rights
-    const sharingMap = await this.cache.httpGetJson<SharingMap>(
-      `/${app}/rights/sharing`,
-    );
+    const sharingMap = await this.getShareMapping(app);
     // get normalized rights infos
     const sharingRights = await this.cache.httpGetJson<SharingRight>(
       "/infra/public/json/sharing-rights.json",
@@ -153,9 +165,7 @@ export class ShareService {
       "/infra/public/json/sharing-rights.json",
     );
     // get mapping for rights
-    const sharingMap = await this.cache.httpGetJson<SharingMap>(
-      `/${app}/rights/sharing`,
-    );
+    const sharingMap = await this.getShareMapping(app);
     const rightActions: ShareRightAction[] = Object.keys(sharingRights)
       .map((key) => {
         const value = sharingRights[key as ShareRightActionDisplayName];
@@ -218,7 +228,7 @@ type SharingRight = Record<
     requires: ShareRightActionDisplayName[];
   }
 >;
-type SharingMap = Record<ShareRightActionDisplayName, string[]>;
+type ShareMapping = Record<ShareRightActionDisplayName, string[]>;
 
 interface ResourceRightPayload {
   actions: Array<{
