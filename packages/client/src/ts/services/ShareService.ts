@@ -48,7 +48,7 @@ export class ShareService {
     );
     // get mapping between rights and normalized rights
     const sharingMap = await this.cache.httpGetJson<SharingMap>(
-      `/${app}/share/mapping`,
+      `/${app}/rights/sharing`,
     );
     // get normalized rights infos
     const sharingRights = await this.cache.httpGetJson<SharingRight>(
@@ -148,7 +148,7 @@ export class ShareService {
     );
     // get mapping for rights
     const sharingMap = await this.cache.httpGetJson<SharingMap>(
-      `/${app}/share/mapping`,
+      `/${app}/rights/sharing`,
     );
     const rightActions: ShareRightAction[] = Object.keys(sharingRights)
       .map((key) => {
