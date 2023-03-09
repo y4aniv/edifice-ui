@@ -3,6 +3,10 @@ import { OdeServices } from "./OdeServices";
 export interface User {
   id: string;
   displayName: string;
+  profile: string;
+  lastName: string;
+  firstName: string;
+  login: string;
 }
 
 export interface Group {
@@ -41,28 +45,6 @@ export class DirectoryService {
       : `/userbook/annuaire#/group-view/${id}`;
   }
 
-  findUsers(search: string) {
-    //TODO implement
-  }
-
-  getUsers(): Promise<User[]> {
-    //TODO implement
-    const mockUser: User = {
-      id: "user_1",
-      displayName: "mock.user.1",
-    };
-    return Promise.resolve([mockUser]);
-  }
-
-  getGroups(): Promise<Group[]> {
-    //TODO implement
-    const mockGroup: Group = {
-      id: "group_1",
-      displayName: "mock.group.1",
-    };
-    return Promise.resolve([mockGroup]);
-  }
-
   async getBookMarks(): Promise<Bookmark[]> {
     const all = await this.http.get<BookmarkGetResponse[]>(
       `/directory/sharebookmark/all`,
@@ -90,9 +72,14 @@ export class DirectoryService {
           id,
         };
       }),
-      users: users.map(({ displayName, id }) => {
+      users: users.map(({ displayName, id, profile }) => {
         return {
+          profile,
           displayName,
+          // these info are missing from api
+          firstName: "",
+          lastName: "",
+          login: "",
           id,
         };
       }),

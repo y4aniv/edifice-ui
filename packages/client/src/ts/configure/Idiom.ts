@@ -6,7 +6,7 @@ import { session } from "../session/Framework";
 const bundle: { [key: string]: string } = {};
 const promises: { [path: string]: Promise<void> } = {};
 
-const defaultDiacriticsRemovalMap = [
+export const defaultDiacriticsRemovalMap = [
   {
     base: "A",
     letters:

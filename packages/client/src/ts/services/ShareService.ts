@@ -1,3 +1,5 @@
+import { StringUtils } from "../utils/StringUtils";
+import { Bookmark, Group, User } from "./DirectoryService";
 import { OdeServices } from "./OdeServices";
 
 export class ShareService {
@@ -14,6 +16,93 @@ export class ShareService {
   }
   get cache() {
     return this.context.cache();
+  }
+
+  findUsers(
+    searchText: string,
+    {
+      visibleBookmarks,
+      visibleGroups,
+      visibleUsers,
+    }: {
+      visibleUsers: User[];
+      visibleGroups: User[];
+      visibleBookmarks: Bookmark[];
+    },
+  ): Array<ShareSubject> {
+    const cleanSearchText = searchText.toLowerCase();
+    //TODO sahrebookmark in save?
+    const bookmarks = visibleBookmarks
+      .filter(({ displayName }) => {
+        const cleanName = StringUtils.removeAccents(
+          displayName || "",
+        ).toLowerCase();
+        return cleanName.includes(cleanSearchText);
+      })
+      .map(({ id, displayName }) => {
+        const share: ShareSubject = {
+          avatarUrl: "",
+          directoryUrl: "",
+          profile: "",
+          displayName,
+          id,
+          type: "bookmark",
+        };
+        return share;
+      });
+    const groups = visibleGroups
+      .filter(({ displayName }) => {
+        const cleanName = StringUtils.removeAccents(
+          displayName || "",
+        ).toLowerCase();
+        return cleanName.includes(cleanSearchText);
+      })
+      .map(({ id, displayName, profile }) => {
+        const share: ShareSubject = {
+          avatarUrl: this.directory.getAvatarUrl(id, "group"),
+          directoryUrl: this.directory.getDirectoryUrl(id, "group"),
+          displayName,
+          id,
+          profile,
+          type: "group",
+        };
+        return share;
+      });
+    const users = visibleUsers
+      .filter(({ profile, displayName, firstName, lastName, login }) => {
+        const cleanLName = StringUtils.removeAccents(
+          lastName || "",
+        ).toLowerCase();
+        const cleanFName = StringUtils.removeAccents(
+          firstName || "",
+        ).toLowerCase();
+        const cleanDName = StringUtils.removeAccents(
+          displayName || "",
+        ).toLowerCase();
+        const cleanLogin = StringUtils.removeAccents(login || "").toLowerCase();
+        const cleanName = StringUtils.removeAccents(
+          displayName || "",
+        ).toLowerCase();
+        return (
+          cleanDName.includes(cleanName) ||
+          cleanFName.includes(cleanName) ||
+          cleanLName.includes(cleanName) ||
+          cleanLogin.includes(cleanName) ||
+          (profile || "").includes(cleanName)
+        );
+      })
+      .map(({ id, displayName, profile }) => {
+        const share: ShareSubject = {
+          avatarUrl: this.directory.getAvatarUrl(id, "user"),
+          directoryUrl: this.directory.getDirectoryUrl(id, "user"),
+          displayName,
+          id,
+          profile,
+          type: "user",
+        };
+        return share;
+      });
+    return [...bookmarks, ...users, ...groups];
   }
 
   async getShareMapping(app: string) {
@@ -60,9 +149,11 @@ export class ShareService {
   async getRightsForResource(
     app: string,
     resourceId: string,
-  ): Promise<ShareRight[]> {
+  ): Promise<ShareRightWithVisibles> {
+    // fetch bookmarks
+    const visibleBookmarks = await this.directory.getBookMarks();
     // get rights for this ressources
-    const rights = await this.cache.httpGetJson<GetResourceRightPayload>(
+    const rightsPayload = await this.cache.httpGetJson<GetResourceRightPayload>(
       `/${app}/share/json/${resourceId}`,
     );
     // get mapping between rights and normalized rights
@@ -72,10 +163,12 @@ export class ShareService {
       "/infra/public/json/sharing-rights.json",
     );
     // generate rows for users
-    const userRights = Object.keys(rights.users.checked)
+    const userRights = Object.keys(rightsPayload.users.checked)
       .map((userId) => {
         // find user info
-        const user = rights.users.visibles.find((user) => user.id === userId);
+        const user = rightsPayload.users.visibles.find(
+          (user) => user.id === userId,
+        );
         return user;
       })
       .filter((user) => {
@@ -86,7 +179,7 @@ export class ShareService {
         // get normalized actions for user
         const actions = this.getActionsAvailableFor(
           { id: user!.id, type: "user" },
-          rights,
+          rightsPayload,
           sharingMap,
         );
         // generate ShareRight row
@@ -113,10 +206,10 @@ export class ShareService {
         return (a.displayName || "").localeCompare(b.displayName);
       });
     // generate rows for groups
-    const groupRights = Object.keys(rights.groups.checked)
+    const groupRights = Object.keys(rightsPayload.groups.checked)
       .map((groupId) => {
         // find group info
-        const group = rights.groups.visibles.find(
+        const group = rightsPayload.groups.visibles.find(
           (group) => group.id === groupId,
         );
         return group;
@@ -129,7 +222,7 @@ export class ShareService {
         // get normalized actions for group
         const actions = this.getActionsAvailableFor(
           { id: group!.id, type: "group" },
-          rights,
+          rightsPayload,
           sharingMap,
         );
         const right: ShareRight = {
@@ -154,7 +247,37 @@ export class ShareService {
         // sort by group name ASC
         return (a.displayName || "").localeCompare(b.displayName);
       });
-    return [...userRights, ...groupRights];
+    const rights = [...userRights, ...groupRights];
+    // prepare list of visible groups
+    const visibleGroups = rightsPayload.groups.visibles.map(
+      ({ groupDisplayName, id, name }) => {
+        const group: Group = {
+          displayName: groupDisplayName || name,
+          id,
+        };
+        return group;
+      },
+    );
+    // prepare list of visible user
+    const visibleUsers = rightsPayload.users.visibles.map(
+      ({ id, profile, username, firstName, lastName, login }) => {
+        const user: User = {
+          displayName: username,
+          firstName,
+          lastName,
+          login,
+          profile,
+          id,
+        };
+        return user;
+      },
+    );
+    return {
+      rights,
+      visibleBookmarks,
+      visibleGroups,
+      visibleUsers,
+    };
   }
 
   async saveRights(
@@ -302,4 +425,20 @@ interface PutSharePayload {
 
 export interface PutShareResponse {
   "notify-timeline-array": Array<{ groupId: string } | { userId: string }>;
+}
+
+export interface ShareSubject {
+  id: string;
+  displayName: string;
+  profile: string;
+  avatarUrl: string;
+  directoryUrl: string;
+  type: "user" | "group" | "bookmark";
+}
+
+export interface ShareRightWithVisibles {
+  rights: ShareRight[];
+  visibleUsers: User[];
+  visibleGroups: Group[];
+  visibleBookmarks: Bookmark[];
 }
