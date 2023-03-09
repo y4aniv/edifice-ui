@@ -72,6 +72,12 @@ export abstract class ResourceService {
   abstract update(parameters: UpdateParameters): Promise<UpdateResult>;
 
   abstract getResourceType(): ResourceType;
+  getShareReadUrl(id: string) {
+    return `/${this.getApplication()}/share/json/${id}`;
+  }
+  getSaveShareUrl(id: string) {
+    return `/${this.getApplication()}/share/resource/${id}`;
+  }
   //
   // SHARED METHOD
   //

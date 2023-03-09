@@ -33,6 +33,9 @@ export class DirectoryService {
   private get http() {
     return this.odeServices.http();
   }
+  private get cache() {
+    return this.odeServices.cache();
+  }
 
   getAvatarUrl(id: string, type: "user" | "group", size = "100x100") {
     return type === "user"
@@ -46,7 +49,7 @@ export class DirectoryService {
   }
 
   async getBookMarks(): Promise<Bookmark[]> {
-    const all = await this.http.get<BookmarkGetResponse[]>(
+    const all = await this.cache.httpGetJson<BookmarkGetResponse[]>(
       `/directory/sharebookmark/all`,
     );
     return all.map(({ id, name }) => {
@@ -95,9 +98,10 @@ export class DirectoryService {
     }: {
       users: string[] | User[];
       groups: string[] | Group[];
-      bookmarks: BookmarkWithMembers[];
+      bookmarks: BookmarkWithMembers[] | string[];
     },
   ): Promise<BookmarkWithMembers> {
+    this.cache.clearCache(`/directory/sharebookmark/all`);
     // get user ids
     const userIds = users.map((user) => {
       return typeof user === "string" ? user : user.id;
@@ -106,14 +110,32 @@ export class DirectoryService {
     const groupIds = groups.map((group) => {
       return typeof group === "string" ? group : group.id;
     });
+    const bookmarkDetailPromises = bookmarks.map(async (bookmark) => {
+      if (typeof bookmark === "string") {
+        const { displayName, groups, id, users } = await this.getBookMarkById(
+          bookmark,
+        );
+        const usersId = users.map((g) => g.id);
+        const groupId = groups.map((g) => g.id);
+        const tmp: BookmarkWithMembers = {
+          displayName,
+          id,
+          members: [...groupId, ...usersId],
+        };
+        return tmp;
+      } else {
+        return Promise.resolve(bookmark);
+      }
+    });
+    const bookmarDetails = await Promise.all(bookmarkDetailPromises);
     // get members ids in bookmarks
-    const memberIds = bookmarks
+    const memberIds = bookmarDetails
       .map((bookmark) => {
         return bookmark.members;
       })
       .reduce((previous, current) => {
         return [...previous, ...current];
-      });
+      }, []);
     // generate payload
     const data = {
       name,

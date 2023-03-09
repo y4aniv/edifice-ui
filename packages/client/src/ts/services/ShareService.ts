@@ -31,7 +31,6 @@ export class ShareService {
     },
   ): Array<ShareSubject> {
     const cleanSearchText = searchText.toLowerCase();
-    //TODO sahrebookmark in save?
     const bookmarks = visibleBookmarks
       .filter(({ displayName }) => {
         const cleanName = StringUtils.removeAccents(
@@ -153,8 +152,9 @@ export class ShareService {
     // fetch bookmarks
     const visibleBookmarks = await this.directory.getBookMarks();
     // get rights for this ressources
+    const url = this.context.resource(app, app).getShareReadUrl(resourceId);
     const rightsPayload = await this.cache.httpGetJson<GetResourceRightPayload>(
-      `/${app}/share/json/${resourceId}`,
+      url,
     );
     // get mapping between rights and normalized rights
     const sharingMap = await this.getShareMapping(app);
@@ -300,21 +300,24 @@ export class ShareService {
         })
         .reduce((previous, current) => {
           return [...previous, ...current];
-        });
+        }, []);
       const rights = [...new Set(rightWithDuplicates)];
       // for each user/group/bookmark add a record
-      if (right.type === "user") {
-        payload.users[right.id] = rights;
-      } else if (right.type === "group") {
-        payload.groups[right.id] = rights;
-      } else {
-        payload.bookmarks[right.id] = rights;
+      if (rights.length > 0) {
+        if (right.type === "user") {
+          payload.users[right.id] = rights;
+        } else if (right.type === "group") {
+          payload.groups[right.id] = rights;
+        } else {
+          payload.bookmarks[right.id] = rights;
+        }
       }
     }
-    const res = await this.http.putJson<PutShareResponse>(
-      `/${app}/share/json/${resourceId}`,
-      payload,
-    );
+    const resourceService = this.context.resource(app, app);
+    const url = resourceService.getSaveShareUrl(resourceId);
+    //clear cache for rights
+    this.cache.clearCache(resourceService.getShareReadUrl(resourceId));
+    const res = await this.http.putJson<PutShareResponse>(url, payload);
     return res;
   }
 
