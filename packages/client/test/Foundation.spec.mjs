@@ -15307,22 +15307,6 @@ class DirectoryService {
   getDirectoryUrl(id, type2) {
     return type2 === "user" ? `/userbook/annuaire#/${id}` : `/userbook/annuaire#/group-view/${id}`;
   }
-  findUsers(search) {
-  }
-  getUsers() {
-    const mockUser = {
-      id: "user_1",
-      displayName: "mock.user.1"
-    };
-    return Promise.resolve([mockUser]);
-  }
-  getGroups() {
-    const mockGroup = {
-      id: "group_1",
-      displayName: "mock.group.1"
-    };
-    return Promise.resolve([mockGroup]);
-  }
   getBookMarks() {
     return __async(this, null, function* () {
       const all2 = yield this.http.get(
@@ -15351,9 +15335,13 @@ class DirectoryService {
             id: id2
           };
         }),
-        users: users.map(({ displayName, id: id2 }) => {
+        users: users.map(({ displayName, id: id2, profile }) => {
           return {
+            profile,
             displayName,
+            firstName: "",
+            lastName: "",
+            login: "",
             id: id2
           };
         })
@@ -15785,6 +15773,17 @@ class SessionService {
     });
   }
 }
+class StringUtils {
+  static removeAccents(str) {
+    for (var i2 = 0; i2 < defaultDiacriticsRemovalMap.length; i2++) {
+      str = str.replace(
+        defaultDiacriticsRemovalMap[i2].letters,
+        defaultDiacriticsRemovalMap[i2].base
+      );
+    }
+    return str;
+  }
+}
 class ShareService {
   constructor(context2) {
     this.context = context2;
@@ -15797,6 +15796,72 @@ class ShareService {
   }
   get cache() {
     return this.context.cache();
+  }
+  findUsers(searchText, {
+    visibleBookmarks,
+    visibleGroups,
+    visibleUsers
+  }) {
+    const cleanSearchText = searchText.toLowerCase();
+    const bookmarks = visibleBookmarks.filter(({ displayName }) => {
+      const cleanName = StringUtils.removeAccents(
+        displayName || ""
+      ).toLowerCase();
+      return cleanName.includes(cleanSearchText);
+    }).map(({ id, displayName }) => {
+      const share = {
+        avatarUrl: "",
+        directoryUrl: "",
+        profile: "",
+        displayName,
+        id,
+        type: "bookmark"
+      };
+      return share;
+    });
+    const groups = visibleGroups.filter(({ displayName }) => {
+      const cleanName = StringUtils.removeAccents(
+        displayName || ""
+      ).toLowerCase();
+      return cleanName.includes(cleanSearchText);
+    }).map(({ id, displayName, profile }) => {
+      const share = {
+        avatarUrl: this.directory.getAvatarUrl(id, "group"),
+        directoryUrl: this.directory.getDirectoryUrl(id, "group"),
+        displayName,
+        id,
+        profile,
+        type: "group"
+      };
+      return share;
+    });
+    const users = visibleUsers.filter(({ profile, displayName, firstName: firstName2, lastName: lastName2, login: login2 }) => {
+      const cleanLName = StringUtils.removeAccents(
+        lastName2 || ""
+      ).toLowerCase();
+      const cleanFName = StringUtils.removeAccents(
+        firstName2 || ""
+      ).toLowerCase();
+      const cleanDName = StringUtils.removeAccents(
+        displayName || ""
+      ).toLowerCase();
+      const cleanLogin = StringUtils.removeAccents(login2 || "").toLowerCase();
+      const cleanName = StringUtils.removeAccents(
+        displayName || ""
+      ).toLowerCase();
+      return cleanDName.includes(cleanName) || cleanFName.includes(cleanName) || cleanLName.includes(cleanName) || cleanLogin.includes(cleanName) || (profile || "").includes(cleanName);
+    }).map(({ id, displayName, profile }) => {
+      const share = {
+        avatarUrl: this.directory.getAvatarUrl(id, "user"),
+        directoryUrl: this.directory.getDirectoryUrl(id, "user"),
+        displayName,
+        id,
+        profile,
+        type: "user"
+      };
+      return share;
+    });
+    return [...bookmarks, ...users, ...groups];
   }
   getShareMapping(app) {
     return __async(this, null, function* () {
@@ -15830,22 +15895,25 @@ class ShareService {
   }
   getRightsForResource(app, resourceId) {
     return __async(this, null, function* () {
-      const rights = yield this.cache.httpGetJson(
+      const visibleBookmarks = yield this.directory.getBookMarks();
+      const rightsPayload = yield this.cache.httpGetJson(
         `/${app}/share/json/${resourceId}`
       );
       const sharingMap = yield this.getShareMapping(app);
       const sharingRights = yield this.cache.httpGetJson(
         "/infra/public/json/sharing-rights.json"
       );
-      const userRights = Object.keys(rights.users.checked).map((userId2) => {
-        const user = rights.users.visibles.find((user2) => user2.id === userId2);
+      const userRights = Object.keys(rightsPayload.users.checked).map((userId2) => {
+        const user = rightsPayload.users.visibles.find(
+          (user2) => user2.id === userId2
+        );
         return user;
       }).filter((user) => {
         return user !== void 0;
       }).map((user) => {
         const actions2 = this.getActionsAvailableFor(
           { id: user.id, type: "user" },
-          rights,
+          rightsPayload,
           sharingMap
         );
         const right = {
@@ -15868,8 +15936,8 @@ class ShareService {
       }).sort((a, b) => {
         return (a.displayName || "").localeCompare(b.displayName);
       });
-      const groupRights = Object.keys(rights.groups.checked).map((groupId) => {
-        const group = rights.groups.visibles.find(
+      const groupRights = Object.keys(rightsPayload.groups.checked).map((groupId) => {
+        const group = rightsPayload.groups.visibles.find(
           (group2) => group2.id === groupId
         );
         return group;
@@ -15878,7 +15946,7 @@ class ShareService {
       }).map((group) => {
         const actions2 = this.getActionsAvailableFor(
           { id: group.id, type: "group" },
-          rights,
+          rightsPayload,
           sharingMap
         );
         const right = {
@@ -15901,7 +15969,35 @@ class ShareService {
       }).sort((a, b) => {
         return (a.displayName || "").localeCompare(b.displayName);
       });
-      return [...userRights, ...groupRights];
+      const rights = [...userRights, ...groupRights];
+      const visibleGroups = rightsPayload.groups.visibles.map(
+        ({ groupDisplayName, id, name: name2 }) => {
+          const group = {
+            displayName: groupDisplayName || name2,
+            id
+          };
+          return group;
+        }
+      );
+      const visibleUsers = rightsPayload.users.visibles.map(
+        ({ id, profile, username: username2, firstName: firstName2, lastName: lastName2, login: login2 }) => {
+          const user = {
+            displayName: username2,
+            firstName: firstName2,
+            lastName: lastName2,
+            login: login2,
+            profile,
+            id
+          };
+          return user;
+        }
+      );
+      return {
+        rights,
+        visibleBookmarks,
+        visibleGroups,
+        visibleUsers
+      };
     });
   }
   saveRights(app, resourceId, rights) {
