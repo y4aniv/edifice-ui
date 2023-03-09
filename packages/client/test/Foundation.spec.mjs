@@ -14916,6 +14916,12 @@ const _ResourceService = class {
   get http() {
     return this.context.http();
   }
+  getShareReadUrl(id) {
+    return `/${this.getApplication()}/share/json/${id}`;
+  }
+  getSaveShareUrl(id) {
+    return `/${this.getApplication()}/share/resource/${id}`;
+  }
   gotoPrint(resourceId, withComment) {
     window.open(this.getPrintUrl(resourceId, withComment), "_blank");
   }
@@ -15301,6 +15307,9 @@ class DirectoryService {
   get http() {
     return this.odeServices.http();
   }
+  get cache() {
+    return this.odeServices.cache();
+  }
   getAvatarUrl(id, type2, size = "100x100") {
     return type2 === "user" ? `/userbook/avatar/${id}?thumbnail=${size}` : `/assets/img/illustrations/group-avatar.svg`;
   }
@@ -15309,7 +15318,7 @@ class DirectoryService {
   }
   getBookMarks() {
     return __async(this, null, function* () {
-      const all2 = yield this.http.get(
+      const all2 = yield this.cache.httpGetJson(
         `/directory/sharebookmark/all`
       );
       return all2.map(({ id, name: name2 }) => {
@@ -15354,17 +15363,36 @@ class DirectoryService {
       groups,
       users
     }) {
+      this.cache.clearCache(`/directory/sharebookmark/all`);
       const userIds = users.map((user) => {
         return typeof user === "string" ? user : user.id;
       });
       const groupIds = groups.map((group) => {
         return typeof group === "string" ? group : group.id;
       });
-      const memberIds = bookmarks.map((bookmark) => {
+      const bookmarkDetailPromises = bookmarks.map((bookmark) => __async(this, null, function* () {
+        if (typeof bookmark === "string") {
+          const { displayName, groups: groups2, id: id2, users: users2 } = yield this.getBookMarkById(
+            bookmark
+          );
+          const usersId = users2.map((g) => g.id);
+          const groupId = groups2.map((g) => g.id);
+          const tmp = {
+            displayName,
+            id: id2,
+            members: [...groupId, ...usersId]
+          };
+          return tmp;
+        } else {
+          return Promise.resolve(bookmark);
+        }
+      }));
+      const bookmarDetails = yield Promise.all(bookmarkDetailPromises);
+      const memberIds = bookmarDetails.map((bookmark) => {
         return bookmark.members;
       }).reduce((previous, current) => {
         return [...previous, ...current];
-      });
+      }, []);
       const data = {
         name: name2,
         members: [...userIds, ...groupIds, ...memberIds]
@@ -15869,10 +15897,12 @@ class ShareService {
         `/${app}/rights/sharing`
       );
       for (const key of Object.keys(sharingMap)) {
-        const newKey = key.split(".")[1];
-        const value = sharingMap[key];
-        delete sharingMap[key];
-        sharingMap[newKey] = value;
+        if (key.includes(".")) {
+          const newKey = key.split(".")[1];
+          const value = sharingMap[key];
+          delete sharingMap[key];
+          sharingMap[newKey] = value;
+        }
       }
       return sharingMap;
     });
@@ -15896,8 +15926,9 @@ class ShareService {
   getRightsForResource(app, resourceId) {
     return __async(this, null, function* () {
       const visibleBookmarks = yield this.directory.getBookMarks();
+      const url = this.context.resource(app, app).getShareReadUrl(resourceId);
       const rightsPayload = yield this.cache.httpGetJson(
-        `/${app}/share/json/${resourceId}`
+        url
       );
       const sharingMap = yield this.getShareMapping(app);
       const sharingRights = yield this.cache.httpGetJson(
@@ -16013,20 +16044,22 @@ class ShareService {
           return mapping[action.id];
         }).reduce((previous, current) => {
           return [...previous, ...current];
-        });
+        }, []);
         const rights2 = [...new Set(rightWithDuplicates)];
-        if (right.type === "user") {
-          payload.users[right.id] = rights2;
-        } else if (right.type === "group") {
-          payload.groups[right.id] = rights2;
-        } else {
-          payload.bookmarks[right.id] = rights2;
+        if (rights2.length > 0) {
+          if (right.type === "user") {
+            payload.users[right.id] = rights2;
+          } else if (right.type === "group") {
+            payload.groups[right.id] = rights2;
+          } else {
+            payload.bookmarks[right.id] = rights2;
+          }
         }
       }
-      const res = yield this.http.putJson(
-        `/${app}/share/json/${resourceId}`,
-        payload
-      );
+      const resourceService = this.context.resource(app, app);
+      const url = resourceService.getSaveShareUrl(resourceId);
+      this.cache.clearCache(resourceService.getShareReadUrl(resourceId));
+      const res = yield this.http.putJson(url, payload);
       return res;
     });
   }
@@ -16044,7 +16077,8 @@ class ShareService {
           priority: value.priority
         };
       }).filter((right) => {
-        if (sharingMap[right.id].length > 0) {
+        var _a;
+        if (((_a = sharingMap[right.id]) == null ? void 0 : _a.length) > 0) {
           return true;
         }
         return false;
