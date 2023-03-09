@@ -22,10 +22,12 @@ export class ShareService {
     );
     //fix keys app.role => role
     for (const key of Object.keys(sharingMap)) {
-      const newKey = key.split(".")[1];
-      const value = (sharingMap as any)[key];
-      delete (sharingMap as any)[key];
-      (sharingMap as any)[newKey] = value;
+      if (key.includes(".")) {
+        const newKey = key.split(".")[1];
+        const value = (sharingMap as any)[key];
+        delete (sharingMap as any)[key];
+        (sharingMap as any)[newKey] = value;
+      }
     }
     return sharingMap;
   }
@@ -211,7 +213,7 @@ export class ShareService {
       })
       .filter((right) => {
         // if app does not manage this role => remove it
-        if (sharingMap[right.id as ShareRightActionDisplayName].length > 0) {
+        if (sharingMap[right.id as ShareRightActionDisplayName]?.length > 0) {
           return true;
         }
         return false;
