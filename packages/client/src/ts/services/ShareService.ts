@@ -22,15 +22,16 @@ export class ShareService {
     searchText: string,
     {
       visibleBookmarks,
-      visibleGroups,
       visibleUsers,
+      visibleGroups,
     }: {
-      visibleUsers: User[];
-      visibleGroups: User[];
       visibleBookmarks: Bookmark[];
+      visibleUsers: User[];
+      visibleGroups: Group[];
     },
   ): Array<ShareSubject> {
-    const cleanSearchText = searchText.toLowerCase();
+    const cleanSearchText = StringUtils.removeAccents(searchText).toLowerCase();
+    //TODO sahrebookmark in save?
     const bookmarks = visibleBookmarks
       .filter(({ displayName }) => {
         const cleanName = StringUtils.removeAccents(
@@ -45,10 +46,11 @@ export class ShareService {
           profile: "",
           displayName,
           id,
-          type: "bookmark",
+          type: "sharebookmark",
         };
         return share;
       });
+
     const groups = visibleGroups
       .filter(({ displayName }) => {
         const cleanName = StringUtils.removeAccents(
@@ -56,38 +58,34 @@ export class ShareService {
         ).toLowerCase();
         return cleanName.includes(cleanSearchText);
       })
-      .map(({ id, displayName, profile }) => {
+      .map(({ id, displayName }) => {
         const share: ShareSubject = {
           avatarUrl: this.directory.getAvatarUrl(id, "group"),
           directoryUrl: this.directory.getDirectoryUrl(id, "group"),
           displayName,
           id,
-          profile,
           type: "group",
         };
         return share;
       });
+
     const users = visibleUsers
-      .filter(({ profile, displayName, firstName, lastName, login }) => {
-        const cleanLName = StringUtils.removeAccents(
+      .filter(({ displayName, firstName, lastName, login }) => {
+        const cleanLastName = StringUtils.removeAccents(
           lastName || "",
         ).toLowerCase();
-        const cleanFName = StringUtils.removeAccents(
+        const cleanFirstName = StringUtils.removeAccents(
           firstName || "",
         ).toLowerCase();
-        const cleanDName = StringUtils.removeAccents(
+        const cleanDisplayName = StringUtils.removeAccents(
           displayName || "",
         ).toLowerCase();
         const cleanLogin = StringUtils.removeAccents(login || "").toLowerCase();
-        const cleanName = StringUtils.removeAccents(
-          displayName || "",
-        ).toLowerCase();
         return (
-          cleanDName.includes(cleanName) ||
-          cleanFName.includes(cleanName) ||
-          cleanLName.includes(cleanName) ||
-          cleanLogin.includes(cleanName) ||
-          (profile || "").includes(cleanName)
+          cleanDisplayName.includes(cleanSearchText) ||
+          cleanFirstName.includes(cleanSearchText) ||
+          cleanLastName.includes(cleanSearchText) ||
+          cleanLogin.includes(cleanSearchText)
         );
       })
       .map(({ id, displayName, profile }) => {
@@ -101,6 +99,7 @@ export class ShareService {
         };
         return share;
       });
+
     return [...bookmarks, ...users, ...groups];
   }
 
@@ -433,10 +432,10 @@ export interface PutShareResponse {
 export interface ShareSubject {
   id: string;
   displayName: string;
-  profile: string;
+  profile?: string;
   avatarUrl: string;
   directoryUrl: string;
-  type: "user" | "group" | "bookmark";
+  type: "user" | "group" | "sharebookmark";
 }
 
 export interface ShareRightWithVisibles {

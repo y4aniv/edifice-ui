@@ -7,6 +7,7 @@ import {
   ShareRightAction,
   ShareRightActionDisplayName,
   ShareRightType,
+  ShareSubject,
 } from "./ShareService";
 import { IOdeServices, OdeServices } from "./OdeServices";
 
@@ -20,5 +21,6 @@ export type {
   ShareRightAction,
   ShareRightActionDisplayName,
   ShareRightType,
+  ShareSubject,
   UpdateParameters,
 };

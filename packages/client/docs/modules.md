@@ -77,6 +77,7 @@
 - [ResourceRight](interfaces/ResourceRight.md)
 - [ShareRight](interfaces/ShareRight.md)
 - [ShareRightAction](interfaces/ShareRightAction.md)
+- [ShareSubject](interfaces/ShareSubject.md)
 - [UpdateParameters](interfaces/UpdateParameters.md)
 
 ### Type aliases
