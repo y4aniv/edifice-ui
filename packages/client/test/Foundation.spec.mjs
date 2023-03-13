@@ -15032,8 +15032,9 @@ const _ResourceService = class {
   listSubfolders(folderId) {
     return __async(this, null, function* () {
       const result = yield this.http.get(
-        `/explorer/folders/${folderId}/move`
+        `/explorer/folders/${folderId}`
       );
+      console.log("result", result);
       return this.checkHttpResponse(result);
     });
   }
@@ -15091,7 +15092,7 @@ const _ResourceService = class {
       application: p.app,
       start_idx: p.pagination.startIdx,
       page_size: p.pagination.pageSize,
-      resource_type: p.types
+      resource_type: p.types[0]
     };
     if (p.orders) {
       ret.order_by = Object.entries(p.orders).map(
@@ -15107,6 +15108,7 @@ const _ResourceService = class {
     return ret;
   }
   createFolderToBodyParams(p) {
+    console.log("createFolderToBodyParams =", p);
     return {
       application: p.app,
       resourceType: p.type,
@@ -15243,6 +15245,22 @@ class ConfService {
   get cdnDomain() {
     return configure.Platform.cdnDomain;
   }
+  getConf(paramApp) {
+    return __async(this, null, function* () {
+      const [conf, app, theme, applications] = yield Promise.all([
+        this.getThemeConf(),
+        this.getWebAppConf(paramApp),
+        this.getTheme(),
+        this.getApplicationsList()
+      ]);
+      return {
+        conf,
+        app,
+        theme,
+        applications
+      };
+    });
+  }
   getCdnUrl() {
     console.warn("[getCdnUrl] Not implemented yet");
     return void 0;
@@ -15260,7 +15278,7 @@ class ConfService {
       return JSON.parse(res.preference);
     });
   }
-  getConf(version2) {
+  getThemeConf(version2) {
     return __async(this, null, function* () {
       const res = yield this.http.getScript(
         "/assets/theme-conf.js",
@@ -15270,12 +15288,31 @@ class ConfService {
       return res;
     });
   }
-  loadTheme(version2) {
+  getApplicationsList() {
+    return __async(this, null, function* () {
+      const response = yield this.http.get(
+        `/applications-list`
+      );
+      return response.apps;
+    });
+  }
+  getWebAppConf(app) {
+    return __async(this, null, function* () {
+      const response = yield this.getApplicationsList();
+      const find = response.find((item) => {
+        if (item == null ? void 0 : item.prefix) {
+          return (item == null ? void 0 : item.prefix.replace("/", "")) === app;
+        }
+      });
+      return find;
+    });
+  }
+  getTheme(version2) {
     return __async(this, null, function* () {
       const theme = yield this.http.get("/theme", {
         queryParams: { _: version2 }
       });
-      const conf = yield this.getConf();
+      const conf = yield this.getThemeConf();
       const skin = theme.themeName;
       const skins = conf == null ? void 0 : conf.overriding.find(
         (item) => item.child === skin
@@ -15283,8 +15320,8 @@ class ConfService {
       const bootstrapVersion = conf == null ? void 0 : conf.overriding.find(
         (item) => item.child === skin
       ).bootstrapVersion;
+      const bootstrapPath = `${this.cdnDomain}/assets/themes/${bootstrapVersion}/skins/${theme.skinName}`;
       const is1d = (conf == null ? void 0 : conf.overriding.find((item) => item.child === skin).parent) === "panda";
-      const bootstrapPath = `${this.cdnDomain}/assets/themes/${bootstrapVersion}`;
       return {
         basePath: `${this.cdnDomain}${theme.skin}../../`,
         logoutCallback: theme.logoutCallback,
@@ -15785,8 +15822,56 @@ class SessionService {
   constructor(context2) {
     this.context = context2;
   }
+  get http() {
+    return this.context.http();
+  }
   get cache() {
     return this.context.cache();
+  }
+  getSession() {
+    return __async(this, null, function* () {
+      const user = yield this.getUser();
+      const currentLanguage = yield this.getCurrentLanguage(user);
+      return {
+        user,
+        currentLanguage
+      };
+    });
+  }
+  getCurrentLanguage(user) {
+    return __async(this, null, function* () {
+      const isUserSignin = (user == null ? void 0 : user.sessionMetadata) && (user == null ? void 0 : user.sessionMetadata.userId);
+      try {
+        let response;
+        if (isUserSignin) {
+          response = yield this.loadUserLanguage();
+        } else {
+          response = yield this.loadDefaultLanguage();
+        }
+        return response;
+      } catch (error) {
+        console.error(error);
+      }
+    });
+  }
+  loadUserLanguage() {
+    return __async(this, null, function* () {
+      try {
+        const response = yield this.http.get(
+          "/userbook/preference/language"
+        );
+        return JSON.parse(response.preference)["default-domain"];
+      } catch (error) {
+        const response = yield this.loadDefaultLanguage();
+        return response;
+      }
+    });
+  }
+  loadDefaultLanguage() {
+    return __async(this, null, function* () {
+      const response = yield this.http.get("/locale");
+      return response.locale;
+    });
   }
   getUser() {
     return __async(this, null, function* () {
@@ -15798,6 +15883,12 @@ class SessionService {
       } else {
         return value;
       }
+    });
+  }
+  getUserProfile() {
+    return __async(this, null, function* () {
+      const person = yield this.http.get("/userbook/api/person");
+      return person.result[0];
     });
   }
 }
@@ -15825,71 +15916,69 @@ class ShareService {
   get cache() {
     return this.context.cache();
   }
-  findUsers(searchText, {
-    visibleBookmarks,
-    visibleGroups,
-    visibleUsers
-  }) {
-    const cleanSearchText = searchText.toLowerCase();
-    const bookmarks = visibleBookmarks.filter(({ displayName }) => {
-      const cleanName = StringUtils.removeAccents(
-        displayName || ""
-      ).toLowerCase();
-      return cleanName.includes(cleanSearchText);
-    }).map(({ id, displayName }) => {
-      const share = {
-        avatarUrl: "",
-        directoryUrl: "",
-        profile: "",
-        displayName,
-        id,
-        type: "bookmark"
-      };
-      return share;
+  findUsers(_0, _1) {
+    return __async(this, arguments, function* (searchText, {
+      visibleBookmarks,
+      visibleUsers,
+      visibleGroups
+    }) {
+      const cleanSearchText = StringUtils.removeAccents(searchText).toLowerCase();
+      const bookmarks = visibleBookmarks.filter(({ displayName }) => {
+        const cleanName = StringUtils.removeAccents(
+          displayName || ""
+        ).toLowerCase();
+        return cleanName.includes(cleanSearchText);
+      }).map(({ id, displayName }) => {
+        const share = {
+          avatarUrl: "",
+          directoryUrl: "",
+          profile: "",
+          displayName,
+          id,
+          type: "sharebookmark"
+        };
+        return share;
+      });
+      const groups = visibleGroups.filter(({ displayName }) => {
+        const cleanName = StringUtils.removeAccents(
+          displayName || ""
+        ).toLowerCase();
+        return cleanName.includes(cleanSearchText);
+      }).map(({ id, displayName }) => {
+        const share = {
+          avatarUrl: this.directory.getAvatarUrl(id, "group"),
+          directoryUrl: this.directory.getDirectoryUrl(id, "group"),
+          displayName,
+          id,
+          type: "group"
+        };
+        return share;
+      });
+      const users = visibleUsers.filter(({ displayName, firstName: firstName2, lastName: lastName2, login: login2 }) => {
+        const cleanLastName = StringUtils.removeAccents(
+          lastName2 || ""
+        ).toLowerCase();
+        const cleanFirstName = StringUtils.removeAccents(
+          firstName2 || ""
+        ).toLowerCase();
+        const cleanDisplayName = StringUtils.removeAccents(
+          displayName || ""
+        ).toLowerCase();
+        const cleanLogin = StringUtils.removeAccents(login2 || "").toLowerCase();
+        return cleanDisplayName.includes(cleanSearchText) || cleanFirstName.includes(cleanSearchText) || cleanLastName.includes(cleanSearchText) || cleanLogin.includes(cleanSearchText);
+      }).map(({ id, displayName, profile }) => {
+        const share = {
+          avatarUrl: this.directory.getAvatarUrl(id, "user"),
+          directoryUrl: this.directory.getDirectoryUrl(id, "user"),
+          displayName,
+          id,
+          profile,
+          type: "user"
+        };
+        return share;
+      });
+      return [...bookmarks, ...users, ...groups];
     });
-    const groups = visibleGroups.filter(({ displayName }) => {
-      const cleanName = StringUtils.removeAccents(
-        displayName || ""
-      ).toLowerCase();
-      return cleanName.includes(cleanSearchText);
-    }).map(({ id, displayName, profile }) => {
-      const share = {
-        avatarUrl: this.directory.getAvatarUrl(id, "group"),
-        directoryUrl: this.directory.getDirectoryUrl(id, "group"),
-        displayName,
-        id,
-        profile,
-        type: "group"
-      };
-      return share;
-    });
-    const users = visibleUsers.filter(({ profile, displayName, firstName: firstName2, lastName: lastName2, login: login2 }) => {
-      const cleanLName = StringUtils.removeAccents(
-        lastName2 || ""
-      ).toLowerCase();
-      const cleanFName = StringUtils.removeAccents(
-        firstName2 || ""
-      ).toLowerCase();
-      const cleanDName = StringUtils.removeAccents(
-        displayName || ""
-      ).toLowerCase();
-      const cleanLogin = StringUtils.removeAccents(login2 || "").toLowerCase();
-      const cleanName = StringUtils.removeAccents(
-        displayName || ""
-      ).toLowerCase();
-      return cleanDName.includes(cleanName) || cleanFName.includes(cleanName) || cleanLName.includes(cleanName) || cleanLogin.includes(cleanName) || (profile || "").includes(cleanName);
-    }).map(({ id, displayName, profile }) => {
-      const share = {
-        avatarUrl: this.directory.getAvatarUrl(id, "user"),
-        directoryUrl: this.directory.getDirectoryUrl(id, "user"),
-        displayName,
-        id,
-        profile,
-        type: "user"
-      };
-      return share;
-    });
-    return [...bookmarks, ...users, ...groups];
   }
   getShareMapping(app) {
     return __async(this, null, function* () {

@@ -17,6 +17,21 @@ import {
 } from "..";
 import { OdeServices } from "./OdeServices";
 
+export interface UpdateParameters {
+  entId: string;
+  trashed: boolean;
+  name: string;
+  thumbnail: string | Blob | File;
+  description: string;
+  public: boolean;
+  slug: string;
+}
+
+export interface UpdateResult {
+  entId: string;
+  thumbnail?: string;
+}
+
 export abstract class ResourceService {
   //
   // STATIC REGISTRY
@@ -182,7 +197,7 @@ export abstract class ResourceService {
     return this.checkHttpResponse(result);
   }
 
-  /** Create a new folder. */
+  /** Update folder. */
   async updateFolder(
     parameters: UpdateFolderParameters,
   ): Promise<CreateFolderResult> {
@@ -205,8 +220,9 @@ export abstract class ResourceService {
   /** List subfolders of a parent folder. */
   async listSubfolders(folderId: ID): Promise<GetSubFoldersResult> {
     const result = await this.http.get<GetSubFoldersResult>(
-      `/explorer/folders/${folderId}/move`,
+      `/explorer/folders/${folderId}`,
     );
+    console.log("result", result);
     return this.checkHttpResponse(result);
   }
 
@@ -272,7 +288,7 @@ export abstract class ResourceService {
       application: p.app,
       start_idx: p.pagination.startIdx,
       page_size: p.pagination.pageSize,
-      resource_type: p.types,
+      resource_type: p.types[0],
     } as any;
     if (p.orders) {
       ret.order_by = Object.entries(p.orders).map(
@@ -288,6 +304,7 @@ export abstract class ResourceService {
     return ret;
   }
   private createFolderToBodyParams(p: CreateFolderParameters) {
+    console.log("createFolderToBodyParams =", p);
     return {
       application: p.app,
       resourceType: p.type,
@@ -303,19 +320,4 @@ export abstract class ResourceService {
       folderIds: p.folderIds,
     };
   }
-}
-
-export interface UpdateParameters {
-  entId: string;
-  trashed: boolean;
-  name: string;
-  thumbnail: string | Blob | File;
-  description: string;
-  public: boolean;
-  slug: string;
-}
-
-export interface UpdateResult {
-  entId: string;
-  thumbnail?: string;
 }

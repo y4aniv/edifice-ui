@@ -18,7 +18,7 @@ export class ShareService {
     return this.context.cache();
   }
 
-  findUsers(
+  async findUsers(
     searchText: string,
     {
       visibleBookmarks,
@@ -29,7 +29,7 @@ export class ShareService {
       visibleUsers: User[];
       visibleGroups: Group[];
     },
-  ): Array<ShareSubject> {
+  ): Promise<any> {
     const cleanSearchText = StringUtils.removeAccents(searchText).toLowerCase();
     //TODO sahrebookmark in save?
     const bookmarks = visibleBookmarks
