@@ -21,6 +21,7 @@
 
 ### Interfaces
 
+- [BlogUpdate](interfaces/BlogUpdate.md)
 - [IAction](interfaces/IAction.md)
 - [IActionParameters](interfaces/IActionParameters.md)
 - [IActionResult](interfaces/IActionResult.md)
@@ -79,6 +80,7 @@
 - [ShareRightAction](interfaces/ShareRightAction.md)
 - [ShareSubject](interfaces/ShareSubject.md)
 - [UpdateParameters](interfaces/UpdateParameters.md)
+- [UpdateResult](interfaces/UpdateResult.md)
 
 ### Type aliases
 

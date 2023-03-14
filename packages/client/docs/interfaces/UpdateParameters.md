@@ -2,6 +2,12 @@
 
 # Interface: UpdateParameters
 
+## Hierarchy
+
+- **`UpdateParameters`**
+
+  ↳ [`BlogUpdate`](BlogUpdate.md)
+
 ## Table of contents
 
 ### Properties

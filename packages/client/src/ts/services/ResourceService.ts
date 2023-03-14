@@ -16,21 +16,7 @@ import {
   ResourceType,
 } from "..";
 import { OdeServices } from "./OdeServices";
-
-export interface UpdateParameters {
-  entId: string;
-  trashed: boolean;
-  name: string;
-  thumbnail: string | Blob | File;
-  description: string;
-  public: boolean;
-  slug: string;
-}
-
-export interface UpdateResult {
-  entId: string;
-  thumbnail?: string;
-}
+import { UpdateParameters, UpdateResult } from "./ResourceServiceInterfaces";
 
 export abstract class ResourceService {
   //
@@ -48,6 +34,7 @@ export abstract class ResourceService {
     }: { application: string; resourceType: string },
     service: (context: OdeServices) => ResourceService,
   ) {
+    ResourceService.registry.set(`${application}:main`, service);
     ResourceService.registry.set(`${application}:${resourceType}`, service);
   }
   static findService(
@@ -62,6 +49,16 @@ export abstract class ResourceService {
     );
     if (found === undefined) {
       throw "Service not found: " + `${application}:${resourceType}`;
+    }
+    return found(context);
+  }
+  static findMainService(
+    { application }: { application: string },
+    context: OdeServices,
+  ): ResourceService {
+    const found = ResourceService.registry.get(`${application}:main`);
+    if (found === undefined) {
+      throw "Service not found: " + `${application}`;
     }
     return found(context);
   }
@@ -84,7 +81,9 @@ export abstract class ResourceService {
 
   abstract getFormUrl(): string;
 
-  abstract update(parameters: UpdateParameters): Promise<UpdateResult>;
+  abstract update<T extends UpdateParameters>(
+    parameters: T,
+  ): Promise<UpdateResult>;
 
   abstract getResourceType(): ResourceType;
   getShareReadUrl(id: string) {

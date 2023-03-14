@@ -57,7 +57,10 @@ export class OdeServices implements IOdeServices {
     return this._http;
   }
 
-  resource(application: string, resourceType: string): ResourceService {
+  resource(application: string, resourceType?: string): ResourceService {
+    if(!resourceType){
+      return ResourceService.findMainService({application}, this);
+    }
     return ResourceService.findService({ application, resourceType }, this);
   }
 

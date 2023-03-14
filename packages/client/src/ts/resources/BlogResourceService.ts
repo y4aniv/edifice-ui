@@ -1,12 +1,12 @@
 import { APP, IResource, RESOURCE, ResourceType } from "..";
 import {
-  ResourceService,
-  UpdateParameters,
+  BlogUpdate,
   UpdateResult,
-} from "../services/ResourceService";
+} from "../services/ResourceServiceInterfaces";
+import { ResourceService } from "../services/ResourceService";
 
 export class BlogResourceService extends ResourceService {
-  async update(parameters: UpdateParameters) {
+  async update(parameters: BlogUpdate): Promise<UpdateResult> {
     const fixThumb = await this.getThumbnailPath(parameters.thumbnail);
     const res = await this.http.put<IResource>(`/blog/${parameters.entId}`, {
       trashed: parameters.trashed,
@@ -16,7 +16,7 @@ export class BlogResourceService extends ResourceService {
       description: parameters.description,
       visibility: parameters.public ? "PUBLIC" : "OWNER",
       slug: parameters.public ? parameters.slug : "",
-      "publish-type": "RESTRAINT",
+      "publish-type": parameters["publish-type"] || "RESTRAINT",
       "comment-type": "IMMEDIATE",
     });
     this.checkHttpResponse(res);
