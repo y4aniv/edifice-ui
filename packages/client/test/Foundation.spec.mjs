@@ -14899,6 +14899,7 @@ const _ResourceService = class {
     application,
     resourceType
   }, service) {
+    _ResourceService.registry.set(`${application}:main`, service);
     _ResourceService.registry.set(`${application}:${resourceType}`, service);
   }
   static findService({
@@ -14910,6 +14911,13 @@ const _ResourceService = class {
     );
     if (found === void 0) {
       throw `Service not found: ${application}:${resourceType}`;
+    }
+    return found(context2);
+  }
+  static findMainService({ application }, context2) {
+    const found = _ResourceService.registry.get(`${application}:main`);
+    if (found === void 0) {
+      throw `Service not found: ${application}`;
     }
     return found(context2);
   }
@@ -15139,7 +15147,7 @@ class BlogResourceService extends ResourceService {
         description: parameters.description,
         visibility: parameters.public ? "PUBLIC" : "OWNER",
         slug: parameters.public ? parameters.slug : "",
-        "publish-type": "RESTRAINT",
+        "publish-type": parameters["publish-type"] || "RESTRAINT",
         "comment-type": "IMMEDIATE"
       });
       this.checkHttpResponse(res);
@@ -16576,6 +16584,9 @@ class OdeServices {
     return this._http;
   }
   resource(application, resourceType) {
+    if (!resourceType) {
+      return ResourceService.findMainService({ application }, this);
+    }
     return ResourceService.findService({ application, resourceType }, this);
   }
   rights() {

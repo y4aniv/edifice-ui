@@ -2,6 +2,12 @@
 
 # Interface: IResource
 
+## Hierarchy
+
+- **`IResource`**
+
+  ↳ [`BlogResource`](BlogResource.md)
+
 ## Table of contents
 
 ### Properties

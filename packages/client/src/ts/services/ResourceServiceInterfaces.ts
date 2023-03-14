@@ -1,3 +1,5 @@
+import { IResource } from "..";
+
 export interface UpdateParameters {
   entId: string;
   trashed: boolean;
@@ -15,4 +17,8 @@ export interface UpdateResult {
 
 export interface BlogUpdate extends UpdateParameters {
   "publish-type"?: "RESTRAINT" | "IMMEDIATE";
+}
+
+export interface BlogResource extends IResource {
+  "publish-type": "RESTRAINT" | "IMMEDIATE";
 }

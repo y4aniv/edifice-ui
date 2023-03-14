@@ -21,6 +21,7 @@
 
 ### Interfaces
 
+- [BlogResource](interfaces/BlogResource.md)
 - [BlogUpdate](interfaces/BlogUpdate.md)
 - [IAction](interfaces/IAction.md)
 - [IActionParameters](interfaces/IActionParameters.md)
