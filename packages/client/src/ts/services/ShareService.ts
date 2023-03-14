@@ -29,7 +29,7 @@ export class ShareService {
       visibleUsers: User[];
       visibleGroups: Group[];
     },
-  ): Promise<any> {
+  ): Promise<ShareSubject[]> {
     const cleanSearchText = StringUtils.removeAccents(searchText).toLowerCase();
     //TODO sahrebookmark in save?
     const bookmarks = visibleBookmarks
