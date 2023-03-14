@@ -13,7 +13,7 @@ export interface IOdeServices {
   conf(): ConfService;
   directory(): DirectoryService;
   http(): HttpService;
-  resource(application: string, resourceType: string): ResourceService;
+  resource(application: string, resourceType?: string): ResourceService;
   rights(): RightService;
   session(): SessionService;
   share(): ShareService;

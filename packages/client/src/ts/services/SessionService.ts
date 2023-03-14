@@ -8,19 +8,27 @@ export interface IGetSession {
 }
 
 export class SessionService {
-  /*  private _user: IUserInfo = null as unknown as IUserInfo;
-
-  private _currentLanguage: string = "";
-  private _notLoggedIn: boolean = true; */
-
   constructor(private context: IOdeServices) {}
 
-  private get http() {
+  get http() {
     return this.context.http();
   }
-
   get cache() {
     return this.context.cache();
+  }
+
+  /**
+   * Callback to call when user logout
+   */
+  onLogout(){
+    this.cache.clearCache();
+  }
+
+  /**
+   * Callback to call when session change
+   */
+  onRefreshSession(){
+    this.cache.clearCache();
   }
 
   async getSession(): Promise<IGetSession> {
@@ -53,7 +61,8 @@ export class SessionService {
 
   async loadUserLanguage(): Promise<string> {
     try {
-      const response = await this.http.get<any>(
+      // dont cache preference it could change
+      const response = await this.http.get<{ preference: any }>(
         "/userbook/preference/language",
       );
       return JSON.parse(response.preference)["default-domain"];
@@ -64,11 +73,15 @@ export class SessionService {
   }
 
   private async loadDefaultLanguage(): Promise<string> {
-    const response = await this.http.get<{ locale: string }>("/locale");
+    // locale does not change until onLogout
+    const response = await this.cache.httpGetJson<{ locale: string }>(
+      "/locale",
+    );
     return response.locale;
   }
 
   public async getUser(): Promise<IUserInfo | undefined> {
+    // session does not change until onLogout
     const { response, value } = await this.cache.httpGet<IUserInfo>(
       "/auth/oauth2/userinfo",
     );
@@ -81,7 +94,10 @@ export class SessionService {
   }
 
   public async getUserProfile(): Promise<UserProfile> {
-    const person = await this.http.get<any>("/userbook/api/person");
+    // userprofile does not change until onLogout
+    const person = await this.cache.httpGetJson<{ result: UserProfile[] }>(
+      "/userbook/api/person",
+    );
     return person.result[0];
   }
 }

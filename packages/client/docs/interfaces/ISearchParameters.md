@@ -11,6 +11,7 @@
 - [orders](ISearchParameters.md#orders)
 - [pagination](ISearchParameters.md#pagination)
 - [search](ISearchParameters.md#search)
+- [trashed](ISearchParameters.md#trashed)
 - [types](ISearchParameters.md#types)
 
 ## Properties
@@ -42,6 +43,12 @@ ___
 ### search
 
 • `Optional` **search**: `String`
+
+___
+
+### trashed
+
+• `Optional` **trashed**: `boolean`
 
 ___
 

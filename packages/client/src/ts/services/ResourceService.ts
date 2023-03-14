@@ -226,7 +226,7 @@ export abstract class ResourceService {
   }
 
   /** Delete folders and/or resources. */
-  async deleteFolders(parameters: DeleteParameters): Promise<IActionResult> {
+  async deleteAll(parameters: DeleteParameters): Promise<IActionResult> {
     const result = await this.http.deleteJson<IActionResult>(
       `/explorer`,
       parameters,
@@ -235,13 +235,23 @@ export abstract class ResourceService {
   }
 
   /** Trash folders and/or resources. */
-  async trashFolders({
-    trash,
+  async trashAll({
     resourceType,
     ...parameters
-  }: TrashParameters): Promise<IActionResult> {
+  }: Omit<TrashParameters, "trash">): Promise<IActionResult> {
     const result = await this.http.putJson<IActionResult>(
-      `/explorer/${trash ? "trash" : "restore"}`,
+      `/explorer/trash`,
+      parameters,
+    );
+    return this.checkHttpResponse(result);
+  }
+  /** Trash folders and/or resources. */
+  async restoreAll({
+    resourceType,
+    ...parameters
+  }: Omit<TrashParameters, "trash">): Promise<IActionResult> {
+    const result = await this.http.putJson<IActionResult>(
+      `/explorer/restore`,
       parameters,
     );
     return this.checkHttpResponse(result);
@@ -288,6 +298,7 @@ export abstract class ResourceService {
       start_idx: p.pagination.startIdx,
       page_size: p.pagination.pageSize,
       resource_type: p.types[0],
+      trashed: p.trashed
     } as any;
     if (p.orders) {
       ret.order_by = Object.entries(p.orders).map(
