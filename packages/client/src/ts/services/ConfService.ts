@@ -6,22 +6,23 @@ import { IOdeServices } from "./OdeServices";
 
 export interface IOdeTheme {
   basePath: string;
+  bootstrapPath: string;
+  bootstrapUrl: string;
+  bootstrapVersion: string;
+  is1d: boolean;
   logoutCallback: string;
   skin: string;
   skinName: string;
   skins: Array<IThemeConfOverriding>;
   themeName: string;
   themeUrl: string;
-  is1d: boolean;
-  bootstrapVersion: string;
-  bootstrapPath: string;
 }
 
 export interface IGetConf {
-  conf: IThemeConf;
-  app: IWebApp | undefined;
-  theme: IOdeTheme;
   applications: IWebApp[];
+  conf: IThemeConf;
+  currentApp: IWebApp | undefined;
+  theme: IOdeTheme;
 }
 
 export class ConfService {
@@ -35,16 +36,17 @@ export class ConfService {
     return configure.Platform.cdnDomain;
   }
 
-  async getConf(paramApp: App): Promise<IGetConf> {
-    const [conf, app, theme, applications] = await Promise.all([
+  async getConf(param: App): Promise<IGetConf> {
+    const [conf, currentApp, theme, applications] = await Promise.all([
       this.getThemeConf(),
-      this.getWebAppConf(paramApp),
+      this.getWebAppConf(param),
       this.getTheme(),
       this.getApplicationsList(),
     ]);
+    await configure.Platform.idiom.addBundlePromise("/i18n");
     return {
       conf,
-      app,
+      currentApp,
       theme,
       applications,
     };
@@ -83,6 +85,21 @@ export class ConfService {
     return response.apps;
   }
 
+  /* async geti18n() {
+    await this.idiom.addBundlePromise("fr", "/i18n");
+  } */
+
+  /* async geti18nApp(param: App) {
+    console.log("app i18n");
+
+    await this.loadI18n(param);
+  } */
+
+  /* public async loadI18n(app: App): Promise<void> {
+    console.log("inside i18n");
+    return this.idiom.addBundlePromise("fr", `/${app}/i18n`);
+  } */
+
   async getWebAppConf(app: App): Promise<IWebApp | undefined> {
     const response = await this.getApplicationsList();
     const find = response.find((item) => {
@@ -105,7 +122,8 @@ export class ConfService {
     const bootstrapVersion = conf?.overriding.find(
       (item: { child: any }) => item.child === skin,
     ).bootstrapVersion;
-    const bootstrapPath = `${this.cdnDomain}/assets/themes/${bootstrapVersion}/skins/${theme.skinName}`;
+    const bootstrapPath = `${this.cdnDomain}/assets/themes/${bootstrapVersion}`;
+    const bootstrapUrl = `${bootstrapPath}/skins/${theme.skinName}`;
     const is1d =
       conf?.overriding.find((item: { child: any }) => item.child === skin)
         .parent === "panda";
@@ -120,6 +138,7 @@ export class ConfService {
       themeUrl: theme.skin,
       bootstrapVersion,
       bootstrapPath,
+      bootstrapUrl,
       is1d,
     };
   }

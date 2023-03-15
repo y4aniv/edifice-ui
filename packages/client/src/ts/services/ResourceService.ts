@@ -298,7 +298,7 @@ export abstract class ResourceService {
       start_idx: p.pagination.startIdx,
       page_size: p.pagination.pageSize,
       resource_type: p.types[0],
-      trashed: p.trashed
+      trashed: p.trashed,
     } as any;
     if (p.orders) {
       ret.order_by = Object.entries(p.orders).map(

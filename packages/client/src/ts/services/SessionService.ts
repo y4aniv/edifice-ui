@@ -1,11 +1,24 @@
 import { ERROR_CODE } from "../globals";
-import { IUserInfo, UserProfile } from "../session/interfaces";
+import {
+  IQuotaAndUsage,
+  IUserDescription,
+  IUserInfo,
+  UserProfile,
+} from "../session/interfaces";
 import { IOdeServices } from "./OdeServices";
 
 export interface IGetSession {
   user: IUserInfo | undefined;
   currentLanguage: string | undefined;
+  quotaAndUsage: IQuotaAndUsage;
+  userProfile?: UserProfile;
+  userDescription: IUserDescription;
 }
+
+type PersonApiResult = {
+  status: "ok" | string;
+  result: Array<IUserDescription>;
+};
 
 export class SessionService {
   constructor(private context: IOdeServices) {}
@@ -20,28 +33,54 @@ export class SessionService {
   /**
    * Callback to call when user logout
    */
-  onLogout(){
+  onLogout() {
     this.cache.clearCache();
   }
 
   /**
    * Callback to call when session change
    */
-  onRefreshSession(){
+  onRefreshSession() {
     this.cache.clearCache();
   }
 
   async getSession(): Promise<IGetSession> {
     const user = await this.getUser();
-    const currentLanguage = await this.getCurrentLanguage(user);
+
+    const [currentLanguage, quotaAndUsage, userDescription, userProfile] =
+      await Promise.all([
+        this.getCurrentLanguage(user),
+        this.latestQuotaAndUsage(user),
+        this.loadDescription(user),
+        this.getUserProfile(),
+      ]);
 
     return {
       user,
+      quotaAndUsage,
       currentLanguage,
+      userDescription,
+      userProfile,
     };
   }
 
-  async getCurrentLanguage(user: IUserInfo | undefined) {
+  async latestQuotaAndUsage(
+    user: IUserInfo | undefined,
+  ): Promise<IQuotaAndUsage> {
+    try {
+      const infos = await this.http.get<IQuotaAndUsage>(
+        `/workspace/quota/user/${user?.userId}`,
+      );
+      return infos;
+    } catch (error) {
+      console.error(error);
+      return { quota: 0, storage: 0 };
+    }
+  }
+
+  async getCurrentLanguage(
+    user: IUserInfo | undefined,
+  ): Promise<string | undefined> {
     const isUserSignin = user?.sessionMetadata && user?.sessionMetadata.userId;
 
     try {
@@ -52,7 +91,6 @@ export class SessionService {
       } else {
         response = await this.loadDefaultLanguage();
       }
-
       return response;
     } catch (error) {
       console.error(error);
@@ -93,11 +131,26 @@ export class SessionService {
     }
   }
 
-  public async getUserProfile(): Promise<UserProfile> {
-    // userprofile does not change until onLogout
-    const person = await this.cache.httpGetJson<{ result: UserProfile[] }>(
-      "/userbook/api/person",
-    );
+  async loadDescription(
+    user: IUserInfo | undefined,
+  ): Promise<IUserDescription> {
+    try {
+      const [person, userbook] = await Promise.all([
+        // FIXME The full user's description should be obtainable from a single endpoint in the backend.
+        this.http.get<PersonApiResult>("/userbook/api/person", {
+          requestName: "refreshAvatar",
+        }),
+        this.http.get<IUserDescription>("/directory/userbook/" + user?.userId),
+      ]);
+      return { ...person.result[0], ...userbook };
+    } catch (error) {
+      console.error(error);
+      return {} as unknown as IUserDescription;
+    }
+  }
+
+  async getUserProfile(): Promise<UserProfile> {
+    const person = await this.http.get<any>("/userbook/api/person");
     return person.result[0];
   }
 }

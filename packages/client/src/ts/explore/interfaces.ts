@@ -309,7 +309,7 @@ export interface ISearchParameters {
   orders?: OrderValues;
   pagination: IPagination;
   search?: String;
-  trashed?:boolean;
+  trashed?: boolean;
 }
 //-------------------------------------
 export interface ISearchResults {

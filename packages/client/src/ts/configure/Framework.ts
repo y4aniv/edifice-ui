@@ -60,6 +60,32 @@ export class ConfigurationFramework implements IConfigurationFramework {
       this.User.initialize(v),
     ]);
   }
+
+  // async mount(
+  //   version?: string | null,
+  //   cdnDomain?: string | null,
+  // ): Promise<void> {
+  //   // If version is undefined, default to a new tag every day.
+  //   if (!version) {
+  //     const padWith0 = (val: number): string =>
+  //       (val < 10 ? "0" : "") + val.toFixed(0);
+  //     const now = new Date();
+  //     const y = now.getFullYear();
+  //     const m = now.getMonth() + 1;
+  //     const d = now.getDate();
+  //     version = `${y}${padWith0(m)}${padWith0(d)}`; //FIXME add ${h.toFixed(0)} to change the tag every 10 minutes
+  //   }
+  //   const v = version;
+  //   this.Platform.deploymentTag = version;
+
+  //   // Don't overwrite the CDN domain with a null or empty value.
+  //   if (typeof cdnDomain === "string" && cdnDomain.length > 0) {
+  //     this.Platform.cdnDomain = cdnDomain;
+  //   }
+  //   transport.http.setCdn(this.Platform.cdnDomain);
+  //   //
+  //   await this.Platform.idiom.addBundlePromise("/i18n");
+  // }
 }
 
 /** The whole framework is a singleton. */

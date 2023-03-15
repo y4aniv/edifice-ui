@@ -16,7 +16,7 @@ export class CacheService {
     task: () => Promise<T>,
     shouldCache: (value: T) => boolean,
   ): Promise<T> {
-    if(!!mutexPromise[key]){
+    if (!!mutexPromise[key]) {
       await mutexPromise[key];
     }
     if (globalCache[key]) {

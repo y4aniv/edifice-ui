@@ -14724,7 +14724,8 @@ class AppConf {
     });
   }
   loadI18n(app) {
-    return notify.onLangReady().promise.then((lang) => {
+    return __async(this, null, function* () {
+      yield notify.onLangReady().promise;
       const i18n = configure.Platform.idiom;
       return i18n.addBundlePromise(`/${app}/i18n`);
     });
@@ -15046,7 +15047,7 @@ const _ResourceService = class {
       return this.checkHttpResponse(result);
     });
   }
-  deleteFolders(parameters) {
+  deleteAll(parameters) {
     return __async(this, null, function* () {
       const result = yield this.http.deleteJson(
         `/explorer`,
@@ -15055,17 +15056,29 @@ const _ResourceService = class {
       return this.checkHttpResponse(result);
     });
   }
-  trashFolders(_d) {
+  trashAll(_d) {
     return __async(this, null, function* () {
       var _e = _d, {
-        trash,
         resourceType
       } = _e, parameters = __objRest(_e, [
-        "trash",
         "resourceType"
       ]);
       const result = yield this.http.putJson(
-        `/explorer/${trash ? "trash" : "restore"}`,
+        `/explorer/trash`,
+        parameters
+      );
+      return this.checkHttpResponse(result);
+    });
+  }
+  restoreAll(_f) {
+    return __async(this, null, function* () {
+      var _g = _f, {
+        resourceType
+      } = _g, parameters = __objRest(_g, [
+        "resourceType"
+      ]);
+      const result = yield this.http.putJson(
+        `/explorer/restore`,
         parameters
       );
       return this.checkHttpResponse(result);
@@ -15100,7 +15113,8 @@ const _ResourceService = class {
       application: p.app,
       start_idx: p.pagination.startIdx,
       page_size: p.pagination.pageSize,
-      resource_type: p.types[0]
+      resource_type: p.types[0],
+      trashed: p.trashed
     };
     if (p.orders) {
       ret.order_by = Object.entries(p.orders).map(
@@ -15185,6 +15199,9 @@ class CacheService {
   }
   fromCacheIfPossible(key, task, shouldCache) {
     return __async(this, null, function* () {
+      if (!!mutexPromise[key]) {
+        yield mutexPromise[key];
+      }
       if (globalCache[key]) {
         return globalCache[key];
       }
@@ -15253,17 +15270,18 @@ class ConfService {
   get cdnDomain() {
     return configure.Platform.cdnDomain;
   }
-  getConf(paramApp) {
+  getConf(param) {
     return __async(this, null, function* () {
-      const [conf, app, theme, applications] = yield Promise.all([
+      const [conf, currentApp, theme, applications] = yield Promise.all([
         this.getThemeConf(),
-        this.getWebAppConf(paramApp),
+        this.getWebAppConf(param),
         this.getTheme(),
         this.getApplicationsList()
       ]);
+      yield configure.Platform.idiom.addBundlePromise("/i18n");
       return {
         conf,
-        app,
+        currentApp,
         theme,
         applications
       };
@@ -15328,7 +15346,8 @@ class ConfService {
       const bootstrapVersion = conf == null ? void 0 : conf.overriding.find(
         (item) => item.child === skin
       ).bootstrapVersion;
-      const bootstrapPath = `${this.cdnDomain}/assets/themes/${bootstrapVersion}/skins/${theme.skinName}`;
+      const bootstrapPath = `${this.cdnDomain}/assets/themes/${bootstrapVersion}`;
+      const bootstrapUrl = `${bootstrapPath}/skins/${theme.skinName}`;
       const is1d = (conf == null ? void 0 : conf.overriding.find((item) => item.child === skin).parent) === "panda";
       return {
         basePath: `${this.cdnDomain}${theme.skin}../../`,
@@ -15340,6 +15359,7 @@ class ConfService {
         themeUrl: theme.skin,
         bootstrapVersion,
         bootstrapPath,
+        bootstrapUrl,
         is1d
       };
     });
@@ -15836,14 +15856,41 @@ class SessionService {
   get cache() {
     return this.context.cache();
   }
+  onLogout() {
+    this.cache.clearCache();
+  }
+  onRefreshSession() {
+    this.cache.clearCache();
+  }
   getSession() {
     return __async(this, null, function* () {
       const user = yield this.getUser();
-      const currentLanguage = yield this.getCurrentLanguage(user);
+      const [currentLanguage, quotaAndUsage, userDescription, userProfile] = yield Promise.all([
+        this.getCurrentLanguage(user),
+        this.latestQuotaAndUsage(user),
+        this.loadDescription(user),
+        this.getUserProfile()
+      ]);
       return {
         user,
-        currentLanguage
+        quotaAndUsage,
+        currentLanguage,
+        userDescription,
+        userProfile
       };
+    });
+  }
+  latestQuotaAndUsage(user) {
+    return __async(this, null, function* () {
+      try {
+        const infos = yield this.http.get(
+          `/workspace/quota/user/${user == null ? void 0 : user.userId}`
+        );
+        return infos;
+      } catch (error) {
+        console.error(error);
+        return { quota: 0, storage: 0 };
+      }
     });
   }
   getCurrentLanguage(user) {
@@ -15877,7 +15924,9 @@ class SessionService {
   }
   loadDefaultLanguage() {
     return __async(this, null, function* () {
-      const response = yield this.http.get("/locale");
+      const response = yield this.cache.httpGetJson(
+        "/locale"
+      );
       return response.locale;
     });
   }
@@ -15890,6 +15939,22 @@ class SessionService {
         throw ERROR_CODE.NOT_LOGGED_IN;
       } else {
         return value;
+      }
+    });
+  }
+  loadDescription(user) {
+    return __async(this, null, function* () {
+      try {
+        const [person, userbook] = yield Promise.all([
+          this.http.get("/userbook/api/person", {
+            requestName: "refreshAvatar"
+          }),
+          this.http.get("/directory/userbook/" + (user == null ? void 0 : user.userId))
+        ]);
+        return __spreadValues(__spreadValues({}, person.result[0]), userbook);
+      } catch (error) {
+        console.error(error);
+        return {};
       }
     });
   }

@@ -63,10 +63,9 @@ export class AppConf {
     return this._appConf[app] ?? found;
   }
 
-  public loadI18n(app: App): Promise<void> {
-    return notify.onLangReady().promise.then((lang) => {
-      const i18n = configure.Platform.idiom;
-      return i18n.addBundlePromise(`/${app}/i18n`);
-    });
+  public async loadI18n(app: App): Promise<void> {
+    await notify.onLangReady().promise;
+    const i18n = configure.Platform.idiom;
+    return i18n.addBundlePromise(`/${app}/i18n`);
   }
 }
