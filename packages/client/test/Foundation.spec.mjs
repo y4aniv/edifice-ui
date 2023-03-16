@@ -15880,6 +15880,29 @@ class SessionService {
       };
     });
   }
+  login(email, password, rememberMe, secureLocation) {
+    const data = new FormData();
+    data.append("email", email);
+    data.append("password", password);
+    if (typeof rememberMe !== "undefined") {
+      data.append("rememberMe", "" + rememberMe);
+    }
+    if (typeof secureLocation !== "undefined") {
+      data.append("secureLocation", "" + secureLocation);
+    }
+    return this.http.post("/auth/login", data, {
+      headers: { "content-type": "application/x-www-form-urlencoded" }
+    }).finally(() => {
+      switch (this.http.latestResponse.status) {
+        case 200:
+          throw ERROR_CODE.MALFORMED_DATA;
+      }
+    });
+  }
+  logout() {
+    return this.http.get("/auth/logout").finally(() => {
+    });
+  }
   latestQuotaAndUsage(user) {
     return __async(this, null, function* () {
       try {

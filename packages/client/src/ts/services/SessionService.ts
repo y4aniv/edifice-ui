@@ -64,6 +64,43 @@ export class SessionService {
     };
   }
 
+  public login(
+    email: string,
+    password: string,
+    rememberMe?: boolean,
+    secureLocation?: boolean,
+  ): Promise<void> {
+    const data = new FormData();
+    data.append("email", email);
+    data.append("password", password);
+    if (typeof rememberMe !== "undefined") {
+      data.append("rememberMe", "" + rememberMe);
+    }
+    if (typeof secureLocation !== "undefined") {
+      data.append("secureLocation", "" + secureLocation);
+    }
+
+    return this.http
+      .post<void>("/auth/login", data, {
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+      })
+      .finally(() => {
+        switch (this.http.latestResponse.status) {
+          case 200: // error, TODO look for error message in returned html...
+            throw ERROR_CODE.MALFORMED_DATA;
+          case 302: // success TODO redirects cannot be intercepted with axios in a browser !!!
+          default:
+            break;
+        }
+      });
+  }
+
+  logout(): Promise<void> {
+    return this.http.get<void>("/auth/logout").finally(() => {
+      // void, always successful
+    });
+  }
+
   async latestQuotaAndUsage(
     user: IUserInfo | undefined,
   ): Promise<IQuotaAndUsage> {
