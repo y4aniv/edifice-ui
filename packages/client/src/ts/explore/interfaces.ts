@@ -237,8 +237,8 @@ export const SORT_ORDER = {
 export type SortOrderType = (typeof SORT_ORDER)[keyof typeof SORT_ORDER];
 export const SORT_BY = {
   NAME: "name",
-  MODIFY_DATE: "modifiedAt",
-  VIEWS: "views",
+  MODIFY_DATE: "updatedAt",
+  CREATEDAT: "createdAt",
   /*
 //FIXME On devrait pouvoir trier sur tout champ issu d'un type de ressource (name, createdAt, authorId...) voir IResource
   createdAt: string;

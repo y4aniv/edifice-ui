@@ -15983,7 +15983,9 @@ class SessionService {
   }
   getUserProfile() {
     return __async(this, null, function* () {
-      const person = yield this.http.get("/userbook/api/person");
+      const person = yield this.cache.httpGetJson(
+        "/userbook/api/person"
+      );
       return person.result[0];
     });
   }

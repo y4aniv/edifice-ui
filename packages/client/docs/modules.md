@@ -834,9 +834,9 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `MODIFY_DATE` | ``"modifiedAt"`` |
+| `CREATEDAT` | ``"createdAt"`` |
+| `MODIFY_DATE` | ``"updatedAt"`` |
 | `NAME` | ``"name"`` |
-| `VIEWS` | ``"views"`` |
 
 ___
 

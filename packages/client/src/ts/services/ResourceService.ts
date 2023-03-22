@@ -292,7 +292,7 @@ export abstract class ResourceService {
   //
   // PRIVATE HELPERS
   //
-  private toQueryParams(p: GetContextParameters): any {
+  private toQueryParams(p: GetContextParameters): Record<string, string> {
     let ret = {
       application: p.app,
       start_idx: p.pagination.startIdx,
@@ -300,10 +300,10 @@ export abstract class ResourceService {
       resource_type: p.types[0],
       trashed: p.trashed,
     } as any;
-    if (p.orders) {
-      ret.order_by = Object.entries(p.orders).map(
-        (entry) => `${entry[0]}:${entry[1]}`,
-      );
+    if (p.orders && Object.entries(p.orders).length) {
+      // axios serialize array as name[] (not compatible with current api)
+      const [[key, value]] = Object.entries(p.orders);
+      ret.order_by = `${key}:${value}`;
     }
     if (p.filters) {
       Object.assign(ret, p.filters);
