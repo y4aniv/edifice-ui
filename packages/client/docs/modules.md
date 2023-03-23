@@ -464,7 +464,7 @@ ___
 
 ### RightRole
 
-Ƭ **RightRole**: ``"read"`` \| ``"contrib"`` \| ``"manage"`` \| ``"creator"``
+Ƭ **RightRole**: ``"read"`` \| ``"contrib"`` \| ``"manager"`` \| ``"creator"``
 
 ___
 

@@ -217,7 +217,7 @@ export class RightService {
 
 export type RightSubject = "user" | "group" | "creator";
 
-export type RightRole = "read" | "contrib" | "manage" | "creator";
+export type RightRole = "read" | "contrib" | "manager" | "creator";
 
 export interface ResourceRight {
   type: RightSubject;
