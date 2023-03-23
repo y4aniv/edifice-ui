@@ -12,27 +12,12 @@
 
 ### Properties
 
-- [actions](IContext.md#actions)
-- [filters](IContext.md#filters)
 - [folders](IContext.md#folders)
-- [orders](IContext.md#orders)
 - [pagination](IContext.md#pagination)
 - [preferences](IContext.md#preferences)
 - [resources](IContext.md#resources)
 
 ## Properties
-
-### actions
-
-• **actions**: [`IAction`](IAction.md)[]
-
-___
-
-### filters
-
-• **filters**: [`IFilter`](IFilter.md)[]
-
-___
 
 ### folders
 
@@ -41,12 +26,6 @@ ___
 #### Inherited from
 
 [ISearchResults](ISearchResults.md).[folders](ISearchResults.md#folders)
-
-___
-
-### orders
-
-• **orders**: [`IOrder`](IOrder.md)[]
 
 ___
 

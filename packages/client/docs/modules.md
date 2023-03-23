@@ -834,9 +834,11 @@ ___
 
 | Name | Type |
 | :------ | :------ |
+| `APPLICATION` | ``"application"`` |
 | `CREATEDAT` | ``"createdAt"`` |
 | `MODIFY_DATE` | ``"updatedAt"`` |
 | `NAME` | ``"name"`` |
+| `RESOURCE_TYPE` | ``"resourceType"`` |
 
 ___
 

@@ -198,11 +198,15 @@ export class RightService {
     );
   }
 
-  async sessionHasWorkflowRight(expect: string) {
+  /**
+   * @param expect a workflow right
+   * @returns true if current session has right on it
+   */
+  async sessionHasWorkflowRight(expect: string): Promise<boolean> {
     try {
       const user = await this.session.getUser();
       return (
-        user &&
+        !!user &&
         this.hasWorkflowRight(
           expect,
           user.authorizedActions.map((e) => e.name),
@@ -212,6 +216,33 @@ export class RightService {
       console.error(e);
       return false;
     }
+  }
+
+  /**
+   * @param expect a workflow right
+   * @returns a record with right as key and boolean as value if current session has right on it
+   */
+  async sessionHasWorkflowRights(
+    expects: string[],
+  ): Promise<Record<string, boolean>> {
+    const result: Record<string, boolean> = {};
+    try {
+      const user = await this.session.getUser();
+      for (const expect of expects) {
+        result[expect] =
+          !!user &&
+          this.hasWorkflowRight(
+            expect,
+            user.authorizedActions.map((e) => e.name),
+          );
+      }
+    } catch (e) {
+      console.error(e);
+      for (const expect of expects) {
+        result[expect] = false;
+      }
+    }
+    return result;
   }
 }
 

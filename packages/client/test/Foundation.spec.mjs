@@ -15116,10 +15116,9 @@ const _ResourceService = class {
       resource_type: p.types[0],
       trashed: p.trashed
     };
-    if (p.orders) {
-      ret.order_by = Object.entries(p.orders).map(
-        (entry) => `${entry[0]}:${entry[1]}`
-      );
+    if (p.orders && Object.entries(p.orders).length) {
+      const [[key, value]] = Object.entries(p.orders);
+      ret.order_by = `${key}:${value}`;
     }
     if (p.filters) {
       Object.assign(ret, p.filters);
@@ -15983,9 +15982,7 @@ class SessionService {
   }
   getUserProfile() {
     return __async(this, null, function* () {
-      const person = yield this.cache.httpGetJson(
-        "/userbook/api/person"
-      );
+      const person = yield this.http.get("/userbook/api/person");
       return person.result[0];
     });
   }

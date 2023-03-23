@@ -239,6 +239,8 @@ export const SORT_BY = {
   NAME: "name",
   MODIFY_DATE: "updatedAt",
   CREATEDAT: "createdAt",
+  APPLICATION: "application",
+  RESOURCE_TYPE: "resourceType",
   /*
 //FIXME On devrait pouvoir trier sur tout champ issu d'un type de ressource (name, createdAt, authorId...) voir IResource
   createdAt: string;
@@ -321,9 +323,6 @@ export interface ISearchResults {
 //-------------------------------------
 export interface IContext extends ISearchResults {
   //-------------------------------------
-  filters: IFilter[];
-  orders: IOrder[];
-  actions: IAction[];
   preferences: IPreferences;
 }
 
