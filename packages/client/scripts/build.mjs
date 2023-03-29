@@ -2,6 +2,7 @@ import { build } from "vite";
 import path from "path";
 import { fileURLToPath } from "url";
 import dts from "vite-plugin-dts";
+import { visualizer } from "rollup-plugin-visualizer";
 
 const __dirname = fileURLToPath(new URL("..", import.meta.url));
 
@@ -10,7 +11,7 @@ const config = [
     entry: path.resolve(__dirname, "./src/ts/index.cjs.ts"),
     fileName: () => `ode-ts-client.js`,
     formats: ["umd"],
-    name: "ode-ts-client"
+    name: "ode-ts-client",
   },
   {
     entry: path.resolve(__dirname, "./src/ts/index.ts"),
@@ -29,9 +30,7 @@ config.forEach(async (lib) => {
       },
       commonjsOptions: {
         transformMixedEsModules: true,
-        exclude: [
-          'node_modules',
-        ],
+        exclude: ["node_modules"],
       },
       rollupOptions: {
         output: {
@@ -43,6 +42,7 @@ config.forEach(async (lib) => {
       emptyOutDir: true,
     },
     plugins: [
+      visualizer(),
       dts({
         insertTypesEntry: false,
         outputDir: "dist",

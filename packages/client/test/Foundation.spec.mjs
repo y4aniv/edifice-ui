@@ -15834,7 +15834,7 @@ class RightService {
     return __async(this, null, function* () {
       try {
         const user = yield this.session.getUser();
-        return user && this.hasWorkflowRight(
+        return !!user && this.hasWorkflowRight(
           expect2,
           user.authorizedActions.map((e) => e.name)
         );
@@ -15842,6 +15842,26 @@ class RightService {
         console.error(e);
         return false;
       }
+    });
+  }
+  sessionHasWorkflowRights(expects) {
+    return __async(this, null, function* () {
+      const result = {};
+      try {
+        const user = yield this.session.getUser();
+        for (const expect2 of expects) {
+          result[expect2] = !!user && this.hasWorkflowRight(
+            expect2,
+            user.authorizedActions.map((e) => e.name)
+          );
+        }
+      } catch (e) {
+        console.error(e);
+        for (const expect2 of expects) {
+          result[expect2] = false;
+        }
+      }
+      return result;
     });
   }
 }

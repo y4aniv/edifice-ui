@@ -12,3 +12,4 @@ yarn-error.log
 test/Foundation.spec.mjs
 yarn.lock
 *lock*
+stats.html
