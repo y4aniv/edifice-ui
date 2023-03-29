@@ -14,9 +14,9 @@
 
 - [application](BlogResource.md#application)
 - [assetId](BlogResource.md#assetid)
-- [authorId](BlogResource.md#authorid)
 - [comments](BlogResource.md#comments)
 - [createdAt](BlogResource.md#createdat)
+- [creatorId](BlogResource.md#creatorid)
 - [creatorName](BlogResource.md#creatorname)
 - [description](BlogResource.md#description)
 - [favorite](BlogResource.md#favorite)
@@ -58,16 +58,6 @@ ___
 
 ___
 
-### authorId
-
-• **authorId**: `string`
-
-#### Inherited from
-
-[IResource](IResource.md).[authorId](IResource.md#authorid)
-
-___
-
 ### comments
 
 • `Optional` **comments**: `number`
@@ -85,6 +75,16 @@ ___
 #### Inherited from
 
 [IResource](IResource.md).[createdAt](IResource.md#createdat)
+
+___
+
+### creatorId
+
+• **creatorId**: `string`
+
+#### Inherited from
+
+[IResource](IResource.md).[creatorId](IResource.md#creatorid)
 
 ___
 

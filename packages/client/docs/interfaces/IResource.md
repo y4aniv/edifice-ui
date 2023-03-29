@@ -14,9 +14,9 @@
 
 - [application](IResource.md#application)
 - [assetId](IResource.md#assetid)
-- [authorId](IResource.md#authorid)
 - [comments](IResource.md#comments)
 - [createdAt](IResource.md#createdat)
+- [creatorId](IResource.md#creatorid)
 - [creatorName](IResource.md#creatorname)
 - [description](IResource.md#description)
 - [favorite](IResource.md#favorite)
@@ -49,12 +49,6 @@ ___
 
 ___
 
-### authorId
-
-• **authorId**: `string`
-
-___
-
 ### comments
 
 • `Optional` **comments**: `number`
@@ -64,6 +58,12 @@ ___
 ### createdAt
 
 • **createdAt**: `string`
+
+___
+
+### creatorId
+
+• **creatorId**: `string`
 
 ___
 

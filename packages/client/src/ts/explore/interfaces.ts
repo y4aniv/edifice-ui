@@ -242,9 +242,9 @@ export const SORT_BY = {
   APPLICATION: "application",
   RESOURCE_TYPE: "resourceType",
   /*
-//FIXME On devrait pouvoir trier sur tout champ issu d'un type de ressource (name, createdAt, authorId...) voir IResource
+//FIXME On devrait pouvoir trier sur tout champ issu d'un type de ressource (name, createdAt, creatorId...) voir IResource
   createdAt: string;
-  authorId: string;
+  creatorId: string;
   authorName: string;
   modifierId: ID;
   modifierName: string;
@@ -398,7 +398,7 @@ export interface IResource {
   //-------------------------------------
   application: App;
   assetId: string;
-  authorId: string;
+  creatorId: string;
   creatorName: string;
   comments?: number;
   createdAt: string; // FIXME: S'entendre sur un format de date
