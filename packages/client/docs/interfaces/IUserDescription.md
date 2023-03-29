@@ -32,7 +32,7 @@
 - [theme](IUserDescription.md#theme)
 - [type](IUserDescription.md#type)
 - [userId](IUserDescription.md#userid)
-- [userid](IUserDescription.md#userid)
+- [userid](IUserDescription.md#userid-1)
 - [visibleInfos](IUserDescription.md#visibleinfos)
 
 ## Properties

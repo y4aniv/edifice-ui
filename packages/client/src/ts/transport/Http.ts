@@ -1,7 +1,7 @@
 import axios, {
   AxiosError,
   AxiosInstance,
-  AxiosRequestConfig,
+  // AxiosRequestConfig,
   AxiosResponse,
 } from "axios";
 import { ConfigurationFrameworkFactory } from "..";
@@ -57,14 +57,16 @@ export class Http implements IHttp {
     }
   }
 
-  private toAxiosConfig(params?: IHttpParams): AxiosRequestConfig {
+  // private toAxiosConfig(params?: IHttpParams): AxiosRequestConfig {
+  private toAxiosConfig(params?: IHttpParams): any {
     if (!params) {
       return this.axios.defaults;
     } else {
-      const p: AxiosRequestConfig = Object.assign({}, this.axios.defaults);
+      const p = Object.assign({}, this.axios.defaults);
 
       if (params.headers) {
-        p.headers = Object.assign({}, this.axios.defaults.headers);
+        if (p.headers)
+          p.headers = Object.assign({}, this.axios.defaults.headers);
         Object.assign(p.headers, params.headers);
       }
 
@@ -172,7 +174,7 @@ export class Http implements IHttp {
   }
   postFile<R = any>(url: string, data: any, params?: IHttpParams): Promise<R> {
     const p = this.toAxiosConfig(params);
-    if (p.headers["Content-Type"]) {
+    if (p.headers && p.headers["Content-Type"]) {
       delete p.headers["Content-Type"];
     }
     return this.axios
@@ -182,7 +184,7 @@ export class Http implements IHttp {
   }
   postJson<R = any>(url: string, json: any, params?: IHttpParams): Promise<R> {
     const p = this.toAxiosConfig();
-    p.headers["Content-Type"] = "application/json";
+    if (p.headers) p.headers["Content-Type"] = "application/json";
     return this.axios
       .post<R>(url, json, this.toAxiosConfig(params))
       .then((r) => this.mapAxiosResponse(r, params))
@@ -202,7 +204,7 @@ export class Http implements IHttp {
 */
   putJson<R = any>(url: string, json: any, params?: IHttpParams): Promise<R> {
     const p = this.toAxiosConfig(params);
-    p.headers["Content-Type"] = "application/json";
+    if (p.headers) p.headers["Content-Type"] = "application/json";
     return this.axios
       .put<R>(url, json, p)
       .then((r) => this.mapAxiosResponse(r, params))
@@ -228,7 +230,7 @@ export class Http implements IHttp {
   ): Promise<R> {
     const resultName = variableName ?? "exports";
     const p = this.toAxiosConfig(params);
-    p.headers["Accept"] = "application/javascript";
+    if (p.headers) p.headers["Accept"] = "application/javascript";
     return this.axios
       .get<string>(this.toCdnUrl(url), p)
       .then((r) => this.mapAxiosResponse(r, params))

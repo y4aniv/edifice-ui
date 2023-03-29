@@ -47,4 +47,4 @@ ___
 
 ### type
 
-• **type**: ``"user"`` \| ``"group"`` \| ``"sharebookmark"``
+• **type**: ``"group"`` \| ``"user"`` \| ``"sharebookmark"``

@@ -1,7 +1,7 @@
 import axios, {
   AxiosError,
   AxiosInstance,
-  AxiosRequestConfig,
+  // AxiosRequestConfig,
   AxiosResponse,
 } from "axios";
 import { ERROR_CODE } from "../globals";
@@ -57,11 +57,12 @@ export class HttpService {
     }
   }
 
-  private toAxiosConfig(params?: IHttpParams): AxiosRequestConfig {
+  // private toAxiosConfig(params?: IHttpParams): AxiosRequestConfig {
+  private toAxiosConfig(params?: IHttpParams): any {
     if (!params) {
       return this.axios.defaults;
     } else {
-      const p: AxiosRequestConfig = Object.assign({}, this.axios.defaults);
+      const p = Object.assign({}, this.axios.defaults);
 
       if (params.headers) {
         p.headers = Object.assign({}, this.axios.defaults.headers);
@@ -166,7 +167,7 @@ export class HttpService {
       );
       return this.mapAxiosResponse(r, params);
     } catch (e) {
-      const result: R = this.mapAxiosError(e as AxiosError, params);
+      const result = this.mapAxiosError(e as AxiosError, params) as R;
       return result;
     }
   }
@@ -180,7 +181,7 @@ export class HttpService {
       const r = await this.axios.post<R>(url, data, this.toAxiosConfig(params));
       return this.mapAxiosResponse(r, params);
     } catch (e) {
-      const result_1: R = this.mapAxiosError(e as AxiosError, params);
+      const result_1 = this.mapAxiosError(e as AxiosError, params) as R;
       return result_1;
     }
   }
@@ -191,7 +192,7 @@ export class HttpService {
     params?: IHttpParams,
   ): Promise<R> {
     const p = this.toAxiosConfig(params);
-    if (p.headers["Content-Type"]) {
+    if (p.headers && p.headers["Content-Type"]) {
       delete p.headers["Content-Type"];
     }
     try {
@@ -203,7 +204,7 @@ export class HttpService {
       });
       return this.mapAxiosResponse(r, params);
     } catch (e) {
-      const result: R = this.mapAxiosError(e as AxiosError, params);
+      const result = this.mapAxiosError(e as AxiosError, params) as R;
       return result;
     }
   }
@@ -214,12 +215,12 @@ export class HttpService {
     params?: IHttpParams,
   ): Promise<R> {
     const p = this.toAxiosConfig();
-    p.headers["Content-Type"] = "application/json";
+    if (p.headers) p.headers["Content-Type"] = "application/json";
     try {
       const r = await this.axios.post<R>(url, json, this.toAxiosConfig(params));
       return this.mapAxiosResponse(r, params);
     } catch (e) {
-      const result_1: R = this.mapAxiosError(e as AxiosError, params);
+      const result_1 = this.mapAxiosError(e as AxiosError, params) as R;
       return result_1;
     }
   }
@@ -233,7 +234,7 @@ export class HttpService {
       const r = await this.axios.put<R>(url, data, this.toAxiosConfig(params));
       return this.mapAxiosResponse(r, params);
     } catch (e) {
-      const result: R = this.mapAxiosError(e as AxiosError, params);
+      const result = this.mapAxiosError(e as AxiosError, params) as R;
       return result;
     }
   }
@@ -241,7 +242,7 @@ export class HttpService {
   async putFile<R = any>(url: string, data: FormData, params?: IHttpParams) {
     try {
       const p = this.toAxiosConfig(params);
-      if (p.headers["Content-Type"]) {
+      if (p.headers && p.headers["Content-Type"]) {
         delete p.headers["Content-Type"];
       }
       const res = await this.axios.put(url, data, {
@@ -252,7 +253,7 @@ export class HttpService {
       });
       return this.mapAxiosResponse(res, params);
     } catch (e) {
-      const result: R = this.mapAxiosError(e as AxiosError, params);
+      const result = this.mapAxiosError(e as AxiosError, params) as R;
       return result;
     }
   }
@@ -263,12 +264,12 @@ export class HttpService {
     params?: IHttpParams,
   ): Promise<R> {
     const p = this.toAxiosConfig(params);
-    p.headers["Content-Type"] = "application/json";
+    if (p.headers) p.headers["Content-Type"] = "application/json";
     try {
       const r = await this.axios.put<R>(url, json, p);
       return this.mapAxiosResponse(r, params);
     } catch (e) {
-      const result: R = this.mapAxiosError(e as AxiosError, params);
+      const result = this.mapAxiosError(e as AxiosError, params) as R;
       return result;
     }
   }
@@ -277,7 +278,7 @@ export class HttpService {
       const r = await this.axios.delete<R>(url, this.toAxiosConfig(params));
       return this.mapAxiosResponse(r, params);
     } catch (e) {
-      const result_1: R = this.mapAxiosError(e as AxiosError, params);
+      const result_1 = this.mapAxiosError(e as AxiosError, params) as R;
       return result_1;
     }
   }
@@ -287,7 +288,7 @@ export class HttpService {
       const r = await this.axios.delete<R>(url, { data: json });
       return this.mapAxiosResponse(r);
     } catch (e) {
-      const result: R = this.mapAxiosError(e as AxiosError);
+      const result = this.mapAxiosError(e as AxiosError) as R;
       return result;
     }
   }
@@ -299,7 +300,7 @@ export class HttpService {
   ): Promise<R> {
     const resultName = variableName ?? "exports";
     const p = this.toAxiosConfig(params);
-    p.headers["Accept"] = "application/javascript";
+    if (p.headers) p.headers["Accept"] = "application/javascript";
     return this.axios
       .get<string>(this.toCdnUrl(url), p)
       .then((r) => this.mapAxiosResponse(r, params))

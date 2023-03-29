@@ -22,6 +22,7 @@ const config = [
 config.forEach(async (lib) => {
   await build({
     build: {
+      sourcemap: true,
       target: "es2015",
       minify: "terser",
       outDir: "./dist",

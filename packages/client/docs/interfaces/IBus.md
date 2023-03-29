@@ -91,4 +91,4 @@ Subscribe to ActionResults any agent produces for a given ResourceType and Actio
 
 [`Observable`](../classes/RxJS.Observable.md)<{ `input`: [`IActionParameters`](IActionParameters.md) ; `output`: [`IActionResult`](IActionResult.md)  }\>
 
-A stream of {input:IActionParameters, output:IActionResult}
+A stream of IActionParameters and IActionResult

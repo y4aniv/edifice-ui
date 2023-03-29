@@ -581,7 +581,7 @@ export interface IBus {
    * Subscribe to ActionResults any agent produces for a given ResourceType and ActionType.
    * @param res The type of resource in concern.
    * @param action The action in concern.
-   * @return A stream of {input:IActionParameters, output:IActionResult}
+   * @return A stream of IActionParameters and IActionResult
    */
   subscribe(
     res: ResourceType,

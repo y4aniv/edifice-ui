@@ -8,7 +8,9 @@ A value and the time at which it was emitted.
 
 Emitted by the `timestamp` operator
 
-**`see`** [timestamp](RxJS.Timestamp.md#timestamp)
+**`See`**
+
+[timestamp](../modules/RxJS.md#timestamp)
 
 ## Type parameters
 

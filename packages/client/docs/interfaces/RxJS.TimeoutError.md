@@ -32,7 +32,7 @@ An error emitted when a timeout occurs.
 
 ### info
 
-• **info**: ``null`` \| `TimeoutInfo`<`T`, `M`\>
+• **info**: ``null`` \| [`TimeoutInfo`](RxJS.TimeoutInfo.md)<`T`, `M`\>
 
 The information provided to the error by the timeout
 operation that created the error. Will be `null` if

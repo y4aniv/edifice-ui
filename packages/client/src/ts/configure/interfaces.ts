@@ -205,8 +205,6 @@ export interface IIdiom {
   //-------------------------------------
   /** Get the translation of a given key.
    * @param params (optional) map of key/value variables.
-   * Ex: Given "variabilized.i18n.key"="Limit to ${limit} bytes"
-   * translate('variabilized.i18n.key', {limit:50}) will return "Limit to 50 bytes".
    * @return the key itself when no translation exists.
    */
   translate(key: string, params?: { [param: string]: any }): string;

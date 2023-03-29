@@ -17,7 +17,9 @@ class Scheduler {
 }
 ```
 
-**`deprecated`** Scheduler is an internal implementation detail of RxJS, and
+**`Deprecated`**
+
+Scheduler is an internal implementation detail of RxJS, and
 should not be used directly. Rather, create your own class and implement
 [SchedulerLike](../interfaces/RxJS.SchedulerLike.md). Will be made internal in v8.
 
@@ -34,7 +36,7 @@ should not be used directly. Rather, create your own class and implement
 ### Properties
 
 - [now](RxJS.Scheduler.md#now)
-- [now](RxJS.Scheduler.md#now)
+- [now](RxJS.Scheduler.md#now-1)
 
 ### Methods
 
@@ -117,8 +119,8 @@ queue of actions.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `work` | (`this`: [`SchedulerAction`](../interfaces/RxJS.SchedulerAction.md)<`T`\>, `state?`: `T`) => `void` | A function representing a task, or some unit of work to be executed by the Scheduler. |
-| `delay?` | `number` | - |
-| `state?` | `T` | - |
+| `delay?` | `number` | Time to wait before executing the work, where the time unit is implicit and defined by the Scheduler itself. |
+| `state?` | `T` | Some contextual data that the `work` function uses when called by the Scheduler. |
 
 #### Returns
 

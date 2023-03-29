@@ -137,7 +137,7 @@ Get the translation of a given key.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `key` | `string` | - |
-| `params?` | `Object` | (optional) map of key/value variables. Ex: Given "variabilized.i18n.key"="Limit to ${limit} bytes" translate('variabilized.i18n.key', {limit:50}) will return "Limit to 50 bytes". |
+| `params?` | `Object` | (optional) map of key/value variables. |
 
 #### Returns
 

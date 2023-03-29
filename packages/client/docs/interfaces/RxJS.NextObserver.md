@@ -17,9 +17,6 @@ OBSERVER INTERFACES
 ### Properties
 
 - [closed](RxJS.NextObserver.md#closed)
-
-### Methods
-
 - [complete](RxJS.NextObserver.md#complete)
 - [error](RxJS.NextObserver.md#error)
 - [next](RxJS.NextObserver.md#next)
@@ -30,13 +27,17 @@ OBSERVER INTERFACES
 
 • `Optional` **closed**: `boolean`
 
-## Methods
+___
 
 ### complete
 
-▸ `Optional` **complete**(): `void`
+• `Optional` **complete**: () => `void`
 
-#### Returns
+#### Type declaration
+
+▸ (): `void`
+
+##### Returns
 
 `void`
 
@@ -44,15 +45,19 @@ ___
 
 ### error
 
-▸ `Optional` **error**(`err`): `void`
+• `Optional` **error**: (`err`: `any`) => `void`
 
-#### Parameters
+#### Type declaration
+
+▸ (`err`): `void`
+
+##### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `err` | `any` |
 
-#### Returns
+##### Returns
 
 `void`
 
@@ -60,14 +65,18 @@ ___
 
 ### next
 
-▸ **next**(`value`): `void`
+• **next**: (`value`: `T`) => `void`
 
-#### Parameters
+#### Type declaration
+
+▸ (`value`): `void`
+
+##### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `value` | `T` |
 
-#### Returns
+##### Returns
 
 `void`

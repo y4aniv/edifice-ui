@@ -24,10 +24,12 @@ object.
 
 • `Optional` **Promise**: `PromiseConstructorLike`
 
-The promise constructor used by default for {@link Observable#toPromise toPromise} and {@link Observable#forEach forEach}
+The promise constructor used by default for [toPromise](../classes/RxJS.Observable.md#topromise) and [forEach](../classes/RxJS.Observable.md#foreach)
 methods.
 
-**`deprecated`** As of version 8, RxJS will no longer support this sort of injection of a
+**`Deprecated`**
+
+As of version 8, RxJS will no longer support this sort of injection of a
 Promise constructor. If you need a Promise implementation other than native promises,
 please polyfill/patch Promise as you see appropriate. Will be removed in v8.
 
@@ -74,7 +76,9 @@ This is being removed because the performance was severely problematic, and it c
 issues when types other than POJOs are passed to subscribe as subscribers, as they will likely have
 their `this` context overwritten.
 
-**`deprecated`** As of version 8, RxJS will no longer support altering the
+**`Deprecated`**
+
+As of version 8, RxJS will no longer support altering the
 context of next functions provided as part of an observer to Subscribe. Instead,
 you will have access to a subscription or a signal or token that will allow you to do things like
 unsubscribe and test closed status. Will be removed in v8.
@@ -92,6 +96,8 @@ where a multicast can be broken for all observers by a downstream consumer with
 an unhandled error. DO NOT USE THIS FLAG UNLESS IT'S NEEDED TO BUY TIME
 FOR MIGRATION REASONS.
 
-**`deprecated`** As of version 8, RxJS will no longer support synchronous throwing
+**`Deprecated`**
+
+As of version 8, RxJS will no longer support synchronous throwing
 of unhandled errors. All errors will be thrown on a separate call stack to prevent bad
 behaviors described above. Will be removed in v8.

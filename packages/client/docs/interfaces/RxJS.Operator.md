@@ -4,7 +4,9 @@
 
 [RxJS](../modules/RxJS.md).Operator
 
-**`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
+**`Deprecated`**
+
+Internal implementation detail, do not use directly. Will be made internal in v8.
 
 ## Type parameters
 

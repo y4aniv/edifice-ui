@@ -26,13 +26,16 @@
 ### Interfaces
 
 - [ArgumentOutOfRangeError](../interfaces/RxJS.ArgumentOutOfRangeError.md)
+- [BasicGroupByOptions](../interfaces/RxJS.BasicGroupByOptions.md)
 - [CompleteNotification](../interfaces/RxJS.CompleteNotification.md)
 - [CompletionObserver](../interfaces/RxJS.CompletionObserver.md)
+- [ConnectConfig](../interfaces/RxJS.ConnectConfig.md)
 - [Connectable](../interfaces/RxJS.Connectable.md)
 - [EmptyError](../interfaces/RxJS.EmptyError.md)
 - [ErrorNotification](../interfaces/RxJS.ErrorNotification.md)
 - [ErrorObserver](../interfaces/RxJS.ErrorObserver.md)
 - [GlobalConfig](../interfaces/RxJS.GlobalConfig.md)
+- [GroupByOptionsWithElement](../interfaces/RxJS.GroupByOptionsWithElement.md)
 - [GroupedObservable](../interfaces/RxJS.GroupedObservable.md)
 - [InteropObservable](../interfaces/RxJS.InteropObservable.md)
 - [MonoTypeOperatorFunction](../interfaces/RxJS.MonoTypeOperatorFunction.md)
@@ -44,21 +47,28 @@
 - [Operator](../interfaces/RxJS.Operator.md)
 - [OperatorFunction](../interfaces/RxJS.OperatorFunction.md)
 - [ReadableStreamLike](../interfaces/RxJS.ReadableStreamLike.md)
+- [RepeatConfig](../interfaces/RxJS.RepeatConfig.md)
+- [RetryConfig](../interfaces/RxJS.RetryConfig.md)
 - [SchedulerAction](../interfaces/RxJS.SchedulerAction.md)
 - [SchedulerLike](../interfaces/RxJS.SchedulerLike.md)
 - [SequenceError](../interfaces/RxJS.SequenceError.md)
+- [ShareConfig](../interfaces/RxJS.ShareConfig.md)
+- [ShareReplayConfig](../interfaces/RxJS.ShareReplayConfig.md)
 - [SubjectLike](../interfaces/RxJS.SubjectLike.md)
 - [Subscribable](../interfaces/RxJS.Subscribable.md)
 - [SubscriptionLike](../interfaces/RxJS.SubscriptionLike.md)
+- [ThrottleConfig](../interfaces/RxJS.ThrottleConfig.md)
 - [TimeInterval](../interfaces/RxJS.TimeInterval.md)
+- [TimeoutConfig](../interfaces/RxJS.TimeoutConfig.md)
 - [TimeoutError](../interfaces/RxJS.TimeoutError.md)
+- [TimeoutInfo](../interfaces/RxJS.TimeoutInfo.md)
 - [Timestamp](../interfaces/RxJS.Timestamp.md)
 - [TimestampProvider](../interfaces/RxJS.TimestampProvider.md)
 - [UnaryFunction](../interfaces/RxJS.UnaryFunction.md)
 - [Unsubscribable](../interfaces/RxJS.Unsubscribable.md)
 - [UnsubscriptionError](../interfaces/RxJS.UnsubscriptionError.md)
 
-### Type aliases
+### Type Aliases
 
 - [Cons](RxJS.md#cons)
 - [FactoryOrValue](RxJS.md#factoryorvalue)
@@ -138,7 +148,7 @@
 - [distinctUntilChanged](RxJS.md#distinctuntilchanged)
 - [distinctUntilKeyChanged](RxJS.md#distinctuntilkeychanged)
 - [elementAt](RxJS.md#elementat)
-- [empty](RxJS.md#empty)
+- [empty](RxJS.md#empty-1)
 - [endWith](RxJS.md#endwith)
 - [every](RxJS.md#every)
 - [exhaust](RxJS.md#exhaust)
@@ -178,11 +188,12 @@
 - [mergeWith](RxJS.md#mergewith)
 - [min](RxJS.md#min)
 - [multicast](RxJS.md#multicast)
-- [never](RxJS.md#never)
+- [never](RxJS.md#never-1)
 - [noop](RxJS.md#noop)
 - [observeOn](RxJS.md#observeon)
 - [of](RxJS.md#of)
 - [onErrorResumeNext](RxJS.md#onerrorresumenext)
+- [onErrorResumeNextWith](RxJS.md#onerrorresumenextwith)
 - [pairs](RxJS.md#pairs)
 - [pairwise](RxJS.md#pairwise)
 - [partition](RxJS.md#partition)
@@ -245,7 +256,7 @@
 - [zipAll](RxJS.md#zipall)
 - [zipWith](RxJS.md#zipwith)
 
-## Type aliases
+## Type Aliases
 
 ### Cons
 
@@ -334,7 +345,9 @@ ___
 
 Ƭ **ObservableLike**<`T`\>: [`InteropObservable`](../interfaces/RxJS.InteropObservable.md)<`T`\>
 
-**`deprecated`** Renamed to [](../interfaces/RxJS.InteropObservable.md). Will be removed in v8.
+**`Deprecated`**
+
+Renamed to [InteropObservable](../interfaces/RxJS.InteropObservable.md). Will be removed in v8.
 
 #### Type parameters
 
@@ -414,7 +427,9 @@ ___
 
 Ƭ **ObservedValuesFromArray**<`X`\>: [`ObservedValueUnionFromArray`](RxJS.md#observedvalueunionfromarray)<`X`\>
 
-**`deprecated`** Renamed to [ObservedValueUnionFromArray](RxJS.md#observedvalueunionfromarray). Will be removed in v8.
+**`Deprecated`**
+
+Renamed to [ObservedValueUnionFromArray](RxJS.md#observedvalueunionfromarray). Will be removed in v8.
 
 #### Type parameters
 
@@ -440,7 +455,9 @@ ___
 
 Ƭ **SubscribableOrPromise**<`T`\>: [`Subscribable`](../interfaces/RxJS.Subscribable.md)<`T`\> \| [`Subscribable`](../interfaces/RxJS.Subscribable.md)<`never`\> \| `PromiseLike`<`T`\> \| [`InteropObservable`](../interfaces/RxJS.InteropObservable.md)<`T`\>
 
-**`deprecated`** Do not use. Most likely you want to use `ObservableInput`. Will be removed in v8.
+**`Deprecated`**
+
+Do not use. Most likely you want to use `ObservableInput`. Will be removed in v8.
 
 #### Type parameters
 
@@ -520,11 +537,11 @@ Gets the value type from an [ObservableNotification](RxJS.md#observablenotificat
 An error thrown when an element was queried at a certain index of an
 Observable, but no such index or position exists in that sequence.
 
-**`see`** [elementAt](RxJS.md#elementat)
+**`See`**
 
-**`see`** [take](RxJS.md#take)
-
-**`see`** [takeLast](RxJS.md#takelast)
+ - [elementAt](RxJS.md#elementat)
+ - [take](RxJS.md#take)
+ - [takeLast](RxJS.md#takelast)
 
 ___
 
@@ -532,16 +549,19 @@ ___
 
 • `Const` **EMPTY**: [`Observable`](../classes/RxJS.Observable.md)<`never`\>
 
-The same Observable instance returned by any call to [empty](RxJS.md#empty) without a
-`scheduler`. It is preferable to use this over `empty()`.
+A simple Observable that emits no items to the Observer and immediately
+emits a complete notification.
 
 <span class="informal">Just emits 'complete', and nothing else.</span>
 
 ![](empty.png)
 
+A simple Observable that only emits the complete notification. It can be used
+for composing with other Observables, such as in a [mergeMap](RxJS.md#mergemap).
+
 ## Examples
 
-### Log complete notification
+Log complete notification
 
 ```ts
 import { EMPTY } from 'rxjs';
@@ -555,6 +575,43 @@ EMPTY.subscribe({
 // Complete!
 ```
 
+Emit the number 7, then complete
+
+```ts
+import { EMPTY, startWith } from 'rxjs';
+
+const result = EMPTY.pipe(startWith(7));
+result.subscribe(x => console.log(x));
+
+// Outputs
+// 7
+```
+
+Map and flatten only odd numbers to the sequence `'a'`, `'b'`, `'c'`
+
+```ts
+import { interval, mergeMap, of, EMPTY } from 'rxjs';
+
+const interval$ = interval(1000);
+const result = interval$.pipe(
+  mergeMap(x => x % 2 === 1 ? of('a', 'b', 'c') : EMPTY),
+);
+result.subscribe(x => console.log(x));
+
+// Results in the following to the console:
+// x is equal to the count on the interval, e.g. (0, 1, 2, 3, ...)
+// x will occur every 1000ms
+// if x % 2 is equal to 1, print a, b, c (each on its own)
+// if x % 2 is not equal to 1, nothing will be output
+```
+
+**`See`**
+
+ - [Observable](../classes/RxJS.Observable.md)
+ - [NEVER](RxJS.md#never)
+ - [of](RxJS.md#of)
+ - [throwError](RxJS.md#throwerror)
+
 ___
 
 ### EmptyError
@@ -564,15 +621,13 @@ ___
 An error thrown when an Observable or a sequence was queried but has no
 elements.
 
-**`see`** [first](RxJS.md#first)
+**`See`**
 
-**`see`** [last](RxJS.md#last)
-
-**`see`** [single](RxJS.md#single)
-
-**`see`** [firstValueFrom](RxJS.md#firstvaluefrom)
-
-**`see`** [lastValueFrom](RxJS.md#lastvaluefrom)
+ - [first](RxJS.md#first)
+ - [last](RxJS.md#last)
+ - [single](RxJS.md#single)
+ - [firstValueFrom](RxJS.md#firstvaluefrom)
+ - [lastValueFrom](RxJS.md#lastvaluefrom)
 
 ___
 
@@ -591,26 +646,28 @@ Observable keeps the subscription from being disposed automatically.
 Subscriptions need to be manually disposed.
 
 ##  Example
-### Emit the number 7, then never emit anything else (not even complete)
+
+Emit the number 7, then never emit anything else (not even complete)
+
 ```ts
-import { NEVER } from 'rxjs';
-import { startWith } from 'rxjs/operators';
+import { NEVER, startWith } from 'rxjs';
 
-function info() {
-  console.log('Will not be called');
-}
+const info = () => console.log('Will not be called');
+
 const result = NEVER.pipe(startWith(7));
-result.subscribe(x => console.log(x), info, info);
-
+result.subscribe({
+  next: x => console.log(x),
+  error: info,
+  complete: info
+});
 ```
 
-**`see`** [Observable](../classes/RxJS.Observable.md)
+**`See`**
 
-**`see`** {@link index/EMPTY}
-
-**`see`** [of](RxJS.md#of)
-
-**`see`** [throwError](RxJS.md#throwerror)
+ - [Observable](../classes/RxJS.Observable.md)
+ - [EMPTY](RxJS.md#empty)
+ - [of](RxJS.md#of)
+ - [throwError](RxJS.md#throwerror)
 
 ___
 
@@ -621,7 +678,9 @@ ___
 An error thrown when a value or values are missing from an
 observable sequence.
 
-**`see`** {@link operators/single}
+**`See`**
+
+operators/single
 
 ___
 
@@ -632,9 +691,10 @@ ___
 An error thrown when an action is invalid because the object has been
 unsubscribed.
 
-**`see`** [Subject](../classes/RxJS.Subject.md)
+**`See`**
 
-**`see`** [BehaviorSubject](../classes/RxJS.BehaviorSubject.md)
+ - [Subject](../classes/RxJS.Subject.md)
+ - [BehaviorSubject](../classes/RxJS.BehaviorSubject.md)
 
 ___
 
@@ -645,7 +705,9 @@ ___
 An error thrown when something is wrong with the sequence of
 values arriving on the observable.
 
-**`see`** {@link operators/single}
+**`See`**
+
+operators/single
 
 ___
 
@@ -653,14 +715,16 @@ ___
 
 • **TimeoutError**: `TimeoutErrorCtor`
 
-An error thrown by the {@link operators/timeout} operator.
+An error thrown by the [timeout](RxJS.md#timeout) operator.
 
 Provided so users can use as a type and do quality comparisons.
 We recommend you do not subclass this or create instances of this class directly.
 If you have need of a error representing a timeout, you should
 create your own error class and use that.
 
-**`see`** {@link operators/timeout}
+**`See`**
+
+[timeout](RxJS.md#timeout)
 
 ___
 
@@ -677,7 +741,9 @@ ___
 
 • `Const` **animationFrame**: `AnimationFrameScheduler`
 
-**`deprecated`** Renamed to [animationFrameScheduler](RxJS.md#animationframescheduler). Will be removed in v8.
+**`Deprecated`**
+
+Renamed to [animationFrameScheduler](RxJS.md#animationframescheduler). Will be removed in v8.
 
 ___
 
@@ -720,7 +786,9 @@ ___
 
 • `Const` **asap**: `AsapScheduler`
 
-**`deprecated`** Renamed to [asapScheduler](RxJS.md#asapscheduler). Will be removed in v8.
+**`Deprecated`**
+
+Renamed to [asapScheduler](RxJS.md#asapscheduler). Will be removed in v8.
 
 ___
 
@@ -766,7 +834,9 @@ ___
 
 • `Const` **async**: `AsyncScheduler`
 
-**`deprecated`** Renamed to [asyncScheduler](RxJS.md#asyncscheduler). Will be removed in v8.
+**`Deprecated`**
+
+Renamed to [asyncScheduler](RxJS.md#asyncscheduler). Will be removed in v8.
 
 ___
 
@@ -835,13 +905,20 @@ ___
 
 Symbol.observable or a string "@@observable". Used for interop
 
+**`Deprecated`**
+
+We will no longer be exporting this symbol in upcoming versions of RxJS.
+Instead polyfill and use Symbol.observable directly *or* use https://www.npmjs.com/package/symbol-observable
+
 ___
 
 ### queue
 
 • `Const` **queue**: `QueueScheduler`
 
-**`deprecated`** Renamed to [queueScheduler](RxJS.md#queuescheduler). Will be removed in v8.
+**`Deprecated`**
+
+Renamed to [queueScheduler](RxJS.md#queuescheduler). Will be removed in v8.
 
 ___
 
@@ -917,7 +994,7 @@ queueScheduler.schedule(function(state) {
 
 An observable of animation frames
 
-Emits the the amount of time elapsed since subscription and the timestamp on each animation frame.
+Emits the amount of time elapsed since subscription and the timestamp on each animation frame.
 Defaults to milliseconds provided to the requestAnimationFrame's callback. Does not end on its own.
 
 Every subscription will start a separate animation loop. Since animation frames are always scheduled
@@ -929,19 +1006,18 @@ the `share` operator can be used.
 
 This is useful for setting up animations with RxJS.
 
-### Example
+## Examples
 
 Tweening a div to move it on the screen
 
 ```ts
-import { animationFrames } from 'rxjs';
-import { map, takeWhile, endWith } from 'rxjs/operators';
+import { animationFrames, map, takeWhile, endWith } from 'rxjs';
 
 function tween(start: number, end: number, duration: number) {
   const diff = end - start;
   return animationFrames().pipe(
     // Figure out what percentage of time has passed
-    map(({elapsed}) => elapsed / duration),
+    map(({ elapsed }) => elapsed / duration),
     // Take the vector while less than 100%
     takeWhile(v => v < 1),
     // Finish with 100%
@@ -961,11 +1037,9 @@ div.style.backgroundColor = 'lime';
 div.style.transform = 'translate3d(10px, 0, 0)';
 
 tween(10, 200, 4000).subscribe(x => {
-  div.style.transform = `translate3d(${x}px, 0, 0)`;
+  div.style.transform = `translate3d(${ x }px, 0, 0)`;
 });
 ```
-
-### Example
 
 Providing a custom timestamp provider
 
@@ -1007,7 +1081,7 @@ process.
 <span class="informal">It's like [auditTime](RxJS.md#audittime), but the silencing
 duration is determined by a second Observable.</span>
 
-![](audit.png)
+![](audit.svg)
 
 `audit` is similar to `throttle`, but emits the last value from the silenced
 time window, instead of the first value. `audit` emits the most recent value
@@ -1023,24 +1097,22 @@ repeats for the next source value.
 ## Example
 
 Emit clicks at a rate of at most one click per second
+
 ```ts
-import { fromEvent, interval } from 'rxjs';
-import { audit } from 'rxjs/operators'
+import { fromEvent, audit, interval } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const result = clicks.pipe(audit(ev => interval(1000)));
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [auditTime](RxJS.md#audittime)
+**`See`**
 
-**`see`** [debounce](RxJS.md#debounce)
-
-**`see`** [delayWhen](RxJS.md#delaywhen)
-
-**`see`** [sample](RxJS.md#sample)
-
-**`see`** [throttle](RxJS.md#throttle)
+ - [auditTime](RxJS.md#audittime)
+ - [debounce](RxJS.md#debounce)
+ - [delayWhen](RxJS.md#delaywhen)
+ - [sample](RxJS.md#sample)
+ - [throttle](RxJS.md#throttle)
 
 #### Type parameters
 
@@ -1090,24 +1162,22 @@ Optionally takes a [SchedulerLike](../interfaces/RxJS.SchedulerLike.md) for mana
 ## Example
 
 Emit clicks at a rate of at most one click per second
+
 ```ts
-import { fromEvent } from 'rxjs';
-import { auditTime } from 'rxjs/operators';
+import { fromEvent, auditTime } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const result = clicks.pipe(auditTime(1000));
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [audit](RxJS.md#audit)
+**`See`**
 
-**`see`** [debounceTime](RxJS.md#debouncetime)
-
-**`see`** [delay](RxJS.md#delay)
-
-**`see`** [sampleTime](RxJS.md#sampletime)
-
-**`see`** [throttleTime](RxJS.md#throttletime)
+ - [audit](RxJS.md#audit)
+ - [debounceTime](RxJS.md#debouncetime)
+ - [delay](RxJS.md#delay)
+ - [sampleTime](RxJS.md#sampletime)
+ - [throttleTime](RxJS.md#throttletime)
 
 #### Type parameters
 
@@ -1120,7 +1190,7 @@ result.subscribe(x => console.log(x));
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `duration` | `number` | Time to wait before emitting the most recent source value, measured in milliseconds or the time unit determined internally by the optional `scheduler`. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | - |
+| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The [SchedulerLike](../interfaces/RxJS.SchedulerLike.md) to use for managing the timers that handle the rate-limiting behavior. |
 
 #### Returns
 
@@ -1147,7 +1217,7 @@ ___
 
 `fn`
 
-▸ (...`args`): [`Observable`](../classes/RxJS.Observable.md)<`any`\>
+▸ (`...args`): [`Observable`](../classes/RxJS.Observable.md)<`any`\>
 
 ##### Parameters
 
@@ -1179,7 +1249,7 @@ ___
 
 `fn`
 
-▸ (...`arg`): [`Observable`](../classes/RxJS.Observable.md)<`R` extends [] ? `void` : `R` extends [`any`] ? `R`[``0``] : `R`\>
+▸ (`...arg`): [`Observable`](../classes/RxJS.Observable.md)<`R` extends [] ? `void` : `R` extends [`any`] ? `R`[``0``] : `R`\>
 
 ##### Parameters
 
@@ -1209,7 +1279,7 @@ ___
 
 `fn`
 
-▸ (...`args`): [`Observable`](../classes/RxJS.Observable.md)<`any`\>
+▸ (`...args`): [`Observable`](../classes/RxJS.Observable.md)<`any`\>
 
 ##### Parameters
 
@@ -1241,7 +1311,7 @@ ___
 
 `fn`
 
-▸ (...`arg`): [`Observable`](../classes/RxJS.Observable.md)<`R` extends [] ? `void` : `R` extends [`any`] ? `R`[``0``] : `R`\>
+▸ (`...arg`): [`Observable`](../classes/RxJS.Observable.md)<`R` extends [] ? `void` : `R` extends [`any`] ? `R`[``0``] : `R`\>
 
 ##### Parameters
 
@@ -1267,7 +1337,8 @@ that array only when another Observable emits.</span>
 ![](buffer.png)
 
 Buffers the incoming Observable values until the given `closingNotifier`
-Observable emits a value, at which point it emits the buffer on the output
+`ObservableInput` (that internally gets converted to an Observable)
+emits a value, at which point it emits the buffer on the output
 Observable and starts a new buffer internally, awaiting the next time
 `closingNotifier` emits.
 
@@ -1276,8 +1347,7 @@ Observable and starts a new buffer internally, awaiting the next time
 On every click, emit array of most recent interval events
 
 ```ts
-import { fromEvent, interval } from 'rxjs';
-import { buffer } from 'rxjs/operators';
+import { fromEvent, interval, buffer } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const intervalEvents = interval(1000);
@@ -1285,15 +1355,13 @@ const buffered = intervalEvents.pipe(buffer(clicks));
 buffered.subscribe(x => console.log(x));
 ```
 
-**`see`** [bufferCount](RxJS.md#buffercount)
+**`See`**
 
-**`see`** [bufferTime](RxJS.md#buffertime)
-
-**`see`** [bufferToggle](RxJS.md#buffertoggle)
-
-**`see`** [bufferWhen](RxJS.md#bufferwhen)
-
-**`see`** [window](RxJS.md#window)
+ - [bufferCount](RxJS.md#buffercount)
+ - [bufferTime](RxJS.md#buffertime)
+ - [bufferToggle](RxJS.md#buffertoggle)
+ - [bufferWhen](RxJS.md#bufferwhen)
+ - [window](RxJS.md#window)
 
 #### Type parameters
 
@@ -1305,7 +1373,7 @@ buffered.subscribe(x => console.log(x));
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `closingNotifier` | [`Observable`](../classes/RxJS.Observable.md)<`any`\> | An Observable that signals the buffer to be emitted on the output Observable. |
+| `closingNotifier` | [`ObservableInput`](RxJS.md#observableinput)<`any`\> | An `ObservableInput` that signals the buffer to be emitted on the output Observable. |
 
 #### Returns
 
@@ -1339,8 +1407,7 @@ and when each buffer closes and is emitted.
 Emit the last two click events as an array
 
 ```ts
-import { fromEvent } from 'rxjs';
-import { bufferCount } from 'rxjs/operators';
+import { fromEvent, bufferCount } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const buffered = clicks.pipe(bufferCount(2));
@@ -1350,25 +1417,21 @@ buffered.subscribe(x => console.log(x));
 On every click, emit the last two click events as an array
 
 ```ts
-import { fromEvent } from 'rxjs';
-import { bufferCount } from 'rxjs/operators';
+import { fromEvent, bufferCount } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const buffered = clicks.pipe(bufferCount(2, 1));
 buffered.subscribe(x => console.log(x));
 ```
 
-**`see`** [buffer](RxJS.md#buffer)
+**`See`**
 
-**`see`** [bufferTime](RxJS.md#buffertime)
-
-**`see`** [bufferToggle](RxJS.md#buffertoggle)
-
-**`see`** [bufferWhen](RxJS.md#bufferwhen)
-
-**`see`** [pairwise](RxJS.md#pairwise)
-
-**`see`** [windowCount](RxJS.md#windowcount)
+ - [buffer](RxJS.md#buffer)
+ - [bufferTime](RxJS.md#buffertime)
+ - [bufferToggle](RxJS.md#buffertoggle)
+ - [bufferWhen](RxJS.md#bufferwhen)
+ - [pairwise](RxJS.md#pairwise)
+ - [windowCount](RxJS.md#windowcount)
 
 #### Type parameters
 
@@ -1381,7 +1444,7 @@ buffered.subscribe(x => console.log(x));
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `bufferSize` | `number` | The maximum size of the buffer emitted. |
-| `startBufferEvery?` | ``null`` \| `number` | - |
+| `startBufferEvery?` | ``null`` \| `number` | Interval at which to start a new buffer. For example if `startBufferEvery` is `2`, then a new buffer will be started on every other value from the source. A new buffer is started at the beginning of the source by default. |
 
 #### Returns
 
@@ -1477,8 +1540,7 @@ a Subscribable or Promise returned by the `closingSelector` function emits.
 Every other second, emit the click events from the next 500ms
 
 ```ts
-import { fromEvent, interval, EMPTY } from 'rxjs';
-import { bufferToggle } from 'rxjs/operators';
+import { fromEvent, interval, bufferToggle, EMPTY } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const openings = interval(1000);
@@ -1488,15 +1550,13 @@ const buffered = clicks.pipe(bufferToggle(openings, i =>
 buffered.subscribe(x => console.log(x));
 ```
 
-**`see`** [buffer](RxJS.md#buffer)
+**`See`**
 
-**`see`** [bufferCount](RxJS.md#buffercount)
-
-**`see`** [bufferTime](RxJS.md#buffertime)
-
-**`see`** [bufferWhen](RxJS.md#bufferwhen)
-
-**`see`** [windowToggle](RxJS.md#windowtoggle)
+ - [buffer](RxJS.md#buffer)
+ - [bufferCount](RxJS.md#buffercount)
+ - [bufferTime](RxJS.md#buffertime)
+ - [bufferWhen](RxJS.md#bufferwhen)
+ - [windowToggle](RxJS.md#windowtoggle)
 
 #### Type parameters
 
@@ -1531,7 +1591,7 @@ Observables to determine when to close, emit, and reset the buffer.
 starts collecting values, it calls a function that returns an Observable that
 tells when to close the buffer and restart collecting.</span>
 
-![](bufferWhen.png)
+![](bufferWhen.svg)
 
 Opens a buffer immediately, then closes the buffer when the observable
 returned by calling `closingSelector` function emits a value. When it closes
@@ -1542,25 +1602,22 @@ the buffer, it immediately opens a new buffer and repeats the process.
 Emit an array of the last clicks every [1-5] random seconds
 
 ```ts
-import { fromEvent, interval } from 'rxjs';
-import { bufferWhen } from 'rxjs/operators';
+import { fromEvent, bufferWhen, interval } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
-const buffered = clicks.pipe(bufferWhen(() =>
-  interval(1000 + Math.random() * 4000)
-));
+const buffered = clicks.pipe(
+  bufferWhen(() => interval(1000 + Math.random() * 4000))
+);
 buffered.subscribe(x => console.log(x));
 ```
 
-**`see`** [buffer](RxJS.md#buffer)
+**`See`**
 
-**`see`** [bufferCount](RxJS.md#buffercount)
-
-**`see`** [bufferTime](RxJS.md#buffertime)
-
-**`see`** [bufferToggle](RxJS.md#buffertoggle)
-
-**`see`** [windowWhen](RxJS.md#windowwhen)
+ - [buffer](RxJS.md#buffer)
+ - [bufferCount](RxJS.md#buffercount)
+ - [bufferTime](RxJS.md#buffertime)
+ - [bufferToggle](RxJS.md#buffertoggle)
+ - [windowWhen](RxJS.md#windowwhen)
 
 #### Type parameters
 
@@ -1609,7 +1666,9 @@ ___
 
 ▸ **combineAll**<`T`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<[`ObservableInput`](RxJS.md#observableinput)<`T`\>, `T`[]\>
 
-**`deprecated`** Renamed to [combineLatestAll](RxJS.md#combinelatestall). Will be removed in v8.
+**`Deprecated`**
+
+Renamed to [combineLatestAll](RxJS.md#combinelatestall). Will be removed in v8.
 
 #### Type parameters
 
@@ -1623,7 +1682,9 @@ ___
 
 ▸ **combineAll**<`T`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `T`[]\>
 
-**`deprecated`** Renamed to [combineLatestAll](RxJS.md#combinelatestall). Will be removed in v8.
+**`Deprecated`**
+
+Renamed to [combineLatestAll](RxJS.md#combinelatestall). Will be removed in v8.
 
 #### Type parameters
 
@@ -1637,7 +1698,9 @@ ___
 
 ▸ **combineAll**<`T`, `R`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<[`ObservableInput`](RxJS.md#observableinput)<`T`\>, `R`\>
 
-**`deprecated`** Renamed to [combineLatestAll](RxJS.md#combinelatestall). Will be removed in v8.
+**`Deprecated`**
+
+Renamed to [combineLatestAll](RxJS.md#combinelatestall). Will be removed in v8.
 
 #### Type parameters
 
@@ -1658,7 +1721,9 @@ ___
 
 ▸ **combineAll**<`R`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `R`\>
 
-**`deprecated`** Renamed to [combineLatestAll](RxJS.md#combinelatestall). Will be removed in v8.
+**`Deprecated`**
+
+Renamed to [combineLatestAll](RxJS.md#combinelatestall). Will be removed in v8.
 
 #### Type parameters
 
@@ -1733,7 +1798,9 @@ an array or an object, so you're getting `unknown`. Use better types.
 
 ▸ **combineLatest**<`A`, `R`\>(`sources`, `resultSelector`, `scheduler`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
+**`Deprecated`**
+
+The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
 #### Type parameters
 
@@ -1776,7 +1843,9 @@ an array or an object, so you're getting `unknown`. Use better types.
 
 ▸ **combineLatest**<`A`\>(`sources`, `scheduler`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
+**`Deprecated`**
+
+The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
 #### Type parameters
 
@@ -1795,9 +1864,11 @@ an array or an object, so you're getting `unknown`. Use better types.
 
 [`Observable`](../classes/RxJS.Observable.md)<`A`\>
 
-▸ **combineLatest**<`A`\>(...`sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
+▸ **combineLatest**<`A`\>(`...sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
 
-**`deprecated`** Pass an array of sources instead. The rest-parameters signature will be removed in v8. Details: https://rxjs.dev/deprecations/array-argument
+**`Deprecated`**
+
+Pass an array of sources instead. The rest-parameters signature will be removed in v8. Details: https://rxjs.dev/deprecations/array-argument
 
 #### Type parameters
 
@@ -1815,9 +1886,11 @@ an array or an object, so you're getting `unknown`. Use better types.
 
 [`Observable`](../classes/RxJS.Observable.md)<`A`\>
 
-▸ **combineLatest**<`A`, `R`\>(...`sourcesAndResultSelectorAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+▸ **combineLatest**<`A`, `R`\>(`...sourcesAndResultSelectorAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
+**`Deprecated`**
+
+The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
 #### Type parameters
 
@@ -1836,9 +1909,11 @@ an array or an object, so you're getting `unknown`. Use better types.
 
 [`Observable`](../classes/RxJS.Observable.md)<`R`\>
 
-▸ **combineLatest**<`A`, `R`\>(...`sourcesAndResultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+▸ **combineLatest**<`A`, `R`\>(`...sourcesAndResultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
 
-**`deprecated`** Pass an array of sources instead. The rest-parameters signature will be removed in v8. Details: https://rxjs.dev/deprecations/array-argument
+**`Deprecated`**
+
+Pass an array of sources instead. The rest-parameters signature will be removed in v8. Details: https://rxjs.dev/deprecations/array-argument
 
 #### Type parameters
 
@@ -1857,9 +1932,11 @@ an array or an object, so you're getting `unknown`. Use better types.
 
 [`Observable`](../classes/RxJS.Observable.md)<`R`\>
 
-▸ **combineLatest**<`A`\>(...`sourcesAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
+▸ **combineLatest**<`A`\>(`...sourcesAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
+**`Deprecated`**
+
+The `scheduler` parameter will be removed in v8. Use `scheduled` and `combineLatestAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
 #### Type parameters
 
@@ -1976,7 +2053,7 @@ ___
 
 ### combineLatestWith
 
-▸ **combineLatestWith**<`T`, `A`\>(...`otherSources`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Cons`](RxJS.md#cons)<`T`, `A`\>\>
+▸ **combineLatestWith**<`T`, `A`\>(`...otherSources`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Cons`](RxJS.md#cons)<`T`, `A`\>\>
 
 Create an observable that combines the latest values from all passed observables and the source
 into arrays and emits them.
@@ -1988,11 +2065,13 @@ will be emitted as an array.
 
 This is a useful operator for eagerly calculating values based off of changed inputs.
 
-### Example
+## Example
 
-Simple calculation from two inputs.
+Simple concatenation of values from two inputs
 
-```
+```ts
+import { fromEvent, combineLatestWith, map } from 'rxjs';
+
 // Setup: Add two inputs to the page
 const input1 = document.createElement('input');
 document.body.appendChild(input1);
@@ -2006,10 +2085,9 @@ const input2Changes$ = fromEvent(input2, 'change');
 // Combine the changes by adding them together
 input1Changes$.pipe(
   combineLatestWith(input2Changes$),
-  map(([e1, e2]) => Number(e1.target.value) + Number(e2.target.value)),
+  map(([e1, e2]) => (<HTMLInputElement>e1.target).value + ' - ' + (<HTMLInputElement>e2.target).value)
 )
 .subscribe(x => console.log(x));
-
 ```
 
 #### Type parameters
@@ -2036,7 +2114,7 @@ ___
 
 ### concat
 
-▸ **concat**<`T`\>(...`inputs`): [`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
+▸ **concat**<`T`\>(`...inputs`): [`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
 
 #### Type parameters
 
@@ -2054,7 +2132,7 @@ ___
 
 [`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
 
-▸ **concat**<`T`\>(...`inputsAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
+▸ **concat**<`T`\>(`...inputsAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
 
 #### Type parameters
 
@@ -2102,13 +2180,13 @@ to `1`.
 ## Example
 
 For each click event, tick every second from 0 to 3, with no concurrency
+
 ```ts
-import { fromEvent, interval } from 'rxjs';
-import { map, take, concatAll } from 'rxjs/operators';
+import { fromEvent, map, interval, take, concatAll } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const higherOrder = clicks.pipe(
-  map(ev => interval(1000).pipe(take(4))),
+  map(() => interval(1000).pipe(take(4)))
 );
 const firstOrder = higherOrder.pipe(concatAll());
 firstOrder.subscribe(x => console.log(x));
@@ -2120,23 +2198,17 @@ firstOrder.subscribe(x => console.log(x));
 // one click = 1000ms-> 0 -1000ms-> 1 -1000ms-> 2 -1000ms-> 3
 ```
 
-**`see`** [combineLatestAll](RxJS.md#combinelatestall)
+**`See`**
 
-**`see`** [concat](RxJS.md#concat)
-
-**`see`** [concatMap](RxJS.md#concatmap)
-
-**`see`** [concatMapTo](RxJS.md#concatmapto)
-
-**`see`** [exhaustAll](RxJS.md#exhaustall)
-
-**`see`** [mergeAll](RxJS.md#mergeall)
-
-**`see`** [switchAll](RxJS.md#switchall)
-
-**`see`** [switchMap](RxJS.md#switchmap)
-
-**`see`** [zipAll](RxJS.md#zipall)
+ - [combineLatestAll](RxJS.md#combinelatestall)
+ - [concat](RxJS.md#concat)
+ - [concatMap](RxJS.md#concatmap)
+ - [concatMapTo](RxJS.md#concatmapto)
+ - [exhaustAll](RxJS.md#exhaustall)
+ - [mergeAll](RxJS.md#mergeall)
+ - [switchAll](RxJS.md#switchall)
+ - [switchMap](RxJS.md#switchmap)
+ - [zipAll](RxJS.md#zipall)
 
 #### Type parameters
 
@@ -2157,8 +2229,6 @@ ___
 
 ▸ **concatMap**<`T`, `O`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
-
 #### Type parameters
 
 | Name | Type |
@@ -2178,7 +2248,9 @@ ___
 
 ▸ **concatMap**<`T`, `O`\>(`project`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
 #### Type parameters
 
@@ -2200,7 +2272,9 @@ ___
 
 ▸ **concatMap**<`T`, `R`, `O`\>(`project`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
 #### Type parameters
 
@@ -2225,9 +2299,11 @@ ___
 
 ### concatMapTo
 
-▸ **concatMapTo**<`O`\>(`observable`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **concatMapTo**<`O`\>(`observable`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`unknown`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+Will be removed in v9. Use [concatMap](RxJS.md#concatmap) instead: `concatMap(() => result)`
 
 #### Type parameters
 
@@ -2243,11 +2319,13 @@ ___
 
 #### Returns
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`unknown`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-▸ **concatMapTo**<`O`\>(`observable`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **concatMapTo**<`O`\>(`observable`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`unknown`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
 #### Type parameters
 
@@ -2264,11 +2342,13 @@ ___
 
 #### Returns
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`unknown`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
 ▸ **concatMapTo**<`T`, `R`, `O`\>(`observable`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
 #### Type parameters
 
@@ -2293,7 +2373,7 @@ ___
 
 ### concatWith
 
-▸ **concatWith**<`T`, `A`\>(...`otherSources`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
+▸ **concatWith**<`T`, `A`\>(`...otherSources`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
 
 Emits all of the values from the source observable, then, once it completes, subscribes
 to each observable source provided, one at a time, emitting all of their values, and not subscribing
@@ -2306,8 +2386,7 @@ to the next one until it completes.
 Listen for one mouse click, then listen for all mouse moves.
 
 ```ts
-import { fromEvent } from 'rxjs';
-import { concatWith } from 'rxjs/operators';
+import { fromEvent, map, take, concatWith } from 'rxjs';
 
 const clicks$ = fromEvent(document, 'click');
 const moves$ = fromEvent(document, 'mousemove');
@@ -2379,48 +2458,47 @@ When you subscribe to the result of `connect`, the `selector` function will be c
 the `selector` function returns, the observable it returns will be subscribed to, _then_ the
 multicast will be connected to the source.
 
-### Example
+## Example
 
 Sharing a totally synchronous observable
 
 ```ts
-import { defer, of } from 'rxjs';
-import { tap, connect } from 'rxjs/operators';
+import { of, tap, connect, merge, map, filter } from 'rxjs';
 
-const source$ = defer(() => {
- console.log('subscription started');
- return of(1, 2, 3, 4, 5).pipe(
-   tap(n => console.log(`source emitted ${n}`))
- );
-});
+const source$ = of(1, 2, 3, 4, 5).pipe(
+  tap({
+    subscribe: () => console.log('subscription started'),
+    next: n => console.log(`source emitted ${ n }`)
+  })
+);
 
 source$.pipe(
- // Notice in here we're merging 3 subscriptions to `shared$`.
- connect((shared$) => merge(
-     shared$.pipe(map(n => `all ${n}`)),
-     shared$.pipe(filter(n => n % 2 === 0), map(n => `even ${n}`)),
-     shared$.pipe(filter(n => n % 2 === 1), map(n => `odd ${n}`)),
- ))
+  // Notice in here we're merging 3 subscriptions to `shared$`.
+  connect(shared$ => merge(
+    shared$.pipe(map(n => `all ${ n }`)),
+    shared$.pipe(filter(n => n % 2 === 0), map(n => `even ${ n }`)),
+    shared$.pipe(filter(n => n % 2 === 1), map(n => `odd ${ n }`))
+  ))
 )
 .subscribe(console.log);
 
 // Expected output: (notice only one subscription)
-"subscription started"
-"source emitted 1"
-"all 1"
-"odd 1"
-"source emitted 2"
-"all 2"
-"even 2"
-"source emitted 3"
-"all 3"
-"odd 3"
-"source emitted 4"
-"all 4"
-"even 4"
-"source emitted 5"
-"all 5"
-"odd 5"
+'subscription started'
+'source emitted 1'
+'all 1'
+'odd 1'
+'source emitted 2'
+'all 2'
+'even 2'
+'source emitted 3'
+'all 3'
+'odd 3'
+'source emitted 4'
+'all 4'
+'even 4'
+'source emitted 5'
+'all 5'
+'odd 5'
 ```
 
 #### Type parameters
@@ -2434,8 +2512,8 @@ source$.pipe(
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `selector` | (`shared`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `O` | A function used to set up the multicast. Gives you a multicast observable that is not yet connected. With that, you're expected to create and return and Observable, that when subscribed to, will utilize the multicast observable. After this function is executed -- and its return value subscribed to -- the the operator will subscribe to the source, and the connection will be made. |
-| `config?` | `ConnectConfig`<`T`\> | The configuration object for `connect`. |
+| `selector` | (`shared`: [`Observable`](../classes/RxJS.Observable.md)<`T`\>) => `O` | A function used to set up the multicast. Gives you a multicast observable that is not yet connected. With that, you're expected to create and return and Observable, that when subscribed to, will utilize the multicast observable. After this function is executed -- and its return value subscribed to -- the operator will subscribe to the source, and the connection will be made. |
+| `config?` | [`ConnectConfig`](../interfaces/RxJS.ConnectConfig.md)<`T`\> | The configuration object for `connect`. |
 
 #### Returns
 
@@ -2495,9 +2573,9 @@ source values that matched `true` with the `predicate`.
 ## Examples
 
 Counts how many seconds have passed before the first click happened
+
 ```ts
-import { fromEvent, interval } from 'rxjs';
-import { count, takeUntil } from 'rxjs/operators';
+import { interval, fromEvent, takeUntil, count } from 'rxjs';
 
 const seconds = interval(1000);
 const clicks = fromEvent(document, 'click');
@@ -2507,9 +2585,9 @@ result.subscribe(x => console.log(x));
 ```
 
 Counts how many odd numbers are there between 1 and 7
+
 ```ts
-import { range } from 'rxjs';
-import { count } from 'rxjs/operators';
+import { range, count } from 'rxjs';
 
 const numbers = range(1, 7);
 const result = numbers.pipe(count(i => i % 2 === 1));
@@ -2518,11 +2596,11 @@ result.subscribe(x => console.log(x));
 // 4
 ```
 
-**`see`** [max](RxJS.md#max)
+**`See`**
 
-**`see`** [min](RxJS.md#min)
-
-**`see`** [reduce](RxJS.md#reduce)
+ - [max](RxJS.md#max)
+ - [min](RxJS.md#min)
+ - [reduce](RxJS.md#reduce)
 
 #### Type parameters
 
@@ -2555,7 +2633,7 @@ determined by another Observable has passed without another source emission.
 <span class="informal">It's like [debounceTime](RxJS.md#debouncetime), but the time span of
 emission silence is determined by a second Observable.</span>
 
-![](debounce.png)
+![](debounce.svg)
 
 `debounce` delays notifications emitted by the source Observable, but drops previous
 pending delayed emissions if a new notification arrives on the source Observable.
@@ -2576,34 +2654,30 @@ delay-like operator since output emissions do not necessarily occur at the
 same time as they did on the source Observable.
 
 ## Example
+
 Emit the most recent click after a burst of clicks
+
 ```ts
-import { fromEvent, interval } from 'rxjs';
-import { scan, debounce } from 'rxjs/operators';
+import { fromEvent, scan, debounce, interval } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const result = clicks.pipe(
-  scan((i) => ++i, 1),
-  debounce((i) => interval(200 * i))
+  scan(i => ++i, 1),
+  debounce(i => interval(200 * i))
 );
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [audit](RxJS.md#audit)
+**`See`**
 
-**`see`** [auditTime](RxJS.md#audittime)
-
-**`see`** [debounce](RxJS.md#debounce)
-
-**`see`** [delay](RxJS.md#delay)
-
-**`see`** [sample](RxJS.md#sample)
-
-**`see`** [sampleTime](RxJS.md#sampletime)
-
-**`see`** [throttle](RxJS.md#throttle)
-
-**`see`** [throttleTime](RxJS.md#throttletime)
+ - [audit](RxJS.md#audit)
+ - [auditTime](RxJS.md#audittime)
+ - [debounceTime](RxJS.md#debouncetime)
+ - [delay](RxJS.md#delay)
+ - [sample](RxJS.md#sample)
+ - [sampleTime](RxJS.md#sampletime)
+ - [throttle](RxJS.md#throttle)
+ - [throttleTime](RxJS.md#throttletime)
 
 #### Type parameters
 
@@ -2658,31 +2732,26 @@ they did on the source Observable. Optionally takes a [SchedulerLike](../interfa
 managing timers.
 
 ## Example
+
 Emit the most recent click after a burst of clicks
+
 ```ts
-import { fromEvent } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { fromEvent, debounceTime } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const result = clicks.pipe(debounceTime(1000));
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [audit](RxJS.md#audit)
+**`See`**
 
-**`see`** [auditTime](RxJS.md#audittime)
-
-**`see`** [debounce](RxJS.md#debounce)
-
-**`see`** [debounceTime](RxJS.md#debouncetime)
-
-**`see`** [sample](RxJS.md#sample)
-
-**`see`** [sampleTime](RxJS.md#sampletime)
-
-**`see`** [throttle](RxJS.md#throttle)
-
-**`see`** [throttleTime](RxJS.md#throttletime)
+ - [audit](RxJS.md#audit)
+ - [auditTime](RxJS.md#audittime)
+ - [debounce](RxJS.md#debounce)
+ - [sample](RxJS.md#sample)
+ - [sampleTime](RxJS.md#sampletime)
+ - [throttle](RxJS.md#throttle)
+ - [throttleTime](RxJS.md#throttletime)
 
 #### Type parameters
 
@@ -2695,7 +2764,7 @@ result.subscribe(x => console.log(x));
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `dueTime` | `number` | The timeout duration in milliseconds (or the time unit determined internally by the optional `scheduler`) for the window of time required to wait for emission silence before emitting the most recent source value. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | - |
+| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The [SchedulerLike](../interfaces/RxJS.SchedulerLike.md) to use for managing the timers that handle the timeout for each value. |
 
 #### Returns
 
@@ -2724,10 +2793,11 @@ specified default value if the source Observable is empty (completes without
 having emitted any `next` value).
 
 ## Example
-If no clicks happen in 5 seconds, then emit "no clicks"
+
+If no clicks happen in 5 seconds, then emit 'no clicks'
+
 ```ts
-import { fromEvent, interval } from 'rxjs';
-import { defaultIfEmpty, takeUntil } from 'rxjs/operators';
+import { fromEvent, takeUntil, interval, defaultIfEmpty } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const clicksBeforeFive = clicks.pipe(takeUntil(interval(5000)));
@@ -2735,9 +2805,10 @@ const result = clicksBeforeFive.pipe(defaultIfEmpty('no clicks'));
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [empty](RxJS.md#empty)
+**`See`**
 
-**`see`** [last](RxJS.md#last)
+ - [empty](RxJS.md#empty-1)
+ - [last](RxJS.md#last)
 
 #### Type parameters
 
@@ -2784,11 +2855,13 @@ Observable instead. Last but not least, an exception during the factory
 function call is transferred to the Observer by calling `error`.
 
 ## Example
-### Subscribe to either an Observable of clicks or an Observable of interval, at random
+
+Subscribe to either an Observable of clicks or an Observable of interval, at random
+
 ```ts
 import { defer, fromEvent, interval } from 'rxjs';
 
-const clicksOrInterval = defer(function () {
+const clicksOrInterval = defer(() => {
   return Math.random() > 0.5
     ? fromEvent(document, 'click')
     : interval(1000);
@@ -2802,7 +2875,9 @@ clicksOrInterval.subscribe(x => console.log(x));
 // than 0.5 it will emit ascending numbers, one every second(1000ms).
 ```
 
-**`see`** [Observable](../classes/RxJS.Observable.md)
+**`See`**
+
+[Observable](../classes/RxJS.Observable.md)
 
 #### Type parameters
 
@@ -2835,7 +2910,7 @@ until a given Date.
 <span class="informal">Time shifts each item by some specified amount of
 milliseconds.</span>
 
-![](delay.png)
+![](delay.svg)
 
 If the delay argument is a Number, this operator time shifts the source
 Observable by that amount of time expressed in milliseconds. The relative
@@ -2845,10 +2920,11 @@ If the delay argument is a Date, this operator time shifts the start of the
 Observable execution until the given date occurs.
 
 ## Examples
+
 Delay each click by one second
+
 ```ts
-import { fromEvent } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { fromEvent, delay } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const delayedClicks = clicks.pipe(delay(1000)); // each click emitted after 1 second
@@ -2856,9 +2932,9 @@ delayedClicks.subscribe(x => console.log(x));
 ```
 
 Delay all clicks until a future date happens
+
 ```ts
-import { fromEvent } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { fromEvent, delay } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const date = new Date('March 15, 2050 12:00:00'); // in the future
@@ -2866,23 +2942,17 @@ const delayedClicks = clicks.pipe(delay(date)); // click emitted only after that
 delayedClicks.subscribe(x => console.log(x));
 ```
 
-**`see`** [delayWhen](RxJS.md#delaywhen)
+**`See`**
 
-**`see`** [throttle](RxJS.md#throttle)
-
-**`see`** [throttleTime](RxJS.md#throttletime)
-
-**`see`** [debounce](RxJS.md#debounce)
-
-**`see`** [debounceTime](RxJS.md#debouncetime)
-
-**`see`** [sample](RxJS.md#sample)
-
-**`see`** [sampleTime](RxJS.md#sampletime)
-
-**`see`** [audit](RxJS.md#audit)
-
-**`see`** [auditTime](RxJS.md#audittime)
+ - [delayWhen](RxJS.md#delaywhen)
+ - [throttle](RxJS.md#throttle)
+ - [throttleTime](RxJS.md#throttletime)
+ - [debounce](RxJS.md#debounce)
+ - [debounceTime](RxJS.md#debouncetime)
+ - [sample](RxJS.md#sample)
+ - [sampleTime](RxJS.md#sampletime)
+ - [audit](RxJS.md#audit)
+ - [auditTime](RxJS.md#audittime)
 
 #### Type parameters
 
@@ -2895,7 +2965,7 @@ delayedClicks.subscribe(x => console.log(x));
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `due` | `number` \| `Date` | The delay duration in milliseconds (a `number`) or a `Date` until which the emission of the source items is delayed. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | - |
+| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The [SchedulerLike](../interfaces/RxJS.SchedulerLike.md) to use for managing the timers that handle the time-shift for each item. |
 
 #### Returns
 
@@ -2910,7 +2980,9 @@ ___
 
 ▸ **delayWhen**<`T`\>(`delayDurationSelector`, `subscriptionDelay`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
-**`deprecated`** The `subscriptionDelay` parameter will be removed in v8.
+**`Deprecated`**
+
+The `subscriptionDelay` parameter will be removed in v8.
 
 #### Type parameters
 
@@ -2922,7 +2994,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `delayDurationSelector` | (`value`: `T`, `index`: `number`) => [`Observable`](../classes/RxJS.Observable.md)<`any`\> |
+| `delayDurationSelector` | (`value`: `T`, `index`: `number`) => [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
 | `subscriptionDelay` | [`Observable`](../classes/RxJS.Observable.md)<`any`\> |
 
 #### Returns
@@ -2941,7 +3013,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `delayDurationSelector` | (`value`: `T`, `index`: `number`) => [`Observable`](../classes/RxJS.Observable.md)<`any`\> |
+| `delayDurationSelector` | (`value`: `T`, `index`: `number`) => [`ObservableInput`](RxJS.md#observableinput)<`any`\> |
 
 #### Returns
 
@@ -2974,19 +3046,18 @@ Use this operator in conjunction with [materialize](RxJS.md#materialize).
 Convert an Observable of Notifications to an actual Observable
 
 ```ts
-import { of } from 'rxjs';
-import { dematerialize } from 'rxjs/operators';
+import { NextNotification, ErrorNotification, of, dematerialize } from 'rxjs';
 
-const notifA = { kind: 'N', value: 'A' };
-const notifB = { kind: 'N', value: 'B' };
-const notifE = { kind: 'E', error: new TypeError('x.toUpperCase is not a function') }
+const notifA: NextNotification<string> = { kind: 'N', value: 'A' };
+const notifB: NextNotification<string> = { kind: 'N', value: 'B' };
+const notifE: ErrorNotification = { kind: 'E', error: new TypeError('x.toUpperCase is not a function') };
 
 const materialized = of(notifA, notifB, notifE);
 
 const upperCase = materialized.pipe(dematerialize());
 upperCase.subscribe({
-   next: x => console.log(x),
-   error: e => console.error(e)
+  next: x => console.log(x),
+  error: e => console.error(e)
 });
 
 // Results in:
@@ -2995,7 +3066,9 @@ upperCase.subscribe({
 // TypeError: x.toUpperCase is not a function
 ```
 
-**`see`** [materialize](RxJS.md#materialize)
+**`See`**
+
+[materialize](RxJS.md#materialize)
 
 #### Type parameters
 
@@ -3019,8 +3092,8 @@ ___
 
 Returns an Observable that emits all items emitted by the source Observable that are distinct by comparison from previous items.
 
-If a keySelector function is provided, then it will project each value from the source observable into a new value that it will
-check for equality with previously projected values. If a keySelector function is not provided, it will use each value from the
+If a `keySelector` function is provided, then it will project each value from the source observable into a new value that it will
+check for equality with previously projected values. If the `keySelector` function is not provided, it will use each value from the
 source observable directly with an equality check against previous values.
 
 In JavaScript runtimes that support `Set`, this operator will use a `Set` to improve performance of the distinct value checking.
@@ -3035,13 +3108,10 @@ that the internal `Set` can be "flushed", basically clearing it of values.
 A simple example with numbers
 
 ```ts
-import { of } from 'rxjs';
-import { distinct } from 'rxjs/operators';
+import { of, distinct } from 'rxjs';
 
 of(1, 1, 2, 2, 2, 1, 2, 3, 4, 3, 2, 1)
-  .pipe(
-    distinct()
-  )
+  .pipe(distinct())
   .subscribe(x => console.log(x));
 
 // Outputs
@@ -3051,34 +3121,28 @@ of(1, 1, 2, 2, 2, 1, 2, 3, 4, 3, 2, 1)
 // 4
 ```
 
-An example using a keySelector function
+An example using the `keySelector` function
 
 ```ts
-import { of } from 'rxjs';
-import { distinct } from 'rxjs/operators';
-
-interface Person {
-   age: number,
-   name: string
-}
+import { of, distinct } from 'rxjs';
 
 of(
-    { age: 4, name: 'Foo'},
-    { age: 7, name: 'Bar'},
-    { age: 5, name: 'Foo'}
-  ).pipe(
-    distinct((p: Person) => p.name)
-  )
-  .subscribe(x => console.log(x));
+  { age: 4, name: 'Foo'},
+  { age: 7, name: 'Bar'},
+  { age: 5, name: 'Foo'}
+)
+.pipe(distinct(({ name }) => name))
+.subscribe(x => console.log(x));
 
 // Outputs
 // { age: 4, name: 'Foo' }
 // { age: 7, name: 'Bar' }
 ```
 
-**`see`** [distinctUntilChanged](RxJS.md#distinctuntilchanged)
+**`See`**
 
-**`see`** [distinctUntilKeyChanged](RxJS.md#distinctuntilkeychanged)
+ - [distinctUntilChanged](RxJS.md#distinctuntilchanged)
+ - [distinctUntilKeyChanged](RxJS.md#distinctuntilkeychanged)
 
 #### Type parameters
 
@@ -3089,10 +3153,10 @@ of(
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `keySelector?` | (`value`: `T`) => `K` |
-| `flushes?` | [`Observable`](../classes/RxJS.Observable.md)<`any`\> |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `keySelector?` | (`value`: `T`) => `K` | Optional `function` to select which value you want to check as distinct. |
+| `flushes?` | [`ObservableInput`](RxJS.md#observableinput)<`any`\> | Optional `ObservableInput` for flushing the internal HashSet of the operator. |
 
 #### Returns
 
@@ -3107,90 +3171,6 @@ ___
 
 ▸ **distinctUntilChanged**<`T`\>(`comparator?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
-Returns a result [Observable](../classes/RxJS.Observable.md) that emits all values pushed by the source observable if they
-are distinct in comparison to the last value the result observable emitted.
-
-1. It will always emit the first value from the source.
-2. For all subsequent values pushed by the source, they will be compared to the previously emitted values
-   using the provided `comparator` or an `===` equality check.
-3. If the value pushed by the source is determined to be unequal by this check, that value is emitted and
-   becomes the new "previously emitted value" internally.
-
-## Example
-
-A very basic example with no `comparator`. Note that `1` is emitted more than once,
-because it's distinct in comparison to the _previously emitted_ value,
-not in comparison to _all other emitted values_.
-
-```ts
-import { of } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
-
-of(1, 1, 1, 2, 2, 2, 1, 1, 3, 3).pipe(
- distinctUntilChanged()
-)
-.subscribe(console.log);
-// Logs: 1, 2, 1, 3
-```
-
-## Example
-
-With a `comparator`, you can do custom comparisons. Let's say
-you only want to emit a value when all of its components have
-changed:
-
-```ts
-import { of } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
-
-const totallyDifferentBuilds$ = of(
-  { engineVersion: '1.1.0', transmissionVersion: '1.2.0' },
-  { engineVersion: '1.1.0', transmissionVersion: '1.4.0' },
-  { engineVersion: '1.3.0', transmissionVersion: '1.4.0' },
-  { engineVersion: '1.3.0', transmissionVersion: '1.5.0' },
-  { engineVersion: '2.0.0', transmissionVersion: '1.5.0' }
-).pipe(
-  distinctUntilChanged((prev, curr) => {
-    return (
-      prev.engineVersion === curr.engineVersion ||
-      prev.transmissionVersion === curr.transmissionVersion
-    );
-  })
-);
-
-totallyDifferentBuilds$.subscribe(console.log);
-
-// Logs:
-// {engineVersion: "1.1.0", transmissionVersion: "1.2.0"}
-// {engineVersion: "1.3.0", transmissionVersion: "1.4.0"}
-// {engineVersion: "2.0.0", transmissionVersion: "1.5.0"}
-```
-
-## Example
-
-You can also provide a custom `comparator` to check that emitted
-changes are only in one direction. Let's say you only want to get
-the next record temperature:
-
-```ts
-import { of } from "rxjs";
-import { distinctUntilChanged } from "rxjs/operators";
-
-const temps$ = of(30, 31, 20, 34, 33, 29, 35, 20);
-
-const recordHighs$ = temps$.pipe(
-  distinctUntilChanged((prevHigh, temp) => {
-    // If the current temp is less than
-    // or the same as the previous record,
-    // the record hasn't changed.
-    return temp <= prevHigh;
-  })
-);
-
-recordHighs$.subscribe(console.log);
-// Logs: 30, 31, 34, 35
-```
-
 #### Type parameters
 
 | Name |
@@ -3199,55 +3179,15 @@ recordHighs$.subscribe(console.log);
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `comparator?` | (`previous`: `T`, `current`: `T`) => `boolean` | A function used to compare the previous and current values for equality. Defaults to a `===` check. |
+| Name | Type |
+| :------ | :------ |
+| `comparator?` | (`previous`: `T`, `current`: `T`) => `boolean` |
 
 #### Returns
 
 [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
-A function that returns an Observable that emits items from the
-source Observable with distinct values.
-
 ▸ **distinctUntilChanged**<`T`, `K`\>(`comparator`, `keySelector`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-Returns a result [Observable](../classes/RxJS.Observable.md) that emits all values pushed by the source observable if they
-are distinct in comparison to the last value the result observable emitted.
-
-1. It will always emit the first value from the source.
-2. The `keySelector` will be run against all values, including the first value.
-3. For all values after the first, the selected key will be compared against the key selected from
-   the previously emitted value using the `comparator`.
-4. If the keys are determined to be unequal by this check, the value (not the key), is emitted
-   and the selected key from that value is saved for future comparisons against other keys.
-
-## Example
-
-Selecting update events only when the `updatedBy` field shows
-the account changed hands...
-
-```ts
-// A stream of updates to a given account
-const accountUpdates$ = of(
-  { updatedBy: "blesh", data: [] },
-  { updatedBy: "blesh", data: [] },
-  { updatedBy: "ncjamieson", data: [] },
-  { updatedBy: "ncjamieson", data: [] },
-  { updatedBy: "blesh", data: [] }
-);
-
-// We only want the events where it changed hands
-const changedHands$ = accountUpdates$.pipe(
-  distinctUntilChanged(undefined, update => update.updatedBy)
-);
-
-changedHands$.subscribe(console.log);
-// Logs:
-// {updatedBy: "blesh", data: Array[0]}
-// {updatedBy: "ncjamieson", data: Array[0]}
-// {updatedBy: "blesh", data: Array[0]}
-```
 
 #### Type parameters
 
@@ -3258,17 +3198,14 @@ changedHands$.subscribe(console.log);
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `comparator` | (`previous`: `K`, `current`: `K`) => `boolean` | A function used to compare the previous and current keys for equality. Defaults to a `===` check. |
-| `keySelector` | (`value`: `T`) => `K` | Used to select a key value to be passed to the `comparator`. |
+| Name | Type |
+| :------ | :------ |
+| `comparator` | (`previous`: `K`, `current`: `K`) => `boolean` |
+| `keySelector` | (`value`: `T`) => `K` |
 
 #### Returns
 
 [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-A function that returns an Observable that emits items from the
-source Observable with distinct values.
 
 ___
 
@@ -3332,10 +3269,11 @@ not given and the `index` is out of range, the output Observable will emit an
 `ArgumentOutOfRangeError` error.
 
 ## Example
+
 Emit only the third click event
+
 ```ts
-import { fromEvent } from 'rxjs';
-import { elementAt } from 'rxjs/operators';
+import { fromEvent, elementAt } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const result = clicks.pipe(elementAt(2));
@@ -3347,17 +3285,17 @@ result.subscribe(x => console.log(x));
 // click 3 = MouseEvent object logged to console
 ```
 
-**`see`** [first](RxJS.md#first)
+**`See`**
 
-**`see`** [last](RxJS.md#last)
+ - [first](RxJS.md#first)
+ - [last](RxJS.md#last)
+ - [skip](RxJS.md#skip)
+ - [single](RxJS.md#single)
+ - [take](RxJS.md#take)
 
-**`see`** [skip](RxJS.md#skip)
+**`Throws`**
 
-**`see`** [single](RxJS.md#single)
-
-**`see`** [take](RxJS.md#take)
-
-**`throws`** {ArgumentOutOfRangeError} When using `elementAt(i)`, it delivers an
+When using `elementAt(i)`, it delivers an
 ArgumentOutOfRangeError to the Observer's `error` callback if `i < 0` or the
 Observable has completed before emitting the i-th `next` notification.
 
@@ -3373,7 +3311,7 @@ Observable has completed before emitting the i-th `next` notification.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `index` | `number` | Is the number `i` for the i-th source emission that has happened since the subscription, starting from the number `0`. |
-| `defaultValue?` | `D` | - |
+| `defaultValue?` | `D` | The default value returned for missing indices. |
 
 #### Returns
 
@@ -3389,60 +3327,9 @@ ___
 
 ▸ **empty**(`scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<`never`\>
 
-Creates an Observable that emits no items to the Observer and immediately
-emits a complete notification.
+**`Deprecated`**
 
-<span class="informal">Just emits 'complete', and nothing else.</span>
-
-![](empty.png)
-
-This static operator is useful for creating a simple Observable that only
-emits the complete notification. It can be used for composing with other
-Observables, such as in a [mergeMap](RxJS.md#mergemap).
-
-## Examples
-
-### Emit the number 7, then complete
-
-```ts
-import { empty } from 'rxjs';
-import { startWith } from 'rxjs/operators';
-
-const result = empty().pipe(startWith(7));
-result.subscribe(x => console.log(x));
-
-// Outputs
-// 7
-```
-
-### Map and flatten only odd numbers to the sequence 'a', 'b', 'c'
-
-```ts
-import { empty, interval, of } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
-
-const interval$ = interval(1000);
-const result = interval$.pipe(
-  mergeMap(x => x % 2 === 1 ? of('a', 'b', 'c') : empty()),
-);
-result.subscribe(x => console.log(x));
-
-// Results in the following to the console:
-// x is equal to the count on the interval, e.g. (0, 1, 2, 3, ...)
-// x will occur every 1000ms
-// if x % 2 is equal to 1, print a, b, c (each on its own)
-// if x % 2 is not equal to 1, nothing will be output
-```
-
-**`see`** [Observable](../classes/RxJS.Observable.md)
-
-**`see`** [never](RxJS.md#never)
-
-**`see`** [of](RxJS.md#of)
-
-**`see`** [throwError](RxJS.md#throwerror)
-
-**`deprecated`** Replaced with the [EMPTY](RxJS.md#empty) constant or [scheduled](RxJS.md#scheduled) (e.g. `scheduled([], scheduler)`). Will be removed in v8.
+Replaced with the [EMPTY](RxJS.md#empty) constant or [scheduled](RxJS.md#scheduled) (e.g. `scheduled([], scheduler)`). Will be removed in v8.
 
 #### Parameters
 
@@ -3454,16 +3341,15 @@ result.subscribe(x => console.log(x));
 
 [`Observable`](../classes/RxJS.Observable.md)<`never`\>
 
-An "empty" Observable: emits only the complete
-notification.
-
 ___
 
 ### endWith
 
 ▸ **endWith**<`T`\>(`scheduler`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `concatAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
+**`Deprecated`**
+
+The `scheduler` parameter will be removed in v8. Use `scheduled` and `concatAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
 #### Type parameters
 
@@ -3481,9 +3367,11 @@ ___
 
 [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
-▸ **endWith**<`T`, `A`\>(...`valuesAndScheduler`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+▸ **endWith**<`T`, `A`\>(`...valuesAndScheduler`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `concatAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
+**`Deprecated`**
+
+The `scheduler` parameter will be removed in v8. Use `scheduled` and `concatAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
 #### Type parameters
 
@@ -3502,7 +3390,7 @@ ___
 
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
 
-▸ **endWith**<`T`, `A`\>(...`values`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+▸ **endWith**<`T`, `A`\>(`...values`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
 
 #### Type parameters
 
@@ -3545,7 +3433,9 @@ ___
 
 ▸ **every**<`T`\>(`predicate`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `Exclude`<`T`, [`Falsy`](RxJS.md#falsy)\> extends `never` ? ``false`` : `boolean`\>
 
-**`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
+**`Deprecated`**
+
+Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
 #### Type parameters
 
@@ -3566,7 +3456,9 @@ ___
 
 ▸ **every**<`T`, `A`\>(`predicate`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `boolean`\>
 
-**`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
+**`Deprecated`**
+
+Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
 #### Type parameters
 
@@ -3610,7 +3502,9 @@ ___
 
 ▸ **exhaust**<`O`\>(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`O`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** Renamed to [exhaustAll](RxJS.md#exhaustall). Will be removed in v8.
+**`Deprecated`**
+
+Renamed to [exhaustAll](RxJS.md#exhaustall). Will be removed in v8.
 
 #### Type parameters
 
@@ -3636,41 +3530,38 @@ next inner Observables while the current inner is still executing.</span>
 
 ![](exhaust.png)
 
-`exhaust` subscribes to an Observable that emits Observables, also known as a
+`exhaustAll` subscribes to an Observable that emits Observables, also known as a
 higher-order Observable. Each time it observes one of these emitted inner
 Observables, the output Observable begins emitting the items emitted by that
 inner Observable. So far, it behaves like [mergeAll](RxJS.md#mergeall). However,
-`exhaust` ignores every new inner Observable if the previous Observable has
+`exhaustAll` ignores every new inner Observable if the previous Observable has
 not yet completed. Once that one completes, it will accept and flatten the
 next inner Observable and repeat this process.
 
 ## Example
+
 Run a finite timer for each click, only if there is no currently active timer
+
 ```ts
-import { fromEvent, interval } from 'rxjs';
-import { exhaustAll, map, take } from 'rxjs/operators';
+import { fromEvent, map, interval, take, exhaustAll } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const higherOrder = clicks.pipe(
-  map((ev) => interval(1000).pipe(take(5))),
+  map(() => interval(1000).pipe(take(5)))
 );
 const result = higherOrder.pipe(exhaustAll());
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [combineLatestAll](RxJS.md#combinelatestall)
+**`See`**
 
-**`see`** [concatAll](RxJS.md#concatall)
-
-**`see`** [switchAll](RxJS.md#switchall)
-
-**`see`** [switchMap](RxJS.md#switchmap)
-
-**`see`** [mergeAll](RxJS.md#mergeall)
-
-**`see`** [exhaustMap](RxJS.md#exhaustmap)
-
-**`see`** [zipAll](RxJS.md#zipall)
+ - [combineLatestAll](RxJS.md#combinelatestall)
+ - [concatAll](RxJS.md#concatall)
+ - [switchAll](RxJS.md#switchall)
+ - [switchMap](RxJS.md#switchmap)
+ - [mergeAll](RxJS.md#mergeall)
+ - [exhaustMap](RxJS.md#exhaustmap)
+ - [zipAll](RxJS.md#zipall)
 
 #### Type parameters
 
@@ -3692,8 +3583,6 @@ ___
 
 ▸ **exhaustMap**<`T`, `O`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
-
 #### Type parameters
 
 | Name | Type |
@@ -3713,7 +3602,9 @@ ___
 
 ▸ **exhaustMap**<`T`, `O`\>(`project`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
 #### Type parameters
 
@@ -3735,7 +3626,9 @@ ___
 
 ▸ **exhaustMap**<`T`, `I`, `R`\>(`project`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
 #### Type parameters
 
@@ -3762,10 +3655,6 @@ ___
 
 ▸ **expand**<`T`, `O`\>(`project`, `concurrent?`, `scheduler?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. If you need to schedule the inner subscription,
-use `subscribeOn` within the projection function: `expand((value) => fn(value).pipe(subscribeOn(scheduler)))`.
-Details: Details: https://rxjs.dev/deprecations/scheduler-argument
-
 #### Type parameters
 
 | Name | Type |
@@ -3787,7 +3676,9 @@ Details: Details: https://rxjs.dev/deprecations/scheduler-argument
 
 ▸ **expand**<`T`, `O`\>(`project`, `concurrent`, `scheduler`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. If you need to schedule the inner subscription,
+**`Deprecated`**
+
+The `scheduler` parameter will be removed in v8. If you need to schedule the inner subscription,
 use `subscribeOn` within the projection function: `expand((value) => fn(value).pipe(subscribeOn(scheduler)))`.
 Details: Details: https://rxjs.dev/deprecations/scheduler-argument
 
@@ -3816,7 +3707,9 @@ ___
 
 ▸ **filter**<`T`, `S`, `A`\>(`predicate`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S`\>
 
-**`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
+**`Deprecated`**
+
+Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
 #### Type parameters
 
@@ -3876,7 +3769,9 @@ ___
 
 ▸ **filter**<`T`, `A`\>(`predicate`, `thisArg`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
-**`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
+**`Deprecated`**
+
+Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
 #### Type parameters
 
@@ -3925,50 +3820,55 @@ the source terminates on complete or error.
 The specified function will also be called when the subscriber explicitly unsubscribes.
 
 ## Examples
+
 Execute callback function when the observable completes
 
 ```ts
-import { interval } from 'rxjs';
-import { take, finalize } from 'rxjs/operators';
+import { interval, take, finalize } from 'rxjs';
 
 // emit value in sequence every 1 second
 const source = interval(1000);
 const example = source.pipe(
   take(5), //take only the first 5 values
   finalize(() => console.log('Sequence complete')) // Execute when the observable completes
-)
+);
 const subscribe = example.subscribe(val => console.log(val));
 
 // results:
-//   0
-//   1
-//   2
-//   3
-//   4
-//   'Sequence complete'
+// 0
+// 1
+// 2
+// 3
+// 4
+// 'Sequence complete'
 ```
 
 Execute callback function when the subscriber explicitly unsubscribes
 
 ```ts
-import { interval, timer, noop } from 'rxjs';
-import { finalize, tap } from 'rxjs/operators';
+import { interval, finalize, tap, noop, timer } from 'rxjs';
 
 const source = interval(100).pipe(
   finalize(() => console.log('[finalize] Called')),
-   tap(() => console.log('[next] Called'),
-     () => console.log('[error] Not called'),
-     () => console.log('[tap] Not called')),
+  tap({
+    next: () => console.log('[next] Called'),
+    error: () => console.log('[error] Not called'),
+    complete: () => console.log('[tap complete] Not called')
+  })
 );
 
-const sub = source.subscribe(x => console.log(x), noop, () => console.log('[complete] Not called'));
+const sub = source.subscribe({
+  next: x => console.log(x),
+  error: noop,
+  complete: () => console.log('[complete] Not called')
+});
 
 timer(150).subscribe(() => sub.unsubscribe());
 
 // results:
-//   '[next] Called'
-//   0
-//   '[finalize] Called'
+// '[next] Called'
+// 0
+// '[finalize] Called'
 ```
 
 #### Type parameters
@@ -4014,7 +3914,9 @@ ___
 
 ▸ **find**<`T`, `S`, `A`\>(`predicate`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S` \| `undefined`\>
 
-**`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
+**`Deprecated`**
+
+Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
 #### Type parameters
 
@@ -4056,7 +3958,9 @@ ___
 
 ▸ **find**<`T`, `A`\>(`predicate`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `undefined`\>
 
-**`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
+**`Deprecated`**
+
+Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
 #### Type parameters
 
@@ -4118,7 +4022,9 @@ ___
 
 ▸ **findIndex**<`T`\>(`predicate`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` extends [`Falsy`](RxJS.md#falsy) ? ``-1`` : `number`\>
 
-**`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
+**`Deprecated`**
+
+Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
 #### Type parameters
 
@@ -4139,7 +4045,9 @@ ___
 
 ▸ **findIndex**<`T`, `A`\>(`predicate`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `number`\>
 
-**`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
+**`Deprecated`**
+
+Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
 #### Type parameters
 
@@ -4348,7 +4256,9 @@ ___
 
 ▸ **flatMap**<`T`, `O`\>(`project`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** Renamed to [mergeMap](RxJS.md#mergemap). Will be removed in v8.
+**`Deprecated`**
+
+Renamed to [mergeMap](RxJS.md#mergemap). Will be removed in v8.
 
 #### Type parameters
 
@@ -4370,7 +4280,9 @@ ___
 
 ▸ **flatMap**<`T`, `O`\>(`project`, `resultSelector`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** Renamed to [mergeMap](RxJS.md#mergemap). Will be removed in v8.
+**`Deprecated`**
+
+Renamed to [mergeMap](RxJS.md#mergemap). Will be removed in v8.
 
 #### Type parameters
 
@@ -4393,7 +4305,9 @@ ___
 
 ▸ **flatMap**<`T`, `R`, `O`\>(`project`, `resultSelector`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
 
-**`deprecated`** Renamed to [mergeMap](RxJS.md#mergemap). Will be removed in v8.
+**`Deprecated`**
+
+Renamed to [mergeMap](RxJS.md#mergemap). Will be removed in v8.
 
 #### Type parameters
 
@@ -4502,9 +4416,11 @@ an array or an object, so you're getting `unknown`. Use better types.
 
 [`Observable`](../classes/RxJS.Observable.md)<`R`\>
 
-▸ **forkJoin**<`A`\>(...`sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
+▸ **forkJoin**<`A`\>(`...sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
 
-**`deprecated`** Pass an array of sources instead. The rest-parameters signature will be removed in v8. Details: https://rxjs.dev/deprecations/array-argument
+**`Deprecated`**
+
+Pass an array of sources instead. The rest-parameters signature will be removed in v8. Details: https://rxjs.dev/deprecations/array-argument
 
 #### Type parameters
 
@@ -4522,9 +4438,11 @@ an array or an object, so you're getting `unknown`. Use better types.
 
 [`Observable`](../classes/RxJS.Observable.md)<`A`\>
 
-▸ **forkJoin**<`A`, `R`\>(...`sourcesAndResultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+▸ **forkJoin**<`A`, `R`\>(`...sourcesAndResultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
 
-**`deprecated`** Pass an array of sources instead. The rest-parameters signature will be removed in v8. Details: https://rxjs.dev/deprecations/array-argument
+**`Deprecated`**
+
+Pass an array of sources instead. The rest-parameters signature will be removed in v8. Details: https://rxjs.dev/deprecations/array-argument
 
 #### Type parameters
 
@@ -4579,8 +4497,6 @@ ___
 
 ▸ **from**<`O`\>(`input`): [`Observable`](../classes/RxJS.Observable.md)<[`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: https://rxjs.dev/deprecations/scheduler-argument
-
 #### Type parameters
 
 | Name | Type |
@@ -4599,7 +4515,9 @@ ___
 
 ▸ **from**<`O`\>(`input`, `scheduler`): [`Observable`](../classes/RxJS.Observable.md)<[`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: https://rxjs.dev/deprecations/scheduler-argument
+**`Deprecated`**
+
+The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
 #### Type parameters
 
@@ -4612,7 +4530,7 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `input` | `O` |
-| `scheduler` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+| `scheduler` | `undefined` \| [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
 
 #### Returns
 
@@ -4719,7 +4637,9 @@ ___
 
 ▸ **fromEvent**<`T`\>(`target`, `eventName`): [`Observable`](../classes/RxJS.Observable.md)<`T`\>
 
-**`deprecated`** Do not specify explicit type parameters. Signatures with type parameters that cannot be inferred will be removed in v8.
+**`Deprecated`**
+
+Do not specify explicit type parameters. Signatures with type parameters that cannot be inferred will be removed in v8.
 
 #### Type parameters
 
@@ -4773,7 +4693,9 @@ ___
 
 ▸ **fromEvent**<`T`\>(`target`, `eventName`): [`Observable`](../classes/RxJS.Observable.md)<`T`\>
 
-**`deprecated`** Do not specify explicit type parameters. Signatures with type parameters that cannot be inferred will be removed in v8.
+**`Deprecated`**
+
+Do not specify explicit type parameters. Signatures with type parameters that cannot be inferred will be removed in v8.
 
 #### Type parameters
 
@@ -4909,7 +4831,7 @@ to send out observer messages.
 
 ## Examples
 
-### Produces sequences of number
+Produces sequence of numbers
 
 ```ts
 import { generate } from 'rxjs';
@@ -4924,12 +4846,12 @@ result.subscribe(x => console.log(x));
 // 2
 ```
 
-### Use asap scheduler
+Use `asapScheduler`
 
 ```ts
-import { generate } from 'rxjs';
+import { generate, asapScheduler } from 'rxjs';
 
-const result = generate(1, x => x < 5, x => x * 2, x => x + 1, asap);
+const result = generate(1, x => x < 5, x => x * 2, x => x + 1, asapScheduler);
 
 result.subscribe(x => console.log(x));
 
@@ -4939,11 +4861,14 @@ result.subscribe(x => console.log(x));
 // 5
 ```
 
-**`see`** [from](RxJS.md#from)
+**`See`**
 
-**`see`** [Observable](../classes/RxJS.Observable.md)
+ - [from](RxJS.md#from)
+ - [Observable](../classes/RxJS.Observable.md)
 
-**`deprecated`** Instead of passing separate arguments, use the options argument. Signatures taking separate arguments will be removed in v8.
+**`Deprecated`**
+
+Instead of passing separate arguments, use the options argument. Signatures taking separate arguments will be removed in v8.
 
 #### Type parameters
 
@@ -4960,7 +4885,7 @@ result.subscribe(x => console.log(x));
 | `condition` | `ConditionFunc`<`S`\> | Condition to terminate generation (upon returning false). |
 | `iterate` | `IterateFunc`<`S`\> | Iteration step function. |
 | `resultSelector` | `ResultFunc`<`S`, `T`\> | Selector function for results produced in the sequence. (deprecated) |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | - |
+| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | A [SchedulerLike](../interfaces/RxJS.SchedulerLike.md) on which to run the generator loop. If not provided, defaults to emit immediately. |
 
 #### Returns
 
@@ -5014,7 +4939,7 @@ by default (when no scheduler is passed) values are simply emitted synchronously
 
 ## Examples
 
-### Use with condition and iterate functions
+Use with condition and iterate functions
 
 ```ts
 import { generate } from 'rxjs';
@@ -5030,10 +4955,10 @@ result.subscribe({
 // 0
 // 1
 // 2
-// "Complete!"
+// 'Complete!'
 ```
 
-### Use with condition, iterate and resultSelector functions
+Use with condition, iterate and resultSelector functions
 
 ```ts
 import { generate } from 'rxjs';
@@ -5042,17 +4967,17 @@ const result = generate(0, x => x < 3, x => x + 1, x => x * 1000);
 
 result.subscribe({
   next: value => console.log(value),
-  complete: () => console.log('complete!')
+  complete: () => console.log('Complete!')
 });
 
 // Logs:
 // 0
 // 1000
 // 2000
-// "complete!"
+// 'Complete!'
 ```
 
-### Use with options object
+Use with options object
 
 ```ts
 import { generate } from 'rxjs';
@@ -5066,17 +4991,17 @@ const result = generate({
 
 result.subscribe({
   next: value => console.log(value),
-  complete: () => console.log('complete!')
+  complete: () => console.log('Complete!')
 });
 
 // Logs:
 // 0
 // 1000
 // 2000
-// "Complete!"
+// 'Complete!'
 ```
 
-### Use options object without condition function
+Use options object without condition function
 
 ```ts
 import { generate } from 'rxjs';
@@ -5089,7 +5014,7 @@ const result = generate({
 
 result.subscribe({
   next: value => console.log(value),
-  complete: () => console.log('complete!') // This will never run
+  complete: () => console.log('Complete!') // This will never run
 });
 
 // Logs:
@@ -5100,11 +5025,13 @@ result.subscribe({
 // ...and never stops.
 ```
 
-**`see`** [from](RxJS.md#from)
+**`See`**
 
-**`see`** {@link index/Observable.create}
+[from](RxJS.md#from)
 
-**`deprecated`** Instead of passing separate arguments, use the options argument. Signatures taking separate arguments will be removed in v8.
+**`Deprecated`**
+
+Instead of passing separate arguments, use the options argument. Signatures taking separate arguments will be removed in v8.
 
 #### Type parameters
 
@@ -5119,7 +5046,7 @@ result.subscribe({
 | `initialState` | `S` | Initial state. |
 | `condition` | `ConditionFunc`<`S`\> | Condition to terminate generation (upon returning false). |
 | `iterate` | `IterateFunc`<`S`\> | Iteration step function. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | - |
+| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | A [Scheduler](../classes/RxJS.Scheduler.md) on which to run the generator loop. If not provided, defaults to emitting immediately. |
 
 #### Returns
 
@@ -5139,7 +5066,7 @@ condition and scheduler.
 
 ## Examples
 
-### Use options object with condition function
+Use options object with condition function
 
 ```ts
 import { generate } from 'rxjs';
@@ -5147,24 +5074,25 @@ import { generate } from 'rxjs';
 const result = generate({
   initialState: 0,
   condition: x => x < 3,
-  iterate: x => x + 1,
+  iterate: x => x + 1
 });
 
 result.subscribe({
   next: value => console.log(value),
-  complete: () => console.log('complete!')
+  complete: () => console.log('Complete!')
 });
 
 // Logs:
 // 0
 // 1
 // 2
-// "Complete!".
+// 'Complete!'
 ```
 
-**`see`** [from](RxJS.md#from)
+**`See`**
 
-**`see`** [Observable](../classes/RxJS.Observable.md)
+ - [from](RxJS.md#from)
+ - [Observable](../classes/RxJS.Observable.md)
 
 #### Type parameters
 
@@ -5196,7 +5124,7 @@ condition, result selector and scheduler.
 
 ## Examples
 
-### Use options object with condition and iterate function
+Use options object with condition and iterate function
 
 ```ts
 import { generate } from 'rxjs';
@@ -5205,24 +5133,25 @@ const result = generate({
   initialState: 0,
   condition: x => x < 3,
   iterate: x => x + 1,
-  resultSelector: x => x,
+  resultSelector: x => x
 });
 
 result.subscribe({
   next: value => console.log(value),
-  complete: () => console.log('complete!')
+  complete: () => console.log('Complete!')
 });
 
 // Logs:
 // 0
 // 1
 // 2
-// "Complete!".
+// 'Complete!'
 ```
 
-**`see`** [from](RxJS.md#from)
+**`See`**
 
-**`see`** [Observable](../classes/RxJS.Observable.md)
+ - [from](RxJS.md#from)
+ - [Observable](../classes/RxJS.Observable.md)
 
 #### Type parameters
 
@@ -5249,83 +5178,6 @@ ___
 
 ▸ **groupBy**<`T`, `K`\>(`key`, `options`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `T`\>\>
 
-Groups the items emitted by an Observable according to a specified criterion,
-and emits these grouped items as `GroupedObservables`, one
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) per group.
-
-![](groupBy.png)
-
-When the Observable emits an item, a key is computed for this item with the key function.
-
-If a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key exists, this [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) emits. Otherwise, a new
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key is created and emits.
-
-A [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) represents values belonging to the same group represented by a common key. The common
-key is available as the `key` field of a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) instance.
-
-The elements emitted by [GroupedObservable](../interfaces/RxJS.GroupedObservable.md)s are by default the items emitted by the Observable, or elements
-returned by the element function.
-
-## Examples
-
-### Group objects by id and return as array
-
-```ts
-import { of } from 'rxjs';
-import { mergeMap, groupBy, reduce } from 'rxjs/operators';
-
-of(
-  {id: 1, name: 'JavaScript'},
-  {id: 2, name: 'Parcel'},
-  {id: 2, name: 'webpack'},
-  {id: 1, name: 'TypeScript'},
-  {id: 3, name: 'TSLint'}
-).pipe(
-  groupBy(p => p.id),
-  mergeMap((group$) => group$.pipe(reduce((acc, cur) => [...acc, cur], [])))
-)
-.subscribe(p => console.log(p));
-
-// displays:
-// [ { id: 1, name: 'JavaScript'},
-//   { id: 1, name: 'TypeScript'} ]
-//
-// [ { id: 2, name: 'Parcel'},
-//   { id: 2, name: 'webpack'} ]
-//
-// [ { id: 3, name: 'TSLint'} ]
-```
-
-### Pivot data on the id field
-
-```ts
-import { of } from 'rxjs';
-import { groupBy, map, mergeMap, reduce } from 'rxjs/operators';
-
-of(
-  { id: 1, name: 'JavaScript' },
-  { id: 2, name: 'Parcel' },
-  { id: 2, name: 'webpack' },
-  { id: 1, name: 'TypeScript' },
-  { id: 3, name: 'TSLint' }
-)
-  .pipe(
-    groupBy(p => p.id, p => p.name),
-    mergeMap(group$ =>
-      group$.pipe(reduce((acc, cur) => [...acc, cur], [`${group$.key}`]))
-    ),
-    map(arr => ({ id: parseInt(arr[0], 10), values: arr.slice(1) }))
- )
- .subscribe(p => console.log(p));
-
-// displays:
-// { id: 1, values: [ 'JavaScript', 'TypeScript' ] }
-// { id: 2, values: [ 'Parcel', 'webpack' ] }
-// { id: 3, values: [ 'TSLint' ] }
-```
-
-**`deprecated`** Use the options parameter instead.
-
 #### Type parameters
 
 | Name |
@@ -5335,97 +5187,16 @@ of(
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | (`value`: `T`) => `K` | A function that extracts the key for each item. |
-| `options` | `BasicGroupByOptions`<`K`, `T`\> | - |
+| Name | Type |
+| :------ | :------ |
+| `key` | (`value`: `T`) => `K` |
+| `options` | [`BasicGroupByOptions`](../interfaces/RxJS.BasicGroupByOptions.md)<`K`, `T`\> |
 
 #### Returns
 
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `T`\>\>
 
-A function that returns an Observable that emits GroupedObservables,
-each of which corresponds to a unique key value and each of which emits
-those items from the source Observable that share that key value.
-
 ▸ **groupBy**<`T`, `K`, `E`\>(`key`, `options`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `E`\>\>
-
-Groups the items emitted by an Observable according to a specified criterion,
-and emits these grouped items as `GroupedObservables`, one
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) per group.
-
-![](groupBy.png)
-
-When the Observable emits an item, a key is computed for this item with the key function.
-
-If a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key exists, this [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) emits. Otherwise, a new
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key is created and emits.
-
-A [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) represents values belonging to the same group represented by a common key. The common
-key is available as the `key` field of a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) instance.
-
-The elements emitted by [GroupedObservable](../interfaces/RxJS.GroupedObservable.md)s are by default the items emitted by the Observable, or elements
-returned by the element function.
-
-## Examples
-
-### Group objects by id and return as array
-
-```ts
-import { of } from 'rxjs';
-import { mergeMap, groupBy, reduce } from 'rxjs/operators';
-
-of(
-  {id: 1, name: 'JavaScript'},
-  {id: 2, name: 'Parcel'},
-  {id: 2, name: 'webpack'},
-  {id: 1, name: 'TypeScript'},
-  {id: 3, name: 'TSLint'}
-).pipe(
-  groupBy(p => p.id),
-  mergeMap((group$) => group$.pipe(reduce((acc, cur) => [...acc, cur], [])))
-)
-.subscribe(p => console.log(p));
-
-// displays:
-// [ { id: 1, name: 'JavaScript'},
-//   { id: 1, name: 'TypeScript'} ]
-//
-// [ { id: 2, name: 'Parcel'},
-//   { id: 2, name: 'webpack'} ]
-//
-// [ { id: 3, name: 'TSLint'} ]
-```
-
-### Pivot data on the id field
-
-```ts
-import { of } from 'rxjs';
-import { groupBy, map, mergeMap, reduce } from 'rxjs/operators';
-
-of(
-  { id: 1, name: 'JavaScript' },
-  { id: 2, name: 'Parcel' },
-  { id: 2, name: 'webpack' },
-  { id: 1, name: 'TypeScript' },
-  { id: 3, name: 'TSLint' }
-)
-  .pipe(
-    groupBy(p => p.id, p => p.name),
-    mergeMap(group$ =>
-      group$.pipe(reduce((acc, cur) => [...acc, cur], [`${group$.key}`]))
-    ),
-    map(arr => ({ id: parseInt(arr[0], 10), values: arr.slice(1) }))
- )
- .subscribe(p => console.log(p));
-
-// displays:
-// { id: 1, values: [ 'JavaScript', 'TypeScript' ] }
-// { id: 2, values: [ 'Parcel', 'webpack' ] }
-// { id: 3, values: [ 'TSLint' ] }
-```
-
-**`deprecated`** Use the options parameter instead.
 
 #### Type parameters
 
@@ -5437,97 +5208,16 @@ of(
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | (`value`: `T`) => `K` | A function that extracts the key for each item. |
-| `options` | `GroupByOptionsWithElement`<`K`, `E`, `T`\> | - |
+| Name | Type |
+| :------ | :------ |
+| `key` | (`value`: `T`) => `K` |
+| `options` | [`GroupByOptionsWithElement`](../interfaces/RxJS.GroupByOptionsWithElement.md)<`K`, `E`, `T`\> |
 
 #### Returns
 
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `E`\>\>
 
-A function that returns an Observable that emits GroupedObservables,
-each of which corresponds to a unique key value and each of which emits
-those items from the source Observable that share that key value.
-
 ▸ **groupBy**<`T`, `K`\>(`key`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<``true``, `K`\> \| [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<``false``, `Exclude`<`T`, `K`\>\>\>
-
-Groups the items emitted by an Observable according to a specified criterion,
-and emits these grouped items as `GroupedObservables`, one
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) per group.
-
-![](groupBy.png)
-
-When the Observable emits an item, a key is computed for this item with the key function.
-
-If a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key exists, this [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) emits. Otherwise, a new
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key is created and emits.
-
-A [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) represents values belonging to the same group represented by a common key. The common
-key is available as the `key` field of a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) instance.
-
-The elements emitted by [GroupedObservable](../interfaces/RxJS.GroupedObservable.md)s are by default the items emitted by the Observable, or elements
-returned by the element function.
-
-## Examples
-
-### Group objects by id and return as array
-
-```ts
-import { of } from 'rxjs';
-import { mergeMap, groupBy, reduce } from 'rxjs/operators';
-
-of(
-  {id: 1, name: 'JavaScript'},
-  {id: 2, name: 'Parcel'},
-  {id: 2, name: 'webpack'},
-  {id: 1, name: 'TypeScript'},
-  {id: 3, name: 'TSLint'}
-).pipe(
-  groupBy(p => p.id),
-  mergeMap((group$) => group$.pipe(reduce((acc, cur) => [...acc, cur], [])))
-)
-.subscribe(p => console.log(p));
-
-// displays:
-// [ { id: 1, name: 'JavaScript'},
-//   { id: 1, name: 'TypeScript'} ]
-//
-// [ { id: 2, name: 'Parcel'},
-//   { id: 2, name: 'webpack'} ]
-//
-// [ { id: 3, name: 'TSLint'} ]
-```
-
-### Pivot data on the id field
-
-```ts
-import { of } from 'rxjs';
-import { groupBy, map, mergeMap, reduce } from 'rxjs/operators';
-
-of(
-  { id: 1, name: 'JavaScript' },
-  { id: 2, name: 'Parcel' },
-  { id: 2, name: 'webpack' },
-  { id: 1, name: 'TypeScript' },
-  { id: 3, name: 'TSLint' }
-)
-  .pipe(
-    groupBy(p => p.id, p => p.name),
-    mergeMap(group$ =>
-      group$.pipe(reduce((acc, cur) => [...acc, cur], [`${group$.key}`]))
-    ),
-    map(arr => ({ id: parseInt(arr[0], 10), values: arr.slice(1) }))
- )
- .subscribe(p => console.log(p));
-
-// displays:
-// { id: 1, values: [ 'JavaScript', 'TypeScript' ] }
-// { id: 2, values: [ 'Parcel', 'webpack' ] }
-// { id: 3, values: [ 'TSLint' ] }
-```
-
-**`deprecated`** Use the options parameter instead.
 
 #### Type parameters
 
@@ -5538,96 +5228,15 @@ of(
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | (`value`: `T`) => value is K | A function that extracts the key for each item. |
+| Name | Type |
+| :------ | :------ |
+| `key` | (`value`: `T`) => value is K |
 
 #### Returns
 
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<``true``, `K`\> \| [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<``false``, `Exclude`<`T`, `K`\>\>\>
 
-A function that returns an Observable that emits GroupedObservables,
-each of which corresponds to a unique key value and each of which emits
-those items from the source Observable that share that key value.
-
 ▸ **groupBy**<`T`, `K`\>(`key`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `T`\>\>
-
-Groups the items emitted by an Observable according to a specified criterion,
-and emits these grouped items as `GroupedObservables`, one
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) per group.
-
-![](groupBy.png)
-
-When the Observable emits an item, a key is computed for this item with the key function.
-
-If a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key exists, this [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) emits. Otherwise, a new
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key is created and emits.
-
-A [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) represents values belonging to the same group represented by a common key. The common
-key is available as the `key` field of a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) instance.
-
-The elements emitted by [GroupedObservable](../interfaces/RxJS.GroupedObservable.md)s are by default the items emitted by the Observable, or elements
-returned by the element function.
-
-## Examples
-
-### Group objects by id and return as array
-
-```ts
-import { of } from 'rxjs';
-import { mergeMap, groupBy, reduce } from 'rxjs/operators';
-
-of(
-  {id: 1, name: 'JavaScript'},
-  {id: 2, name: 'Parcel'},
-  {id: 2, name: 'webpack'},
-  {id: 1, name: 'TypeScript'},
-  {id: 3, name: 'TSLint'}
-).pipe(
-  groupBy(p => p.id),
-  mergeMap((group$) => group$.pipe(reduce((acc, cur) => [...acc, cur], [])))
-)
-.subscribe(p => console.log(p));
-
-// displays:
-// [ { id: 1, name: 'JavaScript'},
-//   { id: 1, name: 'TypeScript'} ]
-//
-// [ { id: 2, name: 'Parcel'},
-//   { id: 2, name: 'webpack'} ]
-//
-// [ { id: 3, name: 'TSLint'} ]
-```
-
-### Pivot data on the id field
-
-```ts
-import { of } from 'rxjs';
-import { groupBy, map, mergeMap, reduce } from 'rxjs/operators';
-
-of(
-  { id: 1, name: 'JavaScript' },
-  { id: 2, name: 'Parcel' },
-  { id: 2, name: 'webpack' },
-  { id: 1, name: 'TypeScript' },
-  { id: 3, name: 'TSLint' }
-)
-  .pipe(
-    groupBy(p => p.id, p => p.name),
-    mergeMap(group$ =>
-      group$.pipe(reduce((acc, cur) => [...acc, cur], [`${group$.key}`]))
-    ),
-    map(arr => ({ id: parseInt(arr[0], 10), values: arr.slice(1) }))
- )
- .subscribe(p => console.log(p));
-
-// displays:
-// { id: 1, values: [ 'JavaScript', 'TypeScript' ] }
-// { id: 2, values: [ 'Parcel', 'webpack' ] }
-// { id: 3, values: [ 'TSLint' ] }
-```
-
-**`deprecated`** Use the options parameter instead.
 
 #### Type parameters
 
@@ -5638,96 +5247,19 @@ of(
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | (`value`: `T`) => `K` | A function that extracts the key for each item. |
+| Name | Type |
+| :------ | :------ |
+| `key` | (`value`: `T`) => `K` |
 
 #### Returns
 
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `T`\>\>
-
-A function that returns an Observable that emits GroupedObservables,
-each of which corresponds to a unique key value and each of which emits
-those items from the source Observable that share that key value.
 
 ▸ **groupBy**<`T`, `K`\>(`key`, `element`, `duration`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `T`\>\>
 
-Groups the items emitted by an Observable according to a specified criterion,
-and emits these grouped items as `GroupedObservables`, one
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) per group.
+**`Deprecated`**
 
-![](groupBy.png)
-
-When the Observable emits an item, a key is computed for this item with the key function.
-
-If a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key exists, this [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) emits. Otherwise, a new
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key is created and emits.
-
-A [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) represents values belonging to the same group represented by a common key. The common
-key is available as the `key` field of a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) instance.
-
-The elements emitted by [GroupedObservable](../interfaces/RxJS.GroupedObservable.md)s are by default the items emitted by the Observable, or elements
-returned by the element function.
-
-## Examples
-
-### Group objects by id and return as array
-
-```ts
-import { of } from 'rxjs';
-import { mergeMap, groupBy, reduce } from 'rxjs/operators';
-
-of(
-  {id: 1, name: 'JavaScript'},
-  {id: 2, name: 'Parcel'},
-  {id: 2, name: 'webpack'},
-  {id: 1, name: 'TypeScript'},
-  {id: 3, name: 'TSLint'}
-).pipe(
-  groupBy(p => p.id),
-  mergeMap((group$) => group$.pipe(reduce((acc, cur) => [...acc, cur], [])))
-)
-.subscribe(p => console.log(p));
-
-// displays:
-// [ { id: 1, name: 'JavaScript'},
-//   { id: 1, name: 'TypeScript'} ]
-//
-// [ { id: 2, name: 'Parcel'},
-//   { id: 2, name: 'webpack'} ]
-//
-// [ { id: 3, name: 'TSLint'} ]
-```
-
-### Pivot data on the id field
-
-```ts
-import { of } from 'rxjs';
-import { groupBy, map, mergeMap, reduce } from 'rxjs/operators';
-
-of(
-  { id: 1, name: 'JavaScript' },
-  { id: 2, name: 'Parcel' },
-  { id: 2, name: 'webpack' },
-  { id: 1, name: 'TypeScript' },
-  { id: 3, name: 'TSLint' }
-)
-  .pipe(
-    groupBy(p => p.id, p => p.name),
-    mergeMap(group$ =>
-      group$.pipe(reduce((acc, cur) => [...acc, cur], [`${group$.key}`]))
-    ),
-    map(arr => ({ id: parseInt(arr[0], 10), values: arr.slice(1) }))
- )
- .subscribe(p => console.log(p));
-
-// displays:
-// { id: 1, values: [ 'JavaScript', 'TypeScript' ] }
-// { id: 2, values: [ 'Parcel', 'webpack' ] }
-// { id: 3, values: [ 'TSLint' ] }
-```
-
-**`deprecated`** use the options parameter instead.
+use the options parameter instead.
 
 #### Type parameters
 
@@ -5738,98 +5270,21 @@ of(
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | (`value`: `T`) => `K` | A function that extracts the key for each item. |
-| `element` | `void` | A function that extracts the return element for each item. |
-| `duration` | (`grouped`: [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `T`\>) => [`Observable`](../classes/RxJS.Observable.md)<`any`\> | A function that returns an Observable to determine how long each group should exist. |
+| Name | Type |
+| :------ | :------ |
+| `key` | (`value`: `T`) => `K` |
+| `element` | `void` |
+| `duration` | (`grouped`: [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `T`\>) => [`Observable`](../classes/RxJS.Observable.md)<`any`\> |
 
 #### Returns
 
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `T`\>\>
 
-A function that returns an Observable that emits GroupedObservables,
-each of which corresponds to a unique key value and each of which emits
-those items from the source Observable that share that key value.
-
 ▸ **groupBy**<`T`, `K`, `R`\>(`key`, `element?`, `duration?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `R`\>\>
 
-Groups the items emitted by an Observable according to a specified criterion,
-and emits these grouped items as `GroupedObservables`, one
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) per group.
+**`Deprecated`**
 
-![](groupBy.png)
-
-When the Observable emits an item, a key is computed for this item with the key function.
-
-If a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key exists, this [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) emits. Otherwise, a new
-[GroupedObservable](../interfaces/RxJS.GroupedObservable.md) for this key is created and emits.
-
-A [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) represents values belonging to the same group represented by a common key. The common
-key is available as the `key` field of a [GroupedObservable](../interfaces/RxJS.GroupedObservable.md) instance.
-
-The elements emitted by [GroupedObservable](../interfaces/RxJS.GroupedObservable.md)s are by default the items emitted by the Observable, or elements
-returned by the element function.
-
-## Examples
-
-### Group objects by id and return as array
-
-```ts
-import { of } from 'rxjs';
-import { mergeMap, groupBy, reduce } from 'rxjs/operators';
-
-of(
-  {id: 1, name: 'JavaScript'},
-  {id: 2, name: 'Parcel'},
-  {id: 2, name: 'webpack'},
-  {id: 1, name: 'TypeScript'},
-  {id: 3, name: 'TSLint'}
-).pipe(
-  groupBy(p => p.id),
-  mergeMap((group$) => group$.pipe(reduce((acc, cur) => [...acc, cur], [])))
-)
-.subscribe(p => console.log(p));
-
-// displays:
-// [ { id: 1, name: 'JavaScript'},
-//   { id: 1, name: 'TypeScript'} ]
-//
-// [ { id: 2, name: 'Parcel'},
-//   { id: 2, name: 'webpack'} ]
-//
-// [ { id: 3, name: 'TSLint'} ]
-```
-
-### Pivot data on the id field
-
-```ts
-import { of } from 'rxjs';
-import { groupBy, map, mergeMap, reduce } from 'rxjs/operators';
-
-of(
-  { id: 1, name: 'JavaScript' },
-  { id: 2, name: 'Parcel' },
-  { id: 2, name: 'webpack' },
-  { id: 1, name: 'TypeScript' },
-  { id: 3, name: 'TSLint' }
-)
-  .pipe(
-    groupBy(p => p.id, p => p.name),
-    mergeMap(group$ =>
-      group$.pipe(reduce((acc, cur) => [...acc, cur], [`${group$.key}`]))
-    ),
-    map(arr => ({ id: parseInt(arr[0], 10), values: arr.slice(1) }))
- )
- .subscribe(p => console.log(p));
-
-// displays:
-// { id: 1, values: [ 'JavaScript', 'TypeScript' ] }
-// { id: 2, values: [ 'Parcel', 'webpack' ] }
-// { id: 3, values: [ 'TSLint' ] }
-```
-
-**`deprecated`** use the options parameter instead.
+use the options parameter instead.
 
 #### Type parameters
 
@@ -5841,19 +5296,15 @@ of(
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `key` | (`value`: `T`) => `K` | A function that extracts the key for each item. |
-| `element?` | (`value`: `T`) => `R` | A function that extracts the return element for each item. |
-| `duration?` | (`grouped`: [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `R`\>) => [`Observable`](../classes/RxJS.Observable.md)<`any`\> | A function that returns an Observable to determine how long each group should exist. |
+| Name | Type |
+| :------ | :------ |
+| `key` | (`value`: `T`) => `K` |
+| `element?` | (`value`: `T`) => `R` |
+| `duration?` | (`grouped`: [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `R`\>) => [`Observable`](../classes/RxJS.Observable.md)<`any`\> |
 
 #### Returns
 
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `R`\>\>
-
-A function that returns an Observable that emits GroupedObservables,
-each of which corresponds to a unique key value and each of which emits
-those items from the source Observable that share that key value.
 
 ▸ **groupBy**<`T`, `K`, `R`\>(`key`, `element?`, `duration?`, `connector?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`GroupedObservable`](../interfaces/RxJS.GroupedObservable.md)<`K`, `R`\>\>
 
@@ -5876,39 +5327,10 @@ returned by the element function.
 
 ## Examples
 
-### Group objects by id and return as array
+Group objects by `id` and return as array
 
 ```ts
-import { of } from 'rxjs';
-import { mergeMap, groupBy, reduce } from 'rxjs/operators';
-
-of(
-  {id: 1, name: 'JavaScript'},
-  {id: 2, name: 'Parcel'},
-  {id: 2, name: 'webpack'},
-  {id: 1, name: 'TypeScript'},
-  {id: 3, name: 'TSLint'}
-).pipe(
-  groupBy(p => p.id),
-  mergeMap((group$) => group$.pipe(reduce((acc, cur) => [...acc, cur], [])))
-)
-.subscribe(p => console.log(p));
-
-// displays:
-// [ { id: 1, name: 'JavaScript'},
-//   { id: 1, name: 'TypeScript'} ]
-//
-// [ { id: 2, name: 'Parcel'},
-//   { id: 2, name: 'webpack'} ]
-//
-// [ { id: 3, name: 'TSLint'} ]
-```
-
-### Pivot data on the id field
-
-```ts
-import { of } from 'rxjs';
-import { groupBy, map, mergeMap, reduce } from 'rxjs/operators';
+import { of, groupBy, mergeMap, reduce } from 'rxjs';
 
 of(
   { id: 1, name: 'JavaScript' },
@@ -5916,15 +5338,35 @@ of(
   { id: 2, name: 'webpack' },
   { id: 1, name: 'TypeScript' },
   { id: 3, name: 'TSLint' }
+).pipe(
+  groupBy(p => p.id),
+  mergeMap(group$ => group$.pipe(reduce((acc, cur) => [...acc, cur], [])))
 )
-  .pipe(
-    groupBy(p => p.id, p => p.name),
-    mergeMap(group$ =>
-      group$.pipe(reduce((acc, cur) => [...acc, cur], [`${group$.key}`]))
-    ),
-    map(arr => ({ id: parseInt(arr[0], 10), values: arr.slice(1) }))
- )
- .subscribe(p => console.log(p));
+.subscribe(p => console.log(p));
+
+// displays:
+// [{ id: 1, name: 'JavaScript' }, { id: 1, name: 'TypeScript'}]
+// [{ id: 2, name: 'Parcel' }, { id: 2, name: 'webpack'}]
+// [{ id: 3, name: 'TSLint' }]
+```
+
+Pivot data on the `id` field
+
+```ts
+import { of, groupBy, mergeMap, reduce, map } from 'rxjs';
+
+of(
+  { id: 1, name: 'JavaScript' },
+  { id: 2, name: 'Parcel' },
+  { id: 2, name: 'webpack' },
+  { id: 1, name: 'TypeScript' },
+  { id: 3, name: 'TSLint' }
+).pipe(
+  groupBy(p => p.id, { element: p => p.name }),
+  mergeMap(group$ => group$.pipe(reduce((acc, cur) => [...acc, cur], [`${ group$.key }`]))),
+  map(arr => ({ id: parseInt(arr[0], 10), values: arr.slice(1) }))
+)
+.subscribe(p => console.log(p));
 
 // displays:
 // { id: 1, values: [ 'JavaScript', 'TypeScript' ] }
@@ -5932,7 +5374,9 @@ of(
 // { id: 3, values: [ 'TSLint' ] }
 ```
 
-**`deprecated`** Use the options parameter instead.
+**`Deprecated`**
+
+Use the options parameter instead.
 
 #### Type parameters
 
@@ -5965,6 +5409,44 @@ ___
 
 ▸ **identity**<`T`\>(`x`): `T`
 
+This function takes one parameter and just returns it. Simply put,
+this is like `<T>(x: T): T => x`.
+
+## Examples
+
+This is useful in some cases when using things like `mergeMap`
+
+```ts
+import { interval, take, map, range, mergeMap, identity } from 'rxjs';
+
+const source$ = interval(1000).pipe(take(5));
+
+const result$ = source$.pipe(
+  map(i => range(i)),
+  mergeMap(identity) // same as mergeMap(x => x)
+);
+
+result$.subscribe({
+  next: console.log
+});
+```
+
+Or when you want to selectively apply an operator
+
+```ts
+import { interval, take, identity } from 'rxjs';
+
+const shouldLimit = () => Math.random() < 0.5;
+
+const source$ = interval(1000);
+
+const result$ = source$.pipe(shouldLimit() ? take(5) : identity);
+
+result$.subscribe({
+  next: console.log
+});
+```
+
 #### Type parameters
 
 | Name |
@@ -5973,51 +5455,55 @@ ___
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `x` | `T` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `x` | `T` | Any value that is returned by this function |
 
 #### Returns
 
 `T`
 
+The value passed as the first parameter to this function
+
 ___
 
 ### ignoreElements
 
-▸ **ignoreElements**(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `never`\>
+▸ **ignoreElements**(): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`unknown`, `never`\>
 
 Ignores all items emitted by the source Observable and only passes calls of `complete` or `error`.
 
 ![](ignoreElements.png)
 
-The _IgnoreElements_ operator suppresses all of the items emitted by the source Observable,
+The `ignoreElements` operator suppresses all items emitted by the source Observable,
 but allows its termination notification (either `error` or `complete`) to pass through unchanged.
 
 If you do not care about the items being emitted by an Observable, but you do want to be notified
 when it completes or when it terminates with an error, you can apply the `ignoreElements` operator
 to the Observable, which will ensure that it will never call its observers’ `next` handlers.
 
-## Examples
-```ts
-import { of } from 'rxjs';
-import { ignoreElements } from 'rxjs/operators';
+## Example
 
-of('you', 'talking', 'to', 'me').pipe(
-  ignoreElements(),
-)
-.subscribe(
-  word => console.log(word),
-  err => console.log('error:', err),
-  () => console.log('the end'),
-);
+Ignore all `next` emissions from the source
+
+```ts
+import { of, ignoreElements } from 'rxjs';
+
+of('you', 'talking', 'to', 'me')
+  .pipe(ignoreElements())
+  .subscribe({
+    next: word => console.log(word),
+    error: err => console.log('error:', err),
+    complete: () => console.log('the end'),
+  });
+
 // result:
 // 'the end'
 ```
 
 #### Returns
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `never`\>
+[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`unknown`, `never`\>
 
 A function that returns an empty Observable that only calls
 `complete` or `error`, based on which one is called by the source
@@ -6031,7 +5517,7 @@ ___
 
 Checks a boolean at subscription time, and chooses between one of two observable sources
 
-`iif` excepts a function that returns a boolean (the `condition` function), and two sources,
+`iif` expects a function that returns a boolean (the `condition` function), and two sources,
 the `trueResult` and the `falseResult`, and returns an Observable.
 
 At the moment of subscription, the `condition` function is called. If the result is `true`, the
@@ -6042,7 +5528,7 @@ If you need to check more than two options to choose between more than one obser
 
 ## Examples
 
-### Change at runtime which Observable will be subscribed
+Change at runtime which Observable will be subscribed
 
 ```ts
 import { iif, of } from 'rxjs';
@@ -6051,55 +5537,57 @@ let subscribeToFirst;
 const firstOrSecond = iif(
   () => subscribeToFirst,
   of('first'),
-  of('second'),
+  of('second')
 );
 
 subscribeToFirst = true;
 firstOrSecond.subscribe(value => console.log(value));
 
 // Logs:
-// "first"
+// 'first'
 
 subscribeToFirst = false;
 firstOrSecond.subscribe(value => console.log(value));
 
 // Logs:
-// "second"
-
+// 'second'
 ```
 
-### Control an access to an Observable
+Control access to an Observable
 
 ```ts
+import { iif, of, EMPTY } from 'rxjs';
+
 let accessGranted;
 const observableIfYouHaveAccess = iif(
   () => accessGranted,
-  of('It seems you have an access...'), // Note that only one Observable is passed to the operator.
+  of('It seems you have an access...'),
+  EMPTY
 );
 
 accessGranted = true;
-observableIfYouHaveAccess.subscribe(
-  value => console.log(value),
-  err => {},
-  () => console.log('The end'),
-);
+observableIfYouHaveAccess.subscribe({
+  next: value => console.log(value),
+  complete: () => console.log('The end')
+});
 
 // Logs:
-// "It seems you have an access..."
-// "The end"
+// 'It seems you have an access...'
+// 'The end'
 
 accessGranted = false;
-observableIfYouHaveAccess.subscribe(
-  value => console.log(value),
-  err => {},
-  () => console.log('The end'),
-);
+observableIfYouHaveAccess.subscribe({
+  next: value => console.log(value),
+  complete: () => console.log('The end')
+});
 
 // Logs:
-// "The end"
+// 'The end'
 ```
 
-**`see`** [defer](RxJS.md#defer)
+**`See`**
+
+[defer](RxJS.md#defer)
 
 #### Type parameters
 
@@ -6131,8 +5619,7 @@ ___
 Creates an Observable that emits sequential numbers every specified
 interval of time, on a specified [SchedulerLike](../interfaces/RxJS.SchedulerLike.md).
 
-<span class="informal">Emits incremental numbers periodically in time.
-</span>
+<span class="informal">Emits incremental numbers periodically in time.</span>
 
 ![](interval.png)
 
@@ -6144,10 +5631,11 @@ only after the first period has passed. By default, this operator uses the
 [SchedulerLike](../interfaces/RxJS.SchedulerLike.md) to it.
 
 ## Example
+
 Emits ascending numbers, one every second (1000ms) up to the number 3
+
 ```ts
-import { interval } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { interval, take } from 'rxjs';
 
 const numbers = interval(1000);
 
@@ -6162,16 +5650,17 @@ takeFourNumbers.subscribe(x => console.log('Next: ', x));
 // Next: 3
 ```
 
-**`see`** [timer](RxJS.md#timer)
+**`See`**
 
-**`see`** [delay](RxJS.md#delay)
+ - [timer](RxJS.md#timer)
+ - [delay](RxJS.md#delay)
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `period?` | `number` |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `period?` | `number` | The interval size in milliseconds (by default) or the time unit determined by the scheduler's clock. |
+| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The [SchedulerLike](../interfaces/RxJS.SchedulerLike.md) to use for scheduling the emission of values, and providing a notion of "time". |
 
 #### Returns
 
@@ -6205,11 +5694,10 @@ a `false` value sooner.
 
 ## Examples
 
-Emit `false` for a non-empty Observable.
+Emit `false` for a non-empty Observable
 
 ```ts
-import { Subject } from 'rxjs';
-import { isEmpty } from 'rxjs/operators';
+import { Subject, isEmpty } from 'rxjs';
 
 const source = new Subject<string>();
 const result = source.pipe(isEmpty());
@@ -6223,17 +5711,16 @@ source.next('c');
 source.complete();
 
 // Outputs
-// a
+// 'a'
 // false
-// b
-// c
+// 'b'
+// 'c'
 ```
 
-Emit `true` for an empty Observable.
+Emit `true` for an empty Observable
 
 ```ts
-import { EMPTY } from 'rxjs';
-import { isEmpty } from 'rxjs/operators';
+import { EMPTY, isEmpty } from 'rxjs';
 
 const result = EMPTY.pipe(isEmpty());
 result.subscribe(x => console.log(x));
@@ -6242,9 +5729,10 @@ result.subscribe(x => console.log(x));
 // true
 ```
 
-**`see`** [count](RxJS.md#count)
+**`See`**
 
-**`see`** {@link index/EMPTY}
+ - [count](RxJS.md#count)
+ - [EMPTY](RxJS.md#empty)
 
 #### Type parameters
 
@@ -6427,8 +5915,6 @@ ___
 
 ▸ **map**<`T`, `R`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
 
-**`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
-
 #### Type parameters
 
 | Name |
@@ -6448,7 +5934,9 @@ ___
 
 ▸ **map**<`T`, `R`, `A`\>(`project`, `thisArg`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
 
-**`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
+**`Deprecated`**
+
+Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
 #### Type parameters
 
@@ -6473,9 +5961,11 @@ ___
 
 ### mapTo
 
-▸ **mapTo**<`R`\>(`value`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `R`\>
+▸ **mapTo**<`R`\>(`value`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`unknown`, `R`\>
 
-**`deprecated`** Do not specify explicit type parameters. Signatures with type parameters that cannot be inferred will be removed in v8.
+**`Deprecated`**
+
+To be removed in v9. Use [map](RxJS.md#map) instead: `map(() => value)`.
 
 #### Type parameters
 
@@ -6491,11 +5981,15 @@ ___
 
 #### Returns
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, `R`\>
+[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`unknown`, `R`\>
 
 ▸ **mapTo**<`T`, `R`\>(`value`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
 
-**`deprecated`** Do not specify explicit type parameters. Signatures with type parameters that cannot be inferred will be removed in v8.
+**`Deprecated`**
+
+Do not specify explicit type parameters. Signatures with type parameters
+that cannot be inferred will be removed in v8. `mapTo` itself will be removed in v9,
+use [map](RxJS.md#map) instead: `map(() => value)`.
 
 #### Type parameters
 
@@ -6546,25 +6040,24 @@ be consumed as `next` emissions. Use it in conjunction with
 Convert a faulty Observable to an Observable of Notifications
 
 ```ts
-import { of } from 'rxjs';
-import { materialize, map } from 'rxjs/operators';
+import { of, materialize, map } from 'rxjs';
 
 const letters = of('a', 'b', 13, 'd');
-const upperCase = letters.pipe(map(x => x.toUpperCase()));
+const upperCase = letters.pipe(map((x: any) => x.toUpperCase()));
 const materialized = upperCase.pipe(materialize());
+
 materialized.subscribe(x => console.log(x));
 
 // Results in the following:
-// - Notification {kind: "N", value: "A", error: undefined, hasValue: true}
-// - Notification {kind: "N", value: "B", error: undefined, hasValue: true}
-// - Notification {kind: "E", value: undefined, error: TypeError:
-//   x.toUpperCase is not a function at MapSubscriber.letters.map.x
-//   [as project] (http://1…, hasValue: false}
+// - Notification { kind: 'N', value: 'A', error: undefined, hasValue: true }
+// - Notification { kind: 'N', value: 'B', error: undefined, hasValue: true }
+// - Notification { kind: 'E', value: undefined, error: TypeError { message: x.toUpperCase is not a function }, hasValue: false }
 ```
 
-**`see`** [Notification](../classes/RxJS.Notification.md)
+**`See`**
 
-**`see`** [dematerialize](RxJS.md#dematerialize)
+ - [Notification](../classes/RxJS.Notification.md)
+ - [dematerialize](RxJS.md#dematerialize)
 
 #### Type parameters
 
@@ -6592,37 +6085,41 @@ and when source Observable completes it emits a single item: the item with the l
 ![](max.png)
 
 ## Examples
-Get the maximal value of a series of numbers
-```ts
-import { of } from 'rxjs';
-import { max } from 'rxjs/operators';
 
-of(5, 4, 7, 2, 8).pipe(
-  max(),
-)
-.subscribe(x => console.log(x)); // -> 8
+Get the maximal value of a series of numbers
+
+```ts
+import { of, max } from 'rxjs';
+
+of(5, 4, 7, 2, 8)
+  .pipe(max())
+  .subscribe(x => console.log(x));
+
+// Outputs
+// 8
 ```
 
 Use a comparer function to get the maximal item
-```typescript
-import { of } from 'rxjs';
-import { max } from 'rxjs/operators';
 
-interface Person {
-  age: number,
-  name: string
-}
+```ts
+import { of, max } from 'rxjs';
+
 of(
-  {age: 7, name: 'Foo'},
-  {age: 5, name: 'Bar'},
-  {age: 9, name: 'Beer'},
+  { age: 7, name: 'Foo' },
+  { age: 5, name: 'Bar' },
+  { age: 9, name: 'Beer' }
 ).pipe(
-  max<Person>((a: Person, b: Person) => a.age < b.age ? -1 : 1),
+  max((a, b) => a.age < b.age ? -1 : 1)
 )
-.subscribe((x: Person) => console.log(x.name)); // -> 'Beer'
+.subscribe(x => console.log(x.name));
+
+// Outputs
+// 'Beer'
 ```
 
-**`see`** [min](RxJS.md#min)
+**`See`**
+
+[min](RxJS.md#min)
 
 #### Type parameters
 
@@ -6632,9 +6129,9 @@ of(
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `comparer?` | (`x`: `T`, `y`: `T`) => `number` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `comparer?` | (`x`: `T`, `y`: `T`) => `number` | Optional comparer function that it will use instead of its default to compare the value of two items. |
 
 #### Returns
 
@@ -6647,9 +6144,7 @@ ___
 
 ### merge
 
-▸ **merge**<`A`\>(...`sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
-
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
+▸ **merge**<`A`\>(`...sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
 
 #### Type parameters
 
@@ -6667,9 +6162,7 @@ ___
 
 [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
 
-▸ **merge**<`A`\>(...`sourcesAndConcurrency`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
-
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
+▸ **merge**<`A`\>(`...sourcesAndConcurrency`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
 
 #### Type parameters
 
@@ -6687,9 +6180,11 @@ ___
 
 [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
 
-▸ **merge**<`A`\>(...`sourcesAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
+▸ **merge**<`A`\>(`...sourcesAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
+**`Deprecated`**
+
+The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
 #### Type parameters
 
@@ -6707,9 +6202,11 @@ ___
 
 [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
 
-▸ **merge**<`A`\>(...`sourcesAndConcurrencyAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
+▸ **merge**<`A`\>(`...sourcesAndConcurrencyAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
+**`Deprecated`**
+
+The `scheduler` parameter will be removed in v8. Use `scheduled` and `mergeAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
 #### Type parameters
 
@@ -6748,49 +6245,45 @@ completes once all inner Observables have completed. Any error delivered by
 a inner Observable will be immediately emitted on the output Observable.
 
 ## Examples
+
 Spawn a new interval Observable for each click event, and blend their outputs as one Observable
+
 ```ts
-import { fromEvent, interval } from 'rxjs';
-import { map, mergeAll } from 'rxjs/operators';
+import { fromEvent, map, interval, mergeAll } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
-const higherOrder = clicks.pipe(map((ev) => interval(1000)));
+const higherOrder = clicks.pipe(map(() => interval(1000)));
 const firstOrder = higherOrder.pipe(mergeAll());
+
 firstOrder.subscribe(x => console.log(x));
 ```
 
 Count from 0 to 9 every second for each click, but only allow 2 concurrent timers
+
 ```ts
-import { fromEvent, interval } from 'rxjs';
-import { take, map, mergeAll } from 'rxjs/operators';
+import { fromEvent, map, interval, take, mergeAll } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const higherOrder = clicks.pipe(
-  map((ev) => interval(1000).pipe(take(10))),
+  map(() => interval(1000).pipe(take(10)))
 );
 const firstOrder = higherOrder.pipe(mergeAll(2));
+
 firstOrder.subscribe(x => console.log(x));
 ```
 
-**`see`** [combineLatestAll](RxJS.md#combinelatestall)
+**`See`**
 
-**`see`** [concatAll](RxJS.md#concatall)
-
-**`see`** [exhaustAll](RxJS.md#exhaustall)
-
-**`see`** [merge](RxJS.md#merge)
-
-**`see`** [mergeMap](RxJS.md#mergemap)
-
-**`see`** [mergeMapTo](RxJS.md#mergemapto)
-
-**`see`** [mergeScan](RxJS.md#mergescan)
-
-**`see`** [switchAll](RxJS.md#switchall)
-
-**`see`** [switchMap](RxJS.md#switchmap)
-
-**`see`** [zipAll](RxJS.md#zipall)
+ - [combineLatestAll](RxJS.md#combinelatestall)
+ - [concatAll](RxJS.md#concatall)
+ - [exhaustAll](RxJS.md#exhaustall)
+ - [merge](RxJS.md#merge)
+ - [mergeMap](RxJS.md#mergemap)
+ - [mergeMapTo](RxJS.md#mergemapto)
+ - [mergeScan](RxJS.md#mergescan)
+ - [switchAll](RxJS.md#switchall)
+ - [switchMap](RxJS.md#switchmap)
+ - [zipAll](RxJS.md#zipall)
 
 #### Type parameters
 
@@ -6800,9 +6293,9 @@ firstOrder.subscribe(x => console.log(x));
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `concurrent?` | `number` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `concurrent?` | `number` | Maximum number of inner Observables being subscribed to concurrently. |
 
 #### Returns
 
@@ -6816,8 +6309,6 @@ ___
 ### mergeMap
 
 ▸ **mergeMap**<`T`, `O`\>(`project`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
-
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
 #### Type parameters
 
@@ -6839,7 +6330,9 @@ ___
 
 ▸ **mergeMap**<`T`, `O`\>(`project`, `resultSelector`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
 #### Type parameters
 
@@ -6862,7 +6355,9 @@ ___
 
 ▸ **mergeMap**<`T`, `R`, `O`\>(`project`, `resultSelector`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
 #### Type parameters
 
@@ -6888,9 +6383,11 @@ ___
 
 ### mergeMapTo
 
-▸ **mergeMapTo**<`O`\>(`innerObservable`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **mergeMapTo**<`O`\>(`innerObservable`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`unknown`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+Will be removed in v9. Use [mergeMap](RxJS.md#mergemap) instead: `mergeMap(() => result)`
 
 #### Type parameters
 
@@ -6907,11 +6404,14 @@ ___
 
 #### Returns
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`unknown`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
 ▸ **mergeMapTo**<`T`, `R`, `O`\>(`innerObservable`, `resultSelector`, `concurrent?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+The `resultSelector` parameter will be removed in v8. Use an inner `map` instead.
+Details: https://rxjs.dev/deprecations/resultSelector
 
 #### Type parameters
 
@@ -6967,21 +6467,23 @@ source Observable, while the `index` is a number which represent the order of th
 current emission by the source Observable. It starts with 0.
 
 The last parameter to the `mergeScan` is the `concurrent` value which defaults
-to Infinity. It represent the maximum number of inner Observable subscriptions
+to Infinity. It represents the maximum number of inner Observable subscriptions
 at a time.
 
 ## Example
+
 Count the number of click events
+
 ```ts
-import { fromEvent, of } from 'rxjs';
-import { mapTo, mergeScan } from 'rxjs/operators';
+import { fromEvent, map, mergeScan, of } from 'rxjs';
 
 const click$ = fromEvent(document, 'click');
-const one$ = click$.pipe(mapTo(1));
+const one$ = click$.pipe(map(() => 1));
 const seed = 0;
 const count$ = one$.pipe(
-  mergeScan((acc, one) => of(acc + one), seed),
+  mergeScan((acc, one) => of(acc + one), seed)
 );
+
 count$.subscribe(x => console.log(x));
 
 // Results:
@@ -6992,9 +6494,10 @@ count$.subscribe(x => console.log(x));
 // ...and so on for each click
 ```
 
-**`see`** [scan](RxJS.md#scan)
+**`See`**
 
-**`see`** [switchScan](RxJS.md#switchscan)
+ - [scan](RxJS.md#scan)
+ - [switchScan](RxJS.md#switchscan)
 
 #### Type parameters
 
@@ -7009,7 +6512,7 @@ count$.subscribe(x => console.log(x));
 | :------ | :------ | :------ |
 | `accumulator` | (`acc`: `R`, `value`: `T`, `index`: `number`) => [`ObservableInput`](RxJS.md#observableinput)<`R`\> | The accumulator function called on each source value. |
 | `seed` | `R` | The initial accumulation value. |
-| `concurrent?` | `number` | - |
+| `concurrent?` | `number` | Maximum number of input Observables being subscribed to concurrently. |
 
 #### Returns
 
@@ -7021,9 +6524,9 @@ ___
 
 ### mergeWith
 
-▸ **mergeWith**<`T`, `A`\>(...`otherSources`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
+▸ **mergeWith**<`T`, `A`\>(`...otherSources`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
 
-Merge the values from all observables to an single observable result.
+Merge the values from all observables to a single observable result.
 
 Creates an observable, that when subscribed to, subscribes to the source
 observable, and all other sources provided as arguments. All values from
@@ -7031,33 +6534,35 @@ every source are emitted from the resulting subscription.
 
 When all sources complete, the resulting observable will complete.
 
-When any one source errors, the resulting observable will error.
+When any source errors, the resulting observable will error.
 
-### Example
+## Example
 
-Joining all outputs from multiple user input event streams:
+Joining all outputs from multiple user input event streams
 
 ```ts
-import { fromEvent } from 'rxjs';
-import { map, mergeWith } from 'rxjs/operators';
+import { fromEvent, map, mergeWith } from 'rxjs';
 
 const clicks$ = fromEvent(document, 'click').pipe(map(() => 'click'));
 const mousemoves$ = fromEvent(document, 'mousemove').pipe(map(() => 'mousemove'));
 const dblclicks$ = fromEvent(document, 'dblclick').pipe(map(() => 'dblclick'));
 
-mousemoves$.pipe(
-  mergeWith(clicks$, dblclicks$),
-)
-.subscribe(x => console.log(x));
+mousemoves$
+  .pipe(mergeWith(clicks$, dblclicks$))
+  .subscribe(x => console.log(x));
 
 // result (assuming user interactions)
-// "mousemove"
-// "mousemove"
-// "mousemove"
-// "click"
-// "click"
-// "dblclick"
+// 'mousemove'
+// 'mousemove'
+// 'mousemove'
+// 'click'
+// 'click'
+// 'dblclick'
 ```
+
+**`See`**
+
+[merge](RxJS.md#merge)
 
 #### Type parameters
 
@@ -7091,37 +6596,41 @@ and when source Observable completes it emits a single item: the item with the s
 ![](min.png)
 
 ## Examples
-Get the minimal value of a series of numbers
-```ts
-import { of } from 'rxjs';
-import { min } from 'rxjs/operators';
 
-of(5, 4, 7, 2, 8).pipe(
-  min(),
-)
-.subscribe(x => console.log(x)); // -> 2
+Get the minimal value of a series of numbers
+
+```ts
+import { of, min } from 'rxjs';
+
+of(5, 4, 7, 2, 8)
+  .pipe(min())
+  .subscribe(x => console.log(x));
+
+// Outputs
+// 2
 ```
 
 Use a comparer function to get the minimal item
-```typescript
-import { of } from 'rxjs';
-import { min } from 'rxjs/operators';
 
-interface Person {
-  age: number,
-  name: string
-}
+```ts
+import { of, min } from 'rxjs';
+
 of(
-  {age: 7, name: 'Foo'},
-  {age: 5, name: 'Bar'},
-  {age: 9, name: 'Beer'},
+  { age: 7, name: 'Foo' },
+  { age: 5, name: 'Bar' },
+  { age: 9, name: 'Beer' }
 ).pipe(
-  min<Person>( (a: Person, b: Person) => a.age < b.age ? -1 : 1),
+  min((a, b) => a.age < b.age ? -1 : 1)
 )
-.subscribe((x: Person) => console.log(x.name)); // -> 'Bar'
+.subscribe(x => console.log(x.name));
+
+// Outputs
+// 'Bar'
 ```
 
-**`see`** [max](RxJS.md#max)
+**`See`**
+
+[max](RxJS.md#max)
 
 #### Type parameters
 
@@ -7131,9 +6640,9 @@ of(
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `comparer?` | (`x`: `T`, `y`: `T`) => `number` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `comparer?` | (`x`: `T`, `y`: `T`) => `number` | Optional comparer function that it will use instead of its default to compare the value of two items. |
 
 #### Returns
 
@@ -7152,7 +6661,9 @@ An operator that creates a [ConnectableObservable](../classes/RxJS.ConnectableOb
 with the `connect` method, will use the provided subject to multicast the values
 from the source to all consumers.
 
-**`deprecated`** Will be removed in v8. To create a connectable observable, use [connectable](RxJS.md#connectable).
+**`Deprecated`**
+
+Will be removed in v8. To create a connectable observable, use [connectable](RxJS.md#connectable).
 If you're using [refCount](RxJS.md#refcount) after `multicast`, use the [share](RxJS.md#share) operator instead.
 `multicast(subject), refCount()` is equivalent to
 `share({ connector: () => subject, resetOnError: false, resetOnComplete: false, resetOnRefCountZero: false })`.
@@ -7182,7 +6693,9 @@ Because this is deprecated in favor of the [connect](RxJS.md#connect) operator, 
 rather than duplicate the effort of documenting the same behavior, please see documentation for the
 [connect](RxJS.md#connect) operator.
 
-**`deprecated`** Will be removed in v8. Use the [connect](RxJS.md#connect) operator instead.
+**`Deprecated`**
+
+Will be removed in v8. Use the [connect](RxJS.md#connect) operator instead.
 `multicast(subject, selector)` is equivalent to
 `connect(selector, { connector: () => subject })`.
 Details: https://rxjs.dev/deprecations/multicasting
@@ -7213,7 +6726,9 @@ An operator that creates a [ConnectableObservable](../classes/RxJS.ConnectableOb
 with the `connect` method, will use the provided subject to multicast the values
 from the source to all consumers.
 
-**`deprecated`** Will be removed in v8. To create a connectable observable, use [connectable](RxJS.md#connectable).
+**`Deprecated`**
+
+Will be removed in v8. To create a connectable observable, use [connectable](RxJS.md#connectable).
 If you're using [refCount](RxJS.md#refcount) after `multicast`, use the [share](RxJS.md#share) operator instead.
 `multicast(() => new BehaviorSubject('test')), refCount()` is equivalent to
 `share({ connector: () => new BehaviorSubject('test') })`.
@@ -7243,7 +6758,9 @@ Because this is deprecated in favor of the [connect](RxJS.md#connect) operator, 
 rather than duplicate the effort of documenting the same behavior, please see documentation for the
 [connect](RxJS.md#connect) operator.
 
-**`deprecated`** Will be removed in v8. Use the [connect](RxJS.md#connect) operator instead.
+**`Deprecated`**
+
+Will be removed in v8. Use the [connect](RxJS.md#connect) operator instead.
 `multicast(subjectFactory, selector)` is equivalent to
 `connect(selector, { connector: subjectFactory })`.
 Details: https://rxjs.dev/deprecations/multicasting
@@ -7274,7 +6791,9 @@ ___
 
 ▸ **never**(): [`Observable`](../classes/RxJS.Observable.md)<`never`\>
 
-**`deprecated`** Replaced with the [NEVER](RxJS.md#never) constant. Will be removed in v8.
+**`Deprecated`**
+
+Replaced with the [NEVER](RxJS.md#never) constant. Will be removed in v8.
 
 #### Returns
 
@@ -7322,24 +6841,27 @@ for notification emissions in general.
 
 ## Example
 
-Ensure values in subscribe are called just before browser repaint.
+Ensure values in subscribe are called just before browser repaint
 
 ```ts
-import { interval, animationFrameScheduler } from 'rxjs';
-import { observeOn } from 'rxjs/operators';
+import { interval, observeOn, animationFrameScheduler } from 'rxjs';
 
-const someDiv = document.querySelector("#someDiv");
-const intervals = interval(10);                // Intervals are scheduled
-                                               // with async scheduler by default...
+const someDiv = document.createElement('div');
+someDiv.style.cssText = 'width: 200px;background: #09c';
+document.body.appendChild(someDiv);
+const intervals = interval(10);      // Intervals are scheduled
+                                     // with async scheduler by default...
 intervals.pipe(
-  observeOn(animationFrameScheduler),          // ...but we will observe on animationFrame
-)                                              // scheduler to ensure smooth animation.
+  observeOn(animationFrameScheduler) // ...but we will observe on animationFrame
+)                                    // scheduler to ensure smooth animation.
 .subscribe(val => {
   someDiv.style.height = val + 'px';
 });
 ```
 
-**`see`** [delay](RxJS.md#delay)
+**`See`**
+
+[delay](RxJS.md#delay)
 
 #### Type parameters
 
@@ -7352,7 +6874,7 @@ intervals.pipe(
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `scheduler` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | Scheduler that will be used to reschedule notifications from source Observable. |
-| `delay?` | `number` | - |
+| `delay?` | `number` | Number of milliseconds that states with what delay every notification should be rescheduled. |
 
 #### Returns
 
@@ -7391,7 +6913,9 @@ ___
 
 ▸ **of**(`scheduler`): [`Observable`](../classes/RxJS.Observable.md)<`never`\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: https://rxjs.dev/deprecations/scheduler-argument
+**`Deprecated`**
+
+The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
 #### Parameters
 
@@ -7403,9 +6927,11 @@ ___
 
 [`Observable`](../classes/RxJS.Observable.md)<`never`\>
 
-▸ **of**<`A`\>(...`valuesAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<[`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+▸ **of**<`A`\>(`...valuesAndScheduler`): [`Observable`](../classes/RxJS.Observable.md)<[`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: https://rxjs.dev/deprecations/scheduler-argument
+**`Deprecated`**
+
+The `scheduler` parameter will be removed in v8. Use `scheduled`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
 #### Type parameters
 
@@ -7431,7 +6957,9 @@ ___
 
 ▸ **of**<`T`\>(): [`Observable`](../classes/RxJS.Observable.md)<`T`\>
 
-**`deprecated`** Do not specify explicit type parameters. Signatures with type parameters that cannot be inferred will be removed in v8.
+**`Deprecated`**
+
+Do not specify explicit type parameters. Signatures with type parameters that cannot be inferred will be removed in v8.
 
 #### Type parameters
 
@@ -7461,7 +6989,7 @@ ___
 
 [`Observable`](../classes/RxJS.Observable.md)<`T`\>
 
-▸ **of**<`A`\>(...`values`): [`Observable`](../classes/RxJS.Observable.md)<[`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+▸ **of**<`A`\>(`...values`): [`Observable`](../classes/RxJS.Observable.md)<[`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
 
 #### Type parameters
 
@@ -7501,7 +7029,7 @@ ___
 
 [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
 
-▸ **onErrorResumeNext**<`A`\>(...`sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
+▸ **onErrorResumeNext**<`A`\>(`...sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`[`number`]\>
 
 #### Type parameters
 
@@ -7521,11 +7049,55 @@ ___
 
 ___
 
+### onErrorResumeNextWith
+
+▸ **onErrorResumeNextWith**<`T`, `A`\>(`sources`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `T` |
+| `A` | extends readonly `unknown`[] |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `sources` | [...ObservableInputTuple<A\>[]] |
+
+#### Returns
+
+[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
+
+▸ **onErrorResumeNextWith**<`T`, `A`\>(`...sources`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | `T` |
+| `A` | extends readonly `unknown`[] |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `...sources` | [...ObservableInputTuple<A\>[]] |
+
+#### Returns
+
+[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
+
+___
+
 ### pairs
 
 ▸ **pairs**<`T`\>(`arr`, `scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<[`string`, `T`]\>
 
-**`deprecated`** Use `from(Object.entries(obj))` instead. Will be removed in v8.
+**`Deprecated`**
+
+Use `from(Object.entries(obj))` instead. Will be removed in v8.
 
 #### Type parameters
 
@@ -7546,7 +7118,9 @@ ___
 
 ▸ **pairs**<`O`\>(`obj`, `scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<[keyof `O`, `O`[keyof `O`]]\>
 
-**`deprecated`** Use `from(Object.entries(obj))` instead. Will be removed in v8.
+**`Deprecated`**
+
+Use `from(Object.entries(obj))` instead. Will be removed in v8.
 
 #### Type parameters
 
@@ -7567,7 +7141,9 @@ ___
 
 ▸ **pairs**<`T`\>(`iterable`, `scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<[`string`, `T`]\>
 
-**`deprecated`** Use `from(Object.entries(obj))` instead. Will be removed in v8.
+**`Deprecated`**
+
+Use `from(Object.entries(obj))` instead. Will be removed in v8.
 
 #### Type parameters
 
@@ -7588,7 +7164,9 @@ ___
 
 ▸ **pairs**(`n`, `scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<[`never`, `never`]\>
 
-**`deprecated`** Use `from(Object.entries(obj))` instead. Will be removed in v8.
+**`Deprecated`**
+
+Use `from(Object.entries(obj))` instead. Will be removed in v8.
 
 #### Parameters
 
@@ -7622,28 +7200,31 @@ emissions from the source Observable, but not on the first emission, because
 there is no previous value in that case.
 
 ## Example
-On every click (starting from the second), emit the relative distance to the previous click
-```ts
-import { fromEvent } from 'rxjs';
-import { pairwise, map } from 'rxjs/operators';
 
-const clicks = fromEvent(document, 'click');
+On every click (starting from the second), emit the relative distance to the previous click
+
+```ts
+import { fromEvent, pairwise, map } from 'rxjs';
+
+const clicks = fromEvent<PointerEvent>(document, 'click');
 const pairs = clicks.pipe(pairwise());
 const distance = pairs.pipe(
-  map(pair => {
-    const x0 = pair[0].clientX;
-    const y0 = pair[0].clientY;
-    const x1 = pair[1].clientX;
-    const y1 = pair[1].clientY;
+  map(([first, second]) => {
+    const x0 = first.clientX;
+    const y0 = first.clientY;
+    const x1 = second.clientX;
+    const y1 = second.clientY;
     return Math.sqrt(Math.pow(x0 - x1, 2) + Math.pow(y0 - y1, 2));
-  }),
+  })
 );
+
 distance.subscribe(x => console.log(x));
 ```
 
-**`see`** [buffer](RxJS.md#buffer)
+**`See`**
 
-**`see`** [bufferCount](RxJS.md#buffercount)
+ - [buffer](RxJS.md#buffer)
+ - [bufferCount](RxJS.md#buffercount)
 
 #### Type parameters
 
@@ -7664,7 +7245,9 @@ ___
 
 ▸ **partition**<`T`, `U`, `A`\>(`source`, `predicate`, `thisArg`): [[`Observable`](../classes/RxJS.Observable.md)<`U`\>, [`Observable`](../classes/RxJS.Observable.md)<`Exclude`<`T`, `U`\>\>]
 
-**`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
+**`Deprecated`**
+
+Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
 #### Type parameters
 
@@ -7708,7 +7291,9 @@ ___
 
 ▸ **partition**<`T`, `A`\>(`source`, `predicate`, `thisArg`): [[`Observable`](../classes/RxJS.Observable.md)<`T`\>, [`Observable`](../classes/RxJS.Observable.md)<`T`\>]
 
-**`deprecated`** Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
+**`Deprecated`**
+
+Use a closure instead of a `thisArg`. Signatures accepting a `thisArg` will be removed in v8.
 
 #### Type parameters
 
@@ -8001,7 +7586,7 @@ typeof [`identity`](RxJS.md#identity)
 
 [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `I`\>
 
-▸ **pipe**<`T`, `A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`, `I`\>(`fn1`, `fn2`, `fn3`, `fn4`, `fn5`, `fn6`, `fn7`, `fn8`, `fn9`, ...`fns`): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `unknown`\>
+▸ **pipe**<`T`, `A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`, `I`\>(`fn1`, `fn2`, `fn3`, `fn4`, `fn5`, `fn6`, `fn7`, `fn8`, `fn9`, `...fns`): [`UnaryFunction`](../interfaces/RxJS.UnaryFunction.md)<`T`, `unknown`\>
 
 #### Type parameters
 
@@ -8043,6 +7628,10 @@ ___
 
 ▸ **pluck**<`T`, `K1`\>(`k1`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`]\>
 
+**`Deprecated`**
+
+Use [map](RxJS.md#map) and optional chaining: `pluck('foo', 'bar')` is `map(x => x?.foo?.bar)`. Will be removed in v8.
+
 #### Type parameters
 
 | Name | Type |
@@ -8061,6 +7650,10 @@ ___
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`]\>
 
 ▸ **pluck**<`T`, `K1`, `K2`\>(`k1`, `k2`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`]\>
+
+**`Deprecated`**
+
+Use [map](RxJS.md#map) and optional chaining: `pluck('foo', 'bar')` is `map(x => x?.foo?.bar)`. Will be removed in v8.
 
 #### Type parameters
 
@@ -8082,6 +7675,10 @@ ___
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`]\>
 
 ▸ **pluck**<`T`, `K1`, `K2`, `K3`\>(`k1`, `k2`, `k3`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`][`K3`]\>
+
+**`Deprecated`**
+
+Use [map](RxJS.md#map) and optional chaining: `pluck('foo', 'bar')` is `map(x => x?.foo?.bar)`. Will be removed in v8.
 
 #### Type parameters
 
@@ -8105,6 +7702,10 @@ ___
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`][`K3`]\>
 
 ▸ **pluck**<`T`, `K1`, `K2`, `K3`, `K4`\>(`k1`, `k2`, `k3`, `k4`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`][`K3`][`K4`]\>
+
+**`Deprecated`**
+
+Use [map](RxJS.md#map) and optional chaining: `pluck('foo', 'bar')` is `map(x => x?.foo?.bar)`. Will be removed in v8.
 
 #### Type parameters
 
@@ -8130,6 +7731,10 @@ ___
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`][`K3`][`K4`]\>
 
 ▸ **pluck**<`T`, `K1`, `K2`, `K3`, `K4`, `K5`\>(`k1`, `k2`, `k3`, `k4`, `k5`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`][`K3`][`K4`][`K5`]\>
+
+**`Deprecated`**
+
+Use [map](RxJS.md#map) and optional chaining: `pluck('foo', 'bar')` is `map(x => x?.foo?.bar)`. Will be removed in v8.
 
 #### Type parameters
 
@@ -8158,6 +7763,10 @@ ___
 
 ▸ **pluck**<`T`, `K1`, `K2`, `K3`, `K4`, `K5`, `K6`\>(`k1`, `k2`, `k3`, `k4`, `k5`, `k6`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`][`K3`][`K4`][`K5`][`K6`]\>
 
+**`Deprecated`**
+
+Use [map](RxJS.md#map) and optional chaining: `pluck('foo', 'bar')` is `map(x => x?.foo?.bar)`. Will be removed in v8.
+
 #### Type parameters
 
 | Name | Type |
@@ -8185,7 +7794,11 @@ ___
 
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T`[`K1`][`K2`][`K3`][`K4`][`K5`][`K6`]\>
 
-▸ **pluck**<`T`, `K1`, `K2`, `K3`, `K4`, `K5`, `K6`\>(`k1`, `k2`, `k3`, `k4`, `k5`, `k6`, ...`rest`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `unknown`\>
+▸ **pluck**<`T`, `K1`, `K2`, `K3`, `K4`, `K5`, `K6`\>(`k1`, `k2`, `k3`, `k4`, `k5`, `k6`, `...rest`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `unknown`\>
+
+**`Deprecated`**
+
+Use [map](RxJS.md#map) and optional chaining: `pluck('foo', 'bar')` is `map(x => x?.foo?.bar)`. Will be removed in v8.
 
 #### Type parameters
 
@@ -8215,7 +7828,11 @@ ___
 
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `unknown`\>
 
-▸ **pluck**<`T`\>(...`properties`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `unknown`\>
+▸ **pluck**<`T`\>(`...properties`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `unknown`\>
+
+**`Deprecated`**
+
+Use [map](RxJS.md#map) and optional chaining: `pluck('foo', 'bar')` is `map(x => x?.foo?.bar)`. Will be removed in v8.
 
 #### Type parameters
 
@@ -8242,7 +7859,9 @@ ___
 Returns a connectable observable that, when connected, will multicast
 all values through a single underlying [Subject](../classes/RxJS.Subject.md) instance.
 
-**`deprecated`** Will be removed in v8. To create a connectable observable, use [connectable](RxJS.md#connectable).
+**`Deprecated`**
+
+Will be removed in v8. To create a connectable observable, use [connectable](RxJS.md#connectable).
 `source.pipe(publish())` is equivalent to
 `connectable(source, { connector: () => new Subject(), resetOnDisconnect: false })`.
 If you're using [refCount](RxJS.md#refcount) after `publish`, use [share](RxJS.md#share) operator instead.
@@ -8267,7 +7886,9 @@ provides an observable view of it to a `selector` function, takes the observable
 that selector function and subscribes to it, sending its values to the consumer, _then_ connects
 the subject to the original source.
 
-**`deprecated`** Will be removed in v8. Use the [connect](RxJS.md#connect) operator instead.
+**`Deprecated`**
+
+Will be removed in v8. Use the [connect](RxJS.md#connect) operator instead.
 `publish(selector)` is equivalent to `connect(selector)`.
 Details: https://rxjs.dev/deprecations/multicasting
 
@@ -8296,7 +7917,9 @@ ___
 
 Creates a [ConnectableObservable](../classes/RxJS.ConnectableObservable.md) that utilizes a [BehaviorSubject](../classes/RxJS.BehaviorSubject.md).
 
-**`deprecated`** Will be removed in v8. To create a connectable observable that uses a
+**`Deprecated`**
+
+Will be removed in v8. To create a connectable observable that uses a
 [BehaviorSubject](../classes/RxJS.BehaviorSubject.md) under the hood, use [connectable](RxJS.md#connectable).
 `source.pipe(publishBehavior(initValue))` is equivalent to
 `connectable(source, { connector: () => new BehaviorSubject(initValue), resetOnDisconnect: false })`.
@@ -8343,47 +7966,49 @@ immediately get that last stored value and complete.
 ## Example
 
 ```ts
-import { interval } from 'rxjs';
-import { publishLast, tap, take } from 'rxjs/operators';
+import { ConnectableObservable, interval, publishLast, tap, take } from 'rxjs';
 
-const connectable =
-  interval(1000)
-    .pipe(
-      tap(x => console.log("side effect", x)),
-      take(3),
-      publishLast());
+const connectable = <ConnectableObservable<number>>interval(1000)
+  .pipe(
+    tap(x => console.log('side effect', x)),
+    take(3),
+    publishLast()
+  );
 
-connectable.subscribe(
-  x => console.log(  "Sub. A", x),
-  err => console.log("Sub. A Error", err),
-  () => console.log( "Sub. A Complete"));
+connectable.subscribe({
+  next: x => console.log('Sub. A', x),
+  error: err => console.log('Sub. A Error', err),
+  complete: () => console.log('Sub. A Complete')
+});
 
-connectable.subscribe(
-  x => console.log(  "Sub. B", x),
-  err => console.log("Sub. B Error", err),
-  () => console.log( "Sub. B Complete"));
+connectable.subscribe({
+  next: x => console.log('Sub. B', x),
+  error: err => console.log('Sub. B Error', err),
+  complete: () => console.log('Sub. B Complete')
+});
 
 connectable.connect();
 
 // Results:
-//    "side effect 0"
-//    "side effect 1"
-//    "side effect 2"
-//    "Sub. A 2"
-//    "Sub. B 2"
-//    "Sub. A Complete"
-//    "Sub. B Complete"
+// 'side effect 0'   - after one second
+// 'side effect 1'   - after two seconds
+// 'side effect 2'   - after three seconds
+// 'Sub. A 2'        - immediately after 'side effect 2'
+// 'Sub. B 2'
+// 'Sub. A Complete'
+// 'Sub. B Complete'
 ```
 
-**`see`** [ConnectableObservable](../classes/RxJS.ConnectableObservable.md)
+**`See`**
 
-**`see`** [publish](RxJS.md#publish)
+ - [ConnectableObservable](../classes/RxJS.ConnectableObservable.md)
+ - [publish](RxJS.md#publish)
+ - [publishReplay](RxJS.md#publishreplay)
+ - [publishBehavior](RxJS.md#publishbehavior)
 
-**`see`** [publishReplay](RxJS.md#publishreplay)
+**`Deprecated`**
 
-**`see`** [publishBehavior](RxJS.md#publishbehavior)
-
-**`deprecated`** Will be removed in v8. To create a connectable observable with an
+Will be removed in v8. To create a connectable observable with an
 [AsyncSubject](../classes/RxJS.AsyncSubject.md) under the hood, use [connectable](RxJS.md#connectable).
 `source.pipe(publishLast())` is equivalent to
 `connectable(source, { connector: () => new AsyncSubject(), resetOnDisconnect: false })`.
@@ -8414,7 +8039,9 @@ ___
 Creates a [ConnectableObservable](../classes/RxJS.ConnectableObservable.md) that uses a [ReplaySubject](../classes/RxJS.ReplaySubject.md)
 internally.
 
-**`deprecated`** Will be removed in v8. To create a connectable observable that uses a
+**`Deprecated`**
+
+Will be removed in v8. To create a connectable observable that uses a
 [ReplaySubject](../classes/RxJS.ReplaySubject.md) under the hood, use [connectable](RxJS.md#connectable).
 `source.pipe(publishReplay(size, time, scheduler))` is equivalent to
 `connectable(source, { connector: () => new ReplaySubject(size, time, scheduler), resetOnDisconnect: false })`.
@@ -8450,7 +8077,9 @@ the `selector` function, which then returns an observable that is subscribed to 
 
 Since this is deprecated, for additional details see the documentation for [connect](RxJS.md#connect).
 
-**`deprecated`** Will be removed in v8. Use the [connect](RxJS.md#connect) operator instead.
+**`Deprecated`**
+
+Will be removed in v8. Use the [connect](RxJS.md#connect) operator instead.
 `source.pipe(publishReplay(size, window, selector, scheduler))` is equivalent to
 `source.pipe(connect(selector, { connector: () => new ReplaySubject(size, window, scheduler) }))`.
 Details: https://rxjs.dev/deprecations/multicasting
@@ -8480,7 +8109,9 @@ Details: https://rxjs.dev/deprecations/multicasting
 Creates a [ConnectableObservable](../classes/RxJS.ConnectableObservable.md) that uses a [ReplaySubject](../classes/RxJS.ReplaySubject.md)
 internally.
 
-**`deprecated`** Will be removed in v8. To create a connectable observable that uses a
+**`Deprecated`**
+
+Will be removed in v8. To create a connectable observable that uses a
 [ReplaySubject](../classes/RxJS.ReplaySubject.md) under the hood, use [connectable](RxJS.md#connectable).
 `source.pipe(publishReplay(size, time, scheduler))` is equivalent to
 `connectable(source, { connector: () => new ReplaySubject(size, time, scheduler), resetOnDisconnect: false })`.
@@ -8531,7 +8162,7 @@ ___
 
 [`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
 
-▸ **race**<`T`\>(...`inputs`): [`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
+▸ **race**<`T`\>(`...inputs`): [`Observable`](../classes/RxJS.Observable.md)<`T`[`number`]\>
 
 #### Type parameters
 
@@ -8553,7 +8184,7 @@ ___
 
 ### raceWith
 
-▸ **raceWith**<`T`, `A`\>(...`otherSources`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
+▸ **raceWith**<`T`, `A`\>(`...otherSources`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `A`[`number`]\>
 
 Creates an Observable that mirrors the first source Observable to emit a next,
 error or complete notification from the combination of the Observable to which
@@ -8562,18 +8193,15 @@ the operator is applied and supplied Observables.
 ## Example
 
 ```ts
-import { interval } from 'rxjs';
-import { mapTo, raceWith } from 'rxjs/operators';
+import { interval, map, raceWith } from 'rxjs';
 
-const obs1 = interval(1000).pipe(mapTo('fast one'));
-const obs2 = interval(3000).pipe(mapTo('medium one'));
-const obs3 = interval(5000).pipe(mapTo('slow one'));
+const obs1 = interval(7000).pipe(map(() => 'slow one'));
+const obs2 = interval(3000).pipe(map(() => 'fast one'));
+const obs3 = interval(5000).pipe(map(() => 'medium one'));
 
-obs2.pipe(
-  raceWith(obs3, obs1)
-).subscribe(
-  winner => console.log(winner)
-);
+obs1
+  .pipe(raceWith(obs2, obs3))
+  .subscribe(winner => console.log(winner));
 
 // Outputs
 // a series of 'fast one'
@@ -8605,8 +8233,6 @@ ___
 
 ▸ **range**(`start`, `count?`): [`Observable`](../classes/RxJS.Observable.md)<`number`\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `range(start, count).pipe(observeOn(scheduler))` instead. Details: Details: https://rxjs.dev/deprecations/scheduler-argument
-
 #### Parameters
 
 | Name | Type |
@@ -8620,7 +8246,9 @@ ___
 
 ▸ **range**(`start`, `count`, `scheduler`): [`Observable`](../classes/RxJS.Observable.md)<`number`\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `range(start, count).pipe(observeOn(scheduler))` instead. Details: Details: https://rxjs.dev/deprecations/scheduler-argument
+**`Deprecated`**
+
+The `scheduler` parameter will be removed in v8. Use `range(start, count).pipe(observeOn(scheduler))` instead. Details: Details: https://rxjs.dev/deprecations/scheduler-argument
 
 #### Parameters
 
@@ -8726,18 +8354,17 @@ second one does not use it. You will notice that a connectable observable does n
 until you call its connect function.
 
 ```ts
-import { interval } from 'rxjs';
-import { tap, publish, refCount } from 'rxjs/operators';
+import { interval, tap, publish, refCount } from 'rxjs';
 
 // Turn the interval observable into a ConnectableObservable (hot)
 const refCountInterval = interval(400).pipe(
-  tap((num) => console.log(`refCount ${num}`)),
+  tap(num => console.log(`refCount ${ num }`)),
   publish(),
   refCount()
 );
 
 const publishedInterval = interval(400).pipe(
-  tap((num) => console.log(`publish ${num}`)),
+  tap(num => console.log(`publish ${ num }`)),
   publish()
 );
 
@@ -8745,20 +8372,22 @@ refCountInterval.subscribe();
 refCountInterval.subscribe();
 // 'refCount 0' -----> 'refCount 1' -----> etc
 // All subscriptions will receive the same value and the tap (and
-// every other operator) before the publish operator will be executed
+// every other operator) before the `publish` operator will be executed
 // only once per event independently of the number of subscriptions.
 
 publishedInterval.subscribe();
 // Nothing happens until you call .connect() on the observable.
 ```
 
-**`see`** [ConnectableObservable](../classes/RxJS.ConnectableObservable.md)
+**`See`**
 
-**`see`** [share](RxJS.md#share)
+ - [ConnectableObservable](../classes/RxJS.ConnectableObservable.md)
+ - [share](RxJS.md#share)
+ - [publish](RxJS.md#publish)
 
-**`see`** [publish](RxJS.md#publish)
+**`Deprecated`**
 
-**`deprecated`** Replaced with the [share](RxJS.md#share) operator. How `share` is used
+Replaced with the [share](RxJS.md#share) operator. How `share` is used
 will depend on the connectable observable you created just prior to the
 `refCount` operator.
 Details: https://rxjs.dev/deprecations/multicasting
@@ -8780,43 +8409,57 @@ ___
 
 ### repeat
 
-▸ **repeat**<`T`\>(`count?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+▸ **repeat**<`T`\>(`countOrConfig?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
-Returns an Observable that will resubscribe to the source stream when the source stream completes, at most count times.
+Returns an Observable that will resubscribe to the source stream when the source stream completes.
 
 <span class="informal">Repeats all values emitted on the source. It's like [retry](RxJS.md#retry), but for non error cases.</span>
 
 ![](repeat.png)
 
-Similar to [retry](RxJS.md#retry), this operator repeats the stream of items emitted by the source for non error cases.
-Repeat can be useful for creating observables that are meant to have some repeated pattern or rhythm.
+Repeat will output values from a source until the source completes, then it will resubscribe to the
+source a specified number of times, with a specified delay. Repeat can be particularly useful in
+combination with closing operators like [take](RxJS.md#take), [takeUntil](RxJS.md#takeuntil), [first](RxJS.md#first), or [takeWhile](RxJS.md#takewhile),
+as it can be used to restart a source again from scratch.
 
-Note: `repeat(0)` returns an empty observable and `repeat()` will repeat forever
+Repeat is very similar to [retry](RxJS.md#retry), where [retry](RxJS.md#retry) will resubscribe to the source in the error case, but
+`repeat` will resubscribe if the source completes.
+
+Note that `repeat` will _not_ catch errors. Use [retry](RxJS.md#retry) for that.
+
+- `repeat(0)` returns an empty observable
+- `repeat()` will repeat forever
+- `repeat({ delay: 200 })` will repeat forever, with a delay of 200ms between repetitions.
+- `repeat({ count: 2, delay: 400 })` will repeat twice, with a delay of 400ms between repetitions.
+- `repeat({ delay: (count) => timer(count * 1000) })` will repeat forever, but will have a delay that grows by one second for each repetition.
 
 ## Example
+
 Repeat a message stream
+
 ```ts
-import { of } from 'rxjs';
-import { repeat, delay } from 'rxjs/operators';
+import { of, repeat } from 'rxjs';
 
 const source = of('Repeat message');
-const example = source.pipe(repeat(3));
-example.subscribe(x => console.log(x));
+const result = source.pipe(repeat(3));
+
+result.subscribe(x => console.log(x));
 
 // Results
-// Repeat message
-// Repeat message
-// Repeat message
+// 'Repeat message'
+// 'Repeat message'
+// 'Repeat message'
 ```
 
 Repeat 3 values, 2 times
+
 ```ts
-import { interval } from 'rxjs';
-import { repeat, take } from 'rxjs/operators';
+import { interval, take, repeat } from 'rxjs';
 
 const source = interval(1000);
-const example = source.pipe(take(3), repeat(2));
-example.subscribe(x => console.log(x));
+const result = source.pipe(take(3), repeat(2));
+
+result.subscribe(x => console.log(x));
 
 // Results every second
 // 0
@@ -8827,9 +8470,116 @@ example.subscribe(x => console.log(x));
 // 2
 ```
 
-**`see`** [repeatWhen](RxJS.md#repeatwhen)
+Defining two complex repeats with delays on the same source.
+Note that the second repeat cannot be called until the first
+repeat as exhausted it's count.
 
-**`see`** [retry](RxJS.md#retry)
+```ts
+import { defer, of, repeat } from 'rxjs';
+
+const source = defer(() => {
+   return of(`Hello, it is ${new Date()}`)
+});
+
+source.pipe(
+   // Repeat 3 times with a delay of 1 second between repetitions
+   repeat({
+     count: 3,
+     delay: 1000,
+   }),
+
+   // *Then* repeat forever, but with an exponential step-back
+   // maxing out at 1 minute.
+   repeat({
+     delay: (count) => timer(Math.min(60000, 2 ^ count * 1000))
+   })
+)
+```
+
+**`See`**
+
+ - [repeatWhen](RxJS.md#repeatwhen)
+ - [retry](RxJS.md#retry)
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `countOrConfig?` | `number` \| [`RepeatConfig`](../interfaces/RxJS.RepeatConfig.md) |
+
+#### Returns
+
+[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+
+___
+
+### repeatWhen
+
+▸ **repeatWhen**<`T`\>(`notifier`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+
+Returns an Observable that mirrors the source Observable with the exception of a `complete`. If the source
+Observable calls `complete`, this method will emit to the Observable returned from `notifier`. If that Observable
+calls `complete` or `error`, then this method will call `complete` or `error` on the child subscription. Otherwise
+this method will resubscribe to the source Observable.
+
+![](repeatWhen.png)
+
+## Example
+
+Repeat a message stream on click
+
+```ts
+import { of, fromEvent, repeatWhen } from 'rxjs';
+
+const source = of('Repeat message');
+const documentClick$ = fromEvent(document, 'click');
+
+const result = source.pipe(repeatWhen(() => documentClick$));
+
+result.subscribe(data => console.log(data))
+```
+
+**`See`**
+
+ - [repeat](RxJS.md#repeat)
+ - [retry](RxJS.md#retry)
+ - [retryWhen](RxJS.md#retrywhen)
+
+**`Deprecated`**
+
+Will be removed in v9 or v10. Use [repeat](RxJS.md#repeat)'s [delay](../interfaces/RxJS.RepeatConfig.md#delay) option instead.
+Instead of `repeatWhen(() => notify$)`, use: `repeat({ delay: () => notify$ })`.
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `notifier` | (`notifications`: [`Observable`](../classes/RxJS.Observable.md)<`void`\>) => [`ObservableInput`](RxJS.md#observableinput)<`any`\> | Function that receives an Observable of notifications with which a user can `complete` or `error`, aborting the repetition. |
+
+#### Returns
+
+[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+
+A function that returns an `ObservableInput` that mirrors the source
+Observable with the exception of a `complete`.
+
+___
+
+### retry
+
+▸ **retry**<`T`\>(`count?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
 #### Type parameters
 
@@ -8847,131 +8597,8 @@ example.subscribe(x => console.log(x));
 
 [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
-A function that returns an Observable that will resubscribe to the
-source stream when the source stream completes, at most `count` times.
-
-___
-
-### repeatWhen
-
-▸ **repeatWhen**<`T`\>(`notifier`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-Returns an Observable that mirrors the source Observable with the exception of a `complete`. If the source
-Observable calls `complete`, this method will emit to the Observable returned from `notifier`. If that Observable
-calls `complete` or `error`, then this method will call `complete` or `error` on the child subscription. Otherwise
-this method will resubscribe to the source Observable.
-
-![](repeatWhen.png)
-
-## Example
-Repeat a message stream on click
-```ts
-import { of, fromEvent } from 'rxjs';
-import { repeatWhen } from 'rxjs/operators';
-
-const source = of('Repeat message');
-const documentClick$ = fromEvent(document, 'click');
-
-source.pipe(repeatWhen(() => documentClick$)
-).subscribe(data => console.log(data))
-```
-
-**`see`** [repeat](RxJS.md#repeat)
-
-**`see`** [retry](RxJS.md#retry)
-
-**`see`** [retryWhen](RxJS.md#retrywhen)
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `notifier` | (`notifications`: [`Observable`](../classes/RxJS.Observable.md)<`void`\>) => [`Observable`](../classes/RxJS.Observable.md)<`any`\> | Receives an Observable of notifications with which a user can `complete` or `error`, aborting the repetition. |
-
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-A function that returns an Observable that that mirrors the source
-Observable with the exception of a `complete`.
-
-___
-
-### retry
-
-▸ **retry**<`T`\>(`count?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-Returns an Observable that mirrors the source Observable with the exception of an `error`. If the source Observable
-calls `error`, this method will resubscribe to the source Observable for a maximum of `count` resubscriptions (given
-as a number parameter) rather than propagating the `error` call.
-
-![](retry.png)
-
-Any and all items emitted by the source Observable will be emitted by the resulting Observable, even those emitted
-during failed subscriptions. For example, if an Observable fails at first but emits [1, 2] then succeeds the second
-time and emits: [1, 2, 3, 4, 5] then the complete stream of emissions and notifications
-would be: [1, 2, 1, 2, 3, 4, 5, `complete`].
-
-## Example
-```ts
-import { interval, of, throwError } from 'rxjs';
-import { mergeMap, retry } from 'rxjs/operators';
-
-const source = interval(1000);
-const example = source.pipe(
-  mergeMap(val => {
-    if(val > 5){
-      return throwError('Error!');
-    }
-    return of(val);
-  }),
-  //retry 2 times on error
-  retry(2)
-);
-
-const subscribe = example.subscribe({
-  next: val => console.log(val),
-  error: val => console.log(`${val}: Retried 2 times then quit!`)
-});
-
-// Output:
-// 0..1..2..3..4..5..
-// 0..1..2..3..4..5..
-// 0..1..2..3..4..5..
-// "Error!: Retried 2 times then quit!"
-```
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `count?` | `number` | Number of retry attempts before failing. |
-
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-A function that returns an Observable that will resubscribe to the
-source stream when the source stream errors, at most `count` times.
-
 ▸ **retry**<`T`\>(`config`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
-Returns an observable that mirrors the source observable unless it errors. If it errors, the source observable
-will be resubscribed to (or "retried") based on the configuration passed here. See documentation
-for {@link RetryConfig} for more details.
-
 #### Type parameters
 
 | Name |
@@ -8980,9 +8607,9 @@ for {@link RetryConfig} for more details.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `config` | `RetryConfig` | The retry configuration |
+| Name | Type |
+| :------ | :------ |
+| `config` | [`RetryConfig`](../interfaces/RxJS.RetryConfig.md) |
 
 #### Returns
 
@@ -8995,7 +8622,7 @@ ___
 ▸ **retryWhen**<`T`\>(`notifier`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
 Returns an Observable that mirrors the source Observable with the exception of an `error`. If the source Observable
-calls `error`, this method will emit the Throwable that caused the error to the Observable returned from `notifier`.
+calls `error`, this method will emit the Throwable that caused the error to the `ObservableInput` returned from `notifier`.
 If that Observable calls `complete` or `error` then this method will call `complete` or `error` on the child
 subscription. Otherwise this method will resubscribe to the source Observable.
 
@@ -9004,41 +8631,51 @@ subscription. Otherwise this method will resubscribe to the source Observable.
 Retry an observable sequence on error based on custom criteria.
 
 ## Example
+
 ```ts
-import { timer, interval } from 'rxjs';
-import { map, tap, retryWhen, delayWhen } from 'rxjs/operators';
+import { interval, map, retryWhen, tap, delayWhen, timer } from 'rxjs';
 
 const source = interval(1000);
-const example = source.pipe(
-  map(val => {
-    if (val > 5) {
+const result = source.pipe(
+  map(value => {
+    if (value > 5) {
       // error will be picked up by retryWhen
-      throw val;
+      throw value;
     }
-    return val;
+    return value;
   }),
   retryWhen(errors =>
     errors.pipe(
       // log error message
-      tap(val => console.log(`Value ${val} was too high!`)),
+      tap(value => console.log(`Value ${ value } was too high!`)),
       // restart in 5 seconds
-      delayWhen(val => timer(val * 1000))
+      delayWhen(value => timer(value * 1000))
     )
   )
 );
 
-const subscribe = example.subscribe(val => console.log(val));
+result.subscribe(value => console.log(value));
 
 // results:
-//   0
-//   1
-//   2
-//   3
-//   4
-//   5
-//   "Value 6 was too high!"
-//  --Wait 5 seconds then repeat
+// 0
+// 1
+// 2
+// 3
+// 4
+// 5
+// 'Value 6 was too high!'
+// - Wait 5 seconds then repeat
 ```
+
+**`See`**
+
+[retry](RxJS.md#retry)
+
+**`Deprecated`**
+
+Will be removed in v9 or v10, use [retry](RxJS.md#retry)'s `delay` option instead.
+Will be removed in v9 or v10. Use [retry](RxJS.md#retry)'s [delay](../interfaces/RxJS.RetryConfig.md#delay) option instead.
+Instead of `retryWhen(() => notify$)`, use: `retry({ delay: () => notify$ })`.
 
 #### Type parameters
 
@@ -9050,13 +8687,13 @@ const subscribe = example.subscribe(val => console.log(val));
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `notifier` | (`errors`: [`Observable`](../classes/RxJS.Observable.md)<`any`\>) => [`Observable`](../classes/RxJS.Observable.md)<`any`\> | Receives an Observable of notifications with which a user can `complete` or `error`, aborting the retry. |
+| `notifier` | (`errors`: [`Observable`](../classes/RxJS.Observable.md)<`any`\>) => [`ObservableInput`](RxJS.md#observableinput)<`any`\> | Function that receives an Observable of notifications with which a user can `complete` or `error`, aborting the retry. |
 
 #### Returns
 
 [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
-A function that returns an Observable that mirrors the source
+A function that returns an `ObservableInput` that mirrors the source
 Observable with the exception of an `error`.
 
 ___
@@ -9069,35 +8706,36 @@ Emits the most recently emitted value from the source Observable whenever
 another Observable, the `notifier`, emits.
 
 <span class="informal">It's like [sampleTime](RxJS.md#sampletime), but samples whenever
-the `notifier` Observable emits something.</span>
+the `notifier` `ObservableInput` emits something.</span>
 
 ![](sample.png)
 
-Whenever the `notifier` Observable emits a value, `sample`
+Whenever the `notifier` `ObservableInput` emits a value, `sample`
 looks at the source Observable and emits whichever value it has most recently
 emitted since the previous sampling, unless the source has not emitted
 anything since the previous sampling. The `notifier` is subscribed to as soon
 as the output Observable is subscribed.
 
 ## Example
-On every click, sample the most recent "seconds" timer
+
+On every click, sample the most recent `seconds` timer
+
 ```ts
-import { fromEvent, interval } from 'rxjs';
-import { sample } from 'rxjs/operators';
+import { fromEvent, interval, sample } from 'rxjs';
 
 const seconds = interval(1000);
 const clicks = fromEvent(document, 'click');
 const result = seconds.pipe(sample(clicks));
+
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [audit](RxJS.md#audit)
+**`See`**
 
-**`see`** [debounce](RxJS.md#debounce)
-
-**`see`** [sampleTime](RxJS.md#sampletime)
-
-**`see`** [throttle](RxJS.md#throttle)
+ - [audit](RxJS.md#audit)
+ - [debounce](RxJS.md#debounce)
+ - [sampleTime](RxJS.md#sampletime)
+ - [throttle](RxJS.md#throttle)
 
 #### Type parameters
 
@@ -9109,7 +8747,7 @@ result.subscribe(x => console.log(x));
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `notifier` | [`Observable`](../classes/RxJS.Observable.md)<`any`\> | The Observable to use for sampling the source Observable. |
+| `notifier` | [`ObservableInput`](RxJS.md#observableinput)<`any`\> | The `ObservableInput` to use for sampling the source Observable. |
 
 #### Returns
 
@@ -9141,25 +8779,25 @@ defined by the optional `scheduler` argument). The sampling starts as soon as
 the output Observable is subscribed.
 
 ## Example
+
 Every second, emit the most recent click at most once
+
 ```ts
-import { fromEvent } from 'rxjs';
-import { sampleTime } from 'rxjs/operators';
+import { fromEvent, sampleTime } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const result = clicks.pipe(sampleTime(1000));
+
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [auditTime](RxJS.md#audittime)
+**`See`**
 
-**`see`** [debounceTime](RxJS.md#debouncetime)
-
-**`see`** [delay](RxJS.md#delay)
-
-**`see`** [sample](RxJS.md#sample)
-
-**`see`** [throttleTime](RxJS.md#throttletime)
+ - [auditTime](RxJS.md#audittime)
+ - [debounceTime](RxJS.md#debouncetime)
+ - [delay](RxJS.md#delay)
+ - [sample](RxJS.md#sample)
+ - [throttleTime](RxJS.md#throttletime)
 
 #### Type parameters
 
@@ -9172,7 +8810,7 @@ result.subscribe(x => console.log(x));
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `period` | `number` | The sampling period expressed in milliseconds or the time unit determined internally by the optional `scheduler`. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | - |
+| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The [SchedulerLike](../interfaces/RxJS.SchedulerLike.md) to use for managing the timers that handle the sampling. |
 
 #### Returns
 
@@ -9255,9 +8893,10 @@ ___
 Converts from a common [ObservableInput](RxJS.md#observableinput) type to an observable where subscription and emissions
 are scheduled on the provided scheduler.
 
-**`see`** [from](RxJS.md#from)
+**`See`**
 
-**`see`** [of](RxJS.md#of)
+ - [from](RxJS.md#from)
+ - [of](RxJS.md#of)
 
 #### Type parameters
 
@@ -9290,7 +8929,8 @@ are equal.
 
 ![](sequenceEqual.png)
 
-`sequenceEqual` subscribes to two observables and buffers incoming values from each observable. Whenever either
+`sequenceEqual` subscribes to source observable and `compareTo` `ObservableInput` (that internally
+gets converted to an observable) and buffers incoming values from each observable. Whenever either
 observable emits a value, the value is buffered and the buffers are shifted and compared from the bottom
 up; If any value pair doesn't match, the returned observable will emit `false` and complete. If one of the
 observables completes, the operator will wait for the other observable to complete; If the other
@@ -9298,10 +8938,11 @@ observable emits before completing, the returned observable will emit `false` an
 completes or emits after the other completes, the returned observable will never complete.
 
 ## Example
-figure out if the Konami code matches
+
+Figure out if the Konami code matches
+
 ```ts
-import { from, fromEvent } from 'rxjs';
-import { sequenceEqual, bufferCount, mergeMap, map } from 'rxjs/operators';
+import { from, fromEvent, map, bufferCount, mergeMap, sequenceEqual } from 'rxjs';
 
 const codes = from([
   'ArrowUp',
@@ -9317,21 +8958,19 @@ const codes = from([
   'Enter', // no start key, clearly.
 ]);
 
-const keys = fromEvent(document, 'keyup').pipe(map(e => e.code));
+const keys = fromEvent<KeyboardEvent>(document, 'keyup').pipe(map(e => e.code));
 const matches = keys.pipe(
   bufferCount(11, 1),
-  mergeMap(
-    last11 => from(last11).pipe(sequenceEqual(codes)),
-  ),
+  mergeMap(last11 => from(last11).pipe(sequenceEqual(codes)))
 );
 matches.subscribe(matched => console.log('Successful cheat at Contra? ', matched));
 ```
 
-**`see`** [combineLatest](RxJS.md#combinelatest)
+**`See`**
 
-**`see`** [zip](RxJS.md#zip)
-
-**`see`** [withLatestFrom](RxJS.md#withlatestfrom)
+ - [combineLatest](RxJS.md#combinelatest)
+ - [zip](RxJS.md#zip)
+ - [withLatestFrom](RxJS.md#withlatestfrom)
 
 #### Type parameters
 
@@ -9343,8 +8982,8 @@ matches.subscribe(matched => console.log('Successful cheat at Contra? ', matched
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `compareTo` | [`Observable`](../classes/RxJS.Observable.md)<`T`\> | The observable sequence to compare the source sequence to. |
-| `comparator?` | (`a`: `T`, `b`: `T`) => `boolean` | - |
+| `compareTo` | [`ObservableInput`](RxJS.md#observableinput)<`T`\> | The `ObservableInput` sequence to compare the source sequence to. |
+| `comparator?` | (`a`: `T`, `b`: `T`) => `boolean` | An optional function to compare each value pair. |
 
 #### Returns
 
@@ -9352,7 +8991,7 @@ matches.subscribe(matched => console.log('Successful cheat at Contra? ', matched
 
 A function that returns an Observable that emits a single boolean
 value representing whether or not the values emitted by the source
-Observable and provided Observable were equal in sequence.
+Observable and provided `ObservableInput` were equal in sequence.
 
 ___
 
@@ -9382,7 +9021,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `options` | `ShareConfig`<`T`\> |
+| `options` | [`ShareConfig`](../interfaces/RxJS.ShareConfig.md)<`T`\> |
 
 #### Returns
 
@@ -9404,7 +9043,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `config` | `ShareReplayConfig` |
+| `config` | [`ShareReplayConfig`](../interfaces/RxJS.ShareReplayConfig.md) |
 
 #### Returns
 
@@ -9484,26 +9123,27 @@ Skips the values until the sent notifications are equal or less than provided sk
 an error if skip count is equal or more than the actual number of emits and source raises an error.
 
 ## Example
-Skip the values before the emission
-```ts
-import { interval } from 'rxjs';
-import { skip } from 'rxjs/operators';
 
-//emit every half second
+Skip the values before the emission
+
+```ts
+import { interval, skip } from 'rxjs';
+
+// emit every half second
 const source = interval(500);
-//skip the first 10 emitted values
-const example = source.pipe(skip(10));
-//output: 10...11...12...13........
-const subscribe = example.subscribe(val => console.log(val));
+// skip the first 10 emitted values
+const result = source.pipe(skip(10));
+
+result.subscribe(value => console.log(value));
+// output: 10...11...12...13...
 ```
 
-**`see`** [last](RxJS.md#last)
+**`See`**
 
-**`see`** [skipWhile](RxJS.md#skipwhile)
-
-**`see`** [skipUntil](RxJS.md#skipuntil)
-
-**`see`** [skipLast](RxJS.md#skiplast)
+ - [last](RxJS.md#last)
+ - [skipWhile](RxJS.md#skipwhile)
+ - [skipUntil](RxJS.md#skipuntil)
+ - [skipLast](RxJS.md#skiplast)
 
 #### Type parameters
 
@@ -9551,8 +9191,7 @@ skipped values.
 Skip the last 2 values of an observable with many values
 
 ```ts
-import { of } from 'rxjs';
-import { skipLast } from 'rxjs/operators';
+import { of, skipLast } from 'rxjs';
 
 const numbers = of(1, 2, 3, 4, 5);
 const skipLastTwo = numbers.pipe(skipLast(2));
@@ -9563,13 +9202,12 @@ skipLastTwo.subscribe(x => console.log(x));
 // (4 and 5 are skipped)
 ```
 
-**`see`** [skip](RxJS.md#skip)
+**`See`**
 
-**`see`** [skipUntil](RxJS.md#skipuntil)
-
-**`see`** [skipWhile](RxJS.md#skipwhile)
-
-**`see`** [take](RxJS.md#take)
+ - [skip](RxJS.md#skip)
+ - [skipUntil](RxJS.md#skipuntil)
+ - [skipWhile](RxJS.md#skipwhile)
+ - [take](RxJS.md#take)
 
 #### Type parameters
 
@@ -9598,23 +9236,25 @@ ___
 
 Returns an Observable that skips items emitted by the source Observable until a second Observable emits an item.
 
-The `skipUntil` operator causes the observable stream to skip the emission of values ​​until the passed in observable emits the first value.
-This can be particularly useful in combination with user interactions, responses of http requests or waiting for specific times to pass by.
+The `skipUntil` operator causes the observable stream to skip the emission of values until the passed in observable
+emits the first value. This can be particularly useful in combination with user interactions, responses of HTTP
+requests or waiting for specific times to pass by.
 
 ![](skipUntil.png)
 
-Internally the `skipUntil` operator subscribes to the passed in observable (in the following called *notifier*) in order to recognize the emission
-of its first value. When this happens, the operator unsubscribes from the *notifier* and starts emitting the values of the *source*
-observable. It will never let the *source* observable emit any values if the *notifier* completes or throws an error without emitting
-a value before.
+Internally, the `skipUntil` operator subscribes to the passed in `notifier` `ObservableInput` (which gets converted
+to an Observable) in order to recognize the emission of its first value. When `notifier` emits next, the operator
+unsubscribes from it and starts emitting the values of the *source* observable until it completes or errors. It
+will never let the *source* observable emit any values if the `notifier` completes or throws an error without
+emitting a value before.
 
 ## Example
 
-In the following example, all emitted values ​​of the interval observable are skipped until the user clicks anywhere within the page.
+In the following example, all emitted values of the interval observable are skipped until the user clicks anywhere
+within the page
 
 ```ts
-import { interval, fromEvent } from 'rxjs';
-import { skipUntil } from 'rxjs/operators';
+import { interval, fromEvent, skipUntil } from 'rxjs';
 
 const intervalObservable = interval(1000);
 const click = fromEvent(document, 'click');
@@ -9624,8 +9264,15 @@ const emitAfterClick = intervalObservable.pipe(
 );
 // clicked at 4.6s. output: 5...6...7...8........ or
 // clicked at 7.3s. output: 8...9...10..11.......
-const subscribe = emitAfterClick.subscribe(value => console.log(value));
+emitAfterClick.subscribe(value => console.log(value));
 ```
+
+**`See`**
+
+ - [last](RxJS.md#last)
+ - [skip](RxJS.md#skip)
+ - [skipWhile](RxJS.md#skipwhile)
+ - [skipLast](RxJS.md#skiplast)
 
 #### Type parameters
 
@@ -9637,14 +9284,14 @@ const subscribe = emitAfterClick.subscribe(value => console.log(value));
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `notifier` | [`Observable`](../classes/RxJS.Observable.md)<`any`\> | The second Observable that has to emit an item before the source Observable's elements begin to be mirrored by the resulting Observable. |
+| `notifier` | [`ObservableInput`](RxJS.md#observableinput)<`any`\> | An `ObservableInput` that has to emit an item before the source Observable elements begin to be mirrored by the resulting Observable. |
 
 #### Returns
 
 [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
 A function that returns an Observable that skips items from the
-source Observable until the second Observable emits an item, then emits the
+source Observable until the `notifier` Observable emits an item, then emits the
 remaining items.
 
 ___
@@ -9745,9 +9392,11 @@ ___
 
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `undefined`\>
 
-▸ **startWith**<`T`, `A`\>(...`valuesAndScheduler`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+▸ **startWith**<`T`, `A`\>(`...valuesAndScheduler`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
 
-**`deprecated`** The `scheduler` parameter will be removed in v8. Use `scheduled` and `concatAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
+**`Deprecated`**
+
+The `scheduler` parameter will be removed in v8. Use `scheduled` and `concatAll`. Details: https://rxjs.dev/deprecations/scheduler-argument
 
 #### Type parameters
 
@@ -9766,7 +9415,7 @@ ___
 
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
 
-▸ **startWith**<`T`, `A`\>(...`values`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
+▸ **startWith**<`T`, `A`\>(`...values`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| [`ValueFromArray`](RxJS.md#valuefromarray)<`A`\>\>
 
 #### Type parameters
 
@@ -9822,11 +9471,10 @@ merge(a, b).subscribe(console.log);
 
 Both Observable `a` and `b` will emit their values directly and synchronously once they are subscribed to.
 
-If we instead use the `subscribeOn` operator declaring that we want to use the [asyncScheduler](RxJS.md#asyncscheduler) for values emited by Observable `a`:
+If we instead use the `subscribeOn` operator declaring that we want to use the [asyncScheduler](RxJS.md#asyncscheduler) for values emitted by Observable `a`:
 
 ```ts
-import { of, merge, asyncScheduler } from 'rxjs';
-import { subscribeOn } from 'rxjs/operators';
+import { of, subscribeOn, asyncScheduler, merge } from 'rxjs';
 
 const a = of(1, 2, 3).pipe(subscribeOn(asyncScheduler));
 const b = of(4, 5, 6);
@@ -9887,47 +9535,44 @@ source observable completes, *and* any currently subscribed to inner observable 
 if there are any.
 
 ## Examples
+
 Spawn a new interval observable for each click event, but for every new
-click, cancel the previous interval and subscribe to the new one.
+click, cancel the previous interval and subscribe to the new one
 
 ```ts
-import { fromEvent, interval } from 'rxjs';
-import { switchAll, map, tap } from 'rxjs/operators';
+import { fromEvent, tap, map, interval, switchAll } from 'rxjs';
 
 const clicks = fromEvent(document, 'click').pipe(tap(() => console.log('click')));
-const source = clicks.pipe(map((ev) => interval(1000)));
+const source = clicks.pipe(map(() => interval(1000)));
 
-source.pipe(
-  switchAll()
-).subscribe(x => console.log(x));
+source
+  .pipe(switchAll())
+  .subscribe(x => console.log(x));
 
 // Output
 // click
+// 0
 // 1
 // 2
 // 3
-// 4
 // ...
 // click
+// 0
 // 1
 // 2
-// 3
 // ...
 // click
 // ...
 ```
 
-**`see`** [combineLatestAll](RxJS.md#combinelatestall)
+**`See`**
 
-**`see`** [concatAll](RxJS.md#concatall)
-
-**`see`** [exhaustAll](RxJS.md#exhaustall)
-
-**`see`** [switchMap](RxJS.md#switchmap)
-
-**`see`** [switchMapTo](RxJS.md#switchmapto)
-
-**`see`** [mergeAll](RxJS.md#mergeall)
+ - [combineLatestAll](RxJS.md#combinelatestall)
+ - [concatAll](RxJS.md#concatall)
+ - [exhaustAll](RxJS.md#exhaustall)
+ - [switchMap](RxJS.md#switchmap)
+ - [switchMapTo](RxJS.md#switchmapto)
+ - [mergeAll](RxJS.md#mergeall)
 
 #### Type parameters
 
@@ -9949,8 +9594,6 @@ ___
 
 ▸ **switchMap**<`T`, `O`\>(`project`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
-
 #### Type parameters
 
 | Name | Type |
@@ -9970,7 +9613,9 @@ ___
 
 ▸ **switchMap**<`T`, `O`\>(`project`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
 #### Type parameters
 
@@ -9992,7 +9637,9 @@ ___
 
 ▸ **switchMap**<`T`, `R`, `O`\>(`project`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
 #### Type parameters
 
@@ -10017,9 +9664,11 @@ ___
 
 ### switchMapTo
 
-▸ **switchMapTo**<`O`\>(`observable`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **switchMapTo**<`O`\>(`observable`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`unknown`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+Will be removed in v9. Use [switchMap](RxJS.md#switchmap) instead: `switchMap(() => result)`
 
 #### Type parameters
 
@@ -10035,11 +9684,13 @@ ___
 
 #### Returns
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`unknown`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-▸ **switchMapTo**<`O`\>(`observable`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+▸ **switchMapTo**<`O`\>(`observable`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`unknown`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
 #### Type parameters
 
@@ -10056,11 +9707,13 @@ ___
 
 #### Returns
 
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`any`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
+[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`unknown`, [`ObservedValueOf`](RxJS.md#observedvalueof)<`O`\>\>
 
 ▸ **switchMapTo**<`T`, `R`, `O`\>(`observable`, `resultSelector`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
 
-**`deprecated`** The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
+**`Deprecated`**
+
+The `resultSelector` parameter will be removed in v8. Use an inner `map` instead. Details: https://rxjs.dev/deprecations/resultSelector
 
 #### Type parameters
 
@@ -10091,14 +9744,14 @@ Applies an accumulator function over the source Observable where the
 accumulator function itself returns an Observable, emitting values
 only from the most recently returned Observable.
 
-<span class="informal">It's like [scan](RxJS.md#scan), but only the most recent
+<span class="informal">It's like [mergeScan](RxJS.md#mergescan), but only the most recent
 Observable returned by the accumulator is merged into the outer Observable.</span>
 
-**`see`** [scan](RxJS.md#scan)
+**`See`**
 
-**`see`** [mergeScan](RxJS.md#mergescan)
-
-**`see`** [switchMap](RxJS.md#switchmap)
+ - [scan](RxJS.md#scan)
+ - [mergeScan](RxJS.md#mergescan)
+ - [switchMap](RxJS.md#switchmap)
 
 #### Type parameters
 
@@ -10140,10 +9793,11 @@ all of its values are emitted. After that, it completes, regardless if the
 source completes.
 
 ## Example
+
 Take the first 5 seconds of an infinite 1-second interval Observable
+
 ```ts
-import { interval } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { interval, take } from 'rxjs';
 
 const intervalCount = interval(1000);
 const takeFive = intervalCount.pipe(take(5));
@@ -10157,13 +9811,12 @@ takeFive.subscribe(x => console.log(x));
 // 4
 ```
 
-**`see`** [takeLast](RxJS.md#takelast)
+**`See`**
 
-**`see`** [takeUntil](RxJS.md#takeuntil)
-
-**`see`** [takeWhile](RxJS.md#takewhile)
-
-**`see`** [skip](RxJS.md#skip)
+ - [takeLast](RxJS.md#takelast)
+ - [takeUntil](RxJS.md#takeuntil)
+ - [takeWhile](RxJS.md#takewhile)
+ - [skip](RxJS.md#skip)
 
 #### Type parameters
 
@@ -10212,21 +9865,19 @@ in an observable that never emits a value.
 Take the last 3 values of an Observable with many values
 
 ```ts
-import { range } from 'rxjs';
-import { takeLast } from 'rxjs/operators';
+import { range, takeLast } from 'rxjs';
 
 const many = range(1, 100);
 const lastThree = many.pipe(takeLast(3));
 lastThree.subscribe(x => console.log(x));
 ```
 
-**`see`** [take](RxJS.md#take)
+**`See`**
 
-**`see`** [takeUntil](RxJS.md#takeuntil)
-
-**`see`** [takeWhile](RxJS.md#takewhile)
-
-**`see`** [skip](RxJS.md#skip)
+ - [take](RxJS.md#take)
+ - [takeUntil](RxJS.md#takeuntil)
+ - [takeWhile](RxJS.md#takewhile)
+ - [skip](RxJS.md#skip)
 
 #### Type parameters
 
@@ -10268,10 +9919,11 @@ and completes. If the `notifier` doesn't emit any value and completes
 then `takeUntil` will pass all values.
 
 ## Example
+
 Tick every second until the first click happens
+
 ```ts
-import { fromEvent, interval } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { interval, fromEvent, takeUntil } from 'rxjs';
 
 const source = interval(1000);
 const clicks = fromEvent(document, 'click');
@@ -10279,13 +9931,12 @@ const result = source.pipe(takeUntil(clicks));
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [take](RxJS.md#take)
+**`See`**
 
-**`see`** [takeLast](RxJS.md#takelast)
-
-**`see`** [takeWhile](RxJS.md#takewhile)
-
-**`see`** [skip](RxJS.md#skip)
+ - [take](RxJS.md#take)
+ - [takeLast](RxJS.md#takelast)
+ - [takeWhile](RxJS.md#takewhile)
+ - [skip](RxJS.md#skip)
 
 #### Type parameters
 
@@ -10310,43 +9961,6 @@ ___
 
 ### takeWhile
 
-▸ **takeWhile**<`T`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `Exclude`<`T`, [`Falsy`](RxJS.md#falsy)\> extends `never` ? `never` : `T`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `Exclude`<`T`, [`Falsy`](RxJS.md#falsy)\> extends `never` ? `never` : `T`\>
-
-▸ **takeWhile**<`T`\>(`predicate`, `inclusive`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `Exclude`<`T`, [`Falsy`](RxJS.md#falsy)\> extends `never` ? `never` : `T`\>
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `predicate` | `BooleanConstructor` |
-| `inclusive` | ``false`` |
-
-#### Returns
-
-[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `Exclude`<`T`, [`Falsy`](RxJS.md#falsy)\> extends `never` ? `never` : `T`\>
-
 ▸ **takeWhile**<`T`\>(`predicate`, `inclusive`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
 #### Type parameters
@@ -10365,6 +9979,43 @@ ___
 #### Returns
 
 [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
+
+▸ **takeWhile**<`T`\>(`predicate`, `inclusive`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\>\>
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `predicate` | `BooleanConstructor` |
+| `inclusive` | ``false`` |
+
+#### Returns
+
+[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\>\>
+
+▸ **takeWhile**<`T`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\>\>
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `predicate` | `BooleanConstructor` |
+
+#### Returns
+
+[`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`TruthyTypesOf`](RxJS.md#truthytypesof)<`T`\>\>
 
 ▸ **takeWhile**<`T`, `S`\>(`predicate`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `S`\>
 
@@ -10428,9 +10079,7 @@ ___
 
 ### tap
 
-▸ **tap**<`T`\>(`observer?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-**`deprecated`** Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments
+▸ **tap**<`T`\>(`observerOrNext?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
 #### Type parameters
 
@@ -10442,27 +10091,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `observer?` | `Partial`<`TapObserver`<`T`\>\> |
-
-#### Returns
-
-[`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-▸ **tap**<`T`\>(`next`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
-
-**`deprecated`** Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `next` | (`value`: `T`) => `void` |
+| `observerOrNext?` | `Partial`<`TapObserver`<`T`\>\> \| (`value`: `T`) => `void` |
 
 #### Returns
 
@@ -10470,7 +10099,9 @@ ___
 
 ▸ **tap**<`T`\>(`next?`, `error?`, `complete?`): [`MonoTypeOperatorFunction`](../interfaces/RxJS.MonoTypeOperatorFunction.md)<`T`\>
 
-**`deprecated`** Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments
+**`Deprecated`**
+
+Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments
 
 #### Type parameters
 
@@ -10503,7 +10134,7 @@ process.
 <span class="informal">It's like [throttleTime](RxJS.md#throttletime), but the silencing
 duration is determined by a second Observable.</span>
 
-![](throttle.png)
+![](throttle.svg)
 
 `throttle` emits the source Observable values on the output Observable
 when its internal timer is disabled, and ignores source values when the timer
@@ -10515,25 +10146,25 @@ value, the timer is disabled, and this process repeats for the
 next source value.
 
 ## Example
+
 Emit clicks at a rate of at most one click per second
+
 ```ts
-import { fromEvent, interval } from 'rxjs';
-import { throttle } from 'rxjs/operators';
+import { fromEvent, throttle, interval } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
-const result = clicks.pipe(throttle(ev => interval(1000)));
+const result = clicks.pipe(throttle(() => interval(1000)));
+
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [audit](RxJS.md#audit)
+**`See`**
 
-**`see`** [debounce](RxJS.md#debounce)
-
-**`see`** [delayWhen](RxJS.md#delaywhen)
-
-**`see`** [sample](RxJS.md#sample)
-
-**`see`** [throttleTime](RxJS.md#throttletime)
+ - [audit](RxJS.md#audit)
+ - [debounce](RxJS.md#debounce)
+ - [delayWhen](RxJS.md#delaywhen)
+ - [sample](RxJS.md#sample)
+ - [throttleTime](RxJS.md#throttletime)
 
 #### Type parameters
 
@@ -10546,7 +10177,7 @@ result.subscribe(x => console.log(x));
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `durationSelector` | (`value`: `T`) => [`ObservableInput`](RxJS.md#observableinput)<`any`\> | A function that receives a value from the source Observable, for computing the silencing duration for each source value, returned as an Observable or a Promise. |
-| `config?` | `ThrottleConfig` | a configuration object to define `leading` and `trailing` behavior. Defaults to `{ leading: true, trailing: false }`. |
+| `config?` | [`ThrottleConfig`](../interfaces/RxJS.ThrottleConfig.md) | a configuration object to define `leading` and `trailing` behavior. Defaults to `{ leading: true, trailing: false }`. |
 
 #### Returns
 
@@ -10580,56 +10211,26 @@ and this process repeats for the next source value. Optionally takes a
 
 ## Examples
 
-#### Limit click rate
+### Limit click rate
 
 Emit clicks at a rate of at most one click per second
+
 ```ts
-import { fromEvent } from 'rxjs';
-import { throttleTime } from 'rxjs/operators';
+import { fromEvent, throttleTime } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const result = clicks.pipe(throttleTime(1000));
+
 result.subscribe(x => console.log(x));
 ```
 
-#### Double Click
+**`See`**
 
-The following example only emits clicks which happen within a subsequent
-delay of 400ms of the previous click. This for example can emulate a double
-click. It makes use of the `trailing` parameter of the throttle configuration.
-
-```ts
-import { fromEvent, asyncScheduler } from 'rxjs';
-import { throttleTime, withLatestFrom } from 'rxjs/operators';
-
-// defaultThottleConfig = { leading: true, trailing: false }
-const throttleConfig = {
-  leading: false,
-  trailing: true
-}
-
-const click = fromEvent(document, 'click');
-const doubleClick = click.pipe(
-  throttleTime(400, asyncScheduler, throttleConfig)
-);
-
-doubleClick.subscribe((throttleValue: Event) => {
-  console.log(`Double-clicked! Timestamp: ${throttleValue.timeStamp}`);
-});
-```
-
-If you enable the `leading` parameter in this example, the output would be the primary click and
-the double click, but restricts additional clicks within 400ms.
-
-**`see`** [auditTime](RxJS.md#audittime)
-
-**`see`** [debounceTime](RxJS.md#debouncetime)
-
-**`see`** [delay](RxJS.md#delay)
-
-**`see`** [sampleTime](RxJS.md#sampletime)
-
-**`see`** [throttle](RxJS.md#throttle)
+ - [auditTime](RxJS.md#audittime)
+ - [debounceTime](RxJS.md#debouncetime)
+ - [delay](RxJS.md#delay)
+ - [sampleTime](RxJS.md#sampletime)
+ - [throttle](RxJS.md#throttle)
 
 #### Type parameters
 
@@ -10643,7 +10244,7 @@ the double click, but restricts additional clicks within 400ms.
 | :------ | :------ | :------ |
 | `duration` | `number` | Time to wait before emitting another value after emitting the last value, measured in milliseconds or the time unit determined internally by the optional `scheduler`. |
 | `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The [SchedulerLike](../interfaces/RxJS.SchedulerLike.md) to use for managing the timers that handle the throttling. Defaults to [asyncScheduler](RxJS.md#asyncscheduler). |
-| `config?` | `ThrottleConfig` | a configuration object to define `leading` and `trailing` behavior. Defaults to `{ leading: true, trailing: false }`. |
+| `config?` | [`ThrottleConfig`](../interfaces/RxJS.ThrottleConfig.md) | a configuration object to define `leading` and `trailing` behavior. Defaults to `{ leading: true, trailing: false }`. |
 
 #### Returns
 
@@ -10674,7 +10275,7 @@ that up and notify the consumer of the error.
 ## Example
 
 Create a simple observable that will create a new error with a timestamp and log it
-and the message every time you subscribe to it.
+and the message every time you subscribe to it
 
 ```ts
 import { throwError } from 'rxjs';
@@ -10682,70 +10283,68 @@ import { throwError } from 'rxjs';
 let errorCount = 0;
 
 const errorWithTimestamp$ = throwError(() => {
-   const error: any = new Error(`This is error number ${++errorCount}`);
-   error.timestamp = Date.now();
-   return error;
+  const error: any = new Error(`This is error number ${ ++errorCount }`);
+  error.timestamp = Date.now();
+  return error;
 });
 
 errorWithTimestamp$.subscribe({
-   error: err => console.log(err.timestamp, err.message)
+  error: err => console.log(err.timestamp, err.message)
 });
 
 errorWithTimestamp$.subscribe({
-   error: err => console.log(err.timestamp, err.message)
+  error: err => console.log(err.timestamp, err.message)
 });
 
-// Logs the timestamp and a new error message each subscription;
+// Logs the timestamp and a new error message for each subscription
 ```
 
-## Unnecessary usage
+### Unnecessary usage
 
 Using `throwError` inside of an operator or creation function
-with a callback, is usually not necessary:
+with a callback, is usually not necessary
 
 ```ts
-import { throwError, timer, of } from 'rxjs';
-import { concatMap } from 'rxjs/operators';
+import { of, concatMap, timer, throwError } from 'rxjs';
 
 const delays$ = of(1000, 2000, Infinity, 3000);
 
 delays$.pipe(
-   concatMap(ms => {
-     if (ms < 10000) {
-       return timer(ms);
-     } else {
-       // This is probably overkill.
-       return throwError(() => new Error(`Invalid time ${ms}`));
-     }
-   })
+  concatMap(ms => {
+    if (ms < 10000) {
+      return timer(ms);
+    } else {
+      // This is probably overkill.
+      return throwError(() => new Error(`Invalid time ${ ms }`));
+    }
+  })
 )
 .subscribe({
-   next: console.log,
-   error: console.error
+  next: console.log,
+  error: console.error
 });
 ```
 
-You can just throw the error instead:
+You can just throw the error instead
 
 ```ts
-import { throwError, timer, of } from 'rxjs';
-import { concatMap } from 'rxjs/operators';
+import { of, concatMap, timer } from 'rxjs';
 
 const delays$ = of(1000, 2000, Infinity, 3000);
 
 delays$.pipe(
-   concatMap(ms => {
-     if (ms < 10000) {
-       return timer(ms);
-     } else {
-       // Cleaner and easier to read for most folks.
-       throw new Error(`Invalid time ${ms}`);
-     }
-   })
+  concatMap(ms => {
+    if (ms < 10000) {
+      return timer(ms);
+    } else {
+      // Cleaner and easier to read for most folks.
+      throw new Error(`Invalid time ${ ms }`);
+    }
+  })
 )
 .subscribe({
-   next: console.log,
-   error: console.error
+  next: console.log,
+  error: console.error
 });
 ```
 
@@ -10763,7 +10362,9 @@ delays$.pipe(
 
 Returns an observable that will error with the specified error immediately upon subscription.
 
-**`deprecated`** Support for passing an error value will be removed in v8. Instead, pass a factory function to `throwError(() => new Error('test'))`. This is
+**`Deprecated`**
+
+Support for passing an error value will be removed in v8. Instead, pass a factory function to `throwError(() => new Error('test'))`. This is
 because it will create the error at the moment it should be created and capture a more appropriate stack trace. If
 for some reason you need to create the error ahead of time, you can still do that: `const err = new Error('test'); throwError(() => err);`.
 
@@ -10781,7 +10382,9 @@ for some reason you need to create the error ahead of time, you can still do tha
 
 Notifies the consumer of an error using a given scheduler by scheduling it at delay `0` upon subscription.
 
-**`deprecated`** The `scheduler` parameter will be removed in v8.
+**`Deprecated`**
+
+The `scheduler` parameter will be removed in v8.
 Use `throwError` in combination with [observeOn](RxJS.md#observeon): `throwError(() => new Error('test')).pipe(observeOn(scheduler));`.
 Details: https://rxjs.dev/deprecations/scheduler-argument
 
@@ -10809,21 +10412,25 @@ an error. The error will be created at that time by the optional
 ![](throwIfEmpty.png)
 
 ## Example
+
+Throw an error if the document wasn't clicked within 1 second
+
 ```ts
-import { fromEvent, timer } from 'rxjs';
-import { throwIfEmpty, takeUntil } from 'rxjs/operators';
+import { fromEvent, takeUntil, timer, throwIfEmpty } from 'rxjs';
 
 const click$ = fromEvent(document, 'click');
 
 click$.pipe(
   takeUntil(timer(1000)),
-  throwIfEmpty(
-    () => new Error('the document was not clicked within 1 second')
-  ),
+  throwIfEmpty(() => new Error('The document was not clicked within 1 second'))
 )
 .subscribe({
-  next() { console.log('The button was clicked'); },
-  error(err) { console.error(err); }
+  next() {
+   console.log('The document was clicked');
+  },
+  error(err) {
+    console.error(err.message);
+  }
 });
 ```
 
@@ -10864,31 +10471,26 @@ emits indications of the amount of time elapsed between those emissions.</span>
 
 ![](timeInterval.png)
 
-## Examples
+## Example
+
 Emit interval between current value with the last value
 
 ```ts
+import { interval, timeInterval } from 'rxjs';
+
 const seconds = interval(1000);
 
-seconds.pipe(timeInterval())
-.subscribe(
-    value => console.log(value),
-    err => console.log(err),
-);
-
-seconds.pipe(timeout(900))
-.subscribe(
-    value => console.log(value),
-    err => console.log(err),
-);
+seconds
+  .pipe(timeInterval())
+  .subscribe(value => console.log(value));
 
 // NOTE: The values will never be this precise,
 // intervals created with `interval` or `setInterval`
 // are non-deterministic.
 
-// {value: 0, interval: 1000}
-// {value: 1, interval: 1000}
-// {value: 2, interval: 1000}
+// { value: 0, interval: 1000 }
+// { value: 1, interval: 1000 }
+// { value: 2, interval: 1000 }
 ```
 
 #### Type parameters
@@ -10899,9 +10501,9 @@ seconds.pipe(timeout(900))
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | Scheduler used to get the current time. |
 
 #### Returns
 
@@ -10936,52 +10538,48 @@ time the resulting observable will wait between the arrival of values from the s
 `first` is _not_ provided, the value from `each` will be used to check timeout conditions for the arrival of the first
 value and all subsequent values. If `first` _is_ provided, `each` will only be use to check all values after the first.
 
-### Example
+## Examples
 
 Emit a custom error if there is too much time between values
 
 ```ts
-import { interval, throwError } from 'rxjs';
-import { timeout } from 'rxjs/operators';
+import { interval, timeout, throwError } from 'rxjs';
 
 class CustomTimeoutError extends Error {
   constructor() {
-     super('It was too slow');
-     this.name = 'CustomTimeoutError';
+    super('It was too slow');
+    this.name = 'CustomTimeoutError';
   }
 }
 
 const slow$ = interval(900);
 
 slow$.pipe(
-   timeout({
-     each: 1000,
-     with: () => throwError(new CustomTimeoutError())
-   })
+  timeout({
+    each: 1000,
+    with: () => throwError(() => new CustomTimeoutError())
+  })
 )
 .subscribe({
-   error: console.error
-})
+  error: console.error
+});
 ```
-
-### Example
 
 Switch to a faster observable if your source is slow.
 
 ```ts
-import { interval, throwError } from 'rxjs';
-import { timeout } from 'rxjs/operators';
+import { interval, timeout } from 'rxjs';
 
 const slow$ = interval(900);
 const fast$ = interval(500);
 
 slow$.pipe(
-   timeout({
-     each: 1000,
-     with: () => fast$,
-   })
+  timeout({
+    each: 1000,
+    with: () => fast$,
+  })
 )
-.subscribe(console.log)
+.subscribe(console.log);
 ```
 
 #### Type parameters
@@ -10996,7 +10594,7 @@ slow$.pipe(
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `config` | `TimeoutConfig`<`T`, `O`, `M`\> & { `with`: (`info`: `TimeoutInfo`<`T`, `M`\>) => `O`  } | The configuration for the timeout. |
+| `config` | [`TimeoutConfig`](../interfaces/RxJS.TimeoutConfig.md)<`T`, `O`, `M`\> & { `with`: (`info`: [`TimeoutInfo`](../interfaces/RxJS.TimeoutInfo.md)<`T`, `M`\>) => `O`  } | The configuration for the timeout. |
 
 #### Returns
 
@@ -11034,65 +10632,63 @@ directly, if your error handling is only a side effect (such as notifying the us
 In this case, you would check the error for `instanceof TimeoutError` to validate that the error was indeed from `timeout`, and
 not from some other source. If it's not from `timeout`, you should probably rethrow it if you're in a `catchError`.
 
-### Example
+## Examples
 
 Emit a [TimeoutError](../interfaces/RxJS.TimeoutError.md) if the first value, and _only_ the first value, does not arrive within 5 seconds
 
 ```ts
-import { interval } from 'rxjs';
-import { timeout } from 'rxjs/operators';
+import { interval, timeout } from 'rxjs';
 
 // A random interval that lasts between 0 and 10 seconds per tick
-const source$ = interval(Math.round(Math.random() * 10000));
+const source$ = interval(Math.round(Math.random() * 10_000));
 
 source$.pipe(
-   timeout({ first: 5000 })
+  timeout({ first: 5_000 })
 )
-.subscribe(console.log);
+.subscribe({
+  next: console.log,
+  error: console.error
+});
 ```
-
-### Example
 
 Emit a [TimeoutError](../interfaces/RxJS.TimeoutError.md) if the source waits longer than 5 seconds between any two values or the first value
 and subscription.
 
 ```ts
-import { timer } from 'rxjs';
-import { timeout, expand } from 'rxjs/operators';
+import { timer, timeout, expand } from 'rxjs';
 
-const getRandomTime = () => Math.round(Math.random() * 10000);
+const getRandomTime = () => Math.round(Math.random() * 10_000);
 
 // An observable that waits a random amount of time between each delivered value
-const source$ = timer(getRandomTime()).pipe(
- expand(() => timer(getRandomTime()))
-)
+const source$ = timer(getRandomTime())
+  .pipe(expand(() => timer(getRandomTime())));
 
-source$.pipe(
-   timeout({ each: 5000 })
-)
-.subscribe(console.log);
+source$
+  .pipe(timeout({ each: 5_000 }))
+  .subscribe({
+    next: console.log,
+    error: console.error
+  });
 ```
 
-### Example
-
-Emit a [TimeoutError](../interfaces/RxJS.TimeoutError.md) if the the source does not emit before 7 seconds, _or_ if the source waits longer than
+Emit a [TimeoutError](../interfaces/RxJS.TimeoutError.md) if the source does not emit before 7 seconds, _or_ if the source waits longer than
 5 seconds between any two values after the first.
 
 ```ts
-import { timer } from 'rxjs';
-import { timeout, expand } from 'rxjs/operators';
+import { timer, timeout, expand } from 'rxjs';
 
-const getRandomTime = () => Math.round(Math.random() * 10000);
+const getRandomTime = () => Math.round(Math.random() * 10_000);
 
 // An observable that waits a random amount of time between each delivered value
-const source$ = timer(getRandomTime()).pipe(
- expand(() => timer(getRandomTime()))
-)
+const source$ = timer(getRandomTime())
+  .pipe(expand(() => timer(getRandomTime())));
 
-source$.pipe(
-   timeout({ first: 7000, each: 5000 })
-)
-.subscribe(console.log);
+source$
+  .pipe(timeout({ first: 7_000, each: 5_000 }))
+  .subscribe({
+    next: console.log,
+    error: console.error
+  });
 ```
 
 #### Type parameters
@@ -11106,7 +10702,7 @@ source$.pipe(
 
 | Name | Type |
 | :------ | :------ |
-| `config` | `Omit`<`TimeoutConfig`<`T`, `any`, `M`\>, ``"with"``\> |
+| `config` | `Omit`<[`TimeoutConfig`](../interfaces/RxJS.TimeoutConfig.md)<`T`, `any`, `M`\>, ``"with"``\> |
 
 #### Returns
 
@@ -11170,15 +10766,10 @@ ___
 
 ▸ **timeoutWith**<`T`, `R`\>(`dueBy`, `switchTo`, `scheduler?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `R`\>
 
-If the time of the Date object passed arrives before the first value arrives from the source, it will unsubscribe
-from the source and switch the subscription to another observable.
+**`Deprecated`**
 
-<span class="informal">Use to switch to a different observable if the first value doesn't arrive by a specific time</span>
-
-Can be used to set a timeout only for the first value, however it's recommended to use the [timeout](RxJS.md#timeout) operator with
-the `first` configuration to get that effect.
-
-**`deprecated`** Replaced with [timeout](RxJS.md#timeout). Instead of `timeoutWith(someDate, a$, scheduler)`, use the configuration object `timeout({ first: someDate, with: () => a$, scheduler })`. Will be removed in v8.
+Replaced with [timeout](RxJS.md#timeout). Instead of `timeoutWith(someDate, a$, scheduler)`, use the configuration object
+`timeout({ first: someDate, with: () => a$, scheduler })`. Will be removed in v8.
 
 #### Type parameters
 
@@ -11189,77 +10780,22 @@ the `first` configuration to get that effect.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `dueBy` | `Date` | The exact time, as a `Date`, at which the timeout will be triggered if the first value does not arrive. |
-| `switchTo` | [`ObservableInput`](RxJS.md#observableinput)<`R`\> | The observable to switch to when timeout occurs. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The scheduler to use with time-related operations within this operator. Defaults to [asyncScheduler](RxJS.md#asyncscheduler) |
+| Name | Type |
+| :------ | :------ |
+| `dueBy` | `Date` |
+| `switchTo` | [`ObservableInput`](RxJS.md#observableinput)<`R`\> |
+| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
 
 #### Returns
 
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `R`\>
-
-A function that returns an Observable that mirrors behaviour of the
-source Observable, unless timeout happens when it starts emitting values
-from the Observable passed as a second parameter.
 
 ▸ **timeoutWith**<`T`, `R`\>(`waitFor`, `switchTo`, `scheduler?`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `R`\>
 
-When the passed timespan ellapses before the source emits any given value, it will unsubscribe from the source,
-and switch the subscription to another observable.
+**`Deprecated`**
 
-<span class="informal">Used to switch to a different observable if your source is being slow</span>
-
-Useful in cases where:
-
-- You want to switch to a different source that may be faster
-- You want to notify a user that the data stream is slow
-- You want to emit a custom error rather than the [TimeoutError](../interfaces/RxJS.TimeoutError.md) emitted
-  by the default usage of [timeout](RxJS.md#timeout).
-
-## Example
-
-Fallback to a faster observable
-
-```ts
-import { interval } from 'rxjs';
-import { timeoutWith } from 'rxjs/operators';
-
-const slow$ = interval(1000);
-const faster$ = interval(500);
-
-slow$.pipe(
-   timeoutWith(900, faster$)
-)
-.subscribe(console.log)
-```
-
-### Example
-
-Emit your own custom timeout error
-
-```ts
-import { interval, throwError } from 'rxjs';
-import { timeoutWith } from 'rxjs/operators';
-
-class CustomTimeoutError extends Error {
-  constructor() {
-     super('It was too slow');
-     this.name = 'CustomTimeoutError';
-  }
-}
-
-const slow = interval(1000);
-
-slow$.pipe(
-   timeoutWith(900, throwError(new CustomTimeoutError()))
-)
-.subscribe({
-   error: console.error
-})
-```
-
-**`deprecated`** Replaced with [timeout](RxJS.md#timeout). Instead of `timeoutWith(100, a$, scheduler)`, use the configuration object `timeout({ each: 100, with: () => a$, scheduler })`. Will be removed in v8.
+Replaced with [timeout](RxJS.md#timeout). Instead of `timeoutWith(100, a$, scheduler)`, use the configuration object
+ `timeout({ each: 100, with: () => a$, scheduler })`. Will be removed in v8.
 
 #### Type parameters
 
@@ -11270,19 +10806,15 @@ slow$.pipe(
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `waitFor` | `number` | The time allowed between values from the source before timeout is triggered. |
-| `switchTo` | [`ObservableInput`](RxJS.md#observableinput)<`R`\> | The observable to switch to when timeout occurs. |
-| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) | The scheduler to use with time-related operations within this operator. Defaults to [asyncScheduler](RxJS.md#asyncscheduler) |
+| Name | Type |
+| :------ | :------ |
+| `waitFor` | `number` |
+| `switchTo` | [`ObservableInput`](RxJS.md#observableinput)<`R`\> |
+| `scheduler?` | [`SchedulerLike`](../interfaces/RxJS.SchedulerLike.md) |
 
 #### Returns
 
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `T` \| `R`\>
-
-A function that returns an Observable that mirrors behaviour of the
-source Observable, unless timeout happens when it starts emitting values
-from the Observable passed as a second parameter.
 
 ___
 
@@ -11303,7 +10835,7 @@ create a different behavior.
 
 ## Examples
 
-### Wait 3 seconds and start another observable
+Wait 3 seconds and start another observable
 
 You might want to use `timer` to delay subscription to an
 observable by a set amount of time. Here we use a timer with
@@ -11311,29 +10843,26 @@ observable by a set amount of time. Here we use a timer with
 a few seconds and start a subscription to a source.
 
 ```ts
-import { timer, of } from 'rxjs';
-import { concatMapTo } from 'rxjs/operators';
+import { of, timer, concatMap } from 'rxjs';
 
 // This could be any observable
 const source = of(1, 2, 3);
 
-const result = timer(3000).pipe(
-  concatMapTo(source)
-)
-.subscribe(console.log);
+timer(3000)
+  .pipe(concatMap(() => source))
+  .subscribe(console.log);
 ```
 
-### Take all of the values until the start of the next minute
+Take all values until the start of the next minute
 
-Using the a date as the trigger for the first emission, you can
+Using a `Date` as the trigger for the first emission, you can
 do things like wait until midnight to fire an event, or in this case,
 wait until a new minute starts (chosen so the example wouldn't take
 too long to run) in order to stop watching a stream. Leveraging
 [takeUntil](RxJS.md#takeuntil).
 
 ```ts
-import { interval, timer } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { interval, takeUntil, timer } from 'rxjs';
 
 // Build a Date object that marks the
 // next minute.
@@ -11343,8 +10872,8 @@ const startOfNextMinute = new Date(
   currentDate.getMonth(),
   currentDate.getDate(),
   currentDate.getHours(),
-  currentDate.getMinutes() + 1,
-)
+  currentDate.getMinutes() + 1
+);
 
 // This could be any observable stream
 const source = interval(1000);
@@ -11388,7 +10917,7 @@ create a different behavior.
 
 ### Start an interval that starts right away
 
-Since {@link index/interval} waits for the passed delay before starting,
+Since [interval](RxJS.md#interval) waits for the passed delay before starting,
 sometimes that's not ideal. You may want to start an interval immediately.
 `timer` works well for this. Here we have both side-by-side so you can
 see them in comparison.
@@ -11425,7 +10954,9 @@ ahead of time, and pass a `number` in as the `startDue`.
 
 ▸ **timer**(`dueTime`, `unused`, `scheduler?`): [`Observable`](../classes/RxJS.Observable.md)<``0``\>
 
-**`deprecated`** The signature allowing `undefined` to be passed for `intervalDuration` will be removed in v8. Use the `timer(dueTime, scheduler?)` signature instead.
+**`Deprecated`**
+
+The signature allowing `undefined` to be passed for `intervalDuration` will be removed in v8. Use the `timer(dueTime, scheduler?)` signature instead.
 
 #### Parameters
 
@@ -11450,24 +10981,23 @@ Attaches a timestamp to each item emitted by an observable indicating when it wa
 The `timestamp` operator maps the *source* observable stream to an object of type
 `{value: T, timestamp: R}`. The properties are generically typed. The `value` property contains the value
 and type of the *source* observable. The `timestamp` is generated by the schedulers `now` function. By
-default it uses the *async* scheduler which simply returns `Date.now()` (milliseconds since 1970/01/01
+default, it uses the `asyncScheduler` which simply returns `Date.now()` (milliseconds since 1970/01/01
 00:00:00:000) and therefore is of type `number`.
 
 ![](timestamp.png)
 
 ## Example
 
-In this example there is a timestamp attached to the documents click event.
+In this example there is a timestamp attached to the document's click events
 
 ```ts
-import { fromEvent } from 'rxjs';
-import { timestamp } from 'rxjs/operators';
+import { fromEvent, timestamp } from 'rxjs';
 
 const clickWithTimestamp = fromEvent(document, 'click').pipe(
   timestamp()
 );
 
-// Emits data of type {value: MouseEvent, timestamp: number}
+// Emits data of type { value: PointerEvent, timestamp: number }
 clickWithTimestamp.subscribe(data => {
   console.log(data);
 });
@@ -11508,10 +11038,10 @@ Collects all source emissions and emits them as an array when the source complet
 the array containing all emissions. When the source Observable errors no
 array will be emitted.
 
- ## Example
+## Example
+
 ```ts
-import { interval } from 'rxjs';
-import { toArray, take } from 'rxjs/operators';
+import { interval, take, toArray } from 'rxjs';
 
 const source = interval(1000);
 const example = source.pipe(
@@ -11519,7 +11049,7 @@ const example = source.pipe(
   toArray()
 );
 
-const subscribe = example.subscribe(val => console.log(val));
+example.subscribe(value => console.log(value));
 
 // output: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
@@ -11561,7 +11091,9 @@ otherwise would have to be handled by hand. Note that complete or error notifica
 cancels subscription to an Observable via `unsubscribe`, so `using` can be used as a hook, allowing you to make
 sure that all resources which need to exist during an Observable execution will be disposed at appropriate time.
 
-**`see`** [defer](RxJS.md#defer)
+**`See`**
+
+[defer](RxJS.md#defer)
 
 #### Type parameters
 
@@ -11600,34 +11132,34 @@ instead of an array.</span>
 Returns an Observable that emits windows of items it collects from the source
 Observable. The output Observable emits connected, non-overlapping
 windows. It emits the current window and opens a new one whenever the
-Observable `windowBoundaries` emits an item. Because each window is an
-Observable, the output is a higher-order Observable.
+`windowBoundaries` emits an item. `windowBoundaries` can be any type that
+`ObservableInput` accepts. It internally gets converted to an Observable.
+Because each window is an Observable, the output is a higher-order Observable.
 
 ## Example
-In every window of 1 second each, emit at most 2 click events
-```ts
-import { fromEvent, interval } from 'rxjs';
-import { window, mergeAll, map, take } from 'rxjs/operators';
 
- const clicks = fromEvent(document, 'click');
- const sec = interval(1000);
- const result = clicks.pipe(
-     window(sec),
-     map(win => win.pipe(take(2))), // each window has at most 2 emissions
-     mergeAll(),              // flatten the Observable-of-Observables
- );
- result.subscribe(x => console.log(x));
+In every window of 1 second each, emit at most 2 click events
+
+```ts
+import { fromEvent, interval, window, map, take, mergeAll } from 'rxjs';
+
+const clicks = fromEvent(document, 'click');
+const sec = interval(1000);
+const result = clicks.pipe(
+  window(sec),
+  map(win => win.pipe(take(2))), // take at most 2 emissions from each window
+  mergeAll()                     // flatten the Observable-of-Observables
+);
+result.subscribe(x => console.log(x));
 ```
 
-**`see`** [windowCount](RxJS.md#windowcount)
+**`See`**
 
-**`see`** [windowTime](RxJS.md#windowtime)
-
-**`see`** [windowToggle](RxJS.md#windowtoggle)
-
-**`see`** [windowWhen](RxJS.md#windowwhen)
-
-**`see`** [buffer](RxJS.md#buffer)
+ - [windowCount](RxJS.md#windowcount)
+ - [windowTime](RxJS.md#windowtime)
+ - [windowToggle](RxJS.md#windowtoggle)
+ - [windowWhen](RxJS.md#windowwhen)
+ - [buffer](RxJS.md#buffer)
 
 #### Type parameters
 
@@ -11639,7 +11171,7 @@ import { window, mergeAll, map, take } from 'rxjs/operators';
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `windowBoundaries` | [`Observable`](../classes/RxJS.Observable.md)<`any`\> | An Observable that completes the previous window and starts a new window. |
+| `windowBoundaries` | [`ObservableInput`](RxJS.md#observableinput)<`any`\> | An `ObservableInput` that completes the previous window and starts a new window. |
 
 #### Returns
 
@@ -11672,10 +11204,11 @@ started immediately at the start of the source and when each window completes
 with size `windowSize`.
 
 ## Examples
+
 Ignore every 3rd click event, starting from the first one
+
 ```ts
-import { fromEvent } from 'rxjs';
-import { windowCount, map, mergeAll, skip } from 'rxjs/operators';
+import { fromEvent, windowCount, map, skip, mergeAll } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const result = clicks.pipe(
@@ -11687,27 +11220,25 @@ result.subscribe(x => console.log(x));
 ```
 
 Ignore every 3rd click event, starting from the third one
+
 ```ts
-import { fromEvent } from 'rxjs';
-import { windowCount, mergeAll } from 'rxjs/operators';
+import { fromEvent, windowCount, mergeAll } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const result = clicks.pipe(
   windowCount(2, 3),
-  mergeAll(),              // flatten the Observable-of-Observables
+  mergeAll() // flatten the Observable-of-Observables
 );
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [window](RxJS.md#window)
+**`See`**
 
-**`see`** [windowTime](RxJS.md#windowtime)
-
-**`see`** [windowToggle](RxJS.md#windowtoggle)
-
-**`see`** [windowWhen](RxJS.md#windowwhen)
-
-**`see`** [bufferCount](RxJS.md#buffercount)
+ - [window](RxJS.md#window)
+ - [windowTime](RxJS.md#windowtime)
+ - [windowToggle](RxJS.md#windowtoggle)
+ - [windowWhen](RxJS.md#windowwhen)
+ - [bufferCount](RxJS.md#buffercount)
 
 #### Type parameters
 
@@ -11720,7 +11251,7 @@ result.subscribe(x => console.log(x));
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `windowSize` | `number` | The maximum number of values emitted by each window. |
-| `startWindowEvery?` | `number` | - |
+| `startWindowEvery?` | `number` | Interval at which to start a new window. For example if `startWindowEvery` is `2`, then a new window will be started on every other value from the source. A new window is started at the beginning of the source by default. |
 
 #### Returns
 
@@ -11815,10 +11346,11 @@ Observable emits an item and when the Observable returned by
 `closingSelector` emits an item.
 
 ## Example
+
 Every other second, emit the click events from the next 500ms
+
 ```ts
-import { fromEvent, interval, EMPTY } from 'rxjs';
-import { windowToggle, mergeAll } from 'rxjs/operators';
+import { fromEvent, interval, windowToggle, EMPTY, mergeAll } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const openings = interval(1000);
@@ -11829,15 +11361,13 @@ const result = clicks.pipe(
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [window](RxJS.md#window)
+**`See`**
 
-**`see`** [windowCount](RxJS.md#windowcount)
-
-**`see`** [windowTime](RxJS.md#windowtime)
-
-**`see`** [windowWhen](RxJS.md#windowwhen)
-
-**`see`** [bufferToggle](RxJS.md#buffertoggle)
+ - [window](RxJS.md#window)
+ - [windowCount](RxJS.md#windowcount)
+ - [windowTime](RxJS.md#windowtime)
+ - [windowWhen](RxJS.md#windowwhen)
+ - [bufferToggle](RxJS.md#buffertoggle)
 
 #### Type parameters
 
@@ -11882,29 +11412,28 @@ produced by the specified `closingSelector` function emits an item. The first
 window is opened immediately when subscribing to the output Observable.
 
 ## Example
+
 Emit only the first two clicks events in every window of [1-5] random seconds
+
 ```ts
-import { fromEvent, interval } from 'rxjs';
-import { windowWhen, map, mergeAll, take } from 'rxjs/operators';
+import { fromEvent, windowWhen, interval, map, take, mergeAll } from 'rxjs';
 
 const clicks = fromEvent(document, 'click');
 const result = clicks.pipe(
   windowWhen(() => interval(1000 + Math.random() * 4000)),
-  map(win => win.pipe(take(2))),     // each window has at most 2 emissions
-  mergeAll()                         // flatten the Observable-of-Observables
+  map(win => win.pipe(take(2))), // take at most 2 emissions from each window
+  mergeAll()                     // flatten the Observable-of-Observables
 );
 result.subscribe(x => console.log(x));
 ```
 
-**`see`** [window](RxJS.md#window)
+**`See`**
 
-**`see`** [windowCount](RxJS.md#windowcount)
-
-**`see`** [windowTime](RxJS.md#windowtime)
-
-**`see`** [windowToggle](RxJS.md#windowtoggle)
-
-**`see`** [bufferWhen](RxJS.md#bufferwhen)
+ - [window](RxJS.md#window)
+ - [windowCount](RxJS.md#windowcount)
+ - [windowTime](RxJS.md#windowtime)
+ - [windowToggle](RxJS.md#windowtoggle)
+ - [bufferWhen](RxJS.md#bufferwhen)
 
 #### Type parameters
 
@@ -11929,7 +11458,7 @@ ___
 
 ### withLatestFrom
 
-▸ **withLatestFrom**<`T`, `O`\>(...`inputs`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`T`, ...O]\>
+▸ **withLatestFrom**<`T`, `O`\>(`...inputs`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`T`, ...O]\>
 
 #### Type parameters
 
@@ -11948,7 +11477,7 @@ ___
 
 [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`T`, ...O]\>
 
-▸ **withLatestFrom**<`T`, `O`, `R`\>(...`inputs`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
+▸ **withLatestFrom**<`T`, `O`, `R`\>(`...inputs`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, `R`\>
 
 #### Type parameters
 
@@ -12010,7 +11539,7 @@ ___
 
 [`Observable`](../classes/RxJS.Observable.md)<`R`\>
 
-▸ **zip**<`A`\>(...`sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
+▸ **zip**<`A`\>(`...sources`): [`Observable`](../classes/RxJS.Observable.md)<`A`\>
 
 #### Type parameters
 
@@ -12028,7 +11557,7 @@ ___
 
 [`Observable`](../classes/RxJS.Observable.md)<`A`\>
 
-▸ **zip**<`A`, `R`\>(...`sourcesAndResultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
+▸ **zip**<`A`, `R`\>(`...sourcesAndResultSelector`): [`Observable`](../classes/RxJS.Observable.md)<`R`\>
 
 #### Type parameters
 
@@ -12057,9 +11586,10 @@ Collects all observable inner sources from the source, once the source completes
 it will subscribe to all inner sources, combining their values by index and emitting
 them.
 
-**`see`** [zipWith](RxJS.md#zipwith)
+**`See`**
 
-**`see`** [zip](RxJS.md#zip)
+ - [zipWith](RxJS.md#zipwith)
+ - [zip](RxJS.md#zip)
 
 #### Type parameters
 
@@ -12124,7 +11654,7 @@ ___
 
 ### zipWith
 
-▸ **zipWith**<`T`, `A`\>(...`otherInputs`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Cons`](RxJS.md#cons)<`T`, `A`\>\>
+▸ **zipWith**<`T`, `A`\>(`...otherInputs`): [`OperatorFunction`](../interfaces/RxJS.OperatorFunction.md)<`T`, [`Cons`](RxJS.md#cons)<`T`, `A`\>\>
 
 Subscribes to the source, and the observable inputs provided as arguments, and combines their values, by index, into arrays.
 

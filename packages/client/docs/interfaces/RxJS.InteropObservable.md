@@ -14,16 +14,20 @@ An object that implements the `Symbol.observable` interface.
 
 ## Table of contents
 
-### Methods
+### Properties
 
 - [[observable]](RxJS.InteropObservable.md#[observable])
 
-## Methods
+## Properties
 
 ### [observable]
 
-▸ **[observable]**(): [`Subscribable`](RxJS.Subscribable.md)<`T`\>
+• **[observable]**: () => [`Subscribable`](RxJS.Subscribable.md)<`T`\>
 
-#### Returns
+#### Type declaration
+
+▸ (): [`Subscribable`](RxJS.Subscribable.md)<`T`\>
+
+##### Returns
 
 [`Subscribable`](RxJS.Subscribable.md)<`T`\>

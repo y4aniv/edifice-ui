@@ -13,9 +13,6 @@
 ### Properties
 
 - [promise](IPromisified.md#promise)
-
-### Methods
-
 - [reject](IPromisified.md#reject)
 - [resolve](IPromisified.md#resolve)
 
@@ -25,19 +22,23 @@
 
 • `Readonly` **promise**: `Promise`<`T`\>
 
-## Methods
+___
 
 ### reject
 
-▸ **reject**(`reason?`): `void`
+• **reject**: (`reason?`: `any`) => `void`
 
-#### Parameters
+#### Type declaration
+
+▸ (`reason?`): `void`
+
+##### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `reason?` | `any` |
 
-#### Returns
+##### Returns
 
 `void`
 
@@ -45,14 +46,18 @@ ___
 
 ### resolve
 
-▸ **resolve**(`value`): `void`
+• **resolve**: (`value`: `T` \| `PromiseLike`<`T`\>) => `void`
 
-#### Parameters
+#### Type declaration
+
+▸ (`value`): `void`
+
+##### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `value` | `T` \| `PromiseLike`<`T`\> |
 
-#### Returns
+##### Returns
 
 `void`
