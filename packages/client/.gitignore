@@ -13,3 +13,4 @@ test/Foundation.spec.mjs
 yarn.lock
 *lock*
 stats.html
+npm-debug*

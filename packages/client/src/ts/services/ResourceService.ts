@@ -79,7 +79,7 @@ export abstract class ResourceService {
 
   abstract getViewUrl(resourceId: string): string;
 
-  abstract getFormUrl(): string;
+  abstract getFormUrl(folderId?: string): string;
 
   abstract update<T extends UpdateParameters>(
     parameters: T,
@@ -103,8 +103,8 @@ export abstract class ResourceService {
     window.open(this.getViewUrl(resourceId), "_self");
   }
 
-  gotoForm() {
-    window.open(this.getFormUrl(), "_self");
+  gotoForm(folderId?: string) {
+    window.open(this.getFormUrl(folderId), "_self");
   }
 
   async publish(parameters: PublishParameters): Promise<PublishResult> {

@@ -28,8 +28,8 @@ export class BlogResourceService extends ResourceService {
   getApplication(): string {
     return APP.BLOG;
   }
-  getFormUrl(): string {
-    return `/blog#/edit/new`;
+  getFormUrl(folderId?: string): string {
+    return folderId? `/blog?folderid=${folderId}#/edit/new` : `/blog#/edit/new`;
   }
   getViewUrl(resourceId: string): string {
     return `/blog#/view/${resourceId}`;
