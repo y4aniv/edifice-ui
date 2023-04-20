@@ -85,9 +85,7 @@ ___
 
 • **hasError**: `boolean`
 
-**`Deprecated`**
-
-Internal implementation detail, do not use directly. Will be made internal in v8.
+**`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
 
 #### Inherited from
 
@@ -99,9 +97,7 @@ ___
 
 • **isStopped**: `boolean`
 
-**`Deprecated`**
-
-Internal implementation detail, do not use directly. Will be made internal in v8.
+**`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
 
 #### Inherited from
 
@@ -113,9 +109,7 @@ ___
 
 • **observers**: [`Observer`](../interfaces/RxJS.Observer.md)<`T`\>[]
 
-**`Deprecated`**
-
-Internal implementation detail, do not use directly. Will be made internal in v8.
+**`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
 
 #### Inherited from
 
@@ -127,9 +121,7 @@ ___
 
 • **operator**: `undefined` \| [`Operator`](../interfaces/RxJS.Operator.md)<`any`, `T`\>
 
-**`Deprecated`**
-
-Internal implementation detail, do not use directly. Will be made internal in v8.
+**`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
 
 #### Inherited from
 
@@ -141,9 +133,7 @@ ___
 
 • **source**: `undefined` \| [`Observable`](RxJS.Observable.md)<`any`\>
 
-**`Deprecated`**
-
-Internal implementation detail, do not use directly. Will be made internal in v8.
+**`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
 
 #### Inherited from
 
@@ -155,9 +145,7 @@ ___
 
 • **thrownError**: `any`
 
-**`Deprecated`**
-
-Internal implementation detail, do not use directly. Will be made internal in v8.
+**`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
 
 #### Inherited from
 
@@ -171,15 +159,13 @@ ___
 
 #### Type declaration
 
-▸ (`...args`): `any`
+▸ (...`args`): `any`
 
 Creates a "subject" by basically gluing an observer to an observable.
 
-**`Nocollapse`**
+**`nocollapse`**
 
-**`Deprecated`**
-
-Recommended you do not use. Will be removed at some point in the future. Plans for replacement still under discussion.
+**`deprecated`** Recommended you do not use. Will be removed at some point in the future. Plans for replacement still under discussion.
 
 ##### Parameters
 
@@ -216,7 +202,7 @@ Subject.observed
 ▸ **asObservable**(): [`Observable`](RxJS.Observable.md)<`T`\>
 
 Creates a new Observable with this Subject as the source. You can do this
-to create custom Observer-side logic of the Subject and conceal it from
+to create customize Observer-side logic of the Subject and conceal it from
 code that uses the Observable.
 
 #### Returns
@@ -278,34 +264,35 @@ potentially all of the state of an async function hanging out in memory. To avoi
 this situation, look into adding something like [timeout](../modules/RxJS.md#timeout), [take](../modules/RxJS.md#take),
 [takeWhile](../modules/RxJS.md#takewhile), or [takeUntil](../modules/RxJS.md#takeuntil) amongst others.
 
-#### Example
+### Example:
 
 ```ts
-import { interval, take } from 'rxjs';
+import { interval } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 const source$ = interval(1000).pipe(take(4));
 
 async function getTotal() {
-  let total = 0;
+   let total = 0;
 
-  await source$.forEach(value => {
-    total += value;
-    console.log('observable -> ' + value);
-  });
+   await source$.forEach(value => {
+     total += value;
+     console.log('observable -> ', value);
+   });
 
-  return total;
+   return total;
 }
 
 getTotal().then(
-  total => console.log('Total: ' + total)
-);
+   total => console.log('Total:', total)
+)
 
 // Expected:
-// 'observable -> 0'
-// 'observable -> 1'
-// 'observable -> 2'
-// 'observable -> 3'
-// 'Total: 6'
+// "observable -> 0"
+// "observable -> 1"
+// "observable -> 2"
+// "observable -> 3"
+// "Total: 6"
 ```
 
 #### Parameters
@@ -327,9 +314,7 @@ a promise that either resolves on observable completion or
 
 ▸ **forEach**(`next`, `promiseCtor`): `Promise`<`void`\>
 
-**`Deprecated`**
-
-Passing a Promise constructor will no longer be available
+**`deprecated`** Passing a Promise constructor will no longer be available
 in upcoming versions of RxJS. This is because it adds weight to the library, for very
 little benefit. If you need this functionality, it is recommended that you either
 polyfill Promise, or you create an adapter to convert the returned native promise
@@ -359,9 +344,7 @@ ___
 
 ▸ **lift**<`R`\>(`operator`): [`Observable`](RxJS.Observable.md)<`R`\>
 
-**`Deprecated`**
-
-Internal implementation detail, do not use directly. Will be made internal in v8.
+**`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
 
 #### Type parameters
 
@@ -687,7 +670,7 @@ ___
 
 [Subject](RxJS.Subject.md).[pipe](RxJS.Subject.md#pipe)
 
-▸ **pipe**<`A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`, `I`\>(`op1`, `op2`, `op3`, `op4`, `op5`, `op6`, `op7`, `op8`, `op9`, `...operations`): [`Observable`](RxJS.Observable.md)<`unknown`\>
+▸ **pipe**<`A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`, `I`\>(`op1`, `op2`, `op3`, `op4`, `op5`, `op6`, `op7`, `op8`, `op9`, ...`operations`): [`Observable`](RxJS.Observable.md)<`unknown`\>
 
 #### Type parameters
 
@@ -730,13 +713,33 @@ ___
 
 ### subscribe
 
-▸ **subscribe**(`observerOrNext?`): [`Subscription`](RxJS.Subscription.md)
+▸ **subscribe**(`observer?`): [`Subscription`](RxJS.Subscription.md)
+
+**`deprecated`** Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `observerOrNext?` | `Partial`<[`Observer`](../interfaces/RxJS.Observer.md)<`T`\>\> \| (`value`: `T`) => `void` |
+| `observer?` | `Partial`<[`Observer`](../interfaces/RxJS.Observer.md)<`T`\>\> |
+
+#### Returns
+
+[`Subscription`](RxJS.Subscription.md)
+
+#### Inherited from
+
+[Subject](RxJS.Subject.md).[subscribe](RxJS.Subject.md#subscribe)
+
+▸ **subscribe**(`next`): [`Subscription`](RxJS.Subscription.md)
+
+**`deprecated`** Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `next` | (`value`: `T`) => `void` |
 
 #### Returns
 
@@ -748,9 +751,7 @@ ___
 
 ▸ **subscribe**(`next?`, `error?`, `complete?`): [`Subscription`](RxJS.Subscription.md)
 
-**`Deprecated`**
-
-Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments
+**`deprecated`** Instead of passing separate callback arguments, use an observer argument. Signatures taking separate callback arguments will be removed in v8. Details: https://rxjs.dev/deprecations/subscribe-arguments
 
 #### Parameters
 
@@ -774,9 +775,7 @@ ___
 
 ▸ **toPromise**(): `Promise`<`undefined` \| `T`\>
 
-**`Deprecated`**
-
-Replaced with [firstValueFrom](../modules/RxJS.md#firstvaluefrom) and [lastValueFrom](../modules/RxJS.md#lastvaluefrom). Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise
+**`deprecated`** Replaced with [firstValueFrom](../modules/RxJS.md#firstvaluefrom) and [lastValueFrom](../modules/RxJS.md#lastvaluefrom). Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise
 
 #### Returns
 
@@ -788,9 +787,7 @@ Replaced with [firstValueFrom](../modules/RxJS.md#firstvaluefrom) and [lastValue
 
 ▸ **toPromise**(`PromiseCtor`): `Promise`<`undefined` \| `T`\>
 
-**`Deprecated`**
-
-Replaced with [firstValueFrom](../modules/RxJS.md#firstvaluefrom) and [lastValueFrom](../modules/RxJS.md#lastvaluefrom). Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise
+**`deprecated`** Replaced with [firstValueFrom](../modules/RxJS.md#firstvaluefrom) and [lastValueFrom](../modules/RxJS.md#lastvaluefrom). Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise
 
 #### Parameters
 
@@ -808,9 +805,7 @@ Replaced with [firstValueFrom](../modules/RxJS.md#firstvaluefrom) and [lastValue
 
 ▸ **toPromise**(`PromiseCtor`): `Promise`<`undefined` \| `T`\>
 
-**`Deprecated`**
-
-Replaced with [firstValueFrom](../modules/RxJS.md#firstvaluefrom) and [lastValueFrom](../modules/RxJS.md#lastvaluefrom). Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise
+**`deprecated`** Replaced with [firstValueFrom](../modules/RxJS.md#firstvaluefrom) and [lastValueFrom](../modules/RxJS.md#lastvaluefrom). Will be removed in v8. Details: https://rxjs.dev/deprecations/to-promise
 
 #### Parameters
 

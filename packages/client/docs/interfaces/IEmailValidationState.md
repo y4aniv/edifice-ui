@@ -24,7 +24,7 @@ ___
 
 ### state
 
-• **state**: ``"unchecked"`` \| ``"outdated"`` \| ``"pending"`` \| ``"valid"``
+• **state**: ``"pending"`` \| ``"unchecked"`` \| ``"outdated"`` \| ``"valid"``
 
 Validation state
 

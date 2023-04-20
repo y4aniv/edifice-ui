@@ -59,9 +59,7 @@ implementing operators, but it is rarely used as a public API.
 
 • **new Subscriber**<`T`\>(`destination?`)
 
-**`Deprecated`**
-
-Internal implementation detail, do not use directly. Will be made internal in v8.
+**`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
 There is no reason to directly create an instance of Subscriber. This type is exported for typings reasons.
 
 #### Type parameters
@@ -98,9 +96,7 @@ ___
 
 • `Protected` **destination**: [`Subscriber`](RxJS.Subscriber.md)<`any`\> \| [`Observer`](../interfaces/RxJS.Observer.md)<`any`\>
 
-**`Deprecated`**
-
-Internal implementation detail, do not use directly. Will be made internal in v8.
+**`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
 
 ___
 
@@ -108,9 +104,7 @@ ___
 
 • `Protected` **isStopped**: `boolean`
 
-**`Deprecated`**
-
-Internal implementation detail, do not use directly. Will be made internal in v8.
+**`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
 
 ___
 
@@ -118,7 +112,7 @@ ___
 
 ▪ `Static` **EMPTY**: [`Subscription`](RxJS.Subscription.md)
 
-**`Nocollapse`**
+**`nocollapse`**
 
 #### Inherited from
 
@@ -172,12 +166,12 @@ ___
 
 ▸ **add**(`teardown`): `void`
 
-Adds a finalizer to this subscription, so that finalization will be unsubscribed/called
-when this subscription is unsubscribed. If this subscription is already [#closed](../modules/RxJS.md),
-because it has already been unsubscribed, then whatever finalizer is passed to it
-will automatically be executed (unless the finalizer itself is also a closed subscription).
+Adds a teardown to this subscription, so that teardown will be unsubscribed/called
+when this subscription is unsubscribed. If this subscription is already {@link #closed},
+because it has already been unsubscribed, then whatever teardown is passed to it
+will automatically be executed (unless the teardown itself is also a closed subscription).
 
-Closed Subscriptions cannot be added as finalizers to any subscription. Adding a closed
+Closed Subscriptions cannot be added as teardowns to any subscription. Adding a closed
 subscription to a any subscription will result in no operation. (A noop).
 
 Adding a subscription to itself, or adding `null` or `undefined` will not perform any
@@ -185,13 +179,13 @@ operation at all. (A noop).
 
 `Subscription` instances that are added to this instance will automatically remove themselves
 if they are unsubscribed. Functions and [Unsubscribable](../interfaces/RxJS.Unsubscribable.md) objects that you wish to remove
-will need to be removed manually with [#remove](../modules/RxJS.md)
+will need to be removed manually with {@link #remove}
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `teardown` | [`TeardownLogic`](../modules/RxJS.md#teardownlogic) | The finalization logic to add to this subscription. |
+| `teardown` | [`TeardownLogic`](../modules/RxJS.md#teardownlogic) | The teardown logic to add to this subscription. |
 
 #### Returns
 
@@ -217,7 +211,7 @@ has finished sending push-based notifications.
 
 #### Implementation of
 
-Observer.complete
+[Observer](../interfaces/RxJS.Observer.md).[complete](../interfaces/RxJS.Observer.md#complete)
 
 ___
 
@@ -231,9 +225,9 @@ the Observable has experienced an error condition.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `err?` | `any` | The `error` exception. |
+| Name | Type |
+| :------ | :------ |
+| `err?` | `any` |
 
 #### Returns
 
@@ -241,7 +235,7 @@ the Observable has experienced an error condition.
 
 #### Implementation of
 
-Observer.error
+[Observer](../interfaces/RxJS.Observer.md).[error](../interfaces/RxJS.Observer.md#error)
 
 ___
 
@@ -255,9 +249,9 @@ times.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `value?` | `T` | The `next` value. |
+| Name | Type |
+| :------ | :------ |
+| `value?` | `T` |
 
 #### Returns
 
@@ -265,7 +259,7 @@ times.
 
 #### Implementation of
 
-Observer.next
+[Observer](../interfaces/RxJS.Observer.md).[next](../interfaces/RxJS.Observer.md#next)
 
 ___
 
@@ -273,22 +267,22 @@ ___
 
 ▸ **remove**(`teardown`): `void`
 
-Removes a finalizer from this subscription that was previously added with the [#add](../modules/RxJS.md) method.
+Removes a teardown from this subscription that was previously added with the {@link #add} method.
 
 Note that `Subscription` instances, when unsubscribed, will automatically remove themselves
 from every other `Subscription` they have been added to. This means that using the `remove` method
 is not a common thing and should be used thoughtfully.
 
-If you add the same finalizer instance of a function or an unsubscribable object to a `Subscription` instance
+If you add the same teardown instance of a function or an unsubscribable object to a `Subcription` instance
 more than once, you will need to call `remove` the same number of times to remove all instances.
 
-All finalizer instances are removed to free up memory upon unsubscription.
+All teardown instances are removed to free up memory upon unsubscription.
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `teardown` | [`Subscription`](RxJS.Subscription.md) \| [`Unsubscribable`](../interfaces/RxJS.Unsubscribable.md) \| () => `void` | The finalizer to remove from this subscription |
+| `teardown` | [`Subscription`](RxJS.Subscription.md) \| [`Unsubscribable`](../interfaces/RxJS.Unsubscribable.md) \| () => `void` | The teardown to remove from this subscription |
 
 #### Returns
 
@@ -325,11 +319,9 @@ ___
 A static factory for a Subscriber, given a (potentially partial) definition
 of an Observer.
 
-**`Nocollapse`**
+**`nocollapse`**
 
-**`Deprecated`**
-
-Do not use. Will be removed in v8. There is no replacement for this
+**`deprecated`** Do not use. Will be removed in v8. There is no replacement for this
 method, and there is no reason to be creating instances of `Subscriber` directly.
 If you have a specific use case, please file an issue.
 

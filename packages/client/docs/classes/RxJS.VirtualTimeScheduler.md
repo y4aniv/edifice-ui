@@ -24,7 +24,7 @@
 - [maxFrames](RxJS.VirtualTimeScheduler.md#maxframes)
 - [now](RxJS.VirtualTimeScheduler.md#now)
 - [frameTimeFactor](RxJS.VirtualTimeScheduler.md#frametimefactor)
-- [now](RxJS.VirtualTimeScheduler.md#now-1)
+- [now](RxJS.VirtualTimeScheduler.md#now)
 
 ### Methods
 
@@ -67,7 +67,7 @@ ___
 
 • **frame**: `number`
 
-The current frame for the state of the virtual scheduler instance. The difference
+The current frame for the state of the virtual scheduler instance. The the difference
 between two "frames" is synonymous with the passage of "virtual time units". So if
 you record `scheduler.frame` to be `1`, then later, observe `scheduler.frame` to be at `11`,
 that means `10` virtual time units have passed.
@@ -80,9 +80,7 @@ ___
 
 Used internally to examine the current virtual action index being processed.
 
-**`Deprecated`**
-
-Internal implementation detail, do not use directly. Will be made internal in v8.
+**`deprecated`** Internal implementation detail, do not use directly. Will be made internal in v8.
 
 ___
 
@@ -122,9 +120,7 @@ ___
 
 ▪ `Static` **frameTimeFactor**: `number`
 
-**`Deprecated`**
-
-Not used in VirtualTimeScheduler directly. Will be removed in v8.
+**`deprecated`** Not used in VirtualTimeScheduler directly. Will be removed in v8.
 
 ___
 
@@ -185,8 +181,8 @@ queue of actions.
 | Name | Type | Description |
 | :------ | :------ | :------ |
 | `work` | (`this`: [`SchedulerAction`](../interfaces/RxJS.SchedulerAction.md)<`T`\>, `state?`: `T`) => `void` | A function representing a task, or some unit of work to be executed by the Scheduler. |
-| `delay?` | `number` | Time to wait before executing the work, where the time unit is implicit and defined by the Scheduler itself. |
-| `state?` | `T` | Some contextual data that the `work` function uses when called by the Scheduler. |
+| `delay?` | `number` | - |
+| `state?` | `T` | - |
 
 #### Returns
 

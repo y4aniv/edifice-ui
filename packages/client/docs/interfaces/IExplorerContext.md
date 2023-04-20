@@ -117,11 +117,7 @@ ___
 
 Retrieve a page of listed resources from the server.
 Observers of the latestResources() will be notified.
-Search parameters can be adjusted beforehand,
-
-**`See`**
-
-getSearchParameters().
+Search parameters can be adjusted beforehand, @see getSearchParameters().
 
 #### Returns
 
@@ -165,11 +161,7 @@ ___
 
 Retrieve the first page of listed resources from the server.
 Observers of the latestResources() will be notified.
-Search parameters can be adjusted beforehand,
-
-**`See`**
-
-getSearchParameters().
+Search parameters can be adjusted beforehand, @see getSearchParameters().
 
 #### Returns
 

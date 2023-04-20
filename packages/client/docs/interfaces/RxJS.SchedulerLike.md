@@ -46,46 +46,6 @@ ___
 
 ### schedule
 
-▸ **schedule**<`T`\>(`work`, `delay`, `state`): [`Subscription`](../classes/RxJS.Subscription.md)
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `work` | (`this`: [`SchedulerAction`](RxJS.SchedulerAction.md)<`T`\>, `state`: `T`) => `void` |
-| `delay` | `number` |
-| `state` | `T` |
-
-#### Returns
-
-[`Subscription`](../classes/RxJS.Subscription.md)
-
-▸ **schedule**<`T`\>(`work`, `delay`, `state?`): [`Subscription`](../classes/RxJS.Subscription.md)
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `work` | (`this`: [`SchedulerAction`](RxJS.SchedulerAction.md)<`T`\>, `state?`: `T`) => `void` |
-| `delay` | `number` |
-| `state?` | `T` |
-
-#### Returns
-
-[`Subscription`](../classes/RxJS.Subscription.md)
-
 ▸ **schedule**<`T`\>(`work`, `delay?`, `state?`): [`Subscription`](../classes/RxJS.Subscription.md)
 
 #### Type parameters

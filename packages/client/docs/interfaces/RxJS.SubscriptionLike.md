@@ -4,8 +4,6 @@
 
 [RxJS](../modules/RxJS.md).SubscriptionLike
 
-SUBSCRIPTION INTERFACES
-
 ## Hierarchy
 
 - [`Unsubscribable`](RxJS.Unsubscribable.md)

@@ -8,9 +8,7 @@ A value emitted and the amount of time since the last value was emitted.
 
 Emitted by the `timeInterval` operator.
 
-**`See`**
-
-[timeInterval](../modules/RxJS.md#timeinterval)
+**`see`** [timeInterval](../modules/RxJS.md#timeinterval)
 
 ## Type parameters
 

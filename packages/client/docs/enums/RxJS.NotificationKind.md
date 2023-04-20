@@ -4,33 +4,31 @@
 
 [RxJS](../modules/RxJS.md).NotificationKind
 
-**`Deprecated`**
-
-Use a string literal instead. `NotificationKind` will be replaced with a type alias in v8.
+**`deprecated`** Use a string literal instead. `NotificationKind` will be replaced with a type alias in v8.
 It will not be replaced with a const enum as those are not compatible with isolated modules.
 
 ## Table of contents
 
-### Enumeration Members
+### Enumeration members
 
 - [COMPLETE](RxJS.NotificationKind.md#complete)
 - [ERROR](RxJS.NotificationKind.md#error)
 - [NEXT](RxJS.NotificationKind.md#next)
 
-## Enumeration Members
+## Enumeration members
 
 ### COMPLETE
 
-• **COMPLETE** = ``"C"``
+• **COMPLETE** = `"C"`
 
 ___
 
 ### ERROR
 
-• **ERROR** = ``"E"``
+• **ERROR** = `"E"`
 
 ___
 
 ### NEXT
 
-• **NEXT** = ``"N"``
+• **NEXT** = `"N"`

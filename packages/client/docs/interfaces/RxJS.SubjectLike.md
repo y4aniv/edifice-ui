@@ -4,8 +4,6 @@
 
 [RxJS](../modules/RxJS.md).SubjectLike
 
-OBSERVABLE INTERFACES
-
 ## Type parameters
 
 | Name |
@@ -22,27 +20,20 @@ OBSERVABLE INTERFACES
 
 ## Table of contents
 
-### Properties
+### Methods
 
 - [complete](RxJS.SubjectLike.md#complete)
 - [error](RxJS.SubjectLike.md#error)
 - [next](RxJS.SubjectLike.md#next)
-
-### Methods
-
 - [subscribe](RxJS.SubjectLike.md#subscribe)
 
-## Properties
+## Methods
 
 ### complete
 
-• **complete**: () => `void`
+▸ **complete**(): `void`
 
-#### Type declaration
-
-▸ (): `void`
-
-##### Returns
+#### Returns
 
 `void`
 
@@ -54,19 +45,15 @@ ___
 
 ### error
 
-• **error**: (`err`: `any`) => `void`
+▸ **error**(`err`): `void`
 
-#### Type declaration
-
-▸ (`err`): `void`
-
-##### Parameters
+#### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `err` | `any` |
 
-##### Returns
+#### Returns
 
 `void`
 
@@ -78,19 +65,15 @@ ___
 
 ### next
 
-• **next**: (`value`: `T`) => `void`
+▸ **next**(`value`): `void`
 
-#### Type declaration
-
-▸ (`value`): `void`
-
-##### Parameters
+#### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `value` | `T` |
 
-##### Returns
+#### Returns
 
 `void`
 
@@ -98,7 +81,7 @@ ___
 
 [Observer](RxJS.Observer.md).[next](RxJS.Observer.md#next)
 
-## Methods
+___
 
 ### subscribe
 

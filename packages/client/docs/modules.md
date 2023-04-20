@@ -83,7 +83,7 @@
 - [UpdateParameters](interfaces/UpdateParameters.md)
 - [UpdateResult](interfaces/UpdateResult.md)
 
-### Type Aliases
+### Type aliases
 
 - [ActionType](modules.md#actiontype)
 - [AddBundleCallback](modules.md#addbundlecallback)
@@ -151,7 +151,7 @@
 ### Variables
 
 - [ACTION](modules.md#action)
-- [APP](modules.md#app-1)
+- [APP](modules.md#app)
 - [BOOLEAN\_FILTER](modules.md#boolean_filter)
 - [ERROR\_CODE](modules.md#error_code)
 - [EVENT\_NAME](modules.md#event_name)
@@ -171,7 +171,7 @@
 - [appNameForResource](modules.md#appnameforresource)
 - [odeServices](modules.md#odeservices)
 
-## Type Aliases
+## Type aliases
 
 ### ActionType
 
@@ -201,7 +201,7 @@ ___
 
 ### App
 
-Ƭ **App**: typeof [`APP`](modules.md#app-1)[keyof typeof [`APP`](modules.md#app-1)]
+Ƭ **App**: typeof [`APP`](modules.md#app)[keyof typeof [`APP`](modules.md#app)]
 
 ___
 

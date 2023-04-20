@@ -15,6 +15,9 @@
 ### Properties
 
 - [closed](RxJS.CompletionObserver.md#closed)
+
+### Methods
+
 - [complete](RxJS.CompletionObserver.md#complete)
 - [error](RxJS.CompletionObserver.md#error)
 - [next](RxJS.CompletionObserver.md#next)
@@ -25,17 +28,13 @@
 
 • `Optional` **closed**: `boolean`
 
-___
+## Methods
 
 ### complete
 
-• **complete**: () => `void`
+▸ **complete**(): `void`
 
-#### Type declaration
-
-▸ (): `void`
-
-##### Returns
+#### Returns
 
 `void`
 
@@ -43,19 +42,15 @@ ___
 
 ### error
 
-• `Optional` **error**: (`err`: `any`) => `void`
+▸ `Optional` **error**(`err`): `void`
 
-#### Type declaration
-
-▸ (`err`): `void`
-
-##### Parameters
+#### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `err` | `any` |
 
-##### Returns
+#### Returns
 
 `void`
 
@@ -63,18 +58,14 @@ ___
 
 ### next
 
-• `Optional` **next**: (`value`: `T`) => `void`
+▸ `Optional` **next**(`value`): `void`
 
-#### Type declaration
-
-▸ (`value`): `void`
-
-##### Parameters
+#### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `value` | `T` |
 
-##### Returns
+#### Returns
 
 `void`

@@ -22,23 +22,19 @@
 
 ## Table of contents
 
-### Properties
+### Methods
 
 - [complete](RxJS.Observer.md#complete)
 - [error](RxJS.Observer.md#error)
 - [next](RxJS.Observer.md#next)
 
-## Properties
+## Methods
 
 ### complete
 
-• **complete**: () => `void`
+▸ **complete**(): `void`
 
-#### Type declaration
-
-▸ (): `void`
-
-##### Returns
+#### Returns
 
 `void`
 
@@ -46,19 +42,15 @@ ___
 
 ### error
 
-• **error**: (`err`: `any`) => `void`
+▸ **error**(`err`): `void`
 
-#### Type declaration
-
-▸ (`err`): `void`
-
-##### Parameters
+#### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `err` | `any` |
 
-##### Returns
+#### Returns
 
 `void`
 
@@ -66,18 +58,14 @@ ___
 
 ### next
 
-• **next**: (`value`: `T`) => `void`
+▸ **next**(`value`): `void`
 
-#### Type declaration
-
-▸ (`value`): `void`
-
-##### Parameters
+#### Parameters
 
 | Name | Type |
 | :------ | :------ |
 | `value` | `T` |
 
-##### Returns
+#### Returns
 
 `void`

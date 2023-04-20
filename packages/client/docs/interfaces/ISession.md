@@ -44,11 +44,7 @@ ___
 
 • `Readonly` **currentApp**: ``null`` \| [`App`](../modules.md#app)
 
-Retrieve the current main app,
-
-**`See`**
-
-ConfigureFramework.Platform.apps
+Retrieve the current main app, @see ConfigureFramework.Platform.apps
 
 ___
 

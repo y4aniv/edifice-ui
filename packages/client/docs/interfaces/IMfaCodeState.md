@@ -14,7 +14,7 @@
 
 ### state
 
-• **state**: ``"outdated"`` \| ``"pending"`` \| ``"valid"``
+• **state**: ``"pending"`` \| ``"outdated"`` \| ``"valid"``
 
 Validation state
 

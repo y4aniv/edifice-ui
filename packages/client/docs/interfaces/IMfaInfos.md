@@ -22,7 +22,7 @@ ___
 
 ### type
 
-• **type**: ``"email"`` \| ``"sms"``
+• **type**: ``"sms"`` \| ``"email"``
 
 The type of MFA used.
 
