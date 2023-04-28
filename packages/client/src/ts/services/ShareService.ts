@@ -359,6 +359,9 @@ export interface ShareRight {
   avatarUrl: string;
   directoryUrl: string;
   actions: ShareRightAction[];
+  isBookmarkMember?: boolean;
+  users?: User[]; // bookmark users
+  groups?: Group[]; // bookmark groups
 }
 
 export type ShareRightType = "user" | "group" | "sharebookmark";

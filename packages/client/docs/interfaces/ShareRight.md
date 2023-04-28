@@ -10,9 +10,12 @@
 - [avatarUrl](ShareRight.md#avatarurl)
 - [directoryUrl](ShareRight.md#directoryurl)
 - [displayName](ShareRight.md#displayname)
+- [groups](ShareRight.md#groups)
 - [id](ShareRight.md#id)
+- [isBookmarkMember](ShareRight.md#isbookmarkmember)
 - [profile](ShareRight.md#profile)
 - [type](ShareRight.md#type)
+- [users](ShareRight.md#users)
 
 ## Properties
 
@@ -40,9 +43,21 @@ ___
 
 ___
 
+### groups
+
+• `Optional` **groups**: `Group`[]
+
+___
+
 ### id
 
 • **id**: `string`
+
+___
+
+### isBookmarkMember
+
+• `Optional` **isBookmarkMember**: `boolean`
 
 ___
 
@@ -55,3 +70,9 @@ ___
 ### type
 
 • **type**: [`ShareRightType`](../modules.md#sharerighttype)
+
+___
+
+### users
+
+• `Optional` **users**: `User`[]
