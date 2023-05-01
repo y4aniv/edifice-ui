@@ -6,6 +6,7 @@
 
 ### Properties
 
+- [ancestors](IFolder.md#ancestors)
 - [childNumber](IFolder.md#childnumber)
 - [id](IFolder.md#id)
 - [name](IFolder.md#name)
@@ -15,6 +16,12 @@
 - [type](IFolder.md#type)
 
 ## Properties
+
+### ancestors
+
+• **ancestors**: `string`[]
+
+___
 
 ### childNumber
 

@@ -347,6 +347,7 @@ export interface IFolder {
   childNumber: number; // à minima, 0 ou 1...
   trashed: boolean;
   rights: string[];
+  ancestors: string[];
 }
 
 //-------------------------------------
@@ -536,7 +537,7 @@ export type GetResourcesResult = IActionResult & ISearchResults;
 
 export type GetSubFoldersResult = IActionResult & { folders: IFolder[] };
 export type CreateFolderResult = IActionResult &
-  IFolder & { createdAt: string };
+  IFolder & { createdAt: string; creator_id?: string };
 export type UpdateFolderResult = CreateFolderResult & {
   updatedAt: string;
   parentId: ID | "default";

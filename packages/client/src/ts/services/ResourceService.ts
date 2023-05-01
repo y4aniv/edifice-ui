@@ -314,7 +314,6 @@ export abstract class ResourceService {
     return ret;
   }
   private createFolderToBodyParams(p: CreateFolderParameters) {
-    console.log("createFolderToBodyParams =", p);
     return {
       application: p.app,
       resourceType: p.type,

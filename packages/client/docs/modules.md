@@ -225,7 +225,7 @@ ___
 
 ### CreateFolderResult
 
-Ƭ **CreateFolderResult**: [`IActionResult`](interfaces/IActionResult.md) & [`IFolder`](interfaces/IFolder.md) & { `createdAt`: `string`  }
+Ƭ **CreateFolderResult**: [`IActionResult`](interfaces/IActionResult.md) & [`IFolder`](interfaces/IFolder.md) & { `createdAt`: `string` ; `creator_id?`: `string`  }
 
 ___
 
