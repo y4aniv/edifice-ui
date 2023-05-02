@@ -9,6 +9,7 @@
 - [displayName](ShareRightAction.md#displayname)
 - [id](ShareRightAction.md#id)
 - [priority](ShareRightAction.md#priority)
+- [requires](ShareRightAction.md#requires)
 
 ## Properties
 
@@ -27,3 +28,9 @@ ___
 ### priority
 
 • `Optional` **priority**: `number`
+
+___
+
+### requires
+
+• `Optional` **requires**: [`ShareRightActionDisplayName`](../modules.md#sharerightactiondisplayname)[]

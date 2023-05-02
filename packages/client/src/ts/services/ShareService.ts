@@ -334,6 +334,7 @@ export class ShareService {
           displayName: key as ShareRightActionDisplayName,
           id: key as ShareRightActionDisplayName,
           priority: value.priority,
+          requires: value.requires,
         };
       })
       .filter((right) => {
@@ -370,6 +371,7 @@ export interface ShareRightAction {
   id: ShareRightActionDisplayName;
   displayName: ShareRightActionDisplayName;
   priority?: number;
+  requires?: ShareRightActionDisplayName[];
 }
 
 export type ShareRightActionDisplayName =
