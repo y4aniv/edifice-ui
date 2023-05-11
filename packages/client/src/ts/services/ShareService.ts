@@ -18,59 +18,17 @@ export class ShareService {
     return this.context.cache();
   }
 
-  async findUsers(
+  async searchShareSubjects(
+    app: string,
+    resourceId: string,
     searchText: string,
-    {
-      visibleBookmarks,
-      visibleUsers,
-      visibleGroups,
-    }: {
-      visibleBookmarks: Bookmark[];
-      visibleUsers: User[];
-      visibleGroups: Group[];
-    },
   ): Promise<ShareSubject[]> {
     const cleanSearchText = StringUtils.removeAccents(searchText).toLowerCase();
-    //TODO sahrebookmark in save?
-    const bookmarks = visibleBookmarks
-      .filter(({ displayName }) => {
-        const cleanName = StringUtils.removeAccents(
-          displayName || "",
-        ).toLowerCase();
-        return cleanName.includes(cleanSearchText);
-      })
-      .map(({ id, displayName }) => {
-        const share: ShareSubject = {
-          avatarUrl: "",
-          directoryUrl: "",
-          profile: "",
-          displayName,
-          id,
-          type: "sharebookmark",
-        };
-        return share;
-      });
-
-    const groups = visibleGroups
-      .filter(({ displayName }) => {
-        const cleanName = StringUtils.removeAccents(
-          displayName || "",
-        ).toLowerCase();
-        return cleanName.includes(cleanSearchText);
-      })
-      .map(({ id, displayName }) => {
-        const share: ShareSubject = {
-          avatarUrl: this.directory.getAvatarUrl(id, "group"),
-          directoryUrl: this.directory.getDirectoryUrl(id, "group"),
-          displayName,
-          id,
-          type: "group",
-        };
-        return share;
-      });
-
-    const users = visibleUsers
-      .filter(({ displayName, firstName, lastName, login }) => {
+    const response = await this.cache.httpGetJson<GetResourceRightPayload>(
+      `/${app}/share/json/${resourceId}?search=${searchText}`,
+    );
+    const resUsers = response.users.visibles
+      .filter(({ username, firstName, lastName, login }) => {
         const cleanLastName = StringUtils.removeAccents(
           lastName || "",
         ).toLowerCase();
@@ -78,7 +36,7 @@ export class ShareService {
           firstName || "",
         ).toLowerCase();
         const cleanDisplayName = StringUtils.removeAccents(
-          displayName || "",
+          username || "",
         ).toLowerCase();
         const cleanLogin = StringUtils.removeAccents(login || "").toLowerCase();
         return (
@@ -88,19 +46,50 @@ export class ShareService {
           cleanLogin.includes(cleanSearchText)
         );
       })
-      .map(({ id, displayName, profile }) => {
-        const share: ShareSubject = {
-          avatarUrl: this.directory.getAvatarUrl(id, "user"),
-          directoryUrl: this.directory.getDirectoryUrl(id, "user"),
-          displayName,
-          id,
-          profile,
+      .map((user) => {
+        return {
+          avatarUrl: this.directory.getAvatarUrl(user.id, "user"),
+          directoryUrl: this.directory.getDirectoryUrl(user.id, "user"),
+          displayName: user.username,
+          id: user.id,
+          profile: user.profile,
           type: "user",
-        };
-        return share;
+        } as ShareSubject;
+      });
+    const resGroups = response.groups.visibles
+      .filter(({ name }) => {
+        const cleanName = StringUtils.removeAccents(name || "").toLowerCase();
+        return cleanName.includes(cleanSearchText);
+      })
+      .map((group) => {
+        return {
+          avatarUrl: this.directory.getAvatarUrl(group.id, "group"),
+          directoryUrl: this.directory.getDirectoryUrl(group.id, "group"),
+          displayName: group.name,
+          id: group.id,
+          type: "group",
+        } as ShareSubject;
+      });
+    const bookmarks: Bookmark[] = await this.directory.getBookMarks();
+    const resBookmarks = bookmarks
+      .filter(({ displayName }) => {
+        const cleanName = StringUtils.removeAccents(
+          displayName || "",
+        ).toLowerCase();
+        return cleanName.includes(cleanSearchText);
+      })
+      .map((bookmark) => {
+        return {
+          avatarUrl: "",
+          directoryUrl: "",
+          profile: "",
+          displayName: bookmark.displayName,
+          id: bookmark.id,
+          type: "sharebookmark",
+        } as ShareSubject;
       });
 
-    return [...bookmarks, ...users, ...groups];
+    return [...resBookmarks, ...resUsers, ...resGroups];
   }
 
   async getShareMapping(app: string) {

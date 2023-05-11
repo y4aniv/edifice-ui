@@ -190,4 +190,17 @@ export class SessionService {
     const person = await this.http.get<any>("/userbook/api/person");
     return person.result[0];
   }
+
+  public async isAdml(): Promise<boolean> {
+    // session does not change until onLogout
+    const { response, value } = await this.cache.httpGet<IUserInfo>(
+      "/auth/oauth2/userinfo",
+    );
+    if (response.status < 200 || response.status >= 300) {
+      // Backend tries to redirect the user => not logged in !
+      throw ERROR_CODE.NOT_LOGGED_IN;
+    } else {
+      return value.functions.ADMIN_LOCAL !== undefined;
+    }
+  }
 }

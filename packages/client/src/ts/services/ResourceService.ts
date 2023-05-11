@@ -87,7 +87,7 @@ export abstract class ResourceService {
 
   abstract getResourceType(): ResourceType;
   getShareReadUrl(id: string) {
-    return `/${this.getApplication()}/share/json/${id}`;
+    return `/${this.getApplication()}/share/json/${id}?search=`;
   }
   getSaveShareUrl(id: string) {
     return `/${this.getApplication()}/share/resource/${id}`;
