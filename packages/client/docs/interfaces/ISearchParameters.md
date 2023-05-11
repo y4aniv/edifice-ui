@@ -8,10 +8,10 @@
 
 - [app](ISearchParameters.md#app)
 - [filters](ISearchParameters.md#filters)
-- [isTrashView](ISearchParameters.md#istrashview)
 - [orders](ISearchParameters.md#orders)
 - [pagination](ISearchParameters.md#pagination)
 - [search](ISearchParameters.md#search)
+- [trashed](ISearchParameters.md#trashed)
 - [types](ISearchParameters.md#types)
 
 ## Properties
@@ -25,12 +25,6 @@ ___
 ### filters
 
 • **filters**: [`FilterValues`](../modules.md#filtervalues)
-
-___
-
-### isTrashView
-
-• `Optional` **isTrashView**: `boolean`
 
 ___
 
@@ -49,6 +43,12 @@ ___
 ### search
 
 • `Optional` **search**: `String`
+
+___
+
+### trashed
+
+• `Optional` **trashed**: `boolean`
 
 ___
 
