@@ -1,29 +1,8 @@
-import { configure } from "../configure/Framework";
-import { IThemeConf, IThemeConfOverriding } from "../configure/interfaces";
+import { configure } from "./Framework";
+import { IGetConf, IOdeTheme, IThemeConf } from "./interfaces";
 import { App } from "../globals";
 import { IWebApp } from "../session/interfaces";
-import { IOdeServices } from "./OdeServices";
-
-export interface IOdeTheme {
-  basePath: string;
-  bootstrapPath: string;
-  bootstrapUrl: string;
-  bootstrapVersion: string;
-  is1d: boolean;
-  logoutCallback: string;
-  skin: string;
-  skinName: string;
-  skins: Array<IThemeConfOverriding>;
-  themeName: string;
-  themeUrl: string;
-}
-
-export interface IGetConf {
-  applications: IWebApp[];
-  conf: IThemeConf;
-  currentApp: IWebApp | undefined;
-  theme: IOdeTheme;
-}
+import { IOdeServices } from "../services/OdeServices";
 
 export class ConfService {
   constructor(private context: IOdeServices) {}
@@ -36,19 +15,24 @@ export class ConfService {
     return configure.Platform.cdnDomain;
   }
 
-  async getConf(param: App): Promise<IGetConf> {
-    const [conf, currentApp, theme, applications] = await Promise.all([
+  async getConf(app: App): Promise<IGetConf> {
+    const [conf, applications] = await Promise.all([
       this.getThemeConf(),
-      this.getWebAppConf(param),
-      this.getTheme(),
       this.getApplicationsList(),
     ]);
+
+    // const theme = await this.getTheme({ conf });
+    const [theme, currentApp] = await Promise.all([
+      this.getTheme({ conf }),
+      this.getWebAppConf({ app, applications }),
+    ]);
+
     await configure.Platform.idiom.addBundlePromise("/i18n");
     return {
+      applications,
       conf,
       currentApp,
       theme,
-      applications,
     };
   }
 
@@ -100,9 +84,14 @@ export class ConfService {
     return this.idiom.addBundlePromise("fr", `/${app}/i18n`);
   } */
 
-  async getWebAppConf(app: App): Promise<IWebApp | undefined> {
-    const response = await this.getApplicationsList();
-    const find = response.find((item) => {
+  private async getWebAppConf({
+    app,
+    applications,
+  }: {
+    app: App;
+    applications: IWebApp[];
+  }): Promise<IWebApp | undefined> {
+    const find = applications.find((item) => {
       if (item?.prefix) {
         return item?.prefix.replace("/", "") === app;
       }
@@ -110,15 +99,21 @@ export class ConfService {
     return find;
   }
 
-  async getTheme(version?: string): Promise<IOdeTheme> {
+  private async getTheme({
+    version,
+    conf,
+  }: {
+    version?: string;
+    conf: any;
+  }): Promise<IOdeTheme> {
     const theme = await this.http.get<IOdeTheme>("/theme", {
       queryParams: { _: version },
     });
-    const conf: any = await this.getThemeConf();
     const skin = theme.themeName;
     const skins = conf?.overriding.find(
       (item: { child: any }) => item.child === skin,
     ).skins;
+    const bootstrap = "/assets/themes/ode-bootstrap";
     const bootstrapVersion = conf?.overriding.find(
       (item: { child: any }) => item.child === skin,
     ).bootstrapVersion;
@@ -136,6 +131,7 @@ export class ConfService {
       skins,
       themeName: theme.themeName,
       themeUrl: theme.skin,
+      bootstrap,
       bootstrapVersion,
       bootstrapPath,
       bootstrapUrl,

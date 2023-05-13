@@ -37,15 +37,15 @@ class FolderAgent extends AbstractBusAgent {
     // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
     paramsSerializer: function (params: any) {
       return Object.entries(params)
-        .map((p) => {
-          if (p[1] instanceof Array) {
-            return p[1]
-              .map((value) => `${p[0]}=${encodeURIComponent(value)}`)
+        .map((param) => {
+          if (param[1] instanceof Array) {
+            return param[1]
+              .map((value) => `${param[0]}=${encodeURIComponent(value)}`)
               .join("&");
           } else if (
-            ["string", "number", "boolean"].indexOf(typeof p[1]) >= 0
+            ["string", "number", "boolean"].indexOf(typeof param[1]) >= 0
           ) {
-            return `${p[0]}=${encodeURIComponent(p[1] as any)}`;
+            return `${param[0]}=${encodeURIComponent(param[1] as any)}`;
           }
           return "";
         })
@@ -173,40 +173,40 @@ class FolderAgent extends AbstractBusAgent {
     return Promise.resolve().then(() => res);
   }
 
-  private toQueryParams(p: GetContextParameters): any {
+  private toQueryParams(params: GetContextParameters): any {
     let ret = {
-      application: p.app,
-      start_idx: p.pagination.startIdx,
-      page_size: p.pagination.pageSize,
-      resource_type: p.types,
+      application: params.app,
+      start_idx: params.pagination.startIdx,
+      page_size: params.pagination.pageSize,
+      resource_type: params.types,
     } as any;
-    if (p.orders) {
-      ret.order_by = Object.entries(p.orders).map(
+    if (params.orders) {
+      ret.order_by = Object.entries(params.orders).map(
         (entry) => `${entry[0]}:${entry[1]}`,
       );
     }
-    if (p.filters) {
-      Object.assign(ret, p.filters);
+    if (params.filters) {
+      Object.assign(ret, params.filters);
     }
-    if (typeof p.search === "string") {
-      ret.search = p.search;
+    if (typeof params.search === "string") {
+      ret.search = params.search;
     }
     return ret;
   }
-  private createFolderToBodyParams(p: CreateFolderParameters) {
+  private createFolderToBodyParams(params: CreateFolderParameters) {
     return {
-      application: p.app,
-      resourceType: p.type,
-      parentId: p.parentId,
-      name: p.name,
+      application: params.app,
+      resourceType: params.type,
+      parentId: params.parentId,
+      name: params.name,
     };
   }
-  private moveToBodyParams(p: MoveParameters) {
+  private moveToBodyParams(params: MoveParameters) {
     return {
-      application: p.application,
+      application: params.application,
       resourceType: this.managedResource,
-      resourceIds: p.resourceIds,
-      folderIds: p.folderIds,
+      resourceIds: params.resourceIds,
+      folderIds: params.folderIds,
     };
   }
 }

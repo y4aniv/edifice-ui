@@ -1,5 +1,5 @@
 import { RightStringified } from "../explore/interfaces";
-import { OdeServices } from "./OdeServices";
+import { OdeServices } from "../services/OdeServices";
 
 export class RightService {
   constructor(private context: OdeServices) {}
@@ -209,7 +209,9 @@ export class RightService {
         !!user &&
         this.hasWorkflowRight(
           expect,
-          user.authorizedActions.map((e) => e.name),
+          user.authorizedActions.map(
+            (authorizedAction) => authorizedAction.name,
+          ),
         )
       );
     } catch (e) {
@@ -233,7 +235,9 @@ export class RightService {
           !!user &&
           this.hasWorkflowRight(
             expect,
-            user.authorizedActions.map((e) => e.name),
+            user.authorizedActions.map(
+              (authorizedAction) => authorizedAction.name,
+            ),
           );
       }
     } catch (e) {

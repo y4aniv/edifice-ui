@@ -121,10 +121,12 @@ export class TimelineApp implements ITimelineApp {
             //#36034, add only non existing notification (avoid duplicate)
             const toAdd = response.results
               .filter(
-                (e) =>
-                  this._notifications.findIndex((n) => n._id === e._id) === -1,
+                (result) =>
+                  this._notifications.findIndex(
+                    (_notification) => _notification._id === result._id,
+                  ) === -1,
               )
-              .map((e) => new Notification(e));
+              .map((notification) => new Notification(notification));
             this._notifications = this._notifications.concat(toAdd);
             this._pageNumber++;
           } else {

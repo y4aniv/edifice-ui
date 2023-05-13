@@ -1,9 +1,6 @@
 import { APP, IResource, RESOURCE, ResourceType } from "..";
-import {
-  BlogUpdate,
-  UpdateResult,
-} from "../services/ResourceServiceInterfaces";
-import { ResourceService } from "../services/ResourceService";
+import { BlogUpdate, UpdateResult } from "./interface";
+import { ResourceService } from "./ResourceService";
 
 export class BlogResourceService extends ResourceService {
   async update(parameters: BlogUpdate): Promise<UpdateResult> {
@@ -29,7 +26,9 @@ export class BlogResourceService extends ResourceService {
     return APP.BLOG;
   }
   getFormUrl(folderId?: string): string {
-    return folderId? `/blog?folderid=${folderId}#/edit/new` : `/blog#/edit/new`;
+    return folderId
+      ? `/blog?folderid=${folderId}#/edit/new`
+      : `/blog#/edit/new`;
   }
   getViewUrl(resourceId: string): string {
     return `/blog#/view/${resourceId}`;

@@ -1,26 +1,11 @@
-import { ResourceRight, RightRole, RightSubject } from "./RightService";
+import { ResourceRight, RightRole, RightSubject } from "../rights/Service";
 // TODO should be loaded from app in future
 import "../resources/BlogResourceService";
-import {
-  ShareRight,
-  ShareRightAction,
-  ShareRightActionDisplayName,
-  ShareRightType,
-  ShareSubject,
-} from "./ShareService";
+
 import { IOdeServices, OdeServices } from "./OdeServices";
 
 export const odeServices: IOdeServices = new OdeServices();
 
-export * from "./ResourceServiceInterfaces";
+export * from "../resources/interface";
 
-export type {
-  ResourceRight,
-  RightRole,
-  RightSubject,
-  ShareRight,
-  ShareRightAction,
-  ShareRightActionDisplayName,
-  ShareRightType,
-  ShareSubject,
-};
+export type { ResourceRight, RightRole, RightSubject };

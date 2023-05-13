@@ -24,15 +24,15 @@ config.forEach(async (lib) => {
   await build({
     build: {
       sourcemap: true,
-      // target: "es2015",
+      target: "es2015",
       outDir: "./dist",
       lib: {
         ...lib,
       },
-      /* commonjsOptions: {
+      commonjsOptions: {
         transformMixedEsModules: true,
         exclude: ["node_modules"],
-      }, */
+      },
       rollupOptions: {
         output: {
           globals: {
@@ -42,9 +42,6 @@ config.forEach(async (lib) => {
       },
       emptyOutDir: true,
     },
-    plugins: [
-      visualizer(),
-      dts(),
-    ],
+    plugins: [visualizer(), dts()],
   });
 });

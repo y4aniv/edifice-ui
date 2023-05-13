@@ -1,32 +1,13 @@
-import { OdeServices } from "./OdeServices";
-
-export interface User {
-  id: string;
-  displayName: string;
-  profile: string;
-  lastName: string;
-  firstName: string;
-  login: string;
-}
-
-export interface Group {
-  id: string;
-  displayName: string;
-}
-
-export interface Bookmark {
-  id: string;
-  displayName: string;
-}
-
-export interface BookmarkWithMembers extends Bookmark {
-  members: string[];
-}
-
-export interface BookmarkWithDetails extends Bookmark {
-  users: User[];
-  groups: Group[];
-}
+import { OdeServices } from "../services/OdeServices";
+import {
+  Bookmark,
+  BookmarkGetResponse,
+  BookmarkSaveResponse,
+  BookmarkWithDetails,
+  BookmarkWithMembers,
+  Group,
+  User,
+} from "./interface";
 
 export class DirectoryService {
   constructor(private odeServices: OdeServices) {}
@@ -42,6 +23,7 @@ export class DirectoryService {
       ? `/userbook/avatar/${id}?thumbnail=${size}`
       : `/assets/img/illustrations/group-avatar.svg`;
   }
+
   getDirectoryUrl(id: string, type: "user" | "group") {
     return type === "user"
       ? `/userbook/annuaire#/${id}`
@@ -115,8 +97,8 @@ export class DirectoryService {
         const { displayName, groups, id, users } = await this.getBookMarkById(
           bookmark,
         );
-        const usersId = users.map((g) => g.id);
-        const groupId = groups.map((g) => g.id);
+        const usersId = users.map((user) => user.id);
+        const groupId = groups.map((user) => user.id);
         const tmp: BookmarkWithMembers = {
           displayName,
           id,
@@ -152,27 +134,4 @@ export class DirectoryService {
       members: data.members,
     };
   }
-}
-
-interface BookmarkSaveResponse {
-  id: string;
-}
-
-interface BookmarkGetResponse {
-  id: string;
-  name: string;
-  groups: Array<{
-    id: string;
-    name: string;
-    activationCode: boolean;
-    groupType: string;
-    profile: string;
-    sortName: string;
-  }>;
-  users: Array<{
-    displayName: string;
-    profile: string;
-    id: string;
-    activationCode: boolean;
-  }>;
 }

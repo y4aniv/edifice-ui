@@ -37,6 +37,8 @@
 - [IFilter](interfaces/IFilter.md)
 - [IFlashMessageModel](interfaces/IFlashMessageModel.md)
 - [IFolder](interfaces/IFolder.md)
+- [IGetConf](interfaces/IGetConf.md)
+- [IGetSession](interfaces/IGetSession.md)
 - [IHttp](interfaces/IHttp.md)
 - [IIdiom](interfaces/IIdiom.md)
 - [ILastInfosModel](interfaces/ILastInfosModel.md)
@@ -47,6 +49,7 @@
 - [IMobileValidationInfos](interfaces/IMobileValidationInfos.md)
 - [IMobileValidationState](interfaces/IMobileValidationState.md)
 - [INotifyFramework](interfaces/INotifyFramework.md)
+- [IOdeTheme](interfaces/IOdeTheme.md)
 - [IOrder](interfaces/IOrder.md)
 - [IPagination](interfaces/IPagination.md)
 - [IPreferences](interfaces/IPreferences.md)
@@ -77,9 +80,6 @@
 - [IXitiTrackingParams](interfaces/IXitiTrackingParams.md)
 - [Recipient](interfaces/Recipient.md)
 - [ResourceRight](interfaces/ResourceRight.md)
-- [ShareRight](interfaces/ShareRight.md)
-- [ShareRightAction](interfaces/ShareRightAction.md)
-- [ShareSubject](interfaces/ShareSubject.md)
 - [UpdateParameters](interfaces/UpdateParameters.md)
 - [UpdateResult](interfaces/UpdateResult.md)
 
@@ -116,6 +116,7 @@
 - [NotificationModel](modules.md#notificationmodel)
 - [OpenParameters](modules.md#openparameters)
 - [OrderValues](modules.md#ordervalues)
+- [PersonApiResult](modules.md#personapiresult)
 - [PrintParameters](modules.md#printparameters)
 - [PropFormatType](modules.md#propformattype)
 - [PropKeyType](modules.md#propkeytype)
@@ -129,8 +130,6 @@
 - [RightSubject](modules.md#rightsubject)
 - [School](modules.md#school)
 - [SearchResultHandler](modules.md#searchresulthandler)
-- [ShareRightActionDisplayName](modules.md#sharerightactiondisplayname)
-- [ShareRightType](modules.md#sharerighttype)
 - [SortByType](modules.md#sortbytype)
 - [SortOrderType](modules.md#sortordertype)
 - [StringFilterType](modules.md#stringfiltertype)
@@ -414,6 +413,19 @@ ___
 
 ___
 
+### PersonApiResult
+
+Ƭ **PersonApiResult**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `result` | [`IUserDescription`](interfaces/IUserDescription.md)[] |
+| `status` | ``"ok"`` \| `string` |
+
+___
+
 ### PrintParameters
 
 Ƭ **PrintParameters**: [`IActionParameters`](interfaces/IActionParameters.md) & { `resourceId`: [`ID`](modules.md#id) ; `withComments?`: `boolean`  }
@@ -514,18 +526,6 @@ ___
 ##### Returns
 
 `void`
-
-___
-
-### ShareRightActionDisplayName
-
-Ƭ **ShareRightActionDisplayName**: ``"read"`` \| ``"contrib"`` \| ``"manage"`` \| ``"publish"`` \| ``"manager"`` \| ``"comment"``
-
-___
-
-### ShareRightType
-
-Ƭ **ShareRightType**: ``"user"`` \| ``"group"`` \| ``"sharebookmark"``
 
 ___
 

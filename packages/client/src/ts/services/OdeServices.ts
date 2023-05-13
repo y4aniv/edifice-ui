@@ -1,12 +1,12 @@
-import { CacheService } from "./CacheService";
-import { ConfService } from "./ConfService";
-import { DirectoryService } from "./DirectoryService";
-import { HttpService } from "./HttpService";
-import { ResourceService } from "./ResourceService";
-import { RightService } from "./RightService";
-import { SessionService } from "./SessionService";
-import { ShareService } from "./ShareService";
-import { WorkspaceService } from "./WorkspaceService";
+import { CacheService } from "../cache/Service";
+import { ConfService } from "../configure/Service";
+import { DirectoryService } from "../directory/Service";
+import { HttpService } from "../transport/Service";
+import { ResourceService } from "../resources/ResourceService";
+import { RightService } from "../rights/Service";
+import { SessionService } from "../session/Service";
+import { ShareService } from "../share/Service";
+import { WorkspaceService } from "../workspace/Service";
 
 export interface IOdeServices {
   cache(): CacheService;

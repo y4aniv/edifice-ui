@@ -15,8 +15,8 @@ import {
   DeleteParameters,
   ResourceType,
 } from "..";
-import { OdeServices } from "./OdeServices";
-import { UpdateParameters, UpdateResult } from "./ResourceServiceInterfaces";
+import { OdeServices } from "../services/OdeServices";
+import { UpdateParameters, UpdateResult } from "./interface";
 
 export abstract class ResourceService {
   //

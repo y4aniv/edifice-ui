@@ -5,8 +5,8 @@ import axios, {
   AxiosResponse,
 } from "axios";
 import { ERROR_CODE } from "../globals";
-import { IHttpResponse, IHttpParams } from "../transport/interfaces";
-import { OdeServices } from "./OdeServices";
+import { IHttpResponse, IHttpParams } from "./interfaces";
+import { OdeServices } from "../services/OdeServices";
 
 const loadedScripts: { [url: string]: boolean } = {};
 

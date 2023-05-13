@@ -234,3 +234,25 @@ export interface IUserPreferences {
   update(key: UserPreferenceKey, data: any): IUserPreferences;
   save(key: UserPreferenceKey): Promise<void>;
 }
+
+export interface IOdeTheme {
+  basePath: string;
+  bootstrap: string;
+  bootstrapPath: string;
+  bootstrapUrl: string;
+  bootstrapVersion: string;
+  is1d: boolean;
+  logoutCallback: string;
+  skin: string;
+  skinName: string;
+  skins: Array<IThemeConfOverriding>;
+  themeName: string;
+  themeUrl: string;
+}
+
+export interface IGetConf {
+  applications: IWebApp[];
+  conf: IThemeConf;
+  currentApp: IWebApp | undefined;
+  theme: IOdeTheme;
+}

@@ -1,24 +1,14 @@
 import { ERROR_CODE } from "../globals";
 import {
+  IGetSession,
   IQuotaAndUsage,
   IUserDescription,
   IUserInfo,
+  PersonApiResult,
   UserProfile,
-} from "../session/interfaces";
-import { IOdeServices } from "./OdeServices";
+} from "./interfaces";
 
-export interface IGetSession {
-  user: IUserInfo | undefined;
-  currentLanguage: string | undefined;
-  quotaAndUsage: IQuotaAndUsage;
-  userProfile?: UserProfile;
-  userDescription: IUserDescription;
-}
-
-type PersonApiResult = {
-  status: "ok" | string;
-  result: Array<IUserDescription>;
-};
+import { IOdeServices } from "../services/OdeServices";
 
 export class SessionService {
   constructor(private context: IOdeServices) {}
@@ -134,7 +124,7 @@ export class SessionService {
     }
   }
 
-  async loadUserLanguage(): Promise<string> {
+  private async loadUserLanguage(): Promise<string> {
     try {
       // dont cache preference it could change
       const response = await this.http.get<{ preference: any }>(
@@ -168,7 +158,22 @@ export class SessionService {
     }
   }
 
-  async loadDescription(
+  hasWorkflow({
+    workflowName,
+    user,
+  }: {
+    workflowName: string;
+    user: IUserInfo | undefined;
+  }): boolean {
+    return (
+      workflowName === undefined ||
+      user?.authorizedActions.findIndex((workflowRight) => {
+        return workflowRight.name === workflowName;
+      }) !== -1
+    );
+  }
+
+  private async loadDescription(
     user: IUserInfo | undefined,
   ): Promise<IUserDescription> {
     try {
@@ -188,7 +193,7 @@ export class SessionService {
 
   async getUserProfile(): Promise<UserProfile> {
     const person = await this.http.get<any>("/userbook/api/person");
-    return person.result[0];
+    return person.result[0].type;
   }
 
   public async isAdml(): Promise<boolean> {

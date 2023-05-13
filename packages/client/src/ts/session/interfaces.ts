@@ -326,3 +326,16 @@ export interface IMfaCodeState {
   /** (optional) Remaining number of times a code can be typed in. */
   tries?: number;
 }
+
+export interface IGetSession {
+  user: IUserInfo | undefined;
+  currentLanguage: string | undefined;
+  quotaAndUsage: IQuotaAndUsage;
+  userDescription: IUserDescription;
+  userProfile?: UserProfile;
+}
+
+export type PersonApiResult = {
+  status: "ok" | string;
+  result: Array<IUserDescription>;
+};

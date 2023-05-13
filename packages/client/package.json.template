@@ -15,7 +15,8 @@
   "exports": {
     ".": {
       "require": "./dist/ode-ts-client.js",
-      "import": "./dist/ode-ts-client.mjs"
+      "import": "./dist/ode-ts-client.mjs",
+      "types": "./dist/index.d.ts"
     }
   },
   "main": "dist/ode-ts-client.js",

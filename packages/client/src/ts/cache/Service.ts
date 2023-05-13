@@ -1,5 +1,5 @@
 import { IHttpParams, IHttpResponse } from "../transport/interfaces";
-import { OdeServices } from "./OdeServices";
+import { OdeServices } from "../services/OdeServices";
 
 const globalCache: Record<string, any> = {};
 const mutexPromise: Record<string, Promise<any>> = {};
