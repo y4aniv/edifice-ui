@@ -1,5 +1,8 @@
 import { IResource } from "..";
 
+/**
+ * Parameters expected to update resource
+ */
 export interface UpdateParameters {
   entId: string;
   trashed: boolean;
@@ -10,6 +13,9 @@ export interface UpdateParameters {
   slug: string;
 }
 
+/**
+ * Response when updating resource
+ */
 export interface UpdateResult {
   entId: string;
   thumbnail?: string;

@@ -13,8 +13,14 @@ export interface ShareRight {
   groups?: Group[]; // bookmark groups
 }
 
+/**
+ * Type of share right 
+ * */
 export type ShareRightType = "user" | "group" | "sharebookmark";
 
+/**
+ * Type of action when sharing
+ * */
 export interface ShareRightAction {
   id: ShareRightActionDisplayName;
   displayName: ShareRightActionDisplayName;
@@ -22,6 +28,9 @@ export interface ShareRightAction {
   requires?: ShareRightActionDisplayName[];
 }
 
+/**
+ * Name of current action when sharing
+ * */
 export type ShareRightActionDisplayName =
   | "read"
   | "contrib"
@@ -44,6 +53,9 @@ export type SharingRight = Record<
 >;
 export type ShareMapping = Record<ShareRightActionDisplayName, string[]>;
 
+/**
+ * Payload of shared resource
+ * */
 export interface GetResourceRightPayload {
   actions: Array<{
     name: string[];
@@ -72,12 +84,18 @@ export interface GetResourceRightPayload {
   };
 }
 
+/**
+ * Update payload of shared resource
+ * */
 export interface PutSharePayload {
   users: Record<string, string[]>;
   groups: Record<string, string[]>;
   bookmarks: Record<string, string[]>;
 }
 
+/**
+ * Response of shared resource
+ * */
 export interface PutShareResponse {
   "notify-timeline-array": Array<{ groupId: string } | { userId: string }>;
 }

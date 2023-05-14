@@ -1,5 +1,6 @@
 import { RightStringified } from "../explore/interfaces";
 import { OdeServices } from "../services/OdeServices";
+import { ResourceRight, RightRole } from "./interface";
 
 export class RightService {
   constructor(private context: OdeServices) {}
@@ -248,14 +249,4 @@ export class RightService {
     }
     return result;
   }
-}
-
-export type RightSubject = "user" | "group" | "creator";
-
-export type RightRole = "read" | "contrib" | "manager" | "creator";
-
-export interface ResourceRight {
-  type: RightSubject;
-  id: string;
-  right: RightRole;
 }

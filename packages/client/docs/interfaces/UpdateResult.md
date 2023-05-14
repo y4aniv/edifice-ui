@@ -2,6 +2,8 @@
 
 # Interface: UpdateResult
 
+Response when updating resource
+
 ## Table of contents
 
 ### Properties

@@ -126,7 +126,7 @@ export class SessionService {
 
   private async loadUserLanguage(): Promise<string> {
     try {
-      // dont cache preference it could change
+      // don't cache preference it could change
       const response = await this.http.get<{ preference: any }>(
         "/userbook/preference/language",
       );

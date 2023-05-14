@@ -404,7 +404,7 @@ export interface IResource {
   comments?: number;
   createdAt: string; // FIXME: S'entendre sur un format de date
   favorite?: boolean;
-  folderId?: ID; // TODO à confirmer
+  folderIds?: ID[]; // TODO à confirmer
   id: ID;
   modifiedAt: string; // FIXME: S'entendre sur un format de date
   modifierId: ID;

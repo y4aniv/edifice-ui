@@ -20,7 +20,7 @@
 - [creatorName](BlogResource.md#creatorname)
 - [description](BlogResource.md#description)
 - [favorite](BlogResource.md#favorite)
-- [folderId](BlogResource.md#folderid)
+- [folderIds](BlogResource.md#folderids)
 - [id](BlogResource.md#id)
 - [modifiedAt](BlogResource.md#modifiedat)
 - [modifierId](BlogResource.md#modifierid)
@@ -118,13 +118,13 @@ ___
 
 ___
 
-### folderId
+### folderIds
 
-• `Optional` **folderId**: `string`
+• `Optional` **folderIds**: `string`[]
 
 #### Inherited from
 
-[IResource](IResource.md).[folderId](IResource.md#folderid)
+[IResource](IResource.md).[folderIds](IResource.md#folderids)
 
 ___
 

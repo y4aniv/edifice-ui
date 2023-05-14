@@ -1,3 +1,6 @@
+/**
+ * Selected User when using directory routes
+ */
 export interface User {
   id: string;
   displayName: string;
@@ -12,6 +15,9 @@ export interface Group {
   displayName: string;
 }
 
+/**
+ * Id and Name of Bookmark
+ */
 export interface Bookmark {
   id: string;
   displayName: string;
@@ -30,6 +36,9 @@ export interface BookmarkSaveResponse {
   id: string;
 }
 
+/**
+ * Payload when getting bookamark info
+ */
 export interface BookmarkGetResponse {
   id: string;
   name: string;

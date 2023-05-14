@@ -20,7 +20,7 @@
 - [creatorName](IResource.md#creatorname)
 - [description](IResource.md#description)
 - [favorite](IResource.md#favorite)
-- [folderId](IResource.md#folderid)
+- [folderIds](IResource.md#folderids)
 - [id](IResource.md#id)
 - [modifiedAt](IResource.md#modifiedat)
 - [modifierId](IResource.md#modifierid)
@@ -85,9 +85,9 @@ ___
 
 ___
 
-### folderId
+### folderIds
 
-• `Optional` **folderId**: `string`
+• `Optional` **folderIds**: `string`[]
 
 ___
 

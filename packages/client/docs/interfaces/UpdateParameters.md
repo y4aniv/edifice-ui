@@ -2,6 +2,8 @@
 
 # Interface: UpdateParameters
 
+Parameters expected to update resource
+
 ## Hierarchy
 
 - **`UpdateParameters`**

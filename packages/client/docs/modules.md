@@ -23,6 +23,13 @@
 
 - [BlogResource](interfaces/BlogResource.md)
 - [BlogUpdate](interfaces/BlogUpdate.md)
+- [Bookmark](interfaces/Bookmark.md)
+- [BookmarkGetResponse](interfaces/BookmarkGetResponse.md)
+- [BookmarkSaveResponse](interfaces/BookmarkSaveResponse.md)
+- [BookmarkWithDetails](interfaces/BookmarkWithDetails.md)
+- [BookmarkWithMembers](interfaces/BookmarkWithMembers.md)
+- [GetResourceRightPayload](interfaces/GetResourceRightPayload.md)
+- [Group](interfaces/Group.md)
 - [IAction](interfaces/IAction.md)
 - [IActionParameters](interfaces/IActionParameters.md)
 - [IActionResult](interfaces/IActionResult.md)
@@ -78,10 +85,18 @@
 - [IWidgetModel](interfaces/IWidgetModel.md)
 - [IWorkflowAuth](interfaces/IWorkflowAuth.md)
 - [IXitiTrackingParams](interfaces/IXitiTrackingParams.md)
+- [PutSharePayload](interfaces/PutSharePayload.md)
+- [PutShareResponse](interfaces/PutShareResponse.md)
 - [Recipient](interfaces/Recipient.md)
 - [ResourceRight](interfaces/ResourceRight.md)
+- [ShareRight](interfaces/ShareRight.md)
+- [ShareRightAction](interfaces/ShareRightAction.md)
+- [ShareRightWithVisibles](interfaces/ShareRightWithVisibles.md)
+- [ShareSubject](interfaces/ShareSubject.md)
 - [UpdateParameters](interfaces/UpdateParameters.md)
 - [UpdateResult](interfaces/UpdateResult.md)
+- [User](interfaces/User.md)
+- [WorkspaceElement](interfaces/WorkspaceElement.md)
 
 ### Type aliases
 
@@ -130,6 +145,11 @@
 - [RightSubject](modules.md#rightsubject)
 - [School](modules.md#school)
 - [SearchResultHandler](modules.md#searchresulthandler)
+- [ShareMapping](modules.md#sharemapping)
+- [ShareRightActionDisplayName](modules.md#sharerightactiondisplayname)
+- [ShareRightActionDisplayNameExt](modules.md#sharerightactiondisplaynameext)
+- [ShareRightType](modules.md#sharerighttype)
+- [SharingRight](modules.md#sharingright)
 - [SortByType](modules.md#sortbytype)
 - [SortOrderType](modules.md#sortordertype)
 - [StringFilterType](modules.md#stringfiltertype)
@@ -478,6 +498,8 @@ ___
 
 Ƭ **RightRole**: ``"read"`` \| ``"contrib"`` \| ``"manager"`` \| ``"creator"``
 
+Identify the role of the right
+
 ___
 
 ### RightStringified
@@ -489,6 +511,8 @@ ___
 ### RightSubject
 
 Ƭ **RightSubject**: ``"user"`` \| ``"group"`` \| ``"creator"``
+
+Identify the type of "user"
 
 ___
 
@@ -526,6 +550,40 @@ ___
 ##### Returns
 
 `void`
+
+___
+
+### ShareMapping
+
+Ƭ **ShareMapping**: `Record`<[`ShareRightActionDisplayName`](modules.md#sharerightactiondisplayname), `string`[]\>
+
+___
+
+### ShareRightActionDisplayName
+
+Ƭ **ShareRightActionDisplayName**: ``"read"`` \| ``"contrib"`` \| ``"manage"`` \| ``"publish"`` \| ``"manager"`` \| ``"comment"``
+
+Name of current action when sharing
+
+___
+
+### ShareRightActionDisplayNameExt
+
+Ƭ **ShareRightActionDisplayNameExt**: [`ShareRightActionDisplayName`](modules.md#sharerightactiondisplayname) \| ``"creator"``
+
+___
+
+### ShareRightType
+
+Ƭ **ShareRightType**: ``"user"`` \| ``"group"`` \| ``"sharebookmark"``
+
+Type of share right
+
+___
+
+### SharingRight
+
+Ƭ **SharingRight**: `Record`<[`ShareRightActionDisplayName`](modules.md#sharerightactiondisplayname), { `default`: `boolean` ; `priority`: `number` ; `requires`: [`ShareRightActionDisplayName`](modules.md#sharerightactiondisplayname)[]  }\>
 
 ___
 

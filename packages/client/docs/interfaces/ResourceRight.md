@@ -2,6 +2,8 @@
 
 # Interface: ResourceRight
 
+Right of a resource
+
 ## Table of contents
 
 ### Properties

@@ -23,12 +23,23 @@ An error emitted when a timeout occurs.
 
 ### Properties
 
+- [cause](RxJS.TimeoutError.md#cause)
 - [info](RxJS.TimeoutError.md#info)
 - [message](RxJS.TimeoutError.md#message)
 - [name](RxJS.TimeoutError.md#name)
 - [stack](RxJS.TimeoutError.md#stack)
 
 ## Properties
+
+### cause
+
+• `Optional` **cause**: `Error`
+
+#### Inherited from
+
+Error.cause
+
+___
 
 ### info
 

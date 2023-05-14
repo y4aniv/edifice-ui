@@ -14,11 +14,22 @@
 
 ### Properties
 
+- [cause](RxJS.EmptyError.md#cause)
 - [message](RxJS.EmptyError.md#message)
 - [name](RxJS.EmptyError.md#name)
 - [stack](RxJS.EmptyError.md#stack)
 
 ## Properties
+
+### cause
+
+• `Optional` **cause**: `Error`
+
+#### Inherited from
+
+Error.cause
+
+___
 
 ### message
 

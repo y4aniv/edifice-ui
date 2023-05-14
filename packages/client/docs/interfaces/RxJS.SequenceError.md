@@ -14,11 +14,22 @@
 
 ### Properties
 
+- [cause](RxJS.SequenceError.md#cause)
 - [message](RxJS.SequenceError.md#message)
 - [name](RxJS.SequenceError.md#name)
 - [stack](RxJS.SequenceError.md#stack)
 
 ## Properties
+
+### cause
+
+• `Optional` **cause**: `Error`
+
+#### Inherited from
+
+Error.cause
+
+___
 
 ### message
 

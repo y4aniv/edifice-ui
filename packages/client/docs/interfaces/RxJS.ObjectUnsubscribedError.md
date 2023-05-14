@@ -14,11 +14,22 @@
 
 ### Properties
 
+- [cause](RxJS.ObjectUnsubscribedError.md#cause)
 - [message](RxJS.ObjectUnsubscribedError.md#message)
 - [name](RxJS.ObjectUnsubscribedError.md#name)
 - [stack](RxJS.ObjectUnsubscribedError.md#stack)
 
 ## Properties
+
+### cause
+
+• `Optional` **cause**: `Error`
+
+#### Inherited from
+
+Error.cause
+
+___
 
 ### message
 

@@ -14,11 +14,22 @@
 
 ### Properties
 
+- [cause](RxJS.NotFoundError.md#cause)
 - [message](RxJS.NotFoundError.md#message)
 - [name](RxJS.NotFoundError.md#name)
 - [stack](RxJS.NotFoundError.md#stack)
 
 ## Properties
+
+### cause
+
+• `Optional` **cause**: `Error`
+
+#### Inherited from
+
+Error.cause
+
+___
 
 ### message
 
