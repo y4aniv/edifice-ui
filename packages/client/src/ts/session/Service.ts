@@ -4,7 +4,7 @@ import {
   IQuotaAndUsage,
   IUserDescription,
   IUserInfo,
-  PersonApiResult,
+  IWebApp,
   UserProfile,
 } from "./interfaces";
 
@@ -37,13 +37,19 @@ export class SessionService {
   async getSession(): Promise<IGetSession> {
     const user = await this.getUser();
 
-    const [currentLanguage, quotaAndUsage, userDescription, userProfile] =
-      await Promise.all([
-        this.getCurrentLanguage(user),
-        this.latestQuotaAndUsage(user),
-        this.loadDescription(user),
-        this.getUserProfile(),
-      ]);
+    const [
+      currentLanguage,
+      quotaAndUsage,
+      userDescription,
+      userProfile,
+      bookmarkedApps,
+    ] = await Promise.all([
+      this.getCurrentLanguage(user),
+      this.latestQuotaAndUsage(user),
+      this.loadDescription(user),
+      this.getUserProfile(),
+      this.getBookmarks(user),
+    ]);
 
     return {
       user,
@@ -51,6 +57,7 @@ export class SessionService {
       currentLanguage,
       userDescription,
       userProfile,
+      bookmarkedApps,
     };
   }
 
@@ -163,7 +170,7 @@ export class SessionService {
     user,
   }: {
     workflowName: string;
-    user: IUserInfo | undefined;
+    user: IUserInfo;
   }): boolean {
     return (
       workflowName === undefined ||
@@ -177,35 +184,71 @@ export class SessionService {
     user: IUserInfo | undefined,
   ): Promise<IUserDescription> {
     try {
-      const [person, userbook] = await Promise.all([
+      const [data, userbook] = await Promise.all([
         // FIXME The full user's description should be obtainable from a single endpoint in the backend.
-        this.http.get<PersonApiResult>("/userbook/api/person", {
+
+        this.getUserProfile({
           requestName: "refreshAvatar",
         }),
         this.http.get<IUserDescription>("/directory/userbook/" + user?.userId),
       ]);
-      return { ...person.result[0], ...userbook };
+      return { ...data, ...userbook };
     } catch (error) {
       console.error(error);
       return {} as unknown as IUserDescription;
     }
   }
 
-  async getUserProfile(): Promise<UserProfile> {
-    const person = await this.http.get<any>("/userbook/api/person");
-    return person.result[0].type;
+  private async getBookmarks(user: IUserInfo | undefined) {
+    const data = await this.http.get("/userbook/preference/apps");
+
+    if (!data.preference) {
+      data.preference = null;
+    }
+
+    const tmp = JSON.parse(data.preference) as Array<IWebApp>;
+    let myApps: {
+      bookmarks: Array<string>; // Array of app names
+      applications: [];
+    };
+
+    myApps = tmp as unknown as { bookmarks: string[]; applications: [] };
+
+    if (!myApps) {
+      myApps = {
+        bookmarks: [],
+        applications: [],
+      };
+    }
+
+    let bookmarkedApps: IWebApp[] = [];
+    myApps.bookmarks.forEach((appName, index) => {
+      const foundApp = user?.apps.find((app: IWebApp) => app.name === appName);
+      if (foundApp) {
+        let app = Object.assign({}, foundApp);
+        bookmarkedApps.push(app);
+      }
+    });
+
+    return bookmarkedApps;
   }
 
-  public async isAdml(): Promise<boolean> {
-    // session does not change until onLogout
-    const { response, value } = await this.cache.httpGet<IUserInfo>(
-      "/auth/oauth2/userinfo",
+  async getUserProfile(options?: any): Promise<UserProfile> {
+    const { response, value } = await this.cache.httpGet<any>(
+      "/userbook/api/person",
+      options,
     );
     if (response.status < 200 || response.status >= 300) {
       // Backend tries to redirect the user => not logged in !
       throw ERROR_CODE.NOT_LOGGED_IN;
     } else {
-      return value.functions.ADMIN_LOCAL !== undefined;
+      return value.result[0].type;
     }
+  }
+
+  public async isAdml(): Promise<boolean> {
+    // session does not change until onLogout
+    const user = await this.getUser();
+    return user?.functions.ADMIN_LOCAL !== undefined;
   }
 }

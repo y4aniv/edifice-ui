@@ -6,6 +6,7 @@
 
 ### Properties
 
+- [bookmarkedApps](IGetSession.md#bookmarkedapps)
 - [currentLanguage](IGetSession.md#currentlanguage)
 - [quotaAndUsage](IGetSession.md#quotaandusage)
 - [user](IGetSession.md#user)
@@ -13,6 +14,12 @@
 - [userProfile](IGetSession.md#userprofile)
 
 ## Properties
+
+### bookmarkedApps
+
+• **bookmarkedApps**: [`IWebApp`](IWebApp.md)[]
+
+___
 
 ### currentLanguage
 

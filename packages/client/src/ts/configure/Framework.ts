@@ -1,6 +1,6 @@
 import { IConfigurationFramework } from "./interfaces";
 import { Theme } from "./Theme";
-import { Idiom } from "./Idiom";
+import { Idiom } from "../idiom/Idiom";
 import { User } from "./User";
 import { AppConf } from "./AppConf";
 import { transport } from "../transport/Framework";

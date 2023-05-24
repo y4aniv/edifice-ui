@@ -333,6 +333,7 @@ export interface IGetSession {
   quotaAndUsage: IQuotaAndUsage;
   userDescription: IUserDescription;
   userProfile?: UserProfile;
+  bookmarkedApps: IWebApp[];
 }
 
 export type PersonApiResult = {

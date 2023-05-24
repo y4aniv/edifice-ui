@@ -7,12 +7,14 @@ import { RightService } from "../rights/Service";
 import { SessionService } from "../session/Service";
 import { ShareService } from "../share/Service";
 import { WorkspaceService } from "../workspace/Service";
+import { IdiomService } from "../idiom/Service";
 
 export interface IOdeServices {
   cache(): CacheService;
   conf(): ConfService;
   directory(): DirectoryService;
   http(): HttpService;
+  idiom(): IdiomService;
   resource(application: string, resourceType?: string): ResourceService;
   rights(): RightService;
   session(): SessionService;
@@ -25,6 +27,7 @@ export class OdeServices implements IOdeServices {
   private _conf: ConfService;
   private _directory: DirectoryService;
   private _http: HttpService;
+  private _idiom: IdiomService;
   private _rights: RightService;
   private _session: SessionService;
   private _share: ShareService;
@@ -35,6 +38,7 @@ export class OdeServices implements IOdeServices {
     this._conf = new ConfService(this);
     this._directory = new DirectoryService(this);
     this._http = new HttpService(this);
+    this._idiom = new IdiomService(this);
     this._rights = new RightService(this);
     this._session = new SessionService(this);
     this._share = new ShareService(this);
@@ -55,6 +59,10 @@ export class OdeServices implements IOdeServices {
 
   http() {
     return this._http;
+  }
+
+  idiom() {
+    return this._idiom;
   }
 
   resource(application: string, resourceType?: string): ResourceService {

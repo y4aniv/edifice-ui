@@ -1,7 +1,7 @@
-import { AddBundleCallback, IIdiom } from "./interfaces";
-import { transport } from "../transport/Framework";
 import { notify, Promisified } from "../notify/Framework";
-import { session } from "../session/Framework";
+import { AddBundleCallback, IIdiom } from "./interfaces";
+import { IOdeServices } from "../services/OdeServices";
+import { App } from "../globals";
 
 const bundle: { [key: string]: string } = {};
 const promises: { [path: string]: Promise<void> } = {};
@@ -248,7 +248,20 @@ export const defaultDiacriticsRemovalMap = [
   },
 ];
 
-export class Idiom implements IIdiom {
+export class IdiomService implements IIdiom {
+  constructor(private context: IOdeServices) {}
+
+  private get http() {
+    return this.context.http();
+  }
+
+  async getIdiom(currentLanguage: string, app: App): Promise<any> {
+    await Promise.all([
+      this.addBundlePromise(currentLanguage, "/i18n"),
+      this.addBundlePromise(currentLanguage, `/${app}/i18n`),
+    ]);
+  }
+
   translate(key: string, params?: { [param: string]: any }): string {
     key = key ?? "";
     let txt: string = bundle[key] === undefined ? key : bundle[key];
@@ -265,21 +278,25 @@ export class Idiom implements IIdiom {
     return txt;
   }
 
-  addBundlePromise(path: string): Promise<void> {
-    return this.loadBundlePromise(session.session.currentLanguage, path);
+  addBundlePromise(currentLanguage: string, path: string): Promise<void> {
+    return this.loadBundlePromise(currentLanguage, path);
   }
 
-  addBundle(path: string, callback?: AddBundleCallback): void {
-    this.loadBundle(session.session.currentLanguage, path, callback);
+  addBundle(
+    currentLanguage: string,
+    path: string,
+    callback?: AddBundleCallback,
+  ): void {
+    this.loadBundle(currentLanguage, path, callback);
   }
 
-  private loadBundlePromise(lang: string, path: string): Promise<void> {
-    this.loadBundle(lang, path);
+  loadBundlePromise(currentLanguage: string, path: string): Promise<void> {
+    this.loadBundle(currentLanguage, path);
     return promises[path];
   }
 
   private loadBundle(
-    lang: string,
+    currentLanguage: string,
     path: string,
     callback?: AddBundleCallback,
   ): void {
@@ -296,10 +313,10 @@ export class Idiom implements IIdiom {
       // Then load the bundle.
       const params: any = {};
       // Force requested language to user's choice.
-      if (lang) {
-        params["Accept-Language"] = lang;
+      if (currentLanguage) {
+        params["Accept-Language"] = currentLanguage;
       }
-      transport.http
+      this.http
         .get<string>(path, { headers: params })
         .then((response) => {
           Object.assign(bundle, response);

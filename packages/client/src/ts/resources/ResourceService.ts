@@ -221,7 +221,6 @@ export abstract class ResourceService {
     const result = await this.http.get<GetSubFoldersResult>(
       `/explorer/folders/${folderId}`,
     );
-    console.log("result", result);
     return this.checkHttpResponse(result);
   }
 

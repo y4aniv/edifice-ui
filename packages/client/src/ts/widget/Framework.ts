@@ -12,7 +12,7 @@ import {
 import { notify, Promisified } from "../notify/Framework";
 import { IPromisified, EVENT_NAME, LAYER_NAME } from "../notify/interfaces";
 import { configure } from "../configure/Framework";
-import { Idiom } from "../configure/Idiom";
+import { Idiom } from "../idiom/Idiom";
 
 // Widgets for 1D ONLY
 const firstLevelWidgets: Array<WidgetName> = [

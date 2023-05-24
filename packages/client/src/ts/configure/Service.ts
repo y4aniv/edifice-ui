@@ -21,13 +21,11 @@ export class ConfService {
       this.getApplicationsList(),
     ]);
 
-    // const theme = await this.getTheme({ conf });
     const [theme, currentApp] = await Promise.all([
       this.getTheme({ conf }),
       this.getWebAppConf({ app, applications }),
     ]);
 
-    await configure.Platform.idiom.addBundlePromise("/i18n");
     return {
       applications,
       conf,
@@ -68,21 +66,6 @@ export class ConfService {
     );
     return response.apps;
   }
-
-  /* async geti18n() {
-    await this.idiom.addBundlePromise("fr", "/i18n");
-  } */
-
-  /* async geti18nApp(param: App) {
-    console.log("app i18n");
-
-    await this.loadI18n(param);
-  } */
-
-  /* public async loadI18n(app: App): Promise<void> {
-    console.log("inside i18n");
-    return this.idiom.addBundlePromise("fr", `/${app}/i18n`);
-  } */
 
   private async getWebAppConf({
     app,
@@ -125,17 +108,17 @@ export class ConfService {
 
     return {
       basePath: `${this.cdnDomain}${theme.skin}../../`,
+      bootstrap,
+      bootstrapPath,
+      bootstrapUrl,
+      bootstrapVersion,
+      is1d,
       logoutCallback: theme.logoutCallback,
       skin: theme.skin.split("/assets/themes/")[1].split("/")[0],
       skinName: theme.skinName,
       skins,
       themeName: theme.themeName,
       themeUrl: theme.skin,
-      bootstrap,
-      bootstrapVersion,
-      bootstrapPath,
-      bootstrapUrl,
-      is1d,
     };
   }
 }
