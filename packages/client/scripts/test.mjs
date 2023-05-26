@@ -23,9 +23,7 @@ config.forEach(async (lib) => {
       },
       commonjsOptions: {
         transformMixedEsModules: true,
-        exclude: [
-          'node_modules',
-        ],
+        exclude: ["node_modules"],
       },
       rollupOptions: {
         output: {
@@ -38,4 +36,3 @@ config.forEach(async (lib) => {
     },
   });
 });
-
