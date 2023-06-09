@@ -11,7 +11,7 @@ import { session } from "../session/Framework";
 import { notify } from "../notify/Framework";
 import { configure } from "./Framework";
 
-type ParamsByTrackingSystem = {
+export type ParamsByTrackingSystem = {
   type: "none" | "internal" | "matomo" | "multiple";
   internal?: ITrackingParams;
   matomo?: IMatomoTrackingParams;
@@ -19,7 +19,7 @@ type ParamsByTrackingSystem = {
 };
 
 // 2021 implementation of XiTi
-type XitiConf = {
+export type XitiConf = {
   //Springboard constants
   ID_EXPLOITANT: string; //"ODE"
   ID_PLATEFORME: string; //"OPEN_ENT_NG/ONE/NEO"

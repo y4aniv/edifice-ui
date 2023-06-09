@@ -8,8 +8,10 @@ import { SessionService } from "../session/Service";
 import { ShareService } from "../share/Service";
 import { WorkspaceService } from "../workspace/Service";
 import { IdiomService } from "../idiom/Service";
+import { AnalyticsService } from "../analytics/Service";
 
 export interface IOdeServices {
+  analytics(): AnalyticsService;
   cache(): CacheService;
   conf(): ConfService;
   directory(): DirectoryService;
@@ -23,6 +25,7 @@ export interface IOdeServices {
 }
 
 export class OdeServices implements IOdeServices {
+  private _analytics: AnalyticsService;
   private _cache: CacheService;
   private _conf: ConfService;
   private _directory: DirectoryService;
@@ -34,6 +37,7 @@ export class OdeServices implements IOdeServices {
   private _workspace: WorkspaceService;
 
   constructor() {
+    this._analytics = new AnalyticsService(this);
     this._cache = new CacheService(this);
     this._conf = new ConfService(this);
     this._directory = new DirectoryService(this);
@@ -43,6 +47,10 @@ export class OdeServices implements IOdeServices {
     this._session = new SessionService(this);
     this._share = new ShareService(this);
     this._workspace = new WorkspaceService(this);
+  }
+
+  analytics() {
+    return this._analytics;
   }
 
   cache() {
