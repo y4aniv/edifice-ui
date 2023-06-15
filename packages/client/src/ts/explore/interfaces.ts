@@ -503,6 +503,7 @@ export type PublishParameters = IActionParameters & {
   licence: string;
   teacherAvatar: Blob;
   resourceId: string;
+  resourceEntId:string
   userStructureName: string;
 };
 
