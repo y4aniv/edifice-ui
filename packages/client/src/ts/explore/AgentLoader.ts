@@ -2,7 +2,11 @@ import { appNameForResource, ResourceType } from "./interfaces";
 import { APP } from "../globals";
 
 /* FIXME do not import these, fetch when needed !*/
-import { blogAgentFactory, folderAgentFactory } from "../agents";
+import {
+  blogAgentFactory,
+  folderAgentFactory,
+  mindmapAgentFactory,
+} from "../agents";
 // import { IHttp } from "../transport/interfaces";
 // import { Http } from "../transport/Http";
 
@@ -28,6 +32,9 @@ export class AgentLoader implements IAgentLoader {
         break;
       case APP.BLOG:
         blogAgentFactory();
+        break;
+      case APP.MINDMAP:
+        mindmapAgentFactory();
         break;
       default:
         throw new Error(`The resource type ${res} is not supported yet.`);

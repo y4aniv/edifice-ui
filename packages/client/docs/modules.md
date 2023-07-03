@@ -733,6 +733,7 @@ ___
 | `CAS` | ``"cas"`` |
 | `EXERCIZER` | ``"exercizer"`` |
 | `EXPLORER` | ``"explorer"`` |
+| `MINDMAP` | ``"mindmap"`` |
 | `PORTAL` | ``"portal"`` |
 | `TIMELINE` | ``"timeline"`` |
 | `VIDEO` | ``"video"`` |
@@ -881,6 +882,7 @@ ___
 | `BLOG` | ``"blog"`` |
 | `EXERCISE` | ``"exercise"`` |
 | `FOLDER` | ``"folder"`` |
+| `MINDMAP` | ``"mindmap"`` |
 
 ___
 

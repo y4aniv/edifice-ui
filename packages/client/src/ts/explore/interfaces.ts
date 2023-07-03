@@ -172,6 +172,7 @@ export const RESOURCE = {
   FOLDER: "folder",
   BLOG: "blog",
   EXERCISE: "exercise",
+  MINDMAP: "mindmap",
 } as const;
 export type ResourceType = (typeof RESOURCE)[keyof typeof RESOURCE];
 
@@ -180,6 +181,7 @@ export const appNameForResource: { [R in ResourceType]: App } = {
   folder: APP.EXPLORER,
   blog: APP.BLOG,
   exercise: APP.EXERCIZER,
+  mindmap: APP.MINDMAP,
 } as const;
 
 //-- Actions (toaster)
@@ -503,7 +505,7 @@ export type PublishParameters = IActionParameters & {
   licence: string;
   teacherAvatar: Blob;
   resourceId: string;
-  resourceEntId:string
+  resourceEntId: string;
   userStructureName: string;
 };
 
