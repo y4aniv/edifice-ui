@@ -71,7 +71,7 @@ init () {
   sed -i "s/%generateVersion%/${NPM_VERSION_SUFFIX}/" package.json
 
   PRECOMMIT_CMD="docker-compose run --rm -u \\\"$USER_UID:$GROUP_GID\\\" node sh -c \\\"npm run test && npm run docs\\\" && git add ./docs/*"
-  docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "pnpm install --production=false && npm run prepare && npx husky add .husky/pre-commit \"$PRECOMMIT_CMD\"" # && git add .husky/pre-commit"
+  docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "pnpm install --production=false && npm run prepare && npx husky add .husky/pre-commit \"$PRECOMMIT_CMD\""
 }
 
 tests () {
