@@ -21,9 +21,10 @@ export class ConfService {
       this.getApplicationsList(),
     ]);
 
-    const [theme, currentApp] = await Promise.all([
+    const [theme, currentApp, extendedTheme] = await Promise.all([
       this.getTheme({ conf }),
       this.getWebAppConf({ app, applications }),
+      this.getExtendedTheme(),
     ]);
 
     return {
@@ -31,6 +32,7 @@ export class ConfService {
       conf,
       currentApp,
       theme,
+      extendedTheme,
     };
   }
 
@@ -57,6 +59,11 @@ export class ConfService {
       { queryParams: { v: version } },
       "exports.conf",
     );
+    return res;
+  }
+
+  private async getExtendedTheme(): Promise<any> {
+    const res = await this.http.get<any>("/assets/extended-theme.json");
     return res;
   }
 

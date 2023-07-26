@@ -255,4 +255,5 @@ export interface IGetConf {
   conf: IThemeConf;
   currentApp: IWebApp | undefined;
   theme: IOdeTheme;
+  extendedTheme: any;
 }
