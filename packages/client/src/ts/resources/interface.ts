@@ -28,3 +28,11 @@ export interface BlogUpdate extends UpdateParameters {
 export interface BlogResource extends IResource {
   "publish-type": "RESTRAINT" | "IMMEDIATE";
 }
+
+export interface MindmapUpdate extends UpdateParameters {
+  "publish-type"?: "RESTRAINT" | "IMMEDIATE";
+}
+
+export interface MindmapResource extends IResource {
+  "publish-type": "RESTRAINT" | "IMMEDIATE";
+}

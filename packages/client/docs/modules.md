@@ -85,6 +85,8 @@
 - [IWidgetModel](interfaces/IWidgetModel.md)
 - [IWorkflowAuth](interfaces/IWorkflowAuth.md)
 - [IXitiTrackingParams](interfaces/IXitiTrackingParams.md)
+- [MindmapResource](interfaces/MindmapResource.md)
+- [MindmapUpdate](interfaces/MindmapUpdate.md)
 - [PutSharePayload](interfaces/PutSharePayload.md)
 - [PutShareResponse](interfaces/PutShareResponse.md)
 - [Recipient](interfaces/Recipient.md)
