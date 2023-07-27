@@ -66,7 +66,7 @@ class MindmapAgent extends AbstractBusAgent {
   }
 
   openMindmap(parameters: OpenParameters): void {
-    window.open(`/blog#/view/${parameters.resourceId}`, "_self");
+    window.open(`/mindmap/id/${parameters.resourceId}`, "_self");
   }
 
   createMindmap(parameters: IActionParameters): void {
