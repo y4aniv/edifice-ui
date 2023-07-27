@@ -4,7 +4,9 @@ import { ResourceService } from "./ResourceService";
 
 export class MindmapResourceService extends ResourceService {
   async update(parameters: MindmapUpdate): Promise<UpdateResult> {
-    const fixThumb = await this.getThumbnailPath(parameters.thumbnail);
+    const fixThumb = parameters.thumbnail
+      ? await this.getThumbnailPath(parameters.thumbnail)
+      : "";
     const res = await this.http.put<IResource>(`/mindmap/${parameters.entId}`, {
       trashed: parameters.trashed,
       _id: parameters.entId,
