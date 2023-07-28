@@ -14,9 +14,6 @@ export class MindmapResourceService extends ResourceService {
       thumbnail: fixThumb,
       description: parameters.description,
       visibility: parameters.public ? "PUBLIC" : "OWNER",
-      /* slug: parameters.public ? parameters.slug : "",
-      "publish-type": parameters["publish-type"] || "RESTRAINT",
-      "comment-type": "IMMEDIATE", */
     });
     this.checkHttpResponse(res);
     return { thumbnail: fixThumb, entId: parameters.entId } as UpdateResult;
@@ -34,9 +31,7 @@ export class MindmapResourceService extends ResourceService {
     return `/mindmap/id/${resourceId}`;
   }
   getPrintUrl(resourceId: string, withComment?: boolean): string {
-    return `/mindmap/print/mindmap#/print/${resourceId}?comments=${
-      withComment || true
-    }`;
+    return `/mindmap/print/id/${resourceId}?comments=${withComment || true}`;
   }
 }
 ResourceService.register(

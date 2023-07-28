@@ -174,6 +174,7 @@ export const RESOURCE = {
   EXERCISE: "exercise",
   MINDMAP: "mindmap",
 } as const;
+
 export type ResourceType = (typeof RESOURCE)[keyof typeof RESOURCE];
 
 //-- App/Resource link
@@ -207,6 +208,7 @@ export const ACTION = {
   PUBLISH: "publish",
   PUBLISH_MOODLE: "publish_moodle",
 } as const;
+
 export type ActionType = (typeof ACTION)[keyof typeof ACTION];
 
 //-- Folders
@@ -214,6 +216,7 @@ export const FOLDER = {
   BIN: "bin",
   DEFAULT: "default",
 } as const;
+
 export type FolderType = (typeof FOLDER)[keyof typeof FOLDER];
 
 //-- Filters
