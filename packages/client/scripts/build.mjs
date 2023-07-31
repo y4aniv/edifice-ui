@@ -18,6 +18,11 @@ const config = [
     fileName: () => `ode-ts-client.mjs`,
     formats: ["es"],
   },
+  {
+    entry: path.resolve(__dirname, "./src/ts/index.ts"),
+    fileName: () => `ode-ts-client.esm.js`,
+    formats: ["es"],
+  },
 ];
 
 config.forEach(async (lib) => {
