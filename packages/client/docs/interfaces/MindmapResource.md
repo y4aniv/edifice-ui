@@ -33,6 +33,7 @@
 - [slug](MindmapResource.md#slug)
 - [thumbnail](MindmapResource.md#thumbnail)
 - [trashed](MindmapResource.md#trashed)
+- [trashedBy](MindmapResource.md#trashedby)
 - [updatedAt](MindmapResource.md#updatedat)
 - [views](MindmapResource.md#views)
 
@@ -241,6 +242,16 @@ ___
 #### Inherited from
 
 [IResource](IResource.md).[trashed](IResource.md#trashed)
+
+___
+
+### trashedBy
+
+• `Optional` **trashedBy**: `string`[]
+
+#### Inherited from
+
+[IResource](IResource.md).[trashedBy](IResource.md#trashedby)
 
 ___
 
