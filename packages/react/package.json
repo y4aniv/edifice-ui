@@ -64,7 +64,7 @@
     "@tanstack/react-query": "4.29.12"
   },
   "peerDependencies": {
-    "@edifice-ui/icons": "workspace:*",
+    "@edifice-ui/icons": "*",
     "@react-spring/web": "9.7.2",
     "clsx": "1.2.1",
     "ode-ts-client": "develop-pedago",
