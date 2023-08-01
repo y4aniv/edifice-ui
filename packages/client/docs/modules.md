@@ -28,6 +28,8 @@
 - [BookmarkSaveResponse](interfaces/BookmarkSaveResponse.md)
 - [BookmarkWithDetails](interfaces/BookmarkWithDetails.md)
 - [BookmarkWithMembers](interfaces/BookmarkWithMembers.md)
+- [CreateParameters](interfaces/CreateParameters.md)
+- [CreateResult](interfaces/CreateResult.md)
 - [GetResourceRightPayload](interfaces/GetResourceRightPayload.md)
 - [Group](interfaces/Group.md)
 - [IAction](interfaces/IAction.md)
