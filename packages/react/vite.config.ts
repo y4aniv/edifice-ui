@@ -28,7 +28,7 @@ export default defineConfig({
       external: [
         ...Object.keys(dependencies),
         ...Object.keys(peerDependencies),
-        "react/jsx-runtime",
+        "/react/jsx-runtime",
         "@edifice-ui/icons/nav",
       ],
     },
