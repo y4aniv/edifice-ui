@@ -1,0 +1,66 @@
+{
+  "name": "@edifice-ui/icons",
+  "version": "1.0.0",
+  "description": "Edifice Icons Library",
+  "keywords": [
+    "react",
+    "frontend",
+    "icons",
+    "ui"
+  ],
+  "homepage": "https://github.com/opendigitaleducation/edifice-ui/tree/main/packages/icons#readme",
+  "bugs": {
+    "url": "https://github.com/opendigitaleducation/edifice-ui/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opendigitaleducation/edifice-ui.git"
+  },
+  "license": "AGPL-3.0",
+  "author": "Edifice",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./nav": {
+      "import": "./dist/nav.js",
+      "require": "./dist/nav.cjs"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "*.d.ts"
+  ],
+  "scripts": {
+    "build": "pnpm build:icons && pnpm build:vite",
+    "build:icons": "svgr assets --config-file ./svgr.config.cjs",
+    "build:vite": "vite build",
+    "fix": "eslint --fix \"**/*.{ts,tsx}\"",
+    "format": "concurrently \"pnpm:format:*\"",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint": "eslint \"**/*.{ts,tsx}\""
+  },
+  "devDependencies": {
+    "@svgr/cli": "8.0.1",
+    "@types/node": "20.2.5",
+    "@types/react": "18.2.8",
+    "@types/react-dom": "18.2.4",
+    "concurrently": "8.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "peerDependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

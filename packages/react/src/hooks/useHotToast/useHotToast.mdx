@@ -1,0 +1,43 @@
+import { Canvas, Meta } from "@storybook/blocks";
+import * as useHotToastStories from "./useHotToast.stories";
+
+<Meta />
+
+# useHotToast
+
+## Usage
+
+- Show notification messages.
+
+## Example
+
+<Canvas of={useHotToastStories.Example} />
+
+## Hook usage
+
+The hook can be used in combination with the Alert component to display messages with Alert design.
+
+Options can be passed to hotToast functions:
+
+- duration: number (use Infinity to set infinite duration)
+- isDismissible: boolean, allow user to click a close button to dismiss toast (when toast has a Infinite duration)
+
+Here an example of how to use the hook:
+
+```jsx
+const { hotToast } = useHotToast(Alert);
+
+const infoNotify = () =>
+  hotToast.info(`This is an info message with duration equal to ${Infinity}`, {
+    duration: Infinity,
+    isDismissible: true,
+  });
+
+const warningNotify = () =>
+  hotToast.warning(<h3>This is a warning message in a H3 tag</h3>);
+
+const sucessNotify = () => hotToast.success("This is a success message!");
+
+const errorNotify = () =>
+  hotToast.error(<div>This is an error message in a DIV tag</div>);
+```
