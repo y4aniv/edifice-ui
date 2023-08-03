@@ -27,9 +27,7 @@ export function ThemeProvider({ children }: ThemeProps) {
   const confQuery = useConf({ appCode });
 
   useEffect(() => {
-    // const link = document.getElementById("theme") as HTMLAnchorElement;
     const favicon = document.getElementById("favicon") as HTMLAnchorElement;
-    // link.href = `${confQuery?.data?.theme?.bootstrapUrl}/theme.css` as string;
     favicon.href =
       `${confQuery?.data?.theme?.basePath}/img/illustrations/favicon.ico` as string;
 

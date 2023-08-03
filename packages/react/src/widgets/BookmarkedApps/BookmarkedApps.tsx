@@ -1,4 +1,5 @@
 import { IWebApp } from "ode-ts-client";
+
 import AppIcon from "../../components/AppIcon/AppIcon";
 
 const BookmarkedApps = ({ data }: { data: IWebApp[] }) => {

@@ -1,9 +1,10 @@
 name: Semantic release
-"on":
+on:
   push:
     branches:
       - main
       - develop
+      - develop*
 permissions:
   contents: read #  for checkout
 jobs:
