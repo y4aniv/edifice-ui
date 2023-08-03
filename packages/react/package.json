@@ -68,7 +68,6 @@
     "@react-spring/web": "9.7.2",
     "@tanstack/react-query": "4.29.12",
     "clsx": "1.2.1",
-    "ode-ts-client": "develop-pedago",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "2.4.1",
