@@ -1,15 +1,14 @@
 import { Observable } from "rxjs";
 import { APP, App } from "../globals";
 import { RightRole } from "../services";
-import { explorer } from "./Framework";
 
 //-------------------------------------
-export abstract class ExplorerFrameworkFactory {
+/* export abstract class ExplorerFrameworkFactory {
   //-------------------------------------
   static instance(): IExplorerFramework {
     return explorer;
   }
-}
+} */
 
 /** Framework exploration capabilities offered to the client. */
 //-------------------------------------

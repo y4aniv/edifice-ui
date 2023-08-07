@@ -11,7 +11,6 @@
 ### Classes
 
 - [ConfigurationFrameworkFactory](classes/ConfigurationFrameworkFactory.md)
-- [ExplorerFrameworkFactory](classes/ExplorerFrameworkFactory.md)
 - [ITimelineFactory](classes/ITimelineFactory.md)
 - [LastInfosWidget](classes/LastInfosWidget.md)
 - [NotifyFrameworkFactory](classes/NotifyFrameworkFactory.md)
