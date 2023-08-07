@@ -166,10 +166,10 @@ publishNPM () {
   fi
 }
 
-archive() {
-  echo "[archive] Archiving dist folder and conf.j2 file..."
-  tar cfzh ${MVN_MOD_NAME}.tar.gz dist/* ode-ts-client/conf.j2
-}
+# archive() {
+#   echo "[archive] Archiving dist folder and conf.j2 file..."
+#   tar cfzh ${MVN_MOD_NAME}.tar.gz dist/* ode-ts-client/conf.j2
+# }
 
 publishNexus () {
   case "$MVN_MOD_VERSION" in
