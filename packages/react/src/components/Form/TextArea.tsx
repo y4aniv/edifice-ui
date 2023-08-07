@@ -20,7 +20,7 @@ export interface TextAreaProps
   /**
    * Control maxHeight of TextArea
    */
-  maxHeight?: number;
+  height?: "sm" | "md" | "lg";
   /**
    * Change text of placeholder
    */
@@ -49,7 +49,7 @@ const TextArea = forwardRef(
       noValidationIcon,
       placeholder,
       size = "md",
-      maxHeight = 200,
+      height = "md",
       className,
       ...restProps
     }: TextAreaProps,
@@ -62,11 +62,12 @@ const TextArea = forwardRef(
         "form-control": !isReadOnly,
         "form-control-lg": size === "lg",
         "form-control-sm": size === "sm",
+        "form-height-lg": height === "lg",
+        "form-height-sm": height === "sm",
         "is-invalid": status === "invalid",
         "is-valid": status === "valid",
         "form-control-plaintext": isReadOnly,
         "no-validation-icon": noValidationIcon,
-        "form-controle-maxHeight": maxHeight,
       },
       className,
     );
