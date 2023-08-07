@@ -1,60 +1,33 @@
 import { Meta, StoryObj } from "@storybook/react";
+
+import { FormControl, FormText, Label } from "./index";
+import TextArea, { TextAreaProps } from "./TextArea";
 import { Ref, useEffect, useRef } from "react";
 import { Button } from "../Button";
 
-import { FormControl, Input, Label, FormText, InputProps } from "./index";
-
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Forms/Input",
-  component: Input,
+  title: "Forms/TextArea",
+  component: TextArea,
   argTypes: {
     size: {
       options: ["sm", "md", "lg"],
-      control: { type: "select" },
-    },
-    type: {
-      options: [
-        "button",
-        "checkbox",
-        "color",
-        "date",
-        "datetime-local",
-        "email",
-        "file",
-        "hidden",
-        "image",
-        "month",
-        "number",
-        "password",
-        "radio",
-        "range",
-        "reset",
-        "search",
-        "submit",
-        "tel",
-        "text",
-        "time",
-        "url",
-        "week",
-      ],
       control: { type: "select" },
     },
   },
   args: {
     disabled: false,
     size: "md",
-    type: "text",
     placeholder: "Text Placeholder",
   },
-} as Meta<typeof Input>;
+} as Meta<typeof TextArea>;
 
-type Story = StoryObj<typeof Input>;
+type Story = StoryObj<typeof TextArea>;
 
-const Template = (args: InputProps) => {
+const Template = (args: TextAreaProps) => {
   return (
     <FormControl id="example">
-      <Input {...args} />
+      <TextArea {...args} />
     </FormControl>
   );
 };
@@ -63,7 +36,6 @@ export const Base: Story = {
   render: Template,
 
   args: {
-    type: "text",
     size: "md",
     placeholder: "Edifice",
   },
@@ -74,7 +46,6 @@ export const Small: Story = {
 
   args: {
     size: "sm",
-    type: "text",
     placeholder: "Edifice",
   },
 
@@ -92,7 +63,6 @@ export const Medium: Story = {
   render: Template,
 
   args: {
-    type: "text",
     size: "md",
     placeholder: "Edifice",
   },
@@ -112,7 +82,6 @@ export const Large: Story = {
 
   args: {
     size: "lg",
-    type: "text",
     placeholder: "Edifice",
   },
 
@@ -126,22 +95,21 @@ export const Large: Story = {
   },
 };
 
-export const InputWithValue: Story = {
+export const TextAreaWithValue: Story = {
   render: (args) => {
-    const inputRef: Ref<HTMLInputElement> = useRef(null);
+    const textAreaRef: Ref<HTMLTextAreaElement> = useRef(null);
 
     useEffect(() => {
       // Can be a type guard
-      if (inputRef.current != null) {
-        inputRef.current.value = "This input has a value.";
+      if (textAreaRef.current != null) {
+        textAreaRef.current.value = "This textArea has a value.";
       }
     }, []);
 
     return (
       <FormControl id="example-2">
-        <Input
-          ref={inputRef}
-          type={args.type}
+        <TextArea
+          ref={textAreaRef}
           placeholder={args.placeholder}
           size={args.size}
         />
@@ -152,25 +120,24 @@ export const InputWithValue: Story = {
   parameters: {
     docs: {
       description: {
-        story: "When Input has a value, `border-color` changes.",
+        story: "When TextArea has a value, `border-color` changes.",
       },
     },
   },
 };
 
-export const InputFocused: Story = {
+export const TextAreaFocused: Story = {
   render: (args) => {
-    const inputRef: Ref<HTMLInputElement> = useRef(null);
+    const textAreaRef: Ref<HTMLTextAreaElement> = useRef(null);
 
     const handleFocus = () => {
-      inputRef.current?.focus();
+      textAreaRef.current?.focus();
     };
 
     return (
       <FormControl id="example-3" className="d-flex gap-8">
-        <Input
-          ref={inputRef}
-          type={args.type}
+        <TextArea
+          ref={textAreaRef}
           placeholder={args.placeholder}
           size={args.size}
         />
@@ -190,7 +157,7 @@ export const InputFocused: Story = {
     docs: {
       description: {
         story:
-          "When Input is focused, `border-color` changes depending on the theme.",
+          "When TextArea is focused, `border-color` changes depending on the theme.",
       },
     },
   },
@@ -200,11 +167,7 @@ export const ValidStatus: Story = {
   render: (args) => {
     return (
       <FormControl id="example-4" status="valid">
-        <Input
-          type={args.type}
-          placeholder={args.placeholder}
-          size={args.size}
-        />
+        <TextArea placeholder={args.placeholder} size={args.size} />
       </FormControl>
     );
   },
@@ -213,7 +176,7 @@ export const ValidStatus: Story = {
     docs: {
       description: {
         story:
-          "If input is valid (if condition met is true), we pass `status='valid'` through FormControl Component",
+          "If textArea is valid (if condition met is true), we pass `status='valid'` through FormControl Component",
       },
     },
   },
@@ -223,11 +186,7 @@ export const ValidStatusWithMessage: Story = {
   render: (args) => {
     return (
       <FormControl id="example-4" status="valid">
-        <Input
-          type={args.type}
-          placeholder={args.placeholder}
-          size={args.size}
-        />
+        <TextArea placeholder={args.placeholder} size={args.size} />
         <FormText>Informative message</FormText>
       </FormControl>
     );
@@ -247,11 +206,7 @@ export const InvalidStatus: Story = {
   render: (args) => {
     return (
       <FormControl id="example-4" status="invalid">
-        <Input
-          type={args.type}
-          placeholder={args.placeholder}
-          size={args.size}
-        />
+        <TextArea placeholder={args.placeholder} size={args.size} />
       </FormControl>
     );
   },
@@ -260,7 +215,7 @@ export const InvalidStatus: Story = {
     docs: {
       description: {
         story:
-          "If input is invalid (if condition met is false), we pass `status='invalid'` through FormControl Component",
+          "If textarea is invalid (if condition met is false), we pass `status='invalid'` through FormControl Component",
       },
     },
   },
@@ -270,12 +225,7 @@ export const InvalidStatusWithMessage: Story = {
   render: (args) => {
     return (
       <FormControl id="example-4" status="invalid">
-        <Label>Label Text</Label>
-        <Input
-          type={args.type}
-          placeholder={args.placeholder}
-          size={args.size}
-        />
+        <TextArea placeholder={args.placeholder} size={args.size} />
         <FormText>Informative message</FormText>
       </FormControl>
     );
@@ -295,8 +245,7 @@ export const StatusWithoutIcon: Story = {
   render: (args) => {
     return (
       <FormControl id="example-4" status="valid">
-        <Input
-          type={args.type}
+        <TextArea
           placeholder={args.placeholder}
           size={args.size}
           noValidationIcon
@@ -309,7 +258,7 @@ export const StatusWithoutIcon: Story = {
     docs: {
       description: {
         story:
-          "You can add the `noValidationIcon` props to the Input Component to remove validation icon",
+          "You can add the `noValidationIcon` props to the TextArea Component to remove validation icon",
       },
     },
   },
@@ -321,7 +270,6 @@ export const DisabledStatus: Story = {
   args: {
     disabled: true,
     size: "md",
-    type: "text",
     placeholder: "Edifice",
   },
 };
