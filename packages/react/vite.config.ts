@@ -29,7 +29,7 @@ export default defineConfig({
         ...Object.keys(dependencies),
         ...Object.keys(peerDependencies),
         "react/jsx-runtime",
-        "ode-ts-client",
+        "edifice-ts-client",
         "@edifice-ui/icons/nav",
       ],
     },

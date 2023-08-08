@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { odeServices } from "ode-ts-client";
+import { odeServices } from "edifice-ts-client";
 
 import { useHasWorkflow } from "../useHasWorkflow";
 
@@ -58,7 +58,7 @@ const useConversation = (): {
 
   const goToMessagerie = useCallback(() => {
     let messagerieLink = "";
-    // FIXME This is the old-fashioned way of accessing preferences. Do not reproduce anymore (use ode-ts-client lib instead)
+    // FIXME This is the old-fashioned way of accessing preferences. Do not reproduce anymore (use edifice-ts-client lib instead)
     odeServices
       .http()
       .get("/userbook/preference/zimbra")

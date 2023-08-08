@@ -2,7 +2,7 @@ import { ReactNode, forwardRef, useMemo } from "react";
 
 import { useOdeIcons } from "@edifice-ui/core";
 import clsx from "clsx";
-import { IWebApp } from "ode-ts-client";
+import { IWebApp } from "edifice-ts-client";
 
 import { Context } from "./AppCardContext";
 import AppName from "./AppName";

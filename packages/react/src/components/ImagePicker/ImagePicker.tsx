@@ -9,7 +9,7 @@ import {
 
 import { Delete, Edit } from "@edifice-ui/icons";
 import clsx from "clsx";
-import { IWebApp } from "ode-ts-client";
+import { IWebApp } from "edifice-ts-client";
 
 import useDropzone from "../../hooks/useDropzone/useDropzone";
 import { AppIcon } from "../AppIcon";

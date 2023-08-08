@@ -1,7 +1,7 @@
 import { forwardRef, Ref } from "react";
 
 import clsx from "clsx";
-import { IWebApp } from "ode-ts-client";
+import { IWebApp } from "edifice-ts-client";
 
 import { useOdeIcons, usePaths } from "../../core";
 import { Image } from "../Image";
