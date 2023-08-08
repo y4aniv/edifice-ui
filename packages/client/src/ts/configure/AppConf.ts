@@ -2,7 +2,7 @@ import { transport } from "../transport/Framework";
 import { App } from "../globals";
 import { configure } from "./Framework";
 import { notify } from "../notify/Framework";
-import { IWebApp } from "../index.cjs";
+import { IWebApp } from "../session/interfaces";
 
 const http = transport?.http;
 
