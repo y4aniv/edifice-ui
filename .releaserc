@@ -34,6 +34,10 @@
     {
       "name": "develop-pedago",
       "prerelease": true
+    },
+    {
+      "name": "develop-b2school",
+      "prerelease": true
     }
   ]
 }
