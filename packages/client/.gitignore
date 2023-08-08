@@ -1,17 +1,12 @@
 node_modules
 dist
-package.json
-package-lock.json
 .gradle
 deployment/
 *.tsbuildinfo
-.husky
 test/
 .DS_Store
 yarn-error.log
 test/Foundation.spec.mjs
-yarn.lock
-*lock*
 stats.html
 npm-debug*
 .pnpm-store
