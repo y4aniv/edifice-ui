@@ -24,7 +24,8 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "version.txt"
   ],
   "scripts": {
     "build": "vite build",
@@ -33,8 +34,7 @@
     "format:check": "npx prettier --check \"src/ts/**/*.ts\"",
     "format:write": "npx prettier --write \"src/ts/**/*.ts\"",
     "prepare": "husky install",
-    "test": "node scripts/test.cjs && npx jasmine --config=src/test/config/jasmine.json",
-    "watch": "export build_target=${npm_config_build_target}; export watch=true; npx rollup -c --watch"
+    "generate-commit-version": "node scripts/version.cjs"
   },
   "dependencies": {
     "axios": "1.4.0",
