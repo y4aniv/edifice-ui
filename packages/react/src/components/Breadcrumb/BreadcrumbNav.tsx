@@ -1,7 +1,7 @@
 import { forwardRef, ReactNode, Ref } from "react";
 
 import clsx from "clsx";
-import { IWebApp } from "ode-ts-client";
+import { IWebApp } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import useOdeIcons from "../../core/useOdeIcons/useOdeIcons";

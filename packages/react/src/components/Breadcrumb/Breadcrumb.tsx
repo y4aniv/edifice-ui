@@ -1,7 +1,7 @@
 import { forwardRef, Ref } from "react";
 
 import { RafterLeft } from "@edifice-ui/icons";
-import { IWebApp } from "ode-ts-client";
+import { IWebApp } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import BreadcrumbItem from "./BreadcrumbItem";

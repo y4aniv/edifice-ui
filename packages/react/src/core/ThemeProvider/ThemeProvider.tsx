@@ -6,7 +6,7 @@ import {
   useEffect,
 } from "react";
 
-import { IOdeTheme } from "ode-ts-client";
+import { IOdeTheme } from "edifice-ts-client";
 
 import { useOdeClient } from "../OdeClientProvider";
 import { useConf } from "../useConf";

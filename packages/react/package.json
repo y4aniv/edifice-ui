@@ -56,7 +56,7 @@
     "@types/react-dom": "18.2.4",
     "clsx": "1.2.1",
     "concurrently": "8.1.0",
-    "ode-ts-client": "develop-pedago",
+    "edifice-ts-client": "develop-pedago",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "2.4.1",

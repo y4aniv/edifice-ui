@@ -3,7 +3,7 @@ import React, { ComponentPropsWithRef, forwardRef, Ref } from "react";
 import { Files, Globe, Options, Users } from "@edifice-ui/icons";
 import { OneProfile } from "@edifice-ui/icons/nav";
 import clsx from "clsx";
-import { IWebApp } from "ode-ts-client";
+import { IWebApp } from "edifice-ts-client";
 
 import useOdeIcons from "../../core/useOdeIcons/useOdeIcons";
 import { AppIcon } from "../AppIcon";

@@ -1,4 +1,4 @@
-import { type IWidget, WidgetName, IWebApp } from "ode-ts-client";
+import { type IWidget, WidgetName, IWebApp } from "edifice-ts-client";
 
 export default function useOdeIcons() {
   /**

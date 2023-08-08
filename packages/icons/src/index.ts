@@ -1,4 +1,5 @@
 export { default as AddUser } from "./AddUser";
+export { default as Add } from "./Add";
 export { default as AlertCircle } from "./AlertCircle";
 export { default as AlertTriangle } from "./AlertTriangle";
 export { default as Answer } from "./Answer";
@@ -80,6 +81,7 @@ export { default as Search } from "./Search";
 export { default as See } from "./See";
 export { default as Send } from "./Send";
 export { default as Settings } from "./Settings";
+export { default as Smartphone } from "./Smartphone";
 export { default as SortAscendingLetters } from "./SortAscendingLetters";
 export { default as SortDescendingLetters } from "./SortDescendingLetters";
 export { default as SortDescending } from "./SortDescending";
