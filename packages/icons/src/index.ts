@@ -82,6 +82,7 @@ export { default as See } from "./See";
 export { default as Send } from "./Send";
 export { default as Settings } from "./Settings";
 export { default as Smartphone } from "./Smartphone";
+export { default as Smiley } from "./Smiley";
 export { default as SortAscendingLetters } from "./SortAscendingLetters";
 export { default as SortDescendingLetters } from "./SortDescendingLetters";
 export { default as SortDescending } from "./SortDescending";
