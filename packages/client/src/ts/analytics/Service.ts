@@ -1,13 +1,9 @@
 import { ParamsByTrackingSystem, XitiConf } from "../configure/Analytics";
 import { configure } from "../configure/Framework";
+import { IXitiTrackingParams } from "../configure/interfaces";
 import { App, ERROR_CODE } from "../globals";
-import {
-  IUserInfo,
-  IWebApp,
-  IXitiTrackingParams,
-  UserProfile,
-} from "../index.cjs";
 import { IOdeServices } from "../services/OdeServices";
+import { IUserInfo, IWebApp, UserProfile } from "../session/interfaces";
 
 declare var ATInternet: any;
 let ATTag: any;
