@@ -3,8 +3,7 @@ import { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 
 import SelectList, { SelectListProps } from "./SelectList";
-import { Audio, Block, Lock } from "@edifice-ui/icons";
-import React from "react";
+import { Headphone, Block, Lock } from "@edifice-ui/icons";
 
 const meta: Meta<typeof SelectList> = {
   title: "Components/Dropdown/SelectList",
@@ -48,7 +47,7 @@ export const Base: Story = {
       {
         value: "audio",
         label: "Enable audio conference",
-        icon: Audio,
+        icon: Headphone,
       },
       {
         value: "secure_mode",
