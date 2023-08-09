@@ -110,7 +110,7 @@ const sampleData: IRow[] = [
 ];
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof TableExplorer> = {
   title: "Components/TableExplorer",
   component: TableExplorer,
   parameters: {
@@ -121,8 +121,9 @@ export default {
     },
   },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-} as Meta<typeof TableExplorer>;
+};
 
+export default meta;
 type Story = StoryObj<typeof TableExplorer>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args

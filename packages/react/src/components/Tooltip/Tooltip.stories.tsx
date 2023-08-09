@@ -5,7 +5,7 @@ import Tooltip, { TooltipProps } from "./Tooltip";
 import { AlertCircle } from "@edifice-ui/icons";
 import React from "react";
 
-export default {
+const meta: Meta<typeof Tooltip> = {
   title: "Components/Tooltip",
   component: Tooltip,
   parameters: {
@@ -16,7 +16,9 @@ export default {
       },
     },
   },
-} as Meta<typeof Tooltip>;
+};
+
+export default meta;
 
 type Story = StoryObj<typeof Tooltip>;
 

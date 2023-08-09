@@ -6,7 +6,7 @@ import { FormControl, Input } from "./index";
 import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof Search> = {
   title: "Forms/Search",
   component: FormControl,
   subcomponents: { Input, SearchButton },
@@ -31,8 +31,9 @@ export default {
     isRequired: false,
     status: undefined,
   },
-} as Meta<typeof FormControl>;
+};
 
+export default meta;
 type Story = StoryObj<typeof FormControl>;
 
 const Template = (args: any) => (

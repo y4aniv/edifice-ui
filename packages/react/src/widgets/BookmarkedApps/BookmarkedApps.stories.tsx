@@ -4,7 +4,7 @@ import BookmarkedApps from "./BookmarkedApps";
 import { AppIcon } from "@edifice-react-ui/components";
 import Widget from "../Widget/Widget";
 
-export default {
+const meta: Meta<typeof BookmarkedApps> = {
   title: "Widgets/Bookmarked Apps",
   component: BookmarkedApps,
   decorators: [
@@ -14,7 +14,9 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof BookmarkedApps>;
+};
+
+export default meta;
 
 type Story = StoryObj<typeof BookmarkedApps>;
 

@@ -6,7 +6,7 @@ import AppIcon from "../AppIcon/AppIcon";
 import { Image } from "../Image";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof AppHeader> = {
   title: "Layout/AppHeader",
   component: AppHeader,
   parameters: {
@@ -17,19 +17,9 @@ export default {
       },
     },
   },
-  args: {
-    app: {
-      address: "/blog",
-      icon: "",
-      name: "",
-      scope: [],
-      display: false,
-      displayName: "Blog",
-      isExternal: false,
-    },
-  },
-} as Meta<typeof AppHeader>;
+};
 
+export default meta;
 type Story = StoryObj<typeof AppHeader>;
 
 export const Base: Story = {

@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import Widget from "./Widget";
 
-export default {
+const meta: Meta<typeof Widget> = {
   title: "Widgets/Widget Box",
   component: Widget,
   decorators: [
@@ -12,8 +12,8 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Widget>;
-
+};
+export default meta;
 type Story = StoryObj<typeof Widget>;
 
 export const Base: Story = {

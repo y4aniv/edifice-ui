@@ -30,15 +30,9 @@ import { ImagePicker } from "../ImagePicker";
 import Modal, { ModalProps } from "./Modal";
 import useToggle from "../../hooks/useToggle/useToggle";
 
-export default {
+const meta: Meta<typeof Modal> = {
   title: "Components/Modal",
   component: Modal,
-  subcomponents: {
-    Header: Modal.Header,
-    Subtitle: Modal.Subtitle,
-    Body: Modal.Body,
-    Footer: Modal.Footer,
-  },
   args: {
     id: "modal",
   },
@@ -48,7 +42,9 @@ export default {
       control: { type: "select" },
     },
   },
-} as Meta<typeof Modal>;
+};
+
+export default meta;
 
 type Story = StoryObj<typeof Modal>;
 

@@ -5,7 +5,7 @@ import SearchButton from "./SearchButton";
 import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof SearchButton> = {
   title: "Components/Buttons/SearchButton",
   component: SearchButton,
   args: {
@@ -15,8 +15,9 @@ export default {
     icon: <Search />,
   },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-} as Meta<typeof SearchButton>;
+};
 
+export default meta;
 type Story = StoryObj<typeof SearchButton>;
 
 export const Base: Story = {};

@@ -2,11 +2,12 @@ import { Meta, StoryObj } from "@storybook/react";
 import { Grid } from "./Grid";
 import React from "react";
 
-export default {
+const meta: Meta<typeof Grid.Col> = {
   title: "Layout/Grid/Column",
   component: Grid.Col,
-} as Meta<typeof Grid.Col>;
+};
 
+export default meta;
 type Story = StoryObj<typeof Grid.Col>;
 
 export const Base: Story = {
