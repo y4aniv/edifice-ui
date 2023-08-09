@@ -5,10 +5,12 @@ import { useState } from "react";
 import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof TreeView> = {
   title: "Components/TreeView",
   component: TreeView,
-} as Meta<typeof TreeView>;
+};
+
+export default meta;
 
 type Story = StoryObj<typeof TreeView>;
 

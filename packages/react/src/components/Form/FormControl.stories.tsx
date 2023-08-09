@@ -5,7 +5,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { FormControl, Label, Input, FormText, FormControlProps } from "./index";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof FormControl> = {
   title: "Forms/Form Control",
   component: FormControl,
   subcomponents: { Label, Input, Text: FormText },
@@ -22,8 +22,9 @@ export default {
     isRequired: false,
     status: undefined,
   },
-} as Meta<typeof FormControl>;
+};
 
+export default meta;
 type Story = StoryObj<typeof FormControl>;
 
 export const Base: Story = {

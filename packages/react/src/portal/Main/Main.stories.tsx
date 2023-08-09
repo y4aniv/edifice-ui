@@ -2,13 +2,15 @@ import { Meta, StoryObj } from "@storybook/react";
 import Main, { MainProps } from "./Main";
 import React from "react";
 
-export default {
+const meta: Meta<typeof Main> = {
   title: "Layout/Main",
   component: Main,
   args: {
     children: "This this the main content of the application.",
   },
-} as Meta<typeof Main>;
+};
+
+export default meta;
 
 type Story = StoryObj<typeof Main>;
 

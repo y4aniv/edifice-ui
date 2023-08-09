@@ -2,8 +2,6 @@ import { useState } from "react";
 
 import { Meta, StoryObj } from "@storybook/react";
 
-import { Base as SelectListStory } from "./SelectList.stories";
-
 import Dropdown from "./Dropdown";
 import DropdownTrigger from "./DropdownTrigger";
 import {
@@ -13,9 +11,8 @@ import {
   SortDescendingLetters,
 } from "@edifice-ui/icons";
 import SelectList, { OptionListItemType } from "./SelectList";
-import React from "react";
 
-export default {
+const meta: Meta<typeof Dropdown> = {
   title: "Components/Dropdown",
   component: Dropdown,
   decorators: [
@@ -26,8 +23,9 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Dropdown>;
+};
 
+export default meta;
 type Story = StoryObj<typeof Dropdown>;
 
 const options: OptionListItemType[] = [

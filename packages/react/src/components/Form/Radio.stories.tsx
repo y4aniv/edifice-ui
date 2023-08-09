@@ -4,10 +4,9 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import Radio, { RadioProps } from "./Radio";
 import { Applications, ViewList } from "@edifice-ui/icons";
-import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof Radio> = {
   title: "Forms/Radio",
   component: Radio,
   args: {
@@ -17,9 +16,11 @@ export default {
     onChange: () => {},
   },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-} as Meta<typeof Radio>;
+};
 
+export default meta;
 type Story = StoryObj<typeof Radio>;
+
 export const Base: Story = {
   render: (args: RadioProps) => {
     const [value, setValue] = useState<string>("CM1");

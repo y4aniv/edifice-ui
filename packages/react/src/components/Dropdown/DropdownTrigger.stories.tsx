@@ -4,11 +4,12 @@ import { Filter, Plus, Settings } from "@edifice-ui/icons";
 import DropdownTrigger, { DropdownTriggerProps } from "./DropdownTrigger";
 import React from "react";
 
-export default {
+const meta: Meta<typeof DropdownTrigger> = {
   title: "Components/Dropdown/DropdownTrigger",
   component: DropdownTrigger,
-} as Meta<typeof DropdownTrigger>;
+};
 
+export default meta;
 type Story = StoryObj<typeof DropdownTrigger>;
 
 export const States: Story = {

@@ -6,7 +6,7 @@ import SelectList, { SelectListProps } from "./SelectList";
 import { Audio, Block, Lock } from "@edifice-ui/icons";
 import React from "react";
 
-export default {
+const meta: Meta<typeof SelectList> = {
   title: "Components/Dropdown/SelectList",
   component: SelectList,
   argTypes: {
@@ -14,8 +14,9 @@ export default {
     onChange: { control: false },
     model: { control: false },
   },
-} as Meta<typeof SelectList>;
+};
 
+export default meta;
 type Story = StoryObj<typeof SelectList>;
 
 export const Base: Story = {

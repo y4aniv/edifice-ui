@@ -2,14 +2,11 @@ import { Meta } from "@storybook/react";
 
 import IconButton from "./IconButton";
 import { AddUser, Block, Hourglass } from "@edifice-ui/icons";
-import Button from "./Button";
-import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof IconButton> = {
   title: "Components/Buttons/Icon Button",
   component: IconButton,
-  subcomponents: { Button },
   argTypes: {
     color: {
       options: ["primary", "secondary", "tertiary", "danger"],
@@ -31,7 +28,9 @@ export default {
     disabled: false,
   },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-} as Meta<typeof IconButton>;
+};
+
+export default meta;
 
 export const Base = {
   args: {

@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Meta, StoryObj } from "@storybook/react";
 
 import Button, { ButtonProps } from "./Button";
@@ -14,7 +12,7 @@ import IconButton from "./IconButton";
 import SearchButton from "./SearchButton";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof Button> = {
   title: "Components/Buttons/Button",
   component: Button,
   subcomponents: { IconButton, SearchButton },
@@ -42,8 +40,9 @@ export default {
     disabled: false,
   },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-} as Meta<typeof Button>;
+};
 
+export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Base: Story = {

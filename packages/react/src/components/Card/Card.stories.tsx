@@ -1,10 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import Card from "./Card";
-import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof Card> = {
   title: "Components/Card",
   component: Card,
   parameters: {
@@ -30,8 +29,9 @@ export default {
     onSelect: () => console.log("select"),
   },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-} as Meta<typeof Card>;
+};
 
+export default meta;
 type Story = StoryObj<typeof Card>;
 
 export const Base: Story = {};

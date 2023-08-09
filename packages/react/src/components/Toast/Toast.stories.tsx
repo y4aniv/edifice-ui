@@ -6,7 +6,7 @@ import Toast from "./Toast";
 import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof AppHeader> = {
   title: "Components/Toast",
   component: Toast,
   parameters: {

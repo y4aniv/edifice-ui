@@ -1,10 +1,9 @@
 import { StoryObj, Meta } from "@storybook/react";
 
 import EmptyScreen, { EmptyScreenProps } from "./EmptyScreen";
-import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof EmptyScreen> = {
   title: "Components/EmptyScreen",
   component: EmptyScreen,
   argTypes: {
@@ -34,8 +33,9 @@ export default {
     },
   },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-} as Meta<typeof EmptyScreen>;
+};
 
+export default meta;
 type Story = StoryObj<typeof EmptyScreen>;
 
 export const Template = (args: EmptyScreenProps) => {
