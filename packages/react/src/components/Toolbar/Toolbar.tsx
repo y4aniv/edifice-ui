@@ -7,6 +7,7 @@ import { IconButton } from "../Button";
 import { Dropdown } from "../Dropdown";
 
 export type ToolbarOptionsType = "divider" | "primary" | undefined;
+export type ToolbarDividerType = Extract<ToolbarOptionsType, "divider">;
 export type ToolbarRef = HTMLDivElement;
 export type ToolbarVariant = "default" | "no-shadow";
 export type ToolbarAlign = "left" | "center" | "space" | "right";
@@ -58,7 +59,7 @@ export type ToolbarOptions =
       /**
        * Object type
        */
-      type: "divider";
+      type: ToolbarDividerType;
     };
 
 export interface ToolbarProps extends React.ComponentPropsWithRef<"div"> {
