@@ -27,7 +27,9 @@ export type ActionMenuOptions =
     };
 
 export interface ActionMenuProps extends React.ComponentPropsWithRef<"ul"> {
+  /** a11y ID */
   id: string;
+  /** data options */
   options: ActionMenuOptions[];
 }
 
@@ -39,7 +41,7 @@ const ActionMenu = forwardRef(
         id={id}
         ref={ref}
         role="menu"
-        className="action-menu list-unstyled" /* aria-labelledby="menubutton1" */
+        className="action-menu list-unstyled mb-0" /* aria-labelledby="menubutton1" */
       >
         {options.map((option, index) => {
           if (option.type === "divider")

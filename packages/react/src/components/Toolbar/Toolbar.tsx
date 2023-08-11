@@ -3,8 +3,9 @@ import { ReactNode, Ref, forwardRef } from "react";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 
+import { ActionMenu, ActionMenuOptions } from "../ActionMenu";
 import { IconButton } from "../Button";
-import { Dropdown } from "../Dropdown";
+import { Dropdown, DropdownTrigger } from "../Dropdown";
 
 export type ToolbarOptionsType = "divider" | "primary" | undefined;
 export type ToolbarDividerType = Extract<ToolbarOptionsType, "divider">;
@@ -68,6 +69,10 @@ export interface ToolbarProps extends React.ComponentPropsWithRef<"div"> {
    */
   data: ToolbarOptions[];
   /**
+   * Toolbar Action Menu
+   */
+  options?: ActionMenuOptions[];
+  /**
    * Toolbar variant
    */
   variant?: ToolbarVariant;
@@ -89,6 +94,7 @@ const Toolbar = forwardRef(
   (
     {
       data,
+      options,
       variant = "default",
       align = "space",
       isBlock = false,
@@ -97,19 +103,22 @@ const Toolbar = forwardRef(
   ) => {
     const { t } = useTranslation();
 
-    const classes = clsx("toolbar", {
+    const classes = clsx("toolbar z-2000", {
       default: variant === "default",
       "no-shadow": variant === "no-shadow",
       "d-flex": isBlock,
       "d-inline-flex": !isBlock,
+      "overflow-x-scroll": isBlock,
       "justify-content-start": align === "left",
       "justify-content-between": align === "space",
       "justify-content-center": align === "center",
       "justify-content-end": align === "right",
     });
 
+    console.log(options);
+
     return (
-      <div ref={ref} className={classes}>
+      <div ref={ref} className={classes} style={{ zIndex: "999999" }}>
         {data.map((item, index) => {
           const isDisabled = !item.type && !item.isEnable;
           const isDivider = "type" in item && item.type === "divider";
@@ -167,6 +176,12 @@ const Toolbar = forwardRef(
             />
           );
         })}
+        {options ? (
+          <Dropdown
+            trigger={<DropdownTrigger title="Plus" variant="ghost" />}
+            content={<ActionMenu id="action-menu" options={options} />}
+          />
+        ) : null}
       </div>
     );
   },

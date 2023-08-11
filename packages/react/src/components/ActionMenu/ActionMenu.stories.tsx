@@ -8,6 +8,7 @@ import {
   Code,
   Table,
 } from "@edifice-ui/icons";
+import { Dropdown, DropdownTrigger } from "../Dropdown";
 
 const meta: Meta<typeof ActionMenu> = {
   title: "Components/ActionMenu",
@@ -60,19 +61,14 @@ type Story = StoryObj<typeof ActionMenu>;
 
 export const Base: Story = {
   render: (args: ActionMenuProps) => <ActionMenu {...args} />,
-  /* args: {
-    children: (
-      <>
-        <Button type="button" variant="filled" color="primary">
-          Créer
-        </Button>
-        <Button type="button" variant="filled" color="primary">
-          Modifier
-        </Button>
-        <Button type="button" variant="filled" color="primary">
-          Publier
-        </Button>
-      </>
-    ),
-  }, */
+};
+
+export const DropdownActionMenu: Story = {
+  render: (args: ActionMenuProps) => (
+    <Dropdown
+      trigger={<DropdownTrigger title="Plus" variant="ghost" />}
+      content={<ActionMenu {...args} />}
+    />
+  ),
+  decorators: [(Story) => <div style={{ height: "600px" }}>{Story()}</div>],
 };

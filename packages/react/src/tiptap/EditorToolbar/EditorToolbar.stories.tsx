@@ -4,11 +4,16 @@ import {
   AlignLeft,
   Attachment,
   BulletList,
+  Code,
   Landscape,
   Link,
   Mic,
   RecordVideo,
   Smiley,
+  SquareRoot,
+  Subscript,
+  Superscript,
+  Table,
   TextBold,
   TextColor,
   TextHighlight,
@@ -16,6 +21,7 @@ import {
   TextSize,
   TextTypo,
   TextUnderline,
+  TextVanilla,
 } from "@edifice-ui/icons";
 
 const meta: Meta<typeof Toolbar> = {
@@ -161,6 +167,46 @@ const meta: Meta<typeof Toolbar> = {
         label: "alignment",
         name: "alignment",
         isEnable: true,
+      },
+      {
+        type: "divider",
+      },
+    ],
+    options: [
+      {
+        icon: <TextVanilla />,
+        label: "Supprimer la mise en forme",
+        action: () => console.log("click"),
+      },
+      {
+        type: "divider",
+      },
+      { icon: <Table />, label: "Tableau", action: () => console.log("click") },
+      {
+        type: "divider",
+      },
+      {
+        icon: <Superscript />,
+        label: "Exposant",
+        action: () => console.log("click"),
+      },
+      {
+        icon: <Subscript />,
+        label: "Indice",
+        action: () => console.log("click"),
+      },
+      {
+        icon: <SquareRoot />,
+        label: "Formule mathématique",
+        action: () => console.log("click"),
+      },
+      {
+        type: "divider",
+      },
+      {
+        icon: <Code />,
+        label: "Élément embed/iframe",
+        action: () => console.log("click"),
       },
     ],
     variant: "no-shadow",
