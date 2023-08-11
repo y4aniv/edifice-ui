@@ -115,8 +115,6 @@ const Toolbar = forwardRef(
       "justify-content-end": align === "right",
     });
 
-    console.log(options);
-
     return (
       <div ref={ref} className={classes} style={{ zIndex: "999999" }}>
         {data.map((item, index) => {
