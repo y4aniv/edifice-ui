@@ -76,7 +76,7 @@ const Dropdown = ({ trigger, content }: DropdownProps) => {
           {visible && (
             <animated.div
               className={clsx(
-                "bg-white shadow rounded-4 d-block show py-12 px-8",
+                "bg-white shadow rounded-4 d-block show py-12 px-8 z-2000",
                 `bs-tooltip-auto`,
               )}
               ref={setPopperElement}
