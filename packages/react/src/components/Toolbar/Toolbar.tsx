@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { IconButton } from "../Button";
 import { Dropdown } from "../Dropdown";
 
-export type ToolbarOptionsType = "divider" | "primary";
+export type ToolbarOptionsType = "divider" | "primary" | undefined;
 export type ToolbarRef = HTMLDivElement;
 export type ToolbarVariant = "default" | "no-shadow";
 export type ToolbarAlign = "left" | "center" | "space" | "right";
@@ -42,6 +42,10 @@ export type ToolbarOptions =
        */
       action: (elem: any) => any;
       /**
+       * Show item if is enabled
+       */
+      isEnable: boolean;
+      /**
        * Optional class for styling purpose
        */
       className?: string;
@@ -49,10 +53,6 @@ export type ToolbarOptions =
        * Add "is-selected" class
        */
       isActive?: boolean;
-      /**
-       * Show item if is enabled
-       */
-      isEnable?: boolean;
     }
   | {
       /**
@@ -109,15 +109,16 @@ const Toolbar = forwardRef(
 
     return (
       <div ref={ref} className={classes}>
-        {data.map((item) => {
-          const isEnable = (item.type === undefined && item.isEnable) ?? true;
-          const showDropdownElement =
-            item.type === undefined && item.hasDropdown && isEnable;
-          const isPrimaryAction = item.type === "primary";
-          const isDivider = item.type === "divider";
+        {data.map((item, index) => {
+          const isDisabled = !item.type && !item.isEnable;
+          const isDivider = "type" in item && item.type === "divider";
+          const isPrimaryAction = "type" in item && item.type === "primary";
+          const showDropdownElement = !item.type && item.hasDropdown;
+
+          if (isDisabled) return null;
 
           if (isDivider) {
-            return <div key={item.type} className="toolbar-divider"></div>;
+            return <div key={index} className="toolbar-divider"></div>;
           }
 
           if (isPrimaryAction) {
@@ -152,19 +153,17 @@ const Toolbar = forwardRef(
           }
 
           return (
-            isEnable && (
-              <IconButton
-                key={item.name}
-                icon={item.icon}
-                onClick={item.action}
-                aria-label={t(item.label)}
-                variant="ghost"
-                color="tertiary"
-                className={`${item.className || ""} ${
-                  item.isActive ? "is-selected" : ""
-                }`}
-              />
-            )
+            <IconButton
+              key={item.name}
+              icon={item.icon}
+              onClick={item.action}
+              aria-label={t(item.label)}
+              variant="ghost"
+              color="tertiary"
+              className={`${item.className || ""} ${
+                item.isActive ? "is-selected" : ""
+              }`}
+            />
           );
         })}
       </div>
