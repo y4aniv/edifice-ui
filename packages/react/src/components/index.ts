@@ -7,6 +7,7 @@ export * from "./Avatar";
 export * from "./Breadcrumb";
 export * from "./Button";
 export * from "./Card";
+export * from "./ColorPicker";
 export * from "./Dropdown";
 export * from "./EmptyScreen";
 export * from "./Form";
