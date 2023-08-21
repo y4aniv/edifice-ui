@@ -3,7 +3,12 @@ import { useState } from "react";
 //import { Delete, Edit } from "@edifice-ui/icons";
 import clsx from "clsx";
 
-import { AccessiblePalette, ColorPalette, ColorPaletteHues, DefaultPalette } from "./ColorPalette";
+import {
+  AccessiblePalette,
+  ColorPalette,
+  ColorPaletteHues,
+  DefaultPalette,
+} from "./ColorPalette";
 
 export interface ColorPickerProps {
   /**
@@ -41,7 +46,11 @@ const ColorPicker = ({
           <div className="color-picker-label mt-4 mb-8">{palette.label}</div>
           <div className="color-picker-palette d-flex justify-content-between">
             {palette.colors.map((hues: ColorPaletteHues) => (
-              <div className={clsx("color-picker-hue d-flex justify-content-between flex-column ")}>
+              <div
+                className={clsx(
+                  "color-picker-hue d-flex justify-content-between flex-column ",
+                )}
+              >
                 {hues.map((color) => (
                   <div className="color-picker-hue-color">
                     <button

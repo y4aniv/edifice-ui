@@ -101,5 +101,5 @@ export const AccessiblePalette: ColorPalette = {
     [{ value: "#FFB000" }],
     [{ value: "#F3EA14" }],
   ],
-  className: "mt-16"
+  className: "mt-16",
 };
