@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-//import { Delete, Edit } from "@edifice-ui/icons";
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 
 import {
   AccessiblePalette,
@@ -32,10 +32,11 @@ const ColorPicker = ({
   model = "#4A4A4A",
   onChange,
 }: ColorPickerProps) => {
-  const [localModel, setLocalModel] = useState(model);
+  const { t } = useTranslation();
+  const [localModel, setLocalModel] = useState(model.toUpperCase());
 
   const handleClick = (color: string) => {
-    setLocalModel(color);
+    setLocalModel(color.toUpperCase());
     onChange?.(color);
   };
 
@@ -54,9 +55,10 @@ const ColorPicker = ({
                 {hues.map((color) => (
                   <div className="color-picker-hue-color">
                     <button
+                      aria-label={t(color.description)}
                       className={clsx(
                         "color-picker-hue-color-item",
-                        color.hue === "Light" && "light",
+                        color.hue === "light" ? "light" : "dark",
                         localModel === color.value && "selected",
                       )}
                       style={{ backgroundColor: color.value }}
