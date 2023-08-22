@@ -45,15 +45,17 @@ const ColorPicker = ({
       {palettes.map((palette: ColorPalette, paletteIdx) => (
         <div
           key={paletteIdx}
-          className={clsx("color-picker", palette.className)}
+          className={clsx("color-picker mx-8", palette.className)}
         >
-          <div className="color-picker-label mt-4 mb-8">{palette.label}</div>
-          <div className="color-picker-palette d-flex justify-content-between">
+          <div className="color-picker-label small mt-4 mb-8">
+            <strong>{palette.label}</strong>
+          </div>
+          <div className="color-picker-palette d-flex gap-2 justify-content-between">
             {palette.colors.map((hues: ColorPaletteHues, hueIndex) => (
               <div
                 key={hueIndex}
                 className={clsx(
-                  "color-picker-hue d-flex justify-content-between flex-column ",
+                  "color-picker-hue d-flex gap-2 justify-content-between flex-column ",
                 )}
               >
                 {hues.map((color) => (
@@ -61,7 +63,7 @@ const ColorPicker = ({
                     <button
                       aria-label={t(color.description)}
                       className={clsx(
-                        "color-picker-hue-color-item",
+                        "color-picker-hue-color-item rounded-1",
                         color.hue === "light" ? "light" : "dark",
                         localModel === color.value && "selected",
                       )}
