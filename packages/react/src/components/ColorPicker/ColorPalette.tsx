@@ -41,7 +41,7 @@ export const DefaultPalette: ColorPalette = {
       { value: "#909090", description: "color.gray.dark" },
       { value: "#C7C7C7", description: "color.gray.medium" },
       { value: "#F2F2F2", description: "color.gray.light", hue: "light" },
-      { value: "#FFF", description: "color.white", hue: "light" },
+      { value: "#FFFFFF", description: "color.white", hue: "light" },
     ],
     /* Blue Sunday */
     [
