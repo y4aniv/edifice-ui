@@ -42,18 +42,22 @@ const ColorPicker = ({
 
   return (
     <>
-      {palettes.map((palette: ColorPalette) => (
-        <div className={clsx("color-picker", palette.className)}>
+      {palettes.map((palette: ColorPalette, paletteIdx) => (
+        <div
+          key={paletteIdx}
+          className={clsx("color-picker", palette.className)}
+        >
           <div className="color-picker-label mt-4 mb-8">{palette.label}</div>
           <div className="color-picker-palette d-flex justify-content-between">
-            {palette.colors.map((hues: ColorPaletteHues) => (
+            {palette.colors.map((hues: ColorPaletteHues, hueIndex) => (
               <div
+                key={hueIndex}
                 className={clsx(
                   "color-picker-hue d-flex justify-content-between flex-column ",
                 )}
               >
                 {hues.map((color) => (
-                  <div className="color-picker-hue-color">
+                  <div key={color.value} className="color-picker-hue-color">
                     <button
                       aria-label={t(color.description)}
                       className={clsx(
