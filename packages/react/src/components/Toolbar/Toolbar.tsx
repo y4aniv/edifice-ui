@@ -153,6 +153,10 @@ const Toolbar = forwardRef(
                     icon={item.icon}
                     type="button"
                     variant="ghost"
+                    className={clsx(
+                      item.className,
+                      item.isActive ? "is-selected" : "",
+                    )}
                   />
                 }
                 content={item.content?.()}
@@ -168,9 +172,10 @@ const Toolbar = forwardRef(
               aria-label={t(item.label)}
               variant="ghost"
               color="tertiary"
-              className={`${item.className || ""} ${
-                item.isActive ? "is-selected" : ""
-              }`}
+              className={clsx(
+                item.className,
+                item.isActive ? "is-selected" : "",
+              )}
             />
           );
         })}
