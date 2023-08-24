@@ -55,7 +55,7 @@ const ActionMenu = forwardRef(
               key={index}
               role="menuitem"
               onClick={option.action}
-              onKeyDown={option.action}
+              onKeyDown={(event) => event.code != "Tab" && option.action}
               className="action-menu-item rounded py-8 px-12"
               tabIndex={0}
             >
