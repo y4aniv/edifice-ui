@@ -57,6 +57,7 @@ const ActionMenu = forwardRef(
               onClick={option.action}
               onKeyDown={option.action}
               className="action-menu-item rounded py-8 px-12"
+              tabIndex={0}
             >
               <div className="d-flex gap-8">
                 {option.icon}
