@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import ColorPicker, { ColorPickerProps } from "./ColorPicker";
+import { useState } from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof ColorPicker> = {
@@ -19,4 +20,16 @@ const meta: Meta<typeof ColorPicker> = {
 export default meta;
 type Story = StoryObj<typeof ColorPicker>;
 
-export const Base: Story = {};
+export const Template = (args: ColorPickerProps) => {
+  const [currentColor, setCurrentColor] = useState<string>("#4A4A4A");
+  const handleOnChange = (color: string) => setCurrentColor(color);
+  return (
+    <div>
+      <ColorPicker {...args} model={currentColor} onChange={handleOnChange} />
+    </div>
+  );
+};
+
+export const Base: Story = {
+  render: Template,
+};
