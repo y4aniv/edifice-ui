@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 
@@ -33,10 +31,8 @@ const ColorPicker = ({
   onChange,
 }: ColorPickerProps) => {
   const { t } = useTranslation();
-  const [localModel, setLocalModel] = useState(model.toUpperCase());
 
   const handleClick = (color: string) => {
-    setLocalModel(color.toUpperCase());
     onChange?.(color);
   };
 
@@ -65,7 +61,7 @@ const ColorPicker = ({
                       className={clsx(
                         "color-picker-hue-color-item rounded-1",
                         color.hue === "light" ? "light" : "dark",
-                        localModel === color.value && "selected",
+                        model === color.value && "selected",
                       )}
                       style={{ backgroundColor: color.value }}
                       onClick={() => handleClick(color.value)}
