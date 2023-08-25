@@ -33,6 +33,7 @@ export interface ColorPalette {
 }
 
 export const DefaultPalette: ColorPalette = {
+  className: "fw-bold",
   label: "Default palette",
   colors: [
     /* Paint It Black */

@@ -44,7 +44,7 @@ const ColorPicker = ({
           className={clsx("color-picker mx-8", palette.className)}
         >
           <div className="color-picker-label small mt-4 mb-8">
-            <strong>{palette.label}</strong>
+            {palette.label}
           </div>
           <div className="color-picker-palette d-flex gap-2 justify-content-between">
             {palette.colors.map((hues: ColorPaletteHues, hueIndex) => (
