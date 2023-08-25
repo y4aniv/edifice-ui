@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import { InfoCircle } from "@edifice-ui/icons";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 
@@ -9,6 +8,7 @@ import {
   ColorPaletteHues,
   DefaultPalette,
 } from "./ColorPalette";
+import { Tooltip } from "../Tooltip";
 
 export interface ColorPickerProps {
   /**
@@ -33,10 +33,8 @@ const ColorPicker = ({
   onChange,
 }: ColorPickerProps) => {
   const { t } = useTranslation();
-  const [localModel, setLocalModel] = useState(model.toUpperCase());
 
   const handleClick = (color: string) => {
-    setLocalModel(color.toUpperCase());
     onChange?.(color);
   };
 
@@ -48,7 +46,17 @@ const ColorPicker = ({
           className={clsx("color-picker mx-8", palette.className)}
         >
           <div className="color-picker-label small mt-4 mb-8">
-            <strong>{palette.label}</strong>
+            {palette.label}
+            {palette.tooltip && (
+              <Tooltip message="" placement="auto" {...palette.tooltip}>
+                <InfoCircle
+                  width={18}
+                  height={18}
+                  className="mx-4 position-relative"
+                  style={{ top: "4px" }}
+                />
+              </Tooltip>
+            )}
           </div>
           <div className="color-picker-palette d-flex gap-2 justify-content-between">
             {palette.colors.map((hues: ColorPaletteHues, hueIndex) => (
@@ -65,7 +73,7 @@ const ColorPicker = ({
                       className={clsx(
                         "color-picker-hue-color-item rounded-1",
                         color.hue === "light" ? "light" : "dark",
-                        localModel === color.value && "selected",
+                        model === color.value && "selected",
                       )}
                       style={{ backgroundColor: color.value }}
                       onClick={() => handleClick(color.value)}
