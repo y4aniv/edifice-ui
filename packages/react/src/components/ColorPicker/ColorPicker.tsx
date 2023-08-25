@@ -1,3 +1,4 @@
+import { InfoCircle } from "@edifice-ui/icons";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 
@@ -7,6 +8,7 @@ import {
   ColorPaletteHues,
   DefaultPalette,
 } from "./ColorPalette";
+import { Tooltip } from "../Tooltip";
 
 export interface ColorPickerProps {
   /**
@@ -45,6 +47,16 @@ const ColorPicker = ({
         >
           <div className="color-picker-label small mt-4 mb-8">
             {palette.label}
+            {palette.tooltip && (
+              <Tooltip message="" placement="auto" {...palette.tooltip}>
+                <InfoCircle
+                  width={18}
+                  height={18}
+                  className="mx-4 position-relative"
+                  style={{ top: "4px" }}
+                />
+              </Tooltip>
+            )}
           </div>
           <div className="color-picker-palette d-flex gap-2 justify-content-between">
             {palette.colors.map((hues: ColorPaletteHues, hueIndex) => (

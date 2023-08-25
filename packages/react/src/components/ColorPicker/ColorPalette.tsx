@@ -1,3 +1,5 @@
+import { TooltipProps } from "../Tooltip";
+
 export interface ColorPaletteItem {
   /**
    * CSS Color Value, in the form #AABBCC
@@ -21,7 +23,11 @@ export interface ColorPalette {
   /**
    * Description of the color palette.
    */
-  label: String;
+  label: string;
+  /**
+   * [Optional] informative tooltip.
+   */
+  tooltip?: Partial<TooltipProps>;
   /**
    * Array of colors * variations.
    */
@@ -97,6 +103,7 @@ export const DefaultPalette: ColorPalette = {
 
 export const AccessiblePalette: ColorPalette = {
   label: "Accessible palette",
+  tooltip: { message: "Veni, vidi, vici" },
   colors: [
     [{ value: "#4A4A4A", description: "color.gray" }],
     [{ value: "#648FFF", description: "color.blue" }],
