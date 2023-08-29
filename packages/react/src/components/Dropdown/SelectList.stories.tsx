@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 
 import SelectList, { SelectListProps } from "./SelectList";
-import { Headphone, Block, Lock } from "@edifice-ui/icons";
+import { Headphone, Block, Lock, TextSize } from "@edifice-ui/icons";
+import Dropdown from "./Dropdown";
+import DropdownTrigger from "./DropdownTrigger";
 
 const meta: Meta<typeof SelectList> = {
   title: "Components/Dropdown/SelectList",
@@ -55,5 +57,54 @@ export const Base: Story = {
         icon: Lock,
       },
     ],
+  },
+};
+
+export const MonoSelectListMenu: Story = {
+  render: (args: SelectListProps) => (
+    <Dropdown
+      trigger={<DropdownTrigger icon={<TextSize />} title="" variant="ghost" />}
+      content={
+        <SelectList
+          {...args}
+          isMonoSelection
+          hideCheckbox
+          options={[
+            {
+              value: "title1",
+              label: "Titre 1",
+              className: "display-2 fw-bold",
+            },
+            {
+              value: "title2",
+              label: "Titre 2",
+              className: "display-3 fw-bold",
+            },
+            {
+              value: "big",
+              label: "Texte grand",
+              className: "display-4 fw-normal",
+            },
+            {
+              value: "std",
+              label: "Texte normal",
+            },
+            {
+              value: "small",
+              label: "Texte petit",
+              className: "small",
+            },
+          ]}
+        />
+      }
+    />
+  ),
+  decorators: [(Story) => <div style={{ height: "600px" }}>{Story()}</div>],
+  parameters: {
+    docs: {
+      description: {
+        story: `Exemple de mono-sélection avec style CSS, embarqué dans un DropDown.`,
+      },
+    },
   },
 };
