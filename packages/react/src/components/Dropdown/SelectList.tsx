@@ -16,6 +16,10 @@ export interface OptionListItemType {
    * Add an icon
    */
   icon?: any;
+  /**
+   * CSS class
+   */
+  className?: string;
 }
 
 export interface SelectListProps {
@@ -79,7 +83,8 @@ const SelectList = ({
             key={option.value}
             className={clsx(
               "select-list-option",
-              hideCheckbox && localModel.includes(option.value) && "fw-bold",
+              hideCheckbox && localModel.includes(option.value) && "selected",
+              option.className,
             )}
             role="checkbox"
             aria-checked={localModel.includes(option.value)}
