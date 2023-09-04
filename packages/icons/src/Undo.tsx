@@ -3,7 +3,7 @@ interface SVGRProps {
   title?: string;
   titleId?: string;
 }
-const SvgWrite = ({
+const SvgUndo = ({
   title,
   titleId,
   ...props
@@ -22,9 +22,15 @@ const SvgWrite = ({
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M11 20a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2h-9a1 1 0 0 1-1-1ZM18 3.879c-.297 0-.583.118-.793.328L4.903 16.511l-.529 2.115 2.115-.529L18.793 5.793A1.123 1.123 0 0 0 18 3.879Zm-2.207-1.086a3.121 3.121 0 0 1 4.414 4.414l-12.5 12.5a1 1 0 0 1-.464.263l-4 1a1 1 0 0 1-1.213-1.213l1-4a1 1 0 0 1 .263-.464l12.5-12.5Z"
+      d="M9.707 13.707a1 1 0 0 0 0-1.414L5.414 8l4.293-4.293a1 1 0 0 0-1.414-1.414l-5 5a1 1 0 0 0 0 1.414l5 5a1 1 0 0 0 1.414 0Z"
+      clipRule="evenodd"
+    />
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M20 20a1 1 0 0 0 1-1v-7a5 5 0 0 0-5-5H4a1 1 0 1 0 0 2h12a3 3 0 0 1 3 3v7a1 1 0 0 0 1 1Z"
       clipRule="evenodd"
     />
   </svg>
 );
-export default SvgWrite;
+export default SvgUndo;

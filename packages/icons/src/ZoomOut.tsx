@@ -3,7 +3,7 @@ interface SVGRProps {
   title?: string;
   titleId?: string;
 }
-const SvgWrite = ({
+const SvgZoomOut = ({
   title,
   titleId,
   ...props
@@ -22,9 +22,9 @@ const SvgWrite = ({
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M11 20a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2h-9a1 1 0 0 1-1-1ZM18 3.879c-.297 0-.583.118-.793.328L4.903 16.511l-.529 2.115 2.115-.529L18.793 5.793A1.123 1.123 0 0 0 18 3.879Zm-2.207-1.086a3.121 3.121 0 0 1 4.414 4.414l-12.5 12.5a1 1 0 0 1-.464.263l-4 1a1 1 0 0 1-1.213-1.213l1-4a1 1 0 0 1 .263-.464l12.5-12.5Z"
+      d="M10.95 3.6a7.35 7.35 0 1 0 5.1 12.644 1.063 1.063 0 0 1 .194-.195A7.35 7.35 0 0 0 10.95 3.6Zm0 16.8a9.41 9.41 0 0 0 5.899-2.066l3.858 3.858a1.05 1.05 0 1 0 1.485-1.485l-3.858-3.858A9.41 9.41 0 0 0 20.4 10.95a9.45 9.45 0 1 0-9.45 9.45ZM7.8 9.9a1.05 1.05 0 0 0 0 2.1h6.3a1.05 1.05 0 1 0 0-2.1H7.8Z"
       clipRule="evenodd"
     />
   </svg>
 );
-export default SvgWrite;
+export default SvgZoomOut;

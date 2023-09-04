@@ -3,7 +3,7 @@ interface SVGRProps {
   title?: string;
   titleId?: string;
 }
-const SvgWrite = ({
+const SvgPlayFilled = ({
   title,
   titleId,
   ...props
@@ -21,10 +21,8 @@ const SvgWrite = ({
     {title ? <title id={titleId}>{title}</title> : null}
     <path
       fill="currentColor"
-      fillRule="evenodd"
-      d="M11 20a1 1 0 0 1 1-1h9a1 1 0 1 1 0 2h-9a1 1 0 0 1-1-1ZM18 3.879c-.297 0-.583.118-.793.328L4.903 16.511l-.529 2.115 2.115-.529L18.793 5.793A1.123 1.123 0 0 0 18 3.879Zm-2.207-1.086a3.121 3.121 0 0 1 4.414 4.414l-12.5 12.5a1 1 0 0 1-.464.263l-4 1a1 1 0 0 1-1.213-1.213l1-4a1 1 0 0 1 .263-.464l12.5-12.5Z"
-      clipRule="evenodd"
+      d="M5 3.804c0-1.57 1.728-2.528 3.06-1.696l13.113 8.196a2 2 0 0 1 0 3.392L8.06 21.892C6.728 22.724 5 21.767 5 20.196V3.804Z"
     />
   </svg>
 );
-export default SvgWrite;
+export default SvgPlayFilled;
