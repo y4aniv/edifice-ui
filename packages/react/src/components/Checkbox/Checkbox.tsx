@@ -2,8 +2,8 @@ import {
   forwardRef,
   Ref,
   useEffect,
+  useId,
   useImperativeHandle,
-  useMemo,
   useRef,
 } from "react";
 
@@ -52,33 +52,27 @@ const Checkbox = forwardRef(
       refCheckbox.current!.indeterminate = indeterminate;
     }, [refCheckbox, indeterminate]);
 
-    const id = useMemo(
-      () =>
-        restProps.id
-          ? restProps.id
-          : (
-              Math.floor(Math.random() * 999999999999) + 1000000000000
-            ).toString(),
-      [restProps.id],
-    );
+    const id = useId();
+
+    const checkboxProps = {
+      type: "checkbox",
+      checked,
+      disabled,
+      ref: refCheckbox,
+      className: clsx(restProps.className, "form-check-input c-pointer"),
+      id,
+    };
 
     const inputProps = {
       ...restProps,
-      ...{
-        type: "checkbox",
-        checked,
-        disabled,
-        ref: refCheckbox,
-        className: clsx(restProps.className, "form-check-input c-pointer"),
-        id,
-      },
+      ...checkboxProps,
     };
 
     return (
-      <div className="position-relative d-inline-block">
+      <div className="form-check">
         <input {...inputProps} />
         {label && (
-          <label className="ms-8 form-check-label" htmlFor={inputProps.id}>
+          <label className="form-check-label" htmlFor={inputProps.id}>
             {label}
           </label>
         )}

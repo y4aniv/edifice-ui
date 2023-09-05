@@ -2,9 +2,9 @@ import { Meta, StoryObj } from "@storybook/react";
 import { Lock, Mail } from "@edifice-ui/icons";
 import useTrapFocus from "./useTrapFocus";
 import FormControl from "../../components/Form/FormControl";
-import Label from "../../components/Form/Label";
-import Input from "../../components/Form/Input";
 import Button from "../../components/Button/Button";
+import { Input } from "../../components/Input";
+import { Label } from "../../components/Label";
 
 const meta: Meta<typeof useTrapFocus> = {
   title: "Hooks/useTrapFocus",

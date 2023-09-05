@@ -3,7 +3,7 @@ interface SVGRProps {
   title?: string;
   titleId?: string;
 }
-const SvgCheckboxSelected = ({
+const SvgCheckbox = ({
   title,
   titleId,
   ...props
@@ -22,9 +22,9 @@ const SvgCheckboxSelected = ({
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M4.353 2A2.353 2.353 0 0 0 2 4.353v15.294C2 20.947 3.053 22 4.353 22h15.294c1.3 0 2.353-1.053 2.353-2.353V4.353C22 3.053 20.947 2 19.647 2H4.353Zm13.625 4.925c.529.378.651 1.113.273 1.641l-5.882 8.236a1.176 1.176 0 0 1-1.878.048l-3.53-4.434a1.177 1.177 0 0 1 1.617-1.682c.267.02.525.148.704.374l2.175 2.732 4.23-5.921a.996.996 0 0 1 .356-.308l.294-.412a1.177 1.177 0 0 1 1.641-.274Z"
+      d="M20 5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V5ZM4 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4Z"
       clipRule="evenodd"
     />
   </svg>
 );
-export default SvgCheckboxSelected;
+export default SvgCheckbox;
