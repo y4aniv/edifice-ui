@@ -23,12 +23,16 @@ import { Alert } from "../Alert";
 import { TreeNode, TreeView } from "../TreeView";
 import { Avatar } from "../Avatar";
 import { Button, IconButton, SearchButton } from "../Button";
-import { Checkbox, FormControl, Input, Label, Radio, Select } from "../Form";
-import { OptionsType } from "../Form/Select";
+import { FormControl } from "../Form";
 import { Heading } from "../Heading";
 import { ImagePicker } from "../ImagePicker";
 import Modal, { ModalProps } from "./Modal";
 import useToggle from "../../hooks/useToggle/useToggle";
+import { Input } from "../Input";
+import { Label } from "../Label";
+import { Radio } from "../Radio";
+import { OptionsType, Select } from "../Select";
+import { Checkbox } from "../Checkbox";
 
 const meta: Meta<typeof Modal> = {
   title: "Components/Modal",

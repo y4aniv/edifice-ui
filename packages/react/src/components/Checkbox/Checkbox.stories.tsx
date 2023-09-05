@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import { Meta, StoryFn, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 
-import Checkbox, { CheckboxProps } from "./Checkbox";
+import Checkbox from "./Checkbox";
 import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -12,7 +12,7 @@ const meta: Meta<typeof Checkbox> = {
   args: {
     label: "Activer l'option",
     disabled: false,
-    checked: false,
+    checked: true,
     indeterminate: false,
   },
 };
@@ -22,12 +22,18 @@ type Story = StoryObj<typeof Checkbox>;
 
 export const Base: Story = {
   render: (args) => {
-    const [isChecked, setIsChecked] = useState(true);
+    const [isChecked, setIsChecked] = useState(args.checked);
+
+    useEffect(() => {
+      setIsChecked(args.checked);
+    }, [args.checked]);
 
     return (
       <Checkbox
+        disabled={args.disabled}
         checked={isChecked}
-        label="Activer l'option"
+        label={args.label}
+        indeterminate={args.indeterminate}
         onChange={() => setIsChecked((isChecked) => !isChecked)}
       />
     );
