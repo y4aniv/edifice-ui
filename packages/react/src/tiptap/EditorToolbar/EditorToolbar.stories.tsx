@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import Toolbar from "../../components/Toolbar/Toolbar";
 import {
   AlignLeft,
-  Attachment,
+  Paperclip,
   BulletList,
   Code,
   Landscape,
@@ -73,9 +73,9 @@ const meta: Meta<typeof Toolbar> = {
       },
       {
         action: () => console.log("on click"),
-        icon: <Attachment />,
-        label: "attachment",
-        name: "attachment",
+        icon: <Paperclip />,
+        label: "paperclip",
+        name: "paperclip",
         className: "widget-attachment",
         isEnable: true,
       },
