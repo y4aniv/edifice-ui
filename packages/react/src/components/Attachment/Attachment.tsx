@@ -21,12 +21,12 @@ const Attachment = forwardRef(
     ref: Ref<HTMLDivElement>,
   ) => {
     return (
-      <div ref={ref} className="attachment px-8 py-12" {...restProps}>
+      <div ref={ref} className="attachment px-12 py-8" {...restProps}>
         <div className="filename">
           <Paperclip height={22} width={22} />
-          <p className="name">{name}</p>
+          <p className="body text-truncate">{name}</p>
         </div>
-        <div className="options px-2">{options}</div>
+        <div className="options px-12">{options}</div>
       </div>
     );
   },

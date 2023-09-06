@@ -6,9 +6,8 @@ import { Delete, Download } from "@edifice-ui/icons";
 import { Grid } from "../Grid";
 
 export default {
-  title: "Components/AttachmentComponent",
+  title: "Components/Attachment",
   component: Attachment,
-  subcomponents: { Button },
   args: {
     name: "Lorem ipsum",
   },
