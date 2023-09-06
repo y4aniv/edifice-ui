@@ -26,7 +26,7 @@ const Attachment = forwardRef(
           <Paperclip height={22} width={22} />
           <p className="body text-truncate">{name}</p>
         </div>
-        <div className="options px-12">{options}</div>
+        <div className="options ps-12">{options}</div>
       </div>
     );
   },
