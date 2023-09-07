@@ -21,10 +21,9 @@ export class ConfService {
       this.getApplicationsList(),
     ]);
 
-    const [theme, currentApp, extendedTheme] = await Promise.all([
+    const [theme, currentApp] = await Promise.all([
       this.getTheme({ conf }),
       this.getWebAppConf({ app, applications }),
-      this.getExtendedTheme(),
     ]);
 
     return {
@@ -32,7 +31,6 @@ export class ConfService {
       conf,
       currentApp,
       theme,
-      extendedTheme,
     };
   }
 
@@ -60,17 +58,6 @@ export class ConfService {
       "exports.conf",
     );
     return res;
-  }
-
-  private async getExtendedTheme(): Promise<any> {
-    try{
-      const res = await this.http.get<any>("/assets/extended-theme.json");
-      return res;
-    }catch(e){
-      //TODO return a fallback if extended-theme.json is missing
-      console.error('[getExtendedTheme] could not found /assets/extended-theme.json')
-      return {}
-    }
   }
 
   private async getApplicationsList(): Promise<IWebApp[]> {
