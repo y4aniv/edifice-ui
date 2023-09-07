@@ -14,6 +14,7 @@ export class HttpService {
   // Axios automatically manages the XSRF-TOKEN cookie and the X-XSRF-TOKEN HTTP header.
   private axios: AxiosInstance;
   private baseUrl?:string
+  private headers:Record<string, string>={}
   private _latestResponse: any;
 
   constructor(private context: OdeServices, params?: any) {
@@ -39,6 +40,11 @@ export class HttpService {
   useBaseUrl(baseUrl?:string){
     this.baseUrl = baseUrl;
     return this
+  }
+
+  useHeaders(headers:Record<string,string>){
+    this.headers = headers;
+    return this;
   }
 
   setCdn(cdnUrl: string): void {
@@ -98,7 +104,8 @@ export class HttpService {
         // Axios will serialize parameters, see https://github.com/axios/axios#request-config
         p.params = Object.assign({}, params.queryParams);
       }
-
+      const previousHeaders = p.headers ?? {}
+      p.headers = {...previousHeaders, ...this.headers}
       /* TODO : manage params.requestName through an events[]. See infra-front http.ts */
 
       return p;
