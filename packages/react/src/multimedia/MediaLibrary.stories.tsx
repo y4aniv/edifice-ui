@@ -18,7 +18,7 @@ type Story = StoryObj<typeof MediaLibrary>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 export const Base: Story = {
-  render: (args:MediaLibraryProps) => {
+  render: (args: MediaLibraryProps) => {
     return <MediaLibrary {...args} />;
   },
   args: {
@@ -27,14 +27,14 @@ export const Base: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Audio library.",
+        story: "Use to choose or capture an audio file.",
       },
     },
   },
 };
 
 export const Video: Story = {
-  render: (args:MediaLibraryProps) => {
+  render: (args: MediaLibraryProps) => {
     return <MediaLibrary {...args} />;
   },
   args: {
@@ -43,14 +43,30 @@ export const Video: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Video library.",
+        story: "Use to choose, embed or capture a video.",
+      },
+    },
+  },
+};
+
+export const Image: Story = {
+  render: (args: MediaLibraryProps) => {
+    return <MediaLibrary {...args} />;
+  },
+  args: {
+    type: "image",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Use to choose an image.",
       },
     },
   },
 };
 
 export const Attachment: Story = {
-  render: (args:MediaLibraryProps) => {
+  render: (args: MediaLibraryProps) => {
     return <MediaLibrary {...args} />;
   },
   args: {
@@ -59,23 +75,39 @@ export const Attachment: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Attachment library.",
+        story: "Use to choose and attach a media file.",
+      },
+    },
+  },
+};
+
+export const Embedder: Story = {
+  render: (args: MediaLibraryProps) => {
+    return <MediaLibrary {...args} />;
+  },
+  args: {
+    type: "embedder",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Use to embed an external.",
       },
     },
   },
 };
 
 export const Linker: Story = {
-  render: (args:MediaLibraryProps) => {
+  render: (args: MediaLibraryProps) => {
     return <MediaLibrary {...args} />;
   },
   args: {
-    type: "linker",
+    type: "hyperlink",
   },
   parameters: {
     docs: {
       description: {
-        story: "Linker library.",
+        story: "Use to link an internal resource, or an external website.",
       },
     },
   },

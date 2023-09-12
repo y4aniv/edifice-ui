@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import {
   Camera,
@@ -9,25 +9,41 @@ import {
 } from "@edifice-ui/icons";
 import { useTranslation } from "react-i18next";
 
-import { MediaLibraryAudio } from "./MediaLibraryAudio";
+import { InnerTabs } from "./innertabs";
 import Modal from "../components/Modal/Modal";
 import { Tabs } from "../components/Tabs";
 import { TabsItemProps } from "../components/Tabs/TabsItem";
 
 /**
  * Pre-configured types of media libraries.
- * Choosing a type will display the useful tabs working with it.
+ * Choosing a type will filter the visible tabs.
  */
-export type MediaLibraryType = "audio" | "video" | "image" | "link";
+export type MediaLibraryType =
+  /** Audio files */
+  | "audio"
+  /** Video files / streams / links */
+  | "video"
+  /** Image files */
+  | "image"
+  /** Attached files */
+  | "attachment"
+  /** Embedded websites */
+  | "embedder"
+  /** Hyperlinks */
+  | "hyperlink";
+
+const tabsAndOrder = [
+  "workspace", // Media browser
+  "filesystem", // File explorer
+  "audio-capture",
+  "video-capture",
+  "resource", // Link to a shared resource (previously known as "internal linker")
+  "linker", // Link to an external website (previously known as "external linker")
+  "iframe", // Framed website
+] as const;
 
 /** Available features exposed by tabs. */
-type AvailableTab =
-  | "workspace"
-  | "device"
-  | "audio-capture"
-  | "video-capture"
-  | "external-linker"
-  | "internal-linker";
+type AvailableTab = (typeof tabsAndOrder)[number];
 
 type MediaLibraryTypeOptions = {
   title: string;
@@ -38,20 +54,13 @@ type MediaLibraryTypeOptions = {
 export type MediaLibraryResponse = () => void;
 
 /**
- * MediaLibrary properties
+ * MediaLibrary component properties
  */
 export interface MediaLibraryProps {
   type: MediaLibraryType;
   onSuccess: MediaLibraryResponse;
   onClose: () => void;
 }
-
-declare type MediaLibrary = (props: MediaLibraryProps) => ReactNode & {
-  Workspace: (props: { onSuccess: MediaLibraryResponse }) => ReactNode;
-  Audio: (props: { onSuccess: MediaLibraryResponse }) => ReactNode;
-  Video: (props: { onSuccess: MediaLibraryResponse }) => ReactNode;
-  Linker: (props: { onSuccess: MediaLibraryResponse }) => ReactNode;
-};
 
 export const useMediaLibrary = (): [MediaLibraryType, (type: any) => void] => {
   const [type, setType] = useState<MediaLibraryType>(null!);
@@ -67,6 +76,9 @@ export const useMediaLibrary = (): [MediaLibraryType, (type: any) => void] => {
   return [type, handleSetType];
 };
 
+/*
+ * Core MediaLibrary implementation
+ */
 export const MediaLibrary = ({
   type,
   onSuccess,
@@ -76,62 +88,84 @@ export const MediaLibrary = ({
 
   const availableTabs: {
     [tabname in AvailableTab]: TabsItemProps & {
-      availableFor: Array<MediaLibraryType>;
+      /** Media Library types where this tab should be displayed. */
+      availableFor: Array<MediaLibraryType | "*">;
     };
   } = {
     workspace: {
       id: "workspace",
       icon: <Folder />,
-      label: "Espace doc.",
-      content: <MediaLibrary.Workspace onSuccess={onSuccess} />,
-      availableFor: ["link", "audio"],
+      label: "Espace doc",
+      content: <InnerTabs.Workspace onSuccess={onSuccess} />,
+      availableFor: ["audio", "video", "image", "attachment"],
     },
-    device: {
-      id: "camera",
+    filesystem: {
+      id: "filesystem",
       icon: <Camera />,
       label: "Mon appareil",
-      content: <MediaLibrary.Video onSuccess={onSuccess} />,
-      availableFor: ["audio", "link"],
+      content: <InnerTabs.Filesystem onSuccess={onSuccess} />,
+      availableFor: ["audio", "video", "image", "attachment"],
     },
     "video-capture": {
       id: "video",
       icon: <RecordVideo />,
       label: "Captation vidéo",
-      content: <MediaLibrary.Video onSuccess={onSuccess} />,
+      content: <InnerTabs.Video onSuccess={onSuccess} />,
       availableFor: ["video"],
     },
     "audio-capture": {
       id: "audio",
       icon: <Mic />,
       label: "Captation audio",
-      content: <MediaLibrary.Audio onSuccess={onSuccess} />,
+      content: <InnerTabs.Audio onSuccess={onSuccess} />,
       availableFor: ["audio"],
     },
-    "internal-linker": {
-      id: "internal",
-      icon: <Folder />,
-      label: "Lien interne",
-      content: <MediaLibrary.Linker onSuccess={onSuccess} />,
-      availableFor: ["link"],
-    },
-    "external-linker": {
+    linker: {
       id: "external",
       icon: <ExternalLink />,
       label: "Lien externe",
-      content: <MediaLibrary.Linker onSuccess={onSuccess} />,
-      availableFor: ["video", "link"],
+      content: <InnerTabs.Linker onSuccess={onSuccess} />,
+      availableFor: ["hyperlink"],
+    },
+    resource: {
+      id: "resource",
+      icon: <Folder />,
+      label: "Lien interne",
+      content: <InnerTabs.Resource onSuccess={onSuccess} />,
+      availableFor: ["hyperlink"],
+    },
+    iframe: {
+      id: "iframe",
+      icon: <Folder />,
+      label: "</> Balise embed ou iframe",
+      content: <InnerTabs.Iframe onSuccess={onSuccess} />,
+      availableFor: ["embedder"],
     },
   };
 
-  const tabs = Object.values(availableTabs).filter((tab) =>
-    tab.availableFor.includes(type),
-  );
+  /* Filter out unwanted tabs. */
+  const tabs = tabsAndOrder
+    .map((key) => availableTabs[key])
+    .filter(
+      (tab) => tab.availableFor.length === 0 || tab.availableFor.includes(type),
+    );
 
   const options: { [key in MediaLibraryType]?: MediaLibraryTypeOptions } = {
-    audio: { title: t("Un son"), defaultTab: "audio-capture" },
-    video: { title: t("Une vid"), defaultTab: "video-capture" },
-    image: { title: t("Une image"), defaultTab: "workspace" },
-    link: { title: t("Un document"), defaultTab: "workspace" },
+    audio: {
+      title: t("Ajouter un audio depuis..."),
+      defaultTab: "audio-capture",
+    },
+    video: {
+      title: t("Ajouter une vidéo depuis..."),
+      defaultTab: "video-capture",
+    },
+    image: { title: t("Ajouter une image depuis..."), defaultTab: "workspace" },
+    attachment: {
+      title: t("Ajouter une pièce jointe depuis..."),
+      defaultTab: "workspace",
+    },
+    hyperlink: { title: t("Ajouter un lien"), defaultTab: "linker" },
+    embedder: { title: t("Ajout embed / iframe"), defaultTab: "iframe" },
   };
 
   const isOpen = !!type;
@@ -150,38 +184,7 @@ export const MediaLibrary = ({
   );
 };
 
-MediaLibrary.Workspace = ({ onSuccess }: { onSuccess: () => void }) => {
-  return (
-    <p>
-      TODO: Workspace <button onClick={onSuccess}>successful</button>
-    </p>
-  );
-};
-
-MediaLibrary.Audio = MediaLibraryAudio;
-
-MediaLibrary.Video = ({ onSuccess }: { onSuccess: () => void }) => {
-  return (
-    <p>
-      TODO: Video <button onClick={onSuccess}>successful</button>
-    </p>
-  );
-};
-
-MediaLibrary.Linker = ({ onSuccess }: { onSuccess: () => void }) => {
-  return (
-    <p>
-      TODO: Linker <button onClick={onSuccess}>successful</button>
-    </p>
-  );
-};
-
-MediaLibrary.Attachment = ({ onSuccess }: { onSuccess: () => void }) => {
-  return (
-    <p>
-      TODO: Attachment <button onClick={onSuccess}>successful</button>
-    </p>
-  );
-};
+// Add inner tabs implementations to exported component.
+Object.assign(MediaLibrary, InnerTabs);
 
 export default MediaLibrary;
