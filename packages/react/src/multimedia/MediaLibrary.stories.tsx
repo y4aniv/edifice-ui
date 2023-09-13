@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import MediaLibrary, { MediaLibraryProps } from "./MediaLibrary";
+import { useState } from "react";
 
 const meta: Meta<typeof MediaLibrary> = {
   title: "Multimedia/MediaLibrary",
@@ -10,6 +11,41 @@ const meta: Meta<typeof MediaLibrary> = {
       alert("Success 👍");
     },
   },
+  render: (args: MediaLibraryProps) => {
+    const [display, setDisplay] = useState(false);
+    args.onClose = () => {
+      setDisplay(false);
+    };
+
+    return (
+      <>
+        <button
+          onClick={() => {
+            setDisplay(true);
+          }}
+        >
+          Open Media Library
+        </button>
+
+        {display && <MediaLibrary {...args} />}
+      </>
+    );
+  },
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          height: "200px",
+          display: "grid",
+          placeItems: "center",
+          marginBottom: "10em",
+        }}
+        className="position-relative"
+      >
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
@@ -18,9 +54,6 @@ type Story = StoryObj<typeof MediaLibrary>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 export const Base: Story = {
-  render: (args: MediaLibraryProps) => {
-    return <MediaLibrary {...args} />;
-  },
   args: {
     type: "audio",
   },
@@ -34,9 +67,6 @@ export const Base: Story = {
 };
 
 export const Video: Story = {
-  render: (args: MediaLibraryProps) => {
-    return <MediaLibrary {...args} />;
-  },
   args: {
     type: "video",
   },
@@ -50,9 +80,6 @@ export const Video: Story = {
 };
 
 export const Image: Story = {
-  render: (args: MediaLibraryProps) => {
-    return <MediaLibrary {...args} />;
-  },
   args: {
     type: "image",
   },
@@ -66,9 +93,6 @@ export const Image: Story = {
 };
 
 export const Attachment: Story = {
-  render: (args: MediaLibraryProps) => {
-    return <MediaLibrary {...args} />;
-  },
   args: {
     type: "attachment",
   },
@@ -82,9 +106,6 @@ export const Attachment: Story = {
 };
 
 export const Embedder: Story = {
-  render: (args: MediaLibraryProps) => {
-    return <MediaLibrary {...args} />;
-  },
   args: {
     type: "embedder",
   },
