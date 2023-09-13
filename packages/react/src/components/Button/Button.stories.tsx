@@ -9,13 +9,11 @@ import {
   RafterRight,
 } from "@edifice-ui/icons";
 import IconButton from "./IconButton";
-import SearchButton from "./SearchButton";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Button> = {
   title: "Components/Buttons/Button",
   component: Button,
-  subcomponents: { IconButton, SearchButton },
   argTypes: {
     color: {
       options: ["primary", "secondary", "tertiary", "danger"],
