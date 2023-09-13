@@ -2,6 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import MediaLibrary, { MediaLibraryProps } from "./MediaLibrary";
 import { useState } from "react";
+import { MockedDataProvider } from "../core";
 
 const meta: Meta<typeof MediaLibrary> = {
   title: "Multimedia/MediaLibrary",
@@ -10,26 +11,6 @@ const meta: Meta<typeof MediaLibrary> = {
     onSuccess: () => {
       alert("Success 👍");
     },
-  },
-  render: (args: MediaLibraryProps) => {
-    const [display, setDisplay] = useState(false);
-    args.onClose = () => {
-      setDisplay(false);
-    };
-
-    return (
-      <>
-        <button
-          onClick={() => {
-            setDisplay(true);
-          }}
-        >
-          Open Media Library
-        </button>
-
-        {display && <MediaLibrary {...args} />}
-      </>
-    );
   },
   decorators: [
     (Story) => (
@@ -64,6 +45,26 @@ export const Base: Story = {
       },
     },
   },
+  render: (args: MediaLibraryProps) => {
+    const [display, setDisplay] = useState(false);
+    args.onClose = () => {
+      setDisplay(false);
+    };
+
+    return (
+      <MockedDataProvider mocks={{ workflows: ["workspace.create"] }}>
+        <button
+          onClick={() => {
+            setDisplay(true);
+          }}
+        >
+          Open Media Library
+        </button>
+
+        {display && <MediaLibrary {...args} />}
+      </MockedDataProvider>
+    );
+  },
 };
 
 export const Video: Story = {
@@ -77,6 +78,26 @@ export const Video: Story = {
       },
     },
   },
+  render: (args: MediaLibraryProps) => {
+    const [display, setDisplay] = useState(false);
+    args.onClose = () => {
+      setDisplay(false);
+    };
+
+    return (
+      <MockedDataProvider mocks={{ workflows: ["workspace.create"] }}>
+        <button
+          onClick={() => {
+            setDisplay(true);
+          }}
+        >
+          Open Media Library
+        </button>
+
+        {display && <MediaLibrary {...args} />}
+      </MockedDataProvider>
+    );
+  },
 };
 
 export const Image: Story = {
@@ -89,6 +110,26 @@ export const Image: Story = {
         story: "Use to choose an image.",
       },
     },
+  },
+  render: (args: MediaLibraryProps) => {
+    const [display, setDisplay] = useState(false);
+    args.onClose = () => {
+      setDisplay(false);
+    };
+
+    return (
+      <MockedDataProvider mocks={{ workflows: ["workspace.create"] }}>
+        <button
+          onClick={() => {
+            setDisplay(true);
+          }}
+        >
+          Open Media Library
+        </button>
+
+        {display && <MediaLibrary {...args} />}
+      </MockedDataProvider>
+    );
   },
 };
 
@@ -116,12 +157,29 @@ export const Embedder: Story = {
       },
     },
   },
+  render: (args: MediaLibraryProps) => {
+    const [display, setDisplay] = useState(false);
+    args.onClose = () => {
+      setDisplay(false);
+    };
+
+    return (
+      <MockedDataProvider mocks={{ workflows: ["workspace.create"] }}>
+        <button
+          onClick={() => {
+            setDisplay(true);
+          }}
+        >
+          Open Media Library
+        </button>
+
+        {display && <MediaLibrary {...args} />}
+      </MockedDataProvider>
+    );
+  },
 };
 
 export const Linker: Story = {
-  render: (args: MediaLibraryProps) => {
-    return <MediaLibrary {...args} />;
-  },
   args: {
     type: "hyperlink",
   },
@@ -131,5 +189,25 @@ export const Linker: Story = {
         story: "Use to link an internal resource, or an external website.",
       },
     },
+  },
+  render: (args: MediaLibraryProps) => {
+    const [display, setDisplay] = useState(false);
+    args.onClose = () => {
+      setDisplay(false);
+    };
+
+    return (
+      <MockedDataProvider mocks={{ workflows: ["workspace.create"] }}>
+        <button
+          onClick={() => {
+            setDisplay(true);
+          }}
+        >
+          Open Media Library
+        </button>
+
+        {display && <MediaLibrary {...args} />}
+      </MockedDataProvider>
+    );
   },
 };
