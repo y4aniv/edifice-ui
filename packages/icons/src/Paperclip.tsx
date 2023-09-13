@@ -3,7 +3,7 @@ interface SVGRProps {
   title?: string;
   titleId?: string;
 }
-const SvgAttachment = ({
+const SvgPaperclip = ({
   title,
   titleId,
   ...props
@@ -27,4 +27,4 @@ const SvgAttachment = ({
     />
   </svg>
 );
-export default SvgAttachment;
+export default SvgPaperclip;
