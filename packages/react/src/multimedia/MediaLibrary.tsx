@@ -96,7 +96,11 @@ const mediaLibraryTypes: {
   embedder: { title: "Ajout embed / iframe", defaultTab: "iframe" },
 };
 
-/** Type of response the media library will send on success. */
+/**
+ * Type of response the media library will send on success.
+ *
+ * FIXME: signature de fonction à faire évoluer au besoin.
+ */
 export type MediaLibraryResponse = () => void;
 
 /**
