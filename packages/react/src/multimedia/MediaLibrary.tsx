@@ -13,10 +13,46 @@ import { InnerTabs } from "./innertabs";
 import Modal from "../components/Modal/Modal";
 import { Tabs } from "../components/Tabs";
 import { TabsItemProps } from "../components/Tabs/TabsItem";
+import { useHasWorkflow } from "../core/useHasWorkflow";
+
+//---------------------------------------------------
+// Tabs parameters
+//---------------------------------------------------
+/** Ordered list of tabs. */
+const orderedTabs = [
+  "workspace", // Media browser
+  "filesystem", // File explorer
+  "audio-capture",
+  "video-capture",
+  "resource", // Link to a shared resource (previously known as "internal linker")
+  "linker", // Link to an external website (previously known as "external linker")
+  "iframe", // Framed website
+];
 
 /**
+ * Available features exposed by tabs :
+ * "workspace" | "filesystem" | "audio-capture" | ...
+ */
+type AvailableTab = (typeof orderedTabs)[number];
+
+/** Additional properties of tabs. */
+type MediaLibraryTabProps = {
+  /**
+   * Media Library types where this tab should be displayed.
+   * "*" for all types.
+   */
+  availableFor: Array<MediaLibraryType | "*">;
+
+  /** Required checks before using this feature. */
+  checkIfVisible: null | (() => boolean);
+};
+
+//---------------------------------------------------
+// Media Library parameters
+//---------------------------------------------------
+/**
  * Pre-configured types of media libraries.
- * Choosing a type will filter the visible tabs.
+ * Choosing a type will filter out unwanted tabs.
  */
 export type MediaLibraryType =
   /** Audio files */
@@ -32,22 +68,32 @@ export type MediaLibraryType =
   /** Hyperlinks */
   | "hyperlink";
 
-const tabsAndOrder = [
-  "workspace", // Media browser
-  "filesystem", // File explorer
-  "audio-capture",
-  "video-capture",
-  "resource", // Link to a shared resource (previously known as "internal linker")
-  "linker", // Link to an external website (previously known as "external linker")
-  "iframe", // Framed website
-] as const;
-
-/** Available features exposed by tabs. */
-type AvailableTab = (typeof tabsAndOrder)[number];
-
 type MediaLibraryTypeOptions = {
+  /** I18n key describing this MediaLibrary type. */
   title: string;
+  /** Default tab to display. */
   defaultTab: AvailableTab;
+};
+
+/** Map of MediaLibrary types and options. */
+const mediaLibraryTypes: {
+  [key in MediaLibraryType]: MediaLibraryTypeOptions;
+} = {
+  audio: {
+    title: "Ajouter un audio depuis...",
+    defaultTab: "audio-capture",
+  },
+  video: {
+    title: "Ajouter une vidéo depuis...",
+    defaultTab: "video-capture",
+  },
+  image: { title: "Ajouter une image depuis...", defaultTab: "workspace" },
+  attachment: {
+    title: "Ajouter une pièce jointe depuis...",
+    defaultTab: "workspace",
+  },
+  hyperlink: { title: "Ajouter un lien", defaultTab: "linker" },
+  embedder: { title: "Ajout embed / iframe", defaultTab: "iframe" },
 };
 
 /** Type of response the media library will send on success. */
@@ -61,6 +107,10 @@ export interface MediaLibraryProps {
   onSuccess: MediaLibraryResponse;
   onClose: () => void;
 }
+
+//---------------------------------------------------
+// Media Library implementation
+//---------------------------------------------------
 
 export const useMediaLibrary = (): [MediaLibraryType, (type: any) => void] => {
   const [type, setType] = useState<MediaLibraryType>(null!);
@@ -86,11 +136,10 @@ export const MediaLibrary = ({
 }: MediaLibraryProps) => {
   const { t } = useTranslation();
 
+  const workspaceCreateWorkflow = useHasWorkflow("workspace.create");
+
   const availableTabs: {
-    [tabname in AvailableTab]: TabsItemProps & {
-      /** Media Library types where this tab should be displayed. */
-      availableFor: Array<MediaLibraryType | "*">;
-    };
+    [tabname in AvailableTab]: TabsItemProps & MediaLibraryTabProps;
   } = {
     workspace: {
       id: "workspace",
@@ -98,6 +147,7 @@ export const MediaLibrary = ({
       label: "Espace doc",
       content: <InnerTabs.Workspace onSuccess={onSuccess} />,
       availableFor: ["audio", "video", "image", "attachment"],
+      checkIfVisible: null,
     },
     filesystem: {
       id: "filesystem",
@@ -105,6 +155,7 @@ export const MediaLibrary = ({
       label: "Mon appareil",
       content: <InnerTabs.Filesystem onSuccess={onSuccess} />,
       availableFor: ["audio", "video", "image", "attachment"],
+      checkIfVisible: () => (workspaceCreateWorkflow ? true : false),
     },
     "video-capture": {
       id: "video",
@@ -112,6 +163,7 @@ export const MediaLibrary = ({
       label: "Captation vidéo",
       content: <InnerTabs.Video onSuccess={onSuccess} />,
       availableFor: ["video"],
+      checkIfVisible: () => false, // TODO
     },
     "audio-capture": {
       id: "audio",
@@ -119,6 +171,7 @@ export const MediaLibrary = ({
       label: "Captation audio",
       content: <InnerTabs.Audio onSuccess={onSuccess} />,
       availableFor: ["audio"],
+      checkIfVisible: () => (workspaceCreateWorkflow ? true : false),
     },
     linker: {
       id: "external",
@@ -126,6 +179,7 @@ export const MediaLibrary = ({
       label: "Lien externe",
       content: <InnerTabs.Linker onSuccess={onSuccess} />,
       availableFor: ["hyperlink"],
+      checkIfVisible: null,
     },
     resource: {
       id: "resource",
@@ -133,6 +187,7 @@ export const MediaLibrary = ({
       label: "Lien interne",
       content: <InnerTabs.Resource onSuccess={onSuccess} />,
       availableFor: ["hyperlink"],
+      checkIfVisible: null,
     },
     iframe: {
       id: "iframe",
@@ -140,39 +195,23 @@ export const MediaLibrary = ({
       label: "</> Balise embed ou iframe",
       content: <InnerTabs.Iframe onSuccess={onSuccess} />,
       availableFor: ["embedder"],
+      checkIfVisible: null,
     },
   };
 
   /* Filter out unwanted tabs. */
-  const tabs = tabsAndOrder
+  const tabs = orderedTabs
     .map((key) => availableTabs[key])
     .filter(
-      (tab) => tab.availableFor.length === 0 || tab.availableFor.includes(type),
+      (tab) =>
+        tab.checkIfVisible?.() !== false &&
+        (tab.availableFor.length === 0 || tab.availableFor.includes(type)),
     );
 
-  const options: { [key in MediaLibraryType]?: MediaLibraryTypeOptions } = {
-    audio: {
-      title: t("Ajouter un audio depuis..."),
-      defaultTab: "audio-capture",
-    },
-    video: {
-      title: t("Ajouter une vidéo depuis..."),
-      defaultTab: "video-capture",
-    },
-    image: { title: t("Ajouter une image depuis..."), defaultTab: "workspace" },
-    attachment: {
-      title: t("Ajouter une pièce jointe depuis..."),
-      defaultTab: "workspace",
-    },
-    hyperlink: { title: t("Ajouter un lien"), defaultTab: "linker" },
-    embedder: { title: t("Ajout embed / iframe"), defaultTab: "iframe" },
-  };
-
   const isOpen = !!type;
-
-  const modalHeader = type
-    ? t(options[type]?.title ?? "Un titre ici")
-    : t("Un titre ici");
+  const modalHeader = t(
+    mediaLibraryTypes[type]?.title ?? "Bibliothèque multimédia",
+  );
 
   return (
     <Modal id="media-library" isOpen={isOpen} onModalClose={onClose}>
