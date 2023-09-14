@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+import { useMemo } from "react";
 
 import {
-  Camera,
   ExternalLink,
   Folder,
   Mic,
   RecordVideo,
+  Smartphone,
 } from "@edifice-ui/icons";
 import { useTranslation } from "react-i18next";
 
@@ -21,7 +21,7 @@ import { useHasWorkflow } from "../core/useHasWorkflow";
 /** Ordered list of tabs. */
 const orderedTabs = [
   "workspace", // Media browser
-  "filesystem", // File explorer
+  "upload", // Filesystem browser + drag'n'drop of files
   "audio-capture",
   "video-capture",
   "resource", // Link to a shared resource (previously known as "internal linker")
@@ -31,7 +31,7 @@ const orderedTabs = [
 
 /**
  * Available features exposed by tabs :
- * "workspace" | "filesystem" | "audio-capture" | ...
+ * "workspace" | "upload" | "audio-capture" | ...
  */
 type AvailableTab = (typeof orderedTabs)[number];
 
@@ -44,7 +44,7 @@ type MediaLibraryTabProps = {
   availableFor: Array<MediaLibraryType | "*">;
 
   /** Required checks before using this feature. */
-  checkIfVisible: null | (() => boolean);
+  isEnable: null | (() => boolean);
 };
 
 //---------------------------------------------------
@@ -115,24 +115,6 @@ export interface MediaLibraryProps {
 //---------------------------------------------------
 // Media Library implementation
 //---------------------------------------------------
-
-export const useMediaLibrary = (): [MediaLibraryType, (type: any) => void] => {
-  const [type, setType] = useState<MediaLibraryType>(null!);
-
-  useEffect(() => {
-    if (type) console.log(type);
-  }, [type]);
-
-  const handleSetType = useCallback((type: MediaLibraryType) => {
-    setType(type);
-  }, []);
-
-  return [type, handleSetType];
-};
-
-/*
- * Core MediaLibrary implementation
- */
 export const MediaLibrary = ({
   type,
   onSuccess,
@@ -140,7 +122,9 @@ export const MediaLibrary = ({
 }: MediaLibraryProps) => {
   const { t } = useTranslation();
 
-  const workspaceCreateWorkflow = useHasWorkflow("workspace.create");
+  const workspaceCreateWorkflow = useHasWorkflow(
+    "org.entcore.workspace.controllers.WorkspaceController|addDocument",
+  );
 
   const availableTabs: {
     [tabname in AvailableTab]: TabsItemProps & MediaLibraryTabProps;
@@ -148,58 +132,58 @@ export const MediaLibrary = ({
     workspace: {
       id: "workspace",
       icon: <Folder />,
-      label: "Espace doc",
+      label: t("Espace doc"),
       content: <InnerTabs.Workspace onSuccess={onSuccess} />,
       availableFor: ["audio", "video", "image", "attachment"],
-      checkIfVisible: null,
+      isEnable: null,
     },
-    filesystem: {
-      id: "filesystem",
-      icon: <Camera />,
-      label: "Mon appareil",
-      content: <InnerTabs.Filesystem onSuccess={onSuccess} />,
+    upload: {
+      id: "upload",
+      icon: <Smartphone />,
+      label: t("Mon appareil"),
+      content: <InnerTabs.Upload onSuccess={onSuccess} />,
       availableFor: ["audio", "video", "image", "attachment"],
-      checkIfVisible: () => (workspaceCreateWorkflow ? true : false),
+      isEnable: () => (workspaceCreateWorkflow ? true : false),
     },
     "video-capture": {
       id: "video",
       icon: <RecordVideo />,
-      label: "Captation vidéo",
+      label: t("Captation vidéo"),
       content: <InnerTabs.Video onSuccess={onSuccess} />,
       availableFor: ["video"],
-      checkIfVisible: () => false, // TODO
+      isEnable: () => false, // TODO workflow ?
     },
     "audio-capture": {
       id: "audio",
       icon: <Mic />,
-      label: "Captation audio",
+      label: t("Captation audio"),
       content: <InnerTabs.Audio onSuccess={onSuccess} />,
       availableFor: ["audio"],
-      checkIfVisible: () => (workspaceCreateWorkflow ? true : false),
+      isEnable: () => (workspaceCreateWorkflow ? true : false),
     },
     linker: {
       id: "external",
       icon: <ExternalLink />,
-      label: "Lien externe",
+      label: t("Lien externe"),
       content: <InnerTabs.Linker onSuccess={onSuccess} />,
       availableFor: ["hyperlink"],
-      checkIfVisible: null,
+      isEnable: null,
     },
     resource: {
       id: "resource",
       icon: <Folder />,
-      label: "Lien interne",
+      label: t("Lien interne"),
       content: <InnerTabs.Resource onSuccess={onSuccess} />,
       availableFor: ["hyperlink"],
-      checkIfVisible: null,
+      isEnable: null,
     },
     iframe: {
       id: "iframe",
-      icon: <Folder />,
-      label: "</> Balise embed ou iframe",
+      icon: <ExternalLink />,
+      label: t("</> Balise embed ou iframe"),
       content: <InnerTabs.Iframe onSuccess={onSuccess} />,
       availableFor: ["embedder"],
-      checkIfVisible: null,
+      isEnable: null,
     },
   };
 
@@ -208,20 +192,30 @@ export const MediaLibrary = ({
     .map((key) => availableTabs[key])
     .filter(
       (tab) =>
-        tab.checkIfVisible?.() !== false &&
+        tab.isEnable?.() !== false &&
         (tab.availableFor.length === 0 || tab.availableFor.includes(type)),
     );
 
+  const defaultTabIdx = useMemo<number>(() => {
+    let idx = 0;
+    if (typeof mediaLibraryTypes[type]?.defaultTab == "string") {
+      const defaultTabId = mediaLibraryTypes[type].defaultTab;
+      idx = tabs.findIndex((t) => t.id === defaultTabId);
+    }
+    // Check boundaries before returning the index
+    return 0 > idx || idx >= tabs.length ? 0 : idx;
+  }, [type, tabs]);
+
   const isOpen = !!type;
   const modalHeader = t(
-    mediaLibraryTypes[type]?.title ?? "Bibliothèque multimédia",
+    mediaLibraryTypes[type]?.title ?? "Bibliothèque multimédia", // FIXME i18n key
   );
 
   return (
     <Modal id="media-library" isOpen={isOpen} onModalClose={onClose}>
       <Modal.Header onModalClose={onClose}>{modalHeader}</Modal.Header>
       <Modal.Body>
-        <Tabs items={tabs} defaultId={tabs[0].id}></Tabs>
+        <Tabs items={tabs} defaultId={tabs[defaultTabIdx].id}></Tabs>
       </Modal.Body>
     </Modal>
   );

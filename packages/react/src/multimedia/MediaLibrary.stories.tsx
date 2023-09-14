@@ -52,7 +52,13 @@ export const Base: Story = {
     };
 
     return (
-      <MockedDataProvider mocks={{ workflows: ["workspace.create"] }}>
+      <MockedDataProvider
+        mocks={{
+          workflows: [
+            "org.entcore.workspace.controllers.WorkspaceController|addDocument",
+          ],
+        }}
+      >
         <button
           onClick={() => {
             setDisplay(true);
@@ -85,7 +91,13 @@ export const Video: Story = {
     };
 
     return (
-      <MockedDataProvider mocks={{ workflows: ["workspace.create"] }}>
+      <MockedDataProvider
+        mocks={{
+          workflows: [
+            "org.entcore.workspace.controllers.WorkspaceController|addDocument",
+          ],
+        }}
+      >
         <button
           onClick={() => {
             setDisplay(true);
@@ -118,7 +130,13 @@ export const Image: Story = {
     };
 
     return (
-      <MockedDataProvider mocks={{ workflows: ["workspace.create"] }}>
+      <MockedDataProvider
+        mocks={{
+          workflows: [
+            "org.entcore.workspace.controllers.WorkspaceController|addDocument",
+          ],
+        }}
+      >
         <button
           onClick={() => {
             setDisplay(true);
@@ -144,6 +162,32 @@ export const Attachment: Story = {
       },
     },
   },
+  render: (args: MediaLibraryProps) => {
+    const [display, setDisplay] = useState(false);
+    args.onClose = () => {
+      setDisplay(false);
+    };
+
+    return (
+      <MockedDataProvider
+        mocks={{
+          workflows: [
+            "org.entcore.workspace.controllers.WorkspaceController|addDocument",
+          ],
+        }}
+      >
+        <button
+          onClick={() => {
+            setDisplay(true);
+          }}
+        >
+          Open Media Library
+        </button>
+
+        {display && <MediaLibrary {...args} />}
+      </MockedDataProvider>
+    );
+  },
 };
 
 export const Embedder: Story = {
@@ -164,7 +208,13 @@ export const Embedder: Story = {
     };
 
     return (
-      <MockedDataProvider mocks={{ workflows: ["workspace.create"] }}>
+      <MockedDataProvider
+        mocks={{
+          workflows: [
+            "org.entcore.workspace.controllers.WorkspaceController|addDocument",
+          ],
+        }}
+      >
         <button
           onClick={() => {
             setDisplay(true);
@@ -197,7 +247,13 @@ export const Linker: Story = {
     };
 
     return (
-      <MockedDataProvider mocks={{ workflows: ["workspace.create"] }}>
+      <MockedDataProvider
+        mocks={{
+          workflows: [
+            "org.entcore.workspace.controllers.WorkspaceController|addDocument",
+          ],
+        }}
+      >
         <button
           onClick={() => {
             setDisplay(true);
