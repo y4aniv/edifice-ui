@@ -1,16 +1,20 @@
 import { APP, IResource, RESOURCE, ResourceType } from "..";
-import { BlogUpdate, CreateParameters, CreateResult, UpdateResult } from "./interface";
+import {
+  BlogUpdate,
+  CreateParameters,
+  CreateResult,
+  UpdateResult,
+} from "./interface";
 import { ResourceService } from "./ResourceService";
 
 export class BlogResourceService extends ResourceService {
-
   async create(parameters: CreateParameters): Promise<CreateResult> {
     const fixThumb = parameters.thumbnail
       ? await this.getThumbnailPath(parameters.thumbnail)
       : "";
 
     const apiPath = parameters.public ? "/blog/pub" : "/blog";
-    
+
     const res = await this.http.post<CreateResult>(apiPath, {
       title: parameters.name,
       description: parameters.description,
@@ -23,7 +27,7 @@ export class BlogResourceService extends ResourceService {
     });
 
     this.checkHttpResponse(res);
-    
+
     return res;
   }
 

@@ -35,7 +35,7 @@ export interface UpdateParameters {
 export interface CreateResult {
   entId: string;
   thumbnail: string | undefined;
-  
+
   _id?: string;
   title?: string;
   description?: string;
@@ -43,9 +43,9 @@ export interface CreateResult {
   trashed?: boolean;
   "publish-type"?: string;
   "comment-type"?: string;
-  created?: { "$date": string };
-  modified?: { "$date": string };
-  author?: { userId: string, username: string, login: string };
+  created?: { $date: string };
+  modified?: { $date: string };
+  author?: { userId: string; username: string; login: string };
   shared?: Array<string>;
 }
 

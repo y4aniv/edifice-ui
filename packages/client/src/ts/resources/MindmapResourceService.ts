@@ -1,15 +1,19 @@
 import { APP, IResource, RESOURCE, ResourceType } from "..";
-import { CreateParameters, CreateResult, MindmapUpdate, UpdateResult } from "./interface";
+import {
+  CreateParameters,
+  CreateResult,
+  MindmapUpdate,
+  UpdateResult,
+} from "./interface";
 import { ResourceService } from "./ResourceService";
 
 export class MindmapResourceService extends ResourceService {
-
   async create(parameters: CreateParameters): Promise<CreateResult> {
     const fixThumb = parameters.thumbnail
       ? await this.getThumbnailPath(parameters.thumbnail)
       : "";
-    
-    const res = await this.http.post<{_id: string}>(`/mindmap`, {
+
+    const res = await this.http.post<{ _id: string }>(`/mindmap`, {
       name: parameters.name,
       description: parameters.description,
       thumbnail: fixThumb,
@@ -20,8 +24,8 @@ export class MindmapResourceService extends ResourceService {
     });
 
     this.checkHttpResponse(res);
-    
-    return {entId: res._id, thumbnail: fixThumb};
+
+    return { entId: res._id, thumbnail: fixThumb };
   }
 
   async update(parameters: MindmapUpdate): Promise<UpdateResult> {

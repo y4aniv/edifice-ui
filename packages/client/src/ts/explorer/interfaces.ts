@@ -316,6 +316,8 @@ export interface ISearchParameters {
   pagination: IPagination;
   search?: String;
   trashed?: boolean;
+  id?: number;
+  asset_id?: string[];
 }
 //-------------------------------------
 export interface ISearchResults {
@@ -443,7 +445,7 @@ export type GetContextParameters = IActionParameters & ISearchParameters;
 export type GetResourcesParameters = IActionParameters & ISearchParameters;
 export type CreateFolderParameters = IActionParameters & {
   app: App;
-  type: ResourceType;
+  type?: ResourceType;
   parentId: ID | "default";
   name: string;
 };
