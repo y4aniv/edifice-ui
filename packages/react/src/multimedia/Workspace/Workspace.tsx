@@ -39,13 +39,46 @@ export interface WorkspaceProps {
 
 export const Workspace = (props: WorkspaceProps) => {
   const { t } = useTranslation();
-  const [data] = useState<TreeNode>(null!);
+  const [mine] = useState<TreeNode>({
+    id: "mine",
+    name: t("Mes documents"),
+    section: true,
+    children: [],
+  });
+  const [shared] = useState<TreeNode>({
+    id: "shared",
+    name: t("Partagé avec moi"),
+    section: true,
+    children: [],
+  });
+  const [fromApps] = useState<TreeNode>({
+    id: "from-apps",
+    name: t("Ajouté dans les applications"),
+    section: true,
+    children: [],
+  });
 
   return (
     <Grid className="flex-grow-1 border rounded gap-0">
       <Grid.Col sm="1" md="2" xl="3" className="border-end p-12 gap-12">
         <TreeView
-          data={data}
+          data={mine}
+          onTreeItemBlur={() => {}}
+          onTreeItemFocus={() => {}}
+          onTreeItemFold={() => {}}
+          onTreeItemSelect={() => {}}
+          onTreeItemUnfold={() => {}}
+        />
+        <TreeView
+          data={shared}
+          onTreeItemBlur={() => {}}
+          onTreeItemFocus={() => {}}
+          onTreeItemFold={() => {}}
+          onTreeItemSelect={() => {}}
+          onTreeItemUnfold={() => {}}
+        />
+        <TreeView
+          data={fromApps}
           onTreeItemBlur={() => {}}
           onTreeItemFocus={() => {}}
           onTreeItemFold={() => {}}
@@ -58,13 +91,13 @@ export const Workspace = (props: WorkspaceProps) => {
           <Grid.Col
             sm="4"
             md="8"
-            lg="12"
-            className="border-bottom px-16 py-8 gap-16"
+            xl="12"
+            className="border-bottom px-16 py-8 gap-16 d-flex"
           >
             <FormControl className="input-group" id="search">
               <Input
                 noValidationIcon
-                placeholder="Placeholder text"
+                placeholder={t("Placeholder text")}
                 size="md"
                 type="search"
               />
@@ -82,7 +115,7 @@ export const Workspace = (props: WorkspaceProps) => {
               content={<p>TODO</p>}
             />
           </Grid.Col>
-          <Grid.Col sm="4" md="8" lg="12" className="p-12 gap-8">
+          <Grid.Col sm="4" md="8" xl="12" className="p-12 gap-8">
             <p>My list here, selected = {props.selected}</p>
           </Grid.Col>
         </Grid>
