@@ -10,10 +10,10 @@ import {
 import { useTranslation } from "react-i18next";
 
 import { InnerTabs } from "./innertabs";
-import Modal from "../components/Modal/Modal";
-import { Tabs } from "../components/Tabs";
-import { TabsItemProps } from "../components/Tabs/TabsItem";
-import { useHasWorkflow } from "../core/useHasWorkflow";
+import Modal from "../../components/Modal/Modal";
+import { Tabs } from "../../components/Tabs";
+import { TabsItemProps } from "../../components/Tabs/TabsItem";
+import { useHasWorkflow } from "../../core/useHasWorkflow";
 
 //---------------------------------------------------
 // Tabs parameters

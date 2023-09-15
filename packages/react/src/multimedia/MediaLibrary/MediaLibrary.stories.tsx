@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import MediaLibrary, { MediaLibraryProps } from "./MediaLibrary";
 import { useState } from "react";
-import { MockedDataProvider } from "../core";
+import { MockedDataProvider } from "../../core";
 
 const meta: Meta<typeof MediaLibrary> = {
   title: "Multimedia/MediaLibrary",
