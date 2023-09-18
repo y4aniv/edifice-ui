@@ -1,51 +1,26 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import { useState } from "react";
-import Workspace from "./Workspace";
+import Workspace, { WorkspaceProps } from "./Workspace";
 import { TreeNode } from "../../components";
+import { MockedDataProvider } from "../../core";
+import { WorkspaceSearchResult } from "../../core/useWorkspaceSearch/useWorkspaceSearch";
 
-const mockedData: TreeNode[] = [
+const mockedData: WorkspaceSearchResult = [
   {
     id: "1",
     name: "level 1 arborescence tree",
+    eType: "folder",
     children: [
       {
         id: "4",
         name: "level 2 arborescence tree",
-        children: [
-          {
-            id: "8",
-            name: "level 3 arborescence tree",
-            children: [
-              {
-                id: "12",
-                name: "level 4 arborescence tree",
-              },
-              {
-                id: "13",
-                name: "level 4 arborescence tree",
-              },
-            ],
-          },
-          {
-            id: "9",
-            name: "level 3 arborescence tree",
-          },
-        ],
+        eType: "folder",
       },
       {
         id: "5",
         name: "level 2 arborescence tree",
-        children: [
-          {
-            id: "10",
-            name: "level 3 arborescence tree",
-          },
-          {
-            id: "11",
-            name: "level 3 arborescence tree",
-          },
-        ],
+        eType: "file",
       },
     ],
   },
@@ -71,5 +46,20 @@ export const Base: Story = {
           "The Workspace component allows the user to choose one or more files among all the online files he has access to in the system.",
       },
     },
+  },
+  render: (args: WorkspaceProps) => {
+    return (
+      <MockedDataProvider
+        mocks={{
+          workflows: [
+            "org.entcore.workspace.controllers.WorkspaceController|listDocuments",
+            "org.entcore.workspace.controllers.WorkspaceController|listFolders",
+          ],
+          workspaceDocuments: mockedData,
+        }}
+      >
+        <Workspace {...args}></Workspace>
+      </MockedDataProvider>
+    );
   },
 };

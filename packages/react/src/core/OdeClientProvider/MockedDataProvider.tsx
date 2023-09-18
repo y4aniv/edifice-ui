@@ -2,17 +2,21 @@ import { createContext, type ReactNode, useMemo, useContext } from "react";
 
 import { App } from "edifice-ts-client";
 
+import { WorkspaceSearchResult } from "../useWorkspaceSearch/useWorkspaceSearch";
+
 export interface MockedDataProps {
   children: ReactNode;
   mocks: {
     app?: App;
     workflows: string[];
+    workspaceDocuments: WorkspaceSearchResult;
   };
 }
 
 export interface ContextProps {
   app?: App;
   hasWorkflow?: (workflow: string) => Promise<boolean>;
+  listWorkspaceDocuments?: () => Promise<WorkspaceSearchResult>;
 }
 
 const MockedDataContext = createContext<ContextProps | null>(null!);
@@ -29,6 +33,10 @@ export function MockedDataProvider({ children, mocks }: MockedDataProps) {
       value.hasWorkflow = async (workflow) =>
         mocks.workflows.findIndex((w) => w === workflow) !== -1;
     }
+    if (typeof mocks.workspaceDocuments !== "undefined") {
+      value.listWorkspaceDocuments = async () => mocks.workspaceDocuments;
+    }
+
     return value;
   }, [mocks]);
 
@@ -41,7 +49,8 @@ export function MockedDataProvider({ children, mocks }: MockedDataProps) {
 
 export function useMockedData() {
   const context = useContext(MockedDataContext);
-  // In production, hooks and services are outside of a mocked data context.
-  // But in documentation on StoryBook, they can use mocked data instead.
+  // Do not raise an exception here if context is null :
+  // - In production, hooks and services will be outside of a mocked data context.
+  // - In documentation on StoryBook, a mocked data context may exist.
   return context;
 }

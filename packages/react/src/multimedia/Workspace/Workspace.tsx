@@ -16,6 +16,7 @@ import {
   TreeNode,
   TreeView,
 } from "../../components";
+import useWorkspaceSearch from "../../core/useWorkspaceSearch/useWorkspaceSearch";
 
 // type FileFormat = "audio" | "img";
 
@@ -39,51 +40,53 @@ export interface WorkspaceProps {
 
 export const Workspace = (props: WorkspaceProps) => {
   const { t } = useTranslation();
-  const [mine] = useState<TreeNode>({
+
+  const [mine, setNodeMine] = useState<TreeNode>({
     id: "mine",
     name: t("Mes documents"),
     section: true,
-    children: [],
   });
-  const [shared] = useState<TreeNode>({
+  /*
+  const [shared, setNodeShared] = useState<TreeNode>({
     id: "shared",
     name: t("Partagé avec moi"),
     section: true,
-    children: [],
   });
-  const [fromApps] = useState<TreeNode>({
+  const [fromApps, setNodeFromApps] = useState<TreeNode>({
     id: "from-apps",
     name: t("Ajouté dans les applications"),
     section: true,
-    children: [],
   });
+*/
+
+  const [currentNode, setCurrentNode] = useState<TreeNode>(mine);
+
+  const { setParentId: searchForOwnerDocs } = useWorkspaceSearch(
+    "owner",
+    (content) => {
+      currentNode.children = content;
+      setNodeMine(mine);
+    },
+  );
+
+  function handleUnfold(root: TreeNode, nodeId: string) {
+    searchForOwnerDocs(nodeId);
+  }
+
+  function handleItemSelect(nodeId: string) {
+    const node = currentNode.children?.find((node) => node.id === nodeId);
+    node && setCurrentNode(node);
+  }
 
   return (
-    <Grid className="flex-grow-1 border rounded gap-0">
+    <Grid className="flex-grow-1 gap-0">
       <Grid.Col sm="1" md="2" xl="3" className="border-end p-12 gap-12">
         <TreeView
           data={mine}
-          onTreeItemBlur={() => {}}
-          onTreeItemFocus={() => {}}
+          selectedNodesIds={[]}
+          onTreeItemSelect={handleItemSelect}
           onTreeItemFold={() => {}}
-          onTreeItemSelect={() => {}}
-          onTreeItemUnfold={() => {}}
-        />
-        <TreeView
-          data={shared}
-          onTreeItemBlur={() => {}}
-          onTreeItemFocus={() => {}}
-          onTreeItemFold={() => {}}
-          onTreeItemSelect={() => {}}
-          onTreeItemUnfold={() => {}}
-        />
-        <TreeView
-          data={fromApps}
-          onTreeItemBlur={() => {}}
-          onTreeItemFocus={() => {}}
-          onTreeItemFold={() => {}}
-          onTreeItemSelect={() => {}}
-          onTreeItemUnfold={() => {}}
+          onTreeItemUnfold={(nodeId) => handleUnfold(mine, nodeId)}
         />
       </Grid.Col>
       <Grid.Col sm="3" md="6" xl="9">
@@ -102,9 +105,12 @@ export const Workspace = (props: WorkspaceProps) => {
                 type="search"
               />
               <SearchButton
-                aria-label="search"
+                aria-label={t("Rechercher")}
                 icon={<Search />}
                 type="submit"
+                onClick={() => {
+                  /*TODO filtrer les résultats à l'écran*/
+                }}
               />
             </FormControl>
 
