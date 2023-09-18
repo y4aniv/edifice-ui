@@ -9,6 +9,7 @@ import { ShareService } from "../share/Service";
 import { WorkspaceService } from "../workspace/Service";
 import { IdiomService } from "../idiom/Service";
 import { AnalyticsService } from "../analytics/Service";
+import { VideoService } from "../video/Service";
 
 export interface IOdeServices {
   analytics(): AnalyticsService;
@@ -21,6 +22,7 @@ export interface IOdeServices {
   rights(): RightService;
   session(): SessionService;
   share(): ShareService;
+  video(): VideoService;
   workspace(): WorkspaceService;
 }
 
@@ -34,6 +36,7 @@ export class OdeServices implements IOdeServices {
   private _rights: RightService;
   private _session: SessionService;
   private _share: ShareService;
+  private _video: VideoService;
   private _workspace: WorkspaceService;
 
   constructor() {
@@ -46,6 +49,7 @@ export class OdeServices implements IOdeServices {
     this._rights = new RightService(this);
     this._session = new SessionService(this);
     this._share = new ShareService(this);
+    this._video = new VideoService(this);
     this._workspace = new WorkspaceService(this);
   }
 
@@ -90,6 +94,10 @@ export class OdeServices implements IOdeServices {
 
   share() {
     return this._share;
+  }
+
+  video() {
+    return this._video;
   }
 
   workspace() {
