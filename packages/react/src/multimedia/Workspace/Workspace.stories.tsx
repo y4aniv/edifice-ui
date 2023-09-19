@@ -8,21 +8,19 @@ import { WorkspaceSearchResult } from "../../core/useWorkspaceSearch/useWorkspac
 
 const mockedData: WorkspaceSearchResult = [
   {
-    id: "1",
+    id: "folder1",
     name: "level 1 arborescence tree",
     eType: "folder",
-    children: [
-      {
-        id: "4",
-        name: "level 2 arborescence tree",
-        eType: "folder",
-      },
-      {
-        id: "5",
-        name: "level 2 arborescence tree",
-        eType: "file",
-      },
-    ],
+  },
+  {
+    id: "folder2",
+    name: "level 1 arborescence tree",
+    eType: "folder",
+  },
+  {
+    id: "file1",
+    name: "File 1",
+    eType: "file",
   },
 ];
 

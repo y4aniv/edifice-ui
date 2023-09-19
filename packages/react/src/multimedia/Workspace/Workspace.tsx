@@ -1,7 +1,7 @@
 //---------------------  TS-CLIENT
 //application = "media-library"
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { Filter, Search } from "@edifice-ui/icons";
 import { useTranslation } from "react-i18next";
@@ -16,7 +16,12 @@ import {
   TreeNode,
   TreeView,
 } from "../../components";
-import useWorkspaceSearch from "../../core/useWorkspaceSearch/useWorkspaceSearch";
+import useWorkspaceSearch, {
+  WorkspaceDocument,
+  WorkspaceFolder,
+  WorkspaceSearchFilter,
+  WorkspaceSearchResult,
+} from "../../core/useWorkspaceSearch/useWorkspaceSearch";
 
 // type FileFormat = "audio" | "img";
 
@@ -41,52 +46,169 @@ export interface WorkspaceProps {
 export const Workspace = (props: WorkspaceProps) => {
   const { t } = useTranslation();
 
-  const [mine, setNodeMine] = useState<TreeNode>({
-    id: "mine",
+  const [owner, setNodeOwner] = useState<TreeNode>({
+    id: "owner",
     name: t("Mes documents"),
     section: true,
   });
-  /*
   const [shared, setNodeShared] = useState<TreeNode>({
     id: "shared",
     name: t("Partagé avec moi"),
     section: true,
   });
-  const [fromApps, setNodeFromApps] = useState<TreeNode>({
-    id: "from-apps",
+  const [protectd, setNodeProtectd] = useState<TreeNode>({
+    id: "protected",
     name: t("Ajouté dans les applications"),
     section: true,
   });
-*/
 
-  const [currentNode, setCurrentNode] = useState<TreeNode>(mine);
-
-  const { setParentId: searchForOwnerDocs } = useWorkspaceSearch(
-    "owner",
-    (content) => {
-      currentNode.children = content;
-      setNodeMine(mine);
+  /**
+   * Retrieve the stateful TreeNode matching a filter value
+   */
+  const rootAccessorsFor: (filter: WorkspaceSearchFilter) => {
+    getter: TreeNode;
+    setter: React.Dispatch<React.SetStateAction<TreeNode>>;
+  } = useCallback(
+    (filter: WorkspaceSearchFilter) => {
+      switch (filter) {
+        case "owner":
+          return { getter: owner, setter: setNodeOwner };
+        case "shared":
+          return { getter: shared, setter: setNodeShared };
+        case "protected":
+          return { getter: protectd, setter: setNodeProtectd };
+        default:
+          throw "no.way";
+      }
     },
+    [owner, protectd, shared],
   );
 
-  function handleUnfold(root: TreeNode, nodeId: string) {
-    searchForOwnerDocs(nodeId);
+  const [currentFilter, setCurrentFilter] =
+    useState<WorkspaceSearchFilter>("owner");
+  const [currentNode, setCurrentNode] = useState<TreeNode>(owner);
+
+  /**
+   * Update Treeviews and file list with loaded results.
+   */
+  const onSearchResults = useCallback(
+    (filter: WorkspaceSearchFilter, content: WorkspaceSearchResult) => {
+      // Do not update children of the current node if filter has changed or children are already defined
+      if (
+        currentFilter !== filter ||
+        typeof currentNode.children === "undefined"
+      ) {
+        // Split results between folders and files :
+        const folders: WorkspaceFolder[] = [];
+        const files: WorkspaceDocument[] = [];
+        content.forEach((node) =>
+          (node.eType === "folder" ? folders : files).push(node as any),
+        );
+
+        // Only folders are displayed in the Treeview
+        currentNode.children = folders;
+        setCurrentNode(currentNode);
+
+        // Re-render the treeview
+        const { getter, setter } = rootAccessorsFor(filter);
+        setter({ ...getter });
+      }
+    },
+    [currentFilter, currentNode, rootAccessorsFor],
+  );
+
+  const { loadContent: searchForOwnerDocs } = useWorkspaceSearch(
+    "owner",
+    onSearchResults,
+  );
+  const { loadContent: searchForSharedDocs } = useWorkspaceSearch(
+    "shared",
+    onSearchResults,
+  );
+  const { loadContent: searchForProtectedDocs } = useWorkspaceSearch(
+    "protected",
+    onSearchResults,
+  );
+
+  /**
+   * Load current node children (folders and files)
+   */
+  const loadContent = useCallback(() => {
+    if (typeof currentNode.children === "undefined") {
+      switch (currentFilter) {
+        case "owner":
+          searchForOwnerDocs(currentNode.id);
+          break;
+        case "shared":
+          searchForSharedDocs(currentNode.id);
+          break;
+        case "protected":
+          searchForProtectedDocs(currentNode.id);
+          break;
+        default:
+          throw "no.way";
+      }
+    }
+  }, [
+    currentFilter,
+    currentNode,
+    searchForOwnerDocs,
+    searchForProtectedDocs,
+    searchForSharedDocs,
+  ]);
+
+  /**
+   * Utility function to find a node in a tree.
+   */
+  function find(
+    root: TreeNode,
+    predicate: (node: TreeNode) => boolean,
+  ): TreeNode | undefined {
+    if (predicate(root)) return root;
+    return (
+      Array.isArray(root.children) &&
+      root.children.find((child) => find(child, predicate))
+    );
   }
 
-  function handleItemSelect(nodeId: string) {
-    const node = currentNode.children?.find((node) => node.id === nodeId);
-    node && setCurrentNode(node);
+  function selectAndLoadContent(filter: WorkspaceSearchFilter, nodeId: string) {
+    setCurrentFilter(filter);
+    const root = rootAccessorsFor(filter).getter;
+    const targetNode =
+      nodeId === "" ? root : find(root, (node) => node.id === nodeId);
+    console.log(
+      `root=${JSON.stringify(root)}, targetNode=${JSON.stringify(targetNode)}`,
+    );
+    if (targetNode) {
+      setCurrentNode(targetNode);
+      loadContent();
+    }
   }
+
+  /** Load initial content, once */
+  useEffect(() => selectAndLoadContent("owner", ""), []);
 
   return (
     <Grid className="flex-grow-1 gap-0">
       <Grid.Col sm="1" md="2" xl="3" className="border-end p-12 gap-12">
         <TreeView
-          data={mine}
-          selectedNodesIds={[]}
-          onTreeItemSelect={handleItemSelect}
-          onTreeItemFold={() => {}}
-          onTreeItemUnfold={(nodeId) => handleUnfold(mine, nodeId)}
+          data={owner}
+          onTreeItemSelect={(nodeId) => selectAndLoadContent("owner", nodeId)}
+          onTreeItemUnfold={(nodeId) => selectAndLoadContent("owner", nodeId)}
+        />
+        <TreeView
+          data={shared}
+          onTreeItemSelect={(nodeId) => selectAndLoadContent("shared", nodeId)}
+          onTreeItemUnfold={(nodeId) => selectAndLoadContent("shared", nodeId)}
+        />
+        <TreeView
+          data={protectd}
+          onTreeItemSelect={(nodeId) =>
+            selectAndLoadContent("protected", nodeId)
+          }
+          onTreeItemUnfold={(nodeId) =>
+            selectAndLoadContent("protected", nodeId)
+          }
         />
       </Grid.Col>
       <Grid.Col sm="3" md="6" xl="9">

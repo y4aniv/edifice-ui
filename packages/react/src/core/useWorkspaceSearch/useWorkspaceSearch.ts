@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback } from "react";
 
 //import { odeServices } from "edifice-ts-client";
 
@@ -78,8 +78,8 @@ export type WorkspaceDocument = WorkspaceElement & {
     width?: number;
     height?: number;
   };
-  thumbnails: { [resolution: string]: ID };
   /* TODO complete    
+  thumbnails: { [resolution: string]: ID };
     file: string,
     "ancestors": [],
     "deleted": false,
@@ -106,7 +106,10 @@ function listDocuments(
 
 export default function useWorkspaceSearch(
   filter: WorkspaceSearchFilter,
-  onResult: (content: WorkspaceSearchResult) => void,
+  onResult: (
+    filter: WorkspaceSearchFilter,
+    content: WorkspaceSearchResult,
+  ) => void,
 ) {
   const mock = useMockedData();
   const canListDocs = useHasWorkflow(
@@ -116,21 +119,23 @@ export default function useWorkspaceSearch(
     "org.entcore.workspace.controllers.WorkspaceController|listFolders",
   );
 
-  const [parentId, setParentId] = useState<ID>();
+  const loadContent = useCallback(
+    (folderId: ID) => {
+      let ignore = false;
 
-  useEffect(() => {
-    let ignore = false;
+      if (!ignore && canListDocs && canListFolders) {
+        // If mocked data is available, use it. Otherwise load from server.
+        const asyncLoad =
+          mock?.listWorkspaceDocuments?.() || listDocuments(filter, folderId);
+        asyncLoad.then((results) => onResult(filter, results));
+      }
 
-    if (!ignore && canListDocs && canListFolders) {
-      (
-        mock?.listWorkspaceDocuments?.() || listDocuments(filter, parentId)
-      ).then(onResult);
-    }
+      return () => {
+        ignore = true;
+      };
+    },
+    [mock, canListDocs, canListFolders, filter, onResult],
+  );
 
-    return () => {
-      ignore = true;
-    };
-  }, [parentId, mock, canListDocs, canListFolders, filter, onResult]);
-
-  return { setParentId };
+  return { loadContent };
 }
