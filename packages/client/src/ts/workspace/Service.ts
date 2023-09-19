@@ -2,7 +2,7 @@ import { FileTypeUtils } from "../utils/FileTypeUtils";
 import { OdeServices } from "../services/OdeServices";
 import { ID, WorkspaceElement, WorkspaceSearchFilter } from "./interface";
 
-export interface ElementQuery {
+interface ElementQuery {
   id?: ID;
   parentId?: ID;
   hierarchical?: boolean;
@@ -15,12 +15,6 @@ export interface ElementQuery {
   limit?: number;
   skip?: number;
   onlyRoot?: boolean;
-}
-
-export interface Node {
-  _id?: string;
-  children: Node[];
-  name?: string;
 }
 
 export class WorkspaceService {
