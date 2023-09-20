@@ -1,6 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import MediaLibrary, { MediaLibraryProps } from "./MediaLibrary";
+import MediaLibrary, {
+  MediaLibraryProps,
+  MediaLibraryType,
+} from "./MediaLibrary";
 import { useState } from "react";
 import { MockedDataProvider } from "../../core";
 
@@ -13,20 +16,49 @@ const meta: Meta<typeof MediaLibrary> = {
     },
   },
   decorators: [
-    (Story) => (
-      <div
-        style={{
-          height: "200px",
-          display: "grid",
-          placeItems: "center",
-          marginBottom: "10em",
-        }}
-        className="position-relative"
-      >
-        <Story />
-      </div>
-    ),
+    (Story) => {
+      const [type, setType] = useState<MediaLibraryType | null>(null);
+      return (
+        <div
+          style={{
+            height: "350px",
+            display: "grid",
+            placeItems: "center",
+            marginBottom: "10em",
+          }}
+          className="position-relative"
+        >
+          <Story />
+        </div>
+      );
+    },
   ],
+  render: (args: MediaLibraryProps) => {
+    const [type, setType] = useState<MediaLibraryType | null>(null);
+    args.onCancel = () => {
+      setType(null);
+    };
+
+    return (
+      <MockedDataProvider
+        mocks={{
+          workflows: [
+            "org.entcore.workspace.controllers.WorkspaceController|addDocument",
+          ],
+        }}
+      >
+        <button
+          onClick={() => {
+            setType(args.type);
+          }}
+        >
+          Open Media Library
+        </button>
+
+        {<MediaLibrary {...args} type={type} />}
+      </MockedDataProvider>
+    );
+  },
 };
 
 export default meta;
@@ -45,34 +77,7 @@ export const Base: Story = {
       },
     },
   },
-  render: (args: MediaLibraryProps) => {
-    const [display, setDisplay] = useState(false);
-    args.onClose = () => {
-      setDisplay(false);
-    };
-
-    return (
-      <MockedDataProvider
-        mocks={{
-          workflows: [
-            "org.entcore.workspace.controllers.WorkspaceController|addDocument",
-          ],
-        }}
-      >
-        <button
-          onClick={() => {
-            setDisplay(true);
-          }}
-        >
-          Open Media Library
-        </button>
-
-        {display && <MediaLibrary {...args} />}
-      </MockedDataProvider>
-    );
-  },
 };
-
 export const Video: Story = {
   args: {
     type: "video",
@@ -83,32 +88,6 @@ export const Video: Story = {
         story: "Use to choose, embed or capture a video.",
       },
     },
-  },
-  render: (args: MediaLibraryProps) => {
-    const [display, setDisplay] = useState(false);
-    args.onClose = () => {
-      setDisplay(false);
-    };
-
-    return (
-      <MockedDataProvider
-        mocks={{
-          workflows: [
-            "org.entcore.workspace.controllers.WorkspaceController|addDocument",
-          ],
-        }}
-      >
-        <button
-          onClick={() => {
-            setDisplay(true);
-          }}
-        >
-          Open Media Library
-        </button>
-
-        {display && <MediaLibrary {...args} />}
-      </MockedDataProvider>
-    );
   },
 };
 
@@ -123,32 +102,6 @@ export const Image: Story = {
       },
     },
   },
-  render: (args: MediaLibraryProps) => {
-    const [display, setDisplay] = useState(false);
-    args.onClose = () => {
-      setDisplay(false);
-    };
-
-    return (
-      <MockedDataProvider
-        mocks={{
-          workflows: [
-            "org.entcore.workspace.controllers.WorkspaceController|addDocument",
-          ],
-        }}
-      >
-        <button
-          onClick={() => {
-            setDisplay(true);
-          }}
-        >
-          Open Media Library
-        </button>
-
-        {display && <MediaLibrary {...args} />}
-      </MockedDataProvider>
-    );
-  },
 };
 
 export const Attachment: Story = {
@@ -161,32 +114,6 @@ export const Attachment: Story = {
         story: "Use to choose and attach a media file.",
       },
     },
-  },
-  render: (args: MediaLibraryProps) => {
-    const [display, setDisplay] = useState(false);
-    args.onClose = () => {
-      setDisplay(false);
-    };
-
-    return (
-      <MockedDataProvider
-        mocks={{
-          workflows: [
-            "org.entcore.workspace.controllers.WorkspaceController|addDocument",
-          ],
-        }}
-      >
-        <button
-          onClick={() => {
-            setDisplay(true);
-          }}
-        >
-          Open Media Library
-        </button>
-
-        {display && <MediaLibrary {...args} />}
-      </MockedDataProvider>
-    );
   },
 };
 
@@ -201,32 +128,6 @@ export const Embedder: Story = {
       },
     },
   },
-  render: (args: MediaLibraryProps) => {
-    const [display, setDisplay] = useState(false);
-    args.onClose = () => {
-      setDisplay(false);
-    };
-
-    return (
-      <MockedDataProvider
-        mocks={{
-          workflows: [
-            "org.entcore.workspace.controllers.WorkspaceController|addDocument",
-          ],
-        }}
-      >
-        <button
-          onClick={() => {
-            setDisplay(true);
-          }}
-        >
-          Open Media Library
-        </button>
-
-        {display && <MediaLibrary {...args} />}
-      </MockedDataProvider>
-    );
-  },
 };
 
 export const Linker: Story = {
@@ -239,31 +140,5 @@ export const Linker: Story = {
         story: "Use to link an internal resource, or an external website.",
       },
     },
-  },
-  render: (args: MediaLibraryProps) => {
-    const [display, setDisplay] = useState(false);
-    args.onClose = () => {
-      setDisplay(false);
-    };
-
-    return (
-      <MockedDataProvider
-        mocks={{
-          workflows: [
-            "org.entcore.workspace.controllers.WorkspaceController|addDocument",
-          ],
-        }}
-      >
-        <button
-          onClick={() => {
-            setDisplay(true);
-          }}
-        >
-          Open Media Library
-        </button>
-
-        {display && <MediaLibrary {...args} />}
-      </MockedDataProvider>
-    );
   },
 };

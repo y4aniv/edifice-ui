@@ -6,8 +6,8 @@ export interface MockedDataProps {
   children: ReactNode;
   mocks: {
     app?: App;
-    workflows: string[];
-    workspaceDocuments: WorkspaceSearchResult;
+    workflows?: string[];
+    workspaceDocuments?: WorkspaceSearchResult;
   };
 }
 
@@ -29,7 +29,7 @@ export function MockedDataProvider({ children, mocks }: MockedDataProps) {
 
     if (typeof mocks.workflows !== "undefined") {
       value.hasWorkflow = async (workflow) =>
-        mocks.workflows.findIndex((w) => w === workflow) !== -1;
+        mocks.workflows?.findIndex((w) => w === workflow) !== -1;
     }
     if (typeof mocks.workspaceDocuments !== "undefined") {
       value.listWorkspaceDocuments = async () => mocks.workspaceDocuments;

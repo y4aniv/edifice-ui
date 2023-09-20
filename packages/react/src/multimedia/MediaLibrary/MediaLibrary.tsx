@@ -41,7 +41,7 @@ type MediaLibraryTabProps = {
    * Media Library types where this tab should be displayed.
    * "*" for all types.
    */
-  availableFor: Array<MediaLibraryType | "*">;
+  availableFor: Array<MediaLibraryType | "*" | null>;
 
   /** Required checks before using this feature. */
   isEnable: null | (() => boolean);
@@ -76,9 +76,10 @@ type MediaLibraryTypeOptions = {
 };
 
 /** Map of MediaLibrary types and options. */
-const mediaLibraryTypes: {
+const mediaLibraryTypes: { none: null } & {
   [key in MediaLibraryType]: MediaLibraryTypeOptions;
 } = {
+  none: null,
   audio: {
     title: "Ajouter un audio depuis...",
     defaultTab: "audio-capture",
@@ -101,15 +102,15 @@ const mediaLibraryTypes: {
  *
  * FIXME: signature de fonction à faire évoluer au besoin.
  */
-export type MediaLibraryResponse = () => void;
+export type MediaLibraryResponse = (richContent: string) => void;
 
 /**
  * MediaLibrary component properties
  */
 export interface MediaLibraryProps {
-  type: MediaLibraryType;
+  type: MediaLibraryType | null;
   onSuccess: MediaLibraryResponse;
-  onClose: () => void;
+  onCancel: () => void;
 }
 
 //---------------------------------------------------
@@ -118,7 +119,7 @@ export interface MediaLibraryProps {
 export const MediaLibrary = ({
   type,
   onSuccess,
-  onClose,
+  onCancel,
 }: MediaLibraryProps) => {
   const { t } = useTranslation();
 
@@ -197,27 +198,29 @@ export const MediaLibrary = ({
     );
 
   const defaultTabIdx = useMemo<number>(() => {
+    const typeKey = type || "none";
     let idx = 0;
-    if (typeof mediaLibraryTypes[type]?.defaultTab == "string") {
-      const defaultTabId = mediaLibraryTypes[type].defaultTab;
+    if (typeof mediaLibraryTypes[typeKey]?.defaultTab == "string") {
+      const defaultTabId = mediaLibraryTypes[typeKey]?.defaultTab;
       idx = tabs.findIndex((t) => t.id === defaultTabId);
     }
     // Check boundaries before returning the index
     return 0 > idx || idx >= tabs.length ? 0 : idx;
   }, [type, tabs]);
 
-  const isOpen = !!type;
   const modalHeader = t(
-    mediaLibraryTypes[type]?.title ?? "Bibliothèque multimédia", // FIXME i18n key
+    mediaLibraryTypes[type || "none"]?.title ?? "Bibliothèque multimédia", // FIXME i18n key
   );
 
   return (
-    <Modal id="media-library" isOpen={isOpen} onModalClose={onClose}>
-      <Modal.Header onModalClose={onClose}>{modalHeader}</Modal.Header>
-      <Modal.Body>
-        <Tabs items={tabs} defaultId={tabs[defaultTabIdx].id}></Tabs>
-      </Modal.Body>
-    </Modal>
+    type && (
+      <Modal id="media-library" isOpen={type !== null} onModalClose={onCancel}>
+        <Modal.Header onModalClose={onCancel}>{modalHeader}</Modal.Header>
+        <Modal.Body>
+          <Tabs items={tabs} defaultId={tabs[defaultTabIdx].id}></Tabs>
+        </Modal.Body>
+      </Modal>
+    )
   );
 };
 
