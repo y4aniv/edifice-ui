@@ -4,6 +4,7 @@ export * from "./Alert";
 export * from "./AppHeader";
 export * from "./AppIcon";
 export * from "./Avatar";
+export * from "./Attachment";
 export * from "./Breadcrumb";
 export * from "./Button";
 export * from "./Card";

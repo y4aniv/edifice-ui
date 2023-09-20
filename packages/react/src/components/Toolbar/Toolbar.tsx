@@ -1,8 +1,17 @@
-import { ReactNode, Ref, forwardRef } from "react";
+import {
+  FocusEvent,
+  KeyboardEvent,
+  ReactNode,
+  Ref,
+  forwardRef,
+  useEffect,
+  useRef,
+} from "react";
 
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 
+import { mergeRefs } from "../../utils";
 import { ActionMenu, ActionMenuOptions } from "../ActionMenu";
 import { IconButton } from "../Button";
 import { Dropdown, DropdownTrigger } from "../Dropdown";
@@ -85,6 +94,10 @@ export interface ToolbarProps extends React.ComponentPropsWithRef<"div"> {
    */
   isBlock?: boolean;
   /**
+   * Editor container ID for a11y purpose
+   */
+  ariaControls?: string;
+  /**
    * Accept optional children
    */
   children?: ReactNode;
@@ -98,10 +111,12 @@ const Toolbar = forwardRef(
       variant = "default",
       align = "space",
       isBlock = false,
+      ariaControls,
     }: ToolbarProps,
     ref: Ref<ToolbarRef>,
   ) => {
     const { t } = useTranslation();
+    const divToolbarRef = useRef<HTMLDivElement>();
 
     const classes = clsx("toolbar z-2000", {
       default: variant === "default",
@@ -115,8 +130,71 @@ const Toolbar = forwardRef(
       "justify-content-end": align === "right",
     });
 
+    const toolbarItems: Array<HTMLButtonElement> = [];
+    let lastItem: HTMLButtonElement;
+    let firstItem: HTMLButtonElement;
+
+    useEffect(() => {
+      const items: NodeListOf<HTMLButtonElement> | undefined =
+        divToolbarRef.current?.querySelectorAll("button");
+      items?.forEach((item, index) => {
+        if (index === 0) {
+          firstItem = item;
+        }
+        lastItem = item;
+        toolbarItems.push(item);
+      });
+    }, [data]);
+
+    const handleFocus = (event: FocusEvent<HTMLDivElement>) => {
+      // div toolbar
+      event.currentTarget.classList.add("focus");
+      // focused button
+      event.target.classList.add("focus");
+    };
+
+    const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
+      // div toolbar
+      event.currentTarget.classList.remove("focus");
+      // focused button
+      event.target.classList.remove("focus");
+    };
+
+    const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+      const index = toolbarItems.indexOf(event.currentTarget);
+      switch (event.code) {
+        case "ArrowLeft":
+          // switch to previous item
+          if (event.currentTarget === firstItem) {
+            lastItem.focus();
+          } else {
+            toolbarItems[index - 1].focus();
+          }
+          break;
+        case "ArrowRight":
+          // switch to next item
+          if (event.currentTarget === lastItem) {
+            firstItem.focus();
+          } else {
+            toolbarItems[index + 1].focus();
+          }
+          break;
+        default:
+          break;
+      }
+    };
+
     return (
-      <div ref={ref} className={classes} style={{ zIndex: "999999" }}>
+      <div
+        ref={mergeRefs(ref, divToolbarRef)}
+        className={classes}
+        style={{ zIndex: "999999" }}
+        role="toolbar"
+        aria-label="Text Formatting"
+        aria-controls={ariaControls}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      >
         {data.map((item, index) => {
           const isDisabled = !item.type && !item.isEnable;
           const isDivider = "type" in item && item.type === "divider";
@@ -138,6 +216,8 @@ const Toolbar = forwardRef(
                 aria-label={t(item.label)}
                 variant="filled"
                 color="primary"
+                tabIndex={index === 0 ? 0 : -1}
+                onKeyDown={handleKeyDown}
               />
             );
           }
@@ -157,6 +237,8 @@ const Toolbar = forwardRef(
                       item.className,
                       item.isActive ? "is-selected" : "",
                     )}
+                    tabIndex={index === 0 ? 0 : -1}
+                    onKeyDown={handleKeyDown}
                   />
                 }
                 content={item.content?.()}
@@ -176,13 +258,20 @@ const Toolbar = forwardRef(
                 item.className,
                 item.isActive ? "is-selected" : "",
               )}
+              tabIndex={index === 0 ? 0 : -1}
+              onKeyDown={handleKeyDown}
             />
           );
         })}
         {options ? (
           <Dropdown
-            trigger={<DropdownTrigger title="Plus" variant="ghost" />}
+            trigger={
+              <DropdownTrigger title="Plus" variant="ghost" tabIndex={-1} />
+            }
             content={<ActionMenu id="action-menu" options={options} />}
+            aria-label="Menu d'actions"
+            aria-haspopup="true"
+            aria-controls="action-menu"
           />
         ) : null}
       </div>
