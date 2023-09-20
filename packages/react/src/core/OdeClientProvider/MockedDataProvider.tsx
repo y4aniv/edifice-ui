@@ -1,8 +1,6 @@
 import { createContext, type ReactNode, useMemo, useContext } from "react";
 
-import { App } from "edifice-ts-client";
-
-import { WorkspaceSearchResult } from "../useWorkspaceSearch/useWorkspaceSearch";
+import { App, WorkspaceSearchResult } from "edifice-ts-client";
 
 export interface MockedDataProps {
   children: ReactNode;

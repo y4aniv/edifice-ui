@@ -16,12 +16,7 @@ import {
   TreeNode,
   TreeView,
 } from "../../components";
-import useWorkspaceSearch, {
-  WorkspaceDocument,
-  WorkspaceFolder,
-  WorkspaceSearchFilter,
-  WorkspaceSearchResult,
-} from "../../core/useWorkspaceSearch/useWorkspaceSearch";
+import { useWorkspaceSearch } from "../../core";
 
 // type FileFormat = "audio" | "img";
 
@@ -39,11 +34,7 @@ import useWorkspaceSearch, {
 // //---------------------
 // type MediaLibraryView = "icons" | "list";
 
-export interface WorkspaceProps {
-  selected?: string;
-}
-
-export const Workspace = (props: WorkspaceProps) => {
+export const Workspace = () => {
   const { t } = useTranslation();
 
   const [owner, setNodeOwner] = useState<TreeNode>({
@@ -86,7 +77,10 @@ export const Workspace = (props: WorkspaceProps) => {
 
   const [currentFilter, setCurrentFilter] =
     useState<WorkspaceSearchFilter>("owner");
+
   const [currentNode, setCurrentNode] = useState<TreeNode>(owner);
+
+  const [documents, setDocuments] = useState<WorkspaceDocument[]>([]);
 
   /**
    * Update Treeviews and file list with loaded results.
@@ -109,12 +103,11 @@ export const Workspace = (props: WorkspaceProps) => {
         currentNode.children = folders;
         setCurrentNode(currentNode);
 
-        // Re-render the treeview
-        const { getter, setter } = rootAccessorsFor(filter);
-        setter({ ...getter });
+        // Update document list
+        setDocuments(files);
       }
     },
-    [currentFilter, currentNode, rootAccessorsFor],
+    [currentFilter, currentNode],
   );
 
   const { loadContent: searchForOwnerDocs } = useWorkspaceSearch(
@@ -186,6 +179,7 @@ export const Workspace = (props: WorkspaceProps) => {
   }
 
   /** Load initial content, once */
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => selectAndLoadContent("owner", ""), []);
 
   return (
@@ -244,7 +238,7 @@ export const Workspace = (props: WorkspaceProps) => {
             />
           </Grid.Col>
           <Grid.Col sm="4" md="8" xl="12" className="p-12 gap-8">
-            <p>My list here, selected = {props.selected}</p>
+            <p>My list here, selected = {JSON.stringify(documents)}</p>
           </Grid.Col>
         </Grid>
       </Grid.Col>

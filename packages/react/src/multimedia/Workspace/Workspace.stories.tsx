@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import { useState } from "react";
-import Workspace, { WorkspaceProps } from "./Workspace";
+import Workspace from "./Workspace";
 import { TreeNode } from "../../components";
 import { MockedDataProvider } from "../../core";
 import { WorkspaceSearchResult } from "../../core/useWorkspaceSearch/useWorkspaceSearch";
@@ -45,7 +45,7 @@ export const Base: Story = {
       },
     },
   },
-  render: (args: WorkspaceProps) => {
+  render: (args: any) => {
     return (
       <MockedDataProvider
         mocks={{

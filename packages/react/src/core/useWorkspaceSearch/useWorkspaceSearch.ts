@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 
-//import { odeServices } from "edifice-ts-client";
+import { odeServices } from "edifice-ts-client";
+import { ID, WorkspaceElement, WorkspaceSearchFilter } from "edifice-ts-client";
 
 import { useMockedData } from "../OdeClientProvider";
 import { useHasWorkflow } from "../useHasWorkflow";
@@ -32,83 +33,56 @@ import { useHasWorkflow } from "../useHasWorkflow";
 // /workspace/documents?filter=owner&parentId=&hierarchical=false&includeall=true&_=1695024601189
 // /workspace/documents?filter=shared&parentId=&directShared=true&hierarchical=false&includeall=true&_=1695024601190
 
-type ID = string;
+// export interface WorkspaceElement {
+//   id: ID;
+//   externalId?: "edumedia" | ID;
 
-export type WorkspacePreferenceView = "list" | "icons" | "carousel";
-export interface WorkspacePreference {
-  sortField?: string;
-  sortDesc?: boolean;
-  view?: WorkspacePreferenceView;
-  bbmView?: WorkspacePreferenceView;
-  quickstart?: "viewed" | "notviewed";
-}
+//   name: string;
+//   application?: string;
+//   eType: "folder" | "file";
+//   eParent?: string;
+//   created?: string;
+//   modified?: string;
 
-export type WorkspaceSearchFilter = "protected" | "owner" | "shared" | "trash";
+//   deleted?: boolean;
+//   trasher?: ID;
+//   owner?: { userId: ID; displayName: string };
+//   ownerName?: string;
+// }
 
-export interface WorkspaceElement {
-  id: ID;
-  externalId?: "edumedia" | ID;
+// export type WorkspaceFolder = WorkspaceElement & {
+//   children: WorkspaceElement[];
+// };
 
-  name: string;
-  application?: string;
-  eType: "folder" | "file";
-  eParent?: string;
-  created?: string;
-  modified?: string;
-
-  deleted?: boolean;
-  trasher?: ID;
-  owner?: { userId: ID; displayName: string };
-  ownerName?: string;
-}
-
-export type WorkspaceFolder = WorkspaceElement & {
-  children: WorkspaceElement[];
-};
-
-export type WorkspaceDocument = WorkspaceElement & {
-  metadata?: {
-    "content-type"?: string;
-    role?: string;
-    extension?: string;
-    filename?: string;
-    size?: number;
-    captation?: boolean;
-    duration?: number;
-    width?: number;
-    height?: number;
-  };
-  /* TODO complete    
-  thumbnails: { [resolution: string]: ID };
-    file: string,
-    "ancestors": [],
-    "deleted": false,
-    "eParent": null,
-    "inheritedShares": [],
-    "isShared": false,
-    "shared": []
-    */
-};
-
-export type WorkspaceSearchResult = Array<WorkspaceFolder | WorkspaceDocument>;
-
-function listDocuments(
-  filter: WorkspaceSearchFilter,
-  parentId: ID = "",
-): Promise<WorkspaceSearchResult> {
-  const params = `?filter=${filter}&parentId=${
-    parentId ? parentId : ""
-  }&_=${new Date().getTime()}`;
-  return fetch("/workspace/documents" + params).then(
-    (result) => result.json as unknown as WorkspaceSearchResult,
-  );
-}
+// export type WorkspaceDocument = WorkspaceElement & {
+//   metadata?: {
+//     "content-type"?: string;
+//     role?: string;
+//     extension?: string;
+//     filename?: string;
+//     size?: number;
+//     captation?: boolean;
+//     duration?: number;
+//     width?: number;
+//     height?: number;
+//   };
+//   /* TODO complete
+//   thumbnails: { [resolution: string]: ID };
+//     file: string,
+//     "ancestors": [],
+//     "deleted": false,
+//     "eParent": null,
+//     "inheritedShares": [],
+//     "isShared": false,
+//     "shared": []
+//     */
+// };
 
 export default function useWorkspaceSearch(
   filter: WorkspaceSearchFilter,
   onResult: (
     filter: WorkspaceSearchFilter,
-    content: WorkspaceSearchResult,
+    content: WorkspaceElement[],
   ) => void,
 ) {
   const mock = useMockedData();
@@ -121,18 +95,22 @@ export default function useWorkspaceSearch(
 
   const loadContent = useCallback(
     (folderId: ID) => {
-      let ignore = false;
-
-      if (!ignore && canListDocs && canListFolders) {
+      if (canListDocs && canListFolders) {
         // If mocked data is available, use it. Otherwise load from server.
         const asyncLoad =
-          mock?.listWorkspaceDocuments?.() || listDocuments(filter, folderId);
+          mock?.listWorkspaceDocuments?.().then((results) =>
+            results.map((r) => {
+              // Generate random IDs to prevent infinite recursion
+              const ret = { ...r, id: "" + Math.round(Math.random() * 9999) };
+              ret.name =
+                r.eType == "folder"
+                  ? "folder id=" + ret.id
+                  : "file id=" + ret.id;
+              return ret;
+            }),
+          ) || odeServices.workspace().listDocuments(filter, folderId);
         asyncLoad.then((results) => onResult(filter, results));
       }
-
-      return () => {
-        ignore = true;
-      };
     },
     [mock, canListDocs, canListFolders, filter, onResult],
   );
