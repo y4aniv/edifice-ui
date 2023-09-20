@@ -189,8 +189,8 @@ export const Workspace = () => {
   useEffect(() => selectAndLoadContent("owner", ""), []);
 
   return (
-    <Grid className="flex-grow-1 gap-0">
-      <Grid.Col sm="1" md="2" xl="3" className="border-end p-12 gap-12">
+    <Grid className="workspace flex-grow-1 gap-0">
+      <Grid.Col sm="1" md="2" xl="3" className="folders border-end p-12 gap-12">
         <TreeView
           data={owner}
           onTreeItemSelect={(nodeId) => selectAndLoadContent("owner", nodeId)}
@@ -217,7 +217,7 @@ export const Workspace = () => {
             sm="4"
             md="8"
             xl="12"
-            className="border-bottom px-16 py-8 gap-16 d-flex"
+            className="search border-bottom px-16 py-8 gap-16 d-flex "
           >
             <FormControl className="input-group" id="search">
               <Input
@@ -243,7 +243,7 @@ export const Workspace = () => {
               content={<p>TODO</p>}
             />
           </Grid.Col>
-          <Grid.Col sm="4" md="8" xl="12" className="p-12 gap-8">
+          <Grid.Col sm="4" md="8" xl="12" className="list p-12 gap-8">
             <p>My list here, selected = {JSON.stringify(documents)}</p>
           </Grid.Col>
         </Grid>
