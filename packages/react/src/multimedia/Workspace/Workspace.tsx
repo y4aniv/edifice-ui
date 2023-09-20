@@ -4,6 +4,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { Filter, Search } from "@edifice-ui/icons";
+import { WorkspaceElement, WorkspaceSearchFilter } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -38,17 +39,17 @@ export const Workspace = () => {
   const { t } = useTranslation();
 
   const [owner, setNodeOwner] = useState<TreeNode>({
-    id: "owner",
+    id: "",
     name: t("Mes documents"),
     section: true,
   });
   const [shared, setNodeShared] = useState<TreeNode>({
-    id: "shared",
+    id: "",
     name: t("Partagé avec moi"),
     section: true,
   });
   const [protectd, setNodeProtectd] = useState<TreeNode>({
-    id: "protected",
+    id: "",
     name: t("Ajouté dans les applications"),
     section: true,
   });
@@ -80,24 +81,29 @@ export const Workspace = () => {
 
   const [currentNode, setCurrentNode] = useState<TreeNode>(owner);
 
-  const [documents, setDocuments] = useState<WorkspaceDocument[]>([]);
+  const [documents, setDocuments] = useState<WorkspaceElement[]>([]);
 
   /**
    * Update Treeviews and file list with loaded results.
    */
   const onSearchResults = useCallback(
-    (filter: WorkspaceSearchFilter, content: WorkspaceSearchResult) => {
+    (filter: WorkspaceSearchFilter, content: WorkspaceElement[]) => {
       // Do not update children of the current node if filter has changed or children are already defined
       if (
         currentFilter !== filter ||
         typeof currentNode.children === "undefined"
       ) {
         // Split results between folders and files :
-        const folders: WorkspaceFolder[] = [];
-        const files: WorkspaceDocument[] = [];
-        content.forEach((node) =>
-          (node.eType === "folder" ? folders : files).push(node as any),
-        );
+        const folders: TreeNode[] = [];
+        const files: WorkspaceElement[] = [];
+        content.forEach((doc) => {
+          if (doc.eType === "folder") {
+            // Map id of TreeNode with _id of document
+            folders.push({ id: doc._id || "", name: doc.name, element: doc });
+          } else {
+            files.push(doc);
+          }
+        });
 
         // Only folders are displayed in the Treeview
         currentNode.children = folders;

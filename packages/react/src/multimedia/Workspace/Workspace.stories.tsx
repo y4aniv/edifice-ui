@@ -4,23 +4,41 @@ import { useState } from "react";
 import Workspace from "./Workspace";
 import { TreeNode } from "../../components";
 import { MockedDataProvider } from "../../core";
-import { WorkspaceSearchResult } from "../../core/useWorkspaceSearch/useWorkspaceSearch";
+import { WorkspaceElement } from "edifice-ts-client";
 
-const mockedData: WorkspaceSearchResult = [
+const mockedData: WorkspaceElement[] = [
   {
-    id: "folder1",
+    _id: "folder1",
     name: "level 1 arborescence tree",
     eType: "folder",
+    eParent: "",
+    _isShared: false,
+    _shared: [],
+    children: null!,
+    created: null as any,
+    owner: null as any,
   },
   {
-    id: "folder2",
+    _id: "folder2",
     name: "level 1 arborescence tree",
     eType: "folder",
+    eParent: "",
+    _isShared: false,
+    _shared: [],
+    children: null!,
+    created: null as any,
+    owner: null as any,
   },
   {
-    id: "file1",
+    _id: "file1",
     name: "File 1",
     eType: "file",
+    eParent: "",
+    _isShared: false,
+    _shared: [],
+    children: null!,
+    created: null as any,
+    owner: null as any,
   },
 ];
 

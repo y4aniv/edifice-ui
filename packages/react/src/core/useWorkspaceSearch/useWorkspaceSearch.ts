@@ -33,51 +33,6 @@ import { useHasWorkflow } from "../useHasWorkflow";
 // /workspace/documents?filter=owner&parentId=&hierarchical=false&includeall=true&_=1695024601189
 // /workspace/documents?filter=shared&parentId=&directShared=true&hierarchical=false&includeall=true&_=1695024601190
 
-// export interface WorkspaceElement {
-//   id: ID;
-//   externalId?: "edumedia" | ID;
-
-//   name: string;
-//   application?: string;
-//   eType: "folder" | "file";
-//   eParent?: string;
-//   created?: string;
-//   modified?: string;
-
-//   deleted?: boolean;
-//   trasher?: ID;
-//   owner?: { userId: ID; displayName: string };
-//   ownerName?: string;
-// }
-
-// export type WorkspaceFolder = WorkspaceElement & {
-//   children: WorkspaceElement[];
-// };
-
-// export type WorkspaceDocument = WorkspaceElement & {
-//   metadata?: {
-//     "content-type"?: string;
-//     role?: string;
-//     extension?: string;
-//     filename?: string;
-//     size?: number;
-//     captation?: boolean;
-//     duration?: number;
-//     width?: number;
-//     height?: number;
-//   };
-//   /* TODO complete
-//   thumbnails: { [resolution: string]: ID };
-//     file: string,
-//     "ancestors": [],
-//     "deleted": false,
-//     "eParent": null,
-//     "inheritedShares": [],
-//     "isShared": false,
-//     "shared": []
-//     */
-// };
-
 export default function useWorkspaceSearch(
   filter: WorkspaceSearchFilter,
   onResult: (
@@ -94,18 +49,18 @@ export default function useWorkspaceSearch(
   );
 
   const loadContent = useCallback(
-    (folderId: ID) => {
+    (folderId?: ID) => {
       if (canListDocs && canListFolders) {
         // If mocked data is available, use it. Otherwise load from server.
         const asyncLoad =
           mock?.listWorkspaceDocuments?.().then((results) =>
             results.map((r) => {
               // Generate random IDs to prevent infinite recursion
-              const ret = { ...r, id: "" + Math.round(Math.random() * 9999) };
+              const ret = { ...r, _id: "" + Math.round(Math.random() * 9999) };
               ret.name =
                 r.eType == "folder"
-                  ? "folder id=" + ret.id
-                  : "file id=" + ret.id;
+                  ? "folder id=" + ret._id
+                  : "file id=" + ret._id;
               return ret;
             }),
           ) || odeServices.workspace().listDocuments(filter, folderId);

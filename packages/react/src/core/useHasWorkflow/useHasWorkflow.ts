@@ -14,17 +14,21 @@ export default function useHasWorkflow(
   >();
 
   useEffect(() => {
-    (async () => {
-      let response;
+    let promise: Promise<boolean | Record<string, boolean>>;
+    if (mock?.hasWorkflow) {
       if (typeof workflow === "string") {
-        response = await (mock?.hasWorkflow
-          ? mock.hasWorkflow
-          : odeServices.rights().sessionHasWorkflowRight)(workflow);
+        promise = mock.hasWorkflow(workflow);
       } else {
-        await odeServices.rights().sessionHasWorkflowRights(workflow);
+        throw "not.implemented.yet)";
       }
-      setState(response);
-    })();
+    } else {
+      if (typeof workflow === "string") {
+        promise = odeServices.rights().sessionHasWorkflowRight(workflow);
+      } else {
+        promise = odeServices.rights().sessionHasWorkflowRights(workflow);
+      }
+    }
+    promise.then((response) => setState(response));
   }, [workflow, mock]);
 
   return state;

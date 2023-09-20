@@ -214,7 +214,12 @@ export const MediaLibrary = ({
 
   return (
     type && (
-      <Modal id="media-library" isOpen={type !== null} onModalClose={onCancel}>
+      <Modal
+        id="media-library"
+        isOpen={type !== null}
+        onModalClose={onCancel}
+        size="xl"
+      >
         <Modal.Header onModalClose={onCancel}>{modalHeader}</Modal.Header>
         <Modal.Body>
           <Tabs items={tabs} defaultId={tabs[defaultTabIdx].id}></Tabs>

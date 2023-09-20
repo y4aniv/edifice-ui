@@ -1,20 +1,20 @@
 import { createContext, type ReactNode, useMemo, useContext } from "react";
 
-import { App, WorkspaceSearchResult } from "edifice-ts-client";
+import { App, WorkspaceElement } from "edifice-ts-client";
 
 export interface MockedDataProps {
   children: ReactNode;
   mocks: {
     app?: App;
     workflows?: string[];
-    workspaceDocuments?: WorkspaceSearchResult;
+    workspaceDocuments?: WorkspaceElement[];
   };
 }
 
 export interface ContextProps {
   app?: App;
   hasWorkflow?: (workflow: string) => Promise<boolean>;
-  listWorkspaceDocuments?: () => Promise<WorkspaceSearchResult>;
+  listWorkspaceDocuments?: () => Promise<WorkspaceElement[]>;
 }
 
 const MockedDataContext = createContext<ContextProps | null>(null!);
@@ -31,8 +31,8 @@ export function MockedDataProvider({ children, mocks }: MockedDataProps) {
       value.hasWorkflow = async (workflow) =>
         mocks.workflows?.findIndex((w) => w === workflow) !== -1;
     }
-    if (typeof mocks.workspaceDocuments !== "undefined") {
-      value.listWorkspaceDocuments = async () => mocks.workspaceDocuments;
+    if (mocks.workspaceDocuments) {
+      value.listWorkspaceDocuments = async () => mocks.workspaceDocuments ?? [];
     }
 
     return value;
