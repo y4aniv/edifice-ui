@@ -3,18 +3,42 @@ import { OdeServices } from "../services/OdeServices";
 import { ID, WorkspaceElement, WorkspaceSearchFilter } from "./interface";
 
 interface ElementQuery {
-  id?: ID;
-  parentId?: ID;
-  hierarchical?: boolean;
+  /**
+   * Keep only results having this criteria.
+   * Defaults to "owner" in backend but must be specified here for clarity.
+   */
   filter: WorkspaceSearchFilter;
-  search?: string;
-  includeall?: boolean;
+  /** Restrict results to this element id only (kind of get). */
+  id?: ID;
+  /** Restrict results to element having this direct parent (folder). */
+  parentId?: ID;
+  /** Restrict results to elements having this ancestor (folder) at any level. */
   ancestorId?: string;
-  application?: string;
-  directShared?: boolean;
-  limit?: number;
-  skip?: number;
+  /** Restrict results to the 1st folder hierarchy level. */
   onlyRoot?: boolean;
+  /** Restrict results to this app. */
+  application?: string;
+  /** Restrict results to elements containing this text. */
+  search?: string;
+  /** Extend results to files AND folders. Defaults to false, with file results only. */
+  includeall?: boolean;
+  /** Max number of results needed. */
+  limit?: number;
+  /**
+   * Skip the first N results.
+   * Allows for pagination when used with the `limit` parameter.
+   */
+  skip?: number;
+  /**
+   * Restrict results to elements directly shared with the user.
+   * => Handle this param through a dedicated method. Do not expose it directly.
+   */
+  directShared?: boolean;
+  /**
+   * Truthy when result is a tree ?
+   * => Handle this param through a dedicated method. Do not expose it directly.
+   */
+  hierarchical?: boolean;
 }
 
 export class WorkspaceService {
@@ -89,7 +113,7 @@ export class WorkspaceService {
     let filesO: WorkspaceElement[] =
       params.filter !== "external" || params.parentId
         ? await this.http.get<WorkspaceElement[]>("/workspace/documents", {
-            queryParams: params,
+            queryParams: { ...params, _: new Date().getTime() },
           })
         : [];
     const filterFn = await this.acceptDocuments(params);
@@ -100,6 +124,6 @@ export class WorkspaceService {
     filter: WorkspaceSearchFilter,
     parentId?: ID,
   ): Promise<WorkspaceElement[]> {
-    return this.fetchDocuments({ filter, parentId });
+    return this.fetchDocuments({ filter, parentId, includeall: true });
   }
 }
