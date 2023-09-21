@@ -183,7 +183,7 @@ const MediaLibrary = ({ type, onSuccess, onCancel }: MediaLibraryProps) => {
       label: t("Captation vidéo"),
       content: <InnerTabs.Video />,
       availableFor: ["video"],
-      isEnable: () => false, // TODO workflow ?
+      isEnable: () => true, // TODO workflow ?
     },
     "audio-capture": {
       id: "audio",
