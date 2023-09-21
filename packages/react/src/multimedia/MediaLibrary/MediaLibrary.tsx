@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
 import {
   ExternalLink,
@@ -10,6 +10,7 @@ import {
 import { useTranslation } from "react-i18next";
 
 import { InnerTabs } from "./innertabs";
+import { Button } from "../../components";
 import Modal from "../../components/Modal/Modal";
 import { Tabs } from "../../components/Tabs";
 import { TabsItemProps } from "../../components/Tabs/TabsItem";
@@ -98,19 +99,43 @@ const mediaLibraryTypes: { none: null } & {
 };
 
 /**
- * Type of response the media library will send on success.
+ * Type of result the media library will send on success.
  *
  * FIXME: signature de fonction à faire évoluer au besoin.
  */
-export type MediaLibraryResponse = (richContent: string) => void;
+export type MediaLibraryResult = string;
 
 /**
  * MediaLibrary component properties
  */
 export interface MediaLibraryProps {
   type: MediaLibraryType | null;
-  onSuccess: MediaLibraryResponse;
+  onSuccess: (result: MediaLibraryResult) => void;
   onCancel: () => void;
+}
+
+const MediaLibraryContext = createContext<{
+  // Set the counter in the success button label
+  setResultCounter: (count?: number) => void;
+
+  // Set a innertab-specific callback which gets the result when success button is clicked
+  setResult: (result?: MediaLibraryResult) => void;
+
+  /**
+   * Allow an innertab to switch display to another innertab.
+   * This function will throw an error if switching failed.
+   */
+  setVisibleTab: (tab: AvailableTab) => void;
+}>(null!);
+
+export function useMediaLibraryContext() {
+  const context = useContext(MediaLibraryContext);
+  if (!context) {
+    throw new Error(
+      `Innertabs compound components cannot be rendered outside the MediaLibrary component`,
+    );
+  }
+  return context;
 }
 
 //---------------------------------------------------
@@ -134,7 +159,7 @@ export const MediaLibrary = ({
       id: "workspace",
       icon: <Folder />,
       label: t("Espace doc"),
-      content: <InnerTabs.Workspace onSuccess={onSuccess} />,
+      content: <InnerTabs.Workspace />,
       availableFor: ["audio", "video", "image", "attachment"],
       isEnable: null,
     },
@@ -142,7 +167,7 @@ export const MediaLibrary = ({
       id: "upload",
       icon: <Smartphone />,
       label: t("Mon appareil"),
-      content: <InnerTabs.Upload onSuccess={onSuccess} />,
+      content: <InnerTabs.Upload />,
       availableFor: ["audio", "video", "image", "attachment"],
       isEnable: () => (workspaceCreateWorkflow ? true : false),
     },
@@ -150,7 +175,7 @@ export const MediaLibrary = ({
       id: "video",
       icon: <RecordVideo />,
       label: t("Captation vidéo"),
-      content: <InnerTabs.Video onSuccess={onSuccess} />,
+      content: <InnerTabs.Video />,
       availableFor: ["video"],
       isEnable: () => false, // TODO workflow ?
     },
@@ -158,7 +183,7 @@ export const MediaLibrary = ({
       id: "audio",
       icon: <Mic />,
       label: t("Captation audio"),
-      content: <InnerTabs.Audio onSuccess={onSuccess} />,
+      content: <InnerTabs.Audio />,
       availableFor: ["audio"],
       isEnable: () => (workspaceCreateWorkflow ? true : false),
     },
@@ -166,7 +191,7 @@ export const MediaLibrary = ({
       id: "external",
       icon: <ExternalLink />,
       label: t("Lien externe"),
-      content: <InnerTabs.Linker onSuccess={onSuccess} />,
+      content: <InnerTabs.Linker />,
       availableFor: ["hyperlink"],
       isEnable: null,
     },
@@ -174,7 +199,7 @@ export const MediaLibrary = ({
       id: "resource",
       icon: <Folder />,
       label: t("Lien interne"),
-      content: <InnerTabs.Resource onSuccess={onSuccess} />,
+      content: <InnerTabs.Resource />,
       availableFor: ["hyperlink"],
       isEnable: null,
     },
@@ -182,21 +207,28 @@ export const MediaLibrary = ({
       id: "iframe",
       icon: <ExternalLink />,
       label: t("</> Balise embed ou iframe"),
-      content: <InnerTabs.Iframe onSuccess={onSuccess} />,
+      content: <InnerTabs.Iframe />,
       availableFor: ["embedder"],
       isEnable: null,
     },
   };
 
+  // --------------- Hooks
   /* Filter out unwanted tabs. */
-  const tabs = orderedTabs
-    .map((key) => availableTabs[key])
-    .filter(
-      (tab) =>
-        tab.isEnable?.() !== false &&
-        (tab.availableFor.length === 0 || tab.availableFor.includes(type)),
-    );
+  const tabs = useMemo<(TabsItemProps & MediaLibraryTabProps)[]>(
+    () =>
+      orderedTabs
+        .map((key) => availableTabs[key])
+        .filter(
+          (tab) =>
+            tab.isEnable?.() !== false &&
+            (tab.availableFor.length === 0 || tab.availableFor.includes(type)),
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+        ),
+    [type],
+  );
 
+  /* Compute the index of the displayed tab by default. */
   const defaultTabIdx = useMemo<number>(() => {
     const typeKey = type || "none";
     let idx = 0;
@@ -204,27 +236,69 @@ export const MediaLibrary = ({
       const defaultTabId = mediaLibraryTypes[typeKey]?.defaultTab;
       idx = tabs.findIndex((t) => t.id === defaultTabId);
     }
-    // Check boundaries before returning the index
+    // Check boundaries before returning an index.
     return 0 > idx || idx >= tabs.length ? 0 : idx;
   }, [type, tabs]);
 
+  // Stateful contextual values
+  const [resultCounter, setResultCounter] = useState<number | undefined>();
+  const [result, setResult] = useState<MediaLibraryResult | undefined>();
+  function setVisibleTab(tab: AvailableTab) {
+    const idx = tabs.findIndex((t) => t.id === tab);
+    if (idx < 0) throw "tab.not.visible";
+    // TODO améliorer le composant Tabs pour pouvoir le piloter depuis le parent.
+    throw "not.implemented.yet";
+  }
+
+  // --------------- Utility functions
   const modalHeader = t(
     mediaLibraryTypes[type || "none"]?.title ?? "Bibliothèque multimédia", // FIXME i18n key
   );
+  function handleSuccess() {
+    if (result) onSuccess(result);
+  }
 
   return (
     type && (
-      <Modal
-        id="media-library"
-        isOpen={type !== null}
-        onModalClose={onCancel}
-        size="xl"
+      <MediaLibraryContext.Provider
+        value={{
+          setResultCounter,
+          setResult,
+          setVisibleTab,
+        }}
       >
-        <Modal.Header onModalClose={onCancel}>{modalHeader}</Modal.Header>
-        <Modal.Body>
-          <Tabs items={tabs} defaultId={tabs[defaultTabIdx].id}></Tabs>
-        </Modal.Body>
-      </Modal>
+        <Modal
+          id="media-library"
+          isOpen={type !== null}
+          onModalClose={onCancel}
+          size="xl"
+        >
+          <Modal.Header onModalClose={onCancel}>{modalHeader}</Modal.Header>
+          <Modal.Body>
+            <Tabs items={tabs} defaultId={tabs[defaultTabIdx].id}></Tabs>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              type="button"
+              color="tertiary"
+              variant="ghost"
+              onClick={onCancel}
+            >
+              {t("cancel")}
+            </Button>
+            <Button
+              type="button"
+              color="primary"
+              variant="filled"
+              disabled={typeof result !== "undefined"}
+              onClick={handleSuccess}
+            >
+              {t("add")}
+              {resultCounter && ` (${resultCounter})`}
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </MediaLibraryContext.Provider>
     )
   );
 };

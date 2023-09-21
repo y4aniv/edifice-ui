@@ -1,9 +1,8 @@
-import { MediaLibraryResponse } from "../MediaLibrary";
+import { useMediaLibraryContext } from "../MediaLibrary";
 
-export const Upload = ({ onSuccess }: { onSuccess: MediaLibraryResponse }) => {
-  return (
-    <p>
-      TODO: Upload <button onClick={onSuccess}>successful</button>
-    </p>
-  );
+export const Upload = () => {
+  const ctx = useMediaLibraryContext();
+  ctx.setResult();
+
+  return <p>TODO: Upload</p>;
 };

@@ -1,15 +1,13 @@
 import { Workspace as WorkspaceWidget } from "../../Workspace";
-import { MediaLibraryResponse } from "../MediaLibrary";
+import { useMediaLibraryContext } from "../MediaLibrary";
 
-export const Workspace = ({
-  onSuccess,
-}: {
-  onSuccess: MediaLibraryResponse;
-}) => {
+export const Workspace = () => {
+  const ctx = useMediaLibraryContext();
+  ctx.setResult();
+
   return (
-    <div>
-      <WorkspaceWidget dummy="hé !"></WorkspaceWidget>
-      <button onClick={onSuccess}>successful</button>
+    <div className="border rounded mt-24">
+      <WorkspaceWidget></WorkspaceWidget>
     </div>
   );
 };

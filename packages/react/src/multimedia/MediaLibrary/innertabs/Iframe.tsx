@@ -1,9 +1,8 @@
-import { MediaLibraryResponse } from "../MediaLibrary";
+import { useMediaLibraryContext } from "../MediaLibrary";
 
-export const Iframe = ({ onSuccess }: { onSuccess: MediaLibraryResponse }) => {
-  return (
-    <p>
-      TODO: Iframe <button onClick={onSuccess}>successful</button>
-    </p>
-  );
+export const Iframe = () => {
+  const ctx = useMediaLibraryContext();
+  ctx.setResult();
+
+  return <p>TODO: Iframe</p>;
 };
