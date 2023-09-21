@@ -1,118 +1,163 @@
 import React, {
   ChangeEvent,
-  ComponentPropsWithRef,
-  forwardRef,
-  Ref,
+  createContext,
+  useContext,
+  useMemo,
   useRef,
   useState,
 } from "react";
 
-import { Download } from "@edifice-ui/icons";
 import clsx from "clsx";
 
+import DropzoneDrag from "./DropzoneDrag";
+import DropzoneFile from "./DropzoneFile";
+import DropzoneImport from "./DropzoneImport";
 import { useDropzone } from "../../hooks";
-import { Button } from "../Button";
+export interface AttachementType {
+  type: string;
+  size: number;
+  name: string;
+  src: string;
+}
 
-export interface DropzoneProps extends ComponentPropsWithRef<"div"> {
+const DropZoneContext = createContext<{
+  inputRef: React.MutableRefObject<HTMLInputElement | null>;
+  multiple?: boolean;
+}>(null!);
+
+export function useDropzoneContext() {
+  const context = useContext(DropZoneContext);
+  if (!context) {
+    throw new Error(
+      `Dropzone compound components cannot be rendered outside the Dropzone component`,
+    );
+  }
+  return context;
+}
+export interface DropzoneProps {
   /**
    * Optional class for styling purpose
    */
   className?: string;
+  /**
+   * Optional filter type mime
+   */
+  accept?: string[];
+  /**
+   * Authorize import multiple files
+   */
+  multiple?: boolean;
+  /**
+   * Authorize import multiple files
+   */
+  handle?: boolean;
+  /**
+   * Execute if a success
+   */
+  onSuccess: () => void;
+  /**
+   * Execute if an error
+   */
+  onError: () => void;
 }
 
-const Dropzone = forwardRef(
-  ({ className, ...restProps }: DropzoneProps, ref: Ref<HTMLDivElement>) => {
-    const inputRef = useRef<HTMLInputElement | null>(null);
+const Dropzone = ({
+  className,
+  accept,
+  multiple = true,
+  handle = false,
+  onSuccess,
+  onError,
+}: DropzoneProps) => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
-    const [preview, setPreview] = useState<Record<string, string>>({
-      name: "",
-      image: "",
-    });
+  const [attachment, setAttachment] = useState<AttachementType | undefined>();
 
-    const handleChange = (files?: FileList | null) => {
-      setPreview({ ...preview, name: "", image: "" });
-
+  const handleChange = (files?: FileList | null) => {
+    try {
       const file = files?.[0];
-      if (!file) {
-        return;
+      if (!file) return;
+
+      if (file) {
+        setAttachment({
+          type: file.type,
+          size: file.size,
+          name: file.name,
+          src: URL.createObjectURL(file),
+        });
+        /* if (multiple) {
+          setAttachment((attach) => {
+            const test = {
+              type: file.type,
+              size: file.size,
+              name: file.name,
+              src: URL.createObjectURL(file),
+            };
+            (attach as AttachementType[]).push(test)
+            return attach;
+          });
+        } else {
+          setAttachment({
+            type: file.type,
+            size: file.size,
+            name: file.name,
+            src: URL.createObjectURL(file),
+          });
+        } */
       }
+      onSuccess();
+    } catch {
+      onError();
+    }
+  };
 
-      const newPreview = {
-        ...preview,
-        name: file.name,
-        image: URL.createObjectURL(file),
-      };
+  const { handleDragLeave, handleDragging, handleDrop, dragging } = useDropzone(
+    inputRef,
+    handleChange,
+  );
 
-      setPreview(newPreview);
-    };
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    handleChange(event.target.files);
+  };
 
-    const { handleDragLeave, handleDragging, handleDrop, dragging } =
-      useDropzone(inputRef, handleChange);
+  const classes = clsx(
+    "dropzone p-32",
+    {
+      "is-dragging": dragging,
+      "is-drop-files": attachment && !handle ? false : true,
+    },
+    className,
+  );
 
-    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-      handleChange(event.target.files);
-    };
+  const value = useMemo(() => ({ inputRef, multiple }), [inputRef, multiple]);
 
-    const classes = clsx(
-      "dropzone",
-      {
-        "is-dragging": dragging,
-      },
-      className,
-    );
-
-    const checkDropZoneEmpty = () => {
-      const arrayValue = Object.values(preview);
-      const result = arrayValue.filter((item) => item === "").length === 0;
-      return result;
-    };
-
-    return (
+  return (
+    <DropZoneContext.Provider value={value}>
       <div
-        ref={ref}
         className={classes}
-        {...restProps}
         onDragEnter={handleDragging}
         onDragOver={handleDragging}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
       >
         <div className="align-center">
-          {checkDropZoneEmpty() ? (
-            <div>
-              {preview.image ? (
-                <img
-                  src={preview.image}
-                  alt={preview.name}
-                  width={200}
-                  height={200}
-                />
-              ) : null}
-            </div>
+          {handle ? (
+            <Dropzone.Drag />
           ) : (
             <>
-              <div className="import-wrapper">
-                <Download height={48} width={48} />
-                <p className="import-text my-16">
-                  Glissez-déposez un/des fichier(s) depuis votre appareil ou
-                  cliquez sur parcourir
-                </p>
-                <Button onClick={() => inputRef?.current?.click()}>
-                  Import button
-                </Button>
-              </div>
+              {attachment ? (
+                <Dropzone.File attachment={attachment} />
+              ) : (
+                <Dropzone.Import />
+              )}
+              <Dropzone.Drag />
             </>
           )}
-          <div className="drop-wrapper">
-            <div className="drop-content">
-              <p className="drop-text">
-                Déposez ici vos fichiers, images, vidéos ou audios
-              </p>
-            </div>
-          </div>
         </div>
         <input
           ref={inputRef}
+          accept={accept?.join(",")}
+          multiple={multiple}
           type="file"
           name="attachement-input"
           id="attachement-input"
@@ -120,9 +165,13 @@ const Dropzone = forwardRef(
           hidden
         />
       </div>
-    );
-  },
-);
+    </DropZoneContext.Provider>
+  );
+};
+
+Dropzone.File = DropzoneFile;
+Dropzone.Import = DropzoneImport;
+Dropzone.Drag = DropzoneDrag;
 
 Dropzone.displayName = "Dropzone";
 

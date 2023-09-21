@@ -6,9 +6,31 @@ import Dropzone from "./Dropzone";
 const meta: Meta<typeof Dropzone> = {
   title: "Components/Dropzone",
   component: Dropzone,
+  args: {
+    onSuccess: () => console.log("Success"),
+    onError: () => console.log("Error"),
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Dropzone>;
 
 export const Base: Story = {};
+
+export const Handle: Story = {
+  render: (args) => {
+    return <Dropzone {...args} handle={true} />;
+  },
+};
+
+export const OneElement: Story = {
+  render: (args) => {
+    return <Dropzone {...args} multiple={false} />;
+  },
+};
+
+export const MultipleElement: Story = {
+  render: (args) => {
+    return <Dropzone {...args} multiple={true} />;
+  },
+};
