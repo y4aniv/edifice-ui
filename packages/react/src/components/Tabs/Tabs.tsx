@@ -24,6 +24,10 @@ export interface TabsProps {
    * Items to be displayed
    */
   items: TabsItemProps[];
+  /**
+   * Get notified when a tab is selected
+   */
+  onTabChange?: (tab: TabsItemProps) => void;
 }
 
 const TabsContext = createContext<{
@@ -46,7 +50,7 @@ export function useTabsContext() {
 /**
  * Tab Content displayed one at a time when a Tab Item is selected
  */
-const Tabs = ({ defaultId, items }: TabsProps) => {
+const Tabs = ({ defaultId, items, onTabChange }: TabsProps) => {
   const [activeTab, setActiveTab] = useState<string>(defaultId || "");
   const [tabUnderlineWidth, setTabUnderlineWidth] = useState(0);
   const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
@@ -58,14 +62,18 @@ const Tabs = ({ defaultId, items }: TabsProps) => {
   }, []);
 
   useEffect(() => {
+    const currentItem = items.find((item) => item.id === activeTab);
+    currentItem && onTabChange?.(currentItem);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeTab]); // only updating the activeTab value should trigger this effect.
+
+  useEffect(() => {
     function setTabPosition() {
       const currentTab = tabsRef.current[activeTab];
       tabsRef.current[activeTab].focus();
       setTabUnderlineLeft(currentTab?.offsetLeft ?? 0);
       setTabUnderlineWidth(currentTab?.clientWidth ?? 0);
     }
-
-    console.log("oui");
 
     setTabPosition();
     window.addEventListener("resize", setTabPosition);

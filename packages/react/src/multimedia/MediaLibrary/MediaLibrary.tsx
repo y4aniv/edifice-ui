@@ -254,6 +254,12 @@ export const MediaLibrary = ({
   const modalHeader = t(
     mediaLibraryTypes[type || "none"]?.title ?? "Bibliothèque multimédia", // FIXME i18n key
   );
+  const handleTabChange = () => {
+    // Reset any existing result
+    setResult(undefined);
+    setResultCounter(undefined);
+  };
+
   function handleSuccess() {
     if (result) onSuccess(result);
   }
@@ -275,7 +281,11 @@ export const MediaLibrary = ({
         >
           <Modal.Header onModalClose={onCancel}>{modalHeader}</Modal.Header>
           <Modal.Body>
-            <Tabs items={tabs} defaultId={tabs[defaultTabIdx].id}></Tabs>
+            <Tabs
+              items={tabs}
+              defaultId={tabs[defaultTabIdx].id}
+              onTabChange={handleTabChange}
+            ></Tabs>
           </Modal.Body>
           <Modal.Footer>
             <Button
