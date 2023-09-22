@@ -6,7 +6,7 @@ import { TreeNode } from "../../components";
 import { MockedDataProvider } from "../../core";
 import { WorkspaceElement } from "edifice-ts-client";
 
-const mockedData: WorkspaceElement[] = [
+const mockedDocuments: WorkspaceElement[] = [
   {
     _id: "folder1",
     name: "level 1 arborescence tree",
@@ -71,7 +71,7 @@ export const Base: Story = {
             "org.entcore.workspace.controllers.WorkspaceController|listDocuments",
             "org.entcore.workspace.controllers.WorkspaceController|listFolders",
           ],
-          workspaceDocuments: mockedData,
+          workspaceDocuments: mockedDocuments,
         }}
       >
         <Workspace {...args}></Workspace>

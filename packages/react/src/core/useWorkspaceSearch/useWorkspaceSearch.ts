@@ -3,7 +3,7 @@ import { useCallback } from "react";
 import { odeServices } from "edifice-ts-client";
 import { ID, WorkspaceElement, WorkspaceSearchFilter } from "edifice-ts-client";
 
-import { WorkspaceFileFormat } from "../../multimedia";
+import { DocumentHelper, Role } from "./DocumentHelper";
 import { useMockedData } from "../OdeClientProvider";
 import { useHasWorkflow } from "../useHasWorkflow";
 
@@ -36,7 +36,7 @@ import { useHasWorkflow } from "../useHasWorkflow";
 
 export default function useWorkspaceSearch(
   filter: WorkspaceSearchFilter,
-  format: WorkspaceFileFormat | null,
+  format: Role | Role[] | null,
   onResult: (
     filter: WorkspaceSearchFilter,
     content: WorkspaceElement[],
@@ -57,11 +57,14 @@ export default function useWorkspaceSearch(
         const asyncLoad =
           mock?.listWorkspaceDocuments?.().then((results) =>
             results
-              .filter((f) =>
-                format && format === f.metadata?.["content-type"]
-                  ? true
-                  : false,
-              )
+              .filter((f) => {
+                if (!format) return true;
+                const role = DocumentHelper.getRole(f);
+                if (typeof format === "string") return format === role;
+                if (Array.isArray(format))
+                  return format.findIndex((r) => r === role) >= 0;
+                return false; // should not happen
+              })
               .map((r) => {
                 // Generate random IDs to prevent infinite recursion
                 const ret = {

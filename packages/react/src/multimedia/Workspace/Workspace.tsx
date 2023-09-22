@@ -17,7 +17,7 @@ import {
   TreeNode,
   TreeView,
 } from "../../components";
-import { useWorkspaceSearch } from "../../core";
+import { Role, useWorkspaceSearch } from "../../core";
 
 // type Visibility = "public" | "protected" | "owner" | "external";
 
@@ -33,8 +33,6 @@ import { useWorkspaceSearch } from "../../core";
 // //---------------------
 // type MediaLibraryView = "icons" | "list";
 
-export type WorkspaceFileFormat = "audio" | "img" | "video";
-
 /**
  * Type of result the media library will send on success.
  *
@@ -46,8 +44,11 @@ export type WorkspaceResult = WorkspaceElement[];
  * MediaLibrary component properties
  */
 export interface WorkspaceProps {
-  /** Only display media elements having this file format. */
-  fileFormat: WorkspaceFileFormat | null;
+  /**
+   * Only display media elements having this role[s] (=generic file format).
+   * Set to null to display all medias.
+   */
+  roles: Role | Role[] | null;
   /** Notify parent when media elements are successfully activated. */
   onSuccess: (result: WorkspaceResult) => void;
   /** Notify parent to cancel media browsing. */
@@ -137,17 +138,17 @@ export const Workspace = (props: WorkspaceProps) => {
 
   const { loadContent: searchForOwnerDocs } = useWorkspaceSearch(
     "owner",
-    props.fileFormat,
+    props.roles,
     onSearchResults,
   );
   const { loadContent: searchForSharedDocs } = useWorkspaceSearch(
     "shared",
-    props.fileFormat,
+    props.roles,
     onSearchResults,
   );
   const { loadContent: searchForProtectedDocs } = useWorkspaceSearch(
     "protected",
-    props.fileFormat,
+    props.roles,
     onSearchResults,
   );
 

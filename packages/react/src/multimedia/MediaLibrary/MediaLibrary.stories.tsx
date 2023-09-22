@@ -6,6 +6,60 @@ import MediaLibrary, {
 } from "./MediaLibrary";
 import { useState } from "react";
 import { MockedDataProvider } from "../../core";
+import { WorkspaceElement } from "edifice-ts-client";
+
+const mockedDocuments: WorkspaceElement[] = [
+  {
+    _id: "folder1",
+    name: "level 1 arborescence tree",
+    eType: "folder",
+    eParent: "",
+    _isShared: false,
+    _shared: [],
+    children: null!,
+    created: null as any,
+    owner: null as any,
+  },
+  {
+    _id: "folder2",
+    name: "level 1 arborescence tree",
+    eType: "folder",
+    eParent: "",
+    _isShared: false,
+    _shared: [],
+    children: null!,
+    created: null as any,
+    owner: null as any,
+  },
+  {
+    _id: "file1",
+    name: "mp3 audio file",
+    eType: "file",
+    eParent: "",
+    _isShared: false,
+    _shared: [],
+    children: null!,
+    created: null as any,
+    owner: null as any,
+    metadata: {
+      "content-type": "audio/mp3",
+    },
+  },
+  {
+    _id: "file2",
+    name: "mp4 video file",
+    eType: "file",
+    eParent: "",
+    _isShared: false,
+    _shared: [],
+    children: null!,
+    created: null as any,
+    owner: null as any,
+    metadata: {
+      "content-type": "video/mp4",
+    },
+  },
+];
 
 const meta: Meta<typeof MediaLibrary> = {
   title: "Multimedia/MediaLibrary",
@@ -43,8 +97,11 @@ const meta: Meta<typeof MediaLibrary> = {
       <MockedDataProvider
         mocks={{
           workflows: [
+            "org.entcore.workspace.controllers.WorkspaceController|listDocuments",
+            "org.entcore.workspace.controllers.WorkspaceController|listFolders",
             "org.entcore.workspace.controllers.WorkspaceController|addDocument",
           ],
+          workspaceDocuments: mockedDocuments,
         }}
       >
         <button
