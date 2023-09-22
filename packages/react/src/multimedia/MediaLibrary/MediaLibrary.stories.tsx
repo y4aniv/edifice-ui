@@ -69,6 +69,19 @@ const meta: Meta<typeof MediaLibrary> = {
       alert("Success 👍");
     },
   },
+  argTypes: {
+    type: {
+      options: [
+        "audio",
+        "video",
+        "image",
+        "attachment",
+        "embedder",
+        "hyperlink",
+      ],
+      control: { type: "select" },
+    },
+  },
   decorators: [
     (Story) => {
       const [type, setType] = useState<MediaLibraryType | null>(null);
@@ -124,6 +137,18 @@ type Story = StoryObj<typeof MediaLibrary>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 export const Base: Story = {
+  args: {
+    type: "audio",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Use to choose or capture an audio file.",
+      },
+    },
+  },
+};
+export const Audio: Story = {
   args: {
     type: "audio",
   },
