@@ -15,6 +15,7 @@ import Modal from "../../components/Modal/Modal";
 import { Tabs } from "../../components/Tabs";
 import { TabsItemProps } from "../../components/Tabs/TabsItem";
 import { useHasWorkflow } from "../../core/useHasWorkflow";
+import { WorkspaceResult } from "../Workspace";
 
 //---------------------------------------------------
 // Tabs parameters
@@ -99,27 +100,26 @@ const mediaLibraryTypes: { none: null } & {
 };
 
 /**
- * Type of result the media library will send on success.
- *
- * FIXME: signature de fonction à faire évoluer au besoin.
- */
-export type MediaLibraryResult = string;
-
-/**
  * MediaLibrary component properties
  */
 export interface MediaLibraryProps {
+  /** Type of rss to search for. */
   type: MediaLibraryType | null;
-  onSuccess: (result: MediaLibraryResult) => void;
+  /** Called when the user validate a selection of rss. */
+  onSuccess: (result: WorkspaceResult) => void;
+  /** Called when the user cancels his selection. */
   onCancel: () => void;
 }
 
 const MediaLibraryContext = createContext<{
-  // Set the counter in the success button label
+  /** Type of rss to search for. */
+  type: MediaLibraryType | null;
+
+  /** Set the counter in the success button label */
   setResultCounter: (count?: number) => void;
 
-  // Set a innertab-specific callback which gets the result when success button is clicked
-  setResult: (result?: MediaLibraryResult) => void;
+  /** Set a innertab-specific callback which gets the result when success button is clicked */
+  setResult: (result?: WorkspaceResult) => void;
 
   /**
    * Allow an innertab to switch display to another innertab.
@@ -223,8 +223,8 @@ export const MediaLibrary = ({
           (tab) =>
             tab.isEnable?.() !== false &&
             (tab.availableFor.length === 0 || tab.availableFor.includes(type)),
-          // eslint-disable-next-line react-hooks/exhaustive-deps
         ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [type],
   );
 
@@ -242,7 +242,7 @@ export const MediaLibrary = ({
 
   // Stateful contextual values
   const [resultCounter, setResultCounter] = useState<number | undefined>();
-  const [result, setResult] = useState<MediaLibraryResult | undefined>();
+  const [result, setResult] = useState<WorkspaceResult | undefined>();
   function setVisibleTab(tab: AvailableTab) {
     const idx = tabs.findIndex((t) => t.id === tab);
     if (idx < 0) throw "tab.not.visible";
@@ -268,6 +268,7 @@ export const MediaLibrary = ({
     type && (
       <MediaLibraryContext.Provider
         value={{
+          type,
           setResultCounter,
           setResult,
           setVisibleTab,

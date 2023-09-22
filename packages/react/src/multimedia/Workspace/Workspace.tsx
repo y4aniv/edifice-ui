@@ -19,11 +19,9 @@ import {
 } from "../../components";
 import { useWorkspaceSearch } from "../../core";
 
-// type FileFormat = "audio" | "img";
-
 // type Visibility = "public" | "protected" | "owner" | "external";
 
-// // workspace.create requis pour Public et App, workspace.list requis pour Shared
+//droits workspace.create requis pour Public et App, workspace.list requis pour Shared
 // type LIST_TYPE =
 //   | "myDocuments"
 //   | "appDocuments"
@@ -35,7 +33,28 @@ import { useWorkspaceSearch } from "../../core";
 // //---------------------
 // type MediaLibraryView = "icons" | "list";
 
-export const Workspace = () => {
+export type WorkspaceFileFormat = "audio" | "img" | "video";
+
+/**
+ * Type of result the media library will send on success.
+ *
+ * FIXME: signature de fonction à faire évoluer au besoin.
+ */
+export type WorkspaceResult = WorkspaceElement[];
+
+/**
+ * MediaLibrary component properties
+ */
+export interface WorkspaceProps {
+  /** Only display media elements having this file format. */
+  fileFormat: WorkspaceFileFormat | null;
+  /** Notify parent when media elements are successfully activated. */
+  onSuccess: (result: WorkspaceResult) => void;
+  /** Notify parent to cancel media browsing. */
+  onCancel: () => void;
+}
+
+export const Workspace = (props: WorkspaceProps) => {
   const { t } = useTranslation();
 
   const [owner, setNodeOwner] = useState<TreeNode>({
@@ -118,14 +137,17 @@ export const Workspace = () => {
 
   const { loadContent: searchForOwnerDocs } = useWorkspaceSearch(
     "owner",
+    props.fileFormat,
     onSearchResults,
   );
   const { loadContent: searchForSharedDocs } = useWorkspaceSearch(
     "shared",
+    props.fileFormat,
     onSearchResults,
   );
   const { loadContent: searchForProtectedDocs } = useWorkspaceSearch(
     "protected",
+    props.fileFormat,
     onSearchResults,
   );
 

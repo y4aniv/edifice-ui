@@ -3,6 +3,7 @@ import { useCallback } from "react";
 import { odeServices } from "edifice-ts-client";
 import { ID, WorkspaceElement, WorkspaceSearchFilter } from "edifice-ts-client";
 
+import { WorkspaceFileFormat } from "../../multimedia";
 import { useMockedData } from "../OdeClientProvider";
 import { useHasWorkflow } from "../useHasWorkflow";
 
@@ -35,6 +36,7 @@ import { useHasWorkflow } from "../useHasWorkflow";
 
 export default function useWorkspaceSearch(
   filter: WorkspaceSearchFilter,
+  format: WorkspaceFileFormat | null,
   onResult: (
     filter: WorkspaceSearchFilter,
     content: WorkspaceElement[],
@@ -54,20 +56,29 @@ export default function useWorkspaceSearch(
         // If mocked data is available, use it. Otherwise load from server.
         const asyncLoad =
           mock?.listWorkspaceDocuments?.().then((results) =>
-            results.map((r) => {
-              // Generate random IDs to prevent infinite recursion
-              const ret = { ...r, _id: "" + Math.round(Math.random() * 9999) };
-              ret.name =
-                r.eType == "folder"
-                  ? "folder id=" + ret._id
-                  : "file id=" + ret._id;
-              return ret;
-            }),
+            results
+              .filter((f) =>
+                format && format === f.metadata?.["content-type"]
+                  ? true
+                  : false,
+              )
+              .map((r) => {
+                // Generate random IDs to prevent infinite recursion
+                const ret = {
+                  ...r,
+                  _id: "" + Math.round(Math.random() * 9999),
+                };
+                ret.name =
+                  r.eType == "folder"
+                    ? "folder id=" + ret._id
+                    : "file id=" + ret._id;
+                return ret;
+              }),
           ) || odeServices.workspace().listDocuments(filter, folderId);
         asyncLoad.then((results) => onResult(filter, results));
       }
     },
-    [mock, canListDocs, canListFolders, filter, onResult],
+    [canListDocs, canListFolders, mock, filter, format, onResult],
   );
 
   return { loadContent };
