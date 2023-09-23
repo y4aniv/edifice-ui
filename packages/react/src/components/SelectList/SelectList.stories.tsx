@@ -6,7 +6,7 @@ import SelectList, { SelectListProps } from "./SelectList";
 import { Headphone, Block, Lock } from "@edifice-ui/icons";
 
 const meta: Meta<typeof SelectList> = {
-  title: "Components/Dropdown/SelectList",
+  title: "Components/SelectList",
   component: SelectList,
   argTypes: {
     hideCheckbox: { control: "boolean" },

@@ -1,38 +1,36 @@
-import { forwardRef, Ref } from "react";
+import { Ref, forwardRef } from "react";
 
 import { RafterUp } from "@edifice-ui/icons";
 import clsx from "clsx";
+
+import { useDropdownContext } from "./DropdownContext";
 
 export interface DropdownTriggerProps
   extends React.ComponentPropsWithRef<"button"> {
   /**
    * Dropdown trigger title
    */
-  title: string;
-  /**
-   * Set appearance
-   */
-  variant?: "ghost" | "outline";
-  /**
-   * Controlable state off dropdown trigger
-   */
-  state?: "default" | "hover" | "selected" | "disabled" | "focus";
+  label?: string;
   /**
    * Add an icon in dropdown trigger
    */
   icon?: React.ReactNode;
   /**
-   * Button size
-   */
-  size?: "sm" | "md" | "lg";
-  /**
    * Add a badge
    */
   badgeContent?: string | number;
   /**
-   * Stretch the dropdown trigger.
+   * Set appearance
    */
-  grow?: boolean;
+  variant?: "ghost";
+  /**
+   * Button size
+   */
+  size?: "sm" | "md" | "lg";
+  /**
+   * Disabled Trigger
+   * */
+  disabled?: boolean;
 }
 
 export type DropdownTriggerType = React.ReactElement<DropdownTriggerProps>;
@@ -40,45 +38,43 @@ export type DropdownTriggerType = React.ReactElement<DropdownTriggerProps>;
 const DropdownTrigger = forwardRef(
   (
     {
-      title = "",
-      state,
-      variant,
+      label,
       icon,
-      size = "lg",
-      grow = false,
-      badgeContent,
-      ...props
-    }: DropdownTriggerProps,
-    ref: Ref<HTMLButtonElement>,
-  ) => {
-    const classNames = clsx(
-      "dropdown-trigger",
-      state,
-      size,
       variant,
-      grow && "flex-grow-1 justify-content-between",
-    );
+      disabled = false,
+      size,
+      badgeContent,
+    }: DropdownTriggerProps,
+    forwardRef: Ref<HTMLButtonElement>,
+  ) => {
+    const { triggerProps } = useDropdownContext();
+    const { className, ...restProps } = triggerProps;
+
+    const dropdownTrigger = clsx(size, variant, className);
 
     return (
-      <button ref={ref} className={classNames} {...props} type="button">
-        {icon && <div className="dropdown-trigger-icon">{icon}</div>}
-        <div>{title}</div>
+      <button
+        ref={forwardRef}
+        className={dropdownTrigger}
+        disabled={disabled}
+        {...restProps}
+      >
+        {icon ? icon : null}
+        {label}
         {badgeContent ? (
           <div>
-            <span className="badge text-bg-secondary  rounded-pill">
+            <span className="badge text-bg-secondary rounded-pill">
               {badgeContent}
             </span>
           </div>
         ) : (
-          <div className="dropdown-trigger-carret-icon">
-            {<RafterUp width={16} height={16} />}
-          </div>
+          <RafterUp width={16} height={16} className="dropdown-toggle-caret" />
         )}
       </button>
     );
   },
 );
 
-DropdownTrigger.displayName = "DropdownTrigger";
+DropdownTrigger.displayName = "Dropdown.Trigger";
 
 export default DropdownTrigger;

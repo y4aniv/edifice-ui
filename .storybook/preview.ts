@@ -12,11 +12,13 @@ const preview: Preview = {
     },
     options: {
       storySort: {
+        method: "alphabetical",
         order: [
           "Introduction",
           "Design Tokens",
           "Icons",
           "Components",
+          ["Base", "*"],
           "Layouts",
         ],
       },

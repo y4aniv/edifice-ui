@@ -1,4 +1,3 @@
-export { default as Superscript } from "./Superscript";
 export { default as AddUser } from "./AddUser";
 export { default as Add } from "./Add";
 export { default as AlertCircle } from "./AlertCircle";
@@ -83,6 +82,7 @@ export { default as SquareRoot } from "./SquareRoot";
 export { default as Subscript } from "./Subscript";
 export { default as SuccessFill } from "./SuccessFill";
 export { default as SuccessOutline } from "./SuccessOutline";
+export { default as Superscript } from "./Superscript";
 export { default as TextBold } from "./TextBold";
 export { default as TextColor } from "./TextColor";
 export { default as TextHighlight } from "./TextHighlight";
