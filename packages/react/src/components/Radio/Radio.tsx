@@ -56,7 +56,12 @@ const Radio = forwardRef(
     };
 
     return (
-      <div className={clsx("form-check", icon && "ps-0")}>
+      <div
+        className={clsx(
+          "form-check d-flex align-items-center gap-8",
+          icon && "ps-0",
+        )}
+      >
         <input {...inputProps} />
         {icon && (
           <label

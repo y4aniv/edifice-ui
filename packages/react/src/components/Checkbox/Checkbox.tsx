@@ -69,7 +69,7 @@ const Checkbox = forwardRef(
     };
 
     return (
-      <div className="form-check">
+      <div className="form-check d-flex align-items-center gap-8">
         <input {...inputProps} />
         {label && (
           <label className="form-check-label" htmlFor={inputProps.id}>
