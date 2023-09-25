@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 
 import TextArea, { TextAreaProps } from "./TextArea";
 import { Ref, useEffect, useRef } from "react";
