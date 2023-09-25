@@ -1,48 +1,34 @@
-import { useCallback } from "react";
+import { useCallback, useReducer } from "react";
 
 import { odeServices } from "edifice-ts-client";
 import { ID, WorkspaceElement, WorkspaceSearchFilter } from "edifice-ts-client";
 
 import { DocumentHelper, Role } from "./DocumentHelper";
+import { TreeNode } from "../../components";
 import { useMockedData } from "../OdeClientProvider";
 import { useHasWorkflow } from "../useHasWorkflow";
 
-// Request depuis Workspace
-// /workspace/documents?filter=owner&hierarchical=false&includeall=true&_=1695024305775
-/* renvoie
-[
-    {
-        "_id": "668173c1-9206-4955-b894-aceda5494ed9",
-        "externalId": "edumedia",
-        "owner": "7086a6f9-bf0a-44f3-8743-e0c77bf9c007",
-        "application": "media-library",
-        "created": "2023-06-21 11:15.27.094",
-        "eType": "folder",
-        "modified": "2023-06-21 11:15.27.094",
-        "name": "Edumedia",
-        "ownerName": "ADMC Jean-Christophe"
-    }
-]
-*/
-// /workspace/documents?filter=shared&hierarchical=false&directShared=true&includeall=true&_=1695024135443
-// /workspace/documents?filter=protected&hierarchical=false&includeall=true&_=1695024135444
-// /workspace/documents?filter=trash&hierarchical=false&includeall=true&_=1695025473778
+export type FolderNode = TreeNode & { files?: WorkspaceElement[] };
 
-// Request depuis MediaLib
-// Prefs : /userbook/preference/workspace?_=1695024601185 => {"preference":"{\"view\":\"icons\",\"quickstart\":\"notviewed\"}"}
-// /workspace/documents?filter=protected&parentId=&_=1695024601187
-// /workspace/documents?filter=owner&parentId=&hierarchical=false&includeall=true&_=1695024601189
-// /workspace/documents?filter=shared&parentId=&directShared=true&hierarchical=false&includeall=true&_=1695024601190
+/**
+ * Utility function to find a node in a tree.
+ */
+function findById(node: TreeNode, nodeId?: string): FolderNode | undefined {
+  if (!nodeId || node.id === nodeId) return node;
+  return (
+    Array.isArray(node.children) &&
+    node.children.find((child) => findById(child, nodeId))
+  );
+}
 
 export default function useWorkspaceSearch(
+  rootName: string,
   filter: WorkspaceSearchFilter,
   format: Role | Role[] | null,
-  onResult: (
-    filter: WorkspaceSearchFilter,
-    content: WorkspaceElement[],
-  ) => void,
 ) {
+  // Needed for storybook to mock calls to backend
   const mock = useMockedData();
+
   const canListDocs = useHasWorkflow(
     "org.entcore.workspace.controllers.WorkspaceController|listDocuments",
   );
@@ -50,39 +36,99 @@ export default function useWorkspaceSearch(
     "org.entcore.workspace.controllers.WorkspaceController|listFolders",
   );
 
+  /**
+   * A workspace search maintains a tree of TreeNodes (which can be rendered in a TreeView),
+   * starting at its `root`. Each node is a folder, with its sub-folders as children (also Treenodes)
+   * and an array of contained `files` (WorkspaceElement[])
+   */
+  function treeReducer(
+    state: FolderNode,
+    action: {
+      type: "update";
+      folderId?: ID; // Can be undefined to target the root node
+      subfolders: WorkspaceElement[];
+      files: WorkspaceElement[];
+    },
+  ) {
+    switch (action.type) {
+      case "update": {
+        const node = findById(state, action.folderId);
+        if (node) {
+          node.children = action.subfolders.map((f) => ({
+            id: f._id || "",
+            name: f.name,
+          }));
+          node.files = action.files;
+        }
+        return {
+          ...state,
+        };
+      }
+      default:
+        throw Error("[useWorkspaceSearch] Unknown action type: " + action.type);
+    }
+  }
+
+  const [root, dispatch] = useReducer(treeReducer, {
+    id: "",
+    name: rootName,
+    section: true,
+  });
+
   const loadContent = useCallback(
     (folderId?: ID) => {
       if (canListDocs && canListFolders) {
         // If mocked data is available, use it. Otherwise load from server.
-        const asyncLoad =
+        const asyncPayload =
           mock?.listWorkspaceDocuments?.().then((results) =>
-            results
-              .filter((f) => {
-                if (!format) return true;
-                const role = DocumentHelper.getRole(f);
-                if (typeof format === "string") return format === role;
-                if (Array.isArray(format))
-                  return format.findIndex((r) => r === role) >= 0;
-                return false; // should not happen
-              })
-              .map((r) => {
-                // Generate random IDs to prevent infinite recursion
-                const ret = {
-                  ...r,
-                  _id: "" + Math.round(Math.random() * 9999),
-                };
-                ret.name =
-                  r.eType == "folder"
-                    ? "folder id=" + ret._id
-                    : "file id=" + ret._id;
-                return ret;
-              }),
+            results.map((r) => {
+              // Generate random IDs to prevent infinite recursion
+              const ret = {
+                ...r,
+                _id: "" + Math.round(Math.random() * 9999),
+              };
+              ret.name =
+                r.eType == "folder"
+                  ? "folder id=" + ret._id
+                  : "file id=" + ret._id;
+              return ret;
+            }),
           ) || odeServices.workspace().listDocuments(filter, folderId);
-        asyncLoad.then((results) => onResult(filter, results));
+
+        asyncPayload
+          // Filter out elements of undesired role.
+          .then((payload) =>
+            payload.filter((f) => {
+              if (!format || f.eType === "folder") return true;
+              const role = DocumentHelper.getRole(f);
+              if (typeof format === "string") return format === role;
+              if (Array.isArray(format))
+                return format.findIndex((r) => r === role) >= 0;
+              return false; // should not happen
+            }),
+          )
+          .then((content) => {
+            // Split results between folders and files :
+            const subfolders: WorkspaceElement[] = [];
+            const files: WorkspaceElement[] = [];
+            content.forEach((doc) => {
+              if (doc.eType === "folder") {
+                console.log("folder=" + JSON.stringify(doc));
+                subfolders.push(doc);
+              } else {
+                console.log("file=" + JSON.stringify(doc));
+                files.push(doc);
+              }
+            });
+            const newValue = { folderId: folderId, subfolders, files };
+            console.log(JSON.stringify(newValue));
+            dispatch({ ...newValue, type: "update" });
+          });
+        //        .then((results) => onResult(filter, results));
       }
     },
-    [canListDocs, canListFolders, mock, filter, format, onResult],
+    [canListDocs, canListFolders, mock, filter, format],
   );
 
-  return { loadContent };
+  return { root, loadContent };
 }

@@ -58,39 +58,36 @@ export interface WorkspaceProps {
 export const Workspace = (props: WorkspaceProps) => {
   const { t } = useTranslation();
 
-  const [owner, setNodeOwner] = useState<TreeNode>({
-    id: "",
-    name: t("Mes documents"),
-    section: true,
-  });
-  const [shared, setNodeShared] = useState<TreeNode>({
-    id: "",
-    name: t("Partagé avec moi"),
-    section: true,
-  });
-  const [protectd, setNodeProtectd] = useState<TreeNode>({
-    id: "",
-    name: t("Ajouté dans les applications"),
-    section: true,
-  });
+  const { root: owner, loadContent: loadOwnerDocs } = useWorkspaceSearch(
+    "owner",
+    t("Mes documents"),
+    props.roles,
+  );
+  const { root: shared, loadContent: loadSharedDocs } = useWorkspaceSearch(
+    "shared",
+    t("Partagé avec moi"),
+    props.roles,
+  );
+  const { root: protectd, loadContent: loadProtectedDocs } = useWorkspaceSearch(
+    "protected",
+    t("Ajouté dans les applications"),
+    props.roles,
+  );
 
   /**
    * Retrieve the stateful TreeNode matching a filter value
    */
-  const rootAccessorsFor: (filter: WorkspaceSearchFilter) => {
-    getter: TreeNode;
-    setter: React.Dispatch<React.SetStateAction<TreeNode>>;
-  } = useCallback(
+  const rootNodeFor: (filter: WorkspaceSearchFilter) => TreeNode = useCallback(
     (filter: WorkspaceSearchFilter) => {
       switch (filter) {
         case "owner":
-          return { getter: owner, setter: setNodeOwner };
+          return owner;
         case "shared":
-          return { getter: shared, setter: setNodeShared };
+          return shared;
         case "protected":
-          return { getter: protectd, setter: setNodeProtectd };
+          return protectd;
         default:
-          throw "no.way";
+          throw "no.root.node";
       }
     },
     [owner, protectd, shared],
@@ -101,56 +98,7 @@ export const Workspace = (props: WorkspaceProps) => {
 
   const [currentNode, setCurrentNode] = useState<TreeNode>(owner);
 
-  const [documents, setDocuments] = useState<WorkspaceElement[]>([]);
-
-  /**
-   * Update Treeviews and file list with loaded results.
-   */
-  const onSearchResults = useCallback(
-    (filter: WorkspaceSearchFilter, content: WorkspaceElement[]) => {
-      // Do not update children of the current node if filter has changed or children are already defined
-      if (
-        currentFilter !== filter ||
-        typeof currentNode.children === "undefined"
-      ) {
-        // Split results between folders and files :
-        const folders: TreeNode[] = [];
-        const files: WorkspaceElement[] = [];
-        content.forEach((doc) => {
-          if (doc.eType === "folder") {
-            // Map id of TreeNode with _id of document
-            folders.push({ id: doc._id || "", name: doc.name, element: doc });
-          } else {
-            files.push(doc);
-          }
-        });
-
-        // Only folders are displayed in the Treeview
-        currentNode.children = folders;
-        setCurrentNode(currentNode);
-
-        // Update document list
-        setDocuments(files);
-      }
-    },
-    [currentFilter, currentNode],
-  );
-
-  const { loadContent: searchForOwnerDocs } = useWorkspaceSearch(
-    "owner",
-    props.roles,
-    onSearchResults,
-  );
-  const { loadContent: searchForSharedDocs } = useWorkspaceSearch(
-    "shared",
-    props.roles,
-    onSearchResults,
-  );
-  const { loadContent: searchForProtectedDocs } = useWorkspaceSearch(
-    "protected",
-    props.roles,
-    onSearchResults,
-  );
+  //  const [documents, setDocuments] = useState<WorkspaceElement[]>([]);
 
   /**
    * Load current node children (folders and files)
@@ -159,13 +107,13 @@ export const Workspace = (props: WorkspaceProps) => {
     if (typeof currentNode.children === "undefined") {
       switch (currentFilter) {
         case "owner":
-          searchForOwnerDocs(currentNode.id);
+          loadOwnerDocs(currentNode.id);
           break;
         case "shared":
-          searchForSharedDocs(currentNode.id);
+          loadSharedDocs(currentNode.id);
           break;
         case "protected":
-          searchForProtectedDocs(currentNode.id);
+          loadProtectedDocs(currentNode.id);
           break;
         default:
           throw "no.way";
@@ -174,9 +122,9 @@ export const Workspace = (props: WorkspaceProps) => {
   }, [
     currentFilter,
     currentNode,
-    searchForOwnerDocs,
-    searchForProtectedDocs,
-    searchForSharedDocs,
+    loadOwnerDocs,
+    loadProtectedDocs,
+    loadSharedDocs,
   ]);
 
   /**
@@ -195,17 +143,16 @@ export const Workspace = (props: WorkspaceProps) => {
 
   function selectAndLoadContent(filter: WorkspaceSearchFilter, nodeId: string) {
     setCurrentFilter(filter);
-    const root = rootAccessorsFor(filter).getter;
+    const root = rootNodeFor(filter);
     const targetNode =
       nodeId === "" ? root : find(root, (node) => node.id === nodeId);
-    console.log(
-      `root=${JSON.stringify(root)}, targetNode=${JSON.stringify(targetNode)}`,
-    );
     if (targetNode) {
       setCurrentNode(targetNode);
-      loadContent();
     }
   }
+
+  /** Load content when the callback is updated */
+  useEffect(() => loadContent(), [loadContent]);
 
   /** Load initial content, once */
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -267,7 +214,7 @@ export const Workspace = (props: WorkspaceProps) => {
             />
           </Grid.Col>
           <Grid.Col sm="4" md="8" xl="12" className="list p-12 gap-8">
-            <p>My list here, selected = {JSON.stringify(documents)}</p>
+            <p>My list here</p>
           </Grid.Col>
         </Grid>
       </Grid.Col>
