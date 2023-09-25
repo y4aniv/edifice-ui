@@ -7,7 +7,7 @@ import FormControl from "../Form/FormControl";
 import FormText from "../Form/FormText";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta = {
   title: "Forms/TextArea",
   component: TextArea,
   argTypes: {
@@ -21,8 +21,9 @@ export default {
     size: "md",
     placeholder: "Text Placeholder",
   },
-} as Meta<typeof TextArea>;
+};
 
+export default meta;
 type Story = StoryObj<typeof TextArea>;
 
 const Template = (args: TextAreaProps) => {
