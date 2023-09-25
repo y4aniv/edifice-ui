@@ -1,9 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import { FormControl, FormText, Label } from "./index";
 import TextArea, { TextAreaProps } from "./TextArea";
 import { Ref, useEffect, useRef } from "react";
 import { Button } from "../Button";
+import FormControl from "../Form/FormControl";
+import FormText from "../Form/FormText";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
