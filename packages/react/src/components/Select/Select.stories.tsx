@@ -3,17 +3,17 @@ import { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 
 import Select, { OptionsType } from "./Select";
-import FormControl from "./FormControl";
-import Label from "./Label";
-import React from "react";
+import FormControl from "../Form/FormControl";
+import { Label } from "../Label";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof Select> = {
   title: "Forms/Select",
   component: Select,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 } as Meta<typeof Select>;
 
+export default meta;
 type Story = StoryObj<typeof Select>;
 
 const subjectAreaOptions: OptionsType[] = [

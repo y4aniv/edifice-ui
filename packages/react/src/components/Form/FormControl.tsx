@@ -2,8 +2,8 @@ import { forwardRef, ReactNode, Ref, useMemo } from "react";
 
 import { Context } from "./FormContext";
 import FormText from "./FormText";
-import Input from "./Input";
-import Label from "./Label";
+import { Input } from "../Input";
+import { Label } from "../Label";
 
 export interface FormControlProps extends React.ComponentPropsWithRef<"div"> {
   /**

@@ -2,13 +2,12 @@ import React from "react";
 import { Mail } from "@edifice-ui/icons";
 import { Meta, StoryObj } from "@storybook/react";
 
-import { FormControl, Label, Input, FormText, FormControlProps } from "./index";
+import { FormControl, FormText, FormControlProps } from "./index";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof FormControl> = {
   title: "Forms/Form Control",
   component: FormControl,
-  subcomponents: { Label, Input, Text: FormText },
   argTypes: {
     status: {
       options: ["valid", "invalid"],
@@ -22,16 +21,21 @@ export default {
     isRequired: false,
     status: undefined,
   },
-} as Meta<typeof FormControl>;
+};
 
+export default meta;
 type Story = StoryObj<typeof FormControl>;
 
 export const Base: Story = {
   render: (args) => {
     return (
       <FormControl {...args}>
-        <Label>Email</Label>
-        <Input type="text" placeholder="Placeholder text" size="md" />
+        <FormControl.Label>Email</FormControl.Label>
+        <FormControl.Input
+          type="text"
+          placeholder="Placeholder text"
+          size="md"
+        />
       </FormControl>
     );
   },
@@ -41,8 +45,12 @@ export const WithLabel: Story = {
   render: (args) => {
     return (
       <FormControl id="email-X23">
-        <Label>Email</Label>
-        <Input type="text" placeholder="Placeholder text" size="md" />
+        <FormControl.Label>Email</FormControl.Label>
+        <FormControl.Input
+          type="text"
+          placeholder="Placeholder text"
+          size="md"
+        />
       </FormControl>
     );
   },
@@ -52,8 +60,12 @@ export const WithLabelAndIcon: Story = {
   render: (args) => {
     return (
       <FormControl id="email-7">
-        <Label leftIcon={<Mail />}>Email</Label>
-        <Input type="text" placeholder="Placeholder text" size="md" />
+        <FormControl.Label leftIcon={<Mail />}>Email</FormControl.Label>
+        <FormControl.Input
+          type="text"
+          placeholder="Placeholder text"
+          size="md"
+        />
       </FormControl>
     );
   },
@@ -63,8 +75,12 @@ export const WithInformativeMessage: Story = {
   render: (args) => {
     return (
       <FormControl id="email" style={{ marginTop: "3px" }}>
-        <Label leftIcon={<Mail />}>Email</Label>
-        <Input type="text" placeholder="Placeholder text" size="md" />
+        <FormControl.Label leftIcon={<Mail />}>Email</FormControl.Label>
+        <FormControl.Input
+          type="text"
+          placeholder="Placeholder text"
+          size="md"
+        />
         <FormText>Informative Message</FormText>
       </FormControl>
     );
@@ -75,8 +91,12 @@ export const OptionalField: Story = {
   render: (args) => {
     return (
       <FormControl id="email-0" isOptional>
-        <Label leftIcon={<Mail />}>Email</Label>
-        <Input type="text" placeholder="Placeholder text" size="md" />
+        <FormControl.Label leftIcon={<Mail />}>Email</FormControl.Label>
+        <FormControl.Input
+          type="text"
+          placeholder="Placeholder text"
+          size="md"
+        />
       </FormControl>
     );
   },
@@ -86,10 +106,14 @@ export const OptionalFieldCustomText: Story = {
   render: (args) => {
     return (
       <FormControl id="email-1" isOptional>
-        <Label leftIcon={<Mail />} optionalText="Not mandatory">
+        <FormControl.Label leftIcon={<Mail />} optionalText="Not mandatory">
           Email
-        </Label>
-        <Input type="text" placeholder="Placeholder text" size="md" />
+        </FormControl.Label>
+        <FormControl.Input
+          type="text"
+          placeholder="Placeholder text"
+          size="md"
+        />
       </FormControl>
     );
   },
@@ -99,8 +123,12 @@ export const RequiredField: Story = {
   render: (args) => {
     return (
       <FormControl id="email-2" isRequired>
-        <Label leftIcon={<Mail />}>Email</Label>
-        <Input type="text" placeholder="Placeholder text" size="md" />
+        <FormControl.Label leftIcon={<Mail />}>Email</FormControl.Label>
+        <FormControl.Input
+          type="text"
+          placeholder="Placeholder text"
+          size="md"
+        />
       </FormControl>
     );
   },
@@ -110,10 +138,14 @@ export const RequiredFieldCustomText: Story = {
   render: (args) => {
     return (
       <FormControl id="email-3" isRequired>
-        <Label leftIcon={<Mail />} requiredText="- Mandatory">
+        <FormControl.Label leftIcon={<Mail />} requiredText="- Mandatory">
           Email
-        </Label>
-        <Input type="text" placeholder="Placeholder text" size="md" />
+        </FormControl.Label>
+        <FormControl.Input
+          type="text"
+          placeholder="Placeholder text"
+          size="md"
+        />
       </FormControl>
     );
   },
@@ -123,7 +155,11 @@ export const ReadOnlyStatus: Story = {
   render: (args) => {
     return (
       <FormControl id="example-5" isReadOnly>
-        <Input type="text" size="md" placeholder={args.placeholder} />
+        <FormControl.Input
+          type="text"
+          size="md"
+          placeholder={args.placeholder}
+        />
       </FormControl>
     );
   },

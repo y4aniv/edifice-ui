@@ -2,14 +2,16 @@ import { Meta, StoryObj } from "@storybook/react";
 import { useMemo, useState } from "react";
 import Button from "../Button/Button";
 
-import { Checkbox, FormControl, Input, Radio } from "./index";
-import React from "react";
-import { Indeterminate } from "./Checkbox.stories";
+import { Indeterminate } from "../Checkbox/Checkbox.stories";
+import { Checkbox } from "../Checkbox";
+import { FormControl } from "../Form";
+import { Radio } from "../Radio";
+import Input from "./Input";
+
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof FormControl> = {
   title: "Forms/Input Group",
   component: FormControl,
-  subcomponents: { Input, Button },
   parameters: {
     docs: {
       description: {
@@ -18,8 +20,9 @@ export default {
       },
     },
   },
-} as Meta<typeof FormControl>;
+};
 
+export default meta;
 type Story = StoryObj<typeof FormControl>;
 
 const Template = (args: any) => (

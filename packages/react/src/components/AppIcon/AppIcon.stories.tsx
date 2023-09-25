@@ -3,7 +3,7 @@ import AppIcon, { AppIconProps } from "./AppIcon";
 import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof AppIcon> = {
   title: "Components/AppIcon",
   component: AppIcon,
   parameters: {
@@ -30,8 +30,9 @@ export default {
       control: { type: "inline-radio" },
     },
   },
-} as Meta<typeof AppIcon>;
+};
 
+export default meta;
 type Story = StoryObj<typeof AppIcon>;
 
 export const Base: Story = {};

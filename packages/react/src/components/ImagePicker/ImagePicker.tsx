@@ -15,7 +15,8 @@ import useDropzone from "../../hooks/useDropzone/useDropzone";
 import { AppIcon } from "../AppIcon";
 import { Avatar } from "../Avatar";
 import { IconButton } from "../Button";
-import { FormControl, Input } from "../Form";
+import { FormControl } from "../Form";
+import { Input } from "../Input";
 
 export interface ImagePickerProps extends ComponentPropsWithRef<"input"> {
   /**

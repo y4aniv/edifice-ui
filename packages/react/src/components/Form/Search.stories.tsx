@@ -2,14 +2,12 @@ import { Search } from "@edifice-ui/icons";
 import { Meta, StoryObj } from "@storybook/react";
 import SearchButton from "../Button/SearchButton";
 
-import { FormControl, Input } from "./index";
-import React from "react";
+import { FormControl } from "./index";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof FormControl> = {
   title: "Forms/Search",
   component: FormControl,
-  subcomponents: { Input, SearchButton },
   parameters: {
     docs: {
       description: {
@@ -31,8 +29,9 @@ export default {
     isRequired: false,
     status: undefined,
   },
-} as Meta<typeof FormControl>;
+};
 
+export default meta;
 type Story = StoryObj<typeof FormControl>;
 
 const Template = (args: any) => (

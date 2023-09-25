@@ -7,7 +7,7 @@ import Alert, { AlertRef } from "./Alert";
 import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof Alert> = {
   title: "Components/Alert",
   component: Alert,
   parameters: {
@@ -41,8 +41,9 @@ export default {
     type: "success",
   },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-} as Meta<typeof Alert>;
+};
 
+export default meta;
 type Story = StoryObj<typeof Alert>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args

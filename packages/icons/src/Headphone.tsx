@@ -3,7 +3,7 @@ interface SVGRProps {
   title?: string;
   titleId?: string;
 }
-const SvgCheckboxUnselected = ({
+const SvgHeadphone = ({
   title,
   titleId,
   ...props
@@ -22,15 +22,9 @@ const SvgCheckboxUnselected = ({
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M18.5 5.5h-13v13h13v-13Zm-13-2a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-13a2 2 0 0 0-2-2h-13Z"
-      clipRule="evenodd"
-    />
-    <path
-      fill="currentColor"
-      fillRule="evenodd"
-      d="M7.4 12a1.1 1.1 0 0 1 1.1-1.1h7a1.1 1.1 0 0 1 0 2.2h-7A1.1 1.1 0 0 1 7.4 12Z"
+      d="M6.343 6.343A8 8 0 0 1 20 12v1h-2a3 3 0 0 0-3 3v3a3 3 0 0 0 3 3h1a3 3 0 0 0 3-3v-7a10 10 0 0 0-20 0v7a3 3 0 0 0 3 3h1a3 3 0 0 0 3-3v-3a3 3 0 0 0-3-3H4v-1a8 8 0 0 1 2.343-5.657ZM4 15v4a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H4Zm16 0h-2a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-4Z"
       clipRule="evenodd"
     />
   </svg>
 );
-export default SvgCheckboxUnselected;
+export default SvgHeadphone;

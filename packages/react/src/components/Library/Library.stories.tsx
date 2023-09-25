@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import Library, { LibraryProps } from "./Library";
 import React from "react";
 
-export default {
+const meta: Meta<typeof Library> = {
   title: "Components/Library",
   component: Library,
   parameters: {
@@ -26,8 +26,9 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Library>;
+};
 
+export default meta;
 type Story = StoryObj<typeof Library>;
 
 export const LibraryOne: Story = {

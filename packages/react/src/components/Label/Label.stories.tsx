@@ -1,19 +1,18 @@
 import { Mail } from "@edifice-ui/icons";
 import { Meta, StoryObj } from "@storybook/react";
-
-import { FormControl, Label } from "./index";
-import React from "react";
+import { FormControl } from "../Form";
+import Label from "./Label";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof Label> = {
   title: "Forms/Label",
   component: Label,
-  subcomponents: { FormControl },
   args: {
     children: "Email",
   },
 } as Meta<typeof Label>;
 
+export default meta;
 type Story = StoryObj<typeof Label>;
 
 const Template = (args: any) => (

@@ -4,11 +4,12 @@ import { Button } from "../Button";
 import ActionBar, { ActionBarProps } from "./ActionBar";
 import React from "react";
 
-export default {
+const meta: Meta<typeof ActionBar> = {
   title: "Components/ActionBar",
   component: ActionBar,
-  subcomponents: { Button },
-} as Meta<typeof ActionBar>;
+};
+
+export default meta;
 
 type Story = StoryObj<typeof ActionBar>;
 
