@@ -7,6 +7,7 @@ import {
   RecordVideo,
   Smartphone,
 } from "@edifice-ui/icons";
+import { WorkspaceElement } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import { InnerTabs } from "./innertabs";
@@ -99,17 +100,24 @@ const mediaLibraryTypes: { none: null } & {
 };
 
 /**
+ * The resulting type depends on the actual selected Tab when modal is closed.
+ */
+export type MediaLibraryResult =
+  | WorkspaceElement[] // Workspace result
+  | /*TODO type des autres résultats ?*/ any;
+
+/**
  * MediaLibrary component properties
  */
 export interface MediaLibraryProps {
   /** Type of rss to search for. */
   type: MediaLibraryType | null;
   /**
-   * Called when the user validate a selection of rss.
-   * @param result typed as any since it depends on the visible Tab
+   * Called when the user validates the modal (Add button).
+   * @param result depends on which InnerTab is visible
    */
-  onSuccess: (result: any) => void;
-  /** Called when the user cancels his selection. */
+  onSuccess: (result: MediaLibraryResult) => void;
+  /** Called when the user closes the modal. */
   onCancel: () => void;
 }
 
