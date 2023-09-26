@@ -14,7 +14,7 @@ export interface ShareRight {
 }
 
 /**
- * Type of share right 
+ * Type of share right
  * */
 export type ShareRightType = "user" | "group" | "sharebookmark";
 
