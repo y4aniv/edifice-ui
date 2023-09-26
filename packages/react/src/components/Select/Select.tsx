@@ -2,7 +2,7 @@ import { forwardRef, Ref, useId } from "react";
 
 import clsx from "clsx";
 
-import { useFormControl } from "./FormContext";
+import { useFormControl } from "../Form/FormContext";
 
 export interface OptionsType {
   /**

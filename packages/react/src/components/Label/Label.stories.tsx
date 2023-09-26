@@ -1,7 +1,7 @@
 import { Mail } from "@edifice-ui/icons";
 import { Meta, StoryObj } from "@storybook/react";
-
-import { FormControl, Label } from "./index";
+import { FormControl } from "../Form";
+import Label from "./Label";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Label> = {

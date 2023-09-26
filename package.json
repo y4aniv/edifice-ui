@@ -67,7 +67,7 @@
     "react-dom": "18.2.0",
     "rollup-plugin-visualizer": "5.9.2",
     "semantic-release": "20.1.0",
-    "storybook": "7.2.1",
+    "storybook": "7.0.18",
     "turbo": "1.10.12",
     "typescript": "5.1.6",
     "vite": "4.4.9",
