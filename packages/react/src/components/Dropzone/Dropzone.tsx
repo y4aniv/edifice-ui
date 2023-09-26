@@ -64,14 +64,14 @@ export interface DropzoneProps {
 const Dropzone = ({
   className,
   accept,
-  multiple = true,
+  multiple = false,
   handle = false,
   onSuccess,
   onError,
 }: DropzoneProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const [attachment, setAttachment] = useState<AttachementType | undefined>();
+  const [attachments, setAttachments] = useState<AttachementType[]>([]);
 
   const handleChange = (files?: FileList | null) => {
     try {
@@ -79,31 +79,23 @@ const Dropzone = ({
       if (!file) return;
 
       if (file) {
-        setAttachment({
-          type: file.type,
-          size: file.size,
-          name: file.name,
-          src: URL.createObjectURL(file),
-        });
-        /* if (multiple) {
-          setAttachment((attach) => {
-            const test = {
-              type: file.type,
-              size: file.size,
-              name: file.name,
-              src: URL.createObjectURL(file),
-            };
-            (attach as AttachementType[]).push(test)
-            return attach;
-          });
-        } else {
-          setAttachment({
+        if (multiple) {
+          const newFile = {
             type: file.type,
             size: file.size,
             name: file.name,
             src: URL.createObjectURL(file),
-          });
-        } */
+          };
+          setAttachments((oldArray) => [...oldArray, newFile]);
+        } else {
+          const newFile = {
+            type: file.type,
+            size: file.size,
+            name: file.name,
+            src: URL.createObjectURL(file),
+          };
+          setAttachments([newFile]);
+        }
       }
       onSuccess();
     } catch {
@@ -124,7 +116,7 @@ const Dropzone = ({
     "dropzone p-32",
     {
       "is-dragging": dragging,
-      "is-drop-files": attachment && !handle ? false : true,
+      "is-drop-files": attachments.length !== 0 && !handle ? false : true,
     },
     className,
   );
@@ -145,8 +137,8 @@ const Dropzone = ({
             <Dropzone.Drag />
           ) : (
             <>
-              {attachment ? (
-                <Dropzone.File attachment={attachment} />
+              {attachments.length !== 0 ? (
+                <Dropzone.File attachments={attachments} />
               ) : (
                 <Dropzone.Import />
               )}

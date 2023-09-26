@@ -4,10 +4,10 @@ import { AttachementType, useDropzoneContext } from "./Dropzone";
 import { Button } from "../Button";
 
 export interface DropZoneFileProps {
-  attachment: AttachementType;
+  attachments: AttachementType[];
 }
 
-const DropzoneFile = ({ attachment }: DropZoneFileProps) => {
+const DropzoneFile = ({ attachments }: DropZoneFileProps) => {
   const { inputRef } = useDropzoneContext();
 
   return (
@@ -23,14 +23,16 @@ const DropzoneFile = ({ attachment }: DropZoneFileProps) => {
           </Button>
         </div>
       </div>
-      <div>
-        <img
-          src={attachment?.src}
-          alt={attachment?.name}
-          width={200}
-          height={200}
-        />
-      </div>
+      {attachments.map((attachment) => (
+        <div key={attachment?.name}>
+          <img
+            src={attachment?.src}
+            alt={attachment?.name}
+            width={200}
+            height={200}
+          />
+        </div>
+      ))}
     </div>
   );
 };
