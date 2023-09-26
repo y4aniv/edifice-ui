@@ -352,16 +352,15 @@ const Header = ({ is1d = false, src = "" }: HeaderProps): JSX.Element => {
                       <hr className="dropdown-divider" />
                     </NavItem>
                     <NavItem>
-                      <button
-                        className="nav-link btn logout"
-                        aria-labelledby="logout-label"
-                        onClick={handleLogout}
+                      <a
+                        href="/auth/logout?callback="
+                        className="nav-link dropdown-item"
                       >
                         <Disconnect className="icon logout" />
-                      </button>
-                      <span id="logout-label" className="nav-text">
-                        {t("navbar.disconnect")}
-                      </span>
+                        <span id="logout-label" className="nav-text">
+                          {t("navbar.disconnect")}
+                        </span>
+                      </a>
                     </NavItem>
                   </ul>
                 </div>
