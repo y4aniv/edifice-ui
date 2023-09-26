@@ -25,5 +25,6 @@ export * from "./Popover";
 export * from "./Radio";
 export * from "./Select";
 export * from "./Tooltip";
+export * from "./TextArea";
 export * from "./TreeView";
 export * from "./VisuallyHidden";
