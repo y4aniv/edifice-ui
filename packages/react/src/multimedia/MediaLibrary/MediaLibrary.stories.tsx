@@ -59,6 +59,34 @@ const mockedDocuments: WorkspaceElement[] = [
       "content-type": "video/mp4",
     },
   },
+  {
+    _id: "file4",
+    name: "File 4",
+    eType: "file",
+    eParent: "",
+    _isShared: false,
+    _shared: [],
+    children: null!,
+    created: null as any,
+    owner: null as any,
+    metadata: {
+      "content-type": "audio/ogg",
+    },
+  },
+  {
+    _id: "file3",
+    name: "File 3",
+    eType: "file",
+    eParent: "",
+    _isShared: false,
+    _shared: [],
+    children: null!,
+    created: null as any,
+    owner: null as any,
+    metadata: {
+      "content-type": "text/plain",
+    },
+  },
 ];
 
 const meta: Meta<typeof MediaLibrary> = {

@@ -1,5 +1,6 @@
+import { WorkspaceElement } from "edifice-ts-client";
+
 import { Role } from "../../../core";
-import { NOOP } from "../../../utils";
 import { Workspace as WorkspaceWidget } from "../../Workspace";
 import { useMediaLibraryContext } from "../MediaLibrary";
 
@@ -19,12 +20,15 @@ export const Workspace = () => {
     }
   }
 
+  function handleSelect(result: WorkspaceElement[]) {
+    result && ctx.setResultCounter(result.length);
+  }
+
   return (
     <div className="border rounded mt-24">
       <WorkspaceWidget
         roles={getDocumentRoleFilter()}
-        onSuccess={NOOP}
-        onCancel={NOOP}
+        onSelect={handleSelect}
       ></WorkspaceWidget>
     </div>
   );

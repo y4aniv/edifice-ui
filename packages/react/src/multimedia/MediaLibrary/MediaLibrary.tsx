@@ -15,7 +15,6 @@ import Modal from "../../components/Modal/Modal";
 import { Tabs } from "../../components/Tabs";
 import { TabsItemProps } from "../../components/Tabs/TabsItem";
 import { useHasWorkflow } from "../../core/useHasWorkflow";
-import { WorkspaceResult } from "../Workspace";
 
 //---------------------------------------------------
 // Tabs parameters
@@ -105,8 +104,11 @@ const mediaLibraryTypes: { none: null } & {
 export interface MediaLibraryProps {
   /** Type of rss to search for. */
   type: MediaLibraryType | null;
-  /** Called when the user validate a selection of rss. */
-  onSuccess: (result: WorkspaceResult) => void;
+  /**
+   * Called when the user validate a selection of rss.
+   * @param result typed as any since it depends on the visible Tab
+   */
+  onSuccess: (result: any) => void;
   /** Called when the user cancels his selection. */
   onCancel: () => void;
 }
@@ -119,7 +121,7 @@ const MediaLibraryContext = createContext<{
   setResultCounter: (count?: number) => void;
 
   /** Set a innertab-specific callback which gets the result when success button is clicked */
-  setResult: (result?: WorkspaceResult) => void;
+  setResult: (result?: any) => void;
 
   /**
    * Allow an innertab to switch display to another innertab.
@@ -242,7 +244,7 @@ export const MediaLibrary = ({
 
   // Stateful contextual values
   const [resultCounter, setResultCounter] = useState<number | undefined>();
-  const [result, setResult] = useState<WorkspaceResult | undefined>();
+  const [result, setResult] = useState<any | undefined>();
   function setVisibleTab(tab: AvailableTab) {
     const idx = tabs.findIndex((t) => t.id === tab);
     if (idx < 0) throw "tab.not.visible";
@@ -305,7 +307,7 @@ export const MediaLibrary = ({
               onClick={handleSuccess}
             >
               {t("add")}
-              {resultCounter && ` (${resultCounter})`}
+              {resultCounter && resultCounter > 1 && ` (${resultCounter})`}
             </Button>
           </Modal.Footer>
         </Modal>

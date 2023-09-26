@@ -1,7 +1,11 @@
-//---------------------  TS-CLIENT
-//application = "media-library"
-
-import { useCallback, useEffect, useState } from "react";
+import {
+  FormEvent,
+  Ref,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import { Filter, Search } from "@edifice-ui/icons";
 import { WorkspaceElement, WorkspaceSearchFilter } from "edifice-ts-client";
@@ -20,27 +24,6 @@ import {
 import { Role, useWorkspaceSearch } from "../../core";
 import { FolderNode } from "../../core/useWorkspaceSearch/useWorkspaceSearch";
 
-// type Visibility = "public" | "protected" | "owner" | "external";
-
-//droits workspace.create requis pour Public et App, workspace.list requis pour Shared
-// type LIST_TYPE =
-//   | "myDocuments"
-//   | "appDocuments"
-//   | "publicDocuments"
-//   | "sharedDocuments"
-//   | "trashDocuments"
-//   | "externalDocuments";
-
-// //---------------------
-// type MediaLibraryView = "icons" | "list";
-
-/**
- * Type of result the media library will send on success.
- *
- * FIXME: signature de fonction à faire évoluer au besoin.
- */
-export type WorkspaceResult = WorkspaceElement[];
-
 /**
  * MediaLibrary component properties
  */
@@ -50,14 +33,13 @@ export interface WorkspaceProps {
    * Set to null to display all medias.
    */
   roles: Role | Role[] | null;
-  /** Notify parent when media elements are successfully activated. */
-  onSuccess: (result: WorkspaceResult) => void;
-  /** Notify parent to cancel media browsing. */
-  onCancel: () => void;
+  /** Notify parent when media elements are successfully selected. */
+  onSelect: (result: WorkspaceElement[]) => void;
 }
 
 export const Workspace = (props: WorkspaceProps) => {
   const { t } = useTranslation();
+  const inputRef: Ref<HTMLInputElement> = useRef(null);
 
   const { root: owner, loadContent: loadOwnerDocs } = useWorkspaceSearch(
     "owner",
@@ -101,6 +83,12 @@ export const Workspace = (props: WorkspaceProps) => {
   const [currentNode, setCurrentNode] = useState<FolderNode>(owner);
 
   const [documents, setDocuments] = useState<WorkspaceElement[]>([]);
+
+  const [searchTerm, setSearchTerm] = useState<string | undefined>(null!);
+
+  const [selectedDocuments, setSelectedDocuments] = useState<
+    WorkspaceElement[]
+  >([]);
 
   /**
    * Load current node children (folders and files)
@@ -160,18 +148,42 @@ export const Workspace = (props: WorkspaceProps) => {
   /** Load content when the callback is updated */
   useEffect(() => loadContent(), [loadContent]);
 
-  /** Display documents when currentNode changes */
+  /** Display documents when currentNode or searchTerm changes */
   useEffect(() => {
-    setDocuments(currentNode.files || []);
-  }, [currentNode, owner, protectd, shared]);
+    let list = currentNode.files || [];
+    if (searchTerm) {
+      list = list.filter((f) => f.name.indexOf(searchTerm) >= 0);
+    }
+    setDocuments(list);
+  }, [currentNode, owner, protectd, shared, searchTerm]);
 
   /** Load initial content, once */
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => selectAndLoadContent("owner", ""), []);
 
+  const handleSearchSubmit = useCallback(
+    (e: FormEvent) => {
+      setSearchTerm(inputRef.current?.value);
+      e.stopPropagation();
+      e.preventDefault();
+    },
+    [inputRef],
+  );
+
+  const handleToggleDocSelect = (doc: WorkspaceElement) => {
+    const idx = selectedDocuments.findIndex((d) => d._id === doc._id);
+    if (idx < 0) {
+      selectedDocuments.push(doc);
+    } else {
+      selectedDocuments.splice(idx, 1);
+    }
+    setSelectedDocuments([...selectedDocuments]);
+    props.onSelect(selectedDocuments);
+  };
+
   return (
     <Grid className="workspace flex-grow-1 gap-0">
-      <Grid.Col sm="1" md="2" xl="3" className="folders border-end p-12 gap-12">
+      <Grid.Col sm="1" md="3" xl="4" className="folders border-end p-12 gap-12">
         <TreeView
           data={owner}
           onTreeItemSelect={(nodeId) => selectAndLoadContent("owner", nodeId)}
@@ -192,40 +204,51 @@ export const Workspace = (props: WorkspaceProps) => {
           }
         />
       </Grid.Col>
-      <Grid.Col sm="3" md="6" xl="9">
+      <Grid.Col sm="3" md="5" xl="8">
         <Grid className="flex-grow-1 gap-0">
           <Grid.Col
             sm="4"
             md="8"
             xl="12"
-            className="search border-bottom px-16 py-8 gap-16 d-flex "
+            className="search border-bottom px-16 py-8 "
           >
-            <FormControl className="input-group" id="search">
-              <Input
-                noValidationIcon
-                placeholder={t("Placeholder text")}
-                size="md"
-                type="search"
-              />
-              <SearchButton
-                aria-label={t("Rechercher")}
-                icon={<Search />}
-                type="submit"
-                onClick={() => {
-                  /*TODO filtrer les résultats à l'écran*/
-                }}
-              />
-            </FormControl>
+            <form className="gap-16 d-flex" onSubmit={handleSearchSubmit}>
+              <FormControl className="input-group" id="search">
+                <Input
+                  noValidationIcon
+                  ref={inputRef}
+                  placeholder={t("Placeholder text")}
+                  size="md"
+                  type="search"
+                />
+                <SearchButton
+                  aria-label={t("Rechercher")}
+                  icon={<Search />}
+                  type="submit"
+                />
+              </FormControl>
 
-            <Dropdown
-              trigger={
-                <DropdownTrigger icon={<Filter />} title={t("Filtrer")} />
-              }
-              content={<p>TODO</p>}
-            />
+              <Dropdown
+                trigger={
+                  <DropdownTrigger icon={<Filter />} title={t("Filtrer")} />
+                }
+                content={<p>TODO</p>}
+              />
+            </form>
           </Grid.Col>
           <Grid.Col sm="4" md="8" xl="12" className="list p-12 gap-8">
-            <p>My list here, documents = {JSON.stringify(documents)}</p>
+            <ul>
+              {documents.map((doc) => (
+                <li>
+                  <p>
+                    {doc.name}, {doc.ownerName}
+                  </p>
+                  <button onClick={() => handleToggleDocSelect(doc)}>
+                    Select
+                  </button>
+                </li>
+              ))}
+            </ul>
           </Grid.Col>
         </Grid>
       </Grid.Col>
