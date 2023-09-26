@@ -21,7 +21,12 @@ export const Workspace = () => {
   }
 
   function handleSelect(result: WorkspaceElement[]) {
-    result && ctx.setResultCounter(result.length);
+    ctx.setResultCounter(result.length);
+    if (result.length > 0) {
+      ctx.setResult(result);
+    } else {
+      ctx.setResult();
+    }
   }
 
   return (

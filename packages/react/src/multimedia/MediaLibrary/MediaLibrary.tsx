@@ -297,17 +297,19 @@ export const MediaLibrary = ({
               variant="ghost"
               onClick={onCancel}
             >
-              {t("cancel")}
+              {t("Annuler")}
             </Button>
             <Button
               type="button"
               color="primary"
               variant="filled"
-              disabled={typeof result !== "undefined"}
+              disabled={typeof result === "undefined"}
               onClick={handleSuccess}
             >
-              {t("add")}
-              {resultCounter && resultCounter > 1 && ` (${resultCounter})`}
+              {t("Ajouter")}
+              {typeof resultCounter === "number" &&
+                resultCounter > 1 &&
+                ` (${resultCounter})`}
             </Button>
           </Modal.Footer>
         </Modal>

@@ -44,16 +44,19 @@ export const Workspace = (props: WorkspaceProps) => {
   const { root: owner, loadContent: loadOwnerDocs } = useWorkspaceSearch(
     "owner",
     t("Mes documents"),
+    "owner",
     props.roles,
   );
   const { root: shared, loadContent: loadSharedDocs } = useWorkspaceSearch(
     "shared",
     t("Partagé avec moi"),
+    "shared",
     props.roles,
   );
   const { root: protectd, loadContent: loadProtectedDocs } = useWorkspaceSearch(
     "protected",
     t("Ajouté dans les applications"),
+    "protected",
     props.roles,
   );
 

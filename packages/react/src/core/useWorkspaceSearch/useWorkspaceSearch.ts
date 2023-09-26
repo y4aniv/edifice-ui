@@ -22,6 +22,7 @@ function findById(node: TreeNode, nodeId?: string): FolderNode | undefined {
 }
 
 export default function useWorkspaceSearch(
+  rootId: string,
   rootName: string,
   filter: WorkspaceSearchFilter,
   format: Role | Role[] | null,
@@ -70,7 +71,7 @@ export default function useWorkspaceSearch(
   }
 
   const [root, dispatch] = useReducer(treeReducer, {
-    id: "",
+    id: rootId,
     name: rootName,
     section: true,
   });
@@ -78,6 +79,7 @@ export default function useWorkspaceSearch(
   const loadContent = useCallback(
     (folderId?: ID) => {
       if (canListDocs && canListFolders) {
+        const realWorkspaceId = folderId === rootId ? "" : folderId;
         // If mocked data is available, use it. Otherwise load from server.
         const asyncPayload =
           mock?.listWorkspaceDocuments?.().then((results) =>
@@ -93,7 +95,7 @@ export default function useWorkspaceSearch(
                   : "file id=" + ret._id;
               return ret;
             }),
-          ) || odeServices.workspace().listDocuments(filter, folderId);
+          ) || odeServices.workspace().listDocuments(filter, realWorkspaceId);
 
         asyncPayload
           // Filter out elements of undesired role.
@@ -121,7 +123,6 @@ export default function useWorkspaceSearch(
             const newValue = { folderId: folderId, subfolders, files };
             dispatch({ ...newValue, type: "update" });
           });
-        //        .then((results) => onResult(filter, results));
       }
     },
     [canListDocs, canListFolders, mock, filter, format],
