@@ -66,7 +66,11 @@ const Upload = forwardRef(() => {
         <div className="action-content">
           <div className="status px-16">
             {uploadLoading ? (
-              <Loading isLoading loadingPosition="left" />
+              <Loading
+                isLoading
+                loadingPosition="left"
+                className="loading-color"
+              />
             ) : (
               <>
                 {successUpload ? (
