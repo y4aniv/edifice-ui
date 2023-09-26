@@ -36,24 +36,32 @@ const Radio = forwardRef(
             ).toString(),
       [restProps.id],
     );
+
+    const radioProps = {
+      type: "radio",
+      checked: model === restProps.value,
+      disabled,
+      ref,
+      className: clsx(
+        restProps.className,
+        "form-check-input c-pointer",
+        icon && "d-none",
+      ),
+      id,
+    };
+
     const inputProps = {
+      ...radioProps,
       ...restProps,
-      ...{
-        type: "radio",
-        checked: model === restProps.value,
-        disabled,
-        ref,
-        className: clsx(
-          restProps.className,
-          "form-check-input c-pointer",
-          icon && "d-none",
-        ),
-        id,
-      },
     };
 
     return (
-      <div className={clsx("position-relative form-check", icon && "ps-0")}>
+      <div
+        className={clsx(
+          "form-check d-flex align-items-center gap-8",
+          icon && "ps-0",
+        )}
+      >
         <input {...inputProps} />
         {icon && (
           <label

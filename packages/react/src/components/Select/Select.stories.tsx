@@ -3,8 +3,8 @@ import { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 
 import Select, { OptionsType } from "./Select";
-import FormControl from "./FormControl";
-import Label from "./Label";
+import FormControl from "../Form/FormControl";
+import { Label } from "../Label";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Select> = {
