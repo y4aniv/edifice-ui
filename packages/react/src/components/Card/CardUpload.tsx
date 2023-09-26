@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 
-import { Close, Edit, Error, Redo, SuccessOutline } from "@edifice-ui/icons";
+import { Close, Error, Redo, SuccessOutline, Wand } from "@edifice-ui/icons";
 import clsx from "clsx";
 
 import { useCardContext } from "./CardContext";
@@ -88,7 +88,7 @@ const Upload = forwardRef(() => {
             )}
           </div>
           <div className="actions">
-            <IconButton icon={<Edit />} variant="ghost" onClick={onEdit} />
+            <IconButton icon={<Wand />} variant="ghost" onClick={onEdit} />
             <IconButton
               icon={<Close />}
               variant="ghost"
