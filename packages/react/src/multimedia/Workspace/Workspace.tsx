@@ -18,6 +18,7 @@ import {
   TreeView,
 } from "../../components";
 import { Role, useWorkspaceSearch } from "../../core";
+import { FolderNode } from "../../core/useWorkspaceSearch/useWorkspaceSearch";
 
 // type Visibility = "public" | "protected" | "owner" | "external";
 
@@ -75,36 +76,41 @@ export const Workspace = (props: WorkspaceProps) => {
   );
 
   /**
-   * Retrieve the stateful TreeNode matching a filter value
+   * Retrieve the stateful TreeNode matching a WorkspaceSearchFilter value
    */
-  const rootNodeFor: (filter: WorkspaceSearchFilter) => TreeNode = useCallback(
-    (filter: WorkspaceSearchFilter) => {
-      switch (filter) {
-        case "owner":
-          return owner;
-        case "shared":
-          return shared;
-        case "protected":
-          return protectd;
-        default:
-          throw "no.root.node";
-      }
-    },
-    [owner, protectd, shared],
-  );
+  const rootNodeFor: (filter: WorkspaceSearchFilter) => FolderNode =
+    useCallback(
+      (filter: WorkspaceSearchFilter) => {
+        switch (filter) {
+          case "owner":
+            return owner;
+          case "shared":
+            return shared;
+          case "protected":
+            return protectd;
+          default:
+            throw "no.root.node";
+        }
+      },
+      [owner, protectd, shared],
+    );
 
   const [currentFilter, setCurrentFilter] =
     useState<WorkspaceSearchFilter>("owner");
 
-  const [currentNode, setCurrentNode] = useState<TreeNode>(owner);
+  const [currentNode, setCurrentNode] = useState<FolderNode>(owner);
 
-  //  const [documents, setDocuments] = useState<WorkspaceElement[]>([]);
+  const [documents, setDocuments] = useState<WorkspaceElement[]>([]);
 
   /**
    * Load current node children (folders and files)
    */
   const loadContent = useCallback(() => {
-    if (typeof currentNode.children === "undefined") {
+    // Try to avoid loading twice
+    if (
+      typeof currentNode.children === "undefined" ||
+      !currentNode.children.length
+    ) {
       switch (currentFilter) {
         case "owner":
           loadOwnerDocs(currentNode.id);
@@ -153,6 +159,11 @@ export const Workspace = (props: WorkspaceProps) => {
 
   /** Load content when the callback is updated */
   useEffect(() => loadContent(), [loadContent]);
+
+  /** Display documents when currentNode changes */
+  useEffect(() => {
+    setDocuments(currentNode.files || []);
+  }, [currentNode, owner, protectd, shared]);
 
   /** Load initial content, once */
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -214,7 +225,7 @@ export const Workspace = (props: WorkspaceProps) => {
             />
           </Grid.Col>
           <Grid.Col sm="4" md="8" xl="12" className="list p-12 gap-8">
-            <p>My list here</p>
+            <p>My list here, documents = {JSON.stringify(documents)}</p>
           </Grid.Col>
         </Grid>
       </Grid.Col>

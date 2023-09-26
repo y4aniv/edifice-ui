@@ -113,15 +113,12 @@ export default function useWorkspaceSearch(
             const files: WorkspaceElement[] = [];
             content.forEach((doc) => {
               if (doc.eType === "folder") {
-                console.log("folder=" + JSON.stringify(doc));
                 subfolders.push(doc);
               } else {
-                console.log("file=" + JSON.stringify(doc));
                 files.push(doc);
               }
             });
             const newValue = { folderId: folderId, subfolders, files };
-            console.log(JSON.stringify(newValue));
             dispatch({ ...newValue, type: "update" });
           });
         //        .then((results) => onResult(filter, results));
@@ -130,5 +127,8 @@ export default function useWorkspaceSearch(
     [canListDocs, canListFolders, mock, filter, format],
   );
 
-  return { root, loadContent };
+  return { root, loadContent } as {
+    root: FolderNode;
+    loadContent: (folderId?: ID) => void;
+  };
 }
