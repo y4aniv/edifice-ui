@@ -7,10 +7,11 @@ import { IWebApp } from "edifice-ts-client";
 import { CardContext } from "./CardContext";
 import Folder from "./CardFolder";
 import Resource from "./CardResource";
+import Upload from "./CardUpload";
 import { useOdeIcons } from "../../core";
 import { IconButton } from "../Button";
 
-export type CardType = "folder" | "resource" | null | undefined;
+export type CardType = "folder" | "resource" | "upload" | null | undefined;
 
 export interface CardOptions {
   type?: CardType;
@@ -36,6 +37,12 @@ export interface CardOptions {
   name?: string;
   isShared?: boolean;
   isPublic?: boolean;
+  extensionFile?: string;
+  successUpload?: boolean;
+  uploadLoading?: boolean;
+  onDelete?: () => void;
+  onEdit?: () => void;
+  onRetry?: () => void;
 }
 
 export interface TooltipOptions {
@@ -111,7 +118,7 @@ const Root = forwardRef(
       onSelect?.();
     }
 
-    const { type } = options;
+    const { type, successUpload } = options;
 
     const appCode = app ? getIconCode(app) : "placeholder";
 
@@ -119,6 +126,7 @@ const Root = forwardRef(
       "card-title body text-break text-truncate text-truncate-2 pe-32",
       {
         placeholder: isLoading,
+        color: successUpload,
       },
     );
 
@@ -137,7 +145,7 @@ const Root = forwardRef(
     const Cards = {
       folder: <Card.Folder />,
       resource: <Card.Resource />,
-      undefined: <Card.Resource />,
+      upload: <Card.Upload />,
       default: null,
     };
 
@@ -145,34 +153,40 @@ const Root = forwardRef(
       <CardContext.Provider value={values}>
         <div
           ref={ref}
-          className={clsx(
-            "card",
-            {
-              "placeholder-glow": isLoading,
-              "is-selected": isSelected,
-              "is-animated": isAnimated,
-            },
-            className,
-          )}
+          className={
+            type !== "upload"
+              ? clsx(
+                  "card",
+                  {
+                    "placeholder-glow": isLoading,
+                    "is-selected": isSelected,
+                    "is-animated": isAnimated,
+                  },
+                  className,
+                )
+              : ""
+          }
           {...restProps}
         >
-          <div className="card-header">
-            {!isLoading && (
-              <IconButton
-                aria-label="Open Action Bar"
-                className="z-3"
-                color="secondary"
-                icon={<Options />}
-                onClick={handleOnSelect}
-                variant="ghost"
+          {type !== "upload" ? (
+            <div className="card-header">
+              {!isLoading && (
+                <IconButton
+                  aria-label="Open Action Bar"
+                  className="z-3"
+                  color="secondary"
+                  icon={<Options />}
+                  onClick={handleOnSelect}
+                  variant="ghost"
+                />
+              )}
+              <button
+                onClick={onOpen}
+                className="position-absolute bottom-0 end-0 top-0 start-0 opacity-0 z-1 w-100"
+                aria-label="Open resource"
               />
-            )}
-            <button
-              onClick={onOpen}
-              className="position-absolute bottom-0 end-0 top-0 start-0 opacity-0 z-1 w-100"
-              aria-label="Open resource"
-            ></button>
-          </div>
+            </div>
+          ) : null}
 
           {Cards[type as keyof CardType] || Cards["default"]}
         </div>
@@ -186,6 +200,7 @@ Root.displayName = "Card";
 const Card = Object.assign(Root, {
   Resource: Resource,
   Folder: Folder,
+  Upload: Upload,
 });
 
 export default Card;
