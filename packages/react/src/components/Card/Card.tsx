@@ -38,6 +38,7 @@ export interface CardOptions {
   isShared?: boolean;
   isPublic?: boolean;
   extensionFile?: string;
+  weightFile?: number;
   successUpload?: boolean;
   uploadLoading?: boolean;
   onDelete?: () => void;
@@ -126,7 +127,7 @@ const Root = forwardRef(
       "card-title body text-break text-truncate text-truncate-2 pe-32",
       {
         placeholder: isLoading,
-        color: successUpload,
+        "upload-error": !successUpload,
       },
     );
 

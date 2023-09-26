@@ -10,28 +10,20 @@ const meta = {
       type: "upload",
       name: "Lorem Ipsum",
       extensionFile: "Extension File",
+      weightFile: 200,
       successUpload: true,
       uploadLoading: false,
-    },
-    app: {
-      icon: "blog",
-      address: "",
-      display: false,
-      displayName: "",
-      isExternal: false,
-      name: "Blog",
-      scope: [],
+      onDelete: () => console.log("delete"),
+      onEdit: () => console.log("edit"),
     },
     isLoading: false,
-    onOpen: () => console.log("open"),
-    onSelect: () => console.log("select"),
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Card>;
 
-export const Upload: Story = {
+export const UploadSuccess: Story = {
   render: (args: CardProps) => {
     return <Card {...args} />;
   },
@@ -45,6 +37,8 @@ export const UploadLoading: Story = {
       type: "upload",
       name: "Lorem Ipsum",
       extensionFile: "Extension File",
+      onRetry: () => console.log("retry"),
+      onDelete: () => console.log("delete"),
     },
   },
   render: (args: CardProps) => {
@@ -60,6 +54,9 @@ export const UploadError: Story = {
       type: "upload",
       name: "Lorem Ipsum",
       extensionFile: "Extension File",
+      onRetry: () => console.log("retry"),
+      onDelete: () => console.log("delete"),
+      onEdit: () => console.log("edit"),
     },
   },
   render: (args: CardProps) => {

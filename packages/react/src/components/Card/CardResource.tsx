@@ -25,8 +25,6 @@ const Resource = forwardRef(() => {
   } = options;
   const { messagePublic, messageShared } = tooltips || {};
 
-  console.log({ tooltips });
-
   const classesProfile = clsx(
     "d-inline-flex align-items-center gap-8 text-truncate",
     {

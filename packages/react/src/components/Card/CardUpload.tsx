@@ -16,6 +16,7 @@ const Upload = forwardRef(() => {
     imageSrc,
     name,
     extensionFile,
+    weightFile,
     successUpload,
     uploadLoading,
     onDelete,
@@ -55,7 +56,9 @@ const Upload = forwardRef(() => {
             )}
           </h3>
           <p className="card-text small">
-            <em className={classesText}>{extensionFile}</em>
+            <em className={classesText}>
+              {extensionFile} {weightFile && `- ${weightFile}`}
+            </em>
           </p>
         </div>
       </div>
@@ -67,7 +70,7 @@ const Upload = forwardRef(() => {
             ) : (
               <>
                 {successUpload ? (
-                  <SuccessOutline color="#7DBF85" />
+                  <SuccessOutline className="upload-success" />
                 ) : (
                   <>
                     <Button
@@ -78,7 +81,7 @@ const Upload = forwardRef(() => {
                     >
                       Retry
                     </Button>
-                    <Error color="#E13A3A" />
+                    <Error className="upload-error" />
                   </>
                 )}
               </>
