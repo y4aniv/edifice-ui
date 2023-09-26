@@ -21,6 +21,7 @@ export class BlogResourceService extends ResourceService {
       visibility: parameters.public ? "PUBLIC" : "OWNER",
       thumbnail: fixThumb,
       trashed: false,
+      folder: parameters.folder,
       slug: parameters.public ? parameters.slug : "",
       "publish-type": parameters.publishType || "RESTRAINT",
       "comment-type": "IMMEDIATE",
