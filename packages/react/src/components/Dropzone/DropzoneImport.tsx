@@ -4,16 +4,13 @@ import { useDropzoneContext } from "./Dropzone";
 import { Button } from "../Button";
 
 const DropzoneImport = () => {
-  const { inputRef } = useDropzoneContext();
+  const { inputRef, importMessage } = useDropzoneContext();
 
   return (
     <>
       <div className="import-wrapper">
         <Download height={48} width={48} />
-        <p className="my-16">
-          Glissez-déposez un/des fichier(s) depuis votre appareil ou cliquez sur
-          parcourir
-        </p>
+        <p className="my-16">{importMessage}</p>
         <Button onClick={() => inputRef?.current?.click()}>
           Import button
         </Button>

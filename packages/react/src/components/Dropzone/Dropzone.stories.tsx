@@ -9,6 +9,8 @@ const meta: Meta<typeof Dropzone> = {
   args: {
     onSuccess: () => console.log("Success"),
     onError: () => console.log("Error"),
+    importMessage:
+      "Glissez-déposez un/des fichier(s) depuis votre appareil ou cliquez sur parcourir",
   },
 };
 

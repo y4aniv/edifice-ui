@@ -23,6 +23,7 @@ export interface AttachementType {
 const DropZoneContext = createContext<{
   inputRef: React.MutableRefObject<HTMLInputElement | null>;
   multiple?: boolean;
+  importMessage?: string;
 }>(null!);
 
 export function useDropzoneContext() {
@@ -52,6 +53,10 @@ export interface DropzoneProps {
    */
   handle?: boolean;
   /**
+   * Show instruction to import file
+   */
+  importMessage?: string;
+  /**
    * Execute if a success
    */
   onSuccess: () => void;
@@ -66,6 +71,7 @@ const Dropzone = ({
   accept,
   multiple = false,
   handle = false,
+  importMessage,
   onSuccess,
   onError,
 }: DropzoneProps) => {
@@ -121,7 +127,10 @@ const Dropzone = ({
     className,
   );
 
-  const value = useMemo(() => ({ inputRef, multiple }), [inputRef, multiple]);
+  const value = useMemo(
+    () => ({ inputRef, multiple, importMessage }),
+    [inputRef, multiple, importMessage],
+  );
 
   return (
     <DropZoneContext.Provider value={value}>
