@@ -1,8 +1,8 @@
 import TableExplorer from "./TableExplorer";
 import { Meta, StoryObj } from "@storybook/react";
-import { Checkbox } from "../Form";
 import { Checklist, Globe, Lock, Users } from "@edifice-ui/icons";
-import React, { useState } from "react";
+import { useState } from "react";
+import { Checkbox } from "../Checkbox";
 
 interface IRow {
   id: string;
