@@ -141,15 +141,14 @@ export const Workspace = (props: WorkspaceProps) => {
   function selectAndLoadContent(filter: WorkspaceSearchFilter, nodeId: string) {
     setCurrentFilter(filter);
     const root = rootNodeFor(filter);
-    const targetNode =
-      nodeId === "" ? root : find(root, (node) => node.id === nodeId);
+    const targetNode = find(root, (node) => node.id === nodeId);
     if (targetNode) {
       setCurrentNode(targetNode);
     }
   }
 
   /** Load content when the callback is updated */
-  useEffect(() => loadContent(), [loadContent]);
+  useEffect(loadContent, [loadContent]);
 
   /** Display documents when currentNode or searchTerm changes */
   useEffect(() => {
@@ -162,7 +161,7 @@ export const Workspace = (props: WorkspaceProps) => {
 
   /** Load initial content, once */
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => selectAndLoadContent("owner", ""), []);
+  useEffect(() => selectAndLoadContent("owner", "owner"), []);
 
   const handleSearchSubmit = useCallback(
     (e: FormEvent) => {
