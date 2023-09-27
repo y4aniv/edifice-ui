@@ -125,7 +125,7 @@ export default function useWorkspaceSearch(
           });
       }
     },
-    [canListDocs, canListFolders, mock, filter, format],
+    [canListDocs, canListFolders, rootId, mock, filter, format],
   );
 
   return { root, loadContent } as {
