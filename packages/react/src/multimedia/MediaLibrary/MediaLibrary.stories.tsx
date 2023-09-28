@@ -5,7 +5,7 @@ import MediaLibrary, {
   MediaLibraryType,
 } from "./MediaLibrary";
 import { useState } from "react";
-import { MockedDataProvider } from "../../core";
+import { MockedDataProvider } from "../../utils";
 import { WorkspaceElement } from "edifice-ts-client";
 
 const mockedDocuments: WorkspaceElement[] = [

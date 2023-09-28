@@ -1,11 +1,11 @@
 import { useMediaLibraryContext } from "../MediaLibrary";
 
 export const Audio = () => {
-  const ctx = useMediaLibraryContext();
+  const context = useMediaLibraryContext();
 
   function handleClick() {
-    ctx.setResult();
-    ctx.setResultCounter(32);
+    context.setResult();
+    context.setResultCounter(32);
   }
 
   return (

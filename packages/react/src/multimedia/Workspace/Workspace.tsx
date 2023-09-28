@@ -53,7 +53,7 @@ export const Workspace = (props: WorkspaceProps) => {
     "shared",
     props.roles,
   );
-  const { root: protectd, loadContent: loadProtectedDocs } = useWorkspaceSearch(
+  const { root: protect, loadContent: loadProtectedDocs } = useWorkspaceSearch(
     "protected",
     t("Ajouté dans les applications"),
     "protected",
@@ -72,12 +72,12 @@ export const Workspace = (props: WorkspaceProps) => {
           case "shared":
             return shared;
           case "protected":
-            return protectd;
+            return protect;
           default:
             throw "no.root.node";
         }
       },
-      [owner, protectd, shared],
+      [owner, protect, shared],
     );
 
   const [currentFilter, setCurrentFilter] =
@@ -157,7 +157,7 @@ export const Workspace = (props: WorkspaceProps) => {
       list = list.filter((f) => f.name.indexOf(searchTerm) >= 0);
     }
     setDocuments(list);
-  }, [currentNode, owner, protectd, shared, searchTerm]);
+  }, [currentNode, owner, protect, shared, searchTerm]);
 
   /** Load initial content, once */
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -197,7 +197,7 @@ export const Workspace = (props: WorkspaceProps) => {
           onTreeItemUnfold={(nodeId) => selectAndLoadContent("shared", nodeId)}
         />
         <TreeView
-          data={protectd}
+          data={protect}
           onTreeItemSelect={(nodeId) =>
             selectAndLoadContent("protected", nodeId)
           }

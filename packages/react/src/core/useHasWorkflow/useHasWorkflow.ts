@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { odeServices } from "edifice-ts-client";
 
-import { useMockedData } from "../OdeClientProvider";
+import { useMockedData } from "../../utils";
 
 export default function useHasWorkflow(
   workflow: string | string[],
@@ -14,21 +14,27 @@ export default function useHasWorkflow(
   >();
 
   useEffect(() => {
-    let promise: Promise<boolean | Record<string, boolean>>;
-    if (mock?.hasWorkflow) {
-      if (typeof workflow === "string") {
-        promise = mock.hasWorkflow(workflow);
+    (async () => {
+      let response: boolean | Record<string, boolean>;
+      if (mock?.hasWorkflow) {
+        if (typeof workflow === "string") {
+          response = await mock.hasWorkflow(workflow);
+        } else {
+          throw "not.implemented.yet)";
+        }
       } else {
-        throw "not.implemented.yet)";
+        if (typeof workflow === "string") {
+          response = await odeServices
+            .rights()
+            .sessionHasWorkflowRight(workflow);
+        } else {
+          response = await odeServices
+            .rights()
+            .sessionHasWorkflowRights(workflow);
+        }
       }
-    } else {
-      if (typeof workflow === "string") {
-        promise = odeServices.rights().sessionHasWorkflowRight(workflow);
-      } else {
-        promise = odeServices.rights().sessionHasWorkflowRights(workflow);
-      }
-    }
-    promise.then((response) => setState(response));
+      setState(response);
+    })();
   }, [workflow, mock]);
 
   return state;

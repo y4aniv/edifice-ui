@@ -5,10 +5,10 @@ import { Workspace as WorkspaceWidget } from "../../Workspace";
 import { useMediaLibraryContext } from "../MediaLibrary";
 
 export const Workspace = () => {
-  const ctx = useMediaLibraryContext();
+  const context = useMediaLibraryContext();
 
   function getDocumentRoleFilter(): Role | Role[] | null {
-    switch (ctx.type) {
+    switch (context.type) {
       case "image":
         return "img";
       case "audio":
@@ -21,11 +21,11 @@ export const Workspace = () => {
   }
 
   function handleSelect(result: WorkspaceElement[]) {
-    ctx.setResultCounter(result.length);
+    context.setResultCounter(result.length);
     if (result.length > 0) {
-      ctx.setResult(result);
+      context.setResult(result);
     } else {
-      ctx.setResult();
+      context.setResult();
     }
   }
 

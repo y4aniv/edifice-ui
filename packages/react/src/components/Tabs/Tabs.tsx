@@ -27,7 +27,7 @@ export interface TabsProps {
   /**
    * Get notified when a tab is selected
    */
-  onTabChange?: (tab: TabsItemProps) => void;
+  onChange?: (tab: TabsItemProps) => void;
 }
 
 const TabsContext = createContext<{
@@ -50,7 +50,7 @@ export function useTabsContext() {
 /**
  * Tab Content displayed one at a time when a Tab Item is selected
  */
-const Tabs = ({ defaultId, items, onTabChange }: TabsProps) => {
+const Tabs = ({ defaultId, items, onChange }: TabsProps) => {
   const [activeTab, setActiveTab] = useState<string>(defaultId || "");
   const [tabUnderlineWidth, setTabUnderlineWidth] = useState(0);
   const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
@@ -63,7 +63,7 @@ const Tabs = ({ defaultId, items, onTabChange }: TabsProps) => {
 
   useEffect(() => {
     const currentItem = items.find((item) => item.id === activeTab);
-    currentItem && onTabChange?.(currentItem);
+    currentItem && onChange?.(currentItem);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab]); // only updating the activeTab value should trigger this effect.
 

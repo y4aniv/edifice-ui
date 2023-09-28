@@ -241,21 +241,21 @@ export const MediaLibrary = ({
   /* Compute the index of the displayed tab by default. */
   const defaultTabIdx = useMemo<number>(() => {
     const typeKey = type || "none";
-    let idx = 0;
+    let index = 0;
     if (typeof mediaLibraryTypes[typeKey]?.defaultTab == "string") {
       const defaultTabId = mediaLibraryTypes[typeKey]?.defaultTab;
-      idx = tabs.findIndex((t) => t.id === defaultTabId);
+      index = tabs.findIndex((t) => t.id === defaultTabId);
     }
     // Check boundaries before returning an index.
-    return 0 > idx || idx >= tabs.length ? 0 : idx;
+    return 0 > index || index >= tabs.length ? 0 : index;
   }, [type, tabs]);
 
   // Stateful contextual values
   const [resultCounter, setResultCounter] = useState<number | undefined>();
   const [result, setResult] = useState<any | undefined>();
   function setVisibleTab(tab: AvailableTab) {
-    const idx = tabs.findIndex((t) => t.id === tab);
-    if (idx < 0) throw "tab.not.visible";
+    const index = tabs.findIndex((t) => t.id === tab);
+    if (index < 0) throw "tab.not.visible";
     // TODO améliorer le composant Tabs pour pouvoir le piloter depuis le parent.
     throw "not.implemented.yet";
   }
@@ -295,7 +295,7 @@ export const MediaLibrary = ({
             <Tabs
               items={tabs}
               defaultId={tabs[defaultTabIdx].id}
-              onTabChange={handleTabChange}
+              onChange={handleTabChange}
             ></Tabs>
           </Modal.Body>
           <Modal.Footer>

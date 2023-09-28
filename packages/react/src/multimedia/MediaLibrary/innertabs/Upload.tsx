@@ -1,8 +1,8 @@
 import { useMediaLibraryContext } from "../MediaLibrary";
 
 export const Upload = () => {
-  const ctx = useMediaLibraryContext();
-  ctx.setResult();
+  const context = useMediaLibraryContext();
+  context.setResult();
 
   return <p>TODO: Upload</p>;
 };
