@@ -9,14 +9,13 @@ const meta = {
     options: {
       type: "upload",
       name: "Lorem Ipsum",
-      extensionFile: "Extension File",
-      weightFile: 200,
-      successUpload: true,
-      uploadLoading: false,
+      info: { type: "Extension File", weight: "200Mo" },
+      status: "success",
       onDelete: () => console.log("delete"),
       onEdit: () => console.log("edit"),
     },
     isLoading: false,
+    isAnimated: true,
   },
 };
 
@@ -32,14 +31,14 @@ export const UploadSuccess: Story = {
 export const UploadLoading: Story = {
   args: {
     options: {
-      successUpload: true,
-      uploadLoading: true,
+      status: "success",
       type: "upload",
       name: "Lorem Ipsum",
-      extensionFile: "Extension File",
       onRetry: () => console.log("retry"),
       onDelete: () => console.log("delete"),
     },
+    isLoading: true,
+    isAnimated: true,
   },
   render: (args: CardProps) => {
     return <Card {...args} />;
@@ -49,15 +48,15 @@ export const UploadLoading: Story = {
 export const UploadError: Story = {
   args: {
     options: {
-      successUpload: false,
-      uploadLoading: false,
+      status: "error",
       type: "upload",
       name: "Lorem Ipsum",
-      extensionFile: "Extension File",
+      info: { type: "Extension File", weight: "200Mo" },
       onRetry: () => console.log("retry"),
       onDelete: () => console.log("delete"),
       onEdit: () => console.log("edit"),
     },
+    isLoading: false,
   },
   render: (args: CardProps) => {
     return <Card {...args} />;

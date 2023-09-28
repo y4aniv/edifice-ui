@@ -1,98 +1,105 @@
 import { forwardRef } from "react";
 
-import { Close, Error, Redo, SuccessOutline, Wand } from "@edifice-ui/icons";
+import { Close, SuccessOutline, Wand, Retry } from "@edifice-ui/icons";
 import clsx from "clsx";
 
 import { useCardContext } from "./CardContext";
-import { AppIcon } from "../AppIcon";
+import { usePaths } from "../../core";
 import { Button, IconButton } from "../Button";
 import { Image } from "../Image";
 import { Loading } from "../Loading";
 
 const Upload = forwardRef(() => {
-  const { options, isLoading, classesTitle, app } = useCardContext();
+  const { options, isLoading, classesTitle } = useCardContext();
 
-  const {
-    imageSrc,
-    name,
-    extensionFile,
-    weightFile,
-    successUpload,
-    uploadLoading,
-    onDelete,
-    onEdit,
-    onRetry,
-  } = options;
+  const { imageSrc, name, info, status, onDelete, onEdit, onRetry } = options;
 
-  const classesText = clsx("card-text small", {
-    placeholder: isLoading,
-  });
+  const [imagePath] = usePaths();
+
+  const classesText = clsx(
+    "card-text small text-break text-truncate text-truncate-1",
+    {
+      placeholder: isLoading,
+    },
+  );
+
+  const renderStatusUpload =
+    status === "success" ? (
+      <SuccessOutline className="upload-success" />
+    ) : (
+      <>
+        <Button
+          leftIcon={<Retry />}
+          variant="ghost"
+          color="tertiary"
+          onClick={onRetry}
+        >
+          Retry
+        </Button>
+      </>
+    );
 
   return (
-    <div className="card-upload">
+    <>
       <div className="card-body">
-        {imageSrc ? (
-          <div className="card-image">
-            <Image
-              alt=""
-              src={imageSrc}
-              width="48"
-              height="48"
-              objectFit="cover"
-              className={clsx("h-full", {
-                placeholder: isLoading,
-              })}
-            />
-          </div>
+        {status === "error" ? (
+          <Image
+            alt=""
+            src={`${imagePath}/common/image-status-error.svg`}
+            width="36"
+            height="36"
+            objectFit="cover"
+            className={clsx({
+              placeholder: isLoading,
+            })}
+          />
         ) : (
-          <AppIcon app={app} iconFit="ratio" size="48" variant="rounded" />
+          <Image
+            alt=""
+            src={imageSrc ?? ""}
+            width="36"
+            height="36"
+            objectFit="cover"
+            className={clsx("h-full", {
+              placeholder: isLoading,
+            })}
+          />
         )}
-        <div>
+        <div className="text-break text-truncate text-truncate-1">
           <h3 className={classesTitle}>
-            {successUpload ? (
-              <strong>{name}</strong>
-            ) : (
-              <strong>Upload failed</strong>
-            )}
+            <strong>{name}</strong>
           </h3>
-          <p className="card-text small">
-            <em className={classesText}>
-              {extensionFile} {weightFile && `- ${weightFile}`}
-            </em>
+          <p className={classesText}>
+            {status === "success" ? (
+              <>
+                {info?.type} {info?.weight && `- ${info.weight}`}
+              </>
+            ) : (
+              <strong className="upload-error">Erreur d'import</strong>
+            )}
           </p>
         </div>
       </div>
-      <div className="action-upload">
+      <div className="card-footer gap-16">
         <div className="action-content">
           <div className="status px-16">
-            {uploadLoading ? (
+            {isLoading ? (
               <Loading
                 isLoading
                 loadingPosition="left"
                 className="loading-color"
               />
             ) : (
-              <>
-                {successUpload ? (
-                  <SuccessOutline className="upload-success" />
-                ) : (
-                  <>
-                    <Button
-                      leftIcon={<Redo />}
-                      variant="ghost"
-                      color="tertiary"
-                      onClick={onRetry}
-                    >
-                      Retry
-                    </Button>
-                    <Error className="upload-error" />
-                  </>
-                )}
-              </>
+              renderStatusUpload
             )}
           </div>
           <div className="actions">
-            <IconButton icon={<Wand />} variant="ghost" onClick={onEdit} />
+            <IconButton
+              icon={<Wand />}
+              variant="ghost"
+              disabled={status !== "success" || isLoading}
+              onClick={onEdit}
+            />
             <IconButton
               icon={<Close />}
               variant="ghost"
@@ -102,7 +109,7 @@ const Upload = forwardRef(() => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 });
 

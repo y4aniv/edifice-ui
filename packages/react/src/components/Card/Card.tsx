@@ -13,6 +13,8 @@ import { IconButton } from "../Button";
 
 export type CardType = "folder" | "resource" | "upload" | null | undefined;
 
+export type Status = "success" | "warning" | "error";
+
 export interface CardOptions {
   type?: CardType;
   /**
@@ -37,10 +39,8 @@ export interface CardOptions {
   name?: string;
   isShared?: boolean;
   isPublic?: boolean;
-  extensionFile?: string;
-  weightFile?: number;
-  successUpload?: boolean;
-  uploadLoading?: boolean;
+  info?: { type: string; weight: string };
+  status?: Status;
   onDelete?: () => void;
   onEdit?: () => void;
   onRetry?: () => void;
@@ -119,15 +119,14 @@ const Root = forwardRef(
       onSelect?.();
     }
 
-    const { type, successUpload } = options;
+    const { type } = options;
 
     const appCode = app ? getIconCode(app) : "placeholder";
 
     const classesTitle = clsx(
-      "card-title body text-break text-truncate text-truncate-2 pe-32",
+      "card-title body text-break text-truncate text-truncate-1",
       {
         placeholder: isLoading,
-        "upload-error": !successUpload,
       },
     );
 
@@ -147,6 +146,7 @@ const Root = forwardRef(
       folder: <Card.Folder />,
       resource: <Card.Resource />,
       upload: <Card.Upload />,
+      undefined: <Card.Resource />,
       default: null,
     };
 
@@ -154,19 +154,15 @@ const Root = forwardRef(
       <CardContext.Provider value={values}>
         <div
           ref={ref}
-          className={
-            type !== "upload"
-              ? clsx(
-                  "card",
-                  {
-                    "placeholder-glow": isLoading,
-                    "is-selected": isSelected,
-                    "is-animated": isAnimated,
-                  },
-                  className,
-                )
-              : ""
-          }
+          className={clsx(
+            type !== "upload" ? "card" : "card-upload",
+            {
+              "placeholder-glow": isLoading,
+              "is-selected": isSelected,
+              "is-animated": isAnimated,
+            },
+            className,
+          )}
           {...restProps}
         >
           {type !== "upload" ? (
