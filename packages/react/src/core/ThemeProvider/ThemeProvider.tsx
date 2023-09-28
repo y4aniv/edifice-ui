@@ -6,7 +6,7 @@ import {
   useEffect,
 } from "react";
 
-import { IOdeTheme } from "ode-ts-client";
+import { IOdeTheme } from "edifice-ts-client";
 
 import { useOdeClient } from "../OdeClientProvider";
 import { useConf } from "../useConf";
@@ -27,11 +27,14 @@ export function ThemeProvider({ children }: ThemeProps) {
   const confQuery = useConf({ appCode });
 
   useEffect(() => {
-    // const link = document.getElementById("theme") as HTMLAnchorElement;
     const favicon = document.getElementById("favicon") as HTMLAnchorElement;
-    // link.href = `${confQuery?.data?.theme?.bootstrapUrl}/theme.css` as string;
     favicon.href =
       `${confQuery?.data?.theme?.basePath}/img/illustrations/favicon.ico` as string;
+    const bootstrapVersion =
+      confQuery?.data?.theme?.bootstrapVersion?.split("-");
+    const dataProduct = bootstrapVersion
+      ? bootstrapVersion[bootstrapVersion.length - 1]
+      : undefined;
 
     const attributes = [
       {
@@ -44,7 +47,7 @@ export function ThemeProvider({ children }: ThemeProps) {
       },
       {
         data: "data-product",
-        value: confQuery?.data?.theme?.bootstrapVersion.split("-").at(-1),
+        value: dataProduct,
       },
     ];
 

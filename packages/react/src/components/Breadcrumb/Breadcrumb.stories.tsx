@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import Breadcrumb from "./Breadcrumb";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof Breadcrumb> = {
   title: "Layout/Breadcrumb",
   component: Breadcrumb,
   parameters: {
@@ -24,8 +24,9 @@ export default {
       isExternal: false,
     },
   },
-} as Meta<typeof Breadcrumb>;
+};
 
+export default meta;
 type Story = StoryObj<typeof Breadcrumb>;
 
 export const Base: Story = {};

@@ -6,7 +6,7 @@ import Toast from "./Toast";
 import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof Toast> = {
   title: "Components/Toast",
   component: Toast,
   parameters: {
@@ -18,8 +18,9 @@ export default {
     },
   },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-} as Meta<typeof Toast>;
+};
 
+export default meta;
 type Story = StoryObj<typeof Toast>;
 
 export const Base: Story = {

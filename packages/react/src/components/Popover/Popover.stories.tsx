@@ -7,7 +7,7 @@ import Avatar from "../Avatar/Avatar";
 import useHover from "../../hooks/useHover/useHover";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof Popover> = {
   title: "Components/Popover",
   component: Popover,
   args: {
@@ -37,8 +37,9 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Popover>;
+};
 
+export default meta;
 type Story = StoryObj<typeof Popover>;
 
 export const Base: Story = {

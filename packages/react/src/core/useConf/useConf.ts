@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { App, IGetConf, odeServices } from "ode-ts-client";
+import { App, IGetConf, odeServices } from "edifice-ts-client";
 
 export default function useConf({ appCode }: { appCode: App }) {
   return useQuery<IGetConf>({

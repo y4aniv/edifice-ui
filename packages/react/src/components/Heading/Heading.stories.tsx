@@ -3,11 +3,12 @@ import { Meta, StoryObj } from "@storybook/react";
 import Heading from "./Heading";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof Heading> = {
   title: "Components/Heading",
   component: Heading,
-} as Meta<typeof Heading>;
+};
 
+export default meta;
 type Story = StoryObj<typeof Heading>;
 
 export const Heading1: Story = {

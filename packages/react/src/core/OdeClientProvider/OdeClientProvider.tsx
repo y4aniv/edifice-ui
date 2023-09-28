@@ -15,7 +15,7 @@ import {
   UserProfile,
   IGetConf,
   IGetSession,
-} from "ode-ts-client";
+} from "edifice-ts-client";
 
 import { useConf } from "../useConf";
 import { useSession } from "../useSession";

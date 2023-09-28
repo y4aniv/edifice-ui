@@ -1,4 +1,4 @@
-import { IUserDescription, IUserInfo } from "ode-ts-client";
+import { IUserDescription, IUserInfo } from "edifice-ts-client";
 
 import { useOdeClient } from "../OdeClientProvider";
 import { useOdeTheme } from "../ThemeProvider";

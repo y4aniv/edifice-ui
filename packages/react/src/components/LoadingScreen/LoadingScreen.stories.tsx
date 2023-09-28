@@ -3,7 +3,7 @@ import LoadingScreen from "./LoadingScreen";
 import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof LoadingScreen> = {
   title: "Components/LoadingScreen",
   component: LoadingScreen,
   tags: ["autodocs"],
@@ -16,7 +16,9 @@ export default {
     },
   },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-} satisfies Meta<typeof LoadingScreen>;
+};
+
+export default meta;
 
 type Story = StoryObj<typeof LoadingScreen>;
 

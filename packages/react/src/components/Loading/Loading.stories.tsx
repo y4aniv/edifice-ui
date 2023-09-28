@@ -5,7 +5,7 @@ import Loading, { LoadingProps } from "./Loading";
 import { Hourglass } from "@edifice-ui/icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof Loading> = {
   title: "Components/Loading",
   component: Loading,
   argTypes: {
@@ -19,7 +19,9 @@ export default {
     loadingPosition: "left",
     loadingIcon: undefined,
   },
-} as Meta<typeof Loading>;
+};
+
+export default meta;
 
 type Story = StoryObj<typeof Loading>;
 

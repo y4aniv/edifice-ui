@@ -1,4 +1,4 @@
-import { IWebApp } from "ode-ts-client";
+import { IWebApp } from "edifice-ts-client";
 
 import { useOdeClient } from "../OdeClientProvider";
 

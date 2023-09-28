@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import ImagePicker, { ImagePickerProps } from "./ImagePicker";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof ImagePicker> = {
   title: "Forms/ImagePicker",
   component: ImagePicker,
   parameters: {
@@ -42,8 +42,9 @@ export default {
       },
     },
   },
-} as Meta<typeof ImagePicker>;
+};
 
+export default meta;
 type Story = StoryObj<typeof ImagePicker>;
 
 export const Base: Story = {};

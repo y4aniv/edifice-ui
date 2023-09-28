@@ -1,6 +1,25 @@
 {
   "plugins": [
-    "@semantic-release/commit-analyzer",
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "angular",
+        "releaseRules": [
+          {
+            "type": "chore",
+            "release": "patch"
+          },
+          {
+            "type": "docs",
+            "release": "patch"
+          },
+          {
+            "type": "refactor",
+            "release": "patch"
+          }
+        ]
+      }
+    ],
     "@semantic-release/release-notes-generator",
     "@semantic-release/npm",
     "@semantic-release/github"
@@ -9,7 +28,15 @@
   "branches": [
     "main",
     {
-      "name": "dev",
+      "name": "develop",
+      "prerelease": true
+    },
+    {
+      "name": "develop-pedago",
+      "prerelease": true
+    },
+    {
+      "name": "develop-b2school",
       "prerelease": true
     }
   ]

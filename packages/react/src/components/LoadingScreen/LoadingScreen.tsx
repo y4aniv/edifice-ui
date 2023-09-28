@@ -11,7 +11,7 @@ export interface LoadingScreenProps {
 const LoadingScreen = forwardRef(
   ({ position = true }: { position?: boolean }, ref: Ref<HTMLDivElement>) => {
     const [imagePath] = usePaths();
-    const image = `${imagePath}/screen-loading.gif`;
+    const image = `${imagePath}/loading/screen-loading.gif`;
 
     const classes = clsx(
       "loading-screen top-0 end-0 start-0 bottom-0 d-grid justify-content-center align-items-center z-2000",
