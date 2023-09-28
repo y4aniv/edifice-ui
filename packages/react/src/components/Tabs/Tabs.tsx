@@ -70,7 +70,6 @@ const Tabs = ({ defaultId, items, onChange }: TabsProps) => {
   useEffect(() => {
     function setTabPosition() {
       const currentTabIndex = items.findIndex((item) => item.id === activeTab);
-      console.log(currentTabIndex);
       const currentTabRef = tabsRef.current[currentTabIndex];
       if (currentTabRef) {
         currentTabRef.focus();
