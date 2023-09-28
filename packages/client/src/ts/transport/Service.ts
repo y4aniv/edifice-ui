@@ -13,11 +13,41 @@ const loadedScripts: { [url: string]: boolean } = {};
 export class HttpService {
   // Axios automatically manages the XSRF-TOKEN cookie and the X-XSRF-TOKEN HTTP header.
   private axios: AxiosInstance;
-
+  private baseUrl?: string;
+  private headers: Record<string, string> = {};
   private _latestResponse: any;
 
-  constructor(private context: OdeServices, params?: any) {
+  constructor(
+    private context: OdeServices,
+    params?: any,
+  ) {
     this.axios = axios.create(params);
+  }
+
+  private fixBaseUrl(url: string) {
+    // skip absolute url
+    if (url.startsWith("http://") || url.startsWith("https://")) {
+      return url;
+    } else if (this.baseUrl) {
+      if (this.baseUrl.endsWith("/") || url.startsWith("/")) {
+        return `${this.baseUrl}${url}`;
+      } else {
+        return `${this.baseUrl}/${url}`;
+      }
+    } else {
+      // if baseUrl not setted => return relative
+      return url;
+    }
+  }
+
+  useBaseUrl(baseUrl?: string) {
+    this.baseUrl = baseUrl;
+    return this;
+  }
+
+  useHeaders(headers: Record<string, string>) {
+    this.headers = headers;
+    return this;
   }
 
   setCdn(cdnUrl: string): void {
@@ -77,7 +107,8 @@ export class HttpService {
         // Axios will serialize parameters, see https://github.com/axios/axios#request-config
         p.params = Object.assign({}, params.queryParams);
       }
-
+      const previousHeaders = p.headers ?? {};
+      p.headers = { ...previousHeaders, ...this.headers };
       /* TODO : manage params.requestName through an events[]. See infra-front http.ts */
 
       return p;
@@ -85,6 +116,7 @@ export class HttpService {
   }
 
   private toCdnUrl(url: string) {
+    url = this.fixBaseUrl(url);
     const CDN_DOMAIN: string = this.context.conf().getCdnUrl() || "";
     // If CDN domain is defined, and requested url is not /public/conf (SKIP PUBLIC CONF)
     if (CDN_DOMAIN!.length > 0 && url !== "/conf/public") {
@@ -178,7 +210,11 @@ export class HttpService {
     params?: IHttpParams,
   ): Promise<R> {
     try {
-      const r = await this.axios.post<R>(url, data, this.toAxiosConfig(params));
+      const r = await this.axios.post<R>(
+        this.fixBaseUrl(url),
+        data,
+        this.toAxiosConfig(params),
+      );
       return this.mapAxiosResponse(r, params);
     } catch (e) {
       const result_1 = this.mapAxiosError(e as AxiosError, params) as R;
@@ -196,7 +232,7 @@ export class HttpService {
       delete p.headers["Content-Type"];
     }
     try {
-      const r = await this.axios.post<R>(url, data, {
+      const r = await this.axios.post<R>(this.fixBaseUrl(url), data, {
         ...p,
         headers: {
           "Content-Type": "multipart/form-data",
@@ -217,7 +253,11 @@ export class HttpService {
     const p = this.toAxiosConfig();
     if (p.headers) p.headers["Content-Type"] = "application/json";
     try {
-      const r = await this.axios.post<R>(url, json, this.toAxiosConfig(params));
+      const r = await this.axios.post<R>(
+        this.fixBaseUrl(url),
+        json,
+        this.toAxiosConfig(params),
+      );
       return this.mapAxiosResponse(r, params);
     } catch (e) {
       const result_1 = this.mapAxiosError(e as AxiosError, params) as R;
@@ -231,7 +271,11 @@ export class HttpService {
     params?: IHttpParams,
   ): Promise<R> {
     try {
-      const r = await this.axios.put<R>(url, data, this.toAxiosConfig(params));
+      const r = await this.axios.put<R>(
+        this.fixBaseUrl(url),
+        data,
+        this.toAxiosConfig(params),
+      );
       return this.mapAxiosResponse(r, params);
     } catch (e) {
       const result = this.mapAxiosError(e as AxiosError, params) as R;
@@ -245,7 +289,7 @@ export class HttpService {
       if (p.headers && p.headers["Content-Type"]) {
         delete p.headers["Content-Type"];
       }
-      const res = await this.axios.put(url, data, {
+      const res = await this.axios.put(this.fixBaseUrl(url), data, {
         ...p,
         headers: {
           "Content-Type": "multipart/form-data",
@@ -266,7 +310,7 @@ export class HttpService {
     const p = this.toAxiosConfig(params);
     if (p.headers) p.headers["Content-Type"] = "application/json";
     try {
-      const r = await this.axios.put<R>(url, json, p);
+      const r = await this.axios.put<R>(this.fixBaseUrl(url), json, p);
       return this.mapAxiosResponse(r, params);
     } catch (e) {
       const result = this.mapAxiosError(e as AxiosError, params) as R;
@@ -275,7 +319,10 @@ export class HttpService {
   }
   async delete<R = any>(url: string, params?: IHttpParams): Promise<R> {
     try {
-      const r = await this.axios.delete<R>(url, this.toAxiosConfig(params));
+      const r = await this.axios.delete<R>(
+        this.fixBaseUrl(url),
+        this.toAxiosConfig(params),
+      );
       return this.mapAxiosResponse(r, params);
     } catch (e) {
       const result_1 = this.mapAxiosError(e as AxiosError, params) as R;
@@ -285,7 +332,9 @@ export class HttpService {
 
   async deleteJson<R = any>(url: string, json: any): Promise<R> {
     try {
-      const r = await this.axios.delete<R>(url, { data: json });
+      const r = await this.axios.delete<R>(this.fixBaseUrl(url), {
+        data: json,
+      });
       return this.mapAxiosResponse(r);
     } catch (e) {
       const result = this.mapAxiosError(e as AxiosError) as R;

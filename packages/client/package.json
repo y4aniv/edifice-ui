@@ -1,0 +1,64 @@
+{
+  "name": "edifice-ts-client",
+  "version": "1.0.0",
+  "description": "Edifice TypeScript Client",
+  "homepage": "https://github.com/opendigitaleducation/edifice-ts-client#readme",
+  "bugs": {
+    "url": "https://github.com/opendigitaleducation/edifice-ts-client/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opendigitaleducation/edifice-ts-client.git"
+  },
+  "license": "AGPL-3.0",
+  "author": "Edifice",
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "version.txt"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "docs": "npx rimraf ./docs/ && npx typedoc src/ts/index.ts --excludePrivate --disableSources --plugin typedoc-plugin-markdown",
+    "format": "pnpm run format:write && pnpm run format:check",
+    "format:check": "npx prettier --check \"src/ts/**/*.ts\"",
+    "format:write": "npx prettier --write \"src/ts/**/*.ts\"",
+    "generate-commit-version": "node scripts/version.cjs",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "axios": "1.4.0",
+    "core-js": "3.32.0",
+    "rxjs": "7.8.1"
+  },
+  "devDependencies": {
+    "@types/jasmine": "4.3.5",
+    "@types/node": "20.4.8",
+    "husky": "^8.0.0",
+    "jasmine": "5.1.0",
+    "prettier": "3.0.1",
+    "rimraf": "5.0.1",
+    "rollup-plugin-visualizer": "5.9.2",
+    "semantic-release": "21.0.7",
+    "terser": "5.19.2",
+    "typedoc": "0.24.8",
+    "typedoc-plugin-markdown": "3.15.4",
+    "typescript": "5.1.6",
+    "vite": "4.4.9",
+    "vite-plugin-dts": "3.5.1"
+  },
+  "packageManager": "pnpm@8.6.6",
+  "engines": {
+    "node": "16 || 18"
+  }
+}

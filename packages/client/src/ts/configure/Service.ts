@@ -96,21 +96,18 @@ export class ConfService {
     const skins = conf?.overriding.find(
       (item: { child: any }) => item.child === skin,
     ).skins;
-    const bootstrap = "/assets/themes/ode-bootstrap";
-    const bootstrapVersion = conf?.overriding.find(
-      (item: { child: any }) => item.child === skin,
-    ).bootstrapVersion;
-    const bootstrapPath = `${this.cdnDomain}/assets/themes/${bootstrapVersion}`;
-    const bootstrapUrl = `${bootstrapPath}/skins/${theme.skinName}`;
+    const bootstrapPath = "/assets/themes/edifice-bootstrap";
+    const bootstrapVersion = conf?.overriding
+      .find((item: { child: any }) => item.child === skin)
+      .bootstrapVersion.split("-")
+      .at(-1);
     const is1d =
       conf?.overriding.find((item: { child: any }) => item.child === skin)
         .parent === "panda";
 
     return {
       basePath: `${this.cdnDomain}${theme.skin}../../`,
-      bootstrap,
       bootstrapPath,
-      bootstrapUrl,
       bootstrapVersion,
       is1d,
       logoutCallback: theme.logoutCallback,
