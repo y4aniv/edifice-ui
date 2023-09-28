@@ -16,7 +16,10 @@ export class HttpService {
 
   private _latestResponse: any;
 
-  constructor(private context: OdeServices, params?: any) {
+  constructor(
+    private context: OdeServices,
+    params?: any,
+  ) {
     this.axios = axios.create(params);
   }
 

@@ -1,6 +1,21 @@
 import { FileTypeUtils } from "../utils/FileTypeUtils";
 import { OdeServices } from "../services/OdeServices";
-import { WorkspaceElement } from "./interface";
+import { ID, WorkspaceElement, WorkspaceSearchFilter } from "./interface";
+
+interface ElementQuery {
+  id?: ID;
+  parentId?: ID;
+  hierarchical?: boolean;
+  filter: WorkspaceSearchFilter;
+  search?: string;
+  includeall?: boolean;
+  ancestorId?: string;
+  application?: string;
+  directShared?: boolean;
+  limit?: number;
+  skip?: number;
+  onlyRoot?: boolean;
+}
 
 export class WorkspaceService {
   constructor(private context: OdeServices) {}
@@ -55,5 +70,36 @@ export class WorkspaceService {
       formData,
     );
     return res;
+  }
+
+  private async acceptDocuments(params: ElementQuery) {
+    const userInfo = await this.context.session().getUser();
+    return (current: WorkspaceElement) => {
+      //filter by trasherid
+      if (current.deleted && current.trasher) {
+        return userInfo?.userId == current.trasher;
+      }
+      return true;
+    };
+  }
+
+  private async fetchDocuments(
+    params: ElementQuery,
+  ): Promise<WorkspaceElement[]> {
+    let filesO: WorkspaceElement[] =
+      params.filter !== "external" || params.parentId
+        ? await this.http.get<WorkspaceElement[]>("/workspace/documents", {
+            queryParams: params,
+          })
+        : [];
+    const filterFn = await this.acceptDocuments(params);
+    return filesO.filter(filterFn);
+  }
+
+  async listDocuments(
+    filter: WorkspaceSearchFilter,
+    parentId?: ID,
+  ): Promise<WorkspaceElement[]> {
+    return this.fetchDocuments({ filter, parentId });
   }
 }
