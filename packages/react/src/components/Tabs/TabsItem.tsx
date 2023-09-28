@@ -24,7 +24,12 @@ export interface TabsItemProps {
   content: ReactNode;
 }
 
-const TabsItem = ({ icon, label, id }: TabsItemProps) => {
+const TabsItem = ({
+  icon,
+  label,
+  id,
+  order,
+}: TabsItemProps & { order: number }) => {
   const { activeTab, setSelectedTab, onKeyDown, tabsRef } = useTabsContext();
   const { t } = useTranslation();
 
@@ -36,7 +41,7 @@ const TabsItem = ({ icon, label, id }: TabsItemProps) => {
   return (
     <li className="nav-item flex-shrink-0" role="presentation">
       <button
-        ref={(el) => (tabsRef.current[id] = el)}
+        ref={(el) => (tabsRef.current[order] = el)}
         type="button"
         id={`tab-${id}`}
         className={classes}
