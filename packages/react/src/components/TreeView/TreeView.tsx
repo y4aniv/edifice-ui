@@ -17,27 +17,27 @@ export interface TreeViewProps {
   /**
    * Callback function to provide selected item to parent component
    */
-  onTreeItemSelect?: Function;
+  onTreeItemSelect?: (nodeId: string) => void;
 
   /**
    * Callback function to provide folded item to parent component
    */
-  onTreeItemFold?: Function;
+  onTreeItemFold?: (nodeId: string) => void;
 
   /**
    * Callback function to provide unfolded item to parent component
    */
-  onTreeItemUnfold?: Function;
+  onTreeItemUnfold?: (nodeId: string) => void;
 
   /**
    * Callback function to provide focused item to parent component
    */
-  onTreeItemFocus?: Function;
+  onTreeItemFocus?: (nodeId: string) => void;
 
   /**
    * Callback function to provide blured item to parent component
    */
-  onTreeItemBlur?: Function;
+  onTreeItemBlur?: (nodeId: string) => void;
 }
 
 /**

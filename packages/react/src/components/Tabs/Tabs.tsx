@@ -24,12 +24,16 @@ export interface TabsProps {
    * Items to be displayed
    */
   items: TabsItemProps[];
+  /**
+   * Get notified when a tab is selected
+   */
+  onChange?: (tab: TabsItemProps) => void;
 }
 
 const TabsContext = createContext<{
   activeTab?: string;
-  tabsRef: React.MutableRefObject<never[]>;
   setSelectedTab: (key: string) => void;
+  tabsRef: React.MutableRefObject<(HTMLButtonElement | null)[]>;
   onKeyDown: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
 }>(null!);
 
@@ -46,36 +50,43 @@ export function useTabsContext() {
 /**
  * Tab Content displayed one at a time when a Tab Item is selected
  */
-const Tabs = ({ defaultId, items }: TabsProps) => {
+const Tabs = ({ defaultId, items, onChange }: TabsProps) => {
   const [activeTab, setActiveTab] = useState<string>(defaultId || "");
   const [tabUnderlineWidth, setTabUnderlineWidth] = useState(0);
   const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
 
-  const tabsRef = useRef([]);
+  const tabsRef = useRef<(HTMLButtonElement | null)[]>([]);
 
   const setSelectedTab = useCallback((id: string) => {
     setActiveTab(id);
   }, []);
 
   useEffect(() => {
-    function setTabPosition() {
-      const currentTab = tabsRef.current[activeTab];
-      tabsRef.current[activeTab].focus();
-      setTabUnderlineLeft(currentTab?.offsetLeft ?? 0);
-      setTabUnderlineWidth(currentTab?.clientWidth ?? 0);
-    }
+    const currentItem = items.find((item) => item.id === activeTab);
+    currentItem && onChange?.(currentItem);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeTab]); // only updating the activeTab value should trigger this effect.
 
-    console.log("oui");
+  useEffect(() => {
+    function setTabPosition() {
+      const currentTabIndex = items.findIndex((item) => item.id === activeTab);
+      const currentTabRef = tabsRef.current[currentTabIndex];
+      if (currentTabRef) {
+        currentTabRef.focus();
+        setTabUnderlineLeft(currentTabRef?.offsetLeft ?? 0);
+        setTabUnderlineWidth(currentTabRef?.clientWidth ?? 0);
+      }
+    }
 
     setTabPosition();
     window.addEventListener("resize", setTabPosition);
 
     return () => window.removeEventListener("resize", setTabPosition);
-  }, [activeTab]);
+  }, [activeTab, items]);
 
   const moveFocusToPreviousTab = useCallback(
-    (activeTab: string | number) => {
-      const index = (activeTab as number) - 1;
+    (activeTab: string) => {
+      const index = items.findIndex((item) => item.id === activeTab);
 
       if (activeTab === items[0]?.id) {
         setActiveTab(items[items.length - 1]?.id);
@@ -88,7 +99,7 @@ const Tabs = ({ defaultId, items }: TabsProps) => {
 
   const moveFocusToNextTab = useCallback(
     (activeTab: string | number) => {
-      const index = (activeTab as number) - 1;
+      const index = items.findIndex((item) => item.id === activeTab);
 
       if (activeTab === items[items.length - 1]?.id) {
         setActiveTab(items[0]?.id);
@@ -136,8 +147,8 @@ const Tabs = ({ defaultId, items }: TabsProps) => {
     <TabsContext.Provider value={value}>
       <div className="position-relative overflow-x-auto">
         <Tabs.List>
-          {items.map(({ ...props }) => (
-            <Tabs.Item key={props.id} {...props}></Tabs.Item>
+          {items.map(({ ...props }, order) => (
+            <Tabs.Item key={props.id} order={order} {...props}></Tabs.Item>
           ))}
         </Tabs.List>
         <span
