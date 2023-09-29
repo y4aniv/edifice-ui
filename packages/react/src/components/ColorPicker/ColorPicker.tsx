@@ -63,7 +63,9 @@ const ColorPicker = ({
                 <label className="small d-flex">
                   <button
                     className="color-picker-hue-color-item me-4 border-0"
-                    style={{ backgroundColor: palette.reset.value }}
+                    style={{
+                      backgroundColor: palette.reset?.value || "transparent",
+                    }}
                     onClick={() => handleClick(palette.reset?.value || "")}
                   >
                     <NoColors></NoColors>
