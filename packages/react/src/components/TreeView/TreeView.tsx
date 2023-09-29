@@ -128,11 +128,7 @@ const TreeView = forwardRef<TreeViewHandlers, TreeViewProps>(
       </TreeItem>
     );
 
-    return (
-      <div id="treeview" className="treeview">
-        {renderTree(data)}
-      </div>
-    );
+    return <div className="treeview">{renderTree(data)}</div>;
   },
 );
 
