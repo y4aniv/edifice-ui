@@ -8,7 +8,7 @@ export default defineConfig({
       entry: resolve(__dirname, "./src/ts/index.ts"),
       name: "edifice-ts-client",
       fileName: "index",
-      // formats: ["cjs", "es"],
+      formats: ["cjs", "es"],
     },
   },
   plugins: [dts()],

@@ -14,9 +14,15 @@ import {
   GetSubFoldersResult,
   DeleteParameters,
   ResourceType,
+  App,
 } from "..";
 import { OdeServices } from "../services/OdeServices";
-import { UpdateParameters, UpdateResult } from "./interface";
+import {
+  CreateParameters,
+  CreateResult,
+  UpdateParameters,
+  UpdateResult,
+} from "./interface";
 
 export abstract class ResourceService {
   //
@@ -80,6 +86,10 @@ export abstract class ResourceService {
   abstract getViewUrl(resourceId: string): string;
 
   abstract getFormUrl(folderId?: string): string;
+
+  abstract create<T extends CreateParameters>(
+    parameters: T,
+  ): Promise<CreateResult>;
 
   abstract update<T extends UpdateParameters>(
     parameters: T,
@@ -208,7 +218,16 @@ export abstract class ResourceService {
   }
 
   /** Move resources/folders to a folder. */
-  async moveToFolder(parameters: MoveParameters): Promise<IActionResult> {
+  async moveToFolder(
+    parameters: MoveParameters,
+    useAssetId = false,
+  ): Promise<IActionResult> {
+    parameters.resourceIds = useAssetId
+      ? await this.mapAssetIdToIds({
+          app: parameters.application,
+          assetIds: parameters.resourceIds,
+        })
+      : parameters.resourceIds;
     const result = await this.http.post<IActionResult>(
       `/explorer/folders/${parameters.folderId}/move`,
       this.moveToBodyParams(parameters),
@@ -225,7 +244,16 @@ export abstract class ResourceService {
   }
 
   /** Delete folders and/or resources. */
-  async deleteAll(parameters: DeleteParameters): Promise<IActionResult> {
+  async deleteAll(
+    parameters: DeleteParameters,
+    useAssetId = false,
+  ): Promise<IActionResult> {
+    parameters.resourceIds = useAssetId
+      ? await this.mapAssetIdToIds({
+          app: parameters.application,
+          assetIds: parameters.resourceIds,
+        })
+      : parameters.resourceIds;
     const result = await this.http.deleteJson<IActionResult>(
       `/explorer`,
       parameters,
@@ -234,10 +262,16 @@ export abstract class ResourceService {
   }
 
   /** Trash folders and/or resources. */
-  async trashAll({
-    resourceType,
-    ...parameters
-  }: Omit<TrashParameters, "trash">): Promise<IActionResult> {
+  async trashAll(
+    { resourceType, ...parameters }: Omit<TrashParameters, "trash">,
+    useAssetId = false,
+  ): Promise<IActionResult> {
+    parameters.resourceIds = useAssetId
+      ? await this.mapAssetIdToIds({
+          app: parameters.application,
+          assetIds: parameters.resourceIds,
+        })
+      : parameters.resourceIds;
     const result = await this.http.putJson<IActionResult>(
       `/explorer/trash`,
       parameters,
@@ -245,10 +279,16 @@ export abstract class ResourceService {
     return this.checkHttpResponse(result);
   }
   /** Trash folders and/or resources. */
-  async restoreAll({
-    resourceType,
-    ...parameters
-  }: Omit<TrashParameters, "trash">): Promise<IActionResult> {
+  async restoreAll(
+    { resourceType, ...parameters }: Omit<TrashParameters, "trash">,
+    useAssetId = false,
+  ): Promise<IActionResult> {
+    parameters.resourceIds = useAssetId
+      ? await this.mapAssetIdToIds({
+          app: parameters.application,
+          assetIds: parameters.resourceIds,
+        })
+      : parameters.resourceIds;
     const result = await this.http.putJson<IActionResult>(
       `/explorer/restore`,
       parameters,
@@ -264,6 +304,31 @@ export abstract class ResourceService {
     }
     return result;
   };
+
+  private async mapAssetIdToIds({
+    app,
+    assetIds,
+  }: {
+    assetIds: string[];
+    app: string;
+  }) {
+    const resources = await this.searchContext({
+      app: app as App,
+      pagination: { startIdx: 0, pageSize: assetIds.length + 1 },
+      types: [],
+      filters: {},
+      asset_id: assetIds,
+    });
+    return assetIds.map((assetId) => {
+      const resource = resources.resources.find(
+        (resource) => resource.assetId === assetId,
+      );
+      if (resource === undefined) {
+        throw "explorer.assetid.notfound";
+      }
+      return resource.id;
+    });
+  }
 
   protected async getThumbnailPath(thumb: string | Blob | File | undefined) {
     if (typeof thumb === "undefined") {
@@ -296,9 +361,11 @@ export abstract class ResourceService {
       application: p.app,
       start_idx: p.pagination.startIdx,
       page_size: p.pagination.pageSize,
-      resource_type: p.types[0],
       trashed: p.trashed,
     } as any;
+    if (p.types.length > 0) {
+      ret.resource_type = p.types[0];
+    }
     if (p.orders && Object.entries(p.orders).length) {
       // axios serialize array as name[] (not compatible with current api)
       const [[key, value]] = Object.entries(p.orders);
@@ -309,6 +376,12 @@ export abstract class ResourceService {
     }
     if (typeof p.search === "string") {
       ret.search = p.search;
+    }
+    if (typeof p.asset_id !== "undefined") {
+      ret.asset_id = [...p.asset_id];
+    }
+    if (typeof p.id !== "undefined") {
+      ret.id = p.id;
     }
     return ret;
   }
