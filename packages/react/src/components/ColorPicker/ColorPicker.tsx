@@ -1,6 +1,5 @@
-import { InfoCircle } from "@edifice-ui/icons";
+import { InfoCircle, NoColors } from "@edifice-ui/icons";
 import clsx from "clsx";
-import { useTranslation } from "react-i18next";
 
 import {
   AccessiblePalette,
@@ -32,8 +31,6 @@ const ColorPicker = ({
   model = "#4A4A4A",
   onChange,
 }: ColorPickerProps) => {
-  const { t } = useTranslation();
-
   const handleClick = (color: string) => {
     onChange?.(color);
   };
@@ -58,18 +55,35 @@ const ColorPicker = ({
               </Tooltip>
             )}
           </div>
+
+          {
+            // Show/hide the reset option
+            palette.reset && (
+              <div className="color-picker-reset small fw-normal my-8">
+                <label className="small d-flex">
+                  <button
+                    className="color-picker-hue-color-item me-4 border-0"
+                    style={{ backgroundColor: palette.reset.value }}
+                    onClick={() => handleClick(palette.reset?.value || "")}
+                  >
+                    <NoColors></NoColors>
+                  </button>
+                  {palette.reset.description}
+                </label>
+              </div>
+            )
+          }
+
           <div className="color-picker-palette d-flex gap-2 justify-content-between">
             {palette.colors.map((hues: ColorPaletteHues, hueIndex) => (
               <div
                 key={hueIndex}
-                className={clsx(
-                  "color-picker-hue d-flex gap-2 justify-content-between flex-column ",
-                )}
+                className="color-picker-hue d-flex gap-2 justify-content-between flex-column "
               >
                 {hues.map((color) => (
                   <div key={color.value} className="color-picker-hue-color">
                     <button
-                      aria-label={t(color.description)}
+                      aria-label={color.description}
                       className={clsx(
                         "color-picker-hue-color-item rounded-1",
                         color.hue === "light" ? "light" : "dark",
