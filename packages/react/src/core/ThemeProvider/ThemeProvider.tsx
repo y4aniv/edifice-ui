@@ -30,6 +30,11 @@ export function ThemeProvider({ children }: ThemeProps) {
     const favicon = document.getElementById("favicon") as HTMLAnchorElement;
     favicon.href =
       `${confQuery?.data?.theme?.basePath}/img/illustrations/favicon.ico` as string;
+    const bootstrapVersion =
+      confQuery?.data?.theme?.bootstrapVersion?.split("-");
+    const dataProduct = bootstrapVersion
+      ? bootstrapVersion[bootstrapVersion.length - 1]
+      : undefined;
 
     const attributes = [
       {
@@ -42,7 +47,7 @@ export function ThemeProvider({ children }: ThemeProps) {
       },
       {
         data: "data-product",
-        value: confQuery?.data?.theme?.bootstrapVersion.split("-").at(-1),
+        value: dataProduct,
       },
     ];
 

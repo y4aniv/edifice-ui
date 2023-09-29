@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import Card, { CardProps } from "./Card";
 
-export default {
+const meta = {
   title: "Components/Card/Base",
   component: Card,
   args: {
@@ -13,8 +13,9 @@ export default {
     onOpen: () => console.log("open"),
     onSelect: () => console.log("select"),
   },
-} as Meta<typeof Card>;
+};
 
+export default meta;
 type Story = StoryObj<typeof Card>;
 
 export const Base: Story = {
