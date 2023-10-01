@@ -5,13 +5,6 @@ import clsx from "clsx";
 import { useDropdownContext } from "./DropdownContext";
 import { Checkbox } from "../Checkbox";
 
-/* const DropdownItem = ({
-  option,
-  onClick,
-}: {
-  option: any;
-  onClick?: () => void;
-}) => { */
 const DropdownCheckboxItem = ({ children, value, model, onChange }: any) => {
   const { itemProps, itemRefs, isFocused } = useDropdownContext();
   const { onMenuItemKeyDown, onMenuItemMouseEnter } = itemProps;

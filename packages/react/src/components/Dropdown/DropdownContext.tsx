@@ -1,9 +1,18 @@
 import { createContext, useContext } from "react";
 
-export const DropdownContext = createContext<{
-  triggerProps: any;
-  menuProps: any;
-} | null>(null!);
+import { UseDropdownProps } from "./hooks/useDropdown";
+
+type OmittedProps = Omit<
+  UseDropdownProps,
+  "triggerRef" | "menuRef" | "customTriggerProps" | "setVisible"
+>;
+export interface DropdownContextProps extends OmittedProps {
+  block?: boolean;
+}
+
+export const DropdownContext = createContext<DropdownContextProps | null>(
+  null!,
+);
 
 export const useDropdownContext = () => {
   const context = useContext(DropdownContext);

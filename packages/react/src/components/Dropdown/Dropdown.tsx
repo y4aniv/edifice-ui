@@ -1,5 +1,7 @@
 import { useMemo } from "react";
 
+import clsx from "clsx";
+
 import DropdownCheckboxItem from "./DropdownCheckboxItem";
 import { DropdownContext } from "./DropdownContext";
 import DropdownItem from "./DropdownItem";
@@ -8,10 +10,10 @@ import DropdownMenuGroup from "./DropdownMenuGroup";
 import DropdownRadioItem from "./DropdownRadioItem";
 import DropdownSeparator from "./DropdownSeparator";
 import DropdownTrigger from "./DropdownTrigger";
-import useDropdown from "./useDropdown";
+import useDropdown from "./hooks/useDropdown";
 import { useClickOutside } from "../../hooks";
 
-const Root = ({ children }: any) => {
+const Root = ({ children, block }: any) => {
   const {
     visible,
     isFocused,
@@ -34,13 +36,18 @@ const Root = ({ children }: any) => {
       menuProps,
       itemProps,
       itemRefs,
+      block,
     }),
-    [visible, isFocused, triggerProps, menuProps, itemProps, itemRefs],
+    [visible, isFocused, triggerProps, menuProps, itemProps, itemRefs, block],
   );
+
+  const dropdown = clsx("dropdown", {
+    "w-100": block,
+  });
 
   return (
     <DropdownContext.Provider value={value}>
-      <div ref={ref} className="dropdown">
+      <div ref={ref} className={dropdown}>
         {typeof children === "function"
           ? children(customTriggerProps)
           : children}

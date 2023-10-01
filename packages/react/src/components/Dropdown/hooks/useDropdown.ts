@@ -35,8 +35,8 @@ type MutableRefList<T> = Array<
 export interface UseDropdownProps {
   isFocused: string | null;
   visible: boolean;
-  // itemsRefs: MutableRefObject<{} | null>;
-  itemRefs: MutableRefObject<{}>;
+  // itemRefs: MutableRefObject<any>;
+  itemRefs: MutableRefObject<{ [key: string]: HTMLElement | null }>;
   triggerRef: MutableRefObject<HTMLButtonElement | null>;
   menuRef: MutableRefObject<HTMLUListElement | null>;
   triggerProps: Record<string, any>;

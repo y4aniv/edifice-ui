@@ -1,13 +1,17 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import Dropdown from "./Dropdown";
+import Dropdown from "../Dropdown";
 import { useState } from "react";
 import { Filter } from "@edifice-ui/icons";
 
 const meta: Meta<typeof Dropdown> = {
-  title: "Components/Dropdown Menu/Dropdown Radio Item",
+  title: "Components/Dropdown/Dropdown Radio Item",
   component: Dropdown,
   decorators: [(Story) => <div style={{ height: "25em" }}>{Story()}</div>],
+  args: {
+    label: "Dropdown",
+    icon: <Filter />,
+  },
   parameters: {
     docs: {
       description: {
@@ -46,7 +50,7 @@ export const RadioGroup: Story = {
 
     return (
       <Dropdown>
-        <Dropdown.Trigger label="Dropdown" icon={<Filter />} />
+        <Dropdown.Trigger label={args.label} icon={args.icon} />
         <Dropdown.Menu>
           {radioOptions.map((option, index) => (
             <Dropdown.RadioItem
