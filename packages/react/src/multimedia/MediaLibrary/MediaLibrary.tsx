@@ -151,11 +151,7 @@ export function useMediaLibraryContext() {
 //---------------------------------------------------
 // Media Library implementation
 //---------------------------------------------------
-export const MediaLibrary = ({
-  type,
-  onSuccess,
-  onCancel,
-}: MediaLibraryProps) => {
+const MediaLibrary = ({ type, onSuccess, onCancel }: MediaLibraryProps) => {
   const { t } = useTranslation();
 
   const workspaceCreateWorkflow = useHasWorkflow(
