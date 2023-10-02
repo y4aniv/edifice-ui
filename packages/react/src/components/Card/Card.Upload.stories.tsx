@@ -15,7 +15,6 @@ const meta = {
       onEdit: () => console.log("edit"),
     },
     isLoading: false,
-    isAnimated: true,
   },
 };
 

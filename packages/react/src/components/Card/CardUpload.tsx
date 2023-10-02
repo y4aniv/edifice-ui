@@ -84,7 +84,7 @@ const Upload = forwardRef(() => {
       </div>
       <div className="card-footer px-8 py-16">
         <div className="action-content">
-          <div className="status pe-12">
+          <div className="status">
             {isLoading ? (
               <Loading
                 isLoading

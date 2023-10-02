@@ -155,7 +155,7 @@ const Root = forwardRef(
         <div
           ref={ref}
           className={clsx(
-            type !== "upload" ? "card" : "card-upload",
+            type === "upload" ? "card card-upload" : "card",
             {
               "placeholder-glow": isLoading,
               "is-selected": isSelected,
