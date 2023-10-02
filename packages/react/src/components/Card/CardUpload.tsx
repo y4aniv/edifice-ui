@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 
 import { Close, SuccessOutline, Wand, Retry } from "@edifice-ui/icons";
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 
 import { useCardContext } from "./CardContext";
 import { usePaths } from "../../core";
@@ -10,17 +11,20 @@ import { Image } from "../Image";
 import { Loading } from "../Loading";
 
 const Upload = forwardRef(() => {
-  const { options, isLoading, classesTitle } = useCardContext();
+  const { options, isLoading } = useCardContext();
 
   const { imageSrc, name, info, status, onDelete, onEdit, onRetry } = options;
+
+  const { t } = useTranslation();
 
   const [imagePath] = usePaths();
 
   const classesText = clsx(
-    "card-text small text-break text-truncate text-truncate-1",
-    {
-      placeholder: isLoading,
-    },
+    "card-text caption text-break text-truncate text-truncate-1",
+  );
+
+  const classesTitle = clsx(
+    "card-title body text-title text-break text-truncate text-truncate-1",
   );
 
   const renderStatusUpload =
@@ -34,7 +38,7 @@ const Upload = forwardRef(() => {
           color="tertiary"
           onClick={onRetry}
         >
-          Retry
+          {t("Retry")}
         </Button>
       </>
     );
@@ -46,10 +50,8 @@ const Upload = forwardRef(() => {
           <Image
             alt=""
             src={`${imagePath}/common/image-status-error.svg`}
-            width="36"
-            height="36"
             objectFit="cover"
-            className={clsx({
+            className={clsx("image-upload", {
               placeholder: isLoading,
             })}
           />
@@ -57,10 +59,8 @@ const Upload = forwardRef(() => {
           <Image
             alt=""
             src={imageSrc ?? ""}
-            width="36"
-            height="36"
             objectFit="cover"
-            className={clsx("h-full", {
+            className={clsx("image-upload", {
               placeholder: isLoading,
             })}
           />
@@ -71,16 +71,16 @@ const Upload = forwardRef(() => {
           </h3>
           <p className={classesText}>
             {status === "success" ? (
-              <>
+              <em>
                 {info?.type} {info?.weight && `- ${info.weight}`}
-              </>
+              </em>
             ) : (
-              <strong className="upload-error">Erreur d'import</strong>
+              <strong className="upload-error">{t("Import error")}</strong>
             )}
           </p>
         </div>
       </div>
-      <div className="card-footer gap-16">
+      <div className="card-footer px-8 py-16">
         <div className="action-content">
           <div className="status px-16">
             {isLoading ? (
@@ -99,6 +99,7 @@ const Upload = forwardRef(() => {
               variant="ghost"
               disabled={status !== "success" || isLoading}
               onClick={onEdit}
+              color="secondary"
             />
             <IconButton
               icon={<Close />}

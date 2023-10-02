@@ -34,6 +34,7 @@ export const UploadLoading: Story = {
       status: "success",
       type: "upload",
       name: "Lorem Ipsum",
+      info: { type: "Extension File", weight: "200Mo" },
       onRetry: () => console.log("retry"),
       onDelete: () => console.log("delete"),
     },
