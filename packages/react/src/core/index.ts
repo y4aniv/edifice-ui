@@ -10,4 +10,5 @@ export * from "./useOdeIcons";
 export * from "./usePaths";
 export * from "./useSession";
 export * from "./useUser";
+export * from "./useWorkspaceSearch";
 export * from "./useXitiTrackPageLoad";
