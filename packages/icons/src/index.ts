@@ -58,6 +58,7 @@ export { default as MessageInfo } from "./MessageInfo";
 export { default as Mic } from "./Mic";
 export { default as Minus } from "./Minus";
 export { default as Move } from "./Move";
+export { default as NoColors } from "./NoColors";
 export { default as Options } from "./Options";
 export { default as OrderedList } from "./OrderedList";
 export { default as Paperclip } from "./Paperclip";

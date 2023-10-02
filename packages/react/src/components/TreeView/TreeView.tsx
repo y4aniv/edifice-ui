@@ -1,7 +1,18 @@
-import { forwardRef, useEffect, useState } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useState,
+} from "react";
 
 import TreeItem from "./TreeItem";
 import { TreeNode } from "./TreeNode";
+
+export interface TreeViewHandlers {
+  unselectAll: () => void;
+  select: (nodeId: string) => void;
+}
 
 export interface TreeViewProps {
   /**
@@ -44,7 +55,7 @@ export interface TreeViewProps {
  * UI TreeView Component
  */
 
-const TreeView = forwardRef<HTMLDivElement, TreeViewProps>(
+const TreeView = forwardRef<TreeViewHandlers, TreeViewProps>(
   (props: TreeViewProps, ref) => {
     const {
       data,
@@ -56,20 +67,30 @@ const TreeView = forwardRef<HTMLDivElement, TreeViewProps>(
       selectedNodesIds,
     } = props;
 
-    const [selectedItem, setSelectedItem] = useState<string>("default");
+    const [selectedItem, setSelectedItem] = useState<string | null>(null);
 
     useEffect(() => {
       if (selectedNodesIds?.length && selectedNodesIds?.length >= 1) {
         setSelectedItem(selectedNodesIds[selectedNodesIds.length - 1]);
       } else {
-        setSelectedItem("");
+        setSelectedItem(null);
       }
     }, [selectedNodesIds]);
 
-    const handleItemSelect = (nodeId: string) => {
-      setSelectedItem(nodeId);
-      onTreeItemSelect?.(nodeId);
-    };
+    const handlers: TreeViewHandlers = useMemo(
+      () => ({
+        unselectAll() {
+          setSelectedItem(null);
+        },
+        select(nodeId: string) {
+          setSelectedItem(nodeId);
+          onTreeItemSelect?.(nodeId);
+        },
+      }),
+      [onTreeItemSelect],
+    );
+
+    useImperativeHandle(ref, () => handlers, [handlers]);
 
     const handleItemFold = (nodeId: string) => {
       onTreeItemFold?.(nodeId);
@@ -95,7 +116,7 @@ const TreeView = forwardRef<HTMLDivElement, TreeViewProps>(
         section={node.section}
         selectedNodesIds={selectedNodesIds}
         selected={selectedItem === node.id}
-        onItemSelect={handleItemSelect}
+        onItemSelect={handlers.select}
         onItemFold={handleItemFold}
         onItemUnfold={handleItemUnfold}
         onItemFocus={handleItemFocus}
@@ -107,11 +128,7 @@ const TreeView = forwardRef<HTMLDivElement, TreeViewProps>(
       </TreeItem>
     );
 
-    return (
-      <div ref={ref} id="treeview" className="treeview">
-        {renderTree(data)}
-      </div>
-    );
+    return <div className="treeview">{renderTree(data)}</div>;
   },
 );
 
