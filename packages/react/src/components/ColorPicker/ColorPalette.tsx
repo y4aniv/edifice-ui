@@ -33,6 +33,10 @@ export interface ColorPalette {
    */
   colors: ColorPaletteHues[];
   /**
+   * Reset option
+   */
+  reset?: ColorPaletteItem;
+  /**
    * Optional class for styling purpose
    */
   className?: string;
