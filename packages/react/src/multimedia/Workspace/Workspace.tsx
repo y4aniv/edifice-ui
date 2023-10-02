@@ -20,6 +20,7 @@ import {
   SearchButton,
   TreeNode,
   TreeView,
+  TreeViewHandlers,
 } from "../../components";
 import { Role, useWorkspaceSearch } from "../../core";
 import { FolderNode } from "../../core/useWorkspaceSearch/useWorkspaceSearch";
@@ -60,25 +61,31 @@ export const Workspace = (props: WorkspaceProps) => {
     props.roles,
   );
 
+  const ownerRef = useRef<TreeViewHandlers>(null);
+  const sharedRef = useRef<TreeViewHandlers>(null);
+  const protectRef = useRef<TreeViewHandlers>(null);
+
   /**
    * Retrieve the stateful TreeNode matching a WorkspaceSearchFilter value
    */
-  const rootNodeFor: (filter: WorkspaceSearchFilter) => FolderNode =
-    useCallback(
-      (filter: WorkspaceSearchFilter) => {
-        switch (filter) {
-          case "owner":
-            return owner;
-          case "shared":
-            return shared;
-          case "protected":
-            return protect;
-          default:
-            throw "no.root.node";
-        }
-      },
-      [owner, protect, shared],
-    );
+  const rootNodeFor: (filter: WorkspaceSearchFilter) => {
+    root: FolderNode;
+    othersRef: React.RefObject<TreeViewHandlers>[];
+  } = useCallback(
+    (filter: WorkspaceSearchFilter) => {
+      switch (filter) {
+        case "owner":
+          return { root: owner, othersRef: [sharedRef, protectRef] };
+        case "shared":
+          return { root: shared, othersRef: [ownerRef, protectRef] };
+        case "protected":
+          return { root: protect, othersRef: [ownerRef, sharedRef] };
+        default:
+          throw "no.root.node";
+      }
+    },
+    [owner, protect, shared],
+  );
 
   const [currentFilter, setCurrentFilter] =
     useState<WorkspaceSearchFilter>("owner");
@@ -140,10 +147,12 @@ export const Workspace = (props: WorkspaceProps) => {
 
   function selectAndLoadContent(filter: WorkspaceSearchFilter, nodeId: string) {
     setCurrentFilter(filter);
-    const root = rootNodeFor(filter);
+    const { root, othersRef } = rootNodeFor(filter);
     const targetNode = find(root, (node) => node.id === nodeId);
     if (targetNode) {
       setCurrentNode(targetNode);
+      // Reset others current selection, if any
+      othersRef.forEach((otherRef) => otherRef.current?.unselectAll());
     }
   }
 
@@ -187,16 +196,19 @@ export const Workspace = (props: WorkspaceProps) => {
     <Grid className="workspace flex-grow-1 gap-0">
       <Grid.Col sm="1" md="3" xl="4" className="folders border-end p-12 gap-12">
         <TreeView
+          ref={ownerRef}
           data={owner}
           onTreeItemSelect={(nodeId) => selectAndLoadContent("owner", nodeId)}
           onTreeItemUnfold={(nodeId) => selectAndLoadContent("owner", nodeId)}
         />
         <TreeView
+          ref={sharedRef}
           data={shared}
           onTreeItemSelect={(nodeId) => selectAndLoadContent("shared", nodeId)}
           onTreeItemUnfold={(nodeId) => selectAndLoadContent("shared", nodeId)}
         />
         <TreeView
+          ref={protectRef}
           data={protect}
           onTreeItemSelect={(nodeId) =>
             selectAndLoadContent("protected", nodeId)
