@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 
 const useDropzone = (ref: any, onFilesChange: (files: any) => void) => {
-  const [, setDragging] = useState<boolean>(false);
+  const [dragging, setDragging] = useState<boolean>(false);
 
   const handleDragging = useCallback(
     (event: React.DragEvent<HTMLDivElement>) => {
@@ -32,6 +32,7 @@ const useDropzone = (ref: any, onFilesChange: (files: any) => void) => {
     handleDragging,
     handleDragLeave,
     handleDrop,
+    dragging,
   };
 };
 
