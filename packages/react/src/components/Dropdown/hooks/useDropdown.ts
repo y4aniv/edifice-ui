@@ -62,19 +62,10 @@ const useDropdown = (placement: Placement | undefined): UseDropdownProps => {
 
   const { refs, floatingStyles } = useFloating({
     placement,
-    // placement: "bottom-end",
     open: visible,
     onOpenChange: setVisible,
     whileElementsMounted: autoUpdate,
-    middleware: [
-      offset(4),
-      //shift(),
-      flip({ padding: 0, fallbackStrategy: "initialPlacement" }),
-      /* autoPlacement({
-        // top-start, right-start, bottom-start, left-start
-        alignment: "bottom-start",
-      }), */
-    ],
+    middleware: [offset(4), flip({ padding: 0 })],
   });
 
   /* refs */
