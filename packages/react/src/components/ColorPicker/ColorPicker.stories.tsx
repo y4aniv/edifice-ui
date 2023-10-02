@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 
+import { DefaultPalette } from "./ColorPalette";
 import ColorPicker, { ColorPickerProps } from "./ColorPicker";
 import { useState } from "react";
 
@@ -20,7 +21,7 @@ const meta: Meta<typeof ColorPicker> = {
 export default meta;
 type Story = StoryObj<typeof ColorPicker>;
 
-export const Template = (args: ColorPickerProps) => {
+const Template = (args: ColorPickerProps) => {
   const [currentColor, setCurrentColor] = useState<string>("#4A4A4A");
   const handleOnChange = (color: string) => setCurrentColor(color);
   return (
@@ -32,4 +33,19 @@ export const Template = (args: ColorPickerProps) => {
 
 export const Base: Story = {
   render: Template,
+};
+
+export const Reset: Story = {
+  render: (args: ColorPickerProps) => {
+    const newArgs = {
+      ...args,
+      palettes: [
+        {
+          ...DefaultPalette,
+          reset: { value: "transparent", description: "None" },
+        },
+      ],
+    };
+    return Template(newArgs);
+  },
 };
