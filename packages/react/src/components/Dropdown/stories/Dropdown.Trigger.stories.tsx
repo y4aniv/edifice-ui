@@ -1,36 +1,32 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import Dropdown from "./Dropdown";
+import Dropdown from "../Dropdown";
 import { Edit, Filter } from "@edifice-ui/icons";
-import IconButton, { IconButtonProps } from "../Button/IconButton";
+import IconButton, { IconButtonProps } from "../../Button/IconButton";
 import { RefAttributes } from "react";
 import { JSX } from "react/jsx-runtime";
+import DropdownTrigger from "../DropdownTrigger";
 
-const meta: Meta<typeof Dropdown> = {
-  title: "Components/Dropdown Menu/Dropdown Trigger",
-  component: Dropdown,
-  render: (args) => {
-    return (
-      <Dropdown>
-        <Dropdown.Trigger />
-        <Dropdown.Menu>
-          <Dropdown.Item>Dropdown Item</Dropdown.Item>
-          <Dropdown.Item>Dropdown Item</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-    );
+const meta: Meta<typeof DropdownTrigger> = {
+  title: "Components/Dropdown/Dropdown Trigger",
+  component: DropdownTrigger,
+  args: {
+    label: "",
+    icon: undefined,
+    badgeContent: 0,
+    disabled: false,
   },
   decorators: [(Story) => <div style={{ height: "400px" }}>{Story()}</div>],
 };
 
 export default meta;
-type Story = StoryObj<typeof Dropdown>;
+type Story = StoryObj<typeof DropdownTrigger>;
 
 export const Base: Story = {
   render: (args) => {
     return (
       <Dropdown>
-        <Dropdown.Trigger />
+        <Dropdown.Trigger {...args} />
         <Dropdown.Menu>
           <Dropdown.Item>Dropdown Item</Dropdown.Item>
           <Dropdown.Item>Dropdown Item</Dropdown.Item>

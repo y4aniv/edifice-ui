@@ -1,14 +1,17 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import Dropdown from "./Dropdown";
+import Dropdown from "../Dropdown";
 import { Copy, Cut, Delete, Edit, Filter, Print } from "@edifice-ui/icons";
 import { RefAttributes, useState } from "react";
-import IconButton, { IconButtonProps } from "../Button/IconButton";
+import IconButton, { IconButtonProps } from "../../Button/IconButton";
 
 const meta: Meta<typeof Dropdown> = {
-  title: "Components/Dropdown Menu/Dropdown",
+  title: "Components/Dropdown/Base",
   component: Dropdown,
   decorators: [(Story) => <div style={{ height: "400px" }}>{Story()}</div>],
+  args: {
+    block: false,
+  },
   parameters: {
     docs: {
       description: {
@@ -25,7 +28,7 @@ type Story = StoryObj<typeof Dropdown>;
 export const Base: Story = {
   render: (args) => {
     return (
-      <Dropdown>
+      <Dropdown {...args}>
         <Dropdown.Trigger label="Dropdown" />
         <Dropdown.Menu>
           <Dropdown.Item onClick={() => alert("click")}>
@@ -122,14 +125,14 @@ export const CheckboxGroup: Story = {
     const handleMultiCheckbox = (value: string | number) => {
       let checked = [...selectedCheckboxes];
       const findIndex = checked.findIndex(
-        (item: string): boolean => item === value,
+        (item: string | number): boolean => item === value,
       );
 
       if (!selectedCheckboxes.includes(value)) {
         checked = [...selectedCheckboxes, value];
       } else {
         checked = selectedCheckboxes.filter(
-          (item: string, index: number) => index !== findIndex,
+          (_, index: number) => index !== findIndex,
         );
       }
 
@@ -225,14 +228,14 @@ export const Stack: Story = {
     const handleMultiCheckbox = (value: string | number) => {
       let checked = [...selectedCheckboxes];
       const findIndex = checked.findIndex(
-        (item: string): boolean => item === value,
+        (item: string | number): boolean => item === value,
       );
 
       if (!selectedCheckboxes.includes(value)) {
         checked = [...selectedCheckboxes, value];
       } else {
         checked = selectedCheckboxes.filter(
-          (item: string, index: number) => index !== findIndex,
+          (_, index: number) => index !== findIndex,
         );
       }
 

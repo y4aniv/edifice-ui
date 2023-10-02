@@ -1,13 +1,16 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import Dropdown from "./Dropdown";
+import Dropdown from "../Dropdown";
 import { useState } from "react";
 import { Filter } from "@edifice-ui/icons";
 
 const meta: Meta<typeof Dropdown> = {
-  title: "Components/Dropdown Menu/Dropdown Checkbox Item",
+  title: "Components/Dropdown/Dropdown Checkbox Item",
   component: Dropdown,
   decorators: [(Story) => <div style={{ height: "25em" }}>{Story()}</div>],
+  args: {
+    badgeContent: 0,
+  },
   parameters: {
     docs: {
       description: {
@@ -30,14 +33,14 @@ export const CheckboxGroup: Story = {
     const handleMultiCheckbox = (value: string | number) => {
       let checked = [...selectedCheckboxes];
       const findIndex = checked.findIndex(
-        (item: string): boolean => item === value,
+        (item: string | number): boolean => item === value,
       );
 
       if (!selectedCheckboxes.includes(value)) {
         checked = [...selectedCheckboxes, value];
       } else {
         checked = selectedCheckboxes.filter(
-          (item: string, index: number) => index !== findIndex,
+          (_, index: number) => index !== findIndex,
         );
       }
 
@@ -57,7 +60,7 @@ export const CheckboxGroup: Story = {
         <Dropdown.Trigger
           label="Dropdown"
           icon={<Filter />}
-          badgeContent={count}
+          badgeContent={count || args.badgeContent}
         />
         <Dropdown.Menu>
           {checkboxOptions.map((option, index) => (
@@ -85,14 +88,14 @@ export const BadgeContent: Story = {
     const handleMultiCheckbox = (value: string | number) => {
       let checked = [...selectedCheckboxes];
       const findIndex = checked.findIndex(
-        (item: string): boolean => item === value,
+        (item: string | number): boolean => item === value,
       );
 
       if (!selectedCheckboxes.includes(value)) {
         checked = [...selectedCheckboxes, value];
       } else {
         checked = selectedCheckboxes.filter(
-          (item: string, index: number) => index !== findIndex,
+          (_, index: number) => index !== findIndex,
         );
       }
 

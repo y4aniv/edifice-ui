@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import Dropdown from "./Dropdown";
+import Dropdown from "../Dropdown";
 import { Edit, Copy, Cut, Print, Delete } from "@edifice-ui/icons";
 
 const meta: Meta<typeof Dropdown> = {
-  title: "Components/Dropdown Menu/Dropdown Item",
+  title: "Components/Dropdown/Dropdown Item",
   component: Dropdown,
   decorators: [(Story) => <div style={{ height: "25em" }}>{Story()}</div>],
   parameters: {

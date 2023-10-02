@@ -10,7 +10,13 @@ import {
   SetStateAction,
 } from "react";
 
-import { autoUpdate, flip, offset, useFloating } from "@floating-ui/react";
+import {
+  Placement,
+  autoUpdate,
+  flip,
+  offset,
+  useFloating,
+} from "@floating-ui/react";
 
 export enum KEYS {
   Enter = "Enter",
@@ -35,8 +41,7 @@ type MutableRefList<T> = Array<
 export interface UseDropdownProps {
   isFocused: string | null;
   visible: boolean;
-  // itemsRefs: MutableRefObject<{} | null>;
-  itemRefs: MutableRefObject<{}>;
+  itemRefs: MutableRefObject<{ [key: string]: HTMLElement | null }>;
   triggerRef: MutableRefObject<HTMLButtonElement | null>;
   menuRef: MutableRefObject<HTMLUListElement | null>;
   triggerProps: Record<string, any>;
@@ -46,7 +51,7 @@ export interface UseDropdownProps {
   setVisible: Dispatch<SetStateAction<boolean>>;
 }
 
-const useDropdown = (): UseDropdownProps => {
+const useDropdown = (placement: Placement | undefined): UseDropdownProps => {
   /* Unique Dropdown Id */
   const id = useId();
 
@@ -56,7 +61,7 @@ const useDropdown = (): UseDropdownProps => {
   const [isFocused, setIsFocused] = useState<string | null>(null);
 
   const { refs, floatingStyles } = useFloating({
-    placement: "bottom-start",
+    placement,
     open: visible,
     onOpenChange: setVisible,
     whileElementsMounted: autoUpdate,
@@ -296,7 +301,6 @@ const useDropdown = (): UseDropdownProps => {
     /* MenuProps to spread to any Menu Component */
     menuProps: {
       ref: mergeRefs(menuRef, refs.setFloating),
-      // onKeyDown: onMenuKeyDown,
       className: "dropdown-menu bg-white shadow rounded-4 py-12 px-8",
       "aria-labelledby": `dropdown-toggle-${id}`,
       "aria-activedescendant": isFocused,

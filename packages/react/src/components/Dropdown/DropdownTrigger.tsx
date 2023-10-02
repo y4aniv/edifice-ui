@@ -31,6 +31,10 @@ export interface DropdownTriggerProps
    * Disabled Trigger
    * */
   disabled?: boolean;
+  /**
+   * Stretch the dropdown trigger.
+   */
+  block?: boolean;
 }
 
 export type DropdownTriggerType = React.ReactElement<DropdownTriggerProps>;
@@ -47,10 +51,10 @@ const DropdownTrigger = forwardRef(
     }: DropdownTriggerProps,
     forwardRef: Ref<HTMLButtonElement>,
   ) => {
-    const { triggerProps } = useDropdownContext();
+    const { triggerProps, block } = useDropdownContext();
     const { className, ...restProps } = triggerProps;
 
-    const dropdownTrigger = clsx(size, variant, className);
+    const dropdownTrigger = clsx(size, variant, { "w-100": block }, className);
 
     return (
       <button
@@ -62,11 +66,9 @@ const DropdownTrigger = forwardRef(
         {icon ? icon : null}
         {label}
         {badgeContent ? (
-          <div>
-            <span className="badge text-bg-secondary rounded-pill">
-              {badgeContent}
-            </span>
-          </div>
+          <span className="badge text-bg-secondary rounded-pill">
+            {badgeContent}
+          </span>
         ) : (
           <RafterUp width={16} height={16} className="dropdown-toggle-caret" />
         )}
