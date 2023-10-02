@@ -23,16 +23,18 @@ const DropzoneFile = ({ attachments }: DropZoneFileProps) => {
           </Button>
         </div>
       </div>
-      {attachments.map((attachment) => (
-        <div key={attachment?.name}>
-          <img
-            src={attachment?.src}
-            alt={attachment?.name}
-            width={200}
-            height={200}
-          />
-        </div>
-      ))}
+      <div className="p-8">
+        {attachments.map((attachment) => (
+          <div key={attachment?.name}>
+            <img
+              src={attachment?.src}
+              alt={attachment?.name}
+              width={200}
+              height={200}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -119,7 +119,7 @@ const Dropzone = ({
   };
 
   const classes = clsx(
-    "dropzone p-32",
+    "dropzone",
     {
       "is-dragging": dragging,
       "is-drop-files": attachments.length !== 0 && !handle ? false : true,
