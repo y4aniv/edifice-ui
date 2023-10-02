@@ -11,9 +11,6 @@ const meta: Meta<typeof Dropdown> = {
   decorators: [(Story) => <div style={{ height: "400px" }}>{Story()}</div>],
   args: {
     block: false,
-    label: "Dropdown",
-    icon: undefined,
-    badgeContent: 0,
   },
   parameters: {
     docs: {
@@ -32,11 +29,7 @@ export const Base: Story = {
   render: (args) => {
     return (
       <Dropdown {...args}>
-        <Dropdown.Trigger
-          label={args.label}
-          badgeContent={args.badgeContent}
-          icon={args.icon}
-        />
+        <Dropdown.Trigger label="Dropdown" />
         <Dropdown.Menu>
           <Dropdown.Item onClick={() => alert("click")}>
             Dropdown Item

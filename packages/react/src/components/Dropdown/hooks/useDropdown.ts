@@ -10,7 +10,13 @@ import {
   SetStateAction,
 } from "react";
 
-import { autoUpdate, flip, offset, useFloating } from "@floating-ui/react";
+import {
+  Placement,
+  autoUpdate,
+  flip,
+  offset,
+  useFloating,
+} from "@floating-ui/react";
 
 export enum KEYS {
   Enter = "Enter",
@@ -35,7 +41,6 @@ type MutableRefList<T> = Array<
 export interface UseDropdownProps {
   isFocused: string | null;
   visible: boolean;
-  // itemRefs: MutableRefObject<any>;
   itemRefs: MutableRefObject<{ [key: string]: HTMLElement | null }>;
   triggerRef: MutableRefObject<HTMLButtonElement | null>;
   menuRef: MutableRefObject<HTMLUListElement | null>;
@@ -46,7 +51,7 @@ export interface UseDropdownProps {
   setVisible: Dispatch<SetStateAction<boolean>>;
 }
 
-const useDropdown = (): UseDropdownProps => {
+const useDropdown = (placement: Placement | undefined): UseDropdownProps => {
   /* Unique Dropdown Id */
   const id = useId();
 
@@ -56,11 +61,20 @@ const useDropdown = (): UseDropdownProps => {
   const [isFocused, setIsFocused] = useState<string | null>(null);
 
   const { refs, floatingStyles } = useFloating({
-    placement: "bottom-start",
+    placement,
+    // placement: "bottom-end",
     open: visible,
     onOpenChange: setVisible,
     whileElementsMounted: autoUpdate,
-    middleware: [offset(4), flip({ padding: 0 })],
+    middleware: [
+      offset(4),
+      //shift(),
+      flip({ padding: 0, fallbackStrategy: "initialPlacement" }),
+      /* autoPlacement({
+        // top-start, right-start, bottom-start, left-start
+        alignment: "bottom-start",
+      }), */
+    ],
   });
 
   /* refs */
