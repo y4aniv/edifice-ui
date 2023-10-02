@@ -46,25 +46,27 @@ const Upload = forwardRef(() => {
   return (
     <>
       <div className="card-body">
-        {status === "error" ? (
-          <Image
-            alt=""
-            src={`${imagePath}/common/image-status-error.svg`}
-            objectFit="cover"
-            className={clsx("image-upload", {
-              placeholder: isLoading,
-            })}
-          />
-        ) : (
-          <Image
-            alt=""
-            src={imageSrc ?? ""}
-            objectFit="cover"
-            className={clsx("image-upload", {
-              placeholder: isLoading,
-            })}
-          />
-        )}
+        <div className="card-image">
+          {status === "error" ? (
+            <Image
+              alt=""
+              src={`${imagePath}/common/image-status-error.svg`}
+              objectFit="cover"
+              className={clsx({
+                placeholder: isLoading,
+              })}
+            />
+          ) : (
+            <Image
+              alt=""
+              src={imageSrc ?? ""}
+              objectFit="cover"
+              className={clsx({
+                placeholder: isLoading,
+              })}
+            />
+          )}
+        </div>
         <div className="text-break text-truncate text-truncate-1">
           <h3 className={classesTitle}>
             <strong>{name}</strong>
@@ -82,7 +84,7 @@ const Upload = forwardRef(() => {
       </div>
       <div className="card-footer px-8 py-16">
         <div className="action-content">
-          <div className="status px-16">
+          <div className="status pe-12">
             {isLoading ? (
               <Loading
                 isLoading
