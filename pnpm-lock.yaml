@@ -194,8 +194,8 @@ importers:
         specifier: 8.2.0
         version: 8.2.0
       edifice-ts-client:
-        specifier: 1.0.0-develop.1
-        version: 1.0.0-develop.1
+        specifier: develop-b2school
+        version: 1.1.0-develop-b2school.1
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -7168,8 +7168,8 @@ packages:
       stream-shift: 1.0.1
     dev: true
 
-  /edifice-ts-client@1.0.0-develop.1:
-    resolution: {integrity: sha512-b6Z6LGp+nliz9usYLL7jTopnhhyrPiSdh54V/J7C/y8sh/OhgLantzcQPGkhXMSfnVmnvDLeWkhx3zPibwo6Rg==}
+  /edifice-ts-client@1.1.0-develop-b2school.1:
+    resolution: {integrity: sha512-m3dkV35kxKS9tQQAPSGPUzg/yJC0bSwVSTojbuBm8mB5YyHRoF35yirykH2YX1lEZEvOBKP4xPheBxrhN9hyPQ==}
     engines: {node: 16 || 18}
     dependencies:
       axios: 1.4.0
