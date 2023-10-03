@@ -13,7 +13,7 @@ const DropzoneFile = ({ attachments }: DropZoneFileProps) => {
   return (
     <div className="drop-file-wrapper">
       <div className="drop-file-content">
-        <div className="addButton m-4">
+        <div className="add-button m-4">
           <Button
             variant="ghost"
             leftIcon={<Plus></Plus>}
