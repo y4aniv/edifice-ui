@@ -13,27 +13,13 @@ const SvgNoColors = ({
     width="24"
     height="24"
     fill="none"
-    viewBox="0 0 20 20"
+    viewBox="0 0 24 24"
     aria-hidden="true"
     aria-labelledby={titleId}
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <g clipPath="url(#no-colors_svg__a)">
-      <path fill="#E13A3A" d="M19.167 0h-3.334l-15 20h3.334l15-20Z" />
-    </g>
-    <path
-      stroke="#E4E4E4"
-      d="M.5 4A3.5 3.5 0 0 1 4 .5h12A3.5 3.5 0 0 1 19.5 4v12a3.5 3.5 0 0 1-3.5 3.5H4A3.5 3.5 0 0 1 .5 16V4Z"
-    />
-    <defs>
-      <clipPath id="no-colors_svg__a">
-        <path
-          fill="#fff"
-          d="M0 4a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4Z"
-        />
-      </clipPath>
-    </defs>
+    <path fill="currentColor" d="M23 0h-4L1 24h4L23 0Z" />
   </svg>
 );
 export default SvgNoColors;

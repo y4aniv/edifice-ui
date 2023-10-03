@@ -14,6 +14,10 @@ export interface ColorPaletteItem {
    * When undefined, will be considered Dark.
    */
   hue?: "dark" | "light";
+  /**
+   * Is it intended to be a reset color ?
+   */
+  isReset?: boolean;
 }
 
 /** Variations of one color. */

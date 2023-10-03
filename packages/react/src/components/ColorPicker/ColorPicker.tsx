@@ -1,12 +1,14 @@
-import { InfoCircle, NoColors } from "@edifice-ui/icons";
+import { InfoCircle } from "@edifice-ui/icons";
 import clsx from "clsx";
 
 import {
   AccessiblePalette,
   ColorPalette,
   ColorPaletteHues,
+  ColorPaletteItem,
   DefaultPalette,
 } from "./ColorPalette";
+import ColorPickerItem from "./ColorPickerItem";
 import { Tooltip } from "../Tooltip";
 
 export interface ColorPickerProps {
@@ -23,18 +25,14 @@ export interface ColorPickerProps {
   /**
    * Triggered when a color is picked
    */
-  onChange?: (model: string) => void;
+  onChange?: (item: ColorPaletteItem) => void;
 }
 
 const ColorPicker = ({
   palettes = [DefaultPalette, AccessiblePalette],
   model = "#4A4A4A",
-  onChange,
+  ...props
 }: ColorPickerProps) => {
-  const handleClick = (color: string) => {
-    onChange?.(color);
-  };
-
   return (
     <>
       {palettes.map((palette: ColorPalette, paletteIdx) => (
@@ -61,15 +59,11 @@ const ColorPicker = ({
             palette.reset && (
               <div className="color-picker-reset small fw-normal my-8">
                 <label className="small d-flex">
-                  <button
-                    className="color-picker-hue-color-item me-4 border-0"
-                    style={{
-                      backgroundColor: palette.reset?.value || "transparent",
-                    }}
-                    onClick={() => handleClick(palette.reset?.value || "")}
-                  >
-                    <NoColors></NoColors>
-                  </button>
+                  <ColorPickerItem
+                    {...props}
+                    model={palette.reset}
+                    className="me-4"
+                  />
                   {palette.reset.description}
                 </label>
               </div>
@@ -84,16 +78,11 @@ const ColorPicker = ({
               >
                 {hues.map((color) => (
                   <div key={color.value} className="color-picker-hue-color">
-                    <button
-                      aria-label={color.description}
-                      className={clsx(
-                        "color-picker-hue-color-item rounded-1",
-                        color.hue === "light" ? "light" : "dark",
-                        model === color.value && "selected",
-                      )}
-                      style={{ backgroundColor: color.value }}
-                      onClick={() => handleClick(color.value)}
-                    ></button>
+                    <ColorPickerItem
+                      {...props}
+                      model={color}
+                      selected={model === color.value}
+                    />
                   </div>
                 ))}
               </div>
