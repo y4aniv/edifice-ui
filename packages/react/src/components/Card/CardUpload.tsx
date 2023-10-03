@@ -52,9 +52,6 @@ const Upload = forwardRef(() => {
               alt=""
               src={`${imagePath}/common/image-status-error.svg`}
               objectFit="cover"
-              className={clsx({
-                placeholder: isLoading,
-              })}
             />
           ) : (
             <Image

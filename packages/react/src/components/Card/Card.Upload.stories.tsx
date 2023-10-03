@@ -11,6 +11,7 @@ const meta = {
       name: "Lorem Ipsum",
       info: { type: "Extension File", weight: "200Mo" },
       status: "success",
+      imageSrc: "https://media.istockphoto.com/id/1322277517/fr/photo/herbe-sauvage-dans-les-montagnes-au-coucher-du-soleil.jpg?s=612x612&w=0&k=20&c=tQ19uZQLlIFy8J6QWMyOL6lPt3pdSHBSDFHoXr1K_g0=",
       onDelete: () => console.log("delete"),
       onEdit: () => console.log("edit"),
     },
@@ -38,7 +39,6 @@ export const UploadLoading: Story = {
       onDelete: () => console.log("delete"),
     },
     isLoading: true,
-    isAnimated: true,
   },
   render: (args: CardProps) => {
     return <Card {...args} />;
