@@ -293,10 +293,19 @@ export class ShareService {
       groups: {},
       users: {},
     };
+
     for (const right of rights) {
       // get java rights for each available actions
-      const duplicates = right.actions.map((action) => mapping[action.id]);
-      const rights = [...new Set(...duplicates)];
+      const duplicates = right.actions
+        .map((action) => mapping[action.id])
+        .reduce((previous, current) => {
+          if (Array.isArray(current)) {
+            return [...previous, ...current];
+          }
+          return previous;
+        }, []);
+
+      const rights = [...new Set(duplicates)];
       // for each user/group/bookmark add a record
       if (rights.length > 0) {
         if (right.type === "user") {
