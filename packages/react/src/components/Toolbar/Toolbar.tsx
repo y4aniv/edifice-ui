@@ -104,7 +104,7 @@ export interface ToolbarProps extends React.ComponentPropsWithRef<"div"> {
   /**
    * Additional CSS classes.
    */
-  className: string;
+  className?: string;
   /**
    * Accept optional children
    */
