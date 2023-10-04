@@ -38,7 +38,7 @@ export interface WorkspaceProps {
   onSelect: (result: WorkspaceElement[]) => void;
 }
 
-export const Workspace = (props: WorkspaceProps) => {
+const Workspace = (props: WorkspaceProps) => {
   const { t } = useTranslation();
   const inputRef: Ref<HTMLInputElement> = useRef(null);
 
