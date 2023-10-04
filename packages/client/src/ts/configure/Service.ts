@@ -102,7 +102,6 @@ export class ConfService {
       .bootstrapVersion.split("-")
       .slice(-1)[0];
 
-    console.log({ bootstrapVersion });
     const is1d =
       conf?.overriding.find((item: { child: any }) => item.child === skin)
         .parent === "panda";
