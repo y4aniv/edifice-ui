@@ -24,6 +24,7 @@ const AppHeader = forwardRef(
     const classes = clsx("d-flex p-16 border-bottom bg-white", {
       "justify-content-between": render,
       "mx-n16": !isFullscreen,
+      "z-3 top-0 start-0 end-0 position-fixed": isFullscreen,
     });
 
     return (

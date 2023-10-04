@@ -1,97 +1,82 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import { ReactNode, useMemo } from "react";
 
-import { animated, useTransition } from "@react-spring/web";
 import clsx from "clsx";
-import { usePopper } from "react-popper";
 
-import { DropdownTriggerProps } from "./DropdownTrigger";
+import DropdownCheckboxItem from "./DropdownCheckboxItem";
+import { DropdownContext } from "./DropdownContext";
+import DropdownItem from "./DropdownItem";
+import DropdownMenu from "./DropdownMenu";
+import DropdownMenuGroup from "./DropdownMenuGroup";
+import DropdownRadioItem from "./DropdownRadioItem";
+import DropdownSeparator from "./DropdownSeparator";
+import DropdownTrigger from "./DropdownTrigger";
+import useDropdown from "./hooks/useDropdown";
+import { useClickOutside } from "../../hooks";
 
 export interface DropdownProps {
-  /**
-   * Menu to display in dropdown
-   */
-  content: React.ReactNode;
-  /**
-   * Element to be wrapped as Tooltip trigger
-   */
-  trigger: ReactElement<DropdownTriggerProps>;
+  children: ReactNode | ((props: any) => ReactNode);
+  block?: boolean;
+  placement?: "bottom-end" | "bottom-start";
 }
 
-const Dropdown = ({ trigger, content }: DropdownProps) => {
-  const [referenceElement, setReferenceElement] = useState<HTMLElement | null>(
-    null,
+const Root = ({
+  children,
+  block,
+  placement = "bottom-start",
+}: DropdownProps) => {
+  const {
+    visible,
+    isFocused,
+    triggerProps,
+    customTriggerProps,
+    menuProps,
+    itemProps,
+    itemRefs,
+    setVisible,
+  } = useDropdown(placement);
+
+  /* Ref to close dropdown when clicking outside */
+  const ref = useClickOutside(() => setVisible(false));
+
+  const value = useMemo(
+    () => ({
+      visible,
+      isFocused,
+      triggerProps,
+      menuProps,
+      itemProps,
+      itemRefs,
+      block,
+    }),
+    [visible, isFocused, triggerProps, menuProps, itemProps, itemRefs, block],
   );
-  const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(
-    null,
-  );
 
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
-    placement: "bottom-start",
-    modifiers: [{ name: "offset", options: { offset: [0, 12] } }],
+  const dropdown = clsx("dropdown", {
+    "w-100": block,
   });
-
-  const [visible, setVisible] = useState<boolean>(false);
-
-  const transition = useTransition(visible, {
-    from: { opacity: 0, y: 10 },
-    enter: { opacity: 1, y: 0 },
-    leave: { opacity: 0, y: 10 },
-  });
-
-  const handleClick = () => {
-    setVisible((oldState) => !oldState);
-  };
-
-  const clonedTrigger = React.cloneElement(trigger, {
-    ref: setReferenceElement,
-    onClick: handleClick,
-    state: visible ? "selected" : "default",
-  });
-
-  useEffect(() => {
-    const handleClickOutside = (event: Event) => {
-      if (
-        popperElement &&
-        !popperElement.contains(event.target as Node) &&
-        referenceElement &&
-        !referenceElement.contains(event.target as Node)
-      ) {
-        setVisible(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside, true);
-    document.addEventListener("touchstart", handleClickOutside, true);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside, true);
-      document.removeEventListener("touchstart", handleClickOutside, true);
-    };
-  }, [popperElement, referenceElement]);
 
   return (
-    <>
-      {clonedTrigger}
-
-      {transition((style, visible) => (
-        <>
-          {visible && (
-            <animated.div
-              className={clsx(
-                "bg-white shadow rounded-4 d-block show py-12 px-8 z-2000",
-                `bs-tooltip-auto`,
-              )}
-              ref={setPopperElement}
-              style={{ ...styles.popper, ...style }}
-              {...attributes.popper}
-            >
-              {content}
-            </animated.div>
-          )}
-        </>
-      ))}
-    </>
+    <DropdownContext.Provider value={value}>
+      <div ref={ref} className={dropdown}>
+        {typeof children === "function"
+          ? children(customTriggerProps)
+          : children}
+      </div>
+    </DropdownContext.Provider>
   );
 };
 
-Dropdown.displayName = "Dropdown";
+Root.displayName = "Dropdown";
+
+/* Compound Components */
+const Dropdown = Object.assign(Root, {
+  Trigger: DropdownTrigger,
+  Menu: DropdownMenu,
+  Item: DropdownItem,
+  Separator: DropdownSeparator,
+  CheckboxItem: DropdownCheckboxItem,
+  RadioItem: DropdownRadioItem,
+  MenuGroup: DropdownMenuGroup,
+});
 
 export default Dropdown;

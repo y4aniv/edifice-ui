@@ -2,6 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import Toolbar from "./Toolbar";
 import { RecordVideo, Save, Write, Plus, Delete } from "@edifice-ui/icons";
+import { Dropdown } from "../Dropdown";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Toolbar> = {
@@ -221,10 +222,14 @@ export const WithDropdownAction: Story = {
         name: "write",
         hasDropdown: true,
         content: () => (
-          <div>
-            <div onClick={() => console.log("click 1")}>Write something...</div>
-            <div onClick={() => console.log("click 2")}>Edit something...</div>
-          </div>
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={() => console.log("click 1")}>
+              Write something...
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => console.log("click 2")}>
+              Edit something...
+            </Dropdown.Item>
+          </Dropdown.Menu>
         ),
         isEnable: true,
       },
