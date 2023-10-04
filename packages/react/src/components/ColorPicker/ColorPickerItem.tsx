@@ -16,19 +16,14 @@ export interface ColorPickerItemProps {
    * Optional class for styling purpose
    */
   className?: string;
-  /**
-   * Triggered when a color is picked
-   */
-  onChange?: (item: ColorPaletteItem) => void;
 }
 
 const ColorPickerItem = ({
   model,
   selected,
   className,
-  onChange,
 }: ColorPickerItemProps) => (
-  <button
+  <div
     aria-label={model.description}
     className={clsx(
       "color-picker-hue-color-item rounded-1",
@@ -37,10 +32,9 @@ const ColorPickerItem = ({
       selected && "selected",
     )}
     style={{ backgroundColor: model.value }}
-    onClick={() => onChange?.(model)}
   >
     {model.isReset && <NoColors style={{ color: "var(--edifice-danger)" }} />}
-  </button>
+  </div>
 );
 
 ColorPickerItem.displayName = "ColorPickerItem";

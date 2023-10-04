@@ -33,6 +33,9 @@ const ColorPicker = ({
   model = "#4A4A4A",
   ...props
 }: ColorPickerProps) => {
+  const handleClick = (item?: ColorPaletteItem) => {
+    item && props.onChange?.(item);
+  };
   return (
     <>
       {palettes.map((palette: ColorPalette, paletteIdx) => (
@@ -57,16 +60,17 @@ const ColorPicker = ({
           {
             // Show/hide the reset option
             palette.reset && (
-              <div className="color-picker-reset small fw-normal my-8">
-                <label className="small d-flex">
-                  <ColorPickerItem
-                    {...props}
-                    model={palette.reset}
-                    className="me-4"
-                  />
-                  {palette.reset.description}
-                </label>
-              </div>
+              <button
+                className="color-picker-reset small my-8"
+                onClick={() => handleClick(palette.reset)}
+              >
+                <ColorPickerItem
+                  {...props}
+                  model={palette.reset}
+                  className="me-4"
+                />
+                {palette.reset.description}
+              </button>
             )
           }
 
@@ -77,13 +81,17 @@ const ColorPicker = ({
                 className="color-picker-hue d-flex gap-2 justify-content-between flex-column "
               >
                 {hues.map((color) => (
-                  <div key={color.value} className="color-picker-hue-color">
+                  <button
+                    key={color.value}
+                    className="color-picker-hue-color"
+                    onClick={() => handleClick(color)}
+                  >
                     <ColorPickerItem
                       {...props}
                       model={color}
                       selected={model === color.value}
                     />
-                  </div>
+                  </button>
                 ))}
               </div>
             ))}

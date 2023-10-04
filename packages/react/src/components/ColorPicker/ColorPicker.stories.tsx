@@ -43,7 +43,7 @@ export const Reset: Story = {
       palettes: [
         {
           ...DefaultPalette,
-          reset: { value: "transparent", description: "None" },
+          reset: { value: "transparent", description: "None", isReset: true },
         },
       ],
     };

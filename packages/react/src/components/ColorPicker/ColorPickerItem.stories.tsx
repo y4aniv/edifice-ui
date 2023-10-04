@@ -21,15 +21,26 @@ export default meta;
 type Story = StoryObj<typeof ColorPickerItem>;
 
 export const Base: Story = {
+  parameters: {
+    docs: {
+      description: {
+        component: "Red is a beautiful color !",
+      },
+    },
+  },
   args: {
     model: { value: "red", description: "Red as a keyword" },
-    onChange: (item) => {
-      alert(`${item.description} is a beautiful color !`);
-    },
   },
 };
 
 export const Reset: Story = {
+  parameters: {
+    docs: {
+      description: {
+        component: "Transparent better be a reset color !",
+      },
+    },
+  },
   args: {
     model: {
       value: "transparent",
@@ -37,33 +48,45 @@ export const Reset: Story = {
       hue: "light",
       isReset: true,
     },
-    onChange: (item) => {
-      alert(`${item.description} better be a reset color !`);
-    },
   },
 };
 
 export const Dark: Story = {
+  parameters: {
+    docs: {
+      description: {
+        component: "This color is dark, and selected.",
+      },
+    },
+  },
   args: {
     model: { value: "#000", description: "Black" },
     selected: true,
-    onChange: (item) => {
-      alert(`${item.description} is dark, and selected !`);
-    },
   },
 };
 
 export const Light: Story = {
+  parameters: {
+    docs: {
+      description: {
+        component: "This color is light, and selected.",
+      },
+    },
+  },
   args: {
     model: { value: "#fff", description: "White", hue: "light" },
     selected: true,
-    onChange: (item) => {
-      alert(`${item.description} is light, and selected !`);
-    },
   },
 };
 
 export const ClassName: Story = {
+  parameters: {
+    docs: {
+      description: {
+        component: "This color is rendered without a border.",
+      },
+    },
+  },
   args: {
     model: {
       value: "transparent",
@@ -72,8 +95,5 @@ export const ClassName: Story = {
     },
     selected: true,
     className: "border-0",
-    onChange: (item) => {
-      alert(`${item.description} without a border !`);
-    },
   },
 };
