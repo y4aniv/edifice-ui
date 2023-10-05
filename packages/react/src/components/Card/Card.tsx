@@ -69,11 +69,11 @@ export interface CardProps extends ComponentPropsWithRef<"div"> {
   /**
    * Skeleton Card
    * */
-  isLoading: boolean;
+  isLoading?: boolean;
   /**
    * To show the icon of an application
    */
-  app: IWebApp;
+  app: IWebApp | undefined;
   /**
    * Select Card and Open ActionBar
    */

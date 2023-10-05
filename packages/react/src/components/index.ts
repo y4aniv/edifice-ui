@@ -1,5 +1,4 @@
 export * from "./ActionBar";
-export * from "./ActionMenu";
 export * from "./Alert";
 export * from "./AppHeader";
 export * from "./AppIcon";
@@ -26,8 +25,10 @@ export * from "./Logo";
 export * from "./Modal";
 export * from "./Popover";
 export * from "./Toolbar";
+export * from "./SelectList";
 export * from "./Radio";
 export * from "./Select";
 export * from "./Tooltip";
+export * from "./TextArea";
 export * from "./TreeView";
 export * from "./VisuallyHidden";

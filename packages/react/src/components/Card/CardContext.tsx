@@ -8,7 +8,7 @@ export interface ContextProps {
   options: CardOptions;
   isLoading?: boolean;
   classesTitle?: string;
-  app: IWebApp;
+  app: IWebApp | undefined;
   appCode?: string;
   tooltips?: TooltipOptions;
 }

@@ -3,6 +3,7 @@ import {
   KeyboardEvent,
   ReactNode,
   Ref,
+  RefAttributes,
   forwardRef,
   useEffect,
   useRef,
@@ -12,9 +13,8 @@ import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 
 import { mergeRefs } from "../../utils";
-import { ActionMenu, ActionMenuOptions } from "../ActionMenu";
-import { IconButton } from "../Button";
-import { Dropdown, DropdownTrigger } from "../Dropdown";
+import { IconButton, IconButtonProps } from "../Button";
+import { Dropdown } from "../Dropdown";
 
 export type ToolbarOptionsType = "divider" | "primary" | undefined;
 export type ToolbarDividerType = Extract<ToolbarOptionsType, "divider">;
@@ -80,7 +80,7 @@ export interface ToolbarProps extends React.ComponentPropsWithRef<"div"> {
   /**
    * Toolbar Action Menu
    */
-  options?: ActionMenuOptions[];
+  options?: any;
   /**
    * Toolbar variant
    */
@@ -224,25 +224,28 @@ const Toolbar = forwardRef(
 
           if (showDropdownElement) {
             return (
-              <Dropdown
-                key={item.name}
-                trigger={
-                  <IconButton
-                    aria-label={item.label}
-                    color="tertiary"
-                    icon={item.icon}
-                    type="button"
-                    variant="ghost"
-                    className={clsx(
-                      item.className,
-                      item.isActive ? "is-selected" : "",
-                    )}
-                    tabIndex={index === 0 ? 0 : -1}
-                    onKeyDown={handleKeyDown}
-                  />
-                }
-                content={item.content?.()}
-              />
+              <Dropdown>
+                {(
+                  customTriggerProps: JSX.IntrinsicAttributes &
+                    Omit<IconButtonProps, "ref"> &
+                    RefAttributes<HTMLButtonElement>,
+                ) => (
+                  <>
+                    <IconButton
+                      {...customTriggerProps}
+                      type="button"
+                      aria-label={item.label}
+                      color="tertiary"
+                      variant="ghost"
+                      icon={item.icon}
+                      tabIndex={index === 0 ? 0 : -1}
+                      onKeyDown={handleKeyDown}
+                    />
+
+                    {item.content?.()}
+                  </>
+                )}
+              </Dropdown>
             );
           }
 
@@ -264,15 +267,29 @@ const Toolbar = forwardRef(
           );
         })}
         {options ? (
-          <Dropdown
-            trigger={
-              <DropdownTrigger title="Plus" variant="ghost" tabIndex={-1} />
-            }
-            content={<ActionMenu id="action-menu" options={options} />}
-            aria-label="Menu d'actions"
-            aria-haspopup="true"
-            aria-controls="action-menu"
-          />
+          <Dropdown>
+            <Dropdown.Trigger
+              label={t("Plus")}
+              variant="ghost"
+              size="md"
+              tabIndex={-1}
+            />
+            <Dropdown.Menu>
+              {options.map((option) => {
+                if (option.type === "divider") {
+                  return <Dropdown.Separator />;
+                }
+
+                return (
+                  <>
+                    <Dropdown.Item icon={option.icon} onClick={option.action}>
+                      {option.label}
+                    </Dropdown.Item>
+                  </>
+                );
+              })}
+            </Dropdown.Menu>
+          </Dropdown>
         ) : null}
       </div>
     );
