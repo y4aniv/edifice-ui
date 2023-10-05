@@ -3,7 +3,6 @@ import {
   KeyboardEvent,
   ReactNode,
   Ref,
-  RefAttributes,
   forwardRef,
   useEffect,
   useRef,
@@ -13,8 +12,7 @@ import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 
 import { mergeRefs } from "../../utils";
-import { IconButton, IconButtonProps } from "../Button";
-import { Dropdown } from "../Dropdown";
+import { IconButton } from "../Button";
 
 export type ToolbarOptionsType = "divider" | "primary" | undefined;
 export type ToolbarDividerType = Extract<ToolbarOptionsType, "divider">;
@@ -47,7 +45,7 @@ export type ToolbarOptions =
       /**
        * Dropdown Content
        */
-      content?: () => ReactNode;
+      content?: (item: any) => ReactNode;
       /**
        * Action OnClick
        */
@@ -78,10 +76,6 @@ export interface ToolbarProps extends React.ComponentPropsWithRef<"div"> {
    */
   data: ToolbarOptions[];
   /**
-   * Toolbar Action Menu
-   */
-  options?: any;
-  /**
    * Toolbar variant
    */
   variant?: ToolbarVariant;
@@ -107,7 +101,6 @@ const Toolbar = forwardRef(
   (
     {
       data,
-      options,
       variant = "default",
       align = "space",
       isBlock = false,
@@ -223,30 +216,7 @@ const Toolbar = forwardRef(
           }
 
           if (showDropdownElement) {
-            return (
-              <Dropdown>
-                {(
-                  customTriggerProps: JSX.IntrinsicAttributes &
-                    Omit<IconButtonProps, "ref"> &
-                    RefAttributes<HTMLButtonElement>,
-                ) => (
-                  <>
-                    <IconButton
-                      {...customTriggerProps}
-                      type="button"
-                      aria-label={item.label}
-                      color="tertiary"
-                      variant="ghost"
-                      icon={item.icon}
-                      tabIndex={index === 0 ? 0 : -1}
-                      onKeyDown={handleKeyDown}
-                    />
-
-                    {item.content?.()}
-                  </>
-                )}
-              </Dropdown>
-            );
+            return item.content?.(item);
           }
 
           return (
@@ -266,31 +236,6 @@ const Toolbar = forwardRef(
             />
           );
         })}
-        {options ? (
-          <Dropdown>
-            <Dropdown.Trigger
-              label={t("Plus")}
-              variant="ghost"
-              size="md"
-              tabIndex={-1}
-            />
-            <Dropdown.Menu>
-              {options.map((option) => {
-                if (option.type === "divider") {
-                  return <Dropdown.Separator />;
-                }
-
-                return (
-                  <>
-                    <Dropdown.Item icon={option.icon} onClick={option.action}>
-                      {option.label}
-                    </Dropdown.Item>
-                  </>
-                );
-              })}
-            </Dropdown.Menu>
-          </Dropdown>
-        ) : null}
       </div>
     );
   },
