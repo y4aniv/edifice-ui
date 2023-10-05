@@ -5,14 +5,15 @@ import Attachment, { AttachmentProps } from "./Attachment";
 import { Delete, Download } from "@edifice-ui/icons";
 import { Grid } from "../Grid";
 
-export default {
+const meta = {
   title: "Components/Attachment",
   component: Attachment,
   args: {
     name: "Lorem ipsum",
   },
-} as Meta<typeof Attachment>;
+};
 
+export default meta;
 type Story = StoryObj<typeof Attachment>;
 
 export const Base: Story = {

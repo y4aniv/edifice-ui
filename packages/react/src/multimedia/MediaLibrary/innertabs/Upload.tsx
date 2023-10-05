@@ -1,4 +1,4 @@
-import { useMediaLibraryContext } from "../MediaLibrary";
+import { useMediaLibraryContext } from "../MediaLibraryContext";
 
 export const Upload = () => {
   const context = useMediaLibraryContext();

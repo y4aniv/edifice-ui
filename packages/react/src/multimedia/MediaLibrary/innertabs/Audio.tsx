@@ -1,4 +1,4 @@
-import { useMediaLibraryContext } from "../MediaLibrary";
+import { useMediaLibraryContext } from "../MediaLibraryContext";
 
 export const Audio = () => {
   const context = useMediaLibraryContext();

@@ -7,13 +7,12 @@ import {
   useState,
 } from "react";
 
-import { Filter, Search } from "@edifice-ui/icons";
+import { Search } from "@edifice-ui/icons";
 import { WorkspaceElement, WorkspaceSearchFilter } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import {
   Dropdown,
-  DropdownTrigger,
   FormControl,
   Grid,
   Input,
@@ -220,35 +219,48 @@ const Workspace = (props: WorkspaceProps) => {
       </Grid.Col>
       <Grid.Col sm="3" md="5" xl="8">
         <Grid className="flex-grow-1 gap-0">
-          <Grid.Col
-            sm="4"
-            md="8"
-            xl="12"
-            className="search border-bottom px-16 py-8 "
-          >
-            <form className="gap-16 d-flex" onSubmit={handleSearchSubmit}>
-              <FormControl className="input-group" id="search">
-                <Input
-                  noValidationIcon
-                  ref={inputRef}
-                  placeholder={t("Placeholder text")}
-                  size="md"
-                  type="search"
+          <Grid.Col sm="4" md="8" xl="12">
+            <div className="search border-bottom px-16 py-8 ">
+              <form className="gap-16 d-flex" onSubmit={handleSearchSubmit}>
+                <FormControl className="input-group" id="search">
+                  <Input
+                    noValidationIcon
+                    ref={inputRef}
+                    placeholder={t("Placeholder text")}
+                    size="md"
+                    type="search"
+                  />
+                  <SearchButton
+                    aria-label={t("Rechercher")}
+                    icon={<Search />}
+                    type="submit"
+                  />
+                </FormControl>
+              </form>
+            </div>
+            {/* TODO */}
+            <div className="d-flex align-items-center justify-content-end">
+              <small className="text-muted">Ordre :</small>
+              <Dropdown>
+                <Dropdown.Trigger
+                  size="sm"
+                  label="Dernière modif."
+                  variant="ghost"
                 />
-                <SearchButton
-                  aria-label={t("Rechercher")}
-                  icon={<Search />}
-                  type="submit"
-                />
-              </FormControl>
-
-              <Dropdown
-                trigger={
-                  <DropdownTrigger icon={<Filter />} title={t("Filtrer")} />
-                }
-                content={<p>TODO</p>}
-              />
-            </form>
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={() => alert("edit")}>
+                    Edit
+                  </Dropdown.Item>
+                  <Dropdown.Separator />
+                  <Dropdown.Item onClick={() => alert("copy")}>
+                    Copy
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => alert("cut")}>
+                    Cut
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
           </Grid.Col>
           <Grid.Col sm="4" md="8" xl="12" className="list p-12 gap-8">
             <ul>

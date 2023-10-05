@@ -21,6 +21,10 @@ export interface LoadingProps {
   loadingPosition?: LoadingPosition;
   /** When using with another component, we can pass a children */
   children?: ReactNode;
+  /**
+   * Optional class for styling purpose
+   */
+  className?: string;
 
   color?: string;
 }
@@ -36,6 +40,7 @@ const Loading = forwardRef(
       loadingIcon,
       loadingPosition = "left",
       children,
+      className,
       ...restProps
     } = props;
 
@@ -50,9 +55,13 @@ const Loading = forwardRef(
       return icon;
     };
 
-    const classes = clsx("loading", {
-      "is-loading": isLoading,
-    });
+    const classes = clsx(
+      "loading",
+      {
+        "is-loading": isLoading,
+      },
+      className,
+    );
 
     return (
       <div className={classes} role="status" ref={ref}>

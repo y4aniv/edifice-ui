@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 import {
   ExternalLink,
@@ -11,6 +11,7 @@ import { WorkspaceElement } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import { InnerTabs } from "./innertabs";
+import { MediaLibraryContext } from "./MediaLibraryContext";
 import { Button } from "../../components";
 import Modal from "../../components/Modal/Modal";
 import { Tabs } from "../../components/Tabs";
@@ -35,10 +36,10 @@ const orderedTabs = [
  * Available features exposed by tabs :
  * "workspace" | "upload" | "audio-capture" | ...
  */
-type AvailableTab = (typeof orderedTabs)[number];
+export type AvailableTab = (typeof orderedTabs)[number];
 
 /** Additional properties of tabs. */
-type MediaLibraryTabProps = {
+export type MediaLibraryTabProps = {
   /**
    * Media Library types where this tab should be displayed.
    * "*" for all types.
@@ -121,35 +122,6 @@ export interface MediaLibraryProps {
   onSuccess: (result: MediaLibraryResult) => void;
   /** Called when the user closes the modal. */
   onCancel: () => void;
-}
-
-const MediaLibraryContext = createContext<{
-  /** Application name. */
-  appName: string | undefined;
-  /** Type of rss to search for. */
-  type: MediaLibraryType | null;
-
-  /** Set the counter in the success button label */
-  setResultCounter: (count?: number) => void;
-
-  /** Set a innertab-specific callback which gets the result when success button is clicked */
-  setResult: (result?: any) => void;
-
-  /**
-   * Allow an innertab to switch display to another innertab.
-   * This function will throw an error if switching failed.
-   */
-  setVisibleTab: (tab: AvailableTab) => void;
-}>(null!);
-
-export function useMediaLibraryContext() {
-  const context = useContext(MediaLibraryContext);
-  if (!context) {
-    throw new Error(
-      `Innertabs compound components cannot be rendered outside the MediaLibrary component`,
-    );
-  }
-  return context;
 }
 
 //---------------------------------------------------

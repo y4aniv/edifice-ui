@@ -12,9 +12,7 @@ import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 
 import { mergeRefs } from "../../utils";
-import { ActionMenu, ActionMenuOptions } from "../ActionMenu";
 import { IconButton } from "../Button";
-import { Dropdown, DropdownTrigger } from "../Dropdown";
 
 export type ToolbarOptionsType = "divider" | "primary" | undefined;
 export type ToolbarDividerType = Extract<ToolbarOptionsType, "divider">;
@@ -47,7 +45,7 @@ export type ToolbarOptions =
       /**
        * Dropdown Content
        */
-      content?: () => ReactNode;
+      content?: (item: any) => ReactNode;
       /**
        * Action OnClick
        */
@@ -82,10 +80,6 @@ export interface ToolbarProps extends React.ComponentPropsWithRef<"div"> {
    */
   data: ToolbarOptions[];
   /**
-   * Toolbar Action Menu
-   */
-  options?: ActionMenuOptions[];
-  /**
    * Toolbar variant
    */
   variant?: ToolbarVariant;
@@ -115,7 +109,6 @@ const Toolbar = forwardRef(
   (
     {
       data,
-      options,
       variant = "default",
       align = "space",
       isBlock = false,
@@ -233,28 +226,7 @@ const Toolbar = forwardRef(
           }
 
           if (showDropdownElement) {
-            return (
-              <Dropdown
-                key={item.name}
-                trigger={
-                  <IconButton
-                    aria-label={item.label}
-                    color="tertiary"
-                    icon={item.icon}
-                    type="button"
-                    variant="ghost"
-                    className={clsx(
-                      item.className,
-                      item.isActive ? "is-selected" : "",
-                    )}
-                    tabIndex={index === 0 ? 0 : -1}
-                    onKeyDown={handleKeyDown}
-                    disabled={isDisabled}
-                  />
-                }
-                content={item.content?.()}
-              />
-            );
+            return item.content?.(item);
           }
 
           return (
@@ -275,17 +247,6 @@ const Toolbar = forwardRef(
             />
           );
         })}
-        {options ? (
-          <Dropdown
-            trigger={
-              <DropdownTrigger title="Plus" variant="ghost" tabIndex={-1} />
-            }
-            content={<ActionMenu id="action-menu" options={options} />}
-            aria-label="Menu d'actions"
-            aria-haspopup="true"
-            aria-controls="action-menu"
-          />
-        ) : null}
       </div>
     );
   },
