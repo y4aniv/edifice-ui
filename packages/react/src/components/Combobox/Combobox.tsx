@@ -1,74 +1,58 @@
-import { useState } from "react";
 import { ChangeEvent } from "react";
 
-import { useClickOutside } from "../../hooks";
+import { useTranslation } from "react-i18next";
+
+import ComboboxMenu from "./ComboboxMenu";
 import { Dropdown } from "../Dropdown";
-import { FormControl } from "../Form";
-import { Input } from "../Input";
+import { InputTrigger } from "../Input/InputTrigger";
+import { Loading } from "../Loading";
+import { OptionListItemType } from "../SelectList";
 
 export interface ComboboxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  handleSearchInputChange: () => void;
+  handleSearchResultsChange: (model: string | number) => void;
+  handleSearchInputChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  options: OptionListItemType[];
+  value: string;
+  isLoading?: boolean;
+  noResult?: boolean;
+  placeholder?: string;
 }
 
-const Combobox = () => {
-  const [visible, setVisible] = useState(false);
-  const test: any[] = [
-    {
-      value: "oui",
-      label: "oui",
-    },
-    {
-      value: "non",
-      label: "non",
-    },
-    {
-      value: "huit",
-      label: "huit",
-    },
-    {
-      value: "test",
-      label: "test",
-    },
-  ];
-
-  const ref = useClickOutside(() => setVisible(false));
-
-  const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event)
-  };
+const Combobox = ({
+  handleSearchResultsChange,
+  handleSearchInputChange,
+  options,
+  value,
+  isLoading,
+  noResult,
+  placeholder,
+}: ComboboxProps) => {
+  const { t } = useTranslation();
 
   return (
-    <div style={{ height: 400, width: "100%" }}>
-      <FormControl className="d-flex align-items-center" id="search">
-        <Input
-          ref={ref}
-          className="max-w-512"
-          noValidationIcon
-          placeholder="Placeholder"
-          size="md"
-          type="search"
-          onChange={handleSearchInputChange}
-          onFocus={() => setVisible(test?.length > 0)}
-        />
-      </FormControl>
-      {visible && (
-        <Dropdown block>
-          <Dropdown.Menu>
-            {test.map((testi) => (
-              <>
-                <Dropdown.Item onClick={handleSearchInputChange}>
-                  {testi.label}
-                </Dropdown.Item>
-                <Dropdown.Separator />
-              </>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
+    <Dropdown block>
+      <InputTrigger
+        placeholder={placeholder}
+        handleSearchInputChange={handleSearchInputChange}
+        value={value}
+      />
+      {isLoading && (
+        <div className="d-flex align-items-center p-4">
+          <Loading isLoading={isLoading} />
+          <span className="ps-4">{t("explorer.search.pending")}</span>
+        </div>
       )}
-    </div>
+      {noResult && <div className="p-4">{t("portal.no.result")}</div>}
+      <Combobox.Menu
+        options={options}
+        handleSearchResultsChange={handleSearchResultsChange}
+      />
+    </Dropdown>
   );
 };
+
+Combobox.Menu = ComboboxMenu;
 
 Combobox.displayName = "Combobox";
 
