@@ -127,7 +127,7 @@ const Toolbar = forwardRef(
     const { t } = useTranslation();
     const divToolbarRef = useRef<HTMLDivElement>();
 
-    const classes = clsx(`toolbar z-2000 ${className}`, {
+    const classes = clsx(`toolbar z-2000`, className, {
       default: variant === "default",
       "no-shadow": variant === "no-shadow",
       "d-flex": isBlock,

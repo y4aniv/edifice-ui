@@ -19,7 +19,7 @@ import useBrowserInfo from "../../hooks/useBrowserInfo/useBrowserInfo";
 import { convertMsToMS, getBestSupportedMimeType } from "../../utils";
 
 export interface VideoRecorderProps {
-  appName: string;
+  appName: string | undefined;
   caption?: string;
   onSuccess: (res: WorkspaceElement) => void;
   onError: (error: string) => void;
