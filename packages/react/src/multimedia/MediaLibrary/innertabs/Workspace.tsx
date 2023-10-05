@@ -2,7 +2,7 @@ import { WorkspaceElement } from "edifice-ts-client";
 
 import { Role } from "../../../core";
 import { Workspace as WorkspaceWidget } from "../../Workspace";
-import { useMediaLibraryContext } from "../MediaLibrary";
+import { useMediaLibraryContext } from "../MediaLibraryContext";
 
 export const Workspace = () => {
   const context = useMediaLibraryContext();

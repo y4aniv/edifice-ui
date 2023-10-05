@@ -51,10 +51,16 @@ const DropdownTrigger = forwardRef(
     }: DropdownTriggerProps,
     forwardRef: Ref<HTMLButtonElement>,
   ) => {
-    const { triggerProps, block } = useDropdownContext();
+    const { triggerProps, visible, block } = useDropdownContext();
     const { className, ...restProps } = triggerProps;
 
-    const dropdownTrigger = clsx(size, variant, { "w-100": block }, className);
+    const dropdownTrigger = clsx(
+      "dropdown-toggle",
+      size,
+      variant,
+      { "w-100": block, selected: visible },
+      className,
+    );
 
     return (
       <button
