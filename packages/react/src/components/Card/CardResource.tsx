@@ -14,7 +14,6 @@ const Resource = forwardRef(() => {
   const { options, isLoading, tooltips, classesTitle, app } = useCardContext();
 
   const {
-    type,
     imageSrc,
     name,
     creatorName,
@@ -81,27 +80,25 @@ const Resource = forwardRef(() => {
           </p>
         </div>
       </div>
-      {type === "resource" ? (
-        <div className="card-footer gap-16">
-          <div className={classesProfile}>
-            {renderUserPhoto}
-            <p className={classesName}>{creatorName}</p>
-          </div>
-          <div className="d-inline-flex align-items-center gap-8">
-            {isPublic && (
-              <Tooltip message={messagePublic} placement="top">
-                <Globe width={16} height={16} />
-              </Tooltip>
-            )}
-
-            {isShared && (
-              <Tooltip message={messageShared} placement="top">
-                <Users width={16} height={16} />
-              </Tooltip>
-            )}
-          </div>
+      <div className="card-footer gap-16">
+        <div className={classesProfile}>
+          {renderUserPhoto}
+          <p className={classesName}>{creatorName}</p>
         </div>
-      ) : null}
+        <div className="d-inline-flex align-items-center gap-8">
+          {isPublic && (
+            <Tooltip message={messagePublic} placement="top">
+              <Globe width={16} height={16} />
+            </Tooltip>
+          )}
+
+          {isShared && (
+            <Tooltip message={messageShared} placement="top">
+              <Users width={16} height={16} />
+            </Tooltip>
+          )}
+        </div>
+      </div>
     </>
   );
 });
