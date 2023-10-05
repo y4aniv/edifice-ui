@@ -14,7 +14,7 @@ export type VideoUploadParams = {
     filename: string;
     weight: number;
   };
-  app: string;
+  app: string | undefined;
   captation: boolean;
   duration: number;
 };

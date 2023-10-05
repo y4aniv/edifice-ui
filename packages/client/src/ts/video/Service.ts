@@ -118,7 +118,7 @@ export class VideoService {
    * @returns Promise<void>
    */
   public async generateSaveEvent(
-    appName: string,
+    appName: string | undefined,
     elapsedTime: number,
     browser: { name: string | undefined; version: string | undefined },
     deviceType: string | undefined,
