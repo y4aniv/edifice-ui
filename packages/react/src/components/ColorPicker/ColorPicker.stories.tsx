@@ -26,9 +26,7 @@ const Template = (args: ColorPickerProps) => {
   const handleOnChange = (color: ColorPaletteItem) =>
     setCurrentColor(color.value);
   return (
-    <div>
-      <ColorPicker {...args} model={currentColor} onSuccess={handleOnChange} />
-    </div>
+    <ColorPicker {...args} model={currentColor} onSuccess={handleOnChange} />
   );
 };
 
