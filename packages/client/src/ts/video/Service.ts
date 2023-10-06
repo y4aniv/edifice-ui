@@ -110,7 +110,7 @@ export class VideoService {
 
   /**
    * Generate Save Event
-   * @param app current app name
+   * @param appCode app code (example: "blog")
    * @param elapsedTime encoding elapsed time
    * @param browser browser name and version
    * @param deviceType type of device
@@ -118,7 +118,7 @@ export class VideoService {
    * @returns Promise<void>
    */
   public async generateSaveEvent(
-    appName: string | undefined,
+    appCode: string,
     elapsedTime: number,
     browser: { name: string | undefined; version: string | undefined },
     deviceType: string | undefined,
@@ -139,7 +139,7 @@ export class VideoService {
       weight: saved.videosize,
       captation: true,
       url: window.location.hostname,
-      app: appName,
+      app: appCode,
     });
   }
 }
