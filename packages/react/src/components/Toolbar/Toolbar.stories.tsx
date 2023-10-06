@@ -75,7 +75,7 @@ export const Base: Story = {
   render: (args) => <Toolbar {...args} />,
 };
 
-export const Disable: Story = {
+export const Hidden: Story = {
   render: (args) => <Toolbar {...args} />,
   args: {
     items: [
@@ -86,7 +86,7 @@ export const Disable: Story = {
           icon: <RecordVideo />,
           onClick: () => console.log("on click"),
         },
-        isEnable: false,
+        isHidden: true,
       },
       {
         type: "icon",
@@ -121,7 +121,7 @@ export const Disable: Story = {
     docs: {
       description: {
         story:
-          "When data object has `isEnable` set to `false`, it will not be displayed",
+          "When data object has `isHidden` set to `true`, it will not be displayed",
       },
     },
   },
@@ -227,38 +227,44 @@ export const WithPrimaryAction: Story = {
     },
   },
 };
-/*
+
 export const WithDropdownAction: Story = {
   render: (args) => <Toolbar {...args} />,
   decorators: [(Story) => <div style={{ height: "300px" }}>{Story()}</div>],
   args: {
-    data: [
+    items: [
       {
-        action: () => console.log("on click"),
-        icon: <Save />,
-        label: "save",
+        type: "button",
         name: "save",
-        isEnable: true,
+        props: {
+          disabled: true,
+          children: (
+            <>
+              <Save />
+              <span>Delete</span>
+            </>
+          ),
+          onClick: () => console.log("on click"),
+        },
       },
       {
-        action: () => console.log("on click"),
-        icon: <Write />,
-        label: "write",
-        name: "write",
-        hasDropdown: true,
-        content: () => (
-          <Dropdown>
-            <Dropdown.Menu>
-              <Dropdown.Item onClick={() => console.log("click 1")}>
-                Write something...
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => console.log("click 2")}>
-                Edit something...
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        ),
-        isEnable: true,
+        type: "dropdown",
+        name: "others",
+        props: {
+          children: () => (
+            <>
+              <Dropdown.Trigger variant="ghost" label="More..." />
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={() => alert("click 1")}>
+                  Write something...
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => alert("click 2")}>
+                  Edit something...
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </>
+          ),
+        },
       },
     ],
   },
@@ -266,12 +272,12 @@ export const WithDropdownAction: Story = {
     docs: {
       description: {
         story:
-          "By adding `hasDropdown` to `true` and a content key representing `() => ReactNode` item becomes a dropdown",
+          "Using an item of type `dropdown`, you have to provide its children through props",
       },
     },
   },
 };
-*/
+
 export const WithoutShadow: Story = {
   render: (args) => <Toolbar {...args} variant="no-shadow" />,
   parameters: {

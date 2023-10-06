@@ -99,7 +99,7 @@ const Toolbar = forwardRef(
   ) => {
     const divToolbarRef = useRef<HTMLDivElement>();
 
-    const classes = clsx(`toolbar z-2000`, className, {
+    const classes = clsx("toolbar z-2000 bg-white", className, {
       default: variant === "default",
       "no-shadow": variant === "no-shadow",
       "d-flex": isBlock,
@@ -116,7 +116,7 @@ const Toolbar = forwardRef(
     let firstItem: HTMLElement;
 
     useEffect(() => {
-      const buttons: NodeListOf<HTMLElement> | undefined =
+      const buttons: NodeListOf<HTMLButtonElement> | undefined =
         divToolbarRef.current?.querySelectorAll("button");
       buttons?.forEach((item, index) => {
         if (index === 0) {
@@ -180,12 +180,15 @@ const Toolbar = forwardRef(
 
           switch (item.type) {
             case "divider":
-              return <div key={index} className="toolbar-divider"></div>;
+              return (
+                <div key={item.name ?? index} className="toolbar-divider"></div>
+              );
 
             case "button":
               return (
                 <Button
                   {...item.props}
+                  key={item.name ?? index}
                   color="tertiary"
                   variant="ghost"
                   tabIndex={index === 0 ? 0 : -1}
@@ -197,6 +200,7 @@ const Toolbar = forwardRef(
               return (
                 <IconButton
                   {...item.props}
+                  key={item.name ?? index}
                   color="tertiary"
                   variant="ghost"
                   tabIndex={index === 0 ? 0 : -1}
@@ -206,8 +210,8 @@ const Toolbar = forwardRef(
 
             case "dropdown":
               return (
-                <Dropdown {...item.props}>
-                  {/* TODO item.props.children?. */}
+                <Dropdown {...item.props} key={item.name ?? index}>
+                  {/* Set the children through props */}
                 </Dropdown>
               );
 
@@ -215,6 +219,7 @@ const Toolbar = forwardRef(
               return (
                 <Button
                   {...item.props}
+                  key={item.name ?? index}
                   variant="filled"
                   color="primary"
                   tabIndex={index === 0 ? 0 : -1}
