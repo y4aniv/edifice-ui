@@ -11,10 +11,6 @@ export class ScrapbookResourceService extends ResourceService {
       title: parameters.name,
       thumbnail: fixThumb,
       description: parameters.description,
-      visibility: parameters.public ? "PUBLIC" : "OWNER",
-      slug: parameters.public ? parameters.slug : "",
-      "publish-type": parameters["publish-type"] || "RESTRAINT",
-      "comment-type": "IMMEDIATE",
     });
     this.checkHttpResponse(res);
     return { thumbnail: fixThumb, entId: parameters.entId } as UpdateResult;
@@ -33,12 +29,11 @@ export class ScrapbookResourceService extends ResourceService {
   getViewUrl(resourceId: string): string {
     return `/scrapbook#/view-scrapbook/${resourceId}`;
   }
-  getPrintUrl(resourceId: string, withComment?: boolean): string {
-    return `/scrapbook/print#//print-scrapbook/${resourceId}?comments=${
-      withComment || true
-    }`;
+  getPrintUrl(resourceId: string): string {
+    return `/scrapbook/print#/print-scrapbook/${resourceId}`;
   }
 }
+
 ResourceService.register(
   { application: RESOURCE.SCRAPBOOK, resourceType: RESOURCE.SCRAPBOOK },
   (context) => new ScrapbookResourceService(context),
