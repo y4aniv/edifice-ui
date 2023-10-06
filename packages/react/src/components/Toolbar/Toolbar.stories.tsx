@@ -222,14 +222,16 @@ export const WithDropdownAction: Story = {
         name: "write",
         hasDropdown: true,
         content: () => (
-          <Dropdown.Menu>
-            <Dropdown.Item onClick={() => console.log("click 1")}>
-              Write something...
-            </Dropdown.Item>
-            <Dropdown.Item onClick={() => console.log("click 2")}>
-              Edit something...
-            </Dropdown.Item>
-          </Dropdown.Menu>
+          <Dropdown>
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={() => console.log("click 1")}>
+                Write something...
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => console.log("click 2")}>
+                Edit something...
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         ),
         isEnable: true,
       },
