@@ -65,7 +65,7 @@ export class VideoService {
       `${params.data.browser.name} ${params.data.browser.version}`,
     );
     formData.append("url", params.data.url);
-    formData.append("app", params.app || "");
+    formData.append("app", params.appCode);
     formData.append("file", params.data.file, params.data.filename);
     formData.append("weight", "" + params.data.file.size);
     formData.append("captation", "" + params.captation);
