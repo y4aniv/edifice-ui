@@ -111,6 +111,8 @@ export type MediaLibraryResult =
  * MediaLibrary component properties
  */
 export interface MediaLibraryProps {
+  /** Application Code (example: "blog"). */
+  appCode: string;
   /** Type of rss to search for. */
   type: MediaLibraryType | null;
   /**
@@ -125,11 +127,19 @@ export interface MediaLibraryProps {
 //---------------------------------------------------
 // Media Library implementation
 //---------------------------------------------------
-const MediaLibrary = ({ type, onSuccess, onCancel }: MediaLibraryProps) => {
+const MediaLibrary = ({
+  appCode,
+  type,
+  onSuccess,
+  onCancel,
+}: MediaLibraryProps) => {
   const { t } = useTranslation();
 
   const workspaceCreateWorkflow = useHasWorkflow(
     "org.entcore.workspace.controllers.WorkspaceController|addDocument",
+  );
+  const videoCaptureWorkflow = useHasWorkflow(
+    "com.opendigitaleducation.video.controllers.VideoController|capture",
   );
 
   const availableTabs: {
@@ -157,7 +167,7 @@ const MediaLibrary = ({ type, onSuccess, onCancel }: MediaLibraryProps) => {
       label: t("Captation vidéo"),
       content: <InnerTabs.Video />,
       availableFor: ["video"],
-      isEnable: () => false, // TODO workflow ?
+      isEnable: () => (videoCaptureWorkflow ? true : false),
     },
     "audio-capture": {
       id: "audio",
@@ -248,6 +258,7 @@ const MediaLibrary = ({ type, onSuccess, onCancel }: MediaLibraryProps) => {
     type && (
       <MediaLibraryContext.Provider
         value={{
+          appCode,
           type,
           setResultCounter,
           setResult,

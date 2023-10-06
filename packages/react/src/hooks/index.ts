@@ -9,3 +9,4 @@ export * from "./useDebounce";
 export * from "./useTrapFocus";
 export * from "./useScrollToTop";
 export * from "./useDropzone";
+export * from "./useBrowserInfo";

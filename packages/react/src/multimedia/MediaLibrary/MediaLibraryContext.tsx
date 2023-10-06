@@ -3,6 +3,8 @@ import { createContext, useContext } from "react";
 import { MediaLibraryType, AvailableTab } from "./MediaLibrary";
 
 export const MediaLibraryContext = createContext<{
+  /** Application code (example: "blog"). */
+  appCode: string;
   /** Type of rss to search for. */
   type: MediaLibraryType | null;
 
