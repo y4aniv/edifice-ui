@@ -104,7 +104,7 @@ const Toolbar = forwardRef(
       "no-shadow": variant === "no-shadow",
       "d-flex": isBlock,
       "d-inline-flex": !isBlock,
-      "overflow-x-scroll": isBlock,
+      "overflow-x-auto": isBlock,
       "justify-content-start": align === "left",
       "justify-content-between": align === "space",
       "justify-content-center": align === "center",
