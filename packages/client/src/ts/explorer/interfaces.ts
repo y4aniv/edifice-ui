@@ -172,6 +172,8 @@ export const RESOURCE = {
   BLOG: "blog",
   EXERCISE: "exercise",
   MINDMAP: "mindmap",
+  SCRAPBOOK: "scrapbook"
+
 } as const;
 
 export type ResourceType = (typeof RESOURCE)[keyof typeof RESOURCE];
@@ -182,6 +184,7 @@ export const appNameForResource: { [R in ResourceType]: App } = {
   blog: APP.BLOG,
   exercise: APP.EXERCIZER,
   mindmap: APP.MINDMAP,
+  scrapbook: APP.SCRAPBOOK
 } as const;
 
 //-- Actions (toaster)

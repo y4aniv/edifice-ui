@@ -28,6 +28,8 @@ export const APP = {
   CAS: "cas",
   VIDEO: "video",
   MINDMAP: "mindmap",
+  SCRAPBOOK: "scrapbook"
+  
 
   // TODO compléter/trier les apps suivantes
   /*
@@ -48,8 +50,6 @@ export const APP = {
   "paths"
   "parcours"
   "notebook"
-  "scrap-book"
-  "scrapbook"
   "account"
   "support"
   "workspace"
