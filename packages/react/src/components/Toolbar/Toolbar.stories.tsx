@@ -27,37 +27,41 @@ const meta: Meta<typeof Toolbar> = {
     },
   },
   args: {
-    data: [
+    items: [
       {
-        action: () => console.log("on click"),
-        icon: <RecordVideo />,
-        label: "record",
+        type: "icon",
         name: "record",
-        isEnable: true,
+        props: {
+          icon: <RecordVideo />,
+          onClick: () => console.log("on click"),
+        },
       },
       {
-        action: () => console.log("on click"),
-        icon: <Save />,
-        label: "save",
+        type: "icon",
         name: "save",
-        isEnable: true,
+        props: {
+          icon: <Save />,
+          onClick: () => console.log("on click"),
+        },
       },
       {
         type: "divider",
       },
       {
-        action: () => console.log("on click"),
-        icon: <Write />,
-        label: "write",
+        type: "icon",
         name: "write",
-        isEnable: true,
+        props: {
+          icon: <Write />,
+          onClick: () => console.log("on click"),
+        },
       },
       {
-        action: () => console.log("on click"),
-        icon: <Delete />,
-        label: "delete",
+        type: "icon",
         name: "delete",
-        isEnable: true,
+        props: {
+          icon: <Delete />,
+          onClick: () => console.log("on click"),
+        },
       },
     ],
   },
@@ -74,37 +78,42 @@ export const Base: Story = {
 export const Disable: Story = {
   render: (args) => <Toolbar {...args} />,
   args: {
-    data: [
+    items: [
       {
-        action: () => console.log("on click"),
-        icon: <RecordVideo />,
-        label: "record",
+        type: "icon",
         name: "record",
+        props: {
+          icon: <RecordVideo />,
+          onClick: () => console.log("on click"),
+        },
         isEnable: false,
       },
       {
-        action: () => console.log("on click"),
-        icon: <Save />,
-        label: "save",
+        type: "icon",
         name: "save",
-        isEnable: true,
+        props: {
+          icon: <Save />,
+          onClick: () => console.log("on click"),
+        },
       },
       {
         type: "divider",
       },
       {
-        action: () => console.log("on click"),
-        icon: <Write />,
-        label: "write",
+        type: "icon",
         name: "write",
-        isEnable: true,
+        props: {
+          icon: <Write />,
+          onClick: () => console.log("on click"),
+        },
       },
       {
-        action: () => console.log("on click"),
-        icon: <Delete />,
-        label: "delete",
+        type: "icon",
         name: "delete",
-        isEnable: true,
+        props: {
+          icon: <Delete />,
+          onClick: () => console.log("on click"),
+        },
       },
     ],
   },
@@ -121,37 +130,41 @@ export const Disable: Story = {
 export const WithDivider: Story = {
   render: (args) => <Toolbar {...args} />,
   args: {
-    data: [
+    items: [
       {
-        action: () => console.log("on click"),
-        icon: <RecordVideo />,
-        label: "record",
+        type: "icon",
         name: "record",
-        isEnable: true,
+        props: {
+          icon: <RecordVideo />,
+          onClick: () => console.log("on click"),
+        },
       },
       {
-        action: () => console.log("on click"),
-        icon: <Save />,
-        label: "save",
+        type: "icon",
         name: "save",
-        isEnable: true,
+        props: {
+          icon: <Save />,
+          onClick: () => console.log("on click"),
+        },
       },
       {
         type: "divider",
       },
       {
-        action: () => console.log("on click"),
-        icon: <Write />,
-        label: "write",
+        type: "icon",
         name: "write",
-        isEnable: true,
+        props: {
+          icon: <Write />,
+          onClick: () => console.log("on click"),
+        },
       },
       {
-        action: () => console.log("on click"),
-        icon: <Delete />,
-        label: "delete",
+        type: "icon",
         name: "delete",
-        isEnable: true,
+        props: {
+          icon: <Delete />,
+          onClick: () => console.log("on click"),
+        },
       },
     ],
   },
@@ -168,28 +181,40 @@ export const WithDivider: Story = {
 export const WithPrimaryAction: Story = {
   render: (args) => <Toolbar {...args} />,
   args: {
-    data: [
+    items: [
       {
-        action: () => console.log("on click"),
-        icon: <Save />,
-        label: "save",
+        type: "button",
         name: "save",
-        isEnable: true,
+        props: {
+          children: (
+            <>
+              <Save />
+              <span>Delete</span>
+            </>
+          ),
+          onClick: () => console.log("on click"),
+        },
       },
       {
-        action: () => console.log("on click"),
-        icon: <Write />,
-        label: "write",
-        name: "write",
-        isEnable: true,
+        type: "icon",
+        name: "delete",
+        props: {
+          icon: <Delete />,
+          onClick: () => console.log("on click"),
+        },
       },
       {
-        action: () => console.log("on click"),
-        icon: <Plus />,
-        label: "plus",
-        name: "plus",
         type: "primary",
-        isEnable: true,
+        name: "plus",
+        props: {
+          children: (
+            <>
+              <Plus />
+              <span>Add</span>
+            </>
+          ),
+          onClick: () => console.log("on click"),
+        },
       },
     ],
   },
@@ -202,7 +227,7 @@ export const WithPrimaryAction: Story = {
     },
   },
 };
-
+/*
 export const WithDropdownAction: Story = {
   render: (args) => <Toolbar {...args} />,
   decorators: [(Story) => <div style={{ height: "300px" }}>{Story()}</div>],
@@ -246,7 +271,7 @@ export const WithDropdownAction: Story = {
     },
   },
 };
-
+*/
 export const WithoutShadow: Story = {
   render: (args) => <Toolbar {...args} variant="no-shadow" />,
   parameters: {
