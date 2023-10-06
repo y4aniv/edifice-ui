@@ -27,14 +27,14 @@ export class ScrapbookResourceService extends ResourceService {
   }
   getFormUrl(folderId?: string): string {
     return folderId
-      ? `/scrapbook?folderid=${folderId}#/edit/new`
-      : `/scrapbook#/edit/new`;
+      ? `/scrapbook?folderid=${folderId}#/edit-scrapbook/new`
+      : `/scrapbook#/edit-scrapbook/new`;
   }
   getViewUrl(resourceId: string): string {
-    return `/scrapbook#/view/${resourceId}`;
+    return `/scrapbook#/view-scrapbook/${resourceId}`;
   }
   getPrintUrl(resourceId: string, withComment?: boolean): string {
-    return `/scrapbook/print/scrapbook#/print/${resourceId}?comments=${
+    return `/scrapbook/print#//print-scrapbook/${resourceId}?comments=${
       withComment || true
     }`;
   }
