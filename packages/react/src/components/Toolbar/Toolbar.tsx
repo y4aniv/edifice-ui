@@ -51,9 +51,13 @@ export type ToolbarOptions =
        */
       action: (elem: any) => any;
       /**
-       * Show item if is enabled
+       * Show item but set it to disabled
        */
-      isEnable: boolean;
+      isDisabled?: boolean;
+      /**
+       * Hide item
+       */
+      isHidden?: boolean;
       /**
        * Optional class for styling purpose
        */
@@ -92,6 +96,10 @@ export interface ToolbarProps extends React.ComponentPropsWithRef<"div"> {
    */
   ariaControls?: string;
   /**
+   * Additional CSS classes.
+   */
+  className?: string;
+  /**
    * Accept optional children
    */
   children?: ReactNode;
@@ -105,13 +113,14 @@ const Toolbar = forwardRef(
       align = "space",
       isBlock = false,
       ariaControls,
+      className,
     }: ToolbarProps,
     ref: Ref<ToolbarRef>,
   ) => {
     const { t } = useTranslation();
     const divToolbarRef = useRef<HTMLDivElement>();
 
-    const classes = clsx("toolbar z-2000", {
+    const classes = clsx(`toolbar z-2000`, className, {
       default: variant === "default",
       "no-shadow": variant === "no-shadow",
       "d-flex": isBlock,
@@ -181,7 +190,6 @@ const Toolbar = forwardRef(
       <div
         ref={mergeRefs(ref, divToolbarRef)}
         className={classes}
-        style={{ zIndex: "999999" }}
         role="toolbar"
         aria-label="Text Formatting"
         aria-controls={ariaControls}
@@ -189,12 +197,13 @@ const Toolbar = forwardRef(
         onBlur={handleBlur}
       >
         {data.map((item, index) => {
-          const isDisabled = !item.type && !item.isEnable;
+          const isDisabled = !item.type && item.isDisabled;
+          const isHidden = !item.type && item.isHidden;
           const isDivider = "type" in item && item.type === "divider";
           const isPrimaryAction = "type" in item && item.type === "primary";
           const showDropdownElement = !item.type && item.hasDropdown;
 
-          if (isDisabled) return null;
+          if (isHidden) return null;
 
           if (isDivider) {
             return <div key={index} className="toolbar-divider"></div>;
@@ -211,6 +220,7 @@ const Toolbar = forwardRef(
                 color="primary"
                 tabIndex={index === 0 ? 0 : -1}
                 onKeyDown={handleKeyDown}
+                disabled={isDisabled}
               />
             );
           }
@@ -233,6 +243,7 @@ const Toolbar = forwardRef(
               )}
               tabIndex={index === 0 ? 0 : -1}
               onKeyDown={handleKeyDown}
+              disabled={isDisabled}
             />
           );
         })}
