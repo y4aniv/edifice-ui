@@ -19,7 +19,7 @@ import useBrowserInfo from "../../hooks/useBrowserInfo/useBrowserInfo";
 import { convertMsToMS, getBestSupportedMimeType } from "../../utils";
 
 export interface VideoRecorderProps {
-  appName: string | undefined;
+  appCode: string;
   caption?: string;
   onSuccess: (res: WorkspaceElement) => void;
   onError: (error: string) => void;
@@ -29,7 +29,7 @@ const VIDEO_HEIGHT = 455;
 const VIDEO_WIDTH = 728;
 
 const VideoRecorder = ({
-  appName,
+  appCode,
   caption,
   onSuccess,
   onError,
@@ -277,7 +277,7 @@ const VideoRecorder = ({
         filename: "filename",
         weight: recordedVideo.size,
       },
-      app: appName,
+      appCode: appCode,
       captation: true,
       duration: recordedTime,
     };
@@ -287,7 +287,7 @@ const VideoRecorder = ({
       await odeServices
         .video()
         .generateSaveEvent(
-          appName,
+          appCode,
           recordedTime,
           { name: browser.name, version: browser.version },
           device.type,

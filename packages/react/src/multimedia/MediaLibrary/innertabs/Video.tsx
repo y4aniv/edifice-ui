@@ -2,7 +2,7 @@ import { WorkspaceElement } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import { VideoRecorder } from "../../VideoRecorder";
-import { useMediaLibraryContext } from "../MediaLibrary";
+import { useMediaLibraryContext } from "../MediaLibraryContext";
 
 export const Video = () => {
   const context = useMediaLibraryContext();
@@ -19,7 +19,7 @@ export const Video = () => {
 
   return (
     <VideoRecorder
-      appName={context.appName}
+      appCode={context.appCode}
       caption={t("video.caption")}
       onSuccess={handleSuccess}
       onError={handleError}

@@ -21,7 +21,7 @@ type Story = StoryObj<typeof VideoRecorder>;
 export const Base: Story = {
   render: (args) => <VideoRecorder {...args} />,
   args: {
-    appName: "Blog",
+    appCode: "Blog",
     caption:
       "Souriez, vous êtes filmé(e) ! Vous pouvez enregistrer jusqu'à 3 minutes de vidéo.",
   },

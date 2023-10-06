@@ -111,8 +111,8 @@ export type MediaLibraryResult =
  * MediaLibrary component properties
  */
 export interface MediaLibraryProps {
-  /** Application name. */
-  appName: string | undefined;
+  /** Application Code (example: "blog"). */
+  appCode: string;
   /** Type of rss to search for. */
   type: MediaLibraryType | null;
   /**
@@ -128,7 +128,7 @@ export interface MediaLibraryProps {
 // Media Library implementation
 //---------------------------------------------------
 const MediaLibrary = ({
-  appName,
+  appCode,
   type,
   onSuccess,
   onCancel,
@@ -258,7 +258,7 @@ const MediaLibrary = ({
     type && (
       <MediaLibraryContext.Provider
         value={{
-          appName,
+          appCode,
           type,
           setResultCounter,
           setResult,
