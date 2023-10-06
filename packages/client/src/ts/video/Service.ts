@@ -65,7 +65,7 @@ export class VideoService {
       `${params.data.browser.name} ${params.data.browser.version}`,
     );
     formData.append("url", params.data.url);
-    formData.append("app", params.app || "");
+    formData.append("app", params.appCode);
     formData.append("file", params.data.file, params.data.filename);
     formData.append("weight", "" + params.data.file.size);
     formData.append("captation", "" + params.captation);
@@ -110,7 +110,7 @@ export class VideoService {
 
   /**
    * Generate Save Event
-   * @param app current app name
+   * @param appCode app code (example: "blog")
    * @param elapsedTime encoding elapsed time
    * @param browser browser name and version
    * @param deviceType type of device
@@ -118,7 +118,7 @@ export class VideoService {
    * @returns Promise<void>
    */
   public async generateSaveEvent(
-    appName: string,
+    appCode: string,
     elapsedTime: number,
     browser: { name: string | undefined; version: string | undefined },
     deviceType: string | undefined,
@@ -139,7 +139,7 @@ export class VideoService {
       weight: saved.videosize,
       captation: true,
       url: window.location.hostname,
-      app: appName,
+      app: appCode,
     });
   }
 }
