@@ -88,7 +88,7 @@ const Root = ({
 
   const dropdown = clsx({
     "w-100": block,
-    overflow: overflow,
+    overflow,
   });
 
   return (
