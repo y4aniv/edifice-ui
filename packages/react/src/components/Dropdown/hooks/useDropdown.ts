@@ -301,7 +301,7 @@ const useDropdown = (placement: Placement | undefined): UseDropdownProps => {
     /* MenuProps to spread to any Menu Component */
     menuProps: {
       ref: mergeRefs(menuRef, refs.setFloating),
-      className: "dropdown-menu bg-white shadow rounded-4 py-12 px-8",
+      className: "dropdown-menu bg-white shadow rounded-4 p-8",
       "aria-labelledby": `dropdown-toggle-${id}`,
       "aria-activedescendant": isFocused,
       style: { ...floatingStyles },
