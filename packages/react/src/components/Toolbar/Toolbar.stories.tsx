@@ -86,7 +86,7 @@ export const Hidden: Story = {
           icon: <RecordVideo />,
           onClick: () => console.log("on click"),
         },
-        isHidden: true,
+        visibility: "hide",
       },
       {
         type: "icon",

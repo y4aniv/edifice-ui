@@ -19,8 +19,8 @@ interface Item {
   type: string;
   /** Items should be named, except for dividers */
   name?: string;
-  /** ShoHidew item when truthy */
-  isHidden?: boolean;
+  /** Set to "hide" to hide this item. Defaults to "show" when undefined. */
+  visibility?: "show" | "hide";
 }
 interface ButtonItem extends Item {
   type: "button";
@@ -176,7 +176,7 @@ const Toolbar = forwardRef(
         onBlur={handleBlur}
       >
         {items.map((item, index) => {
-          if (item.isHidden === false) return null;
+          if (item.visibility === "hide") return null;
 
           switch (item.type) {
             case "divider":
