@@ -9,76 +9,56 @@ import {
 } from "react";
 
 import clsx from "clsx";
-import { useTranslation } from "react-i18next";
 
 import { mergeRefs } from "../../utils";
-import { IconButton } from "../Button";
+import { Button, ButtonProps, IconButton, IconButtonProps } from "../Button";
+import { Dropdown, DropdownProps } from "../Dropdown";
 
-export type ToolbarOptionsType = "divider" | "primary" | undefined;
-export type ToolbarDividerType = Extract<ToolbarOptionsType, "divider">;
+interface Item {
+  /** Object type */
+  type: string;
+  /** Items should be named, except for dividers */
+  name?: string;
+  /** Set to "hide" to hide this item. Defaults to "show" when undefined. */
+  visibility?: "show" | "hide";
+}
+interface ButtonItem extends Item {
+  type: "button";
+  name: string;
+  props: ButtonProps;
+}
+interface IconButtonItem extends Item {
+  type: "icon";
+  name: string;
+  props: IconButtonProps;
+}
+interface DropdownItem extends Item {
+  type: "dropdown";
+  props: DropdownProps;
+}
+interface PrimaryItem extends Item {
+  type: "primary";
+  props: ButtonProps;
+}
+interface DividerItem extends Item {
+  type: "divider";
+}
+
 export type ToolbarRef = HTMLDivElement;
 export type ToolbarVariant = "default" | "no-shadow";
 export type ToolbarAlign = "left" | "center" | "space" | "right";
-
-export type ToolbarOptions =
-  | {
-      /**
-       * Object type
-       */
-      type?: ToolbarOptionsType;
-      /**
-       * Icon component
-       */
-      icon: JSX.Element;
-      /**
-       * Label for a11y
-       */
-      label: string;
-      /**
-       * Button or Extension name
-       */
-      name: string;
-      /**
-       * Has a Dropdown ?
-       */
-      hasDropdown?: boolean;
-      /**
-       * Dropdown Content
-       */
-      content?: (item: any) => ReactNode;
-      /**
-       * Action OnClick
-       */
-      action: (elem: any) => any;
-      /**
-       * Show item but set it to disabled
-       */
-      isDisabled?: boolean;
-      /**
-       * Hide item
-       */
-      isHidden?: boolean;
-      /**
-       * Optional class for styling purpose
-       */
-      className?: string;
-      /**
-       * Add "is-selected" class
-       */
-      isActive?: boolean;
-    }
-  | {
-      /**
-       * Object type
-       */
-      type: ToolbarDividerType;
-    };
+export type ToolbarItem =
+  | ButtonItem
+  | IconButtonItem
+  | DropdownItem
+  | PrimaryItem
+  | DividerItem;
 
 export interface ToolbarProps extends React.ComponentPropsWithRef<"div"> {
   /**
    * Toolbar data items
    */
-  data: ToolbarOptions[];
+  items: ToolbarItem[];
   /**
    * Toolbar variant
    */
@@ -108,7 +88,7 @@ export interface ToolbarProps extends React.ComponentPropsWithRef<"div"> {
 const Toolbar = forwardRef(
   (
     {
-      data,
+      items,
       variant = "default",
       align = "space",
       isBlock = false,
@@ -117,36 +97,35 @@ const Toolbar = forwardRef(
     }: ToolbarProps,
     ref: Ref<ToolbarRef>,
   ) => {
-    const { t } = useTranslation();
     const divToolbarRef = useRef<HTMLDivElement>();
 
-    const classes = clsx(`toolbar z-2000`, className, {
+    const classes = clsx("toolbar z-2000 bg-white", className, {
       default: variant === "default",
       "no-shadow": variant === "no-shadow",
       "d-flex": isBlock,
       "d-inline-flex": !isBlock,
-      "overflow-x-scroll": isBlock,
+      "overflow-x-auto": isBlock,
       "justify-content-start": align === "left",
       "justify-content-between": align === "space",
       "justify-content-center": align === "center",
       "justify-content-end": align === "right",
     });
 
-    const toolbarItems: Array<HTMLButtonElement> = [];
-    let lastItem: HTMLButtonElement;
-    let firstItem: HTMLButtonElement;
+    const toolbarItems: Array<HTMLElement> = [];
+    let lastItem: HTMLElement;
+    let firstItem: HTMLElement;
 
     useEffect(() => {
-      const items: NodeListOf<HTMLButtonElement> | undefined =
+      const buttons: NodeListOf<HTMLButtonElement> | undefined =
         divToolbarRef.current?.querySelectorAll("button");
-      items?.forEach((item, index) => {
+      buttons?.forEach((item, index) => {
         if (index === 0) {
           firstItem = item;
         }
         lastItem = item;
         toolbarItems.push(item);
       });
-    }, [data]);
+    }, [items]);
 
     const handleFocus = (event: FocusEvent<HTMLDivElement>) => {
       // div toolbar
@@ -162,7 +141,7 @@ const Toolbar = forwardRef(
       event.target.classList.remove("focus");
     };
 
-    const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+    const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
       const index = toolbarItems.indexOf(event.currentTarget);
       switch (event.code) {
         case "ArrowLeft":
@@ -196,56 +175,62 @@ const Toolbar = forwardRef(
         onFocus={handleFocus}
         onBlur={handleBlur}
       >
-        {data.map((item, index) => {
-          const isDisabled = !item.type && item.isDisabled;
-          const isHidden = !item.type && item.isHidden;
-          const isDivider = "type" in item && item.type === "divider";
-          const isPrimaryAction = "type" in item && item.type === "primary";
-          const showDropdownElement = !item.type && item.hasDropdown;
+        {items.map((item, index) => {
+          if (item.visibility === "hide") return null;
 
-          if (isHidden) return null;
+          switch (item.type) {
+            case "divider":
+              return (
+                <div key={item.name ?? index} className="toolbar-divider"></div>
+              );
 
-          if (isDivider) {
-            return <div key={index} className="toolbar-divider"></div>;
+            case "button":
+              return (
+                <Button
+                  {...item.props}
+                  key={item.name ?? index}
+                  color="tertiary"
+                  variant="ghost"
+                  tabIndex={index === 0 ? 0 : -1}
+                  onKeyDown={handleKeyDown}
+                />
+              );
+
+            case "icon":
+              return (
+                <IconButton
+                  {...item.props}
+                  key={item.name ?? index}
+                  color="tertiary"
+                  variant="ghost"
+                  tabIndex={index === 0 ? 0 : -1}
+                  onKeyDown={handleKeyDown}
+                />
+              );
+
+            case "dropdown":
+              return (
+                <Dropdown {...item.props} key={item.name ?? index}>
+                  {/* Set the children through props */}
+                </Dropdown>
+              );
+
+            case "primary":
+              return (
+                <Button
+                  {...item.props}
+                  key={item.name ?? index}
+                  variant="filled"
+                  color="primary"
+                  tabIndex={index === 0 ? 0 : -1}
+                  onKeyDown={handleKeyDown}
+                />
+              );
+
+            default:
+              break;
           }
-
-          if (isPrimaryAction) {
-            return (
-              <IconButton
-                key={item.name}
-                icon={item.icon}
-                onClick={item.action}
-                aria-label={t(item.label)}
-                variant="filled"
-                color="primary"
-                tabIndex={index === 0 ? 0 : -1}
-                onKeyDown={handleKeyDown}
-                disabled={isDisabled}
-              />
-            );
-          }
-
-          if (showDropdownElement) {
-            return item.content?.(item);
-          }
-
-          return (
-            <IconButton
-              key={item.name}
-              icon={item.icon}
-              onClick={item.action}
-              aria-label={t(item.label)}
-              variant="ghost"
-              color="tertiary"
-              className={clsx(
-                item.className,
-                item.isActive ? "is-selected" : "",
-              )}
-              tabIndex={index === 0 ? 0 : -1}
-              onKeyDown={handleKeyDown}
-              disabled={isDisabled}
-            />
-          );
+          return null;
         })}
       </div>
     );

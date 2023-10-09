@@ -3,7 +3,7 @@ interface SVGRProps {
   title?: string;
   titleId?: string;
 }
-const SvgNoColors = ({
+const SvgHighlightColumn = ({
   title,
   titleId,
   ...props
@@ -19,7 +19,12 @@ const SvgNoColors = ({
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path fill="currentColor" d="M23 0h-4L1 24h4L23 0Z" />
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M4.222 1.001A3.222 3.222 0 0 0 1 4.224v15.555a3.222 3.222 0 0 0 3.222 3.222h15.555A3.222 3.222 0 0 0 23 19.78V4.224A3.222 3.222 0 0 0 19.777 1H4.222Zm3.778 20h11.777c.675 0 1.223-.547 1.223-1.222V4.224C21 3.549 20.452 3 19.777 3H6.91V21L8 21Z"
+      clipRule="evenodd"
+    />
   </svg>
 );
-export default SvgNoColors;
+export default SvgHighlightColumn;

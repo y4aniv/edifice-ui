@@ -2,15 +2,17 @@ import { forwardRef } from "react";
 import { Ref } from "react";
 import { ComponentPropsWithRef } from "react";
 
-import { InfoCircle, NoColors } from "@edifice-ui/icons";
+import { InfoCircle } from "@edifice-ui/icons";
 import clsx from "clsx";
 
 import {
   AccessiblePalette,
   ColorPalette,
   ColorPaletteHues,
+  ColorPaletteItem,
   DefaultPalette,
 } from "./ColorPalette";
+import ColorPickerItem from "./ColorPickerItem";
 import { Tooltip } from "../Tooltip";
 
 export interface ColorPickerProps extends ComponentPropsWithRef<"div"> {
@@ -27,7 +29,7 @@ export interface ColorPickerProps extends ComponentPropsWithRef<"div"> {
   /**
    * Triggered when a color is picked
    */
-  onSuccess?: (model: string) => void;
+  onSuccess?: (item: ColorPaletteItem) => void;
 }
 
 const ColorPicker = forwardRef(
@@ -37,11 +39,11 @@ const ColorPicker = forwardRef(
       model = "#4A4A4A",
       onSuccess,
       ...restProps
-    }: any,
+    }: ColorPickerProps,
     ref: Ref<HTMLDivElement>,
   ) => {
-    const handleClick = (color: string) => {
-      onSuccess?.(color);
+    const handleClick = (item?: ColorPaletteItem) => {
+      item && onSuccess?.(item);
     };
 
     return (
@@ -68,20 +70,17 @@ const ColorPicker = forwardRef(
             {
               // Show/hide the reset option
               palette.reset && (
-                <div className="color-picker-reset small fw-normal my-8">
-                  <label className="small d-flex">
-                    <button
-                      className="color-picker-hue-color-item me-4 border-0"
-                      style={{
-                        backgroundColor: palette.reset?.value || "transparent",
-                      }}
-                      onClick={() => handleClick(palette.reset?.value || "")}
-                    >
-                      <NoColors></NoColors>
-                    </button>
-                    {palette.reset.description}
-                  </label>
-                </div>
+                <button
+                  className="color-picker-reset small my-8"
+                  onClick={() => handleClick(palette.reset)}
+                >
+                  <ColorPickerItem
+                    {...restProps}
+                    model={palette.reset}
+                    className="me-4"
+                  />
+                  {palette.reset.description}
+                </button>
               )
             }
 
@@ -92,18 +91,18 @@ const ColorPicker = forwardRef(
                   className="color-picker-hue d-flex gap-2 justify-content-between flex-column "
                 >
                   {hues.map((color) => (
-                    <div key={color.value} className="color-picker-hue-color">
-                      <button
-                        aria-label={color.description}
-                        className={clsx(
-                          "color-picker-hue-color-item rounded-1",
-                          color.hue === "light" ? "light" : "dark",
-                          model === color.value && "selected",
-                        )}
-                        style={{ backgroundColor: color.value }}
-                        onClick={() => handleClick(color.value)}
-                      ></button>
-                    </div>
+                    <button
+                      key={color.value}
+                      aria-label={color.description}
+                      className="color-picker-hue-color"
+                      onClick={() => handleClick(color)}
+                    >
+                      <ColorPickerItem
+                        {...restProps}
+                        model={color}
+                        selected={model === color.value}
+                      />
+                    </button>
                   ))}
                 </div>
               ))}
