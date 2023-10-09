@@ -86,7 +86,7 @@ const Root = ({
     [visible, isFocused, triggerProps, menuProps, itemProps, itemRefs, block],
   );
 
-  const dropdown = clsx({
+  const dropdown = clsx("dropdown", {
     "w-100": block,
     overflow,
   });
