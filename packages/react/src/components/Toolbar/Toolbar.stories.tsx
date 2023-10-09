@@ -121,7 +121,7 @@ export const Hidden: Story = {
     docs: {
       description: {
         story:
-          "When data object has `isHidden` set to `true`, it will not be displayed",
+          "When data object has `visibility` set to `hide`, it will not be displayed",
       },
     },
   },
