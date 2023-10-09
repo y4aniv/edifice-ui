@@ -14,7 +14,7 @@ import { VideoUploadParams } from "edifice-ts-client/dist/video/interface";
 import { useTranslation } from "react-i18next";
 
 import { FormControl, Label, Select } from "../../components";
-import { Toolbar, ToolbarOptions } from "../../components/Toolbar";
+import { Toolbar, ToolbarItem } from "../../components/Toolbar";
 import useBrowserInfo from "../../hooks/useBrowserInfo/useBrowserInfo";
 import { convertMsToMS, getBestSupportedMimeType } from "../../utils";
 
@@ -371,57 +371,63 @@ const VideoRecorder = ({
     }
   };
 
-  const toolbarItems: ToolbarOptions[] = [
+  const toolbarItems: ToolbarItem[] = [
     {
-      action: handleRecord,
-      icon: <Record color={recording || recorded ? "" : "red"} />,
-      label: "Record Video",
+      type: "icon",
       name: "record",
-      className: "",
-      isDisabled: recording || recorded || saving,
+      props: {
+        icon: <Record color={recording || recorded ? "" : "red"} />,
+        disabled: recording || recorded || saving,
+        onClick: handleRecord,
+      },
     },
     {
-      action: handleStop,
-      icon: <RecordStop />,
-      label: "Record Stop",
+      type: "icon",
       name: "stop",
-      className: "",
-      isDisabled: !recording || recorded || saving,
+      props: {
+        icon: <RecordStop />,
+        disabled: !recording || recorded || saving,
+        onClick: handleStop,
+      },
     },
     {
-      action: handlePlayPause,
-      icon: <PlayFilled />,
-      label: "Play Video",
+      type: "icon",
       name: "play",
-      className: "",
-      isDisabled: !recorded || saving,
-      isHidden: playing,
+      visibility: !playing ? "show" : "hide",
+      props: {
+        icon: <PlayFilled />,
+        disabled: !recorded || saving,
+        onClick: handlePlayPause,
+      },
     },
     {
-      action: handlePlayPause,
-      icon: <Pause />,
-      label: "Pause Video",
+      type: "icon",
       name: "pause",
-      className: "",
-      isDisabled: !recorded || saving,
-      isHidden: !playing,
+      visibility: playing ? "show" : "hide",
+      props: {
+        icon: <Pause />,
+        disabled: !recorded || saving,
+        onClick: handlePlayPause,
+      },
     },
     { type: "divider" },
     {
-      action: handleReset,
-      icon: <Refresh />,
-      label: "Reset",
+      type: "icon",
       name: "reset",
-      className: "",
-      isDisabled: !recorded || saving,
+      props: {
+        icon: <Refresh />,
+        disabled: !recorded || saving,
+        onClick: handleReset,
+      },
     },
     {
-      action: handleSave,
-      icon: <Save />,
-      label: "Save Video",
+      type: "icon",
       name: "save",
-      className: "",
-      isDisabled: !recorded || saving || saved,
+      props: {
+        icon: <Save />,
+        disabled: !recorded || saving || saved,
+        onClick: handleSave,
+      },
     },
   ];
 
@@ -478,7 +484,7 @@ const VideoRecorder = ({
           </div>
         )}
         <Toolbar
-          data={toolbarItems}
+          items={toolbarItems}
           className="position-absolute bottom-0 start-50 translate-middle bg-white"
         />
       </div>
