@@ -9,7 +9,6 @@ export const Video = () => {
   const { t } = useTranslation();
 
   const handleSuccess = (res: WorkspaceElement) => {
-    console.log(res);
     context.setResult(res);
   };
 
