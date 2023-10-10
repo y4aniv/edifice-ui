@@ -99,7 +99,7 @@ const Toolbar = forwardRef(
   ) => {
     const divToolbarRef = useRef<HTMLDivElement>();
 
-    const classes = clsx("toolbar z-2000 bg-white", className, {
+    const classes = clsx("toolbar z-1000 bg-white", className, {
       default: variant === "default",
       "no-shadow": variant === "no-shadow",
       "d-flex": isBlock,
