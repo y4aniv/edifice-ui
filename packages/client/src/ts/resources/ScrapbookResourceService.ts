@@ -5,13 +5,16 @@ import { ResourceService } from "./ResourceService";
 export class ScrapbookResourceService extends ResourceService {
   async update(parameters: ScrapbookUpdate): Promise<UpdateResult> {
     const fixThumb = await this.getThumbnailPath(parameters.thumbnail);
-    const res = await this.http.put<IResource>(`/scrapbook/${parameters.entId}`, {
-      trashed: parameters.trashed,
-      _id: parameters.entId,
-      title: parameters.name,
-      thumbnail: fixThumb,
-      description: parameters.description,
-    });
+    const res = await this.http.put<IResource>(
+      `/scrapbook/${parameters.entId}`,
+      {
+        trashed: parameters.trashed,
+        _id: parameters.entId,
+        title: parameters.name,
+        thumbnail: fixThumb,
+        description: parameters.description,
+      },
+    );
     this.checkHttpResponse(res);
     return { thumbnail: fixThumb, entId: parameters.entId } as UpdateResult;
   }
@@ -23,14 +26,17 @@ export class ScrapbookResourceService extends ResourceService {
   }
   getFormUrl(folderId?: string): string {
     return folderId
-      ? `/scrapbook?folderid=${folderId}#/edit-scrapbook/new`
-      : `/scrapbook#/edit-scrapbook/new`;
+      ? `/scrapbook?folderid=${folderId}#/create-scrapbook/`
+      : `/scrapbook#/create-scrapbook/`;
   }
   getViewUrl(resourceId: string): string {
     return `/scrapbook#/view-scrapbook/${resourceId}`;
   }
   getPrintUrl(resourceId: string): string {
     return `/scrapbook/print#/print-scrapbook/${resourceId}`;
+  }
+  getEditUrl(resourceId: string): string {
+    return `/scrapbook#/edit-scrapbook/${resourceId}`;
   }
 }
 
