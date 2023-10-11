@@ -72,3 +72,9 @@ export interface MindmapUpdate extends UpdateParameters {
 export interface MindmapResource extends IResource {
   "publish-type": "RESTRAINT" | "IMMEDIATE";
 }
+
+export interface ScrapbookUpdate extends UpdateParameters {
+}
+
+export interface ScrapbookResource extends IResource {
+}

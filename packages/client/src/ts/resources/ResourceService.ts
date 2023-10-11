@@ -87,6 +87,8 @@ export abstract class ResourceService {
 
   abstract getFormUrl(folderId?: string): string;
 
+  abstract getEditUrl(resourceId?: string): string;
+
   abstract create<T extends CreateParameters>(
     parameters: T,
   ): Promise<CreateResult>;
@@ -111,6 +113,14 @@ export abstract class ResourceService {
 
   gotoView(resourceId: string): void {
     window.open(this.getViewUrl(resourceId), "_self");
+  }
+
+  gotoCreate(): void {
+    window.open(this.getFormUrl(), "_self");
+  }
+
+  gotoEdit(resourceId: string): void {
+    window.open(this.getEditUrl(resourceId), "_self");
   }
 
   gotoForm(folderId?: string) {
