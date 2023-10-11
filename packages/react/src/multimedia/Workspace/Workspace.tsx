@@ -239,7 +239,7 @@ const Workspace = (props: WorkspaceProps) => {
               </form>
             </div>
             {/* TODO */}
-            <div className="d-flex align-items-center justify-content-end">
+            <div className="d-flex align-items-center justify-content-end px-8 py-4">
               <small className="text-muted">Ordre :</small>
               <Dropdown>
                 <Dropdown.Trigger
