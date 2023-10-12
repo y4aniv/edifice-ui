@@ -13,7 +13,7 @@ import { WorkspaceElement, odeServices } from "edifice-ts-client";
 import { VideoUploadParams } from "edifice-ts-client/dist/video/interface";
 import { useTranslation } from "react-i18next";
 
-import { FormControl, Label, Select } from "../../components";
+import { FormControl, Label, LoadingScreen, Select } from "../../components";
 import { Toolbar, ToolbarItem } from "../../components/Toolbar";
 import useBrowserInfo from "../../hooks/useBrowserInfo/useBrowserInfo";
 import { convertMsToMS, getBestSupportedMimeType } from "../../utils";
@@ -488,6 +488,12 @@ const VideoRecorder = ({
           className="position-absolute bottom-0 start-50 translate-middle bg-white"
         />
       </div>
+      {saving && (
+        <LoadingScreen
+          position={false}
+          caption={t("video.save.loader.caption")}
+        />
+      )}
     </div>
   );
 };
