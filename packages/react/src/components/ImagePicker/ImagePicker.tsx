@@ -48,7 +48,7 @@ export interface ImagePickerProps extends ComponentPropsWithRef<"input"> {
   /**
    * Callback when uploading image
    */
-  onUploadImage: (obj: Record<string, string>) => void;
+  onUploadImage: (obj: Record<string, any>) => void;
   /**
    * Callback when deleting image
    */
@@ -71,7 +71,7 @@ const ImagePicker = forwardRef(
   ) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
 
-    const [preview, setPreview] = useState<Record<string, string>>({
+    const [preview, setPreview] = useState<Record<string, any>>({
       name: "",
       image: src || "",
     });
@@ -87,6 +87,8 @@ const ImagePicker = forwardRef(
       const newPreview = {
         ...preview,
         name: file.name,
+        size: file.size,
+        type: file.type,
         image: URL.createObjectURL(file),
       };
 
