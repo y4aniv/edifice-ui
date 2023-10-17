@@ -33,7 +33,9 @@ export class BlogResourceService extends ResourceService {
   }
 
   async update(parameters: BlogUpdate): Promise<UpdateResult> {
-    const thumbnail = await this.getThumbnailPath(parameters.thumbnail);
+    const thumbnail = parameters.thumbnail
+      ? await this.getThumbnailPath(parameters.thumbnail)
+      : "";
     const res = await this.http.put<IResource>(`/blog/${parameters.entId}`, {
       trashed: parameters.trashed,
       _id: parameters.entId,
