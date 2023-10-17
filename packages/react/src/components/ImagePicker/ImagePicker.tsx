@@ -48,7 +48,7 @@ export interface ImagePickerProps extends ComponentPropsWithRef<"input"> {
   /**
    * Callback when uploading image
    */
-  onUploadImage: (obj: Record<string, any>) => void;
+  onUploadImage: (file: File) => void;
   /**
    * Callback when deleting image
    */
@@ -71,17 +71,24 @@ const ImagePicker = forwardRef(
   ) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
 
-    const [preview, setPreview] = useState<string>(src || "");
+    const [preview, setPreview] = useState<Record<string, string>>({
+      name: "",
+      image: src || "",
+    });
 
     const handleChange = (files?: FileList | null) => {
-      setPreview("");
+      setPreview({ ...preview, name: "", image: "" });
 
       const file = files?.[0];
-      if (!file) {
-        return;
-      }
+      if (!file) return;
 
-      setPreview(URL.createObjectURL(file));
+      const newPreview = {
+        ...preview,
+        name: file.name,
+        image: URL.createObjectURL(file),
+      };
+
+      setPreview(newPreview);
       onUploadImage(file);
     };
 
@@ -93,7 +100,8 @@ const ImagePicker = forwardRef(
       if (inputRef.current) {
         inputRef.current.value = "";
       }
-      setPreview("");
+      const cleanPreview = { ...preview, name: "", image: "" };
+      setPreview(cleanPreview);
       onDeleteImage();
     };
 
@@ -130,7 +138,7 @@ const ImagePicker = forwardRef(
           <IconButton
             aria-label={deleteButtonLabel}
             color="danger"
-            disabled={!preview}
+            disabled={!preview.image}
             icon={<Delete width="20" height="20" />}
             onClick={handleClean}
             type="button"
@@ -147,8 +155,8 @@ const ImagePicker = forwardRef(
             size="sm"
             type="file"
           />
-          {preview ? (
-            <Avatar alt={preview} src={preview} size="xl" />
+          {preview.image ? (
+            <Avatar alt={preview.name} src={preview.image} size="xl" />
           ) : (
             <AppIcon app={app} iconFit="ratio" size="160" variant="rounded" />
           )}
