@@ -20,7 +20,6 @@ import { OdeServices } from "../services/OdeServices";
 import {
   CreateParameters,
   CreateResult,
-  ThumbnailParams,
   UpdateParameters,
   UpdateResult,
 } from "./interface";
@@ -331,24 +330,23 @@ export abstract class ResourceService {
     });
   }
 
-  protected async getThumbnailPath(thumbnail: ThumbnailParams) {
-    const { image } = thumbnail;
-    if (typeof image === "undefined") {
-      return image;
-    } else if (typeof image === "string") {
-      if (image.startsWith("blob:")) {
-        const response = await fetch(image);
-        const blob = await response.blob();
-        const res = await this.context.workspace().saveFile(blob, thumbnail, {
+  protected async getThumbnailPath(file: string | Blob | File | undefined) {
+    if (typeof file === "undefined") {
+      return file;
+    } else if (typeof file === "string") {
+      if (file.startsWith("blob:")) {
+        const blob = await fetch(file).then((r) => r.blob());
+        const res = await this.context.workspace().saveFile(blob, {
           visibility: "protected",
           application: this.getApplication(),
         });
+
         return `/workspace/document/${res._id}`;
       } else {
-        return image;
+        return file;
       }
     } else {
-      const res = await this.context.workspace().saveFile(image, thumbnail, {
+      const res = await this.context.workspace().saveFile(file, {
         visibility: "protected",
         application: this.getApplication(),
       });

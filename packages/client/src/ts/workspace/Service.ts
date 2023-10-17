@@ -1,7 +1,6 @@
 import { FileTypeUtils } from "../utils/FileTypeUtils";
 import { OdeServices } from "../services/OdeServices";
 import { WorkspaceElement } from "./interface";
-import { ThumbnailParams } from "../services";
 
 export class WorkspaceService {
   constructor(private context: OdeServices) {}
@@ -10,7 +9,6 @@ export class WorkspaceService {
   }
   async saveFile(
     file: Blob | File,
-    thumbnail: ThumbnailParams,
     params?: {
       parentId?: string;
       visibility?: "public" | "protected";
@@ -18,16 +16,15 @@ export class WorkspaceService {
     },
   ) {
     //prepare metadata
-    const { name: fileName, type, size } = thumbnail;
-    const tmpName = fileName || "";
+    const tmpName = file.name || "";
     const nameSplit = tmpName.split(".");
-    const contentType = type || "application/octet-stream";
+    const contentType = file.type || "application/octet-stream";
     const extension =
       nameSplit.length > 1 ? nameSplit[nameSplit.length - 1] : "";
     const metadata = {
       "content-type": contentType,
       filename: tmpName,
-      size,
+      size: file.size,
       extension,
       role: FileTypeUtils.getFileType(contentType, false, extension),
     };

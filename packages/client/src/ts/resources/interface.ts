@@ -1,18 +1,12 @@
 import { IResource } from "..";
 
-export interface ThumbnailParams {
-  name: string;
-  size: number;
-  type: string;
-  image: string | Blob | File;
-}
 /**
  * Parameters expected to create resource
  */
 export interface CreateParameters {
   name: string;
   description: string;
-  thumbnail: ThumbnailParams;
+  thumbnail: string | Blob | File;
   folder: number | undefined;
 
   public?: boolean;
@@ -29,7 +23,7 @@ export interface UpdateParameters {
   entId: string;
   trashed: boolean;
   name: string;
-  thumbnail: ThumbnailParams;
+  thumbnail: string | Blob | File;
   description: string;
   public: boolean;
   slug: string;
