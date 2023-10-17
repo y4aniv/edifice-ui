@@ -9,7 +9,7 @@ import { ResourceService } from "./ResourceService";
 
 export class BlogResourceService extends ResourceService {
   async create(parameters: CreateParameters): Promise<CreateResult> {
-    const fixThumb = parameters.thumbnail
+    const thumbnail = parameters.thumbnail
       ? await this.getThumbnailPath(parameters.thumbnail)
       : "";
 
@@ -19,7 +19,7 @@ export class BlogResourceService extends ResourceService {
       title: parameters.name,
       description: parameters.description,
       visibility: parameters.public ? "PUBLIC" : "OWNER",
-      thumbnail: fixThumb,
+      thumbnail,
       trashed: false,
       folder: parameters.folder,
       slug: parameters.public ? parameters.slug : "",
@@ -33,12 +33,12 @@ export class BlogResourceService extends ResourceService {
   }
 
   async update(parameters: BlogUpdate): Promise<UpdateResult> {
-    const fixThumb = await this.getThumbnailPath(parameters.thumbnail);
+    const thumbnail = await this.getThumbnailPath(parameters.thumbnail);
     const res = await this.http.put<IResource>(`/blog/${parameters.entId}`, {
       trashed: parameters.trashed,
       _id: parameters.entId,
       title: parameters.name,
-      thumbnail: fixThumb,
+      thumbnail,
       description: parameters.description,
       visibility: parameters.public ? "PUBLIC" : "OWNER",
       slug: parameters.public ? parameters.slug : "",
@@ -46,7 +46,7 @@ export class BlogResourceService extends ResourceService {
       "comment-type": "IMMEDIATE",
     });
     this.checkHttpResponse(res);
-    return { thumbnail: fixThumb, entId: parameters.entId } as UpdateResult;
+    return { thumbnail, entId: parameters.entId } as UpdateResult;
   }
   getResourceType(): ResourceType {
     return RESOURCE.BLOG;
