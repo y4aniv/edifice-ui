@@ -7,6 +7,7 @@ const meta: Meta<typeof Dropzone> = {
   title: "Components/Dropzone",
   component: Dropzone,
   args: {
+    accept: ["mp4", "mp3", "jpg", "png"],
     onSuccess: () => console.log("Success"),
     onError: () => console.log("Error"),
     importMessage:

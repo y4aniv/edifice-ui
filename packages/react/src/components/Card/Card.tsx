@@ -39,7 +39,7 @@ export interface CardOptions {
   name?: string;
   isShared?: boolean;
   isPublic?: boolean;
-  info?: { type: string; weight: string };
+  info?: { type?: string; weight: string };
   status?: Status;
   onDelete?: () => void;
   onEdit?: () => void;

@@ -1,14 +1,11 @@
 import { Plus } from "@edifice-ui/icons";
 
-import { AttachementType, useDropzoneContext } from "./Dropzone";
+import { useDropzoneContext } from "./Dropzone";
+import Files from "./Files";
 import { Button } from "../Button";
 
-export interface DropZoneFileProps {
-  attachments: AttachementType[];
-}
-
-const DropzoneFile = ({ attachments }: DropZoneFileProps) => {
-  const { inputRef } = useDropzoneContext();
+const DropzoneFile = () => {
+  const { inputRef, uploadFile, handleDelete } = useDropzoneContext();
 
   return (
     <div className="drop-file-wrapper">
@@ -24,13 +21,12 @@ const DropzoneFile = ({ attachments }: DropZoneFileProps) => {
         </div>
       </div>
       <div className="p-8">
-        {attachments.map((attachment) => (
-          <div key={attachment?.name}>
-            <img
-              src={attachment?.src}
-              alt={attachment?.name}
-              width={200}
-              height={200}
+        {uploadFile.map((attachment, index) => (
+          <div key={index}>
+            <Files
+              attachment={attachment}
+              index={index}
+              handleDelete={handleDelete}
             />
           </div>
         ))}

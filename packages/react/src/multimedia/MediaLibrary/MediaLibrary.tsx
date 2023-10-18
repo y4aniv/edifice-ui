@@ -167,7 +167,7 @@ const MediaLibrary = ({
       label: t("Captation vidéo"),
       content: <InnerTabs.Video />,
       availableFor: ["video"],
-      isEnable: () => (videoCaptureWorkflow ? true : false),
+      isEnable: () => (!videoCaptureWorkflow ? true : false),
     },
     "audio-capture": {
       id: "audio",
