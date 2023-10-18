@@ -30,7 +30,7 @@ export default function Help({
           id="help-modal"
           isOpen={isHelpOpen}
           onModalClose={handleHelpOpen}
-          scrollable
+          // scrollable
           size="xl"
         >
           <Modal.Header onModalClose={handleHelpOpen}>
