@@ -103,6 +103,14 @@ export class WorkspaceService {
       if (current.deleted && current.trasher) {
         return userInfo?.userId == current.trasher;
       }
+      //in case of directShared document => hide doc that are visible inside a folder
+      //FIXME no more cache, how to do this ?
+      // if(params.directShared && current.eParent){
+      //   const isParentVisible = workspaceService._cacheFolders.find(folder => folder._id == current.eParent);
+      //   if(isParentVisible){
+      //       return false;
+      //   }
+      // }
       return true;
     };
   }
