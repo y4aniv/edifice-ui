@@ -8,11 +8,9 @@ export class ScrapbookResourceService extends ResourceService {
     const res = await this.http.put<IResource>(
       `/scrapbook/${parameters.entId}`,
       {
-        trashed: parameters.trashed,
-        _id: parameters.entId,
-        title: parameters.name,
-        thumbnail: fixThumb,
-        description: parameters.description,
+        trashed: parameters.trashed ? 1 : 0,        title: parameters.name,
+        icon: fixThumb,
+        subTitle: parameters.description,
       },
     );
     this.checkHttpResponse(res);
