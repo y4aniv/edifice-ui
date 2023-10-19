@@ -10,6 +10,8 @@ import { WorkspaceService } from "../workspace/Service";
 import { IdiomService } from "../idiom/Service";
 import { AnalyticsService } from "../analytics/Service";
 import { VideoService } from "../video/Service";
+import { App, ResourceType } from "../globals";
+import { IResourceService, IWebResourceService } from "../resources/interface";
 
 export interface IOdeServices {
   analytics(): AnalyticsService;
@@ -18,7 +20,7 @@ export interface IOdeServices {
   directory(): DirectoryService;
   http(): HttpService;
   idiom(): IdiomService;
-  resource(application: string, resourceType?: string): ResourceService;
+  resource(application: App, resourceType?: ResourceType): IResourceService & IWebResourceService;
   rights(): RightService;
   session(): SessionService;
   share(): ShareService;
@@ -77,7 +79,7 @@ export class OdeServices implements IOdeServices {
     return this._idiom;
   }
 
-  resource(application: string, resourceType?: string): ResourceService {
+  resource(application: App, resourceType?: ResourceType): ResourceService {
     if (!resourceType) {
       return ResourceService.findMainService({ application }, this);
     }

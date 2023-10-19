@@ -1,4 +1,4 @@
-import { APP, IResource, RESOURCE, ResourceType } from "..";
+import { IResource, ResourceType } from "..";
 import {
   BlogUpdate,
   CreateParameters,
@@ -6,6 +6,9 @@ import {
   UpdateResult,
 } from "./interface";
 import { ResourceService } from "./ResourceService";
+
+const APP = "blog";
+const RESOURCE = "blog";
 
 export class BlogResourceService extends ResourceService {
   async create(parameters: CreateParameters): Promise<CreateResult> {
@@ -49,10 +52,10 @@ export class BlogResourceService extends ResourceService {
     return { thumbnail: fixThumb, entId: parameters.entId } as UpdateResult;
   }
   getResourceType(): ResourceType {
-    return RESOURCE.BLOG;
+    return RESOURCE;
   }
   getApplication(): string {
-    return APP.BLOG;
+    return APP;
   }
   getFormUrl(folderId?: string): string {
     return folderId
@@ -69,6 +72,6 @@ export class BlogResourceService extends ResourceService {
   }
 }
 ResourceService.register(
-  { application: RESOURCE.BLOG, resourceType: RESOURCE.BLOG },
+  { application: APP, resourceType: RESOURCE },
   (context) => new BlogResourceService(context),
 );

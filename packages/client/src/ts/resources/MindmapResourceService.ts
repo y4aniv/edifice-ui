@@ -1,4 +1,4 @@
-import { APP, IResource, RESOURCE, ResourceType } from "..";
+import { App, IResource, ResourceType } from "..";
 import {
   CreateParameters,
   CreateResult,
@@ -6,6 +6,9 @@ import {
   UpdateResult,
 } from "./interface";
 import { ResourceService } from "./ResourceService";
+
+const APP = "mindmap";
+const RESOURCE = "mindmap";
 
 export class MindmapResourceService extends ResourceService {
   async create(parameters: CreateParameters): Promise<CreateResult> {
@@ -44,10 +47,10 @@ export class MindmapResourceService extends ResourceService {
     return { thumbnail: fixThumb, entId: parameters.entId } as UpdateResult;
   }
   getResourceType(): ResourceType {
-    return RESOURCE.MINDMAP;
+    return RESOURCE;
   }
-  getApplication(): string {
-    return APP.MINDMAP;
+  getApplication(): App | string {
+    return APP;
   }
   getFormUrl(folderId?: string): string {
     return folderId ? `/mindmap?folderid=${folderId}/new` : `/mindmap/new`;
@@ -60,6 +63,6 @@ export class MindmapResourceService extends ResourceService {
   }
 }
 ResourceService.register(
-  { application: RESOURCE.MINDMAP, resourceType: RESOURCE.MINDMAP },
+  { application: APP, resourceType: RESOURCE },
   (context) => new MindmapResourceService(context),
 );
