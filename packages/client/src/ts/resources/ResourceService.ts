@@ -330,22 +330,23 @@ export abstract class ResourceService {
     });
   }
 
-  protected async getThumbnailPath(thumb: string | Blob | File | undefined) {
-    if (typeof thumb === "undefined") {
-      return thumb;
-    } else if (typeof thumb === "string") {
-      if (thumb.startsWith("blob:")) {
-        const blob = await fetch(thumb).then((r) => r.blob());
+  protected async getThumbnailPath(file: string | Blob | File | undefined) {
+    if (typeof file === "undefined") {
+      return file;
+    } else if (typeof file === "string") {
+      if (file.startsWith("blob:")) {
+        const blob = await fetch(file).then((r) => r.blob());
         const res = await this.context.workspace().saveFile(blob, {
           visibility: "protected",
           application: this.getApplication(),
         });
+
         return `/workspace/document/${res._id}`;
       } else {
-        return thumb;
+        return file;
       }
     } else {
-      const res = await this.context.workspace().saveFile(thumb, {
+      const res = await this.context.workspace().saveFile(file, {
         visibility: "protected",
         application: this.getApplication(),
       });
