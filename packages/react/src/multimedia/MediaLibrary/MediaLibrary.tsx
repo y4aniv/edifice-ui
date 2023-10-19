@@ -7,7 +7,7 @@ import {
   RecordVideo,
   Smartphone,
 } from "@edifice-ui/icons";
-import { WorkspaceElement } from "edifice-ts-client";
+import { WorkspaceElement, odeServices } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import { InnerTabs } from "./innertabs";
@@ -232,7 +232,7 @@ const MediaLibrary = ({
 
   // Stateful contextual values
   const [resultCounter, setResultCounter] = useState<number | undefined>();
-  const [result, setResult] = useState<any | undefined>();
+  const [result, setResult] = useState<WorkspaceElement | undefined>();
   function setVisibleTab(tab: AvailableTab) {
     const index = tabs.findIndex((t) => t.id === tab);
     if (index < 0) throw "tab.not.visible";
@@ -244,8 +244,9 @@ const MediaLibrary = ({
   const modalHeader = t(
     mediaLibraryTypes[type || "none"]?.title ?? "Bibliothèque multimédia", // FIXME i18n key
   );
-  const handleTabChange = () => {
+  const handleTabChange = async () => {
     // Reset any existing result
+    await odeServices.workspace().deleteFile(result);
     setResult(undefined);
     setResultCounter(undefined);
   };
@@ -253,6 +254,11 @@ const MediaLibrary = ({
   function handleSuccess() {
     if (result) onSuccess(result);
   }
+
+  const closeModal = async () => {
+    onCancel();
+    await odeServices.workspace().deleteFile(result);
+  };
 
   return (
     type && (
@@ -268,10 +274,10 @@ const MediaLibrary = ({
         <Modal
           id="media-library"
           isOpen={type !== null}
-          onModalClose={onCancel}
+          onModalClose={closeModal}
           size="lg"
         >
-          <Modal.Header onModalClose={onCancel}>{modalHeader}</Modal.Header>
+          <Modal.Header onModalClose={closeModal}>{modalHeader}</Modal.Header>
           <Modal.Body>
             <Tabs
               items={tabs}
@@ -284,7 +290,7 @@ const MediaLibrary = ({
               type="button"
               color="tertiary"
               variant="ghost"
-              onClick={onCancel}
+              onClick={closeModal}
             >
               {t("Annuler")}
             </Button>

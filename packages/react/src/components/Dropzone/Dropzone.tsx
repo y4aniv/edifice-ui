@@ -25,8 +25,9 @@ export interface AttachmentType {
 interface DropzoneContextType {
   inputRef: React.MutableRefObject<HTMLInputElement | null>;
   importMessage?: string;
-  uploadFile: (WorkspaceElement | File)[];
+  uploadFiles: (WorkspaceElement | File)[];
   handleDelete: (element: WorkspaceElement, index: number) => void;
+  setUploadFiles: any;
 }
 
 const DropzoneContext = createContext<DropzoneContextType | null>(null);
@@ -61,15 +62,13 @@ const Dropzone = ({
 }: DropzoneProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const { handleDelete, handleSave, setUploadFile, uploadFile } =
-    useHandleFile();
+  const { handleDelete, setUploadFiles, uploadFiles } = useHandleFile();
 
   const handleInputChange = (files: FileList | null) => {
     if (files && (accept?.includes(files[0].type) || accept?.length === 0)) {
       const file = files?.[0];
       if (file) {
-        handleSave;
-        setUploadFile(
+        setUploadFiles(
           multiple ? (oldAttachments) => [...oldAttachments, file] : [file],
         );
       }
@@ -85,7 +84,7 @@ const Dropzone = ({
     "dropzone",
     {
       "is-dragging": dragging,
-      "is-drop-files": uploadFile.length !== 0 && !handle ? false : true,
+      "is-drop-files": uploadFiles.length !== 0 && !handle ? false : true,
     },
     className,
   );
@@ -94,15 +93,16 @@ const Dropzone = ({
     () => ({
       inputRef,
       importMessage,
-      uploadFile,
+      uploadFiles,
       handleDelete,
+      setUploadFiles,
     }),
-    [inputRef, importMessage, uploadFile, handleDelete],
+    [inputRef, importMessage, uploadFiles, handleDelete, setUploadFiles],
   );
 
   useEffect(() => {
-    onSuccess((uploadFile as WorkspaceElement[]).filter((el) => el._id && el));
-  }, [uploadFile]);
+    onSuccess((uploadFiles as WorkspaceElement[]).filter((el) => el._id && el));
+  }, [uploadFiles]);
 
   return (
     <DropzoneContext.Provider value={contextValue}>
@@ -118,7 +118,7 @@ const Dropzone = ({
             <Dropzone.Drag />
           ) : (
             <>
-              {uploadFile.length !== 0 ? (
+              {uploadFiles.length !== 0 ? (
                 <Dropzone.File />
               ) : (
                 <Dropzone.Import />
