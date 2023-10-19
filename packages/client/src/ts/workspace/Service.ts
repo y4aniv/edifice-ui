@@ -96,6 +96,17 @@ export class WorkspaceService {
     return res;
   }
 
+  async deleteFile(elements: WorkspaceElement[]) {
+    const ids = elements.map((e) => e._id);
+    if (ids.length == 0) {
+      Promise.resolve(null) as any;
+    } else {
+      await this.http.deleteJson<WorkspaceElement>(`/workspace/documents`, {
+        ids,
+      });
+    }
+  }
+
   private async acceptDocuments(params: ElementQuery) {
     const userInfo = await this.context.session().getUser();
     return (current: WorkspaceElement) => {
