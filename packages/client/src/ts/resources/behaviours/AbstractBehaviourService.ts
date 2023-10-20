@@ -1,6 +1,6 @@
 import { ERROR_CODE, ID, IHttpParams, ResourceType } from "../..";
 import { CacheService } from "../../cache/Service";
-import { OdeServices } from "../../services/OdeServices";
+import { IOdeServices } from "../../services/OdeServices";
 import {
   GetContextParameters,
   IResource,
@@ -9,7 +9,7 @@ import {
 } from "../interface";
 
 function notSupported(): any {
-  throw ERROR_CODE.NOT_SUPPORTED;    
+  throw ERROR_CODE.NOT_SUPPORTED;
 }
 
 export interface LinkerModel {
@@ -20,10 +20,12 @@ export interface LinkerModel {
   icon: string;
   shared: boolean;
   path?: string;
-  modified: {
-    "$date": number | string
-  };
-};
+  modified:
+    | string
+    | {
+        $date: number | string;
+      };
+}
 
 /**
  * TO BE DEPRECATED. DO NOT USE UNLESS YOU KNOW WHAT YOU ARE DOING.
@@ -31,20 +33,24 @@ export interface LinkerModel {
  * Any other functionality is unavailable.
  */
 export abstract class AbstractBehaviourService implements IResourceService {
-  abstract APP:string;
-  abstract RESOURCE:ResourceType;
+  abstract APP: string;
+  abstract RESOURCE: ResourceType;
   /** Adapter function to be implemented by subclasses. */
-  abstract loadResources():Promise<IResource[]>;
+  abstract loadResources(
+    parameters?: GetContextParameters,
+  ): Promise<IResource[]>;
 
   //
   // IMPLEMENTATION
   //
-  constructor(protected context: OdeServices) {
+  constructor(protected context: IOdeServices) {
     this._cache = new CacheService(this.context);
   }
 
-  async searchContext(_parameters: GetContextParameters): Promise<ISearchResults> {
-    return this.rssToResults(await this.loadResources());
+  async searchContext(
+    parameters: GetContextParameters,
+  ): Promise<ISearchResults> {
+    return this.rssToResults(await this.loadResources(parameters));
   }
   getApplication(): string {
     return this.APP;
@@ -56,22 +62,27 @@ export abstract class AbstractBehaviourService implements IResourceService {
   //-----------------
   //--- Utilities ---
   //-----------------
-  private _cache:CacheService;
+  private _cache: CacheService;
 
   protected httpGet<R>(url: string, params?: IHttpParams | undefined) {
     return this._cache.httpGetJson<R>(url, params);
   }
   /* Utility to map data between linker model and search model. */
-  protected dataToResource( {
-      _id: assetId,
-      title: name, 
-      ownerName: creatorName, 
-      owner: creatorId, 
-      icon: thumbnail,
-      shared,
-      modified,
-    }:LinkerModel):IResource {
-      const modifiedAt = modified?.$date ? ""+modified.$date : ""
+  protected dataToResource({
+    _id: assetId,
+    title: name,
+    ownerName: creatorName,
+    owner: creatorId,
+    icon: thumbnail,
+    shared,
+    modified,
+  }: LinkerModel): IResource {
+    const modifiedAt =
+      typeof modified === "string"
+        ? modified
+        : modified?.$date
+        ? "" + modified.$date
+        : "";
     return {
       name,
       creatorId,
@@ -83,12 +94,16 @@ export abstract class AbstractBehaviourService implements IResourceService {
     } as IResource;
   }
 
-  protected rssToResults(resources:IResource[]) {
+  protected rssToResults(resources: IResource[]) {
     return {
       folders: [],
-      pagination: {startIdx:0, maxIdx:resources.length-1, pageSize:resources.length },
+      pagination: {
+        startIdx: 0,
+        maxIdx: resources.length - 1,
+        pageSize: resources.length,
+      },
       resources,
-    }
+    };
   }
 
   //---------------------------------------------

@@ -15,7 +15,7 @@ import {
   ResourceType,
   App,
 } from "..";
-import { OdeServices } from "../services/OdeServices";
+import { IOdeServices } from "../services/OdeServices";
 import {
   CreateParameters,
   CreateResult,
@@ -25,13 +25,15 @@ import {
   UpdateResult,
 } from "./interface";
 
-export abstract class ResourceService implements IResourceService, IWebResourceService {
+export abstract class ResourceService
+  implements IResourceService, IWebResourceService
+{
   //
   // STATIC REGISTRY
   //
   private static registry = new Map<
     string,
-    (context: OdeServices) => ResourceService
+    (context: IOdeServices) => IResourceService & IWebResourceService
   >();
 
   /** Register a service */
@@ -40,7 +42,7 @@ export abstract class ResourceService implements IResourceService, IWebResourceS
       application,
       resourceType,
     }: { application: App | string; resourceType: ResourceType },
-    service: (context: OdeServices) => ResourceService,
+    service: (context: IOdeServices) => IResourceService & IWebResourceService,
   ) {
     ResourceService.registry.set(`${application}:main`, service);
     ResourceService.registry.set(`${application}:${resourceType}`, service);
@@ -52,8 +54,8 @@ export abstract class ResourceService implements IResourceService, IWebResourceS
       application,
       resourceType,
     }: { application: App | string; resourceType: ResourceType | "main" },
-    context: OdeServices,
-  ): ResourceService {
+    context: IOdeServices,
+  ): IResourceService & IWebResourceService {
     const found = ResourceService.registry.get(
       `${application}:${resourceType}`,
     );
@@ -66,23 +68,26 @@ export abstract class ResourceService implements IResourceService, IWebResourceS
   /** Lookup for a service */
   static findService(
     lookFor: { application: App | string; resourceType: ResourceType },
-    context: OdeServices,
-  ): ResourceService {
-    return ResourceService.lookupService(lookFor,context);
+    context: IOdeServices,
+  ): IResourceService & IWebResourceService {
+    return ResourceService.lookupService(lookFor, context);
   }
 
   /** Lookup for a main service */
   static findMainService(
     { application }: { application: App | string },
-    context: OdeServices,
-  ): ResourceService {
-    return ResourceService.lookupService({application, resourceType:"main"},context);
+    context: IOdeServices,
+  ): IResourceService & IWebResourceService {
+    return ResourceService.lookupService(
+      { application, resourceType: "main" },
+      context,
+    );
   }
 
   //
   // IMPLEMENTATION
   //
-  constructor(protected context: OdeServices) {}
+  constructor(protected context: IOdeServices) {}
 
   protected get http() {
     return this.context.http();
@@ -346,7 +351,9 @@ export abstract class ResourceService implements IResourceService, IWebResourceS
   //
   // PRIVATE HELPERS
   //
-  private toQueryParams(parameters: GetContextParameters): Record<string, string> {
+  private toQueryParams(
+    parameters: GetContextParameters,
+  ): Record<string, string> {
     let ret = {
       application: parameters.application,
       start_idx: parameters.pagination.startIdx,

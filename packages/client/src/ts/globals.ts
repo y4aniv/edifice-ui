@@ -23,7 +23,7 @@ export const APP = {
   ADMIN: "admin",
   ARCHIVE: "archive",
   AUTH: "auth",
-  CAS:"cas",
+  CAS: "cas",
   COMMUNICATION: "communication",
   CONVERSATION: "conversation",
   DIRECTORY: "directory", // FIXME userbook OR directory : the choice may impact some configurations, @see IXitiTrackingParams.NOM_PAGE for example

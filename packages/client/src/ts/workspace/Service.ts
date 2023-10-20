@@ -1,5 +1,5 @@
 import { FileTypeUtils } from "../utils/FileTypeUtils";
-import { OdeServices } from "../services/OdeServices";
+import { IOdeServices } from "../services/OdeServices";
 import { WorkspaceElement, WorkspaceSearchFilter } from "./interface";
 import { ID } from "../globals";
 
@@ -43,7 +43,7 @@ interface ElementQuery {
 }
 
 export class WorkspaceService {
-  constructor(private context: OdeServices) {}
+  constructor(private context: IOdeServices) {}
   private get http() {
     return this.context.http();
   }

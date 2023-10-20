@@ -18,11 +18,20 @@ export interface IResourceService {
   /** Publish an resource */
   publish(parameters: PublishParameters): Promise<PublishResult>;
   /** Delete folders and/or resources. */
-  deleteAll(parameters: DeleteParameters, useAssetId?: boolean): Promise<IActionResult>;
+  deleteAll(
+    parameters: DeleteParameters,
+    useAssetId?: boolean,
+  ): Promise<IActionResult>;
   /** Trash folders and/or resources. */
-  trashAll(parameters: DeleteParameters, useAssetId?: boolean): Promise<IActionResult>;
+  trashAll(
+    parameters: DeleteParameters,
+    useAssetId?: boolean,
+  ): Promise<IActionResult>;
   /** Restore folders and/or resources from trash. */
-  restoreAll(parameters: DeleteParameters, useAssetId?: boolean): Promise<IActionResult>
+  restoreAll(
+    parameters: DeleteParameters,
+    useAssetId?: boolean,
+  ): Promise<IActionResult>;
 
   //--------------------------------------- SEARCH
   /** Create a search context. */
@@ -36,7 +45,10 @@ export interface IResourceService {
   /** Update folder. */
   updateFolder(parameters: UpdateFolderParameters): Promise<CreateFolderResult>;
   /** Move resources/folders to a folder. */
-  moveToFolder(parameters: MoveParameters, useAssetId?: boolean): Promise<IActionResult>;
+  moveToFolder(
+    parameters: MoveParameters,
+    useAssetId?: boolean,
+  ): Promise<IActionResult>;
   /** List subfolders of a parent folder. */
   listSubfolders(folderId: ID): Promise<GetSubFoldersResult>;
 }
@@ -86,7 +98,7 @@ export interface IResource {
 }
 
 /**
- * Core actions applicable on resources. 
+ * Core actions applicable on resources.
  * Specific actions, which would depend on the running application,
  * MUST BE typed and implemented in this application's agent.
  */
@@ -169,7 +181,9 @@ export const SORT_BY = {
 } as const;
 export type SortByType = (typeof SORT_BY)[keyof typeof SORT_BY];
 
-export type FilterValues = { [B in BooleanFilterType]?: boolean } & { folder?: ID };
+export type FilterValues = { [B in BooleanFilterType]?: boolean } & {
+  folder?: ID;
+};
 export type OrderValues = { [O in SortByType]?: SortOrderType };
 
 /**
@@ -218,7 +232,6 @@ export interface IPagination {
   maxIdx?: number;
 }
 
-
 //---------------------------------------------------------------------
 //--------------------------------------- Parameters and results types
 //---------------------------------------------------------------------
@@ -234,7 +247,7 @@ export interface IActionResult {
 
 //--------------------------------------- CREATE
 /** Parameters expected to create a resource */
-export interface CreateParameters {
+export interface CreateParameters extends IActionParameters {
   name: string;
   description: string;
   thumbnail: string | Blob | File;
@@ -308,7 +321,7 @@ export interface ISearchParameters {
   filters: FilterValues;
   orders?: OrderValues;
   pagination: IPagination;
-  search?: String;
+  search?: string;
   trashed?: boolean;
   id?: number;
   asset_id?: string[];
@@ -317,7 +330,7 @@ export interface ISearchResults {
   folders: IFolder[];
   pagination: IPagination;
   resources: IResource[];
-  searchConfig?: {minLength:number}
+  searchConfig?: { minLength: number };
 }
 export interface IContext extends ISearchResults {
   preferences: IPreferences;
@@ -326,7 +339,6 @@ export interface IContext extends ISearchResults {
 export type GetContextParameters = IActionParameters & ISearchParameters;
 /** Response when searching for a resource */
 export type GetContextResult = IActionResult & IContext;
-
 
 //--------------------------------------- FOLDERS MANAGEMENT
 
@@ -339,7 +351,8 @@ export interface CreateFolderParameters extends IActionParameters {
 }
 /** Response when creating a folder */
 export interface CreateFolderResult extends IActionResult, IFolder {
-  createdAt: string; creator_id?: string
+  createdAt: string;
+  creator_id?: string;
 }
 
 /** Parameters expected to update a folder */
@@ -364,7 +377,7 @@ export interface MoveParameters extends IActionParameters {
 }
 
 /** Response when listing subfolders of a folder */
-export interface GetSubFoldersResult extends IActionResult { 
+export interface GetSubFoldersResult extends IActionResult {
   folders: IFolder[];
 }
 
@@ -376,15 +389,9 @@ export interface DeleteParameters extends IActionParameters {
   folderIds: ID[];
 }
 
-
-
-
-
 /* TODO resources ? */
 export type GetResourcesParameters = IActionParameters & ISearchParameters;
 export type GetResourcesResult = IActionResult & ISearchResults;
-
-
 
 /** Parameters expected to update resource. */
 export interface UpdateParameters {

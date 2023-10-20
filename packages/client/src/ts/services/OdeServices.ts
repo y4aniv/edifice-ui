@@ -20,7 +20,10 @@ export interface IOdeServices {
   directory(): DirectoryService;
   http(): HttpService;
   idiom(): IdiomService;
-  resource(application: App, resourceType?: ResourceType): IResourceService & IWebResourceService;
+  resource(
+    application: App,
+    resourceType?: ResourceType,
+  ): IResourceService & IWebResourceService;
   rights(): RightService;
   session(): SessionService;
   share(): ShareService;
@@ -79,7 +82,10 @@ export class OdeServices implements IOdeServices {
     return this._idiom;
   }
 
-  resource(application: App, resourceType?: ResourceType): ResourceService {
+  resource(
+    application: App,
+    resourceType?: ResourceType,
+  ): IResourceService & IWebResourceService {
     if (!resourceType) {
       return ResourceService.findMainService({ application }, this);
     }
