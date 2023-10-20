@@ -4,7 +4,7 @@ import { UseDropdownProps } from "./hooks/useDropdown";
 
 type OmittedProps = Omit<
   UseDropdownProps,
-  "triggerRef" | "menuRef" | "customTriggerProps" | "setVisible"
+  "triggerRef" | "menuRef" | "customTriggerProps"
 >;
 export interface DropdownContextProps extends OmittedProps {
   block?: boolean;
