@@ -55,7 +55,7 @@ export class WorkspaceService {
     },
   ) {
     //prepare metadata
-    const tmpName = (file as File).name || "";
+    const tmpName = file.name || "";
     const nameSplit = tmpName.split(".");
     const contentType = file.type || "application/octet-stream";
     const extension =
