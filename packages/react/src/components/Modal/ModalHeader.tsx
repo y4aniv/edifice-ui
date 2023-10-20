@@ -1,6 +1,9 @@
 import { ReactNode, useEffect, useRef } from "react";
 
+import { Close } from "@edifice-ui/icons";
+
 import { useModalContext } from "./ModalContext";
+import IconButton from "../Button/IconButton";
 
 export interface ModalHeaderProps {
   onModalClose: () => void;
@@ -26,13 +29,17 @@ const ModalHeader = (props: ModalHeaderProps) => {
       <h2 id={ariaLabelId} className="modal-title" tabIndex={-1}>
         {children}
       </h2>
-      <button
+      <IconButton
         ref={closeButtonRef}
-        type="button"
-        className="btn btn-close"
         aria-label="Close"
+        color="tertiary"
+        icon={<Close />}
+        type="button"
+        variant="ghost"
+        title="Delete"
         onClick={onModalClose}
-      ></button>
+        className="btn-close"
+      />
     </div>
   );
 };
