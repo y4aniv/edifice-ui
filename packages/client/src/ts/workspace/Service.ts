@@ -1,6 +1,7 @@
 import { FileTypeUtils } from "../utils/FileTypeUtils";
 import { OdeServices } from "../services/OdeServices";
-import { ID, WorkspaceElement, WorkspaceSearchFilter } from "./interface";
+import { WorkspaceElement, WorkspaceSearchFilter } from "./interface";
+import { ID } from "../globals";
 
 interface ElementQuery {
   /**

@@ -1,11 +1,11 @@
-import { IResource, ResourceType } from "..";
+import { IResource, ResourceType } from "../..";
 import {
   BlogUpdate,
   CreateParameters,
   CreateResult,
   UpdateResult,
-} from "./interface";
-import { ResourceService } from "./ResourceService";
+} from "../interface";
+import { ResourceService } from "../ResourceService";
 
 const APP = "blog";
 const RESOURCE = "blog";

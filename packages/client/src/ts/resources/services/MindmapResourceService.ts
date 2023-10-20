@@ -1,11 +1,11 @@
-import { App, IResource, ResourceType } from "..";
+import { App, IResource, ResourceType } from "../..";
 import {
   CreateParameters,
   CreateResult,
   MindmapUpdate,
   UpdateResult,
-} from "./interface";
-import { ResourceService } from "./ResourceService";
+} from "../interface";
+import { ResourceService } from "../ResourceService";
 
 const APP = "mindmap";
 const RESOURCE = "mindmap";
