@@ -189,7 +189,7 @@ const Toolbar = forwardRef(
                 <Button
                   {...item.props}
                   key={item.name ?? index}
-                  color="tertiary"
+                  color={item.props.color ? item.props.color : "tertiary"}
                   variant="ghost"
                   tabIndex={index === 0 ? 0 : -1}
                   onKeyDown={handleKeyDown}
@@ -201,7 +201,7 @@ const Toolbar = forwardRef(
                 <IconButton
                   {...item.props}
                   key={item.name ?? index}
-                  color="tertiary"
+                  color={item.props.color ? item.props.color : "tertiary"}
                   variant="ghost"
                   tabIndex={index === 0 ? 0 : -1}
                   onKeyDown={handleKeyDown}
