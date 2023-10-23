@@ -6,7 +6,13 @@ import { useModalContext } from "./ModalContext";
 import IconButton from "../Button/IconButton";
 
 export interface ModalHeaderProps {
+  /**
+   * Method called on modal close
+   */
   onModalClose: () => void;
+  /**
+   * ReactNode
+   */
   children: ReactNode;
 }
 

@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import { ColorPaletteItem, DefaultPalette } from "./ColorPalette";
-import ColorPicker, { ColorPickerProps } from "./ColorPicker";
+import { ColorPaletteItem, DefaultPalette } from "../ColorPalette";
+import ColorPicker, { ColorPickerProps } from "../ColorPicker";
 import { useState } from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

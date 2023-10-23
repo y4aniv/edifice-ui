@@ -2,15 +2,15 @@
  * Tabs Component
  */
 import {
-  createContext,
+  ReactNode,
   useCallback,
-  useContext,
   useEffect,
   useMemo,
   useRef,
   useState,
 } from "react";
 
+import { TabsContext } from "./TabsContext";
 import TabsItem, { TabsItemProps } from "./TabsItem";
 import TabsList from "./TabsList";
 import TabsPanel from "./TabsPanel";
@@ -28,29 +28,16 @@ export interface TabsProps {
    * Get notified when a tab is selected
    */
   onChange?: (tab: TabsItemProps) => void;
-}
-
-const TabsContext = createContext<{
-  activeTab?: string;
-  setSelectedTab: (key: string) => void;
-  tabsRef: React.MutableRefObject<(HTMLButtonElement | null)[]>;
-  onKeyDown: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
-}>(null!);
-
-export function useTabsContext() {
-  const context = useContext(TabsContext);
-  if (!context) {
-    throw new Error(
-      `Tabs compound components cannot be rendered outside the Tabs component`,
-    );
-  }
-  return context;
+  /**
+   * Children Props
+   */
+  children?: (...props: any) => ReactNode;
 }
 
 /**
  * Tab Content displayed one at a time when a Tab Item is selected
  */
-const Tabs = ({ defaultId, items, onChange }: TabsProps) => {
+const Tabs = ({ defaultId, items, onChange, children }: TabsProps) => {
   const [activeTab, setActiveTab] = useState<string>(defaultId || "");
   const [tabUnderlineWidth, setTabUnderlineWidth] = useState(0);
   const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
@@ -137,26 +124,39 @@ const Tabs = ({ defaultId, items, onChange }: TabsProps) => {
   );
 
   const value = useMemo(
-    () => ({ activeTab, setSelectedTab, tabsRef, onKeyDown }),
-    [activeTab, onKeyDown, setSelectedTab],
+    () => ({
+      activeTab,
+      items,
+      setSelectedTab,
+      tabsRef,
+      tabUnderlineLeft,
+      tabUnderlineWidth,
+      onKeyDown,
+    }),
+    [
+      activeTab,
+      items,
+      onKeyDown,
+      setSelectedTab,
+      tabUnderlineLeft,
+      tabUnderlineWidth,
+    ],
   );
 
   const currentItem = items.find((item) => item.id === activeTab);
 
   return (
     <TabsContext.Provider value={value}>
-      <div className="position-relative overflow-x-auto">
-        <Tabs.List>
-          {items.map(({ ...props }, order) => (
-            <Tabs.Item key={props.id} order={order} {...props}></Tabs.Item>
-          ))}
-        </Tabs.List>
-        <span
-          className="nav-slide"
-          style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
-        />
-      </div>
-      <Tabs.Panel currentItem={currentItem}>{currentItem?.content}</Tabs.Panel>
+      {typeof children === "function" ? (
+        children(currentItem)
+      ) : (
+        <>
+          <Tabs.List />
+          <Tabs.Panel currentItem={currentItem}>
+            {currentItem?.content}
+          </Tabs.Panel>
+        </>
+      )}
     </TabsContext.Provider>
   );
 };

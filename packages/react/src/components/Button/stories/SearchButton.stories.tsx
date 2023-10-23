@@ -1,7 +1,7 @@
 import { Search, UserSearch } from "@edifice-ui/icons";
 import { Meta, StoryObj } from "@storybook/react";
 
-import SearchButton from "./SearchButton";
+import SearchButton from "../SearchButton";
 import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

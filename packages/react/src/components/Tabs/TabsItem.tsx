@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 
-import { useTabsContext } from "./Tabs";
+import { useTabsContext } from "./TabsContext";
 
 export interface TabsItemProps {
   /**

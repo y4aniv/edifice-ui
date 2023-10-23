@@ -293,6 +293,7 @@ const VideoRecorder = ({
           device.type,
           uploadResponse,
         );
+
       const resVideo: WorkspaceElement = {
         _id: uploadResponse.videoworkspaceid,
         file: uploadResponse.videoid,
