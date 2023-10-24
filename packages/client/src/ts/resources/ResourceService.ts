@@ -48,23 +48,6 @@ export abstract class ResourceService
     ResourceService.registry.set(`${application}:${resourceType}`, service);
   }
 
-  /** Private lookup for a service */
-  private static lookupService(
-    {
-      application,
-      resourceType,
-    }: { application: App | string; resourceType: ResourceType | "main" },
-    context: IOdeServices,
-  ): IResourceService & IWebResourceService {
-    const found = ResourceService.registry.get(
-      `${application}:${resourceType}`,
-    );
-    if (found === undefined) {
-      throw "Service not found: " + `${application}:${resourceType}`;
-    }
-    return found(context);
-  }
-
   /** Lookup for a service */
   static findService(
     lookFor: { application: App | string; resourceType: ResourceType },
@@ -82,6 +65,37 @@ export abstract class ResourceService
       { application, resourceType: "main" },
       context,
     );
+  }
+
+  /** Check if a service is registered. */
+  static isRegistered({
+    application,
+    resourceType,
+  }: {
+    application: App | string;
+    resourceType: ResourceType | "main";
+  }): boolean {
+    const found = ResourceService.registry.get(
+      `${application}:${resourceType}`,
+    );
+    return found !== undefined;
+  }
+
+  /** Private lookup for a service */
+  private static lookupService(
+    {
+      application,
+      resourceType,
+    }: { application: App | string; resourceType: ResourceType | "main" },
+    context: IOdeServices,
+  ): IResourceService & IWebResourceService {
+    const found = ResourceService.registry.get(
+      `${application}:${resourceType}`,
+    );
+    if (found === undefined) {
+      throw "Service not found: " + `${application}:${resourceType}`;
+    }
+    return found(context);
   }
 
   //

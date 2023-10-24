@@ -1,16 +1,17 @@
-import { TimelinegeneratorBehaviour } from "./TimelinegeneratorBehaviour";
-import { App, ERROR_CODE, ResourceType } from "../../globals";
-import { IOdeServices } from "../../services/OdeServices";
-import { ResourceService } from "../ResourceService";
-import { AbstractBehaviourService } from "./AbstractBehaviourService";
-import { WorkspaceBehaviour } from "./WorkspaceBehaviour";
+import { TimelinegeneratorBehaviour } from "../resources/behaviours/TimelinegeneratorBehaviour";
+import { App as IWebApp, ERROR_CODE, ResourceType } from "../globals";
+import { IOdeServices } from "./OdeServices";
+import { ResourceService } from "../resources/ResourceService";
+import { AbstractBehaviourService } from "../resources/behaviours/AbstractBehaviourService";
+import { WorkspaceBehaviour } from "../resources/behaviours/WorkspaceBehaviour";
+
 
 export class SnipletsService {
-  static resourceProducingApps: App[] = [];
+  static resourceProducingApps: IWebApp[] = [];
 
   private static serviceFor(
     context: IOdeServices,
-    application: App,
+    application: IWebApp,
     resourceType: ResourceType,
   ) {
     let service: AbstractBehaviourService;
@@ -42,9 +43,9 @@ export class SnipletsService {
     return service;
   }
 
-  static async load(context: IOdeServices, currentApp: App): Promise<void> {
+  static async registerBehaviours(context: IOdeServices, currentApp: IWebApp): Promise<void> {
     const http = context.http();
-    return new Promise<Array<App | string>>(async (resolve, reject) => {
+    return new Promise<Array<IWebApp | string>>(async (resolve, reject) => {
       if (!this.resourceProducingApps.length) {
         // Default to current app and workspace
         this.resourceProducingApps = [currentApp, "workspace"];
@@ -52,7 +53,7 @@ export class SnipletsService {
         // Dynamic load prefixes of resource-producing apps
         try {
           const [appList, me] = await Promise.all([
-            http.get<App[]>("/resources-applications"),
+            http.get<IWebApp[]>("/resources-applications"),
             context.session().getUser(),
           ]);
           if (me && me.apps && appList?.length) {
@@ -75,10 +76,13 @@ export class SnipletsService {
     }).then((apps) => {
       // Register services
       apps.forEach((app) => {
-        ResourceService.register(
-          { application: currentApp, resourceType: app },
-          (context: IOdeServices) => this.serviceFor(context, currentApp, app),
-        );
+        const key = { application: currentApp, resourceType: app };
+        // But not if one is already registered
+        if (!ResourceService.isRegistered(key)) {
+          ResourceService.register(key, (context: IOdeServices) =>
+            this.serviceFor(context, currentApp, app),
+          );
+        }
       });
     });
   }

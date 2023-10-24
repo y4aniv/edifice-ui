@@ -6,6 +6,7 @@ import { IOdeServices, OdeServices } from "./OdeServices";
 
 export const odeServices: IOdeServices = new OdeServices();
 
+export * from "./SnipletsService";
 export * from "../directory/interface";
 export * from "../resources/interface";
 export * from "../rights/interface";

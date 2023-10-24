@@ -1,4 +1,4 @@
-import { ERROR_CODE } from "../globals";
+import { App, ERROR_CODE } from "../globals";
 import {
   IGetSession,
   IQuotaAndUsage,
@@ -253,4 +253,20 @@ export class SessionService {
     const user = await this.getUser();
     return user?.functions.ADMIN_LOCAL !== undefined;
   }
+
+  /** 
+   * Get details of an application if the user can access it.
+   * @return undefined if no access, or app not found
+   */
+  public async getWebApp( application:App ): Promise<IWebApp|undefined> {
+    const user = await this.getUser();
+    return user?.apps.find( app => {
+        if (app?.prefix) {
+          return app?.prefix.replace("/", "") === application || false;
+        } else if (app?.address) {
+          return app.address?.split('/')[1] === application || false;
+        }
+        return false;
+      });
+    }
 }
