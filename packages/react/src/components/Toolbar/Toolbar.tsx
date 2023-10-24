@@ -128,15 +128,11 @@ const Toolbar = forwardRef(
     }, [items]);
 
     const handleFocus = (event: FocusEvent<HTMLDivElement>) => {
-      // div toolbar
-      event.currentTarget.classList.add("focus");
       // focused button
       event.target.classList.add("focus");
     };
 
     const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
-      // div toolbar
-      event.currentTarget.classList.remove("focus");
       // focused button
       event.target.classList.remove("focus");
     };
