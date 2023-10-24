@@ -1,14 +1,14 @@
 import { WorkspaceElement } from "edifice-ts-client";
 
 import { Role } from "../../../core";
-import { Workspace as WorkspaceWidget } from "../../Workspace";
+import { Workspace as Component } from "../../Workspace";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 
 export const Workspace = () => {
-  const context = useMediaLibraryContext();
+  const { type, setResultCounter, setResult } = useMediaLibraryContext();
 
   function getDocumentRoleFilter(): Role | Role[] | null {
-    switch (context.type) {
+    switch (type) {
       case "image":
         return "img";
       case "audio":
@@ -21,20 +21,19 @@ export const Workspace = () => {
   }
 
   function handleSelect(result: WorkspaceElement[]) {
-    context.setResultCounter(result.length);
+    setResultCounter(result.length);
     if (result.length > 0) {
-      context.setResult(result);
+      setResult(result);
     } else {
-      context.setResult();
+      setResult();
     }
   }
 
   return (
-    <div className="border rounded mt-24">
-      <WorkspaceWidget
-        roles={getDocumentRoleFilter()}
-        onSelect={handleSelect}
-      ></WorkspaceWidget>
-    </div>
+    <Component
+      roles={getDocumentRoleFilter()}
+      onSelect={handleSelect}
+      className="border rounded overflow-y-auto"
+    ></Component>
   );
 };

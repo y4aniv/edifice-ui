@@ -293,6 +293,7 @@ const VideoRecorder = ({
           device.type,
           uploadResponse,
         );
+
       const resVideo: WorkspaceElement = {
         _id: uploadResponse.videoworkspaceid,
         file: uploadResponse.videoid,
@@ -377,6 +378,7 @@ const VideoRecorder = ({
       name: "record",
       props: {
         icon: <Record color={recording || recorded ? "" : "red"} />,
+        color: "danger",
         disabled: recording || recorded || saving,
         onClick: handleRecord,
       },

@@ -1,10 +1,32 @@
-import { ReactNode } from "react";
+import { ComponentPropsWithoutRef } from "react";
 
-const TabsList = ({ children }: { children: ReactNode }) => {
+import clsx from "clsx";
+
+import Tabs from "./Tabs";
+import { useTabsContext } from "./TabsContext";
+
+interface TabsListProps extends ComponentPropsWithoutRef<"div"> {}
+
+const TabsList = (props: TabsListProps) => {
+  const { items, tabUnderlineLeft, tabUnderlineWidth } = useTabsContext();
+  const { className, ...restProps } = props;
+
+  const tabslist = clsx(
+    "position-relative flex-shrink-0 overflow-x-auto",
+    className,
+  );
   return (
-    <ul className="nav nav-tabs flex-nowrap" role="tablist">
-      {children}
-    </ul>
+    <div className={tabslist} {...restProps}>
+      <ul className="nav nav-tabs flex-nowrap" role="tablist">
+        {items.map((item, order) => {
+          return <Tabs.Item key={item.id} order={order} {...item}></Tabs.Item>;
+        })}
+      </ul>
+      <span
+        className="nav-slide"
+        style={{ left: tabUnderlineLeft, width: tabUnderlineWidth }}
+      />
+    </div>
   );
 };
 

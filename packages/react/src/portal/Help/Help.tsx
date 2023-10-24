@@ -31,7 +31,7 @@ export default function Help({
           isOpen={isHelpOpen}
           onModalClose={handleHelpOpen}
           scrollable
-          size="xl"
+          size="lg"
         >
           <Modal.Header onModalClose={handleHelpOpen}>
             {t("navbar.help")}

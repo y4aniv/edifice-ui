@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { useTabsContext } from "./Tabs";
+import { useTabsContext } from "./TabsContext";
 import { TabsItemProps } from "./TabsItem";
 
 export interface TabsPanelProps {
@@ -18,9 +18,9 @@ const TabsPanel = ({ children, currentItem }: TabsPanelProps) => {
   const { activeTab } = useTabsContext();
 
   return (
-    <div className="tab-content">
+    <div className="tab-content d-flex flex-fill">
       <div
-        className={`tab-pane fade ${
+        className={`tab-pane flex-fill fade ${
           activeTab === currentItem?.id ? "show active" : ""
         }`}
         id={`tabpanel-${currentItem?.id}`}

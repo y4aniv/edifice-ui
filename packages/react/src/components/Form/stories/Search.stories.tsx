@@ -1,8 +1,8 @@
 import { Search } from "@edifice-ui/icons";
 import { Meta, StoryObj } from "@storybook/react";
-import SearchButton from "../Button/SearchButton";
+import SearchButton from "../../Button/SearchButton";
 
-import { FormControl } from "./index";
+import { FormControl } from "../index";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof FormControl> = {

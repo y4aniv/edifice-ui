@@ -205,7 +205,7 @@ const MediaLibrary = ({
 
   // --------------- Hooks
   /* Filter out unwanted tabs. */
-  const tabs = useMemo<(TabsItemProps & MediaLibraryTabProps)[]>(
+  const tabs = useMemo(
     () =>
       orderedTabs
         .map((key) => availableTabs[key])
@@ -260,57 +260,55 @@ const MediaLibrary = ({
     await odeServices.workspace().deleteFile(result);
   };
 
-  return (
-    type && (
-      <MediaLibraryContext.Provider
-        value={{
-          appCode,
-          type,
-          setResultCounter,
-          setResult,
-          setVisibleTab,
-        }}
+  return type ? (
+    <MediaLibraryContext.Provider
+      value={{
+        appCode,
+        type,
+        setResultCounter,
+        setResult,
+        setVisibleTab,
+      }}
+    >
+      <Modal
+        id="media-library"
+        isOpen={type !== null}
+        onModalClose={closeModal}
+        size="lg"
       >
-        <Modal
-          id="media-library"
-          isOpen={type !== null}
-          onModalClose={closeModal}
-          size="lg"
-        >
-          <Modal.Header onModalClose={closeModal}>{modalHeader}</Modal.Header>
-          <Modal.Body>
-            <Tabs
-              items={tabs}
-              defaultId={tabs[defaultTabIdx].id}
-              onChange={handleTabChange}
-            ></Tabs>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button
-              type="button"
-              color="tertiary"
-              variant="ghost"
-              onClick={closeModal}
-            >
-              {t("Annuler")}
-            </Button>
-            <Button
-              type="button"
-              color="primary"
-              variant="filled"
-              disabled={typeof result === "undefined"}
-              onClick={handleSuccess}
-            >
-              {t("Ajouter")}
-              {typeof resultCounter === "number" &&
-                resultCounter > 1 &&
-                ` (${resultCounter})`}
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </MediaLibraryContext.Provider>
-    )
-  );
+        <Modal.Header onModalClose={closeModal}>{modalHeader}</Modal.Header>
+        <Modal.Body>
+          <Tabs
+            items={tabs}
+            defaultId={tabs[defaultTabIdx].id}
+            onChange={handleTabChange}
+          ></Tabs>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            type="button"
+            color="tertiary"
+            variant="ghost"
+            onClick={closeModal}
+          >
+            {t("Annuler")}
+          </Button>
+          <Button
+            type="button"
+            color="primary"
+            variant="filled"
+            disabled={typeof result === "undefined"}
+            onClick={handleSuccess}
+          >
+            {t("Ajouter")}
+            {typeof resultCounter === "number" &&
+              resultCounter > 1 &&
+              ` (${resultCounter})`}
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </MediaLibraryContext.Provider>
+  ) : null;
 };
 
 // Add inner tabs implementations to exported component.
