@@ -1,6 +1,5 @@
 import {
   FocusEvent,
-  KeyboardEvent,
   ReactNode,
   Ref,
   forwardRef,
@@ -137,7 +136,7 @@ const Toolbar = forwardRef(
       event.target.classList.remove("focus");
     };
 
-    const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
       const index = toolbarItems.indexOf(event.currentTarget);
       switch (event.code) {
         case "ArrowLeft":
@@ -206,7 +205,11 @@ const Toolbar = forwardRef(
 
             case "dropdown":
               return (
-                <Dropdown {...item.props} key={item.name ?? index}>
+                <Dropdown
+                  {...item.props}
+                  key={item.name ?? index}
+                  extraTriggerKeyDownHandler={handleKeyDown}
+                >
                   {/* Set the children through props */}
                 </Dropdown>
               );
