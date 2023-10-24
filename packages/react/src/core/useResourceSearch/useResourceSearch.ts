@@ -3,8 +3,9 @@ import { useCallback, useEffect, useState } from "react";
 import {
   App,
   GetContextParameters,
-  SnipletsService,
+  IResource,
   odeServices,
+  SnipletsService,
 } from "edifice-ts-client";
 
 import { useMockedData } from "../../utils";
@@ -12,7 +13,7 @@ import { useMockedData } from "../../utils";
 /**
  * A hook to search for resources produced by applications.
  *
- * @param application The currently running application
+ * @param appCode Currently running application.
  * @returns An object with 2 fields :
  *
  * `resourceApplications: Array<App>`
@@ -21,23 +22,35 @@ import { useMockedData } from "../../utils";
  * `loadResources: (filters:GetContextParameters) => void`
  * A search method with filters.
  *
- * Note : until all applications are using the exploration main page,
- * only the first resource of `filter.types` will be considered while searching.
+ * Note : until all applications are using the explorer main page,
+ * only the first resource of the `filter.types` array will be considered while searching.
  */
-export default function useResourceSearch(application: App) {
+export default function useResourceSearch(appCode: App) {
   // Needed for storybook to mock calls to backend
   const mock = useMockedData();
 
+  // Resources-producing applications the user can use
   const [resourceApplications, setResourceApplications] = useState<App[]>([]);
 
   // Init services, only once
   useEffect(() => {
-    SnipletsService.registerBehaviours(
+    SnipletsService.initialize(
       odeServices,
-      mock?.app || application,
-    ).then(() =>
-      setResourceApplications(SnipletsService.resourceProducingApps),
-    );
+      mock?.app || appCode,
+    )
+    .catch( (error) => {
+      if( mock?.app ) {
+        SnipletsService.resourceProducingApps = [mock?.app];
+      } else {
+        throw error;
+      }
+    })
+    .then( () => {
+      SnipletsService.registerBehaviours( mock?.app || appCode );
+    })
+    .then(() => {
+      setResourceApplications(SnipletsService.resourceProducingApps);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -56,16 +69,17 @@ export default function useResourceSearch(application: App) {
             }),
           )
         : await odeServices
-            .resource(application, resourceType)
-            .searchContext(filters);
+            .resource(appCode, resourceType)
+            .searchContext(filters)
+            .then( results => results.resources );
 
       return payload;
     },
-    [application, mock],
+    [appCode, mock],
   );
 
   return { resourceApplications, loadResources } as {
     resourceApplications: Array<App>;
-    loadResources: (filters: GetContextParameters) => void;
+    loadResources: (filters: GetContextParameters) => Promise<IResource[]>;
   };
 }

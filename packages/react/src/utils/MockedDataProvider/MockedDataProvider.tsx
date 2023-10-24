@@ -1,6 +1,12 @@
 import { createContext, type ReactNode, useMemo, useContext } from "react";
 
-import { App, GetContextParameters, IResource, WorkspaceElement } from "edifice-ts-client";
+import {
+  App,
+  GetContextParameters,
+  IResource,
+  ResourceType,
+  WorkspaceElement,
+} from "edifice-ts-client";
 
 export interface MockedDataProps {
   children: ReactNode;
@@ -13,8 +19,8 @@ export interface MockedDataProps {
     workspaceDocuments?: WorkspaceElement[];
     /** List of available apps. */
     availableApps?: App[];
-    /** List of pseudo-resources by type. */
-    appResources?: { [resourceType:string]: [] };
+    /** List of pseudo-IResource by type. */
+    appResources?: { [resourceType: ResourceType]: IResource[] };
   };
 }
 
@@ -49,14 +55,15 @@ export function MockedDataProvider({ children, mocks }: MockedDataProps) {
       value.listWorkspaceDocuments = async () => mocks.workspaceDocuments ?? [];
     }
 
-    if(mocks.appResources) {
-      value.loadResources = async (filters: GetContextParameters) => mocks.appResources?.[filters.types[0]]?.filter( ()=>{
-        // TODO pseudo-filter
-        if( filters ) {
-          console.log( filters.search || "none" );
-        }
-        return true;
-      }) || [];
+    if (mocks.appResources) {
+      value.loadResources = async (filters: GetContextParameters) =>
+        mocks.appResources?.[filters.types[0]]?.filter(() => {
+          // TODO pseudo-filter
+          if (filters) {
+            console.log(filters.search || "none");
+          }
+          return true;
+        }) || [];
     }
 
     return value;
