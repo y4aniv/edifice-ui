@@ -34,23 +34,20 @@ export default function useResourceSearch(appCode: App) {
 
   // Init services, only once
   useEffect(() => {
-    SnipletsService.initialize(
-      odeServices,
-      mock?.app || appCode,
-    )
-    .catch( (error) => {
-      if( mock?.app ) {
-        SnipletsService.resourceProducingApps = [mock?.app];
-      } else {
-        throw error;
-      }
-    })
-    .then( () => {
-      SnipletsService.registerBehaviours( mock?.app || appCode );
-    })
-    .then(() => {
-      setResourceApplications(SnipletsService.resourceProducingApps);
-    });
+    SnipletsService.initialize(odeServices, mock?.app || appCode)
+      .catch((error) => {
+        if (mock?.app) {
+          SnipletsService.resourceProducingApps = [mock?.app];
+        } else {
+          throw error;
+        }
+      })
+      .then(() => {
+        SnipletsService.registerBehaviours(mock?.app || appCode);
+      })
+      .then(() => {
+        setResourceApplications(SnipletsService.resourceProducingApps);
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -71,7 +68,7 @@ export default function useResourceSearch(appCode: App) {
         : await odeServices
             .resource(appCode, resourceType)
             .searchContext(filters)
-            .then( results => results.resources );
+            .then((results) => results.resources);
 
       return payload;
     },
