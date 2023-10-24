@@ -4,6 +4,7 @@ import { IOdeServices } from "./OdeServices";
 import { ResourceService } from "../resources/ResourceService";
 import { AbstractBehaviourService } from "../resources/behaviours/AbstractBehaviourService";
 import { WorkspaceBehaviour } from "../resources/behaviours/WorkspaceBehaviour";
+import { BlogBehaviour } from "../resources/behaviours/BlogBehaviour";
 
 
 export class SnipletsService {
@@ -23,6 +24,8 @@ export class SnipletsService {
         service = new WorkspaceBehaviour(context);
         break;
       case "blog":
+        service = new BlogBehaviour(context);
+        break;
       case "actualites":
       case "wiki":
       case "pages":
