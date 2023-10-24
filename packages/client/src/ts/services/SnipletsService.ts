@@ -1,5 +1,5 @@
 import { TimelinegeneratorBehaviour } from "../resources/behaviours/TimelinegeneratorBehaviour";
-import { App as IWebApp, ERROR_CODE, ResourceType } from "../globals";
+import { App, ERROR_CODE, ResourceType } from "../globals";
 import { IOdeServices } from "./OdeServices";
 import { ResourceService } from "../resources/ResourceService";
 import { AbstractBehaviourService } from "../resources/behaviours/AbstractBehaviourService";
@@ -7,11 +7,11 @@ import { WorkspaceBehaviour } from "../resources/behaviours/WorkspaceBehaviour";
 
 
 export class SnipletsService {
-  static resourceProducingApps: IWebApp[] = [];
+  static resourceProducingApps: App[] = [];
 
   private static serviceFor(
     context: IOdeServices,
-    application: IWebApp,
+    application: App,
     resourceType: ResourceType,
   ) {
     let service: AbstractBehaviourService;
@@ -43,9 +43,9 @@ export class SnipletsService {
     return service;
   }
 
-  static async registerBehaviours(context: IOdeServices, currentApp: IWebApp): Promise<void> {
+  static async initialize(context: IOdeServices, currentApp: App): Promise<App[]> {
     const http = context.http();
-    return new Promise<Array<IWebApp | string>>(async (resolve, reject) => {
+    return new Promise<App[]>(async (resolve, reject) => {
       if (!this.resourceProducingApps.length) {
         // Default to current app and workspace
         this.resourceProducingApps = [currentApp, "workspace"];
@@ -53,7 +53,7 @@ export class SnipletsService {
         // Dynamic load prefixes of resource-producing apps
         try {
           const [appList, me] = await Promise.all([
-            http.get<IWebApp[]>("/resources-applications"),
+            http.get<App[]>("/resources-applications"),
             context.session().getUser(),
           ]);
           if (me && me.apps && appList?.length) {
@@ -70,20 +70,24 @@ export class SnipletsService {
               );
             });
           }
-        } catch {}
+        } catch { /* keep default */ }
       }
       resolve(this.resourceProducingApps);
-    }).then((apps) => {
-      // Register services
-      apps.forEach((app) => {
-        const key = { application: currentApp, resourceType: app };
-        // But not if one is already registered
-        if (!ResourceService.isRegistered(key)) {
-          ResourceService.register(key, (context: IOdeServices) =>
-            this.serviceFor(context, currentApp, app),
-          );
-        }
-      });
     });
+  }
+  
+  static async registerBehaviours(currentApp: App): Promise<void> {
+    // Register services
+    this.resourceProducingApps.forEach((app) => {
+      const key = { application: currentApp, resourceType: app };
+      // But not if one is already registered
+      if (!ResourceService.isRegistered(key)) {
+        ResourceService.register(key, (context: IOdeServices) =>
+          this.serviceFor(context, currentApp, app),
+        );
+      }
+    });
+    // we wanna return a promise because behaviours may be lazy loaded in a near future
+    return Promise.resolve();
   }
 }

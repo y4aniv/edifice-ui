@@ -35,7 +35,7 @@ export const APP = {
   // -- a few others commonly used apps
   EXPLORER: "explorer",
 } as const;
-export type App = (typeof APP)[keyof typeof APP]; // type App = "admin" | "archive" | "auth"...
+export type App = (typeof APP)[keyof typeof APP] | string; // type App = "admin" | "archive" | "auth"...
 
 //-- Semantical typings
 /**
