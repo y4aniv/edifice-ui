@@ -8,6 +8,7 @@ import {
 } from "react";
 
 import { Search } from "@edifice-ui/icons";
+import clsx from "clsx";
 import { WorkspaceElement, WorkspaceSearchFilter } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
@@ -33,11 +34,17 @@ export interface WorkspaceProps {
    * Set to null to display all medias.
    */
   roles: Role | Role[] | null;
-  /** Notify parent when media elements are successfully selected. */
+  /**
+   * Notify parent when media elements are successfully selected.
+   */
   onSelect: (result: WorkspaceElement[]) => void;
+  /**
+   * Optional class for styling purpose
+   */
+  className?: string;
 }
 
-const Workspace = (props: WorkspaceProps) => {
+const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
   const { t } = useTranslation();
   const inputRef: Ref<HTMLInputElement> = useRef(null);
 
@@ -45,19 +52,19 @@ const Workspace = (props: WorkspaceProps) => {
     "owner",
     t("Mes documents"),
     "owner",
-    props.roles,
+    roles,
   );
   const { root: shared, loadContent: loadSharedDocs } = useWorkspaceSearch(
     "shared",
     t("Partagé avec moi"),
     "shared",
-    props.roles,
+    roles,
   );
   const { root: protect, loadContent: loadProtectedDocs } = useWorkspaceSearch(
     "protected",
     t("Ajouté dans les applications"),
     "protected",
-    props.roles,
+    roles,
   );
 
   const ownerRef = useRef<TreeViewHandlers>(null);
@@ -188,12 +195,19 @@ const Workspace = (props: WorkspaceProps) => {
       selectedDocuments.splice(idx, 1);
     }
     setSelectedDocuments([...selectedDocuments]);
-    props.onSelect(selectedDocuments);
+    onSelect(selectedDocuments);
   };
 
+  const workspace = clsx("workspace flex-grow-1 gap-0", className);
+
   return (
-    <Grid className="workspace flex-grow-1 gap-0">
-      <Grid.Col sm="1" md="3" xl="4" className="folders border-end p-12 gap-12">
+    <Grid className={workspace}>
+      <Grid.Col
+        sm="12"
+        md="3"
+        xl="4"
+        className="folders border-end p-12 gap-12"
+      >
         <TreeView
           ref={ownerRef}
           data={owner}
@@ -217,7 +231,7 @@ const Workspace = (props: WorkspaceProps) => {
           }
         />
       </Grid.Col>
-      <Grid.Col sm="3" md="5" xl="8">
+      <Grid.Col sm="12" md="5" xl="8">
         <Grid className="flex-grow-1 gap-0">
           <Grid.Col sm="4" md="8" xl="12">
             <div className="search border-bottom px-16 py-8 ">

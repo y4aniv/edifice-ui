@@ -3,15 +3,24 @@ import { createContext, useContext } from "react";
 import { MediaLibraryType, AvailableTab } from "./MediaLibrary";
 
 export const MediaLibraryContext = createContext<{
-  /** Application code (example: "blog"). */
+  /**
+   * Application code (example: "blog")
+   */
   appCode: string;
-  /** Type of rss to search for. */
+
+  /**
+   * Type of rss to search for
+   */
   type: MediaLibraryType | null;
 
-  /** Set the counter in the success button label */
+  /**
+   * Set the counter in the success button label
+   */
   setResultCounter: (count?: number) => void;
 
-  /** Set a innertab-specific callback which gets the result when success button is clicked */
+  /**
+   * Set a innertab-specific callback which gets the result when success button is clicked
+   */
   setResult: (result?: any) => void;
 
   /**

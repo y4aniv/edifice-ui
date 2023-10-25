@@ -1,6 +1,5 @@
 import {
   FocusEvent,
-  KeyboardEvent,
   ReactNode,
   Ref,
   forwardRef,
@@ -128,20 +127,16 @@ const Toolbar = forwardRef(
     }, [items]);
 
     const handleFocus = (event: FocusEvent<HTMLDivElement>) => {
-      // div toolbar
-      event.currentTarget.classList.add("focus");
       // focused button
       event.target.classList.add("focus");
     };
 
     const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
-      // div toolbar
-      event.currentTarget.classList.remove("focus");
       // focused button
       event.target.classList.remove("focus");
     };
 
-    const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
       const index = toolbarItems.indexOf(event.currentTarget);
       switch (event.code) {
         case "ArrowLeft":
@@ -189,7 +184,7 @@ const Toolbar = forwardRef(
                 <Button
                   {...item.props}
                   key={item.name ?? index}
-                  color="tertiary"
+                  color={item.props.color ? item.props.color : "tertiary"}
                   variant="ghost"
                   tabIndex={index === 0 ? 0 : -1}
                   onKeyDown={handleKeyDown}
@@ -201,7 +196,7 @@ const Toolbar = forwardRef(
                 <IconButton
                   {...item.props}
                   key={item.name ?? index}
-                  color="tertiary"
+                  color={item.props.color ? item.props.color : "tertiary"}
                   variant="ghost"
                   tabIndex={index === 0 ? 0 : -1}
                   onKeyDown={handleKeyDown}
@@ -210,7 +205,11 @@ const Toolbar = forwardRef(
 
             case "dropdown":
               return (
-                <Dropdown {...item.props} key={item.name ?? index}>
+                <Dropdown
+                  {...item.props}
+                  key={item.name ?? index}
+                  extraTriggerKeyDownHandler={handleKeyDown}
+                >
                   {/* Set the children through props */}
                 </Dropdown>
               );

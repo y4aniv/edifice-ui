@@ -18,7 +18,7 @@ import ModalHeader from "./ModalHeader";
 import ModalSubtitle from "./ModalSubtitle";
 import { useClickOutside, useTrapFocus, useKeyPress } from "../../hooks";
 
-export type ModalSize = "md" | "lg" | "xl";
+export type ModalSize = "md" | "lg";
 
 export interface ModalProps {
   /**
@@ -53,6 +53,11 @@ export interface ModalProps {
   focusId?: string;
 
   /**
+   * Modal takes the full height of the window
+   */
+  viewport?: boolean;
+
+  /**
    * Children
    */
   children: React.ReactNode;
@@ -68,7 +73,8 @@ const Root = forwardRef<HTMLDivElement, ModalProps>(
       isOpen,
       onModalClose,
       size = "md",
-      scrollable,
+      viewport = false,
+      scrollable = false,
       focusId,
       children,
     } = props;
@@ -99,10 +105,14 @@ const Root = forwardRef<HTMLDivElement, ModalProps>(
       };
     }, [focusId, isOpen]);
 
-    const dialogClasses = clsx("modal-dialog", {
+    const modalClasses = clsx("modal fade", {
+      "show d-block": isOpen,
+      "modal-scrollable": scrollable,
+      viewport: viewport,
       [`modal-${size}`]: size,
-      "modal-dialog-scrollable": scrollable,
     });
+
+    const dialogClasses = clsx("modal-dialog");
 
     const modalContextValue: ModalContextProps = {
       ariaLabelId,
@@ -137,7 +147,7 @@ const Root = forwardRef<HTMLDivElement, ModalProps>(
                 aria-modal="true"
                 aria-labelledby={ariaLabelId}
                 aria-describedby={ariaDescriptionId}
-                className={`modal fade ${isOpen ? "show d-block" : ""}`}
+                className={modalClasses}
                 style={style}
                 tabIndex={-1}
               >
