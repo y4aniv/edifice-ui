@@ -97,7 +97,7 @@ export class WorkspaceService {
   }
 
   async deleteFile(elements: WorkspaceElement[]) {
-    const ids = elements.map((e) => e._id);
+    const ids = elements.map((element) => element._id);
     if (ids.length == 0) {
       Promise.resolve(null) as any;
     } else {
