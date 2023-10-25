@@ -5,7 +5,6 @@ import {
   useCallback,
   useId,
   MutableRefObject,
-  RefCallback,
   Dispatch,
   SetStateAction,
 } from "react";
@@ -17,6 +16,8 @@ import {
   offset,
   useFloating,
 } from "@floating-ui/react";
+
+import { mergeRefs } from "../../../utils";
 
 export enum KEYS {
   Enter = "Enter",
@@ -34,10 +35,6 @@ export enum KEYS {
   PageDown = "PageDown",
 }
 
-type MutableRefList<T> = Array<
-  RefCallback<T> | MutableRefObject<T> | undefined | null
->;
-
 export interface UseDropdownProps {
   isFocused: string | null;
   visible: boolean;
@@ -50,7 +47,12 @@ export interface UseDropdownProps {
   setVisible: Dispatch<SetStateAction<boolean>>;
 }
 
-const useDropdown = (placement: Placement | undefined): UseDropdownProps => {
+const useDropdown = (
+  placement: Placement | undefined,
+  extraTriggerKeyDownHandler?: (
+    event: React.KeyboardEvent<HTMLButtonElement>,
+  ) => void,
+): UseDropdownProps => {
   /* Unique Dropdown Id */
   const id = useId();
 
@@ -162,6 +164,7 @@ const useDropdown = (placement: Placement | undefined): UseDropdownProps => {
           break;
       }
 
+      extraTriggerKeyDownHandler?.(event);
       stopEvents(flag, event);
     },
     [closeDropdown, openDropdown],
@@ -254,22 +257,6 @@ const useDropdown = (placement: Placement | undefined): UseDropdownProps => {
   const onMenuItemClick = useCallback(() => {
     closeDropdown();
   }, [closeDropdown]);
-
-  function setRef<T>(val: T, ...refs: MutableRefList<T>): void {
-    refs.forEach((ref) => {
-      if (typeof ref === "function") {
-        ref(val);
-      } else if (ref != null) {
-        ref.current = val;
-      }
-    });
-  }
-
-  function mergeRefs<T>(...refs: MutableRefList<T>): RefCallback<T> {
-    return (val: T) => {
-      setRef(val, ...refs);
-    };
-  }
 
   return {
     isFocused,

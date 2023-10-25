@@ -1,7 +1,14 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import Toolbar from "./Toolbar";
-import { RecordVideo, Save, Write, Plus, Delete } from "@edifice-ui/icons";
+import {
+  RecordVideo,
+  Save,
+  Write,
+  Plus,
+  Delete,
+  Record,
+} from "@edifice-ui/icons";
 import { Dropdown } from "../Dropdown";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -230,14 +237,34 @@ export const WithPrimaryAction: Story = {
 
 export const WithDropdownAction: Story = {
   render: (args) => <Toolbar {...args} />,
-  decorators: [(Story) => <div style={{ height: "300px" }}>{Story()}</div>],
+  decorators: [
+    (Story) => (
+      <div className="m-24" style={{ height: "300px" }}>
+        {Story()}
+      </div>
+    ),
+  ],
   args: {
     items: [
       {
         type: "button",
+        name: "record",
+        props: {
+          disabled: false,
+          children: (
+            <>
+              <Record />
+              <span>Record</span>
+            </>
+          ),
+          onClick: () => console.log("on click"),
+        },
+      },
+      {
+        type: "button",
         name: "save",
         props: {
-          disabled: true,
+          disabled: false,
           children: (
             <>
               <Save />

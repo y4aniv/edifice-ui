@@ -26,6 +26,14 @@ export interface DropdownProps {
    * Default placement with FloatingUI
    */
   placement?: "bottom-end" | "bottom-start";
+  /**
+   * Extra keydown handler for the Dropdown Trigger.
+   * Useful for a11y keyboard navigation between a Dropdown element and other elements,
+   * for example in the Toolbar component.
+   */
+  extraTriggerKeyDownHandler?: (
+    event: React.KeyboardEvent<HTMLButtonElement>,
+  ) => void;
 }
 
 export type DropdownMenuOptions =
@@ -59,6 +67,7 @@ const Root = ({
   block,
   overflow = true,
   placement = "bottom-start",
+  extraTriggerKeyDownHandler,
 }: DropdownProps) => {
   const {
     visible,
@@ -68,7 +77,7 @@ const Root = ({
     itemProps,
     itemRefs,
     setVisible,
-  } = useDropdown(placement);
+  } = useDropdown(placement, extraTriggerKeyDownHandler);
 
   /* Ref to close dropdown when clicking outside */
   const ref = useClickOutside(() => setVisible(false));

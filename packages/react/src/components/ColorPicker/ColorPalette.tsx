@@ -71,7 +71,7 @@ export const DefaultPalette: ColorPalette = {
       { value: "#550070", description: "color.purple.darkest" },
       { value: "#7C2C96", description: "color.purple.dark" },
       { value: "#A348C0", description: "color.purple.medium" },
-      { value: "#E4E4E4", description: "color.purple.light", hue: "light" },
+      { value: "#D7B5E2", description: "color.purple.light", hue: "light" },
       { value: "#F6ECF9", description: "color.purple.lightest", hue: "light" },
     ],
     /* Red House */
