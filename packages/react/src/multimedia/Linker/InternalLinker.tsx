@@ -1,8 +1,17 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import {
+  FormEvent,
+  Ref,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
+import { Search } from "@edifice-ui/icons";
 import { App, IResource, odeServices } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
+import { Dropdown, FormControl, Grid, Input } from "../../components";
 import { useResourceSearch } from "../../core";
 
 /**
@@ -26,6 +35,8 @@ export interface InternalLinkerProps {
 /** The InternalLinker component */
 const InternalLinker = ({ appCode, onChange }: InternalLinkerProps) => {
   const { t } = useTranslation();
+  const inputRef: Ref<HTMLInputElement> = useRef(null);
+
   const { resourceApplications, loadResources } = useResourceSearch(appCode);
 
   const [options, setOptions] = useState<Array<ApplicationOption>>();
@@ -35,8 +46,6 @@ const InternalLinker = ({ appCode, onChange }: InternalLinkerProps) => {
   const [searchTerms, setSearchTerms] = useState<string | undefined>();
 
   const [resources, setResources] = useState<IResource[] | undefined>([]);
-
-  const focusRef = useRef<HTMLSelectElement>(null);
 
   // Update dropdown when available applications list is updated.
   useEffect(() => {
@@ -67,44 +76,85 @@ const InternalLinker = ({ appCode, onChange }: InternalLinkerProps) => {
       }).then((resources) => setResources(resources));
   }, [loadResources, onChange, searchTerms, selectedApplication]);
 
-  // Auto-focus and auto-select content in the link input field.
-  useEffect(() => {
-    focusRef.current?.focus();
-  }, []);
-
-  const handleApplicationChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    const option = options?.find(
-      (option) => option.application === event.target.value,
-    );
+  const handleClick = (option: ApplicationOption) => {
     onChange?.(option);
     setSelectedApplication(option);
   };
-  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerms(event.target.value);
+
+  const handleSubmit = useCallback(
+    (e: FormEvent) => {
+      setSearchTerms(inputRef.current?.value);
+      e.stopPropagation();
+      e.preventDefault();
+    },
+    [inputRef],
+  );
+
+  const handleToggleRssSelect = (/*_rss: IResource*/) => {
+    /*
+    const idx = selectedDocuments.findIndex((d) => d._id === doc._id);
+    if (idx < 0) {
+      selectedDocuments.push(doc);
+    } else {
+      selectedDocuments.splice(idx, 1);
+    }
+    setSelectedDocuments([...selectedDocuments]);
+    props.onSelect(selectedDocuments);
+    */
   };
 
   return (
-    <>
-      <select ref={focusRef} onChange={handleApplicationChange}>
-        {options?.map((option) => {
-          return (
-            <option
-              key={option.application}
-              value={option.application}
-              selected={selectedApplication?.application === option.application}
-            >
-              {option.displayName}
-            </option>
-          );
-        })}
-      </select>
-      <input
-        type="text"
-        placeholder={t("search")}
-        onChange={handleSearchChange}
-      />
-      <div>{resources?.map((resource) => resource.assetId)}</div>
-    </>
+    <Grid className="internal-linker flex-grow-1 rounded border gap-0 mt-24">
+      <Grid.Col sm="1" md="2" xl="3" className="border-bottom">
+        <div className="px-8 py-12">
+          <Dropdown>
+            <Dropdown.Trigger label={t("Dernière modif.")} variant="ghost" />
+            <Dropdown.Menu>
+              {options?.map((option) => (
+                <Dropdown.Item onClick={() => handleClick(option)}>
+                  Edit
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+      </Grid.Col>
+
+      <Grid.Col sm="3" md="6" xl="9" className="border-bottom">
+        <div className="d-flex align-items-center px-16 py-8">
+          <form className="search gap-16 d-flex" onSubmit={handleSubmit}>
+            <FormControl className="input-group" id="search">
+              <div className="input-group-text border-end-0">
+                <Search />
+              </div>
+              <Input
+                noValidationIcon
+                ref={inputRef}
+                placeholder={t("Placeholder text")}
+                size="md"
+                type="search"
+                className="border-start-0"
+              />
+            </FormControl>
+          </form>
+        </div>
+      </Grid.Col>
+
+      <Grid.Col sm="4" md="8" xl="12" className="list p-12 gap-8">
+        <ul>
+          {resources?.map((resource) => (
+            <li>
+              <p>
+                {resource.name}, {resource.creatorName}
+              </p>
+              <button onClick={() => handleToggleRssSelect(resource)}>
+                Select
+              </button>
+            </li>
+          ))}
+        </ul>
+      </Grid.Col>
+    </Grid>
   );
 };
 
