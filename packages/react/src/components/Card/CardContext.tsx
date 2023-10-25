@@ -2,18 +2,19 @@ import { createContext, useContext } from "react";
 
 import { IWebApp } from "edifice-ts-client";
 
-import { CardOptions, TooltipOptions } from "./Card";
+import { CardProps } from "./Card";
 
-export interface ContextProps {
-  options: CardOptions;
-  isLoading?: boolean;
-  classesTitle?: string;
-  app: IWebApp | undefined;
-  appCode?: string;
-  tooltips?: TooltipOptions;
+export interface CardContextProps
+  extends Omit<CardProps, "children" | "className"> {
+  app?: IWebApp | undefined;
+  appCode: string | undefined;
+  isSelectable?: boolean;
+  isClickable?: boolean;
+  onClick?: () => void;
+  onSelect?: () => void;
 }
 
-export const CardContext = createContext<ContextProps | null>(null!);
+export const CardContext = createContext<CardContextProps | null>(null!);
 
 CardContext.displayName = "CardContext";
 
