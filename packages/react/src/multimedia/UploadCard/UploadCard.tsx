@@ -132,7 +132,7 @@ const UploadCard = ({
                   {t("Retry")}
                 </Button>
               )}
-              {status !== "idle" && <div className="vr"></div>}
+              {!isIdle && <div className="vr"></div>}
               <IconButton
                 icon={<Wand />}
                 variant="ghost"
