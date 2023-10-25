@@ -22,6 +22,7 @@ export * from "./LoadingScreen";
 export * from "./Logo";
 export * from "./Modal";
 export * from "./Popover";
+export * from "./SelectList";
 export * from "./Radio";
 export * from "./Select";
 export * from "./Tooltip";
