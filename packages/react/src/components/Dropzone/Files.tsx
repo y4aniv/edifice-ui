@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { WorkspaceElement } from "edifice-ts-client";
 
 import { useDropzoneContext } from "./Dropzone";
 import useHandleFile from "../../hooks/useHandleFiles/useHandleFiles";
+import { UploadCard } from "../../multimedia";
 import { custumSize } from "../../utils/fileSize";
-import { Card } from "../Card";
 
 export interface FilesProps {
   uploadFile: WorkspaceElement | File;
@@ -16,30 +16,25 @@ export interface FilesProps {
 const Files = ({ uploadFile, index, handleDelete }: FilesProps) => {
   const { statusUpload, handleSave } = useHandleFile();
   const { setUploadFiles } = useDropzoneContext();
-  const [isLoading, setLoading] = useState(false);
 
   const callHandleSave = async () => {
-    setLoading(true);
     const result = await handleSave(uploadFile as File);
     setUploadFiles((olduploadFiles: any) => {
       const newArray = [...olduploadFiles];
       newArray[newArray.length - 1] = result;
       return newArray;
     });
-    setLoading(false);
   };
 
   const callHandleRetry = async () => {
-    setLoading(true);
     const result = await handleSave(uploadFile as File);
-
-    setUploadFiles((olduploadFiles: any) => {
-      const newArray = [...olduploadFiles];
-      newArray[newArray.length - index] = result;
-      return newArray;
-    });
-
-    setLoading(false);
+    if ((result as WorkspaceElement)._id) {
+      setUploadFiles((olduploadFiles: any) => {
+        const newArray = [...olduploadFiles];
+        newArray[newArray.length - index] = result;
+        return newArray;
+      });
+    }
   };
 
   useEffect(() => {
@@ -64,18 +59,16 @@ const Files = ({ uploadFile, index, handleDelete }: FilesProps) => {
   };
 
   return (
-    <Card
-      isLoading={isLoading}
-      options={{
-        type: "upload",
+    <UploadCard
+      status={statusUpload ? statusUpload : "loading"}
+      onDelete={() => handleDelete(uploadFile as WorkspaceElement, index)}
+      onEdit={() => console.log("edit")}
+      onRetry={() => callHandleRetry()}
+      item={{
         name: fileInfo.name,
-        status: statusUpload,
         info: fileInfo.info,
-        onDelete: () => handleDelete(uploadFile as WorkspaceElement, index),
-        onEdit: () => console.log("edit"),
-        onRetry: () => callHandleRetry(),
+        src: "",
       }}
-      app={undefined}
     />
   );
 };
