@@ -1,6 +1,8 @@
 import { useMemo, useState } from "react";
 
 import {
+  Applications,
+  Globe,
   ExternalLink,
   Folder,
   Mic,
@@ -179,16 +181,16 @@ const MediaLibrary = ({
     },
     linker: {
       id: "external",
-      icon: <ExternalLink />,
-      label: t("Lien externe"),
+      icon: <Globe />,
+      label: t("Liens externes"),
       content: <InnerTabs.Linker />,
       availableFor: ["hyperlink"],
       isEnable: null,
     },
     resource: {
       id: "resource",
-      icon: <Folder />,
-      label: t("Lien interne"),
+      icon: <Applications />,
+      label: t("Ressources internes"),
       content: <InnerTabs.Resource />,
       availableFor: ["hyperlink"],
       isEnable: null,

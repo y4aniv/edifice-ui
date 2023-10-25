@@ -104,43 +104,50 @@ const InternalLinker = ({ appCode, onChange }: InternalLinkerProps) => {
   };
 
   return (
-    <Grid className="internal-linker flex-grow-1 rounded border gap-0 mt-24">
-      <Grid.Col sm="1" md="2" xl="3" className="border-bottom">
-        <div className="px-8 py-12">
-          <Dropdown>
-            <Dropdown.Trigger label={t("Dernière modif.")} variant="ghost" />
-            <Dropdown.Menu>
-              {options?.map((option) => (
-                <Dropdown.Item onClick={() => handleClick(option)}>
-                  Edit
-                </Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
-        </div>
+    <Grid className="internal-linker w-100 rounded border gap-0">
+      <Grid.Col sm="4" md="8" xl="12" className="border-bottom">
+        <Grid className="bg-light rounded-top gap-0">
+          <Grid.Col sm="1" md="2" xl="3" className="border-end">
+            <div className="p-8">
+              <Dropdown>
+                <Dropdown.Trigger
+                  label={t("Dernière modif.")}
+                  variant="ghost"
+                />
+                <Dropdown.Menu>
+                  {options?.map((option) => (
+                    <Dropdown.Item onClick={() => handleClick(option)}>
+                      Edit
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+          </Grid.Col>
+          <Grid.Col sm="3" md="6" xl="9">
+            <form
+              className="gap-16 d-flex w-100 align-items-center px-16 py-8"
+              onSubmit={handleSubmit}
+            >
+              <FormControl className="input-group" id="search">
+                <div className="input-group-text border-end-0">
+                  <Search />
+                </div>
+                <Input
+                  noValidationIcon
+                  ref={inputRef}
+                  placeholder={t("Placeholder text")}
+                  size="md"
+                  type="search"
+                  className="border-start-0"
+                />
+              </FormControl>
+            </form>
+          </Grid.Col>
+        </Grid>
       </Grid.Col>
 
-      <Grid.Col sm="3" md="6" xl="9" className="border-bottom">
-        <div className="d-flex align-items-center px-16 py-8">
-          <form className="search gap-16 d-flex" onSubmit={handleSubmit}>
-            <FormControl className="input-group" id="search">
-              <div className="input-group-text border-end-0">
-                <Search />
-              </div>
-              <Input
-                noValidationIcon
-                ref={inputRef}
-                placeholder={t("Placeholder text")}
-                size="md"
-                type="search"
-                className="border-start-0"
-              />
-            </FormControl>
-          </form>
-        </div>
-      </Grid.Col>
-
-      <Grid.Col sm="4" md="8" xl="12" className="list p-12 gap-8">
+      <Grid.Col sm="4" md="8" xl="12" className="list">
         <ul>
           {resources?.map((resource) => (
             <li>
