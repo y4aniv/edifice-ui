@@ -50,7 +50,12 @@ export interface UseDropdownProps {
   setVisible: Dispatch<SetStateAction<boolean>>;
 }
 
-const useDropdown = (placement: Placement | undefined): UseDropdownProps => {
+const useDropdown = (
+  placement: Placement | undefined,
+  extraTriggerKeyDownHandler?: (
+    event: React.KeyboardEvent<HTMLButtonElement>,
+  ) => void,
+): UseDropdownProps => {
   /* Unique Dropdown Id */
   const id = useId();
 
@@ -162,6 +167,7 @@ const useDropdown = (placement: Placement | undefined): UseDropdownProps => {
           break;
       }
 
+      extraTriggerKeyDownHandler?.(event);
       stopEvents(flag, event);
     },
     [closeDropdown, openDropdown],
