@@ -21,15 +21,11 @@ const Files = ({ uploadFile, index, handleDelete }: FilesProps) => {
   const callHandleSave = async () => {
     setLoading(true);
     const result = await handleSave(uploadFile as File);
-
-    if ((result as WorkspaceElement)._id) {
-      setUploadFiles((olduploadFiles: any) => {
-        const newArray = [...olduploadFiles];
-        newArray[newArray.length - 1] = result;
-        return newArray;
-      });
-    }
-
+    setUploadFiles((olduploadFiles: any) => {
+      const newArray = [...olduploadFiles];
+      newArray[newArray.length - 1] = result;
+      return newArray;
+    });
     setLoading(false);
   };
 
@@ -37,21 +33,17 @@ const Files = ({ uploadFile, index, handleDelete }: FilesProps) => {
     setLoading(true);
     const result = await handleSave(uploadFile as File);
 
-    if ((result as WorkspaceElement)._id) {
-      setUploadFiles((olduploadFiles: any) => {
-        const newArray = [...olduploadFiles];
-        newArray[newArray.length - index] = result;
-        return newArray;
-      });
-    }
+    setUploadFiles((olduploadFiles: any) => {
+      const newArray = [...olduploadFiles];
+      newArray[newArray.length - index] = result;
+      return newArray;
+    });
 
     setLoading(false);
   };
 
   useEffect(() => {
-    if (!(uploadFile as WorkspaceElement)._id) {
-      callHandleSave();
-    }
+    callHandleSave();
   }, []);
 
   const fileInfo = {

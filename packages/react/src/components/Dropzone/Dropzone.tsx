@@ -55,7 +55,7 @@ interface DropzoneProps {
 const Dropzone = ({
   className,
   accept,
-  multiple = true,
+  multiple,
   handle = false,
   importMessage,
   onSuccess,
@@ -65,13 +65,14 @@ const Dropzone = ({
   const { handleDelete, setUploadFiles, uploadFiles } = useHandleFile();
 
   const handleInputChange = (files: FileList | null) => {
-    if (files && (accept?.includes(files[0].type) || accept?.length === 0)) {
-      const file = files?.[0];
-      if (file) {
-        setUploadFiles(
-          multiple ? (oldAttachments) => [...oldAttachments, file] : [file],
-        );
-      }
+    if (files?.length) {
+      setUploadFiles((oldAttachments) => {
+        const newArray = [...oldAttachments];
+        for (let i = 0; i < files?.length; i++) {
+          newArray.push(files[i]);
+        }
+        return newArray;
+      });
     }
   };
 
@@ -130,7 +131,7 @@ const Dropzone = ({
         <input
           ref={inputRef}
           accept={accept?.join(",")}
-          multiple
+          multiple={multiple}
           type="file"
           name="attachment-input"
           id="attachment-input"

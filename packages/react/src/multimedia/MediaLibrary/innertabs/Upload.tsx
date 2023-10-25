@@ -27,7 +27,6 @@ export const Upload = () => {
   };
 
   const handleSuccess = (res: WorkspaceElement[]) => {
-    console.log(res);
     context.setResultCounter(res.length);
     if (res.length !== 0) {
       context.setResult(res);
