@@ -12,7 +12,7 @@ import {
 import { usePaths } from "../../core";
 import { Status } from "../../utils/Status";
 
-const typeAcceptEdit = ["png", "jpeg"]
+const typeAcceptEdit = ["png", "jpeg"];
 export interface UploadItemProps {
   /**
    * File's image
