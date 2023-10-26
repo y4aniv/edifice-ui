@@ -65,7 +65,7 @@ const Dropzone = ({
   const { handleDelete, setUploadFiles, uploadFiles } = useHandleFile();
 
   const handleInputChange = (files: FileList | null) => {
-    if (files?.length) {
+    if (files && (accept?.includes(files[0].type) || accept?.length === 0)) {
       setUploadFiles((oldAttachments) => {
         const newArray = [...oldAttachments];
         for (let i = 0; i < files?.length; i++) {

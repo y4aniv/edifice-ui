@@ -12,6 +12,7 @@ import {
 import { usePaths } from "../../core";
 import { Status } from "../../utils/Status";
 
+const typeAcceptEdit = ["png", "jpeg"]
 export interface UploadItemProps {
   /**
    * File's image
@@ -133,14 +134,16 @@ const UploadCard = ({
                 </Button>
               )}
               {!isIdle && <div className="vr"></div>}
-              <IconButton
-                icon={<Wand />}
-                variant="ghost"
-                aria-label="edit"
-                disabled={isLoading || !isSuccess}
-                onClick={onEdit}
-                color="secondary"
-              />
+              {typeAcceptEdit.find((el) => el === info?.type) && (
+                <IconButton
+                  icon={<Wand />}
+                  variant="ghost"
+                  aria-label="edit"
+                  disabled={isLoading || !isSuccess}
+                  onClick={onEdit}
+                  color="secondary"
+                />
+              )}
               <IconButton
                 icon={<Close />}
                 variant="ghost"

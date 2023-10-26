@@ -21,7 +21,7 @@ const Files = ({ uploadFile, index, handleDelete }: FilesProps) => {
     const result = await handleSave(uploadFile as File);
     setUploadFiles((olduploadFiles: any) => {
       const newArray = [...olduploadFiles];
-      newArray[newArray.length - 1] = result;
+      newArray[index] = result;
       return newArray;
     });
   };
@@ -55,20 +55,16 @@ const Files = ({ uploadFile, index, handleDelete }: FilesProps) => {
         1,
       ),
     },
-    //imageSrc: URL.createObjectURL(uploadFile as File),
+    src: `/workspace/document/${(uploadFile as WorkspaceElement)._id}`,
   };
 
   return (
     <UploadCard
-      status={statusUpload ? statusUpload : "loading"}
+      status={statusUpload}
       onDelete={() => handleDelete(uploadFile as WorkspaceElement, index)}
       onEdit={() => console.log("edit")}
       onRetry={() => callHandleRetry()}
-      item={{
-        name: fileInfo.name,
-        info: fileInfo.info,
-        src: "",
-      }}
+      item={fileInfo}
     />
   );
 };

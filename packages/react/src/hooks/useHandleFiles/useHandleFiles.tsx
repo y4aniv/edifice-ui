@@ -2,17 +2,16 @@ import { useState } from "react";
 
 import { WorkspaceElement, odeServices } from "edifice-ts-client";
 
-import { Status } from "../../components";
+import { Status } from "../../utils/Status";
 
 export default function useHandleFile() {
-  const [isLoading, setLoading] = useState(false);
   const [statusUpload, setStatusUpload] = useState<Status | undefined>();
   const [uploadFiles, setUploadFiles] = useState<(WorkspaceElement | File)[]>(
     [],
   );
 
   async function handleSave(file: File) {
-    setStatusUpload(undefined);
+    setStatusUpload("loading");
 
     try {
       const fileUpload = await odeServices.workspace().saveFile(file);
@@ -46,9 +45,7 @@ export default function useHandleFile() {
     uploadFiles,
     setUploadFiles,
     handleSave,
-    isLoading,
     statusUpload,
     handleDelete,
-    setLoading,
   };
 }
