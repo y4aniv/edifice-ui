@@ -12,14 +12,14 @@ const RESOURCE = "mindmap";
 
 export class MindmapResourceService extends ResourceService {
   async create(parameters: CreateParameters): Promise<CreateResult> {
-    const fixThumb = parameters.thumbnail
+    const thumbnail = parameters.thumbnail
       ? await this.getThumbnailPath(parameters.thumbnail)
       : "";
 
     const res = await this.http.post<{ _id: string }>(`/mindmap`, {
       name: parameters.name,
       description: parameters.description,
-      thumbnail: fixThumb,
+      thumbnail,
       folder: parameters.folder,
       map: `<map version="tango" theme="prism"><topic central="true" text="${parameters.name}"/></map>`,
       trashed: false,
@@ -28,23 +28,23 @@ export class MindmapResourceService extends ResourceService {
 
     this.checkHttpResponse(res);
 
-    return { entId: res._id, thumbnail: fixThumb };
+    return { entId: res._id, thumbnail };
   }
 
   async update(parameters: MindmapUpdate): Promise<UpdateResult> {
-    const fixThumb = parameters.thumbnail
+    const thumbnail = parameters.thumbnail
       ? await this.getThumbnailPath(parameters.thumbnail)
       : "";
     const res = await this.http.put<IResource>(`/mindmap/${parameters.entId}`, {
       trashed: parameters.trashed,
       _id: parameters.entId,
       name: parameters.name,
-      thumbnail: fixThumb,
+      thumbnail,
       description: parameters.description,
       visibility: parameters.public ? "PUBLIC" : "OWNER",
     });
     this.checkHttpResponse(res);
-    return { thumbnail: fixThumb, entId: parameters.entId } as UpdateResult;
+    return { thumbnail, entId: parameters.entId } as UpdateResult;
   }
   getResourceType(): ResourceType {
     return RESOURCE;
