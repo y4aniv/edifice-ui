@@ -40,7 +40,7 @@ export const Upload = () => {
   };
 
   return (
-    <div className="py-8">
+    <div className="py-8 flex-grow-1">
       <Dropzone
         multiple
         accept={acceptTypeFile(context.type ?? "embedder")}

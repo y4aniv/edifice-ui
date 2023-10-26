@@ -71,6 +71,19 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
   const sharedRef = useRef<TreeViewHandlers>(null);
   const protectRef = useRef<TreeViewHandlers>(null);
 
+  const [currentFilter, setCurrentFilter] =
+    useState<WorkspaceSearchFilter>("owner");
+
+  const [currentNode, setCurrentNode] = useState<FolderNode>(owner);
+
+  const [documents, setDocuments] = useState<WorkspaceElement[]>([]);
+
+  const [searchTerm, setSearchTerm] = useState<string | undefined>(null!);
+
+  const [selectedDocuments, setSelectedDocuments] = useState<
+    WorkspaceElement[]
+  >([]);
+
   /**
    * Retrieve the stateful TreeNode matching a WorkspaceSearchFilter value
    */
@@ -93,18 +106,10 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
     [owner, protect, shared],
   );
 
-  const [currentFilter, setCurrentFilter] =
-    useState<WorkspaceSearchFilter>("owner");
-
-  const [currentNode, setCurrentNode] = useState<FolderNode>(owner);
-
-  const [documents, setDocuments] = useState<WorkspaceElement[]>([]);
-
-  const [searchTerm, setSearchTerm] = useState<string | undefined>(null!);
-
-  const [selectedDocuments, setSelectedDocuments] = useState<
-    WorkspaceElement[]
-  >([]);
+  useEffect(() => {
+    if (currentFilter === "owner")
+      ownerRef.current && ownerRef.current.select("owner");
+  }, [currentFilter]);
 
   /**
    * Load current node children (folders and files)
@@ -202,12 +207,7 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
 
   return (
     <Grid className={workspace}>
-      <Grid.Col
-        sm="12"
-        md="3"
-        xl="4"
-        className="folders border-end p-12 gap-12"
-      >
+      <Grid.Col sm="12" md="3" xl="4" className="workspace-folders p-12 gap-12">
         <TreeView
           ref={ownerRef}
           data={owner}
@@ -234,7 +234,7 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
       <Grid.Col sm="12" md="5" xl="8">
         <Grid className="flex-grow-1 gap-0">
           <Grid.Col sm="4" md="8" xl="12">
-            <div className="search border-bottom px-16 py-8 ">
+            <div className="workspace-search px-16 py-8 ">
               <form className="gap-16 d-flex" onSubmit={handleSearchSubmit}>
                 <FormControl className="input-group" id="search">
                   <Input
