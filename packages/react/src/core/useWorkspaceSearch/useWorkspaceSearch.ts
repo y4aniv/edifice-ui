@@ -83,14 +83,14 @@ export default function useWorkspaceSearch(
         // If mocked data is available, use it. Otherwise load from server.
         const payload = mock?.listWorkspaceDocuments
           ? await mock?.listWorkspaceDocuments?.().then((results) =>
-              results.map((r) => {
+              results.map((result) => {
                 // Generate random IDs to prevent infinite recursion
                 const ret = {
-                  ...r,
+                  ...result,
                   _id: "" + Math.round(Math.random() * 9999),
                 };
                 ret.name =
-                  r.eType == "folder"
+                  result.eType == "folder"
                     ? "folder id=" + ret._id
                     : "file id=" + ret._id;
                 return ret;
@@ -110,7 +110,7 @@ export default function useWorkspaceSearch(
             const role = DocumentHelper.getRole(f);
             if (typeof format === "string") return format === role;
             if (Array.isArray(format))
-              return format.findIndex((r) => r === role) >= 0;
+              return format.findIndex((format) => format === role) >= 0;
             return false; // should not happen
           })
           .forEach((doc) => {
