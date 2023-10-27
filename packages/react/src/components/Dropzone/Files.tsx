@@ -3,34 +3,37 @@ import { useEffect } from "react";
 import { WorkspaceElement } from "edifice-ts-client";
 
 import { useDropzoneContext } from "./Dropzone";
-import useHandleFile from "../../hooks/useHandleFiles/useHandleFiles";
+import useHandleFile from "../../hooks/useHandleFile/useHandleFile";
 import { UploadCard } from "../../multimedia";
-import { custumSize } from "../../utils/fileSize";
+import { customSize } from "../../utils/fileSize";
 
 export interface FilesProps {
   uploadFile: WorkspaceElement | File;
   index: number;
-  handleDelete: any;
+  handleDelete: (element: WorkspaceElement, index: number) => void;
 }
 
 const Files = ({ uploadFile, index, handleDelete }: FilesProps) => {
-  const { statusUpload, handleSave } = useHandleFile();
+  const { status, saveFile } = useHandleFile();
   const { setUploadFiles } = useDropzoneContext();
 
-  const callHandleSave = async () => {
-    const result = await handleSave(uploadFile as File);
-    setUploadFiles((olduploadFiles: any) => {
-      const newArray = [...olduploadFiles];
+  const responseFile = uploadFile as WorkspaceElement;
+  const file = uploadFile as File;
+
+  const handleSave = async () => {
+    const result = await saveFile(file);
+    setUploadFiles((prevFiles: any) => {
+      const newArray = [...prevFiles];
       newArray[index] = result;
       return newArray;
     });
   };
 
-  const callHandleRetry = async () => {
-    const result = await handleSave(uploadFile as File);
+  const handleRetry = async () => {
+    const result = await saveFile(file);
     if ((result as WorkspaceElement)._id) {
-      setUploadFiles((olduploadFiles: any) => {
-        const newArray = [...olduploadFiles];
+      setUploadFiles((prevFiles: any) => {
+        const newArray = [...prevFiles];
         newArray[newArray.length - index] = result;
         return newArray;
       });
@@ -38,32 +41,28 @@ const Files = ({ uploadFile, index, handleDelete }: FilesProps) => {
   };
 
   useEffect(() => {
-    callHandleSave();
+    (async () => {
+      handleSave();
+    })();
   }, []);
 
   const fileInfo = {
-    name:
-      (uploadFile as WorkspaceElement).metadata?.filename ||
-      (uploadFile as File).name,
+    name: responseFile.metadata?.filename || file.name,
     info: {
       type:
-        (uploadFile as WorkspaceElement).metadata?.["content-type"]?.match(
-          /([^/]+$)/,
-        )?.[0] || (uploadFile as File).type,
-      weight: custumSize(
-        (uploadFile as WorkspaceElement)?.metadata?.size || 0,
-        1,
-      ),
+        responseFile.metadata?.["content-type"]?.match(/([^/]+$)/)?.[0] ||
+        file.type,
+      weight: customSize(responseFile?.metadata?.size || 0, 1),
     },
-    src: `/workspace/document/${(uploadFile as WorkspaceElement)._id}`,
+    src: `/workspace/document/${responseFile._id}`,
   };
 
   return (
     <UploadCard
-      status={statusUpload}
+      status={status}
       onDelete={() => handleDelete(uploadFile as WorkspaceElement, index)}
       onEdit={() => console.log("edit")}
-      onRetry={() => callHandleRetry()}
+      onRetry={() => handleRetry()}
       item={fileInfo}
     />
   );

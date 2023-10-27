@@ -13,7 +13,7 @@ import DropzoneDrag from "./DropzoneDrag";
 import DropzoneFile from "./DropzoneFile";
 import DropzoneImport from "./DropzoneImport";
 import { useDropzone } from "../../hooks";
-import useHandleFile from "../../hooks/useHandleFiles/useHandleFiles";
+import useHandleFile from "../../hooks/useHandleFile/useHandleFile";
 
 export interface AttachmentType {
   type: string;
@@ -90,7 +90,7 @@ const Dropzone = ({
     className,
   );
 
-  const contextValue = useMemo(
+  const value = useMemo(
     () => ({
       inputRef,
       importMessage,
@@ -106,7 +106,7 @@ const Dropzone = ({
   }, [uploadFiles]);
 
   return (
-    <DropzoneContext.Provider value={contextValue}>
+    <DropzoneContext.Provider value={value}>
       <div
         className={classes}
         onDragEnter={handleDragging}

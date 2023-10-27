@@ -167,7 +167,7 @@ const MediaLibrary = ({
       label: t("Captation vidéo"),
       content: <InnerTabs.Video />,
       availableFor: ["video"],
-      isEnable: () => (!videoCaptureWorkflow ? true : false),
+      isEnable: () => (videoCaptureWorkflow ? true : false),
     },
     "audio-capture": {
       id: "audio",
@@ -246,7 +246,9 @@ const MediaLibrary = ({
   );
   const handleTabChange = async () => {
     // Reset any existing result
-    await odeServices.workspace().deleteFile(result);
+    if (result) {
+      await odeServices.workspace().deleteFile(result);
+    }
     setResult(undefined);
     setResultCounter(undefined);
   };
@@ -256,8 +258,10 @@ const MediaLibrary = ({
   }
 
   const closeModal = async () => {
+    if (result) {
+      await odeServices.workspace().deleteFile(result);
+    }
     onCancel();
-    await odeServices.workspace().deleteFile(result);
   };
 
   return type ? (

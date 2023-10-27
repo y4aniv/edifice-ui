@@ -5,26 +5,26 @@ import { WorkspaceElement, odeServices } from "edifice-ts-client";
 import { Status } from "../../utils/Status";
 
 export default function useHandleFile() {
-  const [statusUpload, setStatusUpload] = useState<Status | undefined>();
+  const [status, setStatus] = useState<Status | undefined>("idle");
   const [uploadFiles, setUploadFiles] = useState<(WorkspaceElement | File)[]>(
     [],
   );
 
-  async function handleSave(file: File) {
-    setStatusUpload("loading");
+  async function saveFile(file: File) {
+    setStatus("loading");
 
     try {
-      const fileUpload = await odeServices.workspace().saveFile(file);
+      const doc = await odeServices.workspace().saveFile(file);
 
-      if (fileUpload._id) {
-        setStatusUpload("success");
-        return fileUpload;
+      if (doc._id) {
+        setStatus("success");
+        return doc;
       } else {
-        setStatusUpload("error");
+        setStatus("error");
         return file;
       }
     } catch (e) {
-      setStatusUpload("error");
+      setStatus("error");
       console.log(e);
       return file;
     }
@@ -44,8 +44,8 @@ export default function useHandleFile() {
   return {
     uploadFiles,
     setUploadFiles,
-    handleSave,
-    statusUpload,
+    saveFile,
+    status,
     handleDelete,
   };
 }
