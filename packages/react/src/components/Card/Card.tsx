@@ -33,13 +33,13 @@ export interface CardProps {
   /**
    * Click on card
    */
-  onClick?: () => void;
+  onClick?: (item?: any) => void;
   /**
    * Select a card with option menu
    */
-  onSelect?: () => void;
+  onSelect?: (item?: any) => void;
   /* Children Node */
-  children: ReactNode | ((...props: any) => ReactNode);
+  children?: ReactNode | ((...props: any) => ReactNode);
   /**
    * Optional class for styling purpose
    */
@@ -82,6 +82,7 @@ const Root = forwardRef(
             "card",
             {
               "is-selected": isSelected,
+              "c-pointer": isClickable,
             },
             className,
           )}

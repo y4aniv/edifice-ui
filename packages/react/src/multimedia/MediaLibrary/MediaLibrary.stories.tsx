@@ -19,6 +19,7 @@ const mockedDocuments: WorkspaceElement[] = [
     children: null!,
     created: null as any,
     owner: null as any,
+    ownerName: "Tom Mate",
   },
   {
     _id: "folder2",
