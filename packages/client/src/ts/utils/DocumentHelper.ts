@@ -48,6 +48,9 @@ const defaultMappers = {
   txt: function ({ type, extension }: RoleMapperParams) {
     return MimeTypeUtils.INSTANCE.isTxtLike(type, extension);
   },
+  md: function ({ type, extension }: RoleMapperParams) {
+    return MimeTypeUtils.INSTANCE.isMdLike(type, extension);
+  },
   video: function ({ type }: RoleMapperParams) {
     return type.indexOf("video") !== -1;
   },
@@ -73,7 +76,7 @@ export abstract class DocumentHelper {
   private static roleMappers: RoleMapper[] = [
     (params: RoleMapperParams): Role | undefined => {
       const keys: Role[] = Object.keys(defaultMappers) as Role[];
-      return keys.find((t) => defaultMappers[t as unknown as Role](params));
+      return keys.find((key) => defaultMappers[key as unknown as Role](params));
     },
   ];
 
@@ -88,16 +91,16 @@ export abstract class DocumentHelper {
 
   /* Similar role notion as in infra-front > workspace > Model.ts */
   static role(
-    fileType: string | undefined,
+    contentType: string | undefined,
     previewRole: boolean = false,
     extension?: string,
   ): Role | "unknown" {
     extension && (extension = extension.trim());
-    if (!fileType) return "unknown";
+    if (!contentType) return "unknown";
     if (!this.roleMappers) {
-      console.warn("[DocumentHelper.role] should not have emptyRoles", this);
+      console.warn("[DocumentHelper.role] should not have empty roles", this);
     }
-    const params = { type: fileType, previewRole, extension };
+    const params = { type: contentType, previewRole, extension };
     for (const roleMapper of this.roleMappers) {
       const role = roleMapper(params);
       if (role) {
