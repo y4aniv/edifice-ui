@@ -63,13 +63,15 @@ const ResourceCard = ({
       {(appCode) => (
         <>
           <Card.Body>
-            <div className="card-image medium">
+            <div className="card-image">
               {resource?.thumbnail ? (
                 <Image
                   alt=""
+                  height={80}
+                  width={80}
                   src={resource?.thumbnail}
                   objectFit="cover"
-                  className={"h-full"}
+                  className="rounded h-full"
                 />
               ) : (
                 <AppIcon

@@ -24,6 +24,7 @@ import {
 } from "../../components";
 import { Role, useWorkspaceSearch } from "../../core";
 import { FolderNode } from "../../core/useWorkspaceSearch/useWorkspaceSearch";
+import { FileCard } from "../FileCard";
 
 /**
  * MediaLibrary component properties
@@ -276,19 +277,18 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
               </Dropdown>
             </div>
           </Grid.Col>
-          <Grid.Col sm="4" md="8" xl="12" className="list p-12 gap-8">
-            <ul>
-              {documents.map((doc) => (
-                <li>
-                  <p>
-                    {doc.name}, {doc.ownerName}
-                  </p>
-                  <button onClick={() => handleToggleDocSelect(doc)}>
-                    Select
-                  </button>
-                </li>
-              ))}
-            </ul>
+          <Grid.Col sm="4" md="8" xl="12" className="p-8 gap-8">
+            <div className="grid grid-workspace">
+              {documents.map((doc) => {
+                return (
+                  <FileCard
+                    key={doc._id}
+                    doc={doc}
+                    onClick={handleToggleDocSelect}
+                  />
+                );
+              })}
+            </div>
           </Grid.Col>
         </Grid>
       </Grid.Col>
