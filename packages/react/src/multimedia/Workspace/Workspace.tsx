@@ -280,7 +280,6 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
           <Grid.Col sm="4" md="8" xl="12" className="p-8 gap-8">
             <div className="grid grid-workspace">
               {documents.map((doc) => {
-                console.log({ doc });
                 return (
                   <FileCard
                     key={doc._id}

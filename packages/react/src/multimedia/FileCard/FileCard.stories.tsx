@@ -7,7 +7,7 @@ const meta: Meta<typeof FileCard> = {
   component: FileCard,
   args: {
     isSelectable: false,
-    isClickable: false,
+    isClickable: true,
     isSelected: false,
     doc: {
       _id: "1",
@@ -56,6 +56,13 @@ export const AudioFile: Story = {
       },
     },
   },
+  parameters: {
+    docs: {
+      description: {
+        story: "Formats supported: mp3, wav, ...",
+      },
+    },
+  },
 };
 
 export const ImageFile: Story = {
@@ -83,7 +90,7 @@ export const ImageFile: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Formats supported: png, jpg, svg, eps, ...",
+        story: "Formats supported: png, jpg, svg, tiff, ...",
       },
     },
   },
@@ -114,7 +121,7 @@ export const VideoFile: Story = {
   parameters: {
     docs: {
       description: {
-        story: "Formats supported: png, jpg, svg, eps, ...",
+        story: "Formats supported: mp4, avi, mov, webm ...",
       },
     },
   },
@@ -253,6 +260,13 @@ export const ZipFile: Story = {
       },
     },
   },
+  parameters: {
+    docs: {
+      description: {
+        story: "Formats supported: zip, rar, tar, 7z",
+      },
+    },
+  },
 };
 
 export const CsvFile: Story = {
@@ -313,6 +327,37 @@ export const XlsFile: Story = {
       description: {
         story:
           "Formats supported: xls, xlt, xla, xlsx, xltx, xlsm, xltm, xlam, xlsb, ods, ots",
+      },
+    },
+  },
+};
+
+export const MdFile: Story = {
+  render: (args) => {
+    return <FileCard {...args} />;
+  },
+  args: {
+    ...Base.args,
+    doc: {
+      _id: "1",
+      name: "File's name",
+      eType: "file",
+      eParent: "",
+      _isShared: false,
+      _shared: [],
+      children: null!,
+      created: null as any,
+      owner: null as any,
+      ownerName: "Tom mate",
+      metadata: {
+        "content-type": "text/markdown",
+      },
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Formats supported: md",
       },
     },
   },

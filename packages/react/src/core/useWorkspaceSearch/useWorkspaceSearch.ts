@@ -1,9 +1,8 @@
 import { useCallback, useReducer } from "react";
 
-import { odeServices } from "edifice-ts-client";
+import { DocumentHelper, Role, odeServices } from "edifice-ts-client";
 import { ID, WorkspaceElement, WorkspaceSearchFilter } from "edifice-ts-client";
 
-import { DocumentHelper, Role } from "./DocumentHelper";
 import { TreeNode } from "../../components";
 import { useMockedData } from "../../utils";
 import { useHasWorkflow } from "../useHasWorkflow";

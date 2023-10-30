@@ -434,7 +434,7 @@ const VideoRecorder = ({
   ];
 
   return (
-    <div className="video-recorder d-flex flex-column align-items-center">
+    <div className="video-recorder d-flex flex-fill flex-column align-items-center">
       <div className="video-recorder-caption m-12">{caption}</div>
       {inputDevices.length > 1 && (
         <div className="video-recorder-devices mb-12">
