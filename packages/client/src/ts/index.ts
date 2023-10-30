@@ -32,3 +32,6 @@ export * from "./apps/timeline/interfaces";
 
 //---------------------------------- SERVICES ----------------------------------
 export * from "./services";
+
+//---------------------------------- UTILS ----------------------------------
+export * from "./utils";
