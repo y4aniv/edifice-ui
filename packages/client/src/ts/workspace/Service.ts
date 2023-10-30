@@ -1,5 +1,5 @@
-import { FileTypeUtils } from "../utils/FileTypeUtils";
 import { OdeServices } from "../services/OdeServices";
+import { DocumentHelper } from "../utils/DocumentHelper";
 import { ID, WorkspaceElement, WorkspaceSearchFilter } from "./interface";
 
 interface ElementQuery {
@@ -65,7 +65,7 @@ export class WorkspaceService {
       filename: tmpName,
       size: file.size,
       extension,
-      role: FileTypeUtils.getFileType(contentType, false, extension),
+      role: DocumentHelper.role(contentType, false, extension),
     };
     const name = tmpName.replace("." + metadata.extension, "");
     const fullname = metadata.extension
@@ -136,5 +136,12 @@ export class WorkspaceService {
     parentId?: ID,
   ): Promise<WorkspaceElement[]> {
     return this.fetchDocuments({ filter, parentId, includeall: true });
+  }
+
+  getThumbnailUrl(doc: WorkspaceElement) {
+    const thumbnails = doc.thumbnails;
+    return thumbnails
+      ? `/workspace/document/${doc._id}?thumbnail=${Object.keys(thumbnails)[0]}`
+      : `/workspace/document/${doc._id}`;
   }
 }

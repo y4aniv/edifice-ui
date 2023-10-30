@@ -50,6 +50,10 @@ export interface WorkspaceElement {
   //visibility
   protected?: boolean;
   public?: boolean;
+  /**
+   * Get multimedia thumbnails
+   * */
+  thumbnails?: { [thumbSize: string]: string };
 }
 
 /** Supported view preferences */

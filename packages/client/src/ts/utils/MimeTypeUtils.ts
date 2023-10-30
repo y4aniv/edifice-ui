@@ -193,11 +193,11 @@ export class MimeTypeUtils {
     this.csvContentType.add("application/csv");
   }
 
-  getContentTypeForExtension(extension: string): string | undefined {
+  getContentTypeForExtension(extension: string): string | null {
     if (this.fileExtensionMap.has(extension)) {
-      return this.fileExtensionMap.get(extension);
+      return this.fileExtensionMap.get(extension) ?? null;
     }
-    return undefined;
+    return null;
   }
 
   getExtensionForContentType(contentType: string): string | null {
