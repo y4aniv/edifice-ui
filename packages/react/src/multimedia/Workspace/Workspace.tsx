@@ -9,7 +9,11 @@ import {
 
 import { Search } from "@edifice-ui/icons";
 import clsx from "clsx";
-import { WorkspaceElement, WorkspaceSearchFilter } from "edifice-ts-client";
+import {
+  Role,
+  WorkspaceElement,
+  WorkspaceSearchFilter,
+} from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -22,7 +26,7 @@ import {
   TreeView,
   TreeViewHandlers,
 } from "../../components";
-import { Role, useWorkspaceSearch } from "../../core";
+import { useWorkspaceSearch } from "../../core";
 import { FolderNode } from "../../core/useWorkspaceSearch/useWorkspaceSearch";
 import { FileCard } from "../FileCard";
 
@@ -193,44 +197,57 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
     [inputRef],
   );
 
-  const handleToggleDocSelect = (doc: WorkspaceElement) => {
-    const idx = selectedDocuments.findIndex((d) => d._id === doc._id);
-    if (idx < 0) {
-      selectedDocuments.push(doc);
+  function handleSelectDoc(doc: WorkspaceElement) {
+    let currentDocuments = [...selectedDocuments];
+    if (currentDocuments.includes(doc)) {
+      currentDocuments = currentDocuments.filter(
+        (selectedDocument) => selectedDocument._id !== doc._id,
+      );
     } else {
-      selectedDocuments.splice(idx, 1);
+      currentDocuments = [...currentDocuments, doc];
     }
-    setSelectedDocuments([...selectedDocuments]);
-    onSelect(selectedDocuments);
-  };
+    setSelectedDocuments(currentDocuments);
+    onSelect(currentDocuments);
+  }
 
   const workspace = clsx("workspace flex-grow-1 gap-0", className);
 
   return (
     <Grid className={workspace}>
-      <Grid.Col sm="12" md="3" xl="4" className="workspace-folders p-12 gap-12">
-        <TreeView
-          ref={ownerRef}
-          data={owner}
-          onTreeItemSelect={(nodeId) => selectAndLoadContent("owner", nodeId)}
-          onTreeItemUnfold={(nodeId) => selectAndLoadContent("owner", nodeId)}
-        />
-        <TreeView
-          ref={sharedRef}
-          data={shared}
-          onTreeItemSelect={(nodeId) => selectAndLoadContent("shared", nodeId)}
-          onTreeItemUnfold={(nodeId) => selectAndLoadContent("shared", nodeId)}
-        />
-        <TreeView
-          ref={protectRef}
-          data={protect}
-          onTreeItemSelect={(nodeId) =>
-            selectAndLoadContent("protected", nodeId)
-          }
-          onTreeItemUnfold={(nodeId) =>
-            selectAndLoadContent("protected", nodeId)
-          }
-        />
+      <Grid.Col
+        sm="12"
+        md="3"
+        xl="4"
+        className="workspace-folders p-12 pt-0 gap-12"
+      >
+        <div style={{ position: "sticky", top: 0, paddingTop: "1.2rem" }}>
+          <TreeView
+            ref={ownerRef}
+            data={owner}
+            onTreeItemSelect={(nodeId) => selectAndLoadContent("owner", nodeId)}
+            onTreeItemUnfold={(nodeId) => selectAndLoadContent("owner", nodeId)}
+          />
+          <TreeView
+            ref={sharedRef}
+            data={shared}
+            onTreeItemSelect={(nodeId) =>
+              selectAndLoadContent("shared", nodeId)
+            }
+            onTreeItemUnfold={(nodeId) =>
+              selectAndLoadContent("shared", nodeId)
+            }
+          />
+          <TreeView
+            ref={protectRef}
+            data={protect}
+            onTreeItemSelect={(nodeId) =>
+              selectAndLoadContent("protected", nodeId)
+            }
+            onTreeItemUnfold={(nodeId) =>
+              selectAndLoadContent("protected", nodeId)
+            }
+          />
+        </div>
       </Grid.Col>
       <Grid.Col sm="12" md="5" xl="8">
         <Grid className="flex-grow-1 gap-0">
@@ -280,11 +297,13 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
           <Grid.Col sm="4" md="8" xl="12" className="p-8 gap-8">
             <div className="grid grid-workspace">
               {documents.map((doc) => {
+                const isSelected = selectedDocuments.includes(doc);
                 return (
                   <FileCard
                     key={doc._id}
                     doc={doc}
-                    onClick={handleToggleDocSelect}
+                    isSelected={isSelected}
+                    onClick={() => handleSelectDoc(doc)}
                   />
                 );
               })}

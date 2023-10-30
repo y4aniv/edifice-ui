@@ -1,4 +1,4 @@
-import { Mic, Paperclip, Landscape, Video } from "@edifice-ui/icons";
+import { Mic, Landscape, Video, TextPage } from "@edifice-ui/icons";
 import clsx from "clsx";
 import {
   WorkspaceElement,
@@ -9,6 +9,7 @@ import {
 
 import FileIcon from "./FileIcon";
 import { Card, CardProps } from "../../components";
+import { useThumbnail } from "../../hooks/useThumbnail";
 
 export interface FileCardProps extends CardProps {
   /**
@@ -74,7 +75,7 @@ const FileCard = ({
         color: "bg-blue-200",
       },
       unknown: {
-        icon: <Paperclip width={22} height={22} />,
+        icon: <TextPage width={22} height={22} />,
         color: "bg-gray-300",
       },
     };
@@ -92,6 +93,13 @@ const FileCard = ({
       ? odeServices.workspace().getThumbnailUrl(doc)
       : null;
 
+  const hasThumbnail = useThumbnail(mediaSrc!);
+
+  const imageStyles = hasThumbnail && {
+    backgroundImage: `url(${mediaSrc})`,
+    backgroundSize: "cover",
+  };
+
   return (
     <Card
       className={clsx("card-file", className)}
@@ -105,11 +113,12 @@ const FileCard = ({
           className={file}
           style={{
             aspectRatio: "16/10",
-            backgroundImage: `url(${mediaSrc})`,
-            backgroundSize: "cover",
+            ...imageStyles,
           }}
         >
-          <FileIcon roleMap={getRoleMap(type)} />
+          {type !== "img" || (type === "img" && !hasThumbnail) ? (
+            <FileIcon type={type} roleMap={getRoleMap(type)} />
+          ) : null}
         </div>
         <div className="mt-4">
           <Card.Text>{doc.name}</Card.Text>
