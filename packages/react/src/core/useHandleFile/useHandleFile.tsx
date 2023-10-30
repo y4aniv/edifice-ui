@@ -19,9 +19,6 @@ export default function useHandleFile() {
       if (doc._id) {
         setStatus("success");
         return doc;
-      } else {
-        setStatus("error");
-        return file;
       }
     } catch (e) {
       setStatus("error");
@@ -33,9 +30,7 @@ export default function useHandleFile() {
   async function handleDelete(element: WorkspaceElement, index: number) {
     try {
       await odeServices.workspace().deleteFile([element]);
-      setUploadFiles((oldUploadFiles) =>
-        oldUploadFiles.filter((_, i) => i !== index),
-      );
+      setUploadFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
     } catch (e) {
       console.log(e);
     }

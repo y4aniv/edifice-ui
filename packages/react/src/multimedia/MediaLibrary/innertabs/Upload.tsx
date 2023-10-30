@@ -5,7 +5,7 @@ import { MediaLibraryType } from "../MediaLibrary";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 
 export const Upload = () => {
-  const context = useMediaLibraryContext();
+  const { setResultCounter, setResult, type } = useMediaLibraryContext();
 
   const acceptTypeFile = (type: MediaLibraryType) => {
     const acceptTypes = [];
@@ -26,12 +26,12 @@ export const Upload = () => {
     }
   };
 
-  const handleSuccess = (res: WorkspaceElement[]) => {
-    context.setResultCounter(res.length);
-    if (res.length !== 0) {
-      context.setResult(res);
+  const handleSuccess = (doc: WorkspaceElement[]) => {
+    setResultCounter(doc.length);
+    if (doc.length !== 0) {
+      setResult(doc);
     } else {
-      context.setResult(undefined);
+      setResult(undefined);
     }
   };
 
@@ -43,7 +43,7 @@ export const Upload = () => {
     <div className="py-8 flex-grow-1">
       <Dropzone
         multiple
-        accept={acceptTypeFile(context.type ?? "embedder")}
+        accept={acceptTypeFile(type ?? "embedder")}
         importMessage="Glissez-déposez un/des fichier(s) depuis votre appareil ou cliquez sur parcourir"
         onSuccess={handleSuccess}
         onError={handleError}

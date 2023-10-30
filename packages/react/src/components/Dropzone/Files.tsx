@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { WorkspaceElement } from "edifice-ts-client";
 
 import { useDropzoneContext } from "./Dropzone";
-import useHandleFile from "../../hooks/useHandleFile/useHandleFile";
+import useHandleFile from "../../core/useHandleFile/useHandleFile";
 import { UploadCard } from "../../multimedia";
 import { customSize } from "../../utils/fileSize";
 
@@ -20,15 +20,6 @@ const Files = ({ uploadFile, index, handleDelete }: FilesProps) => {
   const responseFile = uploadFile as WorkspaceElement;
   const file = uploadFile as File;
 
-  const handleSave = async () => {
-    const result = await saveFile(file);
-    setUploadFiles((prevFiles: any) => {
-      const newArray = [...prevFiles];
-      newArray[index] = result;
-      return newArray;
-    });
-  };
-
   const handleRetry = async () => {
     const result = await saveFile(file);
     if ((result as WorkspaceElement)._id) {
@@ -42,19 +33,24 @@ const Files = ({ uploadFile, index, handleDelete }: FilesProps) => {
 
   useEffect(() => {
     (async () => {
-      handleSave();
+      const result = await saveFile(file);
+      setUploadFiles((prevFiles: any) => {
+        const newArray = [...prevFiles];
+        newArray[index] = result;
+        return newArray;
+      });
     })();
   }, []);
 
   const fileInfo = {
-    name: responseFile.metadata?.filename || file.name,
+    name: responseFile?.metadata?.filename || file.name,
     info: {
       type:
-        responseFile.metadata?.["content-type"]?.match(/([^/]+$)/)?.[0] ||
+        responseFile?.metadata?.["content-type"]?.match(/([^/]+$)/)?.[0] ||
         file.type,
       weight: customSize(responseFile?.metadata?.size || 0, 1),
     },
-    src: `/workspace/document/${responseFile._id}`,
+    src: `/workspace/document/${responseFile?._id}`,
   };
 
   return (

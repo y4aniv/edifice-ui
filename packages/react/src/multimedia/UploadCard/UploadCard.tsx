@@ -134,7 +134,7 @@ const UploadCard = ({
                 </Button>
               )}
               {!isIdle && <div className="vr"></div>}
-              {typeAcceptEdit.find((el) => el === info?.type) && (
+              {typeAcceptEdit.find((type) => type === info?.type) && (
                 <IconButton
                   icon={<Wand />}
                   variant="ghost"

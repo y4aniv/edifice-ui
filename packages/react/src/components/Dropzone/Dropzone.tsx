@@ -12,8 +12,8 @@ import { WorkspaceElement } from "edifice-ts-client";
 import DropzoneDrag from "./DropzoneDrag";
 import DropzoneFile from "./DropzoneFile";
 import DropzoneImport from "./DropzoneImport";
+import useHandleFile from "../../core/useHandleFile/useHandleFile";
 import { useDropzone } from "../../hooks";
-import useHandleFile from "../../hooks/useHandleFile/useHandleFile";
 
 export interface AttachmentType {
   type: string;
