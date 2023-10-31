@@ -128,7 +128,7 @@ const TreeItem = (props: TreeItemProps) => {
       <div>
         <div className="action-container d-flex align-items-center gap-8 px-2">
           <div
-            className="py-8"
+            className={`py-8 ${!Array.isArray(children) ? "invisible" : null}`}
             tabIndex={0}
             role="button"
             onClick={handleItemFoldUnfoldClick}
@@ -158,7 +158,6 @@ const TreeItem = (props: TreeItemProps) => {
                 width={rafterSize}
                 height={rafterSize}
                 aria-hidden="true"
-                className="opacity-0"
               />
             )}
           </div>
