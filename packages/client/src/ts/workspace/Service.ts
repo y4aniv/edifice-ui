@@ -1,6 +1,7 @@
-import { OdeServices } from "../services/OdeServices";
+import { IOdeServices } from "../services/OdeServices";
 import { DocumentHelper } from "../utils/DocumentHelper";
-import { ID, WorkspaceElement, WorkspaceSearchFilter } from "./interface";
+import { WorkspaceElement, WorkspaceSearchFilter } from "./interface";
+import { ID } from "../globals";
 
 interface ElementQuery {
   /**
@@ -42,7 +43,7 @@ interface ElementQuery {
 }
 
 export class WorkspaceService {
-  constructor(private context: OdeServices) {}
+  constructor(private context: IOdeServices) {}
   private get http() {
     return this.context.http();
   }
@@ -114,6 +115,14 @@ export class WorkspaceService {
       if (current.deleted && current.trasher) {
         return userInfo?.userId == current.trasher;
       }
+      //in case of directShared document => hide doc that are visible inside a folder
+      //FIXME no more cache, how to do this ?
+      // if(params.directShared && current.eParent){
+      //   const isParentVisible = workspaceService._cacheFolders.find(folder => folder._id == current.eParent);
+      //   if(isParentVisible){
+      //       return false;
+      //   }
+      // }
       return true;
     };
   }

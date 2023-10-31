@@ -1,11 +1,12 @@
 // TODO should be loaded from app in future
-import "../resources/BlogResourceService";
-import "../resources/MindmapResourceService";
+import "../resources/services/BlogResourceService";
+import "../resources/services/MindmapResourceService";
 
 import { IOdeServices, OdeServices } from "./OdeServices";
 
 export const odeServices: IOdeServices = new OdeServices();
 
+export * from "./SnipletsService";
 export * from "../directory/interface";
 export * from "../resources/interface";
 export * from "../rights/interface";
