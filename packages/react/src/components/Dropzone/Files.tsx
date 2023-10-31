@@ -20,34 +20,43 @@ const Files = ({ uploadFile, index, handleDelete }: FilesProps) => {
   const responseFile = uploadFile as WorkspaceElement;
   const file = uploadFile as File;
 
-  const handleRetry = async () => {
-    const result = await saveFile(file);
-    if ((result as WorkspaceElement)._id) {
-      setUploadFiles((prevFiles: any) => {
-        const newArray = [...prevFiles];
-        newArray[newArray.length - index] = result;
-        return newArray;
-      });
-    }
-  };
-
   useEffect(() => {
     (async () => {
-      const result = await saveFile(file);
-      setUploadFiles((prevFiles: any) => {
-        const newArray = [...prevFiles];
-        newArray[index] = result;
-        return newArray;
-      });
+      try {
+        const result = await saveFile(file);
+
+        setUploadFiles((prevFiles: any) => {
+          const newArray = [...prevFiles];
+          newArray[index] = result;
+          return newArray;
+        });
+      } catch (error) {
+        console.error(error);
+      }
     })();
   }, []);
 
+  const handleRetry = async () => {
+    try {
+      const result = await saveFile(file);
+      if ((result as WorkspaceElement)._id) {
+        setUploadFiles((prevFiles: any) => {
+          const newArray = [...prevFiles];
+          newArray[newArray.length - index] = result;
+          return newArray;
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const fileInfo = {
-    name: responseFile?.metadata?.filename || file.name,
+    name: responseFile?.metadata?.filename || file?.name,
     info: {
       type:
         responseFile?.metadata?.["content-type"]?.match(/([^/]+$)/)?.[0] ||
-        file.type,
+        file?.type,
       weight: customSize(responseFile?.metadata?.size || 0, 1),
     },
     src: `/workspace/document/${responseFile?._id}`,

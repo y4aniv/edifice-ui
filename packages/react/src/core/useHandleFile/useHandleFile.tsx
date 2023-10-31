@@ -16,13 +16,14 @@ export default function useHandleFile() {
     try {
       const doc = await odeServices.workspace().saveFile(file);
 
+      if (!doc) throw new Error("No document found");
+
       if (doc._id) {
         setStatus("success");
         return doc;
       }
-    } catch (e) {
+    } catch (error) {
       setStatus("error");
-      console.log(e);
       return file;
     }
   }
@@ -31,8 +32,8 @@ export default function useHandleFile() {
     try {
       await odeServices.workspace().deleteFile([element]);
       setUploadFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.error(error);
     }
   }
 

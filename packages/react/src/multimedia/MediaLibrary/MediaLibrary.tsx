@@ -247,19 +247,19 @@ const MediaLibrary = ({
   const handleTabChange = async () => {
     // Reset any existing result
     if (result) {
-      await odeServices.workspace().deleteFile(result);
+      await odeServices.workspace().deleteFile([result]);
     }
     setResult(undefined);
     setResultCounter(undefined);
   };
 
-  function handleSuccess() {
+  const handleOnSuccess = () => {
     if (result) onSuccess(result);
-  }
+  };
 
-  const closeModal = async () => {
+  const handleOnCancel = async () => {
     if (result) {
-      await odeServices.workspace().deleteFile(result);
+      await odeServices.workspace().deleteFile([result]);
     }
     onCancel();
   };
@@ -277,23 +277,34 @@ const MediaLibrary = ({
       <Modal
         id="media-library"
         isOpen={type !== null}
-        onModalClose={closeModal}
+        onModalClose={handleOnCancel}
         size="lg"
+        viewport
+        scrollable
       >
-        <Modal.Header onModalClose={closeModal}>{modalHeader}</Modal.Header>
-        <Modal.Body>
-          <Tabs
-            items={tabs}
-            defaultId={tabs[defaultTabIdx].id}
-            onChange={handleTabChange}
-          ></Tabs>
-        </Modal.Body>
+        <Modal.Header onModalClose={handleOnCancel}>{modalHeader}</Modal.Header>
+        <Tabs
+          items={tabs}
+          defaultId={tabs[defaultTabIdx].id}
+          onChange={handleTabChange}
+        >
+          {(currentItem) => (
+            <>
+              <Tabs.List className="mt-16" />
+              <Modal.Body className="d-flex">
+                <Tabs.Panel currentItem={currentItem}>
+                  {currentItem?.content}
+                </Tabs.Panel>
+              </Modal.Body>
+            </>
+          )}
+        </Tabs>
         <Modal.Footer>
           <Button
             type="button"
             color="tertiary"
             variant="ghost"
-            onClick={closeModal}
+            onClick={handleOnCancel}
           >
             {t("Annuler")}
           </Button>
@@ -302,7 +313,7 @@ const MediaLibrary = ({
             color="primary"
             variant="filled"
             disabled={typeof result === "undefined"}
-            onClick={handleSuccess}
+            onClick={handleOnSuccess}
           >
             {t("Ajouter")}
             {typeof resultCounter === "number" &&

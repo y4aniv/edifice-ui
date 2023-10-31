@@ -10,29 +10,32 @@ export const Upload = () => {
   const acceptTypeFile = (type: MediaLibraryType) => {
     const acceptTypes = [];
 
-    if (type) {
-      switch (type) {
-        case "audio":
-        case "video":
-          acceptTypes.push("video/mp4", "video/mp3");
-          break;
-        case "image":
-          acceptTypes.push("image/jpeg", "image/png");
-          break;
-        default:
-          break;
-      }
-      return acceptTypes;
+    switch (type) {
+      case "audio":
+      case "video":
+        acceptTypes.push("video/mp4", "video/mp3");
+        break;
+      case "image":
+        acceptTypes.push("image/jpeg", "image/png");
+        break;
+      default:
+        break;
     }
+    return acceptTypes;
   };
 
   const handleSuccess = (doc: WorkspaceElement[]) => {
-    setResultCounter(doc.length);
-    if (doc.length !== 0) {
-      setResult(doc);
+    let result;
+
+    if (doc.length === 0) {
+      result = undefined;
+      return;
     } else {
-      setResult(undefined);
+      result = doc;
     }
+
+    setResult(result);
+    setResultCounter(doc.length);
   };
 
   const handleError = (err: string) => {
