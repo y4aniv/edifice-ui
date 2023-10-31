@@ -7,3 +7,4 @@ export * from "./configure/interfaces";
 export * from "./session/interfaces";
 export * from "./widget/interfaces";
 export * from "./apps/timeline/interfaces";
+export * from "./utils";

@@ -1,5 +1,5 @@
-import { FileTypeUtils } from "../utils/FileTypeUtils";
 import { IOdeServices } from "../services/OdeServices";
+import { DocumentHelper } from "../utils/DocumentHelper";
 import { WorkspaceElement, WorkspaceSearchFilter } from "./interface";
 import { ID } from "../globals";
 
@@ -66,7 +66,7 @@ export class WorkspaceService {
       filename: tmpName,
       size: file.size,
       extension,
-      role: FileTypeUtils.getFileType(contentType, false, extension),
+      role: DocumentHelper.role(contentType, false, extension),
     };
     const name = tmpName.replace("." + metadata.extension, "");
     const fullname = metadata.extension
@@ -95,6 +95,17 @@ export class WorkspaceService {
       formData,
     );
     return res;
+  }
+
+  async deleteFile(elements: WorkspaceElement[]) {
+    const ids = elements.map((element) => element._id);
+    if (ids.length == 0) {
+      Promise.resolve(null) as any;
+    } else {
+      await this.http.deleteJson<WorkspaceElement>(`/workspace/documents`, {
+        ids,
+      });
+    }
   }
 
   private async acceptDocuments(params: ElementQuery) {
@@ -134,5 +145,12 @@ export class WorkspaceService {
     parentId?: ID,
   ): Promise<WorkspaceElement[]> {
     return this.fetchDocuments({ filter, parentId, includeall: true });
+  }
+
+  getThumbnailUrl(doc: WorkspaceElement) {
+    const thumbnails = doc.thumbnails;
+    return thumbnails
+      ? `/workspace/document/${doc._id}?thumbnail=${Object.keys(thumbnails)[0]}`
+      : `/workspace/document/${doc._id}`;
   }
 }
