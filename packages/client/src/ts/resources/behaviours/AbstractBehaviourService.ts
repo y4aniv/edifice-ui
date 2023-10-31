@@ -50,7 +50,7 @@ export abstract class AbstractBehaviourService implements IResourceService {
   async searchContext(
     parameters: GetContextParameters,
   ): Promise<ISearchResults> {
-    return this.rssToResults(await this.loadResources(parameters));
+    return this.resourcesToResults(await this.loadResources(parameters));
   }
   getApplication(): string {
     return this.APP;
@@ -94,7 +94,7 @@ export abstract class AbstractBehaviourService implements IResourceService {
     } as IResource;
   }
 
-  protected rssToResults(resources: IResource[]) {
+  protected resourcesToResults(resources: IResource[]) {
     return {
       folders: [],
       pagination: {
