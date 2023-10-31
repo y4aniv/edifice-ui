@@ -1,10 +1,12 @@
+import { useTranslation } from "react-i18next";
+
 const DropzoneDrag = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="drop-wrapper">
       <div className="drop-content">
-        <p className="drop-text">
-          Déposez ici vos fichiers, images, vidéos ou audios
-        </p>
+        <p className="drop-text">{t("medialibrary.drop.help")}</p>
       </div>
     </div>
   );

@@ -1,14 +1,13 @@
 import { Plus } from "@edifice-ui/icons";
+import { useTranslation } from "react-i18next";
 
-import { AttachementType, useDropzoneContext } from "./Dropzone";
+import { useDropzoneContext } from "./Dropzone";
+import Files from "./Files";
 import { Button } from "../Button";
 
-export interface DropZoneFileProps {
-  attachments: AttachementType[];
-}
-
-const DropzoneFile = ({ attachments }: DropZoneFileProps) => {
-  const { inputRef } = useDropzoneContext();
+const DropzoneFile = () => {
+  const { t } = useTranslation();
+  const { inputRef, uploadFiles, handleDelete } = useDropzoneContext();
 
   return (
     <div className="drop-file-wrapper">
@@ -19,18 +18,17 @@ const DropzoneFile = ({ attachments }: DropZoneFileProps) => {
             leftIcon={<Plus></Plus>}
             onClick={() => inputRef?.current?.click()}
           >
-            Add more files
+            {t("add")}
           </Button>
         </div>
       </div>
       <div className="p-8">
-        {attachments.map((attachment) => (
-          <div key={attachment?.name}>
-            <img
-              src={attachment?.src}
-              alt={attachment?.name}
-              width={200}
-              height={200}
+        {uploadFiles.map((uploadFile, index) => (
+          <div key={index}>
+            <Files
+              uploadFile={uploadFile}
+              index={index}
+              handleDelete={handleDelete}
             />
           </div>
         ))}
