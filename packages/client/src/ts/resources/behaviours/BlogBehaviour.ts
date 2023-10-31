@@ -2,20 +2,26 @@ import { IResource } from "../interface";
 import { AbstractBehaviourService } from "./AbstractBehaviourService";
 
 type MongoDate = {
-  $date: number
+  $date: number;
 };
-type PostData = { _id: string, created: MongoDate, modified: MongoDate, firstPublishDate: MongoDate, title: string }
+type PostData = {
+  _id: string;
+  created: MongoDate;
+  modified: MongoDate;
+  firstPublishDate: MongoDate;
+  title: string;
+};
 type BlogData = {
   _id: string;
   thumbnail: string;
   created: MongoDate;
   title: string;
-  visibility: 'PUBLIC' | 'OWNER';
+  visibility: "PUBLIC" | "OWNER";
   modified: MongoDate;
-  author: { userId: string, username: string }
+  author: { userId: string; username: string };
   trashed?: boolean;
   shared?: any;
-  fetchPosts: Array<PostData>
+  fetchPosts: Array<PostData>;
 };
 
 export class BlogBehaviour extends AbstractBehaviourService {
@@ -25,29 +31,26 @@ export class BlogBehaviour extends AbstractBehaviourService {
   loadResources() {
     return new Promise<IResource[]>(async (resolve, reject) => {
       try {
-        const datas = await this.httpGet<BlogData[]>(
-          "/blog/linker",
-        );
+        const datas = await this.httpGet<BlogData[]>("/blog/linker");
         const resources: IResource[] = [];
         datas.forEach((data) => {
-          if(data.thumbnail){
-            data.thumbnail = data.thumbnail + '?thumbnail=48x48';
+          if (data.thumbnail) {
+            data.thumbnail = data.thumbnail + "?thumbnail=48x48";
+          } else {
+            data.thumbnail = "/img/illustrations/blog.svg";
           }
-          else{
-            data.thumbnail = '/img/illustrations/blog.svg';
-          }
-    
-          const addedPosts = data.fetchPosts.map((post)=>{
+
+          const addedPosts = data.fetchPosts.map((post) => {
             return this.dataToResource({
               owner: data.author.userId,
               ownerName: data.author.username,
-              title: post.title + ' [' + data.title + ']',
+              title: post.title + " [" + data.title + "]",
               _id: data._id,
               icon: data.thumbnail,
-              path: '/blog#/view/' + data._id + '/' + post._id,
+              path: "/blog#/view/" + data._id + "/" + post._id,
               shared: data.shared && data.shared.length >= 0 ? true : false,
               modified: data.modified,
-            })
+            });
           });
           resources.push(...addedPosts);
         });

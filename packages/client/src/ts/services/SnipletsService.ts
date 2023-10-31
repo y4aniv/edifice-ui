@@ -6,7 +6,6 @@ import { AbstractBehaviourService } from "../resources/behaviours/AbstractBehavi
 import { WorkspaceBehaviour } from "../resources/behaviours/WorkspaceBehaviour";
 import { BlogBehaviour } from "../resources/behaviours/BlogBehaviour";
 
-
 export class SnipletsService {
   static resourceProducingApps: App[] = [];
 
@@ -46,7 +45,10 @@ export class SnipletsService {
     return service;
   }
 
-  static async initialize(context: IOdeServices, currentApp: App): Promise<App[]> {
+  static async initialize(
+    context: IOdeServices,
+    currentApp: App,
+  ): Promise<App[]> {
     const http = context.http();
     return new Promise<App[]>(async (resolve, reject) => {
       if (!this.resourceProducingApps.length) {
@@ -73,12 +75,14 @@ export class SnipletsService {
               );
             });
           }
-        } catch { /* keep default */ }
+        } catch {
+          /* keep default */
+        }
       }
       resolve(this.resourceProducingApps);
     });
   }
-  
+
   static async registerBehaviours(currentApp: App): Promise<void> {
     // Register services
     this.resourceProducingApps.forEach((app) => {

@@ -84,6 +84,7 @@ export abstract class AbstractBehaviourService implements IResourceService {
         ? "" + modified.$date
         : "";
     return {
+      application: this.APP,
       name,
       creatorId,
       creatorName,
