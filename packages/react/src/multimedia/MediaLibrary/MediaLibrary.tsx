@@ -9,7 +9,7 @@ import {
   RecordVideo,
   Smartphone,
 } from "@edifice-ui/icons";
-import { WorkspaceElement } from "edifice-ts-client";
+import { WorkspaceElement, odeServices } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import { InnerTabs } from "./innertabs";
@@ -236,7 +236,7 @@ const MediaLibrary = ({
 
   // Stateful contextual values
   const [resultCounter, setResultCounter] = useState<number | undefined>();
-  const [result, setResult] = useState<any | undefined>();
+  const [result, setResult] = useState<WorkspaceElement | undefined>();
   function setVisibleTab(tab: AvailableTab) {
     const index = tabs.findIndex((t) => t.id === tab);
     if (index < 0) throw "tab.not.visible";
@@ -248,15 +248,25 @@ const MediaLibrary = ({
   const modalHeader = t(
     mediaLibraryTypes[type || "none"]?.title ?? "Bibliothèque multimédia", // FIXME i18n key
   );
-  const handleTabChange = () => {
+  const handleTabChange = async () => {
     // Reset any existing result
+    if (result) {
+      await odeServices.workspace().deleteFile([result]);
+    }
     setResult(undefined);
     setResultCounter(undefined);
   };
 
-  function handleAddClick() {
+  const handleOnSuccess = () => {
     if (result) onSuccess(result);
-  }
+  };
+
+  const handleOnCancel = async () => {
+    if (result) {
+      await odeServices.workspace().deleteFile([result]);
+    }
+    onCancel();
+  };
 
   return type ? (
     <MediaLibraryContext.Provider
@@ -271,12 +281,12 @@ const MediaLibrary = ({
       <Modal
         id="media-library"
         isOpen={type !== null}
-        onModalClose={onCancel}
+        onModalClose={handleOnCancel}
         size="lg"
         viewport
         scrollable
       >
-        <Modal.Header onModalClose={onCancel}>{modalHeader}</Modal.Header>
+        <Modal.Header onModalClose={handleOnCancel}>{modalHeader}</Modal.Header>
         <Tabs
           items={tabs}
           defaultId={tabs[defaultTabIdx].id}
@@ -298,7 +308,7 @@ const MediaLibrary = ({
             type="button"
             color="tertiary"
             variant="ghost"
-            onClick={onCancel}
+            onClick={handleOnCancel}
           >
             {t("Annuler")}
           </Button>
@@ -307,7 +317,7 @@ const MediaLibrary = ({
             color="primary"
             variant="filled"
             disabled={typeof result === "undefined"}
-            onClick={handleAddClick}
+            onClick={handleOnSuccess}
           >
             {t("Ajouter")}
             {typeof resultCounter === "number" &&

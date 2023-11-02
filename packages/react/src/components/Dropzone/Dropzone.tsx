@@ -1,139 +1,112 @@
 import React, {
-  ChangeEvent,
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useRef,
-  useState,
 } from "react";
 
 import clsx from "clsx";
+import { WorkspaceElement } from "edifice-ts-client";
 
 import DropzoneDrag from "./DropzoneDrag";
 import DropzoneFile from "./DropzoneFile";
 import DropzoneImport from "./DropzoneImport";
+import useHandleFile from "../../core/useHandleFile/useHandleFile";
 import { useDropzone } from "../../hooks";
-export interface AttachementType {
+
+export interface AttachmentType {
   type: string;
   size: number;
   name: string;
   src: string;
 }
 
-const DropZoneContext = createContext<{
+interface DropzoneContextType {
   inputRef: React.MutableRefObject<HTMLInputElement | null>;
-  multiple?: boolean;
   importMessage?: string;
-}>(null!);
+  uploadFiles: (WorkspaceElement | File)[];
+  handleDelete: (element: WorkspaceElement, index: number) => void;
+  setUploadFiles: any;
+}
+
+const DropzoneContext = createContext<DropzoneContextType | null>(null);
 
 export function useDropzoneContext() {
-  const context = useContext(DropZoneContext);
+  const context = useContext(DropzoneContext);
   if (!context) {
     throw new Error(
-      `Dropzone compound components cannot be rendered outside the Dropzone component`,
+      "Dropzone compound components cannot be rendered outside the Dropzone component",
     );
   }
   return context;
 }
-export interface DropzoneProps {
-  /**
-   * Optional class for styling purpose
-   */
+
+interface DropzoneProps {
   className?: string;
-  /**
-   * Optional filter type mime
-   */
   accept?: string[];
-  /**
-   * Authorize import multiple files
-   */
   multiple?: boolean;
-  /**
-   * Authorize import multiple files
-   */
   handle?: boolean;
-  /**
-   * Show instruction to import file
-   */
   importMessage?: string;
-  /**
-   * Execute if a success
-   */
-  onSuccess: () => void;
-  /**
-   * Execute if an error
-   */
-  onError: () => void;
+  onSuccess: (res: WorkspaceElement[]) => void;
+  onError: (err: string) => void;
 }
 
 const Dropzone = ({
   className,
   accept,
-  multiple = false,
+  multiple,
   handle = false,
   importMessage,
   onSuccess,
-  onError,
 }: DropzoneProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const [attachments, setAttachments] = useState<AttachementType[]>([]);
+  const { handleDelete, setUploadFiles, uploadFiles } = useHandleFile();
 
-  const handleChange = (files?: FileList | null) => {
-    try {
-      const file = files?.[0];
-      if (!file) return;
-
-      if (file) {
-        if (multiple) {
-          const newFile = {
-            type: file.type,
-            size: file.size,
-            name: file.name,
-            src: URL.createObjectURL(file),
-          };
-          setAttachments((oldArray) => [...oldArray, newFile]);
-        } else {
-          const newFile = {
-            type: file.type,
-            size: file.size,
-            name: file.name,
-            src: URL.createObjectURL(file),
-          };
-          setAttachments([newFile]);
+  const handleInputChange = (files: FileList | null) => {
+    if (files && (accept?.includes(files[0].type) || accept?.length === 0)) {
+      setUploadFiles((oldAttachments) => {
+        const newArray = [...oldAttachments];
+        for (let i = 0; i < files?.length; i++) {
+          newArray.push(files[i]);
         }
-      }
-      onSuccess();
-    } catch {
-      onError();
+        return newArray;
+      });
     }
   };
 
   const { handleDragLeave, handleDragging, handleDrop, dragging } = useDropzone(
     inputRef,
-    handleChange,
+    handleInputChange,
   );
-
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    handleChange(event.target.files);
-  };
 
   const classes = clsx(
     "dropzone",
     {
       "is-dragging": dragging,
-      "is-drop-files": attachments.length !== 0 && !handle ? false : true,
+      "is-drop-files": uploadFiles.length !== 0 && !handle ? false : true,
     },
     className,
   );
 
   const value = useMemo(
-    () => ({ inputRef, multiple, importMessage }),
-    [inputRef, multiple, importMessage],
+    () => ({
+      inputRef,
+      importMessage,
+      uploadFiles,
+      handleDelete,
+      setUploadFiles,
+    }),
+    [inputRef, importMessage, uploadFiles, handleDelete, setUploadFiles],
   );
 
+  useEffect(() => {
+    onSuccess((uploadFiles as WorkspaceElement[]).filter((el) => el._id && el));
+  }, [uploadFiles]);
+
   return (
-    <DropZoneContext.Provider value={value}>
+    <DropzoneContext.Provider value={value}>
       <div
         className={classes}
         onDragEnter={handleDragging}
@@ -146,8 +119,8 @@ const Dropzone = ({
             <Dropzone.Drag />
           ) : (
             <>
-              {attachments.length !== 0 ? (
-                <Dropzone.File attachments={attachments} />
+              {uploadFiles.length !== 0 ? (
+                <Dropzone.File />
               ) : (
                 <Dropzone.Import />
               )}
@@ -160,13 +133,16 @@ const Dropzone = ({
           accept={accept?.join(",")}
           multiple={multiple}
           type="file"
-          name="attachement-input"
-          id="attachement-input"
-          onChange={handleInputChange}
+          name="attachment-input"
+          id="attachment-input"
+          onChange={(event) => {
+            handleInputChange(event.target.files);
+            event.target.value = "";
+          }}
           hidden
         />
       </div>
-    </DropZoneContext.Provider>
+    </DropzoneContext.Provider>
   );
 };
 

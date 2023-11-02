@@ -7,6 +7,7 @@ const meta: Meta<typeof Dropzone> = {
   title: "Components/Dropzone",
   component: Dropzone,
   args: {
+    accept: [],
     onSuccess: () => console.log("Success"),
     onError: () => console.log("Error"),
     importMessage:

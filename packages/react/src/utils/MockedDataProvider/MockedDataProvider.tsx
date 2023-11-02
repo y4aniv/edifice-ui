@@ -24,7 +24,7 @@ export interface MockedDataProps {
   };
 }
 
-export interface ContextProps {
+export interface MockedContextProps {
   app?: App;
   availableApps?: Promise<App[]>;
   hasWorkflow?: (workflow: string) => Promise<boolean>;
@@ -32,11 +32,11 @@ export interface ContextProps {
   loadResources?: (filters: GetContextParameters) => Promise<IResource[]>;
 }
 
-const MockedDataContext = createContext<ContextProps | null>(null!);
+const MockedDataContext = createContext<MockedContextProps | null>(null!);
 
 export function MockedDataProvider({ children, mocks }: MockedDataProps) {
-  const values = useMemo<ContextProps>(() => {
-    const value: ContextProps = {};
+  const values = useMemo<MockedContextProps>(() => {
+    const value: MockedContextProps = {};
 
     if (typeof mocks.app !== "undefined") {
       value.app = mocks.app;

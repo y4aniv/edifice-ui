@@ -4,15 +4,11 @@ import {
   AlignLeft,
   Paperclip,
   BulletList,
-  Code,
   Landscape,
   Link,
   Mic,
   RecordVideo,
   Smiley,
-  SquareRoot,
-  Subscript,
-  Superscript,
   Table,
   TextBold,
   TextColor,
@@ -21,8 +17,10 @@ import {
   TextSize,
   TextTypo,
   TextUnderline,
-  TextVanilla,
 } from "@edifice-ui/icons";
+import { size } from "@floating-ui/react";
+import { RefAttributes, Fragment } from "react";
+import { IconButtonProps, IconButton, Dropdown } from "../../components";
 
 const meta: Meta<typeof Toolbar> = {
   title: "Tiptap/EditorToolbar",
@@ -46,167 +44,290 @@ const meta: Meta<typeof Toolbar> = {
     },
   },
   args: {
-    data: [
+    items: [
       {
-        action: () => console.log("on click"),
-        icon: <Landscape />,
-        label: "image",
+        type: "icon",
+        props: {
+          icon: <Landscape />,
+          className: "widget-image",
+          "aria-label": "Insérer une image",
+          onClick: () => {},
+        },
         name: "image",
-        className: "widget-image",
-        isEnable: true,
       },
       {
-        action: () => console.log("on click"),
-        icon: <RecordVideo />,
-        label: "video",
+        type: "icon",
+        props: {
+          icon: <RecordVideo />,
+          className: "widget-video",
+          "aria-label": "Insérer une vidéo",
+          onClick: () => {},
+        },
         name: "video",
-        className: "widget-video",
-        isEnable: true,
       },
       {
-        action: () => console.log("on click"),
-        icon: <Mic />,
-        label: "audio",
+        type: "icon",
+        props: {
+          icon: <Mic />,
+          className: "widget-audio",
+          "aria-label": "Insérer une piste audio",
+          onClick: () => {},
+        },
         name: "audio",
-        className: "widget-audio",
-        isEnable: true,
       },
       {
-        action: () => console.log("on click"),
-        icon: <Paperclip />,
-        label: "paperclip",
-        name: "paperclip",
-        className: "widget-attachment",
-        isEnable: true,
+        type: "icon",
+        props: {
+          icon: <Paperclip />,
+          className: "widget-attachment",
+          "aria-label": "Insérer une pièce jointe",
+          onClick: () => {},
+        },
+        name: "attachment",
       },
       {
         type: "divider",
+        name: "div-1",
       },
       {
-        action: () => console.log("on click"),
-        icon: <TextTypo />,
-        label: "typo",
-        name: "typo",
-        isEnable: true,
+        type: "dropdown",
+        props: {
+          children: (
+            triggerProps: JSX.IntrinsicAttributes &
+              Omit<IconButtonProps, "ref"> &
+              RefAttributes<HTMLButtonElement>,
+          ) => (
+            <>
+              <IconButton
+                {...triggerProps}
+                type="button"
+                variant="ghost"
+                color="tertiary"
+                icon={<TextTypo />}
+                aria-label={"Choix de la famille de typographie"}
+                className=""
+              />
+            </>
+          ),
+        },
+        name: "text_typo",
+        visibility: "show",
       },
       {
-        action: () => console.log("on click"),
-        icon: <TextSize />,
-        label: "size",
-        name: "size",
-        isEnable: true,
+        type: "dropdown",
+        props: {
+          children: (
+            triggerProps: JSX.IntrinsicAttributes &
+              Omit<IconButtonProps, "ref"> &
+              RefAttributes<HTMLButtonElement>,
+          ) => (
+            <>
+              <IconButton
+                {...triggerProps}
+                type="button"
+                variant="ghost"
+                color="tertiary"
+                icon={<TextSize />}
+                aria-label={"Choix de la taille de typographie"}
+              />
+            </>
+          ),
+        },
+        name: "text_size",
+        visibility: "show",
       },
       {
-        action: () => console.log("on click"),
-        icon: <TextColor />,
-        label: "color",
+        type: "dropdown",
+        props: {
+          children: (
+            triggerProps: JSX.IntrinsicAttributes &
+              Omit<IconButtonProps, "ref"> &
+              RefAttributes<HTMLButtonElement>,
+          ) => (
+            <>
+              <IconButton
+                {...triggerProps}
+                type="button"
+                variant="ghost"
+                color="tertiary"
+                icon={<TextColor />}
+                aria-label={"Couleur de texte"}
+                className=""
+              />
+            </>
+          ),
+        },
         name: "color",
-        isEnable: true,
+        visibility: "show",
       },
       {
-        action: () => console.log("on click"),
-        icon: <TextHighlight />,
-        label: "highlight",
+        type: "dropdown",
+        props: {
+          children: (
+            triggerProps: JSX.IntrinsicAttributes &
+              Omit<IconButtonProps, "ref"> &
+              RefAttributes<HTMLButtonElement>,
+          ) => (
+            <>
+              <IconButton
+                {...triggerProps}
+                type="button"
+                variant="ghost"
+                color="tertiary"
+                icon={<TextHighlight />}
+                aria-label={"Couleur de fond"}
+                className=""
+              />
+            </>
+          ),
+        },
         name: "highlight",
-        isEnable: true,
+        visibility: "show",
       },
       {
         type: "divider",
+        name: "div-2",
       },
       {
-        action: () => console.log("on click"),
-        icon: <TextBold />,
-        label: "bold",
+        type: "icon",
+        props: {
+          icon: <TextBold />,
+          "aria-label": "Ajout de gras",
+          className: "",
+          onClick: () => {},
+        },
         name: "bold",
-        isEnable: true,
+        visibility: "show",
       },
       {
-        action: () => console.log("on click"),
-        icon: <TextItalic />,
-        label: "italic",
+        type: "icon",
+        props: {
+          icon: <TextItalic />,
+          "aria-label": "Incliner le text",
+          className: "",
+          onClick: () => {},
+        },
         name: "italic",
-        isEnable: true,
+        visibility: "show",
       },
       {
-        action: () => console.log("on click"),
-        icon: <TextUnderline />,
-        label: "underline",
+        type: "icon",
+        props: {
+          icon: <TextUnderline />,
+          "aria-label": "Souligner le texte",
+          className: "",
+          onClick: () => {},
+        },
         name: "underline",
-        isEnable: true,
+        visibility: "show",
       },
       {
         type: "divider",
+        name: "div-3",
       },
       {
-        action: () => console.log("on click"),
-        icon: <Smiley />,
-        label: "emoji",
+        type: "dropdown",
+        props: {
+          children: (
+            triggerProps: JSX.IntrinsicAttributes &
+              Omit<IconButtonProps, "ref"> &
+              RefAttributes<HTMLButtonElement>,
+          ) => (
+            <>
+              <IconButton
+                {...triggerProps}
+                type="button"
+                variant="ghost"
+                color="tertiary"
+                icon={<Smiley />}
+                aria-label={"Emojis"}
+              />
+            </>
+          ),
+        },
         name: "emoji",
-        isEnable: true,
+        visibility: "show",
       },
       {
-        action: () => console.log("on click"),
-        icon: <Link />,
-        label: "linker",
+        type: "icon",
+        props: {
+          icon: <Link />,
+          "aria-label": "Ajout d'un lien",
+          className: "",
+          onClick: () => console.log("click"),
+        },
         name: "linker",
-        isEnable: true,
       },
       {
         type: "divider",
+        name: "div-4",
       },
       {
-        action: () => console.log("on click"),
-        icon: <BulletList />,
-        label: "list",
+        type: "dropdown",
+        props: {
+          children: (
+            triggerProps: JSX.IntrinsicAttributes &
+              Omit<IconButtonProps, "ref"> &
+              RefAttributes<HTMLButtonElement>,
+          ) => (
+            <>
+              <IconButton
+                {...triggerProps}
+                type="button"
+                variant="ghost"
+                color="tertiary"
+                icon={<BulletList />}
+                aria-label={"Options d'affichage en liste"}
+              />
+            </>
+          ),
+        },
         name: "list",
-        isEnable: true,
+        visibility: "show",
       },
       {
-        action: () => console.log("on click"),
-        icon: <AlignLeft />,
-        label: "alignment",
+        type: "dropdown",
+        props: {
+          children: (
+            triggerProps: JSX.IntrinsicAttributes &
+              Omit<IconButtonProps, "ref"> &
+              RefAttributes<HTMLButtonElement>,
+          ) => (
+            <>
+              <IconButton
+                {...triggerProps}
+                type="button"
+                variant="ghost"
+                color="tertiary"
+                icon={<AlignLeft />}
+                aria-label={"Options d'alignement"}
+              />
+            </>
+          ),
+        },
         name: "alignment",
-        isEnable: true,
+        visibility: "show",
       },
       {
         type: "divider",
-      },
-    ],
-    options: [
-      {
-        icon: <TextVanilla />,
-        label: "Supprimer la mise en forme",
-        action: () => console.log("click"),
+        name: "div-5",
       },
       {
-        type: "divider",
-      },
-      { icon: <Table />, label: "Tableau", action: () => console.log("click") },
-      {
-        type: "divider",
-      },
-      {
-        icon: <Superscript />,
-        label: "Exposant",
-        action: () => console.log("click"),
-      },
-      {
-        icon: <Subscript />,
-        label: "Indice",
-        action: () => console.log("click"),
-      },
-      {
-        icon: <SquareRoot />,
-        label: "Formule mathématique",
-        action: () => console.log("click"),
-      },
-      {
-        type: "divider",
-      },
-      {
-        icon: <Code />,
-        label: "Élément embed/iframe",
-        action: () => console.log("click"),
+        type: "dropdown",
+        props: {
+          children: () => (
+            <>
+              <Dropdown.Trigger
+                variant="ghost"
+                label={"Plus"}
+                size="md"
+                tabIndex={-1}
+              />
+            </>
+          ),
+        },
+        name: "plus",
+        visibility: "show",
       },
     ],
     variant: "no-shadow",
