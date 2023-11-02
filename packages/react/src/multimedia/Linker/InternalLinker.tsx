@@ -168,6 +168,7 @@ const InternalLinker = ({
             <Dropdown.Menu>
               {options?.map((option) => (
                 <Dropdown.Item
+                  key={option.application}
                   icon={option.icon}
                   onClick={() => handleOptionClick(option)}
                 >
