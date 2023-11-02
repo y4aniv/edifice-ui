@@ -26,6 +26,9 @@ export interface LinkerModel {
         $date: number | string;
       };
 }
+export interface ILinkedResource extends IResource {
+  path: string;
+}
 
 /**
  * TO BE DEPRECATED. DO NOT USE UNLESS YOU KNOW WHAT YOU ARE DOING.
@@ -69,14 +72,9 @@ export abstract class AbstractBehaviourService implements IResourceService {
   }
   /* Utility to map data between linker model and search model. */
   protected dataToResource({
-    _id: assetId,
-    title: name,
-    ownerName: creatorName,
-    owner: creatorId,
-    icon: thumbnail,
-    shared,
     modified,
-  }: LinkerModel): IResource {
+    ...resource
+  }: LinkerModel): ILinkedResource {
     const modifiedAt =
       typeof modified === "string"
         ? modified
@@ -85,14 +83,15 @@ export abstract class AbstractBehaviourService implements IResourceService {
         : "";
     return {
       application: this.APP,
-      name,
-      creatorId,
-      creatorName,
-      thumbnail,
-      assetId,
+      name: resource.title,
+      creatorId: resource.owner,
+      creatorName: resource.ownerName,
+      thumbnail: resource.icon,
+      assetId: resource._id,
       modifiedAt,
-      shared,
-    } as IResource;
+      shared: resource.shared,
+      path: resource.path,
+    } as ILinkedResource;
   }
 
   protected resourcesToResults(resources: IResource[]) {
