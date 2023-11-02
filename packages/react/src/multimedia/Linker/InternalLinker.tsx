@@ -8,7 +8,12 @@ import {
 } from "react";
 
 import { Search } from "@edifice-ui/icons";
-import { App, IResource, odeServices } from "edifice-ts-client";
+import { App, odeServices } from "edifice-ts-client";
+/*
+ * Augmented definition of a resource, until behaviours are dropped.
+ * The path would otherwise be found by using `IWebResourceService.getViewUrl(resource)`
+ */
+import { ILinkedResource } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import { AppIcon, Dropdown, FormControl, Input } from "../../components";
@@ -32,10 +37,16 @@ export interface InternalLinkerProps {
   appCode: App;
   /** Notify when the user selects an application in the dropdown */
   onChange?: (application?: ApplicationOption) => void;
+  /** Notify when resources selection changes */
+  onSelect?: (resources: ILinkedResource[]) => void;
 }
 
 /** The InternalLinker component */
-const InternalLinker = ({ appCode, onChange }: InternalLinkerProps) => {
+const InternalLinker = ({
+  appCode,
+  onChange,
+  onSelect,
+}: InternalLinkerProps) => {
   const { t } = useTranslation();
   const inputRef: Ref<HTMLInputElement> = useRef(null);
 
@@ -53,7 +64,7 @@ const InternalLinker = ({ appCode, onChange }: InternalLinkerProps) => {
   const debounceSearch = useDebounce<string>(searchTerms || "", 500);
 
   // List of resources to display.
-  const [resources, setResources] = useState<IResource[] | undefined>([]);
+  const [resources, setResources] = useState<ILinkedResource[] | undefined>([]);
   // Function to load and display resources of the currently selected application.
   const loadAndDisplayResources = useCallback(
     (search?: string) => {
@@ -72,6 +83,11 @@ const InternalLinker = ({ appCode, onChange }: InternalLinkerProps) => {
     [loadResources, selectedApplication],
   );
 
+  // List of selected documents
+  const [selectedDocuments, setSelectedDocuments] = useState<ILinkedResource[]>(
+    [],
+  );
+
   // Update dropdown when available applications list is updated.
   useEffect(() => {
     const webApps = resourceApplications.map((application) =>
@@ -79,16 +95,20 @@ const InternalLinker = ({ appCode, onChange }: InternalLinkerProps) => {
     );
     Promise.all(webApps)
       .then((webApps) =>
-        resourceApplications.map((application, index) => {
-          return {
-            application,
-            displayName: webApps[index]?.displayName,
-            icon: <AppIcon app={webApps[index]}></AppIcon>,
-          } as ApplicationOption;
-        }),
+        resourceApplications
+          .map((application, index) => {
+            return {
+              application,
+              displayName: t(webApps[index]?.displayName ?? application),
+              icon: <AppIcon app={webApps[index]}></AppIcon>,
+            } as ApplicationOption;
+          })
+          .sort((app1, app2) =>
+            app1.displayName.localeCompare(app2.displayName),
+          ),
       )
       .then((apps) => setOptions(apps));
-  }, [resourceApplications]);
+  }, [resourceApplications, t]);
 
   // Load and display search results when debounce is over
   useEffect(() => {
@@ -96,7 +116,7 @@ const InternalLinker = ({ appCode, onChange }: InternalLinkerProps) => {
   }, [loadAndDisplayResources, debounceSearch]);
 
   // Notify parent when an application is selected.
-  const handleClick = (option: ApplicationOption) => {
+  const handleOptionClick = (option: ApplicationOption) => {
     onChange?.(option);
     setSelectedApplication(option);
   };
@@ -115,22 +135,26 @@ const InternalLinker = ({ appCode, onChange }: InternalLinkerProps) => {
     [loadAndDisplayResources, searchTerms],
   );
 
-  // Handle selection of a resource by the user.
-  const handleToggleRssSelect = (/*_rss: IResource*/) => {
-    /*
-    const idx = selectedDocuments.findIndex((d) => d._id === doc._id);
+  // Handle [de-]selection of a resource by the user.
+  const toggleResourceSelection = (resource: ILinkedResource) => {
+    const idx = selectedDocuments.findIndex(
+      (doc) => doc.assetId === resource.assetId,
+    );
     if (idx < 0) {
-      selectedDocuments.push(doc);
+      selectedDocuments.push(resource);
     } else {
       selectedDocuments.splice(idx, 1);
     }
     setSelectedDocuments([...selectedDocuments]);
-    props.onSelect(selectedDocuments);
-    */
   };
 
+  // Notify parent when resources selection changes.
+  useEffect(() => {
+    onSelect?.(selectedDocuments);
+  }, [selectedDocuments, onSelect]);
+
   return (
-    <div className="internal-linker w-100 rounded border gap-0">
+    <div className="internal-linker flex-grow-1 w-100 rounded border gap-0">
       <div className="search d-flex bg-light rounded-top border-bottom">
         <div className="flex-shrink-1 p-8 border-end">
           <Dropdown>
@@ -145,7 +169,7 @@ const InternalLinker = ({ appCode, onChange }: InternalLinkerProps) => {
               {options?.map((option) => (
                 <Dropdown.Item
                   icon={option.icon}
-                  onClick={() => handleClick(option)}
+                  onClick={() => handleOptionClick(option)}
                 >
                   {option.displayName}
                 </Dropdown.Item>
@@ -165,9 +189,10 @@ const InternalLinker = ({ appCode, onChange }: InternalLinkerProps) => {
               <Input
                 noValidationIcon
                 ref={inputRef}
-                placeholder={t("Placeholder text")}
+                placeholder={t("Rechercher")}
                 size="md"
                 type="search"
+                disabled={selectedApplication ? false : true}
                 className="border-start-0"
                 onChange={handleSearchChange}
               />
@@ -176,20 +201,32 @@ const InternalLinker = ({ appCode, onChange }: InternalLinkerProps) => {
         </div>
       </div>
 
-      <div className="list row">
-        <ul>
-          {resources?.map((resource) => (
-            <li>
-              <p>
-                {resource.name}, {resource.creatorName}
-              </p>
-              <button onClick={() => handleToggleRssSelect(resource)}>
-                Select
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {selectedApplication && (
+        <div className="list row">
+          <ul>
+            {resources?.map((resource) => (
+              <li key={resource.assetId}>
+                <p>
+                  {resource.name}, {resource.creatorName}
+                </p>
+                <button onClick={() => toggleResourceSelection(resource)}>
+                  Select
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {!selectedApplication && (
+        <div className="d-flex justify-content-center">
+          <p>
+            {t(
+              "Sélectionnez, en haut à gauche, l’application dans laquelle se trouve la ressource que vous voulez ajouter !",
+            )}
+          </p>
+        </div>
+      )}
     </div>
   );
 };

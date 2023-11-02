@@ -13,6 +13,7 @@ import { WorkspaceElement } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import { InnerTabs } from "./innertabs";
+import { ResourceTabResult } from "./innertabs/Resource";
 import { MediaLibraryContext } from "./MediaLibraryContext";
 import { Button } from "../../components";
 import Modal from "../../components/Modal/Modal";
@@ -107,6 +108,7 @@ const mediaLibraryTypes: { none: null } & {
  */
 export type MediaLibraryResult =
   | WorkspaceElement[] // Workspace result
+  | ResourceTabResult // Linker result
   | /*TODO type des autres résultats ?*/ any;
 
 /**
@@ -252,7 +254,7 @@ const MediaLibrary = ({
     setResultCounter(undefined);
   };
 
-  function handleSuccess() {
+  function handleAddClick() {
     if (result) onSuccess(result);
   }
 
@@ -305,7 +307,7 @@ const MediaLibrary = ({
             color="primary"
             variant="filled"
             disabled={typeof result === "undefined"}
-            onClick={handleSuccess}
+            onClick={handleAddClick}
           >
             {t("Ajouter")}
             {typeof resultCounter === "number" &&

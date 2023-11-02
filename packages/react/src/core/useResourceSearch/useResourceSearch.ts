@@ -3,10 +3,14 @@ import { useCallback, useEffect, useState } from "react";
 import {
   App,
   GetContextParameters,
-  IResource,
   odeServices,
   SnipletsService,
 } from "edifice-ts-client";
+/*
+ * Augmented definition of a resource, until behaviours are dropped.
+ * The path would otherwise be found by using `IWebResourceService.getViewUrl(resource)`
+ */
+import { ILinkedResource } from "edifice-ts-client";
 
 import { useMockedData } from "../../utils";
 
@@ -77,6 +81,8 @@ export default function useResourceSearch(appCode: App) {
 
   return { resourceApplications, loadResources } as {
     resourceApplications: Array<App>;
-    loadResources: (filters: GetContextParameters) => Promise<IResource[]>;
+    loadResources: (
+      filters: GetContextParameters,
+    ) => Promise<ILinkedResource[]>;
   };
 }
