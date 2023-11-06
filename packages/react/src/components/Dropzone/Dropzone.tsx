@@ -103,6 +103,7 @@ const Dropzone = ({
 
   useEffect(() => {
     onSuccess((uploadFiles as WorkspaceElement[]).filter((el) => el._id && el));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uploadFiles]);
 
   return (
