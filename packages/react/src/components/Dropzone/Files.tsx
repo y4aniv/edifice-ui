@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { WorkspaceElement } from "edifice-ts-client";
 
-import { useDropzoneContext } from "./Dropzone";
+import { useDropzoneContext } from "./DropzoneContext";
 import useHandleFile from "../../core/useHandleFile/useHandleFile";
 import { UploadCard } from "../../multimedia";
 import { customSize } from "../../utils/fileSize";

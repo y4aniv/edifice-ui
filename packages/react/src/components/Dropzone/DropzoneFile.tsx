@@ -1,7 +1,7 @@
 import { Plus } from "@edifice-ui/icons";
 import { useTranslation } from "react-i18next";
 
-import { useDropzoneContext } from "./Dropzone";
+import { useDropzoneContext } from "./DropzoneContext";
 import Files from "./Files";
 import { Button } from "../Button";
 
