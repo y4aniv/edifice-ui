@@ -45,7 +45,6 @@ export interface UseDropdownProps {
   triggerRef: MutableRefObject<HTMLButtonElement | null>;
   menuRef: MutableRefObject<HTMLUListElement | null>;
   triggerProps: Record<string, any>;
-  customTriggerProps: Record<string, any>;
   menuProps: Record<string, any>;
   itemProps: Record<string, any>;
   setVisible: Dispatch<SetStateAction<boolean>>;
@@ -284,17 +283,6 @@ const useDropdown = (placement: Placement | undefined): UseDropdownProps => {
       "aria-controls": `dropdown-${id}`,
       "aria-expanded": visible ? true : false,
       className: `dropdown-toggle ${visible ? "selected" : ""}`,
-      onClick: onTriggerClick,
-      onKeyDown: onTriggerKeyDown,
-    },
-    /* customTriggerProps to spread to any custom component */
-    customTriggerProps: {
-      ref: mergeRefs(triggerRef, refs.setReference),
-      id: `dropdown-toggle-${id}`,
-      "aria-haspopup": "menu",
-      "aria-controls": `dropdown-${id}`,
-      "aria-expanded": visible ? true : false,
-      "data-state": visible ? "selected" : null,
       onClick: onTriggerClick,
       onKeyDown: onTriggerKeyDown,
     },
