@@ -28,32 +28,6 @@ export interface DropdownProps {
   placement?: "bottom-end" | "bottom-start";
 }
 
-export type DropdownMenuOptions =
-  | {
-      /**
-       * Object type
-       */
-      type?: undefined;
-      /**
-       * Icon component
-       */
-      icon: JSX.Element;
-      /**
-       * Label for a11y
-       */
-      label: string;
-      /**
-       * Action OnClick
-       */
-      action: (elem: any) => any;
-    }
-  | {
-      /**
-       * Object type
-       */
-      type: "divider";
-    };
-
 const Root = ({
   children,
   block,
