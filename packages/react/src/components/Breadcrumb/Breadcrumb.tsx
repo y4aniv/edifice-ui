@@ -9,6 +9,7 @@ import BreadcrumbList from "./BreadcrumbList";
 import BreadcrumbNav from "./BreadcrumbNav";
 import { AppIcon } from "../AppIcon";
 import { IconButton } from "../Button";
+import Heading from "../Heading/Heading";
 
 export interface BreadcrumbProps {
   /**
@@ -26,8 +27,8 @@ const Breadcrumb = forwardRef(
     const { t } = useTranslation();
 
     return (
-      <BreadcrumbNav app={app} ref={ref}>
-        <BreadcrumbList className="gap-12">
+      <BreadcrumbNav app={app} ref={ref} className="mw-100">
+        <BreadcrumbList className="gap-12 mw-100">
           {name ? (
             <>
               <BreadcrumbItem>
@@ -41,14 +42,22 @@ const Breadcrumb = forwardRef(
                   <AppIcon app={app} size="40" />
                 </a>
               </BreadcrumbItem>
-              <BreadcrumbItem className="h3" aria-current="page">
-                <h1 className="h3">{name}</h1>
+              <BreadcrumbItem className="text-truncate">
+                <Heading level="h1" headingStyle="h3" className="text-truncate">
+                  {name}
+                </Heading>
               </BreadcrumbItem>
             </>
           ) : (
             <BreadcrumbItem className="gap-12 d-flex align-items-center">
               <AppIcon app={app} size="40" />
-              <h1 className="h3">{t(app?.displayName)}</h1>
+              <Heading
+                level="h1"
+                headingStyle="h3"
+                className="d-none d-md-flex"
+              >
+                {t(app?.displayName)}
+              </Heading>
             </BreadcrumbItem>
           )}
         </BreadcrumbList>

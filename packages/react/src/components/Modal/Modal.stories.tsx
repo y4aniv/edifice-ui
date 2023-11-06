@@ -39,8 +39,6 @@ export const Base: Story = {
       toggle(false);
     }
 
-    console.log({ args });
-
     return (
       <>
         <Button

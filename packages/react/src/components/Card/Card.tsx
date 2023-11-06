@@ -1,146 +1,79 @@
-import React, { ComponentPropsWithRef, forwardRef, Ref, useMemo } from "react";
+import { forwardRef, ReactNode, Ref, useMemo } from "react";
 
-import { Options } from "@edifice-ui/icons";
 import clsx from "clsx";
 import { IWebApp } from "edifice-ts-client";
 
+import CardBody from "./CardBody";
 import { CardContext } from "./CardContext";
-import Folder from "./CardFolder";
-import Resource from "./CardResource";
+import CardFooter from "./CardFooter";
+import CardHeader from "./CardHeader";
+import CardImage from "./CardImage";
+import CardText from "./CardText";
+import CardTitle from "./CardTitle";
+import CardUser from "./CardUser";
 import { useOdeIcons } from "../../core";
-import { IconButton } from "../Button";
 
-export type CardType = "folder" | "resource" | null | undefined;
-
-export interface CardOptions {
-  type?: CardType;
+export interface CardProps {
   /**
-   * User Image Profile
+   * IWeb App
    */
-  imageSrc?: string;
+  app?: IWebApp | undefined;
   /**
-   * User Image Profile
+   * Has option
    */
-  userSrc?: string;
+  isSelectable?: boolean;
   /**
-   * Person who created resource
-   * */
-  creatorName?: string;
-  /**
-   * Updated time
+   * Action on Card
    */
-  updatedAt?: string;
+  isClickable?: boolean;
   /**
-   * Name of resource or Folder
-   * */
-  name?: string;
-  isShared?: boolean;
-  isPublic?: boolean;
-}
-
-export interface TooltipOptions {
-  /**
-   * Action to open a single resource
-   */
-  messageShared?: string;
-  /**
-   * Message tooltip icon Public
-   */
-  messagePublic?: string;
-}
-
-export interface CardProps extends ComponentPropsWithRef<"div"> {
-  /**
-   * Show selected Card
+   * Selected state
    */
   isSelected?: boolean;
   /**
-   * Add animation to the Card Component
+   * Click on card
    */
-  isAnimated?: boolean;
+  onClick?: () => void;
   /**
-   * Skeleton Card
-   * */
-  isLoading?: boolean;
-  /**
-   * To show the icon of an application
-   */
-  app: IWebApp | undefined;
-  /**
-   * Select Card and Open ActionBar
+   * Select a card with option menu
    */
   onSelect?: () => void;
-  /**
-   * Action to open a single resource
-   */
-  onOpen?: () => void;
+  /** Children Node */
+  children: ReactNode | ((...props: any) => ReactNode);
   /**
    * Optional class for styling purpose
    */
   className?: string;
-  /**
-   * Card options to generate correct Card
-   */
-  options: CardOptions;
-  /**
-   * Tooltips text
-   */
-  tooltips?: TooltipOptions;
 }
 
 const Root = forwardRef(
   (
     {
-      options,
-      tooltips,
-      isLoading,
       app,
+      isSelectable = true,
+      isClickable = true,
+      isSelected = false,
+      onClick,
       onSelect,
-      onOpen,
-      isSelected,
-      isAnimated,
+      children,
       className,
-      ...restProps
     }: CardProps,
     ref: Ref<HTMLDivElement>,
   ) => {
     const { getIconCode } = useOdeIcons();
-
-    function handleOnSelect(event: React.MouseEvent) {
-      event.stopPropagation();
-      onSelect?.();
-    }
-
-    const { type } = options;
-
     const appCode = app ? getIconCode(app) : "placeholder";
-
-    const classesTitle = clsx(
-      "card-title body text-break text-truncate text-truncate-2 pe-32",
-      {
-        placeholder: isLoading,
-      },
-    );
 
     const values = useMemo(
       () => ({
-        options,
-        isLoading,
-        classesTitle,
         app,
         appCode,
-        tooltips,
+        isSelectable,
+        isClickable,
+        onClick,
+        onSelect,
       }),
-      [app, appCode, classesTitle, isLoading, options, tooltips],
+      [app, appCode, isSelectable, isClickable, onClick, onSelect],
     );
-
-    const Cards = {
-      folder: <Card.Folder />,
-      resource: <Card.Resource />,
-      undefined: <Card.Resource />,
-      default: null,
-    };
-
     return (
       <CardContext.Provider value={values}>
         <div
@@ -148,33 +81,13 @@ const Root = forwardRef(
           className={clsx(
             "card",
             {
-              "placeholder-glow": isLoading,
               "is-selected": isSelected,
-              "is-animated": isAnimated,
             },
             className,
           )}
-          {...restProps}
         >
-          <div className="card-header">
-            {!isLoading && (
-              <IconButton
-                aria-label="Open Action Bar"
-                className="z-3"
-                color="secondary"
-                icon={<Options />}
-                onClick={handleOnSelect}
-                variant="ghost"
-              />
-            )}
-            <button
-              onClick={onOpen}
-              className="position-absolute bottom-0 end-0 top-0 start-0 opacity-0 z-1 w-100"
-              aria-label="Open resource"
-            ></button>
-          </div>
-
-          {Cards[type as keyof CardType] || Cards["default"]}
+          <Card.Header />
+          {typeof children === "function" ? children(appCode) : children}
         </div>
       </CardContext.Provider>
     );
@@ -184,8 +97,13 @@ const Root = forwardRef(
 Root.displayName = "Card";
 
 const Card = Object.assign(Root, {
-  Resource: Resource,
-  Folder: Folder,
+  Title: CardTitle,
+  Text: CardText,
+  Image: CardImage,
+  Body: CardBody,
+  User: CardUser,
+  Footer: CardFooter,
+  Header: CardHeader,
 });
 
 export default Card;

@@ -43,7 +43,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.25.4",
+    "@floating-ui/react": "0.26.0",
     "@popperjs/core": "2.11.8",
     "html-react-parser": "4.0.0",
     "react-popper": "2.3.0"
@@ -66,9 +66,9 @@
   },
   "peerDependencies": {
     "@edifice-ui/icons": "*",
-    "@react-spring/web": "9.7.2",
-    "@tanstack/react-query": "4.29.12",
-    "clsx": "1.2.1",
+    "@react-spring/web": "9.7.3",
+    "@tanstack/react-query": "4.36.1",
+    "clsx": "2.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "2.4.1",

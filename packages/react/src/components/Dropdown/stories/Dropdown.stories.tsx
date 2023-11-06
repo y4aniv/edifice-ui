@@ -267,10 +267,7 @@ export const Stack: Story = {
       <Dropdown>
         <Dropdown.Trigger label="Dropdown" icon={<Filter />} />
         <Dropdown.Menu>
-          <Dropdown.Item
-            // icon={<Image width={22} height={22} />}
-            onClick={() => console.log("click")}
-          >
+          <Dropdown.Item onClick={() => console.log("click")}>
             Action label
           </Dropdown.Item>
           <Dropdown.Separator />
@@ -314,13 +311,13 @@ export const CustomTrigger: Story = {
     return (
       <Dropdown>
         {(
-          customTriggerProps: JSX.IntrinsicAttributes &
+          triggerProps: JSX.IntrinsicAttributes &
             Omit<IconButtonProps, "ref"> &
             RefAttributes<HTMLButtonElement>,
         ) => (
           <>
             <IconButton
-              {...customTriggerProps}
+              {...triggerProps}
               type="button"
               aria-label="label"
               color="tertiary"
