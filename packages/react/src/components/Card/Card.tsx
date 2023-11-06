@@ -38,7 +38,7 @@ export interface CardProps {
    * Select a card with option menu
    */
   onSelect?: () => void;
-  /* Children Node */
+  /** Children Node */
   children: ReactNode | ((...props: any) => ReactNode);
   /**
    * Optional class for styling purpose

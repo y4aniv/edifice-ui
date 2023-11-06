@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import { Globe, Users } from "@edifice-ui/icons";
 import { useState } from "react";
 import ResourceCard from "./ResourceCard";
 

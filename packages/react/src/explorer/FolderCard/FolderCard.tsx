@@ -3,7 +3,7 @@ import { IWebApp } from "edifice-ts-client";
 
 import { Card, CardProps } from "../../components";
 
-export interface FolderCardProps extends CardProps {
+export interface FolderCardProps extends Omit<CardProps, "children"> {
   /**
    * IWeb App
    */
