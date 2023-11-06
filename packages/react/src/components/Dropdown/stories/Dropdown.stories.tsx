@@ -314,13 +314,13 @@ export const CustomTrigger: Story = {
     return (
       <Dropdown>
         {(
-          customTriggerProps: JSX.IntrinsicAttributes &
+          triggerProps: JSX.IntrinsicAttributes &
             Omit<IconButtonProps, "ref"> &
             RefAttributes<HTMLButtonElement>,
         ) => (
           <>
             <IconButton
-              {...customTriggerProps}
+              {...triggerProps}
               type="button"
               aria-label="label"
               color="tertiary"

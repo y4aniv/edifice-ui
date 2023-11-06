@@ -48,7 +48,7 @@ export interface ImagePickerProps extends ComponentPropsWithRef<"input"> {
   /**
    * Callback when uploading image
    */
-  onUploadImage: (obj: Record<string, string>) => void;
+  onUploadImage: (file: File) => void;
   /**
    * Callback when deleting image
    */
@@ -71,27 +71,16 @@ const ImagePicker = forwardRef(
   ) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
 
-    const [preview, setPreview] = useState<Record<string, string>>({
-      name: "",
-      image: src || "",
-    });
+    const [preview, setPreview] = useState<string>(src || "");
 
     const handleChange = (files?: FileList | null) => {
-      setPreview({ ...preview, name: "", image: "" });
+      setPreview("");
 
       const file = files?.[0];
-      if (!file) {
-        return;
-      }
+      if (!file) return;
 
-      const newPreview = {
-        ...preview,
-        name: file.name,
-        image: URL.createObjectURL(file),
-      };
-
-      setPreview(newPreview);
-      onUploadImage(newPreview);
+      setPreview(URL.createObjectURL(file));
+      onUploadImage(file);
     };
 
     const handleClick = () => {
@@ -102,8 +91,7 @@ const ImagePicker = forwardRef(
       if (inputRef.current) {
         inputRef.current.value = "";
       }
-      const cleanPreview = { ...preview, name: "", image: "" };
-      setPreview(cleanPreview);
+      setPreview("");
       onDeleteImage();
     };
 
@@ -140,7 +128,7 @@ const ImagePicker = forwardRef(
           <IconButton
             aria-label={deleteButtonLabel}
             color="danger"
-            disabled={!preview.image}
+            disabled={!preview}
             icon={<Delete width="20" height="20" />}
             onClick={handleClean}
             type="button"
@@ -157,8 +145,8 @@ const ImagePicker = forwardRef(
             size="sm"
             type="file"
           />
-          {preview.image ? (
-            <Avatar alt={preview.name} src={preview.image} size="xl" />
+          {preview ? (
+            <Avatar alt="" src={preview} size="xl" />
           ) : (
             <AppIcon app={app} iconFit="ratio" size="160" variant="rounded" />
           )}
