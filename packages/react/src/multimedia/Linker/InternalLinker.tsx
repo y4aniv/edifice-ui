@@ -137,15 +137,14 @@ const InternalLinker = ({
 
   // Handle [de-]selection of a resource by the user.
   const toggleResourceSelection = (resource: ILinkedResource) => {
-    const idx = selectedDocuments.findIndex(
+    const index = selectedDocuments.findIndex(
       (doc) => doc.assetId === resource.assetId,
     );
-    if (idx < 0) {
-      selectedDocuments.push(resource);
+    if (index < 0) {
+      setSelectedDocuments((prevState) => [...prevState, resource]);
     } else {
-      selectedDocuments.splice(idx, 1);
+      setSelectedDocuments(selectedDocuments.filter((value, i) => i !== index));
     }
-    setSelectedDocuments([...selectedDocuments]);
   };
 
   // Notify parent when resources selection changes.
