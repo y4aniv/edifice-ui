@@ -10,16 +10,11 @@ export interface AudioRecorderProps {
   onError: (error: string) => void;
 }
 
-const AudioRecorder = () => {
-  const {
-    state,
-    recordedTime,
-    playedTime,
-    maxDuration,
-    audioRef,
-    toolbarItems,
-    handleEnded,
-  } = useAudioRecorder();
+const AudioRecorder = ({ onSuccess, onError }: AudioRecorderProps) => {
+  const { elapsedTime, audioRef, toolbarItems, handleEnded } = useAudioRecorder(
+    onSuccess,
+    onError,
+  );
 
   return (
     <div className="audio-recorder d-flex flex-column align-items-center">
@@ -27,10 +22,7 @@ const AudioRecorder = () => {
         <Mic width={64} height={64} />
       </div>
       <div className="audio-recorder-time m-16">
-        {(state === "RECORDING" || state === "IDLE") &&
-          `${convertMsToMS(recordedTime)} / ${convertMsToMS(maxDuration)}`}
-        {(state === "RECORDED" || state === "PLAYING" || state === "PAUSED") &&
-          `${convertMsToMS(playedTime)} / ${convertMsToMS(recordedTime)}`}
+        {convertMsToMS(elapsedTime)}
       </div>
       <div>
         <audio ref={audioRef} onEnded={handleEnded}>

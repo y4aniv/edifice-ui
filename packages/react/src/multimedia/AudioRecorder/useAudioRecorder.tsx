@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   Pause,
@@ -8,6 +8,8 @@ import {
   Refresh,
   Save,
 } from "@edifice-ui/icons";
+import { WorkspaceElement } from "edifice-ts-client";
+import pako from "pako";
 
 import { ToolbarItem } from "../../components";
 
@@ -20,169 +22,271 @@ export type RecordState =
   | "SAVING"
   | "SAVED";
 
-export default function useAudioRecorder() {
+export default function useAudioRecorder(
+  onSuccess: (res: WorkspaceElement) => void,
+  onError: (error: string) => void,
+) {
   const [state, setState] = useState<RecordState>("IDLE");
+  const [initialized, setInitialized] = useState<boolean>(false);
 
-  const [audioStream, setAudioStream] = useState<MediaStream>();
-  const [audioChunks, setAudioChunks] = useState<Blob[]>([]);
-  const [finalAudioBlob, setFinalAudioBlob] = useState<Blob>();
-
-  const [startTime, setStartTime] = useState<number>(0);
-  const [recordedTime, setRecordedTime] = useState<number>(0);
-  const [playedTime, setPlayedTime] = useState<number>(0);
-  const [maxDuration] = useState<number>(180000);
+  const [audioContext, setAudioContext] = useState<AudioContext>();
+  const [encoderWorker, setEncoderWorker] = useState<Worker>();
+  const [webSocket, setWebSocket] = useState<WebSocket | null>(null);
+  const [recorder, setRecorder] = useState<ScriptProcessorNode>();
+  const [leftChannel, setLeftChannel] = useState<Float32Array>(
+    new Float32Array(),
+  );
+  const [rightChannel, setRightChannel] = useState<Float32Array>(
+    new Float32Array(),
+  );
+  const [recordingLength, setRecordingLength] = useState<number>(0);
+  const [elapsedTime, setElapsedTime] = useState<number>(0);
+  const [lastIndex, setLastIndex] = useState<number>(0);
+  const [compress, setCompress] = useState<boolean>(true);
+  // const [audioTitle, setAudioTitle] = useState<string>(""); // TODO audio title for saving in workspace
 
   const audioRef = useRef<HTMLAudioElement>(null);
-  const recorderRef = useRef<MediaRecorder | null>(null);
 
-  const enableAudioStream = useCallback(async () => {
-    try {
-      // Request the user’s media stream’s permission
-      const stream: MediaStream = await navigator.mediaDevices.getUserMedia({
-        audio: true,
-      });
-      setAudioStream(stream);
-    } catch (error) {
-      console.error(error);
-    }
+  const BUFFER_SIZE: number = 4096;
+  const DEFAULT_SAMPLE_RATE: number = 48000;
+
+  useEffect(() => {
+    setEncoderWorker(new Worker("/infra/public/js/audioEncoder.js"));
+    setAudioContext(new AudioContext());
   }, []);
 
-  /**
-   * Enable audio stream and stop streaming on clean up.
-   */
-  useEffect(() => {
-    if (!audioStream) {
-      enableAudioStream();
-    }
-    return () => {
-      if (audioStream) {
-        audioStream.getTracks().forEach((track) => track.stop());
-      }
-    };
-  }, [audioStream, enableAudioStream]);
+  function sendWavChunk(
+    leftChannel: Float32Array,
+    rightChannel: Float32Array,
+    lastIndex: number,
+    webSocket: WebSocket,
+  ) {
+    const index = rightChannel.length;
+    console.log("index = ", index);
+    console.log("lastIndex = ", lastIndex);
 
-  /**
-   * Get last updated recorded chunk and set the recorded video as source for user to watch it.
-   */
-  useEffect(() => {
-    if (audioChunks.length && audioRef.current) {
-      const finalAudio: Blob = new Blob(audioChunks, { type: "audio/webm" });
-      setFinalAudioBlob(finalAudio);
-      audioRef.current.autoplay = false;
-      audioRef.current.srcObject = null;
-      audioRef.current.src = window.URL.createObjectURL(finalAudio);
-    }
-  }, [audioChunks]);
-
-  /**
-   * Handle recording countup.
-   */
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setRecordedTime((prev) => {
-        if (state === "RECORDING") {
-          return prev + 500; // add 500ms
-        }
-        return prev;
-      });
-    }, 500);
-
-    return () => {
-      window.clearInterval(timer);
-    };
-  }, [startTime, state]);
-
-  /**
-   * Handle playing countup.
-   */
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setPlayedTime((prev) => {
-        if (state === "PLAYING") {
-          return prev + 500; // add 500ms
-        }
-        return prev;
-      });
-    }, 500);
-
-    return () => {
-      window.clearInterval(timer);
-    };
-  }, [startTime, state]);
-
-  const handleRecord = useCallback(() => {
-    console.log("RECORD");
-    setStartTime(Date.now());
-    setState("RECORDING");
-
-    if (audioStream) {
-      recorderRef.current = new MediaRecorder(audioStream);
-      recorderRef.current.ondataavailable = ({ data }: BlobEvent) => {
-        if (data.size > 0) {
-          setAudioChunks((prev) => [...prev, data]);
-        }
-        if (recordedTime >= maxDuration) {
-          recorderRef.current?.stop();
-        }
-      };
-      recorderRef.current.onerror = (event) => console.error(event);
-      recorderRef.current.start(1000); // collect 1000ms of data
-    }
-  }, [audioStream, recordedTime, maxDuration]);
-
-  const handleStop = useCallback(() => {
-    console.log("STOP");
-
-    if (recorderRef.current?.state === "recording") {
-      recorderRef.current.requestData();
-      recorderRef.current.stop();
-    }
-
-    setState("RECORDED");
-    setStartTime(0);
-  }, [recorderRef]);
-
-  const handlePlay = useCallback(() => {
-    console.log("PLAYING");
-    setState("PLAYING");
-    audioRef?.current?.play();
-  }, []);
-
-  const handlePause = useCallback(() => {
-    console.log("PAUSED");
-    setState("PAUSED");
-    audioRef?.current?.pause();
-  }, []);
-
-  const handleReset = useCallback(() => {
-    console.log("RESET");
-    setState("IDLE");
-    setStartTime(0);
-    setRecordedTime(0);
-    setAudioChunks([]);
-    setFinalAudioBlob(undefined);
-    enableAudioStream();
-  }, [enableAudioStream]);
-
-  const handleSave = useCallback(() => {
-    console.log("SAVE");
-    setState("SAVING");
-
-    console.log(finalAudioBlob);
-
-    if (!finalAudioBlob) {
-      console.error("Error while saving audio: recorded audio is undefined.");
+    if (!(index > lastIndex)) {
       return;
     }
-  }, [finalAudioBlob]);
 
-  const handleEnded = useCallback(() => {
-    setState("PAUSED");
-    setPlayedTime(0);
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0;
+    if (encoderWorker && webSocket) {
+      encoderWorker.postMessage(["init", audioContext?.sampleRate]);
+      encoderWorker.postMessage([
+        "chunk",
+        leftChannel.slice(lastIndex, index),
+        rightChannel.slice(lastIndex, index),
+        (index - lastIndex) * BUFFER_SIZE,
+      ]);
+
+      encoderWorker.onmessage = function (event) {
+        if (!compress) {
+          webSocket.send(event.data);
+          return;
+        }
+        const initialTime = performance.now();
+        webSocket.send(pako.deflate(event.data));
+        const endTime = performance.now();
+        if (endTime - initialTime > 50) {
+          setCompress(false);
+          webSocket?.send("rawdata");
+        }
+      };
+      setLastIndex(index);
     }
-  }, []);
+  }
+
+  function uuid() {
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+      /[xy]/g,
+      function (c) {
+        const r = (Math.random() * 16) | 0,
+          v = c == "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      },
+    );
+  }
+
+  function getUrl(sampleRate: number) {
+    const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+    let host: string = window.location.host;
+    if (
+      window.location.host === "localhost:8090" ||
+      window.location.host === "localhost:3000"
+    ) {
+      host = "localhost:6502";
+    }
+    const base = protocol + "://" + host;
+    return `${base}/audio/${uuid()}?sampleRate=${sampleRate}`;
+  }
+
+  function closeWs() {
+    if (webSocket) {
+      if (webSocket.readyState === 1) {
+        webSocket.close();
+      }
+    }
+    clearWs();
+  }
+
+  function clearWs() {
+    setWebSocket(null);
+    setLeftChannel(new Float32Array());
+    setRightChannel(new Float32Array());
+    setLastIndex(0);
+  }
+
+  const initRecording = async (webSocket: WebSocket) => {
+    // Request the user’s media stream’s permission
+    const mediaStream: MediaStream = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+    });
+    console.log(mediaStream);
+
+    // Init encoder worker communication
+    console.log(encoderWorker);
+
+    if (encoderWorker) {
+      encoderWorker.postMessage(["init", audioContext?.sampleRate]);
+    }
+
+    // init audioInput
+    if (audioContext) {
+      console.log(audioContext);
+
+      const audioInput: MediaStreamAudioSourceNode | undefined =
+        audioContext.createMediaStreamSource(mediaStream);
+      console.log(audioInput);
+
+      const gainNode = audioContext.createGain();
+      audioInput.connect(gainNode);
+
+      // init audio recorder
+      const recorder = audioContext.createScriptProcessor(BUFFER_SIZE, 2, 2);
+      recorder.onaudioprocess = (event: AudioProcessingEvent) => {
+        const leftChannel = event.inputBuffer.getChannelData(0);
+        const rightChannel = event.inputBuffer.getChannelData(1);
+
+        sendWavChunk(leftChannel, rightChannel, lastIndex, webSocket);
+
+        setLeftChannel((prev) => new Float32Array([...prev, ...leftChannel]));
+        setRightChannel((prev) => new Float32Array([...prev, ...rightChannel]));
+        setRecordingLength((prev) => prev + BUFFER_SIZE);
+        setElapsedTime((prev) => prev + event.inputBuffer.duration);
+      };
+      gainNode.connect(recorder);
+      recorder.connect(audioContext.destination);
+      setRecorder(recorder);
+      setInitialized(true);
+    }
+  };
+
+  const handleRecord = async () => {
+    console.log("RECORD");
+    setState("RECORDING");
+
+    // initialize WebSocket for data transfer
+    if (webSocket) {
+      if (!initialized) {
+        initRecording(webSocket);
+      }
+    } else {
+      const ws = new WebSocket(
+        getUrl(audioContext?.sampleRate || DEFAULT_SAMPLE_RATE),
+      );
+      ws.onopen = () => {
+        if (audioRef.current && audioRef.current.currentTime > 0) {
+          audioRef.current.currentTime = 0;
+        }
+        if (!compress) {
+          ws.send("rawdata");
+        }
+        if (!initialized) {
+          initRecording(ws);
+        }
+      };
+      ws.onerror = (event: Event) => {
+        console.error(event);
+        setState("IDLE");
+        closeWs();
+      };
+      ws.onmessage = (event) => {
+        if (event.data?.indexOf("error") !== -1) {
+          console.error(event.data);
+          closeWs();
+        } else if (event.data === "ok" && state === "SAVING") {
+          closeWs();
+          setElapsedTime(0);
+        }
+      };
+      ws.onclose = () => {
+        setState("IDLE");
+        setElapsedTime(0);
+        clearWs();
+      };
+      setWebSocket(ws);
+    }
+  };
+
+  const handleStop = () => {
+    console.log("STOP");
+    recorder?.disconnect();
+    setState("RECORDED");
+  };
+
+  const handlePlay = () => {
+    console.log("PLAYING");
+    setState("PLAYING");
+    if (encoderWorker) {
+      encoderWorker.postMessage(["init", audioContext?.sampleRate]);
+      encoderWorker.postMessage([
+        "wav",
+        rightChannel,
+        leftChannel,
+        recordingLength,
+      ]);
+      encoderWorker.onmessage = (event: MessageEvent) => {
+        if (audioRef.current) {
+          audioRef.current.src = window.URL.createObjectURL(event.data);
+          audioRef.current.play();
+        }
+      };
+    }
+  };
+
+  const handlePause = () => {
+    console.log("PAUSED");
+    audioRef?.current?.pause();
+    setState("PAUSED");
+  };
+
+  const handleReset = () => {
+    console.log("RESET");
+    setState("IDLE");
+    setElapsedTime(0);
+    setLeftChannel(new Float32Array());
+    setRightChannel(new Float32Array());
+  };
+
+  const handleSave = () => {
+    console.log("SAVE");
+    setState("SAVING");
+    if (webSocket) {
+      sendWavChunk(leftChannel, rightChannel, lastIndex, webSocket);
+    }
+    webSocket?.send("save-");
+
+    // TODO get Audio Workspace element to return onSuccess
+    const mockWorkspaceAudio = { id: "1" } as any as WorkspaceElement;
+    if (mockWorkspaceAudio) {
+      onSuccess(mockWorkspaceAudio);
+    } else {
+      onError("");
+    }
+  };
+
+  const handleEnded = () => {
+    setState("PAUSED");
+  };
 
   const toolbarItems: ToolbarItem[] = [
     {
@@ -249,9 +353,7 @@ export default function useAudioRecorder() {
 
   return {
     state,
-    recordedTime,
-    playedTime,
-    maxDuration,
+    elapsedTime,
     audioRef,
     toolbarItems,
     handleEnded,

@@ -1,16 +1,23 @@
+import { WorkspaceElement } from "edifice-ts-client";
+
+import { AudioRecorder } from "../../AudioRecorder";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 
 export const Audio = () => {
   const context = useMediaLibraryContext();
 
-  function handleClick() {
-    context.setResult();
-    context.setResultCounter(32);
-  }
+  const handleSuccess = (res: WorkspaceElement) => {
+    context.setResult(res);
+  };
+
+  const handleError = (err: string) => {
+    console.error(err);
+  };
 
   return (
-    <p>
-      TODO: Audio <button onClick={handleClick}>add 32</button>
-    </p>
+    <AudioRecorder
+      onSuccess={handleSuccess}
+      onError={handleError}
+    ></AudioRecorder>
   );
 };
