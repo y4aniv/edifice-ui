@@ -5,9 +5,7 @@ import clsx from "clsx";
 import Tabs from "./Tabs";
 import { useTabsContext } from "./TabsContext";
 
-export interface TabsListProps extends ComponentPropsWithoutRef<"div"> {}
-
-const TabsList = (props: TabsListProps) => {
+const TabsList = (props: ComponentPropsWithoutRef<"div">) => {
   const { items, tabUnderlineLeft, tabUnderlineWidth } = useTabsContext();
   const { className, ...restProps } = props;
 
