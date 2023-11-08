@@ -1,6 +1,6 @@
 import { WorkspaceElement } from "edifice-ts-client";
 
-import { Dropzone } from "../../../components/Dropzone";
+import Dropzone from "../../../components/Dropzone/Dropzone";
 import { MediaLibraryType } from "../MediaLibrary";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 

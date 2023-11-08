@@ -1,14 +1,9 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-} from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 import clsx from "clsx";
 import { WorkspaceElement } from "edifice-ts-client";
 
+import { DropzoneContext } from "./DropzoneContext";
 import DropzoneDrag from "./DropzoneDrag";
 import DropzoneFile from "./DropzoneFile";
 import DropzoneImport from "./DropzoneImport";
@@ -20,26 +15,6 @@ export interface AttachmentType {
   size: number;
   name: string;
   src: string;
-}
-
-interface DropzoneContextType {
-  inputRef: React.MutableRefObject<HTMLInputElement | null>;
-  importMessage?: string;
-  uploadFiles: (WorkspaceElement | File)[];
-  handleDelete: (element: WorkspaceElement, index: number) => void;
-  setUploadFiles: any;
-}
-
-const DropzoneContext = createContext<DropzoneContextType | null>(null);
-
-export function useDropzoneContext() {
-  const context = useContext(DropzoneContext);
-  if (!context) {
-    throw new Error(
-      "Dropzone compound components cannot be rendered outside the Dropzone component",
-    );
-  }
-  return context;
 }
 
 interface DropzoneProps {
@@ -103,6 +78,7 @@ const Dropzone = ({
 
   useEffect(() => {
     onSuccess((uploadFiles as WorkspaceElement[]).filter((el) => el._id && el));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uploadFiles]);
 
   return (

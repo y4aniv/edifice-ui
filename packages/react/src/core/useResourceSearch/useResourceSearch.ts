@@ -38,26 +38,25 @@ export default function useResourceSearch(appCode: App) {
 
   // Init services, only once
   useEffect(() => {
-    SnipletsService.initialize(odeServices, mock?.app || appCode)
-      .catch((error) => {
+    (async () => {
+      try {
+        await SnipletsService.initialize(odeServices, mock?.app || appCode);
+      } catch (error) {
         if (mock?.app) {
           SnipletsService.resourceProducingApps = [mock?.app];
         } else {
           throw error;
         }
-      })
-      .then(() => {
-        SnipletsService.registerBehaviours(mock?.app || appCode);
-      })
-      .then(() => {
-        setResourceApplications(SnipletsService.resourceProducingApps);
-      });
+      }
+      await SnipletsService.registerBehaviours(mock?.app || appCode);
+      setResourceApplications(SnipletsService.resourceProducingApps);
+    })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadResources = useCallback(
     async (filters: GetContextParameters) => {
-      const resourceType = filters.types[0];
+      const [resourceType] = filters.types;
       // If mocked data is available, use it. Otherwise load from server.
       const payload = mock?.loadResources
         ? await mock?.loadResources?.(filters).then((results) =>
