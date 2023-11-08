@@ -133,10 +133,6 @@ export function useHelp() {
               replace: (domNode: any) => {
                 const typedDomNode = domNode as any;
 
-                if (typedDomNode.attribs && typedDomNode.name === "p") {
-                  return <></>;
-                }
-
                 if (typedDomNode.attribs && typedDomNode.name === "img") {
                   const attribs = domNode.attribs.src;
                   return (
@@ -155,6 +151,7 @@ export function useHelp() {
     },
   };
 
+  console.log({ html });
   const parsedHTML = parse(html, options);
 
   // @ts-expect-error
@@ -165,6 +162,8 @@ export function useHelp() {
   const parsedHeadline = parsedContent?.find(
     (child: { type: string }) => child.type === "p",
   ).props.children;
+
+  console.log({ parsedContent });
 
   return {
     html,
