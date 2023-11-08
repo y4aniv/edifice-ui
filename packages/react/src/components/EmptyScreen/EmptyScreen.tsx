@@ -24,9 +24,9 @@ export interface EmptyScreenProps {
   text?: string;
 
   /**
-   * CSS class of displayed text
+   * Optional class for styling purpose
    */
-  textClassname?: string;
+  className?: string;
 }
 
 const EmptyScreen = ({
@@ -34,8 +34,9 @@ const EmptyScreen = ({
   imageAlt = "",
   title,
   text,
-  textClassname,
+  className,
 }: EmptyScreenProps) => {
+  const textClass = clsx("text", className);
   return (
     <div className="emptyscreen">
       {imageSrc && (
@@ -55,7 +56,7 @@ const EmptyScreen = ({
           {title}
         </Heading>
       )}
-      {text && <div className={clsx("text", textClassname)}>{text}</div>}
+      {text && <div className={textClass}>{text}</div>}
     </div>
   );
 };
