@@ -167,7 +167,7 @@ const InternalLinker = ({
     <div className="internal-linker flex-grow-1 w-100 rounded border gap-0">
       <div className="search d-flex bg-light rounded-top border-bottom">
         <div className="flex-shrink-1 p-8 border-end">
-          <Dropdown>
+          <Dropdown overflow>
             <Dropdown.Trigger
               icon={selectedApplication?.icon || <Applications />}
               label={t(
