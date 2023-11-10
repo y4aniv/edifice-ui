@@ -5,6 +5,19 @@ import { ResourceService } from "../resources/ResourceService";
 import { AbstractBehaviourService } from "../resources/behaviours/AbstractBehaviourService";
 import { WorkspaceBehaviour } from "../resources/behaviours/WorkspaceBehaviour";
 import { BlogBehaviour } from "../resources/behaviours/BlogBehaviour";
+import { ActualitesBehaviour } from "../resources/behaviours/ActualitesBehaviour";
+import { WikiBehaviour } from "../resources/behaviours/WikiBehaviour";
+import { PagesBehaviour } from "../resources/behaviours/PagesBehaviour";
+import { CommunityBehaviour } from "../resources/behaviours/CommunityBehaviour";
+import { MindmapBehaviour } from "../resources/behaviours/MindmapBehaviour";
+import { ForumBehaviour } from "../resources/behaviours/ForumBehaviour";
+import { HomeworksBehaviour } from "../resources/behaviours/HomeworksBehaviour";
+import { ScrapbookBehaviour } from "../resources/behaviours/ScrapbookBehaviour";
+import { CollaborativewallBehaviour } from "../resources/behaviours/CollaborativewallBehaviour";
+import { ExercizerBehaviour } from "../resources/behaviours/ExercizerBehaviour";
+import { FormulaireBehaviour } from "../resources/behaviours/FormulaireBehaviour";
+import { MagnetoBehaviour } from "../resources/behaviours/MagnetoBehaviour";
+import { PollBehaviour } from "../resources/behaviours/PollBehaviour";
 
 export class SnipletsService {
   static resourceProducingApps: App[] = [];
@@ -26,18 +39,44 @@ export class SnipletsService {
         service = new BlogBehaviour(context);
         break;
       case "actualites":
+        service = new ActualitesBehaviour(context);
+        break;
       case "wiki":
+        service = new WikiBehaviour(context);
+        break;
       case "pages":
+        service = new PagesBehaviour(context);
+        break;
       case "poll":
+        service = new PollBehaviour(context);
+        break;
       case "community":
+        service = new CommunityBehaviour(context);
+        break;
       case "mindmap":
+        service = new MindmapBehaviour(context);
+        break;
       case "forum":
+        service = new ForumBehaviour(context);
+        break;
       case "homeworks":
+        service = new HomeworksBehaviour(context);
+        break;
       case "scrapbook":
+        service = new ScrapbookBehaviour(context);
+        break;
       case "collaborativewall":
+        service = new CollaborativewallBehaviour(context);
+        break;
       case "exercizer":
+        service = new ExercizerBehaviour(context);
+        break;
       case "formulaire":
+        service = new FormulaireBehaviour(context);
+        break;
       case "magneto":
+        service = new MagnetoBehaviour(context);
+        break;
       default:
         throw ERROR_CODE.NOT_SUPPORTED;
     }
