@@ -1,12 +1,6 @@
 import ExternalLinker, { IExternalLink } from "../../Linker/ExternalLinker";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 
-export type LinkerTabProps = {
-  text?: string;
-  url?: string;
-  target?: string;
-};
-
 export type LinkerTabResult = {
   url: string;
   text?: string;
