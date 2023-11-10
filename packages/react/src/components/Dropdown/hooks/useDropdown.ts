@@ -179,7 +179,6 @@ const useDropdown = (placement: Placement | undefined): UseDropdownProps => {
 
   const onMenuItemKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLElement>, onSuccess?: () => void) => {
-      event.preventDefault();
       let flag = false;
 
       if (event.shiftKey) {
@@ -189,6 +188,9 @@ const useDropdown = (placement: Placement | undefined): UseDropdownProps => {
         }
       } else {
         switch (event.code) {
+          case KEYS.Escape:
+            closeDropdown();
+            break;
           case " ":
           case KEYS.Space:
           case KEYS.Enter:

@@ -56,8 +56,18 @@ const Root = ({
       itemProps,
       itemRefs,
       block,
+      setVisible,
     }),
-    [visible, isFocused, triggerProps, menuProps, itemProps, itemRefs, block],
+    [
+      visible,
+      isFocused,
+      triggerProps,
+      menuProps,
+      itemProps,
+      itemRefs,
+      block,
+      setVisible,
+    ],
   );
 
   const dropdown = clsx("dropdown", {
