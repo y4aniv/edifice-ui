@@ -11,8 +11,8 @@ export const Linker = () => {
   const context = useMediaLibraryContext();
   context.setResult();
 
-  const handleLinkChange = (link: IExternalLink) => {
-    if (link.url) {
+  const handleLinkChange = (link: IExternalLink, isValidURL: boolean) => {
+    if (isValidURL) {
       context.setResult({
         url: link.url,
         text: link.text ? link.text : link.url,

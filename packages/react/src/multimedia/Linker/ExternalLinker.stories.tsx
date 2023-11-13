@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import ExternalLinker from "./ExternalLinker";
+import { useState } from "react";
 
 const meta: Meta<typeof ExternalLinker> = {
   title: "Multimedia/ExternalLinker",
@@ -21,6 +22,36 @@ export const Base: Story = {
         story: "",
       },
     },
+  },
+};
+
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+export const Validation: Story = {
+  args: {},
+  parameters: {
+    docs: {
+      description: {
+        story: "",
+      },
+    },
+  },
+  render: () => {
+    const [isValidURL, setIsValidURL] = useState(false);
+    const [url, setURL] = useState("");
+
+    const handleLinkChange = ({}, isValidURL: boolean) => {
+      setIsValidURL(isValidURL);
+      setURL(url);
+    };
+
+    return (
+      <>
+        <ExternalLinker onChange={handleLinkChange} />
+        <div className="mt-32">
+          {isValidURL ? "URL is valid" : "URL is INVALID"}
+        </div>
+      </>
+    );
   },
 };
 

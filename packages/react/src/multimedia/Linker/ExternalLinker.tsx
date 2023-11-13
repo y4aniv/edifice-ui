@@ -17,7 +17,7 @@ export type ExternalLinkerProps = {
   /** Default text value. */
   text?: string;
 
-  onChange?: (props: IExternalLink) => void;
+  onChange?: (link: IExternalLink, isValidURL: boolean) => void;
 };
 
 const ExternalLinker = ({ link, text, onChange }: ExternalLinkerProps) => {
@@ -30,11 +30,17 @@ const ExternalLinker = ({ link, text, onChange }: ExternalLinkerProps) => {
   );
 
   useEffect(() => {
-    onChange?.({
-      url: linkURL,
-      text: linkText,
-      target: isBlankTarget ? "_blank" : undefined,
-    });
+    const isURLExpression =
+      /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+
+    onChange?.(
+      {
+        url: linkURL,
+        text: linkText,
+        target: isBlankTarget ? "_blank" : undefined,
+      },
+      isURLExpression.test(linkURL),
+    );
   }, [linkText, linkURL, isBlankTarget, onChange]);
 
   return (
