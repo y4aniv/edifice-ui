@@ -27,73 +27,243 @@ export default function useAudioRecorder(
   onError: (error: string) => void,
 ) {
   const [state, setState] = useState<RecordState>("IDLE");
-  const [initialized, setInitialized] = useState<boolean>(false);
 
+  // The audio recorder is based on the Web Audio API (https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
+  // See also https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletNode for more information.
+  const [micStream, setMicStream] = useState<MediaStream>();
+  const [micStreamAudioSourceNode, setMicStreamAudioSourceNode] =
+    useState<MediaStreamAudioSourceNode>();
+  const [audioWorkletNode, setAudioWorkletNode] = useState<AudioWorkletNode>();
   const [audioContext, setAudioContext] = useState<AudioContext>();
+
+  // encoder and web socket for sending encoded audio to the backend
   const [encoderWorker, setEncoderWorker] = useState<Worker>();
   const [webSocket, setWebSocket] = useState<WebSocket | null>(null);
-  const [recorder, setRecorder] = useState<ScriptProcessorNode>();
-  const [leftChannel, setLeftChannel] = useState<Float32Array>(
-    new Float32Array(),
-  );
-  const [rightChannel, setRightChannel] = useState<Float32Array>(
-    new Float32Array(),
-  );
-  const [recordingLength, setRecordingLength] = useState<number>(0);
-  const [elapsedTime, setElapsedTime] = useState<number>(0);
-  const [lastIndex, setLastIndex] = useState<number>(0);
   const [compress, setCompress] = useState<boolean>(true);
-  // const [audioTitle, setAudioTitle] = useState<string>(""); // TODO audio title for saving in workspace
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const BUFFER_SIZE: number = 4096;
+  const BUFFER_SIZE: number = 128; // https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor
   const DEFAULT_SAMPLE_RATE: number = 48000;
 
+  // Init Web Socket to send audio chunks to backend
   useEffect(() => {
-    setEncoderWorker(new Worker("/infra/public/js/audioEncoder.js"));
-    setAudioContext(new AudioContext());
+    const ws = new WebSocket(
+      getUrl(audioContext?.sampleRate || DEFAULT_SAMPLE_RATE),
+    );
+    setWebSocket(ws);
+
+    ws.onopen = () => {
+      if (audioRef.current && audioRef.current.currentTime > 0) {
+        audioRef.current.currentTime = 0;
+      }
+      if (!compress) {
+        ws.send("rawdata");
+      }
+    };
+    ws.onerror = (event: Event) => {
+      console.error(event);
+      setState("IDLE");
+      closeWs();
+    };
+    ws.onmessage = (event) => {
+      if (event.data?.indexOf("error") !== -1) {
+        console.error(event.data);
+        closeWs();
+      } else if (event.data === "ok" && state === "SAVING") {
+        closeWs();
+      }
+    };
+    ws.onclose = () => {
+      setState("IDLE");
+      clearWs();
+    };
+
+    return () => {
+      if (ws.readyState === 1) {
+        ws.close();
+      }
+      setWebSocket(null);
+    };
   }, []);
 
-  function sendWavChunk(
-    leftChannel: Float32Array,
-    rightChannel: Float32Array,
-    lastIndex: number,
-    webSocket: WebSocket,
-  ) {
-    const index = rightChannel.length;
-    console.log("index = ", index);
-    console.log("lastIndex = ", lastIndex);
+  // Init encoder worker
+  useEffect(() => {
+    const encoderWorker = new Worker("/infra/public/js/audioEncoder.js");
+    setEncoderWorker(encoderWorker);
+    encoderWorker.postMessage([
+      "init",
+      audioContext?.sampleRate || DEFAULT_SAMPLE_RATE,
+    ]);
+  }, []);
 
-    if (!(index > lastIndex)) {
-      return;
-    }
+  /**
+   * Handle message received from the audio recorder processor.
+   * Basically the Audio recorder processor returns the input channels that will be treated by the audioEncoder worker.
+   * The audio recorder processor script is located here: /infra/public/js/audio-recorder-processor.js
+   * The script follows the AudioWorkletProcessor API (https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor)
+   * This method gets called for each block of 128 sample-frames.
+   *
+   * @param event is the input returned, containing leftChannel and rightChannel arrays.
+   */
+  function handleAudioWorkletNodeMessage(event: MessageEvent) {
+    console.log(event);
 
-    if (encoderWorker && webSocket) {
-      encoderWorker.postMessage(["init", audioContext?.sampleRate]);
+    const leftChannel = (event.data.inputs as Float32Array[][])[0][0];
+    const rightChannel = (event.data.inputs as Float32Array[][])[0][1];
+
+    if (encoderWorker) {
+      encoderWorker.postMessage([
+        "init",
+        audioContext ? audioContext.sampleRate : new AudioContext().sampleRate,
+      ]);
+      // send audio data to encoder worker
       encoderWorker.postMessage([
         "chunk",
-        leftChannel.slice(lastIndex, index),
-        rightChannel.slice(lastIndex, index),
-        (index - lastIndex) * BUFFER_SIZE,
+        leftChannel,
+        rightChannel,
+        BUFFER_SIZE,
       ]);
 
-      encoderWorker.onmessage = function (event) {
+      // chunk encodedData received from ths encoder worker
+      encoderWorker.onmessage = function (event: MessageEvent) {
+        const encodedData: Uint8Array = event.data as Uint8Array;
+
+        // send encoded data to websocket
         if (!compress) {
-          webSocket.send(event.data);
+          webSocket?.send(encodedData);
           return;
         }
         const initialTime = performance.now();
-        webSocket.send(pako.deflate(event.data));
+        webSocket?.send(pako.deflate(encodedData));
         const endTime = performance.now();
         if (endTime - initialTime > 50) {
           setCompress(false);
           webSocket?.send("rawdata");
         }
       };
-      setLastIndex(index);
     }
   }
+
+  const initRecording = async () => {
+    // Request access to the user's microphone
+    const micStream: MediaStream = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+    });
+    setMicStream(micStream);
+
+    // Create the microphone stream
+    const audioContext = new AudioContext();
+    setAudioContext(audioContext);
+    const micStreamAudioSourceNode: MediaStreamAudioSourceNode =
+      audioContext.createMediaStreamSource(micStream);
+    setMicStreamAudioSourceNode(micStreamAudioSourceNode);
+
+    // Create and connect AudioWorkletNode for processing the audio stream
+    // https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor
+    try {
+      await audioContext.audioWorklet.addModule(
+        "/infra/public/js/audio-recorder-processor.js",
+      );
+    } catch (err) {
+      console.error(err);
+    }
+
+    const audioWorkletNode = new AudioWorkletNode(
+      audioContext,
+      "audio-recorder-processor",
+    );
+    setAudioWorkletNode(audioWorkletNode);
+    console.log(audioWorkletNode);
+
+    // Message received from the audio recorder processor. cf handleAudioWorkletNodeMessage function.
+    // Basically the Audio recorder processor returns the input channels that will be treated by the audioEncoder worker.
+    audioWorkletNode.port.addEventListener(
+      "message",
+      handleAudioWorkletNodeMessage,
+    );
+
+    audioWorkletNode.port.start();
+
+    micStreamAudioSourceNode.connect(audioWorkletNode);
+    audioWorkletNode.connect(audioContext.destination);
+  };
+
+  const handleRecord = async () => {
+    console.log("RECORD");
+    setState("RECORDING");
+
+    await initRecording();
+  };
+
+  const handleStop = () => {
+    console.log("STOP");
+    setState("RECORDED");
+
+    // Close audio stream
+    micStream?.getTracks().forEach((track) => track.stop());
+    micStreamAudioSourceNode?.disconnect();
+    audioWorkletNode?.port.removeEventListener(
+      "message",
+      handleAudioWorkletNodeMessage,
+    );
+    audioWorkletNode?.disconnect();
+    audioContext?.close();
+    setState("RECORDED");
+  };
+
+  const handlePlay = () => {
+    console.log("PLAYING");
+    setState("PLAYING");
+
+    // TODO Get cumulated leftChannel and rightChannel to send it to encoder for WAV encoding and then play it
+    // if (encoderWorker) {
+    //   encoderWorker.postMessage(["init", audioContext?.sampleRate]);
+    //   encoderWorker.postMessage([
+    //     "wav",
+    //     rightChannel,
+    //     leftChannel,
+    //     recordingLength,
+    //   ]);
+    //   encoderWorker.onmessage = (event: MessageEvent) => {
+    //     if (audioRef.current) {
+    //       audioRef.current.src = window.URL.createObjectURL(event.data);
+    //       audioRef.current.play();
+    //     }
+    //   };
+    // }
+  };
+
+  const handlePause = () => {
+    console.log("PAUSED");
+    audioRef?.current?.pause();
+    setState("PAUSED");
+  };
+
+  const handleReset = () => {
+    console.log("RESET");
+    setState("IDLE");
+  };
+
+  const handleSave = () => {
+    console.log("SAVE");
+    setState("SAVING");
+
+    // TODO is this enough to save the whole audio?
+    webSocket?.send("save-");
+
+    // TODO get Audio Workspace element to return onSuccess
+    const mockWorkspaceAudio = { id: "1" } as any as WorkspaceElement;
+    if (mockWorkspaceAudio) {
+      onSuccess(mockWorkspaceAudio);
+    } else {
+      onError("");
+    }
+  };
+
+  const handleEnded = () => {
+    setState("PAUSED");
+  };
 
   function uuid() {
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
@@ -130,163 +300,7 @@ export default function useAudioRecorder(
 
   function clearWs() {
     setWebSocket(null);
-    setLeftChannel(new Float32Array());
-    setRightChannel(new Float32Array());
-    setLastIndex(0);
   }
-
-  const initRecording = async (webSocket: WebSocket) => {
-    // Request the user’s media stream’s permission
-    const mediaStream: MediaStream = await navigator.mediaDevices.getUserMedia({
-      audio: true,
-    });
-    console.log(mediaStream);
-
-    // Init encoder worker communication
-    console.log(encoderWorker);
-
-    if (encoderWorker) {
-      encoderWorker.postMessage(["init", audioContext?.sampleRate]);
-    }
-
-    // init audioInput
-    if (audioContext) {
-      console.log(audioContext);
-
-      const audioInput: MediaStreamAudioSourceNode | undefined =
-        audioContext.createMediaStreamSource(mediaStream);
-      console.log(audioInput);
-
-      const gainNode = audioContext.createGain();
-      audioInput.connect(gainNode);
-
-      // init audio recorder
-      const recorder = audioContext.createScriptProcessor(BUFFER_SIZE, 2, 2);
-      recorder.onaudioprocess = (event: AudioProcessingEvent) => {
-        const leftChannel = event.inputBuffer.getChannelData(0);
-        const rightChannel = event.inputBuffer.getChannelData(1);
-
-        sendWavChunk(leftChannel, rightChannel, lastIndex, webSocket);
-
-        setLeftChannel((prev) => new Float32Array([...prev, ...leftChannel]));
-        setRightChannel((prev) => new Float32Array([...prev, ...rightChannel]));
-        setRecordingLength((prev) => prev + BUFFER_SIZE);
-        setElapsedTime((prev) => prev + event.inputBuffer.duration);
-      };
-      gainNode.connect(recorder);
-      recorder.connect(audioContext.destination);
-      setRecorder(recorder);
-      setInitialized(true);
-    }
-  };
-
-  const handleRecord = async () => {
-    console.log("RECORD");
-    setState("RECORDING");
-
-    // initialize WebSocket for data transfer
-    if (webSocket) {
-      if (!initialized) {
-        initRecording(webSocket);
-      }
-    } else {
-      const ws = new WebSocket(
-        getUrl(audioContext?.sampleRate || DEFAULT_SAMPLE_RATE),
-      );
-      ws.onopen = () => {
-        if (audioRef.current && audioRef.current.currentTime > 0) {
-          audioRef.current.currentTime = 0;
-        }
-        if (!compress) {
-          ws.send("rawdata");
-        }
-        if (!initialized) {
-          initRecording(ws);
-        }
-      };
-      ws.onerror = (event: Event) => {
-        console.error(event);
-        setState("IDLE");
-        closeWs();
-      };
-      ws.onmessage = (event) => {
-        if (event.data?.indexOf("error") !== -1) {
-          console.error(event.data);
-          closeWs();
-        } else if (event.data === "ok" && state === "SAVING") {
-          closeWs();
-          setElapsedTime(0);
-        }
-      };
-      ws.onclose = () => {
-        setState("IDLE");
-        setElapsedTime(0);
-        clearWs();
-      };
-      setWebSocket(ws);
-    }
-  };
-
-  const handleStop = () => {
-    console.log("STOP");
-    recorder?.disconnect();
-    setState("RECORDED");
-  };
-
-  const handlePlay = () => {
-    console.log("PLAYING");
-    setState("PLAYING");
-    if (encoderWorker) {
-      encoderWorker.postMessage(["init", audioContext?.sampleRate]);
-      encoderWorker.postMessage([
-        "wav",
-        rightChannel,
-        leftChannel,
-        recordingLength,
-      ]);
-      encoderWorker.onmessage = (event: MessageEvent) => {
-        if (audioRef.current) {
-          audioRef.current.src = window.URL.createObjectURL(event.data);
-          audioRef.current.play();
-        }
-      };
-    }
-  };
-
-  const handlePause = () => {
-    console.log("PAUSED");
-    audioRef?.current?.pause();
-    setState("PAUSED");
-  };
-
-  const handleReset = () => {
-    console.log("RESET");
-    setState("IDLE");
-    setElapsedTime(0);
-    setLeftChannel(new Float32Array());
-    setRightChannel(new Float32Array());
-  };
-
-  const handleSave = () => {
-    console.log("SAVE");
-    setState("SAVING");
-    if (webSocket) {
-      sendWavChunk(leftChannel, rightChannel, lastIndex, webSocket);
-    }
-    webSocket?.send("save-");
-
-    // TODO get Audio Workspace element to return onSuccess
-    const mockWorkspaceAudio = { id: "1" } as any as WorkspaceElement;
-    if (mockWorkspaceAudio) {
-      onSuccess(mockWorkspaceAudio);
-    } else {
-      onError("");
-    }
-  };
-
-  const handleEnded = () => {
-    setState("PAUSED");
-  };
 
   const toolbarItems: ToolbarItem[] = [
     {
@@ -353,7 +367,6 @@ export default function useAudioRecorder(
 
   return {
     state,
-    elapsedTime,
     audioRef,
     toolbarItems,
     handleEnded,

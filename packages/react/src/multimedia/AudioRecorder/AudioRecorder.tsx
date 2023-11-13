@@ -11,7 +11,7 @@ export interface AudioRecorderProps {
 }
 
 const AudioRecorder = ({ onSuccess, onError }: AudioRecorderProps) => {
-  const { elapsedTime, audioRef, toolbarItems, handleEnded } = useAudioRecorder(
+  const { audioRef, toolbarItems, handleEnded } = useAudioRecorder(
     onSuccess,
     onError,
   );
@@ -22,7 +22,7 @@ const AudioRecorder = ({ onSuccess, onError }: AudioRecorderProps) => {
         <Mic width={64} height={64} />
       </div>
       <div className="audio-recorder-time m-16">
-        {convertMsToMS(elapsedTime)}
+        {convertMsToMS(0)} // TODO elapsed time
       </div>
       <div>
         <audio ref={audioRef} onEnded={handleEnded}>
