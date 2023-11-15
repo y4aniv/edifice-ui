@@ -72,7 +72,7 @@ const LinkerCard = ({
 
         {doc.shared && (
           <div className="ps-4 pe-8">
-            <Users />
+            <Users width="20px" height="20px" />
           </div>
         )}
       </Card.Body>
