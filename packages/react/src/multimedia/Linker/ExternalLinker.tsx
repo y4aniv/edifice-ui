@@ -4,43 +4,55 @@ import { useTranslation } from "react-i18next";
 
 import { FormControl, Label, Input, Checkbox } from "../../components";
 import { useToggle } from "../../hooks";
+import { StringUtils } from "../../utils/StringUtils";
 
+/**
+ * Properties for the ExternalLink.
+ */
 export interface IExternalLink {
+  /** Link Url */
   url: string;
+  /** Link text for the llink display */
   text?: string;
-  target?: "_blank" | "";
+  /** Link target (default: _blank) */
+  target?: "_blank";
 }
 
+/**
+ * Properties for the ExternalLinker react component.
+ */
 export type ExternalLinkerProps = {
-  /** Default link value. */
+  /** Default link to update. */
   link?: IExternalLink;
-  /** Default text value. */
-  text?: string;
-
-  onChange?: (link: IExternalLink, isValidURL: boolean) => void;
+  /** Selected text in case of a link creation. */
+  selectedText?: string;
+  /** Notify when the user change any link information */
+  onChange?: (link: IExternalLink, isValidLink: boolean) => void;
 };
 
-const ExternalLinker = ({ link, text, onChange }: ExternalLinkerProps) => {
+const ExternalLinker = ({
+  link,
+  selectedText,
+  onChange,
+}: ExternalLinkerProps) => {
   const { t } = useTranslation();
 
-  const [linkText, setLinkText] = useState<string>(link?.text || text || "");
+  const [linkText, setLinkText] = useState<string>(
+    link?.text || selectedText || "",
+  );
   const [linkURL, setLinkURL] = useState<string>(link?.url || "");
   const [isBlankTarget, toggleBlankTarget] = useToggle(
     link ? link.target === "_blank" : true,
   );
 
   useEffect(() => {
-    const isURLExpression =
-      // eslint-disable-next-line no-useless-escape
-      /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
-
     onChange?.(
       {
         url: linkURL,
         text: linkText,
         target: isBlankTarget ? "_blank" : undefined,
       },
-      isURLExpression.test(linkURL),
+      StringUtils.isValidURL(linkURL),
     );
   }, [linkText, linkURL, isBlankTarget, onChange]);
 

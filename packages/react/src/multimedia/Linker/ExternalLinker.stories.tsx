@@ -25,23 +25,12 @@ export const Base: Story = {
   },
 };
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 export const Validation: Story = {
-  args: {},
-  parameters: {
-    docs: {
-      description: {
-        story: "",
-      },
-    },
-  },
-  render: () => {
+  render: (args) => {
     const [isValidURL, setIsValidURL] = useState(false);
-    const [url, setURL] = useState("");
 
     const handleLinkChange = ({}, isValidURL: boolean) => {
       setIsValidURL(isValidURL);
-      setURL(url);
     };
 
     return (
