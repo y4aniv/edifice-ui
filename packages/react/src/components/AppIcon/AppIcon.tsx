@@ -16,7 +16,7 @@ export interface BaseProps {
   /**
    * App information to get code and name
    */
-  app?: IWebApp;
+  app?: IWebApp | string;
 }
 
 type AppVariants = "square" | "circle" | "rounded";
@@ -82,8 +82,16 @@ const AppIcon = forwardRef(
       "icon-ratio": isRatio,
     };
 
-    const icon = app?.icon !== undefined ? app.icon : "placeholder";
-    const displayName = app?.displayName !== undefined ? app.displayName : "";
+    const icon =
+      typeof app === "string"
+        ? app
+        : app?.icon !== undefined
+        ? app.icon
+        : "placeholder";
+    const displayName =
+      typeof app !== "string" && app?.displayName !== undefined
+        ? app.displayName
+        : "";
     const code = app ? getIconCode(app) : "";
     const isIconURL = isIconUrl(icon);
 

@@ -1,8 +1,12 @@
+import { useMemo } from "react";
+
+import { Users } from "@edifice-ui/icons";
 import clsx from "clsx";
 import { IResource } from "edifice-ts-client";
 
-import { Card, CardProps, Image } from "../../components";
+import { AppIcon, Card, CardProps, Image } from "../../components";
 import { usePaths } from "../../core";
+import { useDate } from "../../core/useDate";
 
 export interface LinkerCardProps extends CardProps {
   /**
@@ -20,24 +24,44 @@ const LinkerCard = ({
   className,
 }: LinkerCardProps) => {
   const [imagePath] = usePaths();
+  const { fromNow } = useDate();
+
+  const { fromDate, srcImage } = useMemo(
+    () => ({
+      fromDate: fromNow(doc.modifiedAt),
+      srcImage: doc.thumbnail ?? `${imagePath}/common/image-placeholder.png`,
+    }),
+    [fromNow, imagePath, doc],
+  );
+
   return (
     <Card
-      className={clsx("card-linker", className)}
+      className={clsx("card-linker shadow-none", className)}
       isClickable={isClickable}
       isSelectable={isSelectable}
       isSelected={isSelected}
       onClick={onClick}
     >
       <Card.Body space="8">
-        <div className="me-4">
-          <Image
-            alt=""
-            src={doc.thumbnail ?? `${imagePath}/common/image-placeholder.png`}
-            width="48"
-            objectFit="cover"
-            className="rounded mx-8"
-            style={{ aspectRatio: 1 / 1 }}
-          />
+        <div className="card-image ps-8 pe-4">
+          {doc?.thumbnail ? (
+            <Image
+              alt=""
+              height={48}
+              width={48}
+              src={srcImage}
+              objectFit="cover"
+              className="rounded h-full"
+              style={{ aspectRatio: 1 / 1 }}
+            />
+          ) : (
+            <AppIcon
+              app={doc.application}
+              iconFit="ratio"
+              size="80"
+              variant="rounded"
+            />
+          )}
         </div>
 
         <div className="w-100">
@@ -45,13 +69,15 @@ const LinkerCard = ({
           <Card.Text className="text-black-50">{doc?.creatorName}</Card.Text>
         </div>
 
-        <div className="d-none d-md-block">
-          <Card.Text>{doc.modifiedAt}</Card.Text>
+        <div className="d-none d-md-block text-black-50 ps-4 pe-8">
+          <Card.Text>{fromDate}</Card.Text>
         </div>
 
-        <div className="">
-          <Card.Text className="text-black-50">{doc?.creatorName}</Card.Text>
-        </div>
+        {doc.shared && (
+          <div className="ps-4 pe-8">
+            <Users />
+          </div>
+        )}
       </Card.Body>
     </Card>
   );

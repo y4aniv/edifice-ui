@@ -25,6 +25,7 @@ import {
 } from "../../components";
 import { useOdeTheme, usePaths, useResourceSearch } from "../../core";
 import { useDebounce } from "../../hooks";
+import LinkerCard from "../LinkerCard/LinkerCard";
 
 /**
  * Definition of an internal link.
@@ -166,14 +167,19 @@ const InternalLinker = ({
   return (
     <div className="internal-linker flex-grow-1 w-100 rounded border gap-0">
       <div className="search d-flex bg-light rounded-top border-bottom">
-        <div className="flex-shrink-1 p-8 border-end">
+        <div className="flex-shrink-1 px-8 py-12 border-end">
           <Dropdown overflow>
             <Dropdown.Trigger
-              icon={selectedApplication?.icon || <Applications />}
+              icon={
+                <div className="pe-8">
+                  {selectedApplication?.icon || <Applications />}
+                </div>
+              }
               label={t(
                 selectedApplication?.displayName || "Choix de l'application",
               )}
               variant="ghost"
+              size="md"
             />
             <Dropdown.Menu>
               {options?.map((option) => (
@@ -213,19 +219,14 @@ const InternalLinker = ({
       </div>
 
       {selectedApplication && resources && resources.length > 0 && (
-        <div className="list row">
-          <ul>
-            {resources.map((resource) => (
-              <li key={resource.assetId}>
-                <p>
-                  {resource.name}, {resource.creatorName}
-                </p>
-                <button onClick={() => toggleResourceSelection(resource)}>
-                  Select
-                </button>
-              </li>
-            ))}
-          </ul>
+        <div className="">
+          {resources.map((resource) => (
+            <LinkerCard
+              key={resource.id}
+              doc={resource}
+              onClick={() => toggleResourceSelection(resource)}
+            />
+          ))}
         </div>
       )}
 
