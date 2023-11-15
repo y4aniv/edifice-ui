@@ -1,9 +1,28 @@
 import { useCallback, useEffect, useState } from "react";
 
+import dayjs from "dayjs";
 import { Dayjs } from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import relativeTime from "dayjs/plugin/relativeTime";
 
-import { type CoreDate, dayjs } from "../../utils";
 import { useSession } from "../useSession";
+
+import "dayjs/locale/de";
+import "dayjs/locale/es";
+import "dayjs/locale/pt";
+import "dayjs/locale/fr";
+import "dayjs/locale/it";
+
+dayjs.extend(relativeTime);
+dayjs.extend(customParseFormat);
+
+type MongoDate = {
+  $date: number | string;
+};
+type IsoDate = string; // "2021-03-24T16:36:05.398" or "1980-01-13"
+
+/** Date formats we are going to deal with. */
+type CoreDate = IsoDate | MongoDate;
 
 /**
  * Hook to compute user-friendly dates from various format.
@@ -23,7 +42,12 @@ export default function useDate() {
       return dayjs(Number.parseInt(date));
     } else {
       // Otherwise, it should be an ISO 8601 date.
-      return dayjs(date);
+      let day = dayjs(date);
+      if (!day.isValid()) {
+        // If invalid, try custom parsings (https://day.js.org/docs/en/parse/string-format)
+        day = dayjs(date, ["YYYY-MM-DD HH:mm:ss.SSS"]);
+      }
+      return day;
     }
   }
 
@@ -42,9 +66,7 @@ export default function useDate() {
           computedDate = parseDate(date.$date, lang);
         }
 
-        return computedDate.isValid()
-          ? computedDate.locale(lang).fromNow()
-          : "";
+        return computedDate.isValid() ? computedDate.fromNow() : "";
       } catch (e) {
         return "";
       }
@@ -53,7 +75,9 @@ export default function useDate() {
   );
 
   useEffect(() => {
-    setLang(sessionQuery?.data?.currentLanguage || "fr");
+    const lang = sessionQuery?.data?.currentLanguage || "fr";
+    setLang(lang);
+    dayjs.locale(lang);
   }, [sessionQuery?.data, setLang]);
 
   return {
