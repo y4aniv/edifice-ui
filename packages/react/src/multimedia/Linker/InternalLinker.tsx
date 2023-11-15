@@ -77,19 +77,28 @@ const InternalLinker = ({
   // Function to load and display resources of the currently selected application.
   const loadAndDisplayResources = useCallback(
     (search?: string) => {
-      if (selectedApplication) {
-        loadResources({
-          application: selectedApplication.application,
-          search,
-          types: [selectedApplication.application],
-          filters: {},
-          pagination: { startIdx: 0, pageSize: 300 }, // ignored at the moment
-        })
-          .then((resources) => setResources(resources))
-          .catch(() => setResources([]));
-      } else {
+      async function load() {
+        if (selectedApplication) {
+          try {
+            const resources = (
+              await loadResources({
+                application: selectedApplication.application,
+                search,
+                types: [selectedApplication.application],
+                filters: {},
+                pagination: { startIdx: 0, pageSize: 300 }, // ignored at the moment
+              })
+            ).sort((a, b) => (a.modifiedAt < b.modifiedAt ? 1 : -1));
+
+            setResources(resources);
+            return; // end here
+          } catch {
+            // continue on error
+          }
+        }
         setResources([]);
       }
+      load();
     },
     [loadResources, selectedApplication],
   );
@@ -220,13 +229,20 @@ const InternalLinker = ({
 
       {selectedApplication && resources && resources.length > 0 && (
         <div className="">
-          {resources.map((resource) => (
-            <LinkerCard
-              key={resource.id}
-              doc={resource}
-              onClick={() => toggleResourceSelection(resource)}
-            />
-          ))}
+          {resources.map((resource) => {
+            const isSelected =
+              selectedDocuments.findIndex(
+                (doc) => doc.assetId === resource.assetId,
+              ) >= 0;
+            return (
+              <LinkerCard
+                key={resource.assetId}
+                doc={resource}
+                isSelected={isSelected}
+                onClick={() => toggleResourceSelection(resource)}
+              />
+            );
+          })}
         </div>
       )}
 

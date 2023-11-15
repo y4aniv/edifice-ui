@@ -5,7 +5,6 @@ import clsx from "clsx";
 import { IResource } from "edifice-ts-client";
 
 import { AppIcon, Card, CardProps, Image } from "../../components";
-import { usePaths } from "../../core";
 import { useDate } from "../../core/useDate";
 
 export interface LinkerCardProps extends CardProps {
@@ -23,15 +22,13 @@ const LinkerCard = ({
   onClick,
   className,
 }: LinkerCardProps) => {
-  const [imagePath] = usePaths();
   const { fromNow } = useDate();
 
-  const { fromDate, srcImage } = useMemo(
+  const { fromDate } = useMemo(
     () => ({
       fromDate: fromNow(doc.modifiedAt),
-      srcImage: doc.thumbnail ?? `${imagePath}/common/image-placeholder.png`,
     }),
-    [fromNow, imagePath, doc],
+    [fromNow, doc],
   );
 
   return (
@@ -44,12 +41,12 @@ const LinkerCard = ({
     >
       <Card.Body space="8">
         <div className="card-image ps-8 pe-4">
-          {doc?.thumbnail ? (
+          {doc.thumbnail && doc.thumbnail.length > 0 ? (
             <Image
               alt=""
               height={48}
               width={48}
-              src={srcImage}
+              src={doc.thumbnail}
               objectFit="cover"
               className="rounded h-full"
               style={{ aspectRatio: 1 / 1 }}
@@ -58,7 +55,7 @@ const LinkerCard = ({
             <AppIcon
               app={doc.application}
               iconFit="ratio"
-              size="80"
+              size="48"
               variant="rounded"
             />
           )}
