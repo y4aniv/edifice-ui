@@ -24,9 +24,6 @@ type Story = StoryObj<typeof InternalLinker>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 export const Base: Story = {
-  args: {
-    appCode: "timelinegenerator",
-  },
   parameters: {
     docs: {
       description: {
@@ -38,7 +35,6 @@ export const Base: Story = {
     return (
       <MockedDataProvider
         mocks={{
-          app: "timelinegenerator",
           appResources: {
             timelinegenerator: [
               {
@@ -74,7 +70,11 @@ export const Base: Story = {
           workspaceDocuments: mockedDocuments,
         }}
       >
-        <InternalLinker {...args}></InternalLinker>
+        <QueryClientProvider client={null as unknown as QueryClient}>
+          <OdeClientProvider params={{ app: "timelinegenerator" }}>
+            <InternalLinker {...args}></InternalLinker>
+          </OdeClientProvider>
+        </QueryClientProvider>
       </MockedDataProvider>
     );
   },

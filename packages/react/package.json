@@ -66,6 +66,7 @@
     "@types/ua-parser-js": "0.7.37",
     "clsx": "2.0.0",
     "concurrently": "8.2.0",
+    "dayjs": "1.11.10",
     "edifice-ts-client": "develop-b2school",
     "react": "18.2.0",
     "react-dom": "18.2.0",

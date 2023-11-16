@@ -25,6 +25,7 @@ import {
 } from "../../components";
 import { useOdeTheme, usePaths, useResourceSearch } from "../../core";
 import { useDebounce } from "../../hooks";
+import LinkerCard from "../LinkerCard/LinkerCard";
 
 /**
  * Definition of an internal link.
@@ -76,19 +77,28 @@ const InternalLinker = ({
   // Function to load and display resources of the currently selected application.
   const loadAndDisplayResources = useCallback(
     (search?: string) => {
-      if (selectedApplication) {
-        loadResources({
-          application: selectedApplication.application,
-          search,
-          types: [selectedApplication.application],
-          filters: {},
-          pagination: { startIdx: 0, pageSize: 300 }, // ignored at the moment
-        })
-          .then((resources) => setResources(resources))
-          .catch(() => setResources([]));
-      } else {
+      async function load() {
+        if (selectedApplication) {
+          try {
+            const resources = (
+              await loadResources({
+                application: selectedApplication.application,
+                search,
+                types: [selectedApplication.application],
+                filters: {},
+                pagination: { startIdx: 0, pageSize: 300 }, // ignored at the moment
+              })
+            ).sort((a, b) => (a.modifiedAt < b.modifiedAt ? 1 : -1));
+
+            setResources(resources);
+            return; // end here
+          } catch {
+            // continue on error
+          }
+        }
         setResources([]);
       }
+      load();
     },
     [loadResources, selectedApplication],
   );
@@ -166,14 +176,19 @@ const InternalLinker = ({
   return (
     <div className="internal-linker flex-grow-1 w-100 rounded border gap-0">
       <div className="search d-flex bg-light rounded-top border-bottom">
-        <div className="flex-shrink-1 p-8 border-end">
+        <div className="flex-shrink-1 px-8 py-12 border-end">
           <Dropdown overflow>
             <Dropdown.Trigger
-              icon={selectedApplication?.icon || <Applications />}
+              icon={
+                <div className="pe-8">
+                  {selectedApplication?.icon || <Applications />}
+                </div>
+              }
               label={t(
                 selectedApplication?.displayName || "Choix de l'application",
               )}
               variant="ghost"
+              size="md"
             />
             <Dropdown.Menu>
               {options?.map((option) => (
@@ -213,19 +228,21 @@ const InternalLinker = ({
       </div>
 
       {selectedApplication && resources && resources.length > 0 && (
-        <div className="list row">
-          <ul>
-            {resources.map((resource) => (
-              <li key={resource.assetId}>
-                <p>
-                  {resource.name}, {resource.creatorName}
-                </p>
-                <button onClick={() => toggleResourceSelection(resource)}>
-                  Select
-                </button>
-              </li>
-            ))}
-          </ul>
+        <div className="">
+          {resources.map((resource) => {
+            const isSelected =
+              selectedDocuments.findIndex(
+                (doc) => doc.assetId === resource.assetId,
+              ) >= 0;
+            return (
+              <LinkerCard
+                key={resource.assetId}
+                doc={resource}
+                isSelected={isSelected}
+                onClick={() => toggleResourceSelection(resource)}
+              />
+            );
+          })}
         </div>
       )}
 
