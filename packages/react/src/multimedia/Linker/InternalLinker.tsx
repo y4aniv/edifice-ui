@@ -216,7 +216,7 @@ const InternalLinker = ({
                 noValidationIcon
                 ref={inputRef}
                 placeholder={t("Rechercher")}
-                size="md"
+                size="lg"
                 type="search"
                 disabled={selectedApplication ? false : true}
                 className="border-start-0"
