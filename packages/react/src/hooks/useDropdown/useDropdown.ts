@@ -18,7 +18,7 @@ import {
   useFloating,
 } from "@floating-ui/react";
 
-import { mergeRefs } from "../../../utils";
+import { mergeRefs } from "../../utils/ref";
 
 export enum KEYS {
   Enter = "Enter",
