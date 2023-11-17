@@ -52,7 +52,7 @@
   "devDependencies": {
     "@edifice-ui/icons": "workspace:*",
     "@react-spring/web": "9.7.3",
-    "@tanstack/react-query": "4.32.6",
+    "@tanstack/react-query": "4.36.1",
     "@tiptap/extension-color": "2.0.4",
     "@tiptap/extension-highlight": "2.0.4",
     "@tiptap/extension-text-style": "2.0.4",

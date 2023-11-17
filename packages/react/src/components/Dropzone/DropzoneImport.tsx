@@ -1,17 +1,29 @@
 import { Download } from "@edifice-ui/icons";
+import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 
 import { useDropzoneContext } from "./DropzoneContext";
-import { Button } from "../Button";
+import Button from "../Button/Button";
 
 const DropzoneImport = () => {
   const { t } = useTranslation();
-  const { inputRef, importMessage } = useDropzoneContext();
+  const { files, inputRef } = useDropzoneContext();
+
+  const hasFiles = files && files.length > 0;
+
+  const classes = clsx("import-wrapper", {
+    "d-flex": !hasFiles,
+    "d-none": hasFiles,
+  });
 
   return (
-    <div className="import-wrapper">
+    <div className={classes}>
       <Download height={48} width={48} />
-      <p className="my-16">{importMessage}</p>
+      <p className="my-16">
+        {t(
+          "Glissez-déposez un/des fichier(s) depuis votre appareil ou cliquez sur parcourir",
+        )}
+      </p>
       <Button onClick={() => inputRef?.current?.click()}>{t("import")}</Button>
     </div>
   );

@@ -1,16 +1,25 @@
+import { ReactNode } from "react";
+
 import { Plus } from "@edifice-ui/icons";
+import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 
 import { useDropzoneContext } from "./DropzoneContext";
-import Files from "./Files";
-import { Button } from "../Button";
+import Button from "../Button/Button";
 
-const DropzoneFile = () => {
+const DropzoneFile = ({ children }: { children: ReactNode }) => {
   const { t } = useTranslation();
-  const { inputRef, uploadFiles, handleDelete } = useDropzoneContext();
+  const { files, inputRef } = useDropzoneContext();
+
+  const hasFiles = files && files.length > 0;
+
+  const classes = clsx("drop-file-wrapper", {
+    "d-block": hasFiles,
+    "d-none": !hasFiles,
+  });
 
   return (
-    <div className="drop-file-wrapper">
+    <div className={classes}>
       <div className="drop-file-content">
         <div className="add-button m-4">
           <Button
@@ -22,17 +31,7 @@ const DropzoneFile = () => {
           </Button>
         </div>
       </div>
-      <div className="p-8">
-        {uploadFiles.map((uploadFile, index) => (
-          <div key={index}>
-            <Files
-              uploadFile={uploadFile}
-              index={index}
-              handleDelete={handleDelete}
-            />
-          </div>
-        ))}
-      </div>
+      <div className="p-8">{children}</div>
     </div>
   );
 };

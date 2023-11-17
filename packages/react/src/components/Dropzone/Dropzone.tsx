@@ -1,14 +1,12 @@
-import { useEffect, useMemo, useRef } from "react";
+import { ReactNode, useMemo } from "react";
 
 import clsx from "clsx";
-import { WorkspaceElement } from "edifice-ts-client";
 
 import { DropzoneContext } from "./DropzoneContext";
 import DropzoneDrag from "./DropzoneDrag";
 import DropzoneFile from "./DropzoneFile";
 import DropzoneImport from "./DropzoneImport";
-import useHandleFile from "../../core/useHandleFile/useHandleFile";
-import { useDropzone } from "../../hooks";
+import useDropzone from "../../hooks/useDropzone/useDropzone";
 
 export interface AttachmentType {
   type: string;
@@ -22,9 +20,7 @@ interface DropzoneProps {
   accept?: string[];
   multiple?: boolean;
   handle?: boolean;
-  importMessage?: string;
-  onSuccess: (res: WorkspaceElement[]) => void;
-  onError: (err: string) => void;
+  children?: ReactNode;
 }
 
 const Dropzone = ({
@@ -32,35 +28,25 @@ const Dropzone = ({
   accept,
   multiple,
   handle = false,
-  importMessage,
-  onSuccess,
+  children,
 }: DropzoneProps) => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
-
-  const { handleDelete, setUploadFiles, uploadFiles } = useHandleFile();
-
-  const handleInputChange = (files: FileList | null) => {
-    if (files && (accept?.includes(files[0].type) || accept?.length === 0)) {
-      setUploadFiles((oldAttachments) => {
-        const newArray = [...oldAttachments];
-        for (let i = 0; i < files?.length; i++) {
-          newArray.push(files[i]);
-        }
-        return newArray;
-      });
-    }
-  };
-
-  const { handleDragLeave, handleDragging, handleDrop, dragging } = useDropzone(
+  const {
     inputRef,
-    handleInputChange,
-  );
+    dragging,
+    files,
+    addFile,
+    deleteFile,
+    handleDragLeave,
+    handleDragging,
+    handleDrop,
+    handleOnChange,
+  } = useDropzone();
 
   const classes = clsx(
     "dropzone",
     {
       "is-dragging": dragging,
-      "is-drop-files": uploadFiles.length !== 0 && !handle ? false : true,
+      "is-drop-files": files.length !== 0 && !handle ? false : true,
     },
     className,
   );
@@ -68,18 +54,12 @@ const Dropzone = ({
   const value = useMemo(
     () => ({
       inputRef,
-      importMessage,
-      uploadFiles,
-      handleDelete,
-      setUploadFiles,
+      files,
+      addFile,
+      deleteFile,
     }),
-    [inputRef, importMessage, uploadFiles, handleDelete, setUploadFiles],
+    [addFile, deleteFile, files, inputRef],
   );
-
-  useEffect(() => {
-    onSuccess((uploadFiles as WorkspaceElement[]).filter((el) => el._id && el));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [uploadFiles]);
 
   return (
     <DropzoneContext.Provider value={value}>
@@ -91,18 +71,13 @@ const Dropzone = ({
         onDrop={handleDrop}
       >
         <div className="align-center">
-          {handle ? (
-            <Dropzone.Drag />
-          ) : (
+          {!handle ? (
             <>
-              {uploadFiles.length !== 0 ? (
-                <Dropzone.File />
-              ) : (
-                <Dropzone.Import />
-              )}
-              <Dropzone.Drag />
+              <Dropzone.File>{children}</Dropzone.File>
+              <Dropzone.Import />
             </>
-          )}
+          ) : null}
+          <Dropzone.Drag />
         </div>
         <input
           ref={inputRef}
@@ -111,10 +86,7 @@ const Dropzone = ({
           type="file"
           name="attachment-input"
           id="attachment-input"
-          onChange={(event) => {
-            handleInputChange(event.target.files);
-            event.target.value = "";
-          }}
+          onChange={handleOnChange}
           hidden
         />
       </div>

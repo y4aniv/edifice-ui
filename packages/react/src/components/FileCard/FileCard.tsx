@@ -8,8 +8,8 @@ import {
 } from "edifice-ts-client";
 
 import FileIcon from "./FileIcon";
-import { Card, CardProps } from "../../components";
 import { useThumbnail } from "../../hooks/useThumbnail";
+import Card, { CardProps } from "../Card/Card";
 
 export interface FileCardProps extends CardProps {
   /**

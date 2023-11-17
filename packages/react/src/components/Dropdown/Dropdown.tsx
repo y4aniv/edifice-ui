@@ -10,8 +10,8 @@ import DropdownMenuGroup from "./DropdownMenuGroup";
 import DropdownRadioItem from "./DropdownRadioItem";
 import DropdownSeparator from "./DropdownSeparator";
 import DropdownTrigger from "./DropdownTrigger";
-import useDropdown from "./hooks/useDropdown";
 import { useClickOutside } from "../../hooks";
+import useDropdown from "../../hooks/useDropdown/useDropdown";
 
 export interface DropdownProps {
   /** Children Props */
