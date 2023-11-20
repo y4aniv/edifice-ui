@@ -3,11 +3,10 @@ import { ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 
 import ComboboxMenu from "./ComboboxMenu";
+import ComboboxTrigger from "./ComboboxTrigger";
 import { Dropdown } from "../Dropdown";
-import { InputTrigger } from "../Input/InputTrigger";
 import { Loading } from "../Loading";
 import { OptionListItemType } from "../SelectList";
-
 export interface ComboboxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   handleSearchResultsChange: (model: (string | number)[]) => void;
@@ -32,7 +31,7 @@ const Combobox = ({
 
   return (
     <Dropdown block>
-      <InputTrigger
+      <Combobox.Trigger
         placeholder={placeholder}
         handleSearchInputChange={handleSearchInputChange}
         value={value}
@@ -50,6 +49,7 @@ const Combobox = ({
 };
 
 Combobox.Menu = ComboboxMenu;
+Combobox.Trigger = ComboboxTrigger;
 
 Combobox.displayName = "Combobox";
 
