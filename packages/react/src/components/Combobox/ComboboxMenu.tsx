@@ -1,30 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Dropdown } from "../Dropdown";
 import { useDropdownContext } from "../Dropdown/DropdownContext";
 import { OptionListItemType } from "../SelectList";
 
 interface ComboboxMenuProps {
-  handleSearchResultsChange: (model: string | number) => void;
+  onChange?: (model: Array<string | number>) => void;
   options: OptionListItemType[];
+  model?: Array<string | number>;
 }
 
 const ComboboxMenu: React.FC<ComboboxMenuProps> = ({
-  handleSearchResultsChange,
+  onChange,
   options,
+  model = [],
 }) => {
   const { visible } = useDropdownContext();
+
+  const [localModel, setLocalModel] = useState(model);
+
+  useEffect(() => {
+    onChange?.(localModel);
+  }, [localModel]);
 
   if (!visible || options.length === 0) {
     return null;
   }
 
+  const handleOptionClick = (value: string | number) => {
+    setLocalModel([value]);
+  };
+
   return (
-    <div className="dropdown-menu bg-white shadow rounded-4 py-12 px-8">
+    <div className="select-list position-absolute bg-white shadow rounded-4 py-12 px-8 w-75">
       {options.map((option, index) => (
         <div key={index}>
           <Dropdown.Item
-            onClick={() => handleSearchResultsChange(option.value)}
+            onClick={() => handleOptionClick(option.value)}
             isClose={false}
           >
             {option.label}
