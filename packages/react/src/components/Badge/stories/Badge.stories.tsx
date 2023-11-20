@@ -118,3 +118,21 @@ export const PersonnelProfileBadge: Story = {
     );
   },
 };
+
+export const BadgeWithIcon: Story = {
+  args: {
+    variant: { type: "profile", profile: "personnel" },
+    rounded: "pill",
+  },
+
+  render: (args: BadgeProps) => {
+    return (
+      <Badge {...args}>
+        <div className="d-flex fs-5 align-items-center px-8 py-4">
+          <Hourglass width="20" height="20" className="me-8" />
+          An history of time
+        </div>
+      </Badge>
+    );
+  },
+};
