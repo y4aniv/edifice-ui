@@ -17,14 +17,16 @@ const meta: Meta<typeof Badge> = {
     variant: {
       control: { type: "radio" },
       options: [
-        "notification",
+        "notification / warning",
+        "notification / danger",
         "profile / student",
         "profile / teacher",
         "profile / relative",
         "profile / personnel",
       ],
       mapping: {
-        notification: { type: "notification" },
+        "notification / warning": { type: "notification", level: "warning" },
+        "notification / danger": { type: "notification", level: "danger" },
         "profile / student": { type: "profile", profile: "student" },
         "profile / teacher": { type: "profile", profile: "teacher" },
         "profile / relative": { type: "profile", profile: "relative" },
@@ -42,7 +44,22 @@ type Story = StoryObj<typeof Badge>;
 export const Base: Story = {
   args: {
     children: "999+",
-    variant: { type: "notification" },
+    variant: { type: "notification", level: "danger" },
+  },
+};
+
+export const VisibilityOption: Story = {
+  args: {
+    variant: { type: "notification", level: "warning" },
+    visibility: "always",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'An empty badge is hidden by default. Set its `visibility` to `"always"` to show it anyway.',
+      },
+    },
   },
 };
 
