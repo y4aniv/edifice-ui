@@ -40,6 +40,8 @@ export default function useAudioRecorder(
   const [encoderWorker, setEncoderWorker] = useState<Worker>();
   const [webSocket, setWebSocket] = useState<WebSocket | null>(null);
   const [compress, setCompress] = useState<boolean>(true);
+  const [leftChannel, setLeftChannel] = useState<Float32Array[]>([]);
+  const [rightChannel, setRigthChannel] = useState<Float32Array[]>([]);
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -57,6 +59,7 @@ export default function useAudioRecorder(
       if (audioRef.current && audioRef.current.currentTime > 0) {
         audioRef.current.currentTime = 0;
       }
+      ws.send("open");
       if (!compress) {
         ws.send("rawdata");
       }
@@ -107,25 +110,21 @@ export default function useAudioRecorder(
    * @param event is the input returned, containing leftChannel and rightChannel arrays.
    */
   function handleAudioWorkletNodeMessage(event: MessageEvent) {
-    console.log(event);
-
     const leftChannel = (event.data.inputs as Float32Array[][])[0][0];
     const rightChannel = (event.data.inputs as Float32Array[][])[0][1];
+    setLeftChannel((prev) => [...prev, leftChannel]);
+    setRigthChannel((prev) => [...prev, rightChannel]);
 
     if (encoderWorker) {
-      encoderWorker.postMessage([
-        "init",
-        audioContext ? audioContext.sampleRate : new AudioContext().sampleRate,
-      ]);
       // send audio data to encoder worker
       encoderWorker.postMessage([
         "chunk",
-        leftChannel,
-        rightChannel,
+        [leftChannel],
+        [rightChannel],
         BUFFER_SIZE,
       ]);
 
-      // chunk encodedData received from ths encoder worker
+      // chunk encodedData received from ths  encoder worker
       encoderWorker.onmessage = function (event: MessageEvent) {
         const encodedData: Uint8Array = event.data as Uint8Array;
 
@@ -153,7 +152,7 @@ export default function useAudioRecorder(
     setMicStream(micStream);
 
     // Create the microphone stream
-    const audioContext = new AudioContext();
+    const audioContext = new AudioContext({ sampleRate: DEFAULT_SAMPLE_RATE });
     setAudioContext(audioContext);
     const micStreamAudioSourceNode: MediaStreamAudioSourceNode =
       audioContext.createMediaStreamSource(micStream);
@@ -217,21 +216,20 @@ export default function useAudioRecorder(
     setState("PLAYING");
 
     // TODO Get cumulated leftChannel and rightChannel to send it to encoder for WAV encoding and then play it
-    // if (encoderWorker) {
-    //   encoderWorker.postMessage(["init", audioContext?.sampleRate]);
-    //   encoderWorker.postMessage([
-    //     "wav",
-    //     rightChannel,
-    //     leftChannel,
-    //     recordingLength,
-    //   ]);
-    //   encoderWorker.onmessage = (event: MessageEvent) => {
-    //     if (audioRef.current) {
-    //       audioRef.current.src = window.URL.createObjectURL(event.data);
-    //       audioRef.current.play();
-    //     }
-    //   };
-    // }
+    if (encoderWorker) {
+      encoderWorker.postMessage([
+        "wav",
+        rightChannel,
+        leftChannel,
+        rightChannel.length * BUFFER_SIZE,
+      ]);
+      encoderWorker.onmessage = (event: MessageEvent) => {
+        if (audioRef.current) {
+          audioRef.current.src = window.URL.createObjectURL(event.data);
+          audioRef.current.play();
+        }
+      };
+    }
   };
 
   const handlePause = () => {
@@ -250,7 +248,10 @@ export default function useAudioRecorder(
     setState("SAVING");
 
     // TODO is this enough to save the whole audio?
-    webSocket?.send("save-");
+    const date = new Date();
+    webSocket?.send(
+      `save-${date.getHours()}:${date.getMinutes()} ${date.getDate()}/${date.getMonth()}`,
+    );
 
     // TODO get Audio Workspace element to return onSuccess
     const mockWorkspaceAudio = { id: "1" } as any as WorkspaceElement;
@@ -278,13 +279,13 @@ export default function useAudioRecorder(
 
   function getUrl(sampleRate: number) {
     const protocol = window.location.protocol === "https:" ? "wss" : "ws";
-    let host: string = window.location.host;
-    if (
-      window.location.host === "localhost:8090" ||
-      window.location.host === "localhost:3000"
-    ) {
-      host = "localhost:6502";
-    }
+    const host: string = "recette-ode1.opendigitaleducation.com";
+    // if (
+    //   window.location.host === "localhost:8090" ||
+    //   window.location.host === "localhost:3000"
+    // ) {
+    //   host = "localhost:6502";
+    // }
     const base = protocol + "://" + host;
     return `${base}/audio/${uuid()}?sampleRate=${sampleRate}`;
   }
