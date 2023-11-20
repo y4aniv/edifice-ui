@@ -16,13 +16,14 @@ const meta: Meta<typeof Badge> = {
   argTypes: {
     color: {
       options: [
-        ,
+        "dark",
+        "light",
         "primary",
         "secondary",
-        "tertiary",
         "danger",
         "warning",
         "info",
+        "success",
       ],
       control: { type: "select" },
     },
@@ -30,14 +31,8 @@ const meta: Meta<typeof Badge> = {
       options: ["fill", "outline"],
       control: { type: "select" },
     },
-    size: {
-      options: ["sm", "md", "lg"],
-      control: { type: "select" },
-    },
   },
-  args: {
-    variant: "fill",
-  },
+  args: {},
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 };
 
@@ -46,7 +41,29 @@ type Story = StoryObj<typeof Badge>;
 
 export const Base: Story = {
   args: {
-    variant: "fill",
     children: "I am a badge",
+  },
+};
+
+export const SurroundedBadge: Story = {
+  args: {
+    children: "a badge",
+  },
+
+  render: (args: BadgeProps) => {
+    return (
+      <p>
+        Here is a paragraph, with <Badge {...args}></Badge> within it.
+      </p>
+    );
+  },
+
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "A badge is a span and can be sourrounded by other HTML element or text nodes.",
+      },
+    },
   },
 };
