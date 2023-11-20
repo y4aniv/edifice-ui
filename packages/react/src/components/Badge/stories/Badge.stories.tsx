@@ -14,22 +14,22 @@ const meta: Meta<typeof Badge> = {
   title: "Components/Badges/Badge",
   component: Badge,
   argTypes: {
-    color: {
-      options: [
-        "dark",
-        "light",
-        "primary",
-        "secondary",
-        "danger",
-        "warning",
-        "info",
-        "success",
-      ],
-      control: { type: "select" },
-    },
     variant: {
-      options: ["fill", "outline"],
-      control: { type: "select" },
+      control: { type: "radio" },
+      options: [
+        "notification",
+        "profile / student",
+        "profile / teacher",
+        "profile / relative",
+        "profile / personnel",
+      ],
+      mapping: {
+        notification: { type: "notification" },
+        "profile / student": { type: "profile", profile: "student" },
+        "profile / teacher": { type: "profile", profile: "teacher" },
+        "profile / relative": { type: "profile", profile: "relative" },
+        "profile / personnel": { type: "profile", profile: "personnel" },
+      },
     },
   },
   args: {},
@@ -41,29 +41,63 @@ type Story = StoryObj<typeof Badge>;
 
 export const Base: Story = {
   args: {
-    children: "I am a badge",
+    children: "999+",
+    variant: { type: "notification" },
   },
 };
 
-export const SurroundedBadge: Story = {
+export const StudentProfileBadge: Story = {
   args: {
-    children: "a badge",
+    variant: { type: "profile", profile: "student" },
   },
 
   render: (args: BadgeProps) => {
     return (
       <p>
-        Here is a paragraph, with <Badge {...args}></Badge> within it.
+        Hello, i am a <Badge {...args}>student</Badge> badge.
       </p>
     );
   },
+};
 
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "A badge is a span and can be sourrounded by other HTML element or text nodes.",
-      },
-    },
+export const TeacherProfileBadge: Story = {
+  args: {
+    variant: { type: "profile", profile: "teacher" },
+  },
+
+  render: (args: BadgeProps) => {
+    return (
+      <p>
+        Hello, i am a <Badge {...args}>teacher</Badge> badge.
+      </p>
+    );
+  },
+};
+
+export const RelativeProfileBadge: Story = {
+  args: {
+    variant: { type: "profile", profile: "relative" },
+  },
+
+  render: (args: BadgeProps) => {
+    return (
+      <p>
+        Hello, i am a <Badge {...args}>relative</Badge> badge.
+      </p>
+    );
+  },
+};
+
+export const PersonnelProfileBadge: Story = {
+  args: {
+    variant: { type: "profile", profile: "personnel" },
+  },
+
+  render: (args: BadgeProps) => {
+    return (
+      <p>
+        Hello, i am a <Badge {...args}>personnel</Badge> badge.
+      </p>
+    );
   },
 };

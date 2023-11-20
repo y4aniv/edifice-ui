@@ -4,34 +4,23 @@ import clsx from "clsx";
 
 export type BadgeRef = HTMLSpanElement;
 
-export type BadgeColors =
-  | "dark"
-  | "light"
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "warning"
-  | "info"
-  | "success"
-  | "student"
-  | "relative"
-  | "teacher"
-  | "personnel";
-export type BadgeVariants = "fill" | "outline";
+/** Badge variant : notification */
+export type NotificationBadgeVariant = { type: "notification" };
+/** Badge variant : profile = teacher, student, relative or personnel */
+export type ProfileBadgeVariant = {
+  type: "profile";
+  profile: "teacher" | "student" | "relative" | "personnel";
+};
+export type BadgeVariants = NotificationBadgeVariant | ProfileBadgeVariant;
 
 export interface BadgeProps extends React.ComponentPropsWithRef<"span"> {
   /**
-   * `dark` (default), `light`, `primary`, `secondary`,
-   * `danger`,  `warning`, `info`, `success`,
-   * `student`, `relative`, `teacher`, `personnel`;
-   */
-  color?: BadgeColors;
-  /**
-   * `fill` or `outline` (default)
+   * Badge variant : notification or profile (Teacher|Student|Relative|Personnel)
+   * Defaults to notification.
    */
   variant?: BadgeVariants;
   /**
-   * Does it has a text ?
+   * Text or icon (or whatever) to render as children elements.
    */
   children: ReactNode;
   /**
@@ -43,34 +32,21 @@ export interface BadgeProps extends React.ComponentPropsWithRef<"span"> {
 /**
  * Primary UI component for user interaction
  */
-
 const Badge = forwardRef(
   (
-    {
-      color = "dark",
-      children,
-      className,
-      variant = "outline",
-      ...restProps
-    }: BadgeProps,
+    { className, variant = { type: "notification" }, ...restProps }: BadgeProps,
     ref: Ref<BadgeRef>,
   ) => {
     const classes = clsx(
       "badge",
       {
-        [`text-${color}`]: color && variant === "outline",
-        [`border`]: variant === "outline",
-        [`border-${color}`]: color && variant === "outline",
-        [`bg-${color} rounded-pill`]: color && variant === "fill",
+        "bg-danger rounded-pill": variant.type === "notification",
       },
+      variant.type === "profile" && `badge-profile-${variant.profile}`,
       className,
     );
 
-    return (
-      <span ref={ref} className={classes} {...restProps}>
-        {children}
-      </span>
-    );
+    return <span ref={ref} className={classes} {...restProps} />;
   },
 );
 
