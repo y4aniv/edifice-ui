@@ -1,22 +1,22 @@
 import { ChangeEvent, useEffect } from "react";
 
-import { useDropdownContext } from "../../Dropdown/DropdownContext";
-import { FormControl } from "../../Form";
-import Input from "../Input";
+import { useDropdownContext } from "../Dropdown/DropdownContext";
+import { FormControl } from "../Form";
+import Input from "../Input/Input";
 
-export interface InputTriggerProps
+export interface ComboboxTriggerProps
   extends React.ComponentPropsWithRef<"button"> {
   handleSearchInputChange: (event: ChangeEvent<HTMLInputElement>) => void;
   value: string;
   placeholder?: string;
 }
 
-const InputTrigger = ({
+const ComboboxTrigger = ({
   placeholder,
   value = "",
   handleSearchInputChange,
-}: InputTriggerProps) => {
-  const { triggerProps, setVisible, itemProps } = useDropdownContext();
+}: ComboboxTriggerProps) => {
+  const { triggerProps, itemProps, setVisible } = useDropdownContext();
 
   const inputProps: Record<string, any> = {
     ...triggerProps,
@@ -47,4 +47,4 @@ const InputTrigger = ({
   );
 };
 
-export default InputTrigger;
+export default ComboboxTrigger;
