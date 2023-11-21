@@ -7,6 +7,7 @@ export * from "./Breadcrumb";
 export * from "./Button";
 export * from "./Card";
 export * from "./Checkbox";
+export * from "./Combobox";
 export * from "./Dropdown";
 export * from "./EmptyScreen";
 export * from "./Form";
