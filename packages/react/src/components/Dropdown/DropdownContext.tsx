@@ -2,10 +2,7 @@ import { createContext, useContext } from "react";
 
 import { UseDropdownProps } from "./hooks/useDropdown";
 
-type OmittedProps = Omit<
-  UseDropdownProps,
-  "triggerRef" | "menuRef" | "setVisible"
->;
+type OmittedProps = Omit<UseDropdownProps, "triggerRef" | "menuRef">;
 export interface DropdownContextProps extends OmittedProps {
   block?: boolean;
 }
