@@ -4,21 +4,11 @@ import clsx from "clsx";
 
 import { useDropdownContext } from "./DropdownContext";
 
-const DropdownItem = ({
-  icon,
-  onClick,
-  isClose = true,
-  children,
-  ...restProps
-}: any) => {
+const DropdownItem = ({ icon, onClick, children, ...restProps }: any) => {
   const { itemProps, itemRefs, isFocused } = useDropdownContext();
-  const { onMenuItemClick, onMenuItemKeyDown, onMenuItemMouseEnter } =
-    itemProps;
+  const { onMenuItemKeyDown, onMenuItemMouseEnter } = itemProps;
 
   const handleOnClick = () => {
-    if (isClose) {
-      onMenuItemClick();
-    }
     onClick?.();
   };
 

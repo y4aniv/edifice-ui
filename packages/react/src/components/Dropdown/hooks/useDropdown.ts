@@ -100,9 +100,12 @@ const useDropdown = (placement: Placement | undefined): UseDropdownProps => {
       const currentItem = Object.values(itemRefs.current)[
         activeIndex
       ] as HTMLElement;
-      const id = currentItem.getAttribute("id") as string;
-      setIsFocused(id);
-      currentItem.focus();
+
+      if (currentItem) {
+        const id = currentItem.getAttribute("id") as string;
+        setIsFocused(id);
+        currentItem.focus();
+      }
     }
   }, [activeIndex]);
 

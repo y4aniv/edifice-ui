@@ -48,15 +48,15 @@ export const Base: Story = {
     const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
       setValue(event.target.value);
     };
-    const handleSearchResultsChange = async (model: string | number) => {
+    const handleSearchResultsChange = async (model: (string | number)[]) => {
       console.log(model);
     };
     return (
       <Combobox
         {...args}
         value={value}
-        handleSearchInputChange={handleSearchInputChange}
-        handleSearchResultsChange={handleSearchResultsChange}
+        onSearchInputChange={handleSearchInputChange}
+        onSearchResultsChange={handleSearchResultsChange}
       />
     );
   },
@@ -64,14 +64,44 @@ export const Base: Story = {
 
 export const ComboboxLoading: Story = {
   render: (args: ComboboxProps) => {
-    const options = [];
-    return <Combobox {...args} isLoading options={options} />;
+    const [value, setValue] = useState<string>("");
+    const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+      setValue(event.target.value);
+    };
+    const handleSearchResultsChange = async (model: (string | number)[]) => {
+      console.log(model);
+    };
+    return (
+      <Combobox
+        {...args}
+        isLoading
+        value={value}
+        options={args.options}
+        onSearchInputChange={handleSearchInputChange}
+        onSearchResultsChange={handleSearchResultsChange}
+      />
+    );
   },
 };
 
 export const ComboboxNoResult: Story = {
   render: (args: ComboboxProps) => {
-    const options = [];
-    return <Combobox {...args} noResult options={options} />;
+    const [value, setValue] = useState<string>("");
+    const handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+      setValue(event.target.value);
+    };
+    const handleSearchResultsChange = async (model: (string | number)[]) => {
+      console.log(model);
+    };
+    return (
+      <Combobox
+        {...args}
+        noResult
+        value={value}
+        options={args.options}
+        onSearchInputChange={handleSearchInputChange}
+        onSearchResultsChange={handleSearchResultsChange}
+      />
+    );
   },
 };
