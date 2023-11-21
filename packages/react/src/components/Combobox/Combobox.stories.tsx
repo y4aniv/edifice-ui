@@ -49,7 +49,7 @@ export const Base: Story = {
       setValue(event.target.value);
     };
     const handleSearchResultsChange = async (model: string | number) => {
-      alert(model);
+      console.log(model);
     };
     return (
       <Combobox

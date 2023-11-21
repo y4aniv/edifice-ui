@@ -338,7 +338,7 @@ export const CustomTrigger: Story = {
     docs: {
       description: {
         story:
-          "Any component can be used as a custom trigger when use as a function as children (render prop). It can access `customTriggerProps` to get required a11y attributes.",
+          "Any component can be used as a custom trigger when use as a function as children (render prop). It can access `triggerProps` to get required a11y attributes.",
       },
     },
   },
