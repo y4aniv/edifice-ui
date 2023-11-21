@@ -1,10 +1,16 @@
+import { WorkspaceElement } from "edifice-ts-client";
+
 import { UploadCard } from "../../components";
 import useUploadFiles from "../../core/useUploadFiles/useUploadFiles";
 import { customSize } from "../../utils/fileSize";
 
-const Upload = () => {
+const Upload = ({
+  onFilesChange,
+}: {
+  onFilesChange: (uploadedFiles: WorkspaceElement[]) => void;
+}) => {
   const { files, uploadedFiles, status, uploadFile, removeFile } =
-    useUploadFiles();
+    useUploadFiles({ handleOnChange: onFilesChange });
 
   return files.map((file) => {
     const resource = uploadedFiles.find(

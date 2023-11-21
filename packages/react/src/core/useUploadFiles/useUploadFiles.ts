@@ -3,16 +3,18 @@ import { useState, useEffect } from "react";
 import { WorkspaceElement } from "edifice-ts-client";
 
 import { useDropzoneContext } from "../../components/Dropzone/DropzoneContext";
-import { useMediaLibraryContext } from "../../multimedia/MediaLibrary/MediaLibraryContext";
 import { Status } from "../../utils";
 import { useWorkspaceFile } from "../useWorkspaceFile";
 
-const useUploadFiles = () => {
+const useUploadFiles = ({
+  handleOnChange,
+}: {
+  handleOnChange: (uploadedFiles: WorkspaceElement[]) => void;
+}) => {
   const [uploadedFiles, setUploadedFiles] = useState<WorkspaceElement[]>([]);
   const [status, setStatus] = useState<Record<string, Status>>({});
 
   const { files, deleteFile } = useDropzoneContext();
-  const { setResult, setResultCounter } = useMediaLibraryContext();
   const { create, remove } = useWorkspaceFile();
 
   useEffect(() => {
@@ -29,13 +31,7 @@ const useUploadFiles = () => {
   }, [files]);
 
   useEffect(() => {
-    if (uploadedFiles.length) {
-      setResultCounter(uploadedFiles.length);
-      setResult(uploadedFiles);
-    } else {
-      setResultCounter(undefined);
-      setResult(undefined);
-    }
+    handleOnChange(uploadedFiles);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uploadedFiles]);
 
@@ -52,6 +48,7 @@ const useUploadFiles = () => {
         ...prevStatus,
         [resource.name]: "success",
       }));
+
       setUploadedFiles((prevFiles: WorkspaceElement[]) => [
         ...prevFiles,
         resource,
