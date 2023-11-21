@@ -14,16 +14,25 @@ export type ProfileBadgeVariant = {
   type: "profile";
   profile: "teacher" | "student" | "relative" | "personnel";
 };
-export type BadgeVariants = NotificationBadgeVariant | ProfileBadgeVariant;
+/** Badge variant : link */
+export type LinkBadgeVariant = {
+  type: "link";
+};
+
+export type BadgeVariants =
+  | NotificationBadgeVariant
+  | ProfileBadgeVariant
+  | LinkBadgeVariant;
 
 export interface BadgeProps extends React.ComponentPropsWithRef<"span"> {
   /**
-   * Badge variant : notification or profile (Teacher|Student|Relative|Personnel)
+   * Badge variant : notification, link or profile (Teacher|Student|Relative|Personnel)
    * Defaults to notification.
    */
   variant?: BadgeVariants;
   /**
    * Is badge always visible ?
+   * A badge with no children is hidden by default.
    */
   visibility?: "always";
   /**
@@ -50,34 +59,52 @@ const Badge = forwardRef(
       variant = { type: "notification", level: "danger" },
       visibility,
       rounded,
+      children,
       ...restProps
     }: BadgeProps,
     ref: Ref<BadgeRef>,
   ) => {
-    if (!rounded) {
-      if ("always" === visibility) {
-        rounded = "circle";
-      } else if ("notification" === variant.type) {
-        rounded = "pill";
+    function getRadiusClass() {
+      // If radius is not forced, set it to a default value when needed.
+      if (!rounded) {
+        if ("always" === visibility && !children) {
+          return "rounded-circle";
+        }
+
+        if ("notification" === variant.type) {
+          return "rounded-pill";
+        } else if ("link" === variant.type) {
+          return "rounded-2";
+        }
       }
     }
-    const radius = rounded ? `rounded-${rounded}` : undefined;
 
     const classes = clsx(
       "badge",
 
+      getRadiusClass(),
+
       "always" === visibility &&
-        `position-absolute translate-middle p-8 ${radius} d-block`,
+        `position-absolute translate-middle p-8 d-block`,
 
-      "notification" === variant.type && `bg-${variant.level} ${radius}`,
+      "notification" === variant.type && `bg-${variant.level} text-light`,
 
-      "profile" === variant.type &&
-        `badge-profile-${variant.profile} ${radius}`,
+      "profile" === variant.type && `badge-profile-${variant.profile}`,
+
+      "link" === variant.type && `border border-primary`,
 
       className,
     );
 
-    return <span ref={ref} className={classes} {...restProps} />;
+    return (
+      <span ref={ref} className={classes} {...restProps}>
+        {variant.type === "link" ? (
+          <div className="d-flex fw-800 align-items-center">{children}</div>
+        ) : (
+          children
+        )}
+      </span>
+    );
   },
 );
 
