@@ -1,15 +1,14 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, Fragment, useEffect, useState } from "react";
 
 import { useTranslation } from "react-i18next";
 
-import ComboboxMenu from "./ComboboxMenu";
 import ComboboxTrigger from "./ComboboxTrigger";
 import { Dropdown } from "../Dropdown";
 import { Loading } from "../Loading";
 export interface ComboboxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  handleSearchResultsChange: (model: (string | number)[]) => void;
-  handleSearchInputChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onSearchResultsChange: (model: (string | number)[]) => void;
+  onSearchInputChange: (event: ChangeEvent<HTMLInputElement>) => void;
   options: OptionListItemType[];
   value: string;
   isLoading: boolean;
@@ -33,8 +32,8 @@ export interface OptionListItemType {
 }
 
 const Combobox = ({
-  handleSearchResultsChange,
-  handleSearchInputChange,
+  onSearchResultsChange,
+  onSearchInputChange,
   options,
   value,
   isLoading,
@@ -43,28 +42,55 @@ const Combobox = ({
 }: ComboboxProps) => {
   const { t } = useTranslation();
 
-  return (
-    <Dropdown block>
-      <Combobox.Trigger
-        placeholder={placeholder}
-        handleSearchInputChange={handleSearchInputChange}
-        value={value}
-      />
-      {isLoading && (
+  const [localValue, setLocalValue] = useState<(string | number)[]>([]);
+
+  useEffect(() => {
+    onSearchResultsChange(localValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [localValue]);
+
+  const handleOptionClick = (value: string | number) => {
+    setLocalValue([value]);
+  };
+
+  const renderContent = () => {
+    if (isLoading) {
+      return (
         <div className="d-flex align-items-center p-4">
           <Loading isLoading={isLoading} />
           <span className="ps-4">{t("explorer.search.pending")}</span>
         </div>
-      )}
-      {noResult && <div className="p-4">{t("portal.no.result")}</div>}
-      <Combobox.Menu options={options} onChange={handleSearchResultsChange} />
+      );
+    }
+
+    if (noResult) {
+      return <div className="p-4">{t("portal.no.result")}</div>;
+    }
+
+    return options.map((option, index) => (
+      <Fragment key={index}>
+        <Dropdown.Item onClick={() => handleOptionClick(option.value)}>
+          {option.label}
+        </Dropdown.Item>
+
+        {index < options.length - 1 && <Dropdown.Separator />}
+      </Fragment>
+    ));
+  };
+
+  return (
+    <Dropdown block>
+      <Combobox.Trigger
+        placeholder={placeholder}
+        handleSearchInputChange={onSearchInputChange}
+        value={value}
+      />
+      <Dropdown.Menu>{renderContent()}</Dropdown.Menu>
     </Dropdown>
   );
 };
 
-Combobox.Menu = ComboboxMenu;
 Combobox.Trigger = ComboboxTrigger;
-
 Combobox.displayName = "Combobox";
 
 export default Combobox;
