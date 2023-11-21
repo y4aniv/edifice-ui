@@ -29,24 +29,24 @@ export interface BadgeProps extends React.ComponentPropsWithRef<"span"> {
    * Badge variant : notification, link or profile (Teacher|Student|Relative|Personnel)
    * Defaults to notification.
    */
-  variant?: BadgeVariants;
+  variant: BadgeVariants | undefined;
   /**
    * Is badge always visible ?
    * A badge with no children is hidden by default.
    */
-  visibility?: "always";
+  visibility: "always" | undefined;
   /**
    * If set, forces the radius of the rounded border.
    */
-  rounded?: "pill" | "circle";
+  rounded: "pill" | "circle" | undefined;
   /**
    * Text or icon (or whatever) to render as children elements.
    */
-  children: ReactNode;
+  children: ReactNode | undefined;
   /**
    * Optional class for styling purpose
    */
-  className?: string;
+  className: string | undefined;
 }
 
 /**

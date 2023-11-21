@@ -1,13 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import Badge, { BadgeProps } from "../Badge";
-import {
-  AddUser,
-  Close,
-  Hourglass,
-  RafterLeft,
-  RafterRight,
-} from "@edifice-ui/icons";
+import { Hourglass } from "@edifice-ui/icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Badge> = {
@@ -34,7 +28,10 @@ const meta: Meta<typeof Badge> = {
       },
     },
   },
-  args: {},
+  args: {
+    children: "999+",
+    variant: { type: "notification", level: "warning" },
+  },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 };
 
