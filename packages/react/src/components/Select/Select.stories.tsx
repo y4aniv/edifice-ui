@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { Meta, StoryObj } from "@storybook/react";
 
 import Select, { OptionsType } from "./Select";
@@ -57,17 +55,23 @@ const subjectAreaOptions: OptionsType[] = [
 
 export const Base: Story = {
   render: (args) => {
-    const onChange = (option: OptionsType) => {
+    const onChange = (option: OptionsType | string) => {
       console.log(option);
     };
 
-    return <Select onValueChange={onChange} options={subjectAreaOptions} />;
+    return (
+      <Select
+        onValueChange={onChange}
+        options={subjectAreaOptions}
+        placeholderOption={subjectAreaOptions[0].label}
+      />
+    );
   },
 };
 
 export const WithIcon: Story = {
   render: (args) => {
-    const onChange = (option: OptionsType) => {
+    const onChange = (option: OptionsType | string) => {
       console.log(option);
     };
 
@@ -76,6 +80,7 @@ export const WithIcon: Story = {
         icon={<ListOrder />}
         onValueChange={onChange}
         options={subjectAreaOptions}
+        placeholderOption={subjectAreaOptions[0].label}
       />
     );
   },
@@ -83,19 +88,24 @@ export const WithIcon: Story = {
 
 export const Disabled: Story = {
   render: (args) => {
-    const onChange = (option: OptionsType) => {
+    const onChange = (option: OptionsType | string) => {
       console.log(option);
     };
 
     return (
-      <Select onValueChange={onChange} options={subjectAreaOptions} disabled />
+      <Select
+        onValueChange={onChange}
+        options={subjectAreaOptions}
+        placeholderOption={subjectAreaOptions[0].label}
+        disabled
+      />
     );
   },
 };
 
 export const Variant: Story = {
   render: (args) => {
-    const onChange = (option: OptionsType) => {
+    const onChange = (option: OptionsType | string) => {
       console.log(option);
     };
 
@@ -104,6 +114,7 @@ export const Variant: Story = {
         onValueChange={onChange}
         options={subjectAreaOptions}
         variant="ghost"
+        placeholderOption={subjectAreaOptions[0].label}
       />
     );
   },
@@ -111,7 +122,7 @@ export const Variant: Story = {
 
 export const SelectSizes: Story = {
   render: (args) => {
-    const onChange = (option: OptionsType) => {
+    const onChange = (option: OptionsType | string) => {
       console.log(option);
     };
 
@@ -122,16 +133,19 @@ export const SelectSizes: Story = {
             onValueChange={onChange}
             options={subjectAreaOptions}
             size="sm"
+            placeholderOption={subjectAreaOptions[0].label}
           />
           <Select
             onValueChange={onChange}
             options={subjectAreaOptions}
             size="md"
+            placeholderOption={subjectAreaOptions[0].label}
           />
           <Select
             onValueChange={onChange}
             options={subjectAreaOptions}
             size="lg"
+            placeholderOption={subjectAreaOptions[0].label}
           />
         </div>
         <div className="d-flex align-items-center gap-8">
@@ -140,18 +154,21 @@ export const SelectSizes: Story = {
             options={subjectAreaOptions}
             size="sm"
             variant="ghost"
+            placeholderOption={subjectAreaOptions[0].label}
           />
           <Select
             onValueChange={onChange}
             options={subjectAreaOptions}
             size="md"
             variant="ghost"
+            placeholderOption={subjectAreaOptions[0].label}
           />
           <Select
             onValueChange={onChange}
             options={subjectAreaOptions}
             size="lg"
             variant="ghost"
+            placeholderOption={subjectAreaOptions[0].label}
           />
         </div>
       </>
