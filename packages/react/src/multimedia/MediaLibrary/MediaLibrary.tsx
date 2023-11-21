@@ -26,13 +26,13 @@ import { useHasWorkflow } from "../../core/useHasWorkflow";
 //---------------------------------------------------
 /** Ordered list of tabs. */
 const orderedTabs = [
-  "workspace", // Media browser
-  "upload", // Filesystem browser + drag'n'drop of files
   "audio-capture",
   "video-capture",
   "resource", // Link to a shared resource (previously known as "internal linker")
   "linker", // Link to an external website (previously known as "external linker")
   "iframe", // Framed website
+  "upload", // Filesystem browser + drag'n'drop of files
+  "workspace", // Media browser
 ];
 
 /**
