@@ -15,6 +15,7 @@ import {
   autoUpdate,
   flip,
   offset,
+  size,
   useFloating,
 } from "@floating-ui/react";
 
@@ -64,7 +65,17 @@ const useDropdown = (placement: Placement | undefined): UseDropdownProps => {
     open: visible,
     onOpenChange: setVisible,
     whileElementsMounted: autoUpdate,
-    middleware: [offset(4), flip({ padding: 0 })],
+    middleware: [
+      offset(4),
+      flip({ padding: 0 }),
+      size({
+        apply({ rects, elements }) {
+          Object.assign(elements.floating.style, {
+            width: `${rects.reference.width}px`,
+          });
+        },
+      }),
+    ],
   });
 
   /* refs */
