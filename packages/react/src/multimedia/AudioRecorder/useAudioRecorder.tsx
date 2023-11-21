@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import {
   Pause,
@@ -16,17 +16,19 @@ import { ToolbarItem } from "../../components";
 export type RecordState =
   | "IDLE"
   | "RECORDING"
-  | "RECORDED"
-  | "PLAYING"
   | "PAUSED"
+  | "RECORDED"
   | "SAVING"
   | "SAVED";
+
+export type PlayState = "IDLE" | "PLAYING" | "PAUSED";
 
 export default function useAudioRecorder(
   onSuccess: (res: WorkspaceElement) => void,
   onError: (error: string) => void,
 ) {
-  const [state, setState] = useState<RecordState>("IDLE");
+  const recordState = useRef<RecordState>("IDLE");
+  const [playState, setPlayState] = useState<PlayState>("IDLE");
 
   // The audio recorder is based on the Web Audio API (https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
   // See also https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletNode for more information.
@@ -43,6 +45,7 @@ export default function useAudioRecorder(
   const [leftChannel, setLeftChannel] = useState<Float32Array[]>([]);
   const [rightChannel, setRigthChannel] = useState<Float32Array[]>([]);
 
+  const audioNameRef = useRef<HTMLInputElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const BUFFER_SIZE: number = 128; // https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor
@@ -66,19 +69,61 @@ export default function useAudioRecorder(
     };
     ws.onerror = (event: Event) => {
       console.error(event);
-      setState("IDLE");
+      setPlayState("IDLE");
+      recordState.current = "IDLE";
       closeWs();
     };
-    ws.onmessage = (event) => {
-      if (event.data?.indexOf("error") !== -1) {
+    ws.onmessage = async (event) => {
+      if (
+        event.data &&
+        event.data.indexOf &&
+        typeof event.data.indexOf === "function" &&
+        event.data.indexOf("error") !== -1
+      ) {
         console.error(event.data);
+        setPlayState("IDLE");
+        recordState.current = "IDLE";
         closeWs();
-      } else if (event.data === "ok" && state === "SAVING") {
-        closeWs();
+      } else if (
+        event.data &&
+        event.data.text &&
+        typeof event.data.text === "function" &&
+        recordState.current === "SAVING"
+      ) {
+        const data = JSON.parse(await event.data.text());
+        if (data.status === "ok") {
+          closeWs();
+          // TODO get Audio Workspace element to return onSuccess
+          const mockWorkspaceAudio = {
+            _id: data.docId,
+            file: data.docId,
+            name: audioNameRef.current?.value,
+            eType: "file",
+            eParent: "",
+            children: [],
+            created: new Date(),
+            _shared: [],
+            _isShared: false,
+            owner: { userId: "", displayName: "" },
+          } as any as WorkspaceElement;
+
+          if (mockWorkspaceAudio) {
+            onSuccess(mockWorkspaceAudio);
+          } else {
+            onError("");
+          }
+
+          closeAudioStream();
+          console.log("SAVED");
+          recordState.current = "SAVED";
+        } else {
+          console.log(event.data);
+          recordState.current = "IDLE";
+          closeWs();
+        }
       }
     };
     ws.onclose = () => {
-      setState("IDLE");
       clearWs();
     };
 
@@ -144,6 +189,20 @@ export default function useAudioRecorder(
     }
   }
 
+  function closeAudioStream() {
+    // Close audio stream
+    micStream?.getTracks().forEach((track) => track.stop());
+    micStreamAudioSourceNode?.disconnect();
+    audioWorkletNode?.port.removeEventListener(
+      "message",
+      handleAudioWorkletNodeMessage,
+    );
+    audioWorkletNode?.disconnect();
+    audioContext?.close();
+    setLeftChannel([]);
+    setRigthChannel([]);
+  }
+
   const initRecording = async () => {
     // Request access to the user's microphone
     const micStream: MediaStream = await navigator.mediaDevices.getUserMedia({
@@ -190,80 +249,86 @@ export default function useAudioRecorder(
 
   const handleRecord = async () => {
     console.log("RECORD");
-    setState("RECORDING");
+    recordState.current = "RECORDING";
+    setPlayState("IDLE");
 
     await initRecording();
   };
 
-  const handleStop = () => {
-    console.log("STOP");
-    setState("RECORDED");
-
-    // Close audio stream
-    micStream?.getTracks().forEach((track) => track.stop());
-    micStreamAudioSourceNode?.disconnect();
-    audioWorkletNode?.port.removeEventListener(
-      "message",
-      handleAudioWorkletNodeMessage,
-    );
-    audioWorkletNode?.disconnect();
-    audioContext?.close();
-    setState("RECORDED");
+  const handleRecordPause = () => {
+    if (audioContext?.state === "running") {
+      console.log("RECORD PAUSED");
+      recordState.current = "PAUSED";
+      audioContext?.suspend();
+    } else {
+      console.log("RECORD RESUME");
+      recordState.current = "RECORDING";
+      audioContext?.resume();
+      if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+      }
+    }
   };
 
   const handlePlay = () => {
     console.log("PLAYING");
-    setState("PLAYING");
-
-    // TODO Get cumulated leftChannel and rightChannel to send it to encoder for WAV encoding and then play it
-    if (encoderWorker) {
-      encoderWorker.postMessage([
-        "wav",
-        rightChannel,
-        leftChannel,
-        rightChannel.length * BUFFER_SIZE,
-      ]);
-      encoderWorker.onmessage = (event: MessageEvent) => {
-        if (audioRef.current) {
-          audioRef.current.src = window.URL.createObjectURL(event.data);
-          audioRef.current.play();
-        }
-      };
+    setPlayState("PLAYING");
+    if (audioRef?.current?.currentTime) {
+      audioRef.current.play();
+    } else {
+      if (encoderWorker) {
+        encoderWorker.postMessage([
+          "wav",
+          rightChannel,
+          leftChannel,
+          rightChannel.length * BUFFER_SIZE,
+        ]);
+        encoderWorker.onmessage = (event: MessageEvent) => {
+          if (audioRef.current) {
+            audioRef.current.src = window.URL.createObjectURL(event.data);
+            audioRef.current.play();
+          }
+        };
+      }
     }
   };
 
-  const handlePause = () => {
-    console.log("PAUSED");
+  const handlePlayPause = () => {
+    console.log("PLAY PAUSED");
     audioRef?.current?.pause();
-    setState("PAUSED");
+    setPlayState("PAUSED");
   };
 
   const handleReset = () => {
     console.log("RESET");
-    setState("IDLE");
+    setPlayState("IDLE");
+    recordState.current = "IDLE";
+    closeAudioStream();
   };
 
   const handleSave = () => {
     console.log("SAVE");
-    setState("SAVING");
+    recordState.current = "SAVING";
 
-    // TODO is this enough to save the whole audio?
-    const date = new Date();
-    webSocket?.send(
-      `save-${date.getHours()}:${date.getMinutes()} ${date.getDate()}/${date.getMonth()}`,
-    );
-
-    // TODO get Audio Workspace element to return onSuccess
-    const mockWorkspaceAudio = { id: "1" } as any as WorkspaceElement;
-    if (mockWorkspaceAudio) {
-      onSuccess(mockWorkspaceAudio);
-    } else {
-      onError("");
-    }
+    webSocket?.send(`save-${audioNameRef.current?.value}`);
   };
 
-  const handleEnded = () => {
-    setState("PAUSED");
+  const handlePlayStop = useCallback(() => {
+    console.log("STOP PLAYING");
+
+    // Stop Playing the record
+    if (audioRef?.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+    setPlayState("IDLE");
+  }, []);
+
+  const handlePlayEnded = () => {
+    setPlayState("PAUSED");
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+    }
   };
 
   function uuid() {
@@ -307,40 +372,72 @@ export default function useAudioRecorder(
     {
       type: "icon",
       name: "record",
+      visibility:
+        recordState.current === "RECORDING" || recordState.current === "PAUSED"
+          ? "hide"
+          : "show",
       props: {
         icon: <Record color="" />,
         color: "danger",
-        disabled: state !== "IDLE",
+        disabled: recordState.current !== "IDLE",
         onClick: handleRecord,
       },
     },
     {
       type: "icon",
+      name: "recordPause",
+      visibility:
+        recordState.current === "RECORDING" || recordState.current === "PAUSED"
+          ? "show"
+          : "hide",
+      props: {
+        icon: (
+          <Pause
+            style={
+              recordState.current === "PAUSED"
+                ? { color: "var(--edifice-danger)" }
+                : {}
+            }
+          />
+        ),
+        disabled:
+          recordState.current !== "RECORDING" &&
+          recordState.current !== "PAUSED",
+        onClick: handleRecordPause,
+      },
+    },
+    { type: "divider" },
+    {
+      type: "icon",
       name: "stop",
       props: {
         icon: <RecordStop />,
-        disabled: state !== "RECORDING",
-        onClick: handleStop,
+        disabled: playState !== "PLAYING" && playState !== "PAUSED",
+        onClick: handlePlayStop,
       },
     },
     {
       type: "icon",
       name: "play",
-      visibility: state === "PLAYING" ? "hide" : "show",
+      visibility: playState === "PLAYING" ? "hide" : "show",
       props: {
         icon: <PlayFilled />,
-        disabled: state !== "RECORDED" && state !== "PAUSED",
+        disabled:
+          recordState.current !== "RECORDED" &&
+          recordState.current !== "PAUSED" &&
+          recordState.current !== "SAVED" &&
+          playState !== "PAUSED",
         onClick: handlePlay,
       },
     },
     {
       type: "icon",
-      name: "pause",
-      visibility: state === "PLAYING" ? "show" : "hide",
+      name: "playPause",
+      visibility: playState === "PLAYING" ? "show" : "hide",
       props: {
         icon: <Pause />,
-        disabled: state !== "PLAYING",
-        onClick: handlePause,
+        disabled: playState !== "PLAYING",
+        onClick: handlePlayPause,
       },
     },
     { type: "divider" },
@@ -350,7 +447,10 @@ export default function useAudioRecorder(
       props: {
         icon: <Refresh />,
         disabled:
-          state !== "RECORDED" && state !== "PLAYING" && state !== "PAUSED",
+          recordState.current !== "RECORDED" &&
+          playState !== "PLAYING" &&
+          playState !== "PAUSED" &&
+          recordState.current !== "PAUSED",
         onClick: handleReset,
       },
     },
@@ -360,16 +460,25 @@ export default function useAudioRecorder(
       props: {
         icon: <Save />,
         disabled:
-          state !== "RECORDED" && state !== "PLAYING" && state !== "PAUSED",
+          (recordState.current !== "RECORDED" &&
+            recordState.current !== "PAUSED" &&
+            playState !== "PLAYING" &&
+            playState !== "PAUSED") ||
+          !audioNameRef.current?.value,
         onClick: handleSave,
       },
     },
   ];
 
   return {
-    state,
+    recordState: recordState.current,
+    playState,
+    recordtime: audioContext?.currentTime
+      ? audioContext?.currentTime * 1000
+      : undefined,
     audioRef,
+    audioNameRef,
     toolbarItems,
-    handleEnded,
+    handlePlayEnded,
   };
 }
