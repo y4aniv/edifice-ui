@@ -8,11 +8,11 @@ import { DropdownTriggerProps } from "../Dropdown/DropdownTrigger";
 
 export interface OptionsType {
   /**
-   * Value
+   * Select Option Value
    */
   value: string;
   /**
-   * Label
+   * Option Option Label
    */
   label: string;
 }
@@ -20,8 +20,18 @@ export interface OptionsType {
 export interface SelectProps
   extends Omit<DropdownProps, "children">,
     Omit<DropdownTriggerProps, "badgeContent"> {
-  options: OptionsType[];
-  onValueChange: (option: OptionsType) => void;
+  /**
+   * Default select label
+   */
+  placeholderOption: string;
+  /**
+   * Select options
+   * */
+  options: OptionsType[] | string[];
+  /**
+   * Callback to get value
+   */
+  onValueChange?: (option: OptionsType | string) => void;
 }
 
 /**
@@ -37,32 +47,43 @@ const Select = ({
   variant,
   size,
   disabled,
+  placeholderOption,
   onValueChange,
 }: SelectProps) => {
-  const [value, setValue] = useState(options[0]);
+  const [localValue, setLocalValue] = useState<OptionsType | string>();
 
   const { t } = useTranslation();
 
   useEffect(() => {
-    if (value) onValueChange(value);
+    if (localValue) {
+      const value =
+        typeof localValue === "object" ? localValue.value : localValue;
+      onValueChange?.(value);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value]);
+  }, [localValue]);
+
+  const label = typeof localValue === "object" ? localValue.label : localValue;
 
   return (
     <Dropdown overflow={overflow} block={block}>
       <SelectTrigger
         icon={icon}
-        label={t(value.label)}
+        label={t(label || placeholderOption)}
         variant={variant}
         size={size}
         disabled={disabled}
       />
       <Dropdown.Menu role="listbox">
-        {options?.map((option) => (
-          <Dropdown.Item key={option.value} onClick={() => setValue(option)}>
-            {option.label}
-          </Dropdown.Item>
-        ))}
+        {options?.map((option) => {
+          const value = typeof option === "object" ? option.value : option;
+          const label = typeof option === "object" ? option.label : option;
+          return (
+            <Dropdown.Item key={value} onClick={() => setLocalValue(option)}>
+              {label}
+            </Dropdown.Item>
+          );
+        })}
       </Dropdown.Menu>
     </Dropdown>
   );
