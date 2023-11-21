@@ -6,7 +6,6 @@ import ComboboxMenu from "./ComboboxMenu";
 import ComboboxTrigger from "./ComboboxTrigger";
 import { Dropdown } from "../Dropdown";
 import { Loading } from "../Loading";
-import { OptionListItemType } from "../SelectList";
 export interface ComboboxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   handleSearchResultsChange: (model: (string | number)[]) => void;
@@ -16,6 +15,21 @@ export interface ComboboxProps
   isLoading: boolean;
   noResult: boolean;
   placeholder?: string;
+}
+
+export interface OptionListItemType {
+  /**
+   * Value
+   */
+  value: string | number;
+  /**
+   * Label
+   */
+  label: string;
+  /**
+   * Add an icon
+   */
+  icon?: any;
 }
 
 const Combobox = ({

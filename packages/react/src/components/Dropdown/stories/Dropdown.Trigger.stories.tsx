@@ -162,13 +162,13 @@ export const CustomTrigger: Story = {
     return (
       <Dropdown>
         {(
-          customTriggerProps: JSX.IntrinsicAttributes &
+          triggerProps: JSX.IntrinsicAttributes &
             Omit<IconButtonProps, "ref"> &
             RefAttributes<HTMLButtonElement>,
         ) => (
           <>
             <IconButton
-              {...customTriggerProps}
+              {...triggerProps}
               type="button"
               aria-label="label"
               color="tertiary"
@@ -189,7 +189,7 @@ export const CustomTrigger: Story = {
     docs: {
       description: {
         story:
-          "Any component can be used as a custom trigger when use as a function as children (render prop). It can access `customTriggerProps` to get required a11y attributes.",
+          "Any component can be used as a custom trigger when use as a function as children (render prop). It can access `triggerProps` to get required a11y attributes.",
       },
     },
   },

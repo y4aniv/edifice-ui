@@ -36,7 +36,7 @@ export const Base: Story = {
 export const ClickOnFolder: Story = {
   render: (args) => {
     const handleOnClick = () => {
-      alert("click");
+      console.log("click");
     };
     return <FolderCard {...args} onClick={handleOnClick} />;
   },

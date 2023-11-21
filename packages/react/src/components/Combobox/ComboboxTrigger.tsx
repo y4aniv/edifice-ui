@@ -20,6 +20,7 @@ const ComboboxTrigger = ({
 
   const inputProps: Record<string, any> = {
     ...triggerProps,
+    role: "combobox",
     onClick: () => {
       if (value.length > 2) {
         setVisible(true);
