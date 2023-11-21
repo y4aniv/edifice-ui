@@ -151,7 +151,6 @@ export function useHelp() {
     },
   };
 
-  console.log({ html });
   const parsedHTML = parse(html, options);
 
   // @ts-expect-error
@@ -162,8 +161,6 @@ export function useHelp() {
   const parsedHeadline = parsedContent?.find(
     (child: { type: string }) => child.type === "p",
   ).props.children;
-
-  console.log({ parsedContent });
 
   return {
     html,
