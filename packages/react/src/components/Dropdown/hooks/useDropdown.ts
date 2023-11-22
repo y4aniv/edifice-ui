@@ -67,14 +67,14 @@ const useDropdown = (placement: Placement | undefined): UseDropdownProps => {
     whileElementsMounted: autoUpdate,
     middleware: [
       offset(4),
-      flip({ padding: 0 }),
       size({
         apply({ rects, elements }) {
           Object.assign(elements.floating.style, {
-            width: `${rects.reference.width}px`,
+            minWidth: `${rects.reference.width}px`,
           });
         },
       }),
+      flip({ padding: 0 }),
     ],
   });
 
