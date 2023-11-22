@@ -59,6 +59,7 @@ export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
       from: { opacity: 0 },
       enter: { opacity: 1 },
       leave: { opacity: 0 },
+      config: { duration: 0 },
     });
 
     return transition(
