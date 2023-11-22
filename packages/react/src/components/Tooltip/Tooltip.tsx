@@ -83,7 +83,7 @@ const Tooltip = ({
       </div>
       {visible && (
         <div
-          className={clsx("tooltip d-block show", `bs-tooltip-auto`)}
+          className={clsx("tooltip d-block show mb-12", `bs-tooltip-auto`)}
           ref={setPopperElement}
           style={styles.popper}
           {...attributes.popper}
