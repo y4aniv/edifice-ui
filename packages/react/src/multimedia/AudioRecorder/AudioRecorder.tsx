@@ -1,4 +1,4 @@
-import { Mic, Record } from "@edifice-ui/icons";
+import { Mic, Pause, Record } from "@edifice-ui/icons";
 import { WorkspaceElement } from "edifice-ts-client";
 
 import useAudioRecorder from "./useAudioRecorder";
@@ -44,13 +44,24 @@ const AudioRecorder = ({ onSuccess, onError }: AudioRecorderProps) => {
       >
         {playState === "IDLE" && (
           <div className="d-flex align-items-center">
-            <Record
-              width={12}
-              height={12}
-              className="me-8"
-              color="var(--edifice-danger)"
-            />
-            {recordtime ? convertMsToMS(recordtime) : "00:00"}
+            {recordState === "PAUSED" ? (
+              <Pause
+                width={12}
+                height={12}
+                className="me-8"
+                color="var(--edifice-danger)"
+              />
+            ) : (
+              <Record
+                width={12}
+                height={12}
+                className="me-8"
+                color="var(--edifice-danger)"
+              />
+            )}
+            {recordState !== "IDLE" && recordtime
+              ? convertMsToMS(recordtime)
+              : "00:00"}
           </div>
         )}
         {playState !== "IDLE" && audioRef.current && recordtime && (
