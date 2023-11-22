@@ -96,7 +96,6 @@ export default function useAudioRecorder(
           // TODO get Audio Workspace element to return onSuccess
           const mockWorkspaceAudio = {
             _id: data.docId,
-            file: data.docId,
             name: audioNameRef.current?.value,
             eType: "file",
             eParent: "",
@@ -189,6 +188,9 @@ export default function useAudioRecorder(
     }
   }
 
+  /**
+   * Close opened audio stream and clean channels
+   */
   function closeAudioStream() {
     // Close audio stream
     micStream?.getTracks().forEach((track) => track.stop());
@@ -232,7 +234,6 @@ export default function useAudioRecorder(
       "audio-recorder-processor",
     );
     setAudioWorkletNode(audioWorkletNode);
-    console.log(audioWorkletNode);
 
     // Message received from the audio recorder processor. cf handleAudioWorkletNodeMessage function.
     // Basically the Audio recorder processor returns the input channels that will be treated by the audioEncoder worker.
@@ -241,6 +242,10 @@ export default function useAudioRecorder(
       handleAudioWorkletNodeMessage,
     );
 
+    // Clear channels before strating recording
+    setLeftChannel([]);
+    setRigthChannel([]);
+
     audioWorkletNode.port.start();
 
     micStreamAudioSourceNode.connect(audioWorkletNode);
@@ -248,30 +253,26 @@ export default function useAudioRecorder(
   };
 
   const handleRecord = async () => {
-    console.log("RECORD");
     recordState.current = "RECORDING";
     setPlayState("IDLE");
 
     await initRecording();
   };
 
-  const handleRecordPause = () => {
+  const handleRecordPause = useCallback(() => {
     if (audioContext?.state === "running") {
-      console.log("RECORD PAUSED");
       recordState.current = "PAUSED";
       audioContext?.suspend();
     } else {
-      console.log("RECORD RESUME");
       recordState.current = "RECORDING";
       audioContext?.resume();
       if (audioRef.current) {
         audioRef.current.currentTime = 0;
       }
     }
-  };
+  }, [audioContext]);
 
-  const handlePlay = () => {
-    console.log("PLAYING");
+  const handlePlay = useCallback(() => {
     setPlayState("PLAYING");
     if (audioRef?.current?.currentTime) {
       audioRef.current.play();
@@ -291,31 +292,26 @@ export default function useAudioRecorder(
         };
       }
     }
-  };
+  }, [leftChannel, rightChannel, encoderWorker]);
 
-  const handlePlayPause = () => {
-    console.log("PLAY PAUSED");
+  const handlePlayPause = useCallback(() => {
     audioRef?.current?.pause();
     setPlayState("PAUSED");
-  };
+  }, []);
 
-  const handleReset = () => {
-    console.log("RESET");
+  const handleReset = useCallback(() => {
     setPlayState("IDLE");
     recordState.current = "IDLE";
     closeAudioStream();
-  };
+  }, []);
 
-  const handleSave = () => {
-    console.log("SAVE");
+  const handleSave = useCallback(() => {
     recordState.current = "SAVING";
 
     webSocket?.send(`save-${audioNameRef.current?.value}`);
-  };
+  }, []);
 
   const handlePlayStop = useCallback(() => {
-    console.log("STOP PLAYING");
-
     // Stop Playing the record
     if (audioRef?.current) {
       audioRef.current.pause();
@@ -324,12 +320,12 @@ export default function useAudioRecorder(
     setPlayState("IDLE");
   }, []);
 
-  const handlePlayEnded = () => {
+  const handlePlayEnded = useCallback(() => {
     setPlayState("PAUSED");
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
     }
-  };
+  }, []);
 
   function uuid() {
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
@@ -344,13 +340,13 @@ export default function useAudioRecorder(
 
   function getUrl(sampleRate: number) {
     const protocol = window.location.protocol === "https:" ? "wss" : "ws";
-    const host: string = "recette-ode1.opendigitaleducation.com";
-    // if (
-    //   window.location.host === "localhost:8090" ||
-    //   window.location.host === "localhost:3000"
-    // ) {
-    //   host = "localhost:6502";
-    // }
+    let host: string = window.location.host;
+    if (
+      window.location.host === "localhost:8090" ||
+      window.location.host === "localhost:3000"
+    ) {
+      host = "localhost:6502";
+    }
     const base = protocol + "://" + host;
     return `${base}/audio/${uuid()}?sampleRate=${sampleRate}`;
   }

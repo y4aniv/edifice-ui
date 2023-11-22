@@ -1,4 +1,4 @@
-import { Mic } from "@edifice-ui/icons";
+import { Mic, Record } from "@edifice-ui/icons";
 import { WorkspaceElement } from "edifice-ts-client";
 
 import useAudioRecorder from "./useAudioRecorder";
@@ -27,12 +27,12 @@ const AudioRecorder = ({ onSuccess, onError }: AudioRecorderProps) => {
         <Mic
           width={64}
           height={64}
-          style={
+          color={
             recordState === "RECORDING"
-              ? { color: "var(--edifice-danger)" }
+              ? "var(--edifice-danger)"
               : playState === "PLAYING"
-              ? { color: "var(--edifice-success)" }
-              : {}
+              ? "var(--edifice-success)"
+              : ""
           }
         />
       </div>
@@ -42,14 +42,24 @@ const AudioRecorder = ({ onSuccess, onError }: AudioRecorderProps) => {
           recordState === "RECORDING" ? { color: "var(--edifice-danger)" } : {}
         }
       >
-        {playState === "IDLE" &&
-          (recordtime ? convertMsToMS(recordtime) : "00:00")}
-        {playState !== "IDLE" &&
-          audioRef.current &&
-          recordtime &&
-          `${convertMsToMS(
-            audioRef.current?.currentTime * 1000,
-          )} / ${convertMsToMS(recordtime)}`}
+        {playState === "IDLE" && (
+          <div className="d-flex align-items-center">
+            <Record
+              width={12}
+              height={12}
+              className="me-8"
+              color="var(--edifice-danger)"
+            />
+            {recordtime ? convertMsToMS(recordtime) : "00:00"}
+          </div>
+        )}
+        {playState !== "IDLE" && audioRef.current && recordtime && (
+          <div className="d-flex align-items-center">
+            <Mic width={12} height={12} className="me-8" />
+            {convertMsToMS(audioRef.current?.currentTime * 1000)} /
+            {convertMsToMS(recordtime)}
+          </div>
+        )}
       </div>
       <div>
         <audio ref={audioRef} onEnded={handlePlayEnded}>
