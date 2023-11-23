@@ -347,7 +347,6 @@ export default function useAudioRecorder(
     ) {
       host = "localhost:6502";
     }
-    host = "recette-ode1.opendigitaleducation.com";
     const base = protocol + "://" + host;
     return `${base}/audio/${uuid()}?sampleRate=${sampleRate}`;
   }
