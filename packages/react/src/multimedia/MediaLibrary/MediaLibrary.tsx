@@ -16,11 +16,11 @@ import {
   RecordVideo,
   Smartphone,
 } from "@edifice-ui/icons";
-import { WorkspaceElement, odeServices } from "edifice-ts-client";
+import { WorkspaceElement } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import { InnerTabs } from "./innertabs";
-import { ResourceTabResult } from "./innertabs/Resource";
+import { ResourceTabProps, ResourceTabResult } from "./innertabs/Resource";
 import { MediaLibraryContext } from "./MediaLibraryContext";
 import { Button } from "../../components";
 import Modal, { ModalElement } from "../../components/Modal/Modal";
@@ -89,8 +89,20 @@ type MediaLibraryTypeOptions = {
 };
 
 export interface MediaLibraryRef {
+  /** Open the Media Library on given type. */
   show: (type: MediaLibraryType) => void;
+
+  /** Close the Media Library. */
   hide: () => void;
+
+  /**
+   * Open the MediaLibrary on a internal/external link Tab,
+   * and prefill the tab with data.
+   * @return a resolved promise when ready.
+   */
+  editInternalLink: (data: ResourceTabProps) => void;
+
+  /** Get the Media Libray type currently displayed, or null if hidden. */
   type: MediaLibraryType | null;
 }
 
@@ -153,6 +165,7 @@ const MediaLibrary = forwardRef(
     useImperativeHandle(ref, () => ({
       show,
       hide,
+      editInternalLink,
       type: type,
       ...refModal.current,
     }));
@@ -165,6 +178,10 @@ const MediaLibrary = forwardRef(
     const videoCaptureWorkflow = useHasWorkflow(
       "com.opendigitaleducation.video.controllers.VideoController|capture",
     );
+
+    const [defaultResourceTabProps, setDefaultResourceTabProps] = useState<
+      ResourceTabProps | undefined
+    >();
 
     const [type, setType] = useState<MediaLibraryType | null>(null);
 
@@ -215,7 +232,7 @@ const MediaLibrary = forwardRef(
         id: "resource",
         icon: <Applications />,
         label: t("Ressources internes"),
-        content: <InnerTabs.Resource />,
+        content: <InnerTabs.Resource {...defaultResourceTabProps} />,
         availableFor: ["hyperlink"],
         isEnable: null,
       },
@@ -276,28 +293,29 @@ const MediaLibrary = forwardRef(
       setType(null);
     };
 
+    const editInternalLink = (props: ResourceTabProps) => {
+      setDefaultResourceTabProps(props);
+      setType("hyperlink");
+    };
+
     // --------------- Utility functions
     const modalHeader = t(
       mediaLibraryTypes[type ?? "none"]?.title ?? "Bibliothèque multimédia", // FIXME i18n key
     );
-    const handleTabChange = async () => {
-      // Reset any existing result
-      if (result) {
-        await odeServices.workspace().deleteFile([result]);
-      }
+    const handleTabChange = () => {
       setResult(undefined);
       setResultCounter(undefined);
+      setDefaultResourceTabProps(undefined);
     };
 
     const handleOnSuccess = () => {
       if (result) onSuccess(result);
+      setDefaultResourceTabProps(undefined);
     };
 
-    const handleOnCancel = async () => {
-      if (result) {
-        await odeServices.workspace().deleteFile([result]);
-      }
+    const handleOnCancel = () => {
       onCancel();
+      setDefaultResourceTabProps(undefined);
     };
 
     return type ? (
