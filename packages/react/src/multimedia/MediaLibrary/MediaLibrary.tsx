@@ -1,4 +1,11 @@
-import { useMemo, useState } from "react";
+import {
+  forwardRef,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  Ref,
+  useState,
+} from "react";
 
 import {
   Applications,
@@ -16,7 +23,7 @@ import { InnerTabs } from "./innertabs";
 import { ResourceTabResult } from "./innertabs/Resource";
 import { MediaLibraryContext } from "./MediaLibraryContext";
 import { Button } from "../../components";
-import Modal from "../../components/Modal/Modal";
+import Modal, { ModalElement } from "../../components/Modal/Modal";
 import { Tabs } from "../../components/Tabs";
 import { TabsItemProps } from "../../components/Tabs/TabsItem";
 import { useHasWorkflow } from "../../core/useHasWorkflow";
@@ -81,6 +88,12 @@ type MediaLibraryTypeOptions = {
   defaultTab: AvailableTab;
 };
 
+export interface MediaLibraryRef {
+  show: (type: MediaLibraryType) => void;
+  hide: () => void;
+  type: MediaLibraryType | null;
+}
+
 /** Map of MediaLibrary types and options. */
 const mediaLibraryTypes: { none: null } & {
   [key in MediaLibraryType]: MediaLibraryTypeOptions;
@@ -117,8 +130,6 @@ export type MediaLibraryResult =
 export interface MediaLibraryProps {
   /** Application Code (example: "blog"). */
   appCode: string;
-  /** Type of rss to search for. */
-  type: MediaLibraryType | null;
   /**
    * Called when the user validates the modal (Add button).
    * @param result depends on which InnerTab is visible
@@ -131,204 +142,228 @@ export interface MediaLibraryProps {
 //---------------------------------------------------
 // Media Library implementation
 //---------------------------------------------------
-const MediaLibrary = ({
-  appCode,
-  type,
-  onSuccess,
-  onCancel,
-}: MediaLibraryProps) => {
-  const { t } = useTranslation();
+const MediaLibrary = forwardRef(
+  (
+    { appCode, onSuccess, onCancel }: MediaLibraryProps,
+    ref: Ref<MediaLibraryRef>,
+  ) => {
+    // Local ref will be merged with forwardRef in useImperativeHandle() below
+    const refModal = useRef<ModalElement>(null);
+    // Methods to control the Media Library from parent component
+    useImperativeHandle(ref, () => ({
+      show,
+      hide,
+      type: type,
+      ...refModal.current,
+    }));
 
-  const workspaceCreateWorkflow = useHasWorkflow(
-    "org.entcore.workspace.controllers.WorkspaceController|addDocument",
-  );
-  const videoCaptureWorkflow = useHasWorkflow(
-    "com.opendigitaleducation.video.controllers.VideoController|capture",
-  );
+    const { t } = useTranslation();
 
-  const availableTabs: {
-    [tabname in AvailableTab]: TabsItemProps & MediaLibraryTabProps;
-  } = {
-    workspace: {
-      id: "workspace",
-      icon: <Folder />,
-      label: t("Espace doc"),
-      content: <InnerTabs.Workspace />,
-      availableFor: ["audio", "video", "image", "attachment"],
-      isEnable: null,
-    },
-    upload: {
-      id: "upload",
-      icon: <Smartphone />,
-      label: t("Mon appareil"),
-      content: <InnerTabs.Upload />,
-      availableFor: ["audio", "video", "image", "attachment"],
-      isEnable: () => (workspaceCreateWorkflow ? true : false),
-    },
-    "video-capture": {
-      id: "video",
-      icon: <RecordVideo />,
-      label: t("Captation vidéo"),
-      content: <InnerTabs.Video />,
-      availableFor: ["video"],
-      isEnable: () => (videoCaptureWorkflow ? true : false),
-    },
-    "audio-capture": {
-      id: "audio",
-      icon: <Mic />,
-      label: t("Captation audio"),
-      content: <InnerTabs.Audio />,
-      availableFor: ["audio"],
-      isEnable: () => (workspaceCreateWorkflow ? true : false),
-    },
-    linker: {
-      id: "external",
-      icon: <Globe />,
-      label: t("Liens externes"),
-      content: <InnerTabs.Linker />,
-      availableFor: ["hyperlink"],
-      isEnable: null,
-    },
-    resource: {
-      id: "resource",
-      icon: <Applications />,
-      label: t("Ressources internes"),
-      content: <InnerTabs.Resource />,
-      availableFor: ["hyperlink"],
-      isEnable: null,
-    },
-    iframe: {
-      id: "iframe",
-      icon: <ExternalLink />,
-      label: t("</> Balise embed ou iframe"),
-      content: <InnerTabs.Iframe />,
-      availableFor: ["embedder"],
-      isEnable: null,
-    },
-  };
+    const workspaceCreateWorkflow = useHasWorkflow(
+      "org.entcore.workspace.controllers.WorkspaceController|addDocument",
+    );
+    const videoCaptureWorkflow = useHasWorkflow(
+      "com.opendigitaleducation.video.controllers.VideoController|capture",
+    );
 
-  // --------------- Hooks
-  /* Filter out unwanted tabs. */
-  const tabs = useMemo(
-    () =>
-      orderedTabs
-        .map((key) => availableTabs[key])
-        .filter(
-          (tab) =>
-            tab.isEnable?.() !== false &&
-            (tab.availableFor.length === 0 || tab.availableFor.includes(type)),
-        ),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [type],
-  );
+    const [type, setType] = useState<MediaLibraryType | null>(null);
 
-  /* Compute the index of the displayed tab by default. */
-  const defaultTabIdx = useMemo<number>(() => {
-    const typeKey = type || "none";
-    let index = 0;
-    if (typeof mediaLibraryTypes[typeKey]?.defaultTab == "string") {
-      const defaultTabId = mediaLibraryTypes[typeKey]?.defaultTab;
-      index = tabs.findIndex((t) => t.id === defaultTabId);
+    const availableTabs: {
+      [tabname in AvailableTab]: TabsItemProps & MediaLibraryTabProps;
+    } = {
+      workspace: {
+        id: "workspace",
+        icon: <Folder />,
+        label: t("Espace doc"),
+        content: <InnerTabs.Workspace />,
+        availableFor: ["audio", "video", "image", "attachment"],
+        isEnable: null,
+      },
+      upload: {
+        id: "upload",
+        icon: <Smartphone />,
+        label: t("Mon appareil"),
+        content: <InnerTabs.Upload />,
+        availableFor: ["audio", "video", "image", "attachment"],
+        isEnable: () => (workspaceCreateWorkflow ? true : false),
+      },
+      "video-capture": {
+        id: "video",
+        icon: <RecordVideo />,
+        label: t("Captation vidéo"),
+        content: <InnerTabs.Video />,
+        availableFor: ["video"],
+        isEnable: () => (videoCaptureWorkflow ? true : false),
+      },
+      "audio-capture": {
+        id: "audio",
+        icon: <Mic />,
+        label: t("Captation audio"),
+        content: <InnerTabs.Audio />,
+        availableFor: ["audio"],
+        isEnable: () => (workspaceCreateWorkflow ? true : false),
+      },
+      linker: {
+        id: "external",
+        icon: <Globe />,
+        label: t("Liens externes"),
+        content: <InnerTabs.Linker />,
+        availableFor: ["hyperlink"],
+        isEnable: null,
+      },
+      resource: {
+        id: "resource",
+        icon: <Applications />,
+        label: t("Ressources internes"),
+        content: <InnerTabs.Resource />,
+        availableFor: ["hyperlink"],
+        isEnable: null,
+      },
+      iframe: {
+        id: "iframe",
+        icon: <ExternalLink />,
+        label: t("</> Balise embed ou iframe"),
+        content: <InnerTabs.Iframe />,
+        availableFor: ["embedder"],
+        isEnable: null,
+      },
+    };
+
+    // --------------- Hooks
+    /* Filter out unwanted tabs. */
+    const tabs = useMemo(
+      () =>
+        orderedTabs
+          .map((key) => availableTabs[key])
+          .filter(
+            (tab) =>
+              tab.isEnable?.() !== false &&
+              (tab.availableFor.length === 0 ||
+                tab.availableFor.includes(type)),
+          ),
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      [type],
+    );
+
+    /* Compute the index of the displayed tab by default. */
+    const defaultTabIdx = useMemo<number>(() => {
+      const typeKey = type || "none";
+      let index = 0;
+      if (typeof mediaLibraryTypes[typeKey]?.defaultTab == "string") {
+        const defaultTabId = mediaLibraryTypes[typeKey]?.defaultTab;
+        index = tabs.findIndex((t) => t.id === defaultTabId);
+      }
+      // Check boundaries before returning an index.
+      return 0 > index || index >= tabs.length ? 0 : index;
+    }, [type, tabs]);
+
+    // Stateful contextual values
+    const [resultCounter, setResultCounter] = useState<number | undefined>();
+    const [result, setResult] = useState<WorkspaceElement | undefined>();
+    function setVisibleTab(tab: AvailableTab) {
+      const index = tabs.findIndex((t) => t.id === tab);
+      if (index < 0) throw "tab.not.visible";
+      // TODO améliorer le composant Tabs pour pouvoir le piloter depuis le parent.
+      throw "not.implemented.yet";
     }
-    // Check boundaries before returning an index.
-    return 0 > index || index >= tabs.length ? 0 : index;
-  }, [type, tabs]);
 
-  // Stateful contextual values
-  const [resultCounter, setResultCounter] = useState<number | undefined>();
-  const [result, setResult] = useState<WorkspaceElement | undefined>();
-  function setVisibleTab(tab: AvailableTab) {
-    const index = tabs.findIndex((t) => t.id === tab);
-    if (index < 0) throw "tab.not.visible";
-    // TODO améliorer le composant Tabs pour pouvoir le piloter depuis le parent.
-    throw "not.implemented.yet";
-  }
+    // --------------- Imperative functions
+    const show = (type: MediaLibraryType) => {
+      setType(type);
+    };
 
-  // --------------- Utility functions
-  const modalHeader = t(
-    mediaLibraryTypes[type || "none"]?.title ?? "Bibliothèque multimédia", // FIXME i18n key
-  );
-  const handleTabChange = async () => {
-    // Reset any existing result
-    if (result) {
-      await odeServices.workspace().deleteFile([result]);
-    }
-    setResult(undefined);
-    setResultCounter(undefined);
-  };
+    const hide = () => {
+      setType(null);
+    };
 
-  const handleOnSuccess = () => {
-    if (result) onSuccess(result);
-  };
+    // --------------- Utility functions
+    const modalHeader = t(
+      mediaLibraryTypes[type ?? "none"]?.title ?? "Bibliothèque multimédia", // FIXME i18n key
+    );
+    const handleTabChange = async () => {
+      // Reset any existing result
+      if (result) {
+        await odeServices.workspace().deleteFile([result]);
+      }
+      setResult(undefined);
+      setResultCounter(undefined);
+    };
 
-  const handleOnCancel = async () => {
-    if (result) {
-      await odeServices.workspace().deleteFile([result]);
-    }
-    onCancel();
-  };
+    const handleOnSuccess = () => {
+      if (result) onSuccess(result);
+    };
 
-  return type ? (
-    <MediaLibraryContext.Provider
-      value={{
-        appCode,
-        type,
-        setResultCounter,
-        setResult,
-        setVisibleTab,
-      }}
-    >
-      <Modal
-        id="media-library"
-        isOpen={type !== null}
-        onModalClose={handleOnCancel}
-        size="lg"
-        viewport
-        scrollable
+    const handleOnCancel = async () => {
+      if (result) {
+        await odeServices.workspace().deleteFile([result]);
+      }
+      onCancel();
+    };
+
+    return type ? (
+      <MediaLibraryContext.Provider
+        value={{
+          appCode,
+          type: type,
+          setResultCounter,
+          setResult,
+          setVisibleTab,
+        }}
       >
-        <Modal.Header onModalClose={handleOnCancel}>{modalHeader}</Modal.Header>
-        <Tabs
-          items={tabs}
-          defaultId={tabs[defaultTabIdx].id}
-          onChange={handleTabChange}
+        <Modal
+          id="media-library"
+          isOpen={type !== null}
+          onModalClose={handleOnCancel}
+          size="lg"
+          viewport
+          scrollable
         >
-          {(currentItem) => (
-            <>
-              <Tabs.List className="mt-16" />
-              <Modal.Body className="d-flex">
-                <Tabs.Panel currentItem={currentItem}>
-                  {currentItem?.content}
-                </Tabs.Panel>
-              </Modal.Body>
-            </>
-          )}
-        </Tabs>
-        <Modal.Footer>
-          <Button
-            type="button"
-            color="tertiary"
-            variant="ghost"
-            onClick={handleOnCancel}
+          <Modal.Header onModalClose={handleOnCancel}>
+            {modalHeader}
+          </Modal.Header>
+          <Tabs
+            items={tabs}
+            defaultId={tabs[defaultTabIdx].id}
+            onChange={handleTabChange}
           >
-            {t("Annuler")}
-          </Button>
-          <Button
-            type="button"
-            color="primary"
-            variant="filled"
-            disabled={typeof result === "undefined"}
-            onClick={handleOnSuccess}
-          >
-            {t("Ajouter")}
-            {typeof resultCounter === "number" &&
-              resultCounter > 1 &&
-              ` (${resultCounter})`}
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </MediaLibraryContext.Provider>
-  ) : null;
-};
+            {(currentItem) => (
+              <>
+                <Tabs.List className="mt-16" />
+                <Modal.Body className="d-flex">
+                  <Tabs.Panel currentItem={currentItem}>
+                    {currentItem?.content}
+                  </Tabs.Panel>
+                </Modal.Body>
+              </>
+            )}
+          </Tabs>
+          <Modal.Footer>
+            <Button
+              type="button"
+              color="tertiary"
+              variant="ghost"
+              onClick={handleOnCancel}
+            >
+              {t("Annuler")}
+            </Button>
+            <Button
+              type="button"
+              color="primary"
+              variant="filled"
+              disabled={typeof result === "undefined"}
+              onClick={handleOnSuccess}
+            >
+              {t("Ajouter")}
+              {typeof resultCounter === "number" &&
+                resultCounter > 1 &&
+                ` (${resultCounter})`}
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </MediaLibraryContext.Provider>
+    ) : null;
+  },
+);
 
 // Add inner tabs implementations to exported component.
 Object.assign(MediaLibrary, InnerTabs);
