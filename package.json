@@ -1,5 +1,5 @@
 {
-  "name": "root",
+  "name": "edifice-ui",
   "private": true,
   "description": "Edifice UI Frontend Library",
   "homepage": "https://github.com/opendigitaleducation/edifice-ui#readme",
@@ -65,7 +65,7 @@
     "eslint-plugin-storybook": "0.6.13",
     "husky": "8.0.3",
     "lerna": "^7.0.2",
-    "prettier": "3.0.1",
+    "prettier": "2.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rollup-plugin-visualizer": "5.9.2",
