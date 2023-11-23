@@ -49,7 +49,7 @@ export default function useAudioRecorder(
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const BUFFER_SIZE: number = 128; // https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor
-  const DEFAULT_SAMPLE_RATE: number = 48000;
+  const DEFAULT_SAMPLE_RATE: number = 44100;
 
   // Init Web Socket to send audio chunks to backend
   useEffect(() => {

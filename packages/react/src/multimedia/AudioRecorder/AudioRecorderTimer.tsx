@@ -25,15 +25,13 @@ const AudioRecorderTimer = ({
           ) : (
             <Record width={12} height={12} className="me-8 text-danger" />
           )}
-          {recordState !== "IDLE" && recordtime
-            ? convertMsToMS(recordtime)
-            : "00:00"}
+          {convertMsToMS(recordState !== "IDLE" ? recordtime! : 0)}
         </div>
       )}
-      {playState !== "IDLE" && audiotime && recordtime && (
+      {playState !== "IDLE" && (
         <div className="d-flex align-items-center">
           <Mic width={12} height={12} className="me-8" />
-          {convertMsToMS(audiotime * 1000)} /{convertMsToMS(recordtime)}
+          {convertMsToMS(audiotime! * 1000)} /{convertMsToMS(recordtime!)}
         </div>
       )}
     </div>
