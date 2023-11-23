@@ -10,12 +10,10 @@
     "main",
     {
       "name": "develop",
-      "channel": "develop",
       "prerelease": true
     },
     {
       "name": "develop-pedago",
-      "channel": "develop-pedago",
       "prerelease": true
     }
   ]
