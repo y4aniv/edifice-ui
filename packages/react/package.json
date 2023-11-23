@@ -49,7 +49,7 @@
     "react-popper": "2.3.0"
   },
   "devDependencies": {
-    "@edifice-ui/icons": "workspace:*",
+    "@edifice-ui/icons": "1.2.1-develop.0",
     "@react-spring/web": "9.7.3",
     "@tanstack/react-query": "4.36.1",
     "@types/node": "20.8.4",
@@ -77,5 +77,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "3e1c3f5b48505564db1b70aab22063a70336f3b0"
 }

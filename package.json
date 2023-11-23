@@ -79,6 +79,5 @@
   "packageManager": "pnpm@8.6.6",
   "engines": {
     "node": "16 || 18"
-  },
-  "engineStrict": true
+  }
 }
