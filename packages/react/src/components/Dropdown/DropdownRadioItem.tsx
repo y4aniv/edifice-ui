@@ -1,11 +1,38 @@
-import { useId } from "react";
+import { ReactNode, useId } from "react";
 
 import clsx from "clsx";
 
 import { useDropdownContext } from "./DropdownContext";
 import { Radio } from "../Radio";
 
-const DropdownRadioItem = ({ children, value, model, onChange }: any) => {
+interface DropdownRadioItemProps {
+  /**
+   * Children Node
+   */
+  children: ReactNode;
+
+  /**
+   * Item Value
+   */
+  value: string;
+
+  /**
+   * Item model
+   */
+  model: string;
+
+  /**
+   * onKeyDown, onMouseUp handlers
+   */
+  onChange: (value: string) => void;
+}
+
+const DropdownRadioItem = ({
+  children,
+  value,
+  model,
+  onChange,
+}: DropdownRadioItemProps) => {
   const { itemProps, itemRefs, isFocused } = useDropdownContext();
   const { onMenuItemKeyDown, onMenuItemMouseEnter } = itemProps;
 

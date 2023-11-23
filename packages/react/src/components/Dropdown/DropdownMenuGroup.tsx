@@ -1,8 +1,19 @@
 import { ReactNode, Ref, forwardRef } from "react";
 
+interface DropdownMenuGroupProps {
+  /**
+   * Label
+   */
+  label: string;
+  /**
+   * Children Node
+   */
+  children: ReactNode;
+}
+
 const DropdownMenuGroup = forwardRef(
   (
-    { label, children }: { label: string; children: ReactNode },
+    { label, children }: DropdownMenuGroupProps,
     forwardRef: Ref<HTMLDivElement>,
   ) => {
     return (

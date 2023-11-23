@@ -69,7 +69,10 @@ const Combobox = ({
 
     return options.map((option, index) => (
       <Fragment key={index}>
-        <Dropdown.Item onClick={() => handleOptionClick(option.value)}>
+        <Dropdown.Item
+          type="select"
+          onClick={() => handleOptionClick(option.value)}
+        >
           {option.label}
         </Dropdown.Item>
 

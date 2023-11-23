@@ -22,7 +22,7 @@ const SvgTextItalic = ({
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M9.4 4a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2h-1.916L11.19 19H13a1 1 0 1 1 0 2H7a1 1 0 1 1 0-2h2.135L12.43 5H10.4a1 1 0 0 1-1-1Z"
+      d="M9.4 4a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2h-1.916L11.19 19H13a1 1 0 1 1 0 2H7a1 1 0 1 1 0-2h2.135L12.43 5H10.4a1 1 0 0 1-1-1"
       clipRule="evenodd"
     />
   </svg>

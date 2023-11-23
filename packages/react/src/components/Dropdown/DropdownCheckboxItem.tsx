@@ -1,11 +1,35 @@
-import { useId } from "react";
+import { ReactNode, useId } from "react";
 
 import clsx from "clsx";
 
 import { useDropdownContext } from "./DropdownContext";
 import { Checkbox } from "../Checkbox";
 
-const DropdownCheckboxItem = ({ children, value, model, onChange }: any) => {
+interface DropdownCheckboxItem {
+  /**
+   * Children Node
+   */
+  children: ReactNode;
+  /**
+   * Value
+   */
+  value: string;
+  /**
+   * Model
+   */
+  model: string;
+  /**
+   * OnKeyDown handler
+   */
+  onChange: (value: string) => void;
+}
+
+const DropdownCheckboxItem = ({
+  children,
+  value,
+  model,
+  onChange,
+}: DropdownCheckboxItem) => {
   const { itemProps, itemRefs, isFocused } = useDropdownContext();
   const { onMenuItemKeyDown, onMenuItemMouseEnter } = itemProps;
 
