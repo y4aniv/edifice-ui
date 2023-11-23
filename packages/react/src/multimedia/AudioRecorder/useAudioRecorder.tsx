@@ -27,7 +27,7 @@ export default function useAudioRecorder(
   onSuccess: (resource: WorkspaceElement) => void,
   onError: (error: string) => void,
 ) {
-  const recordState = useRef<RecordState>("IDLE");
+  const [recordState, setRecordState] = useState<RecordState>("IDLE");
   const [playState, setPlayState] = useState<PlayState>("IDLE");
 
   // The audio recorder is based on the Web Audio API (https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
@@ -70,7 +70,7 @@ export default function useAudioRecorder(
     ws.onerror = (event: Event) => {
       console.error(event);
       setPlayState("IDLE");
-      recordState.current = "IDLE";
+      setRecordState("IDLE");
       closeWs();
     };
     ws.onmessage = async (event) => {
@@ -82,13 +82,13 @@ export default function useAudioRecorder(
       ) {
         console.error(event.data);
         setPlayState("IDLE");
-        recordState.current = "IDLE";
+        setRecordState("IDLE");
         closeWs();
       } else if (
         event.data &&
         event.data.text &&
         typeof event.data.text === "function" &&
-        recordState.current === "SAVING"
+        recordState === "SAVING"
       ) {
         const data = JSON.parse(await event.data.text());
         if (data.status === "ok") {
@@ -113,11 +113,9 @@ export default function useAudioRecorder(
           }
 
           closeAudioStream();
-          console.log("SAVED");
-          recordState.current = "SAVED";
+          setRecordState("SAVED");
         } else {
-          console.log(event.data);
-          recordState.current = "IDLE";
+          setRecordState("IDLE");
           closeWs();
         }
       }
@@ -253,24 +251,26 @@ export default function useAudioRecorder(
   };
 
   const handleRecord = async () => {
-    recordState.current = "RECORDING";
+    setRecordState("RECORDING");
     setPlayState("IDLE");
 
     await initRecording();
   };
 
-  const handleRecordPause = useCallback(() => {
+  const handleRecordPause = () => {
     if (audioContext?.state === "running") {
-      recordState.current = "PAUSED";
+      console.log("Paused");
+      setRecordState("PAUSED");
       audioContext?.suspend();
     } else {
-      recordState.current = "RECORDING";
+      console.log("Recording");
+      setRecordState("RECORDING");
       audioContext?.resume();
       if (audioRef.current) {
         audioRef.current.currentTime = 0;
       }
     }
-  }, [audioContext]);
+  };
 
   const handlePlay = useCallback(() => {
     setPlayState("PLAYING");
@@ -301,12 +301,12 @@ export default function useAudioRecorder(
 
   const handleReset = useCallback(() => {
     setPlayState("IDLE");
-    recordState.current = "IDLE";
+    setRecordState("IDLE");
     closeAudioStream();
   }, []);
 
   const handleSave = useCallback(() => {
-    recordState.current = "SAVING";
+    setRecordState("SAVING");
 
     webSocket?.send(`save-${audioNameRef.current?.value}`);
   }, [webSocket]);
@@ -370,13 +370,13 @@ export default function useAudioRecorder(
       type: "icon",
       name: "record",
       visibility:
-        recordState.current === "RECORDING" || recordState.current === "PAUSED"
+        recordState === "RECORDING" || recordState === "PAUSED"
           ? "hide"
           : "show",
       props: {
         icon: <Record color="" />,
         color: "danger",
-        disabled: recordState.current !== "IDLE",
+        disabled: recordState !== "IDLE",
         onClick: handleRecord,
       },
     },
@@ -384,22 +384,18 @@ export default function useAudioRecorder(
       type: "icon",
       name: "recordPause",
       visibility:
-        recordState.current === "RECORDING" || recordState.current === "PAUSED"
+        recordState === "RECORDING" || recordState === "PAUSED"
           ? "show"
           : "hide",
       props: {
         icon: (
           <Pause
             style={
-              recordState.current === "PAUSED"
-                ? { color: "var(--edifice-danger)" }
-                : {}
+              recordState === "PAUSED" ? { color: "var(--edifice-danger)" } : {}
             }
           />
         ),
-        disabled:
-          recordState.current !== "RECORDING" &&
-          recordState.current !== "PAUSED",
+        disabled: recordState !== "RECORDING" && recordState !== "PAUSED",
         onClick: handleRecordPause,
       },
     },
@@ -420,9 +416,9 @@ export default function useAudioRecorder(
       props: {
         icon: <PlayFilled />,
         disabled:
-          recordState.current !== "RECORDED" &&
-          recordState.current !== "PAUSED" &&
-          recordState.current !== "SAVED" &&
+          recordState !== "RECORDED" &&
+          recordState !== "PAUSED" &&
+          recordState !== "SAVED" &&
           playState !== "PAUSED",
         onClick: handlePlay,
       },
@@ -444,10 +440,10 @@ export default function useAudioRecorder(
       props: {
         icon: <Refresh />,
         disabled:
-          recordState.current !== "RECORDED" &&
+          recordState !== "RECORDED" &&
           playState !== "PLAYING" &&
           playState !== "PAUSED" &&
-          recordState.current !== "PAUSED",
+          recordState !== "PAUSED",
         onClick: handleReset,
       },
     },
@@ -457,8 +453,8 @@ export default function useAudioRecorder(
       props: {
         icon: <Save />,
         disabled:
-          (recordState.current !== "RECORDED" &&
-            recordState.current !== "PAUSED" &&
+          (recordState !== "RECORDED" &&
+            recordState !== "PAUSED" &&
             playState !== "PLAYING" &&
             playState !== "PAUSED") ||
           !audioNameRef.current?.value,
@@ -468,7 +464,7 @@ export default function useAudioRecorder(
   ];
 
   return {
-    recordState: recordState.current,
+    recordState,
     playState,
     recordtime: audioContext?.currentTime
       ? audioContext?.currentTime * 1000
