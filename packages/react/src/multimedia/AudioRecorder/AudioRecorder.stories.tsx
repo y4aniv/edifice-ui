@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
 import AudioRecorder from "./AudioRecorder";
-import { WebSocket } from "mock-socket";
 
 const meta: Meta<typeof AudioRecorder> = {
   title: "Multimedia/AudioRecorder",
