@@ -4,20 +4,20 @@ import { AudioRecorder } from "../../AudioRecorder";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 
 export const Audio = () => {
-  const context = useMediaLibraryContext();
+  const { setResult } = useMediaLibraryContext();
 
-  const handleSuccess = (res: WorkspaceElement) => {
-    context.setResult(res);
+  const handleOnSuccess = (ressource: WorkspaceElement) => {
+    setResult([ressource]);
   };
 
-  const handleError = (err: string) => {
-    console.error(err);
+  const handleOnError = (error: string) => {
+    console.error(error);
   };
 
   return (
     <AudioRecorder
-      onSuccess={handleSuccess}
-      onError={handleError}
+      onSuccess={handleOnSuccess}
+      onError={handleOnError}
     ></AudioRecorder>
   );
 };

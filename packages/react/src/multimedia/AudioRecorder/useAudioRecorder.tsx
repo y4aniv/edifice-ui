@@ -24,7 +24,7 @@ export type RecordState =
 export type PlayState = "IDLE" | "PLAYING" | "PAUSED";
 
 export default function useAudioRecorder(
-  onSuccess: (res: WorkspaceElement) => void,
+  onSuccess: (resource: WorkspaceElement) => void,
   onError: (error: string) => void,
 ) {
   const recordState = useRef<RecordState>("IDLE");
@@ -309,7 +309,7 @@ export default function useAudioRecorder(
     recordState.current = "SAVING";
 
     webSocket?.send(`save-${audioNameRef.current?.value}`);
-  }, []);
+  }, [webSocket]);
 
   const handlePlayStop = useCallback(() => {
     // Stop Playing the record
@@ -347,6 +347,7 @@ export default function useAudioRecorder(
     ) {
       host = "localhost:6502";
     }
+    host = "recette-ode1.opendigitaleducation.com";
     const base = protocol + "://" + host;
     return `${base}/audio/${uuid()}?sampleRate=${sampleRate}`;
   }
