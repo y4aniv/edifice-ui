@@ -29,24 +29,24 @@ export interface BadgeProps extends React.ComponentPropsWithRef<"span"> {
    * Badge variant : notification, link or profile (Teacher|Student|Relative|Personnel)
    * Defaults to notification.
    */
-  variant: BadgeVariants | undefined;
+  variant?: BadgeVariants;
   /**
    * Is badge always visible ?
    * A badge with no children is hidden by default.
    */
-  visibility: "always" | undefined;
+  visibility?: "always";
   /**
    * If set, forces the radius of the rounded border.
    */
-  rounded: "pill" | "circle" | undefined;
+  rounded?: "pill" | "circle";
   /**
    * Text or icon (or whatever) to render as children elements.
    */
-  children: ReactNode | undefined;
+  children?: ReactNode;
   /**
    * Optional class for styling purpose
    */
-  className: string | undefined;
+  className?: string;
 }
 
 /**
@@ -85,13 +85,13 @@ const Badge = forwardRef(
       getRadiusClass(),
 
       "always" === visibility &&
-        `position-absolute translate-middle p-8 d-block`,
+        `position-absolute translate-middle p-8 d-inline`,
 
       "notification" === variant.type && `bg-${variant.level} text-light`,
 
       "profile" === variant.type && `badge-profile-${variant.profile}`,
 
-      "link" === variant.type && `border border-primary`,
+      "link" === variant.type && `border border-secondary`,
 
       className,
     );

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import Badge, { BadgeProps } from "../Badge";
+import Badge, { BadgeProps } from "./Badge";
 import { Hourglass } from "@edifice-ui/icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -49,6 +49,14 @@ export const VisibilityOption: Story = {
   args: {
     variant: { type: "notification", level: "warning" },
     visibility: "always",
+    children: undefined,
+  },
+  render: (args: BadgeProps) => {
+    return (
+      <p>
+        This badge is always visible. <Badge {...args}></Badge>
+      </p>
+    );
   },
   parameters: {
     docs: {
