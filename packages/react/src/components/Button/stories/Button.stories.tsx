@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import Button, { ButtonProps } from "./Button";
+import Button, { ButtonProps } from "..";
 import {
   AddUser,
   Close,
@@ -8,8 +8,8 @@ import {
   RafterLeft,
   RafterRight,
 } from "@edifice-ui/icons";
-import IconButton from "./IconButton";
-import SearchButton from "./SearchButton";
+import IconButton from "../IconButton";
+import SearchButton from "../SearchButton";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Button> = {

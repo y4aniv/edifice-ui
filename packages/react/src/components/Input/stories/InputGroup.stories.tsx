@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { useMemo, useState } from "react";
-import Button from "../Button/Button";
+import Button from "../../Button/Button";
 
-import { Indeterminate } from "../Checkbox/Checkbox.stories";
-import { Checkbox } from "../Checkbox";
-import { FormControl } from "../Form";
-import { Radio } from "../Radio";
-import Input from "./Input";
+import { Indeterminate } from "../../Checkbox/Checkbox.stories";
+import { Checkbox } from "../../Checkbox";
+import { FormControl } from "../../Form";
+import { Radio } from "../../Radio";
+import Input from "..";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof FormControl> = {
