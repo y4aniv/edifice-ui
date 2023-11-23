@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1-develop.2](https://github.com/opendigitaleducation/edifice-ui/compare/@edifice-ui/react@1.2.1-develop.1...@edifice-ui/react@1.2.1-develop.2) (2023-11-23)
+
+### Bug Fixes
+
+- dropdown type with select or action, format files ([0794a6b](https://github.com/opendigitaleducation/edifice-ui/commit/0794a6be9a823a33bef758a2e7072d1caa5ce658))
+
 ## [1.2.1-develop.1](https://github.com/opendigitaleducation/edifice-ui/compare/@edifice-ui/react@1.2.1-develop.0...@edifice-ui/react@1.2.1-develop.1) (2023-11-23)
 
 **Note:** Version bump only for package @edifice-ui/react
