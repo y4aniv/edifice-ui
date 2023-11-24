@@ -126,10 +126,10 @@ const InternalLinker = ({
     setSearchTerms(newText.toString());
   };
   const handleSubmit = useCallback(
-    (e: FormEvent) => {
+    (event: FormEvent) => {
       loadAndDisplayResources(searchTerms);
-      e.stopPropagation();
-      e.preventDefault();
+      event.stopPropagation();
+      event.preventDefault();
     },
     [loadAndDisplayResources, searchTerms],
   );
@@ -138,10 +138,10 @@ const InternalLinker = ({
   const toggleResourceSelection = useCallback(
     (resource: ILinkedResource) => {
       const index = selectedDocuments.findIndex(
-        (doc) => doc.assetId === resource.assetId,
+        (selectedDocument) => selectedDocument.assetId === resource.assetId,
       );
       if (index < 0) {
-        setSelectedDocuments((prevState) => [...prevState, resource]);
+        setSelectedDocuments((previousState) => [...previousState, resource]);
       } else {
         setSelectedDocuments(
           selectedDocuments.filter((value, i) => i !== index),

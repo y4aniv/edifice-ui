@@ -6,7 +6,7 @@
  * @see Source    https://github.com/opendigitaleducation/edifice-ui/blob/main/packages/core/src/Modal/Modal.tsx
  * @see WAI-ARIA  https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/
  */
-import { Ref, forwardRef, useEffect } from "react";
+import { forwardRef, useEffect } from "react";
 
 import { useTransition, animated } from "@react-spring/web";
 import clsx from "clsx";
@@ -68,7 +68,7 @@ export interface ModalProps {
 /**
  * Modal Component
  */
-const Root = forwardRef((props: ModalProps, ref: Ref<ModalElement>) => {
+const Root = forwardRef<ModalElement, ModalProps>((props, ref) => {
   const {
     id,
     isOpen,
