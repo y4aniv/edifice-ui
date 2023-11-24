@@ -2,9 +2,11 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import MediaLibrary, {
   MediaLibraryProps,
+  MediaLibraryRef,
+  MediaLibraryResult,
   MediaLibraryType,
 } from "./MediaLibrary";
-import { useState } from "react";
+import { useRef } from "react";
 import { MockedDataProvider } from "../../utils";
 import { WorkspaceElement } from "edifice-ts-client";
 
@@ -94,9 +96,7 @@ const meta: Meta<typeof MediaLibrary> = {
   title: "Multimedia/MediaLibrary",
   component: MediaLibrary,
   args: {
-    onSuccess: () => {
-      alert("Success 👍");
-    },
+    type: null,
   },
   argTypes: {
     type: {
@@ -113,7 +113,6 @@ const meta: Meta<typeof MediaLibrary> = {
   },
   decorators: [
     (Story) => {
-      const [type, setType] = useState<MediaLibraryType | null>(null);
       return (
         <div
           style={{
@@ -130,9 +129,14 @@ const meta: Meta<typeof MediaLibrary> = {
     },
   ],
   render: (args: MediaLibraryProps) => {
-    const [type, setType] = useState<MediaLibraryType | null>(null);
-    args.onCancel = () => {
-      setType(null);
+    const mediaLibraryRef = useRef<MediaLibraryRef>(null);
+
+    args.onCancel = () => mediaLibraryRef.current?.hide();
+    args.onSuccess = (result: MediaLibraryResult) => {
+      const text = Array.isArray(result)
+        ? `${result.length} elements selected`
+        : "a link is ready";
+      alert(`Success 👍 : ${text}`);
     };
 
     return (
@@ -148,13 +152,13 @@ const meta: Meta<typeof MediaLibrary> = {
       >
         <button
           onClick={() => {
-            setType(args.type);
+            mediaLibraryRef.current?.show(args.type);
           }}
         >
           Open Media Library
         </button>
 
-        {<MediaLibrary {...args} type={type} />}
+        {<MediaLibrary ref={mediaLibraryRef} {...args} />}
       </MockedDataProvider>
     );
   },
