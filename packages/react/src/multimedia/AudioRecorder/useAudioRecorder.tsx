@@ -199,8 +199,6 @@ export default function useAudioRecorder(
     );
     audioWorkletNode?.disconnect();
     audioContext?.close();
-    setLeftChannel([]);
-    setRigthChannel([]);
   }
 
   const initRecording = async () => {
@@ -303,6 +301,8 @@ export default function useAudioRecorder(
     setPlayState("IDLE");
     recordState.current = "IDLE";
     closeAudioStream();
+    setLeftChannel([]);
+    setRigthChannel([]);
   }, []);
 
   const handleSave = useCallback(() => {
@@ -456,6 +456,7 @@ export default function useAudioRecorder(
             recordState.current !== "PAUSED" &&
             playState !== "PLAYING" &&
             playState !== "PAUSED") ||
+          recordState.current === "SAVED" ||
           !audioNameRef.current?.value,
         onClick: handleSave,
       },

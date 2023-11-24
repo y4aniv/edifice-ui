@@ -44,7 +44,12 @@ const AudioRecorder = ({ onSuccess, onError }: AudioRecorderProps) => {
         </audio>
       </div>
       <div className="audio-recorder-toolbar toolbar default">
-        <FormControl id="recordName" className="mb-8" isRequired>
+        <FormControl
+          id="recordName"
+          className="mb-8"
+          isRequired
+          isReadOnly={recordState === "SAVED" || recordState === "SAVING"}
+        >
           <Input
             type="text"
             size={"sm"}
