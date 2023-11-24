@@ -25,6 +25,7 @@ import {
 } from "../../components";
 import { useOdeTheme, usePaths, useResourceSearch } from "../../core";
 import { useDebounce } from "../../hooks";
+import LinkerCard from "../LinkerCard/LinkerCard";
 
 /**
  * Definition of an internal link.
@@ -41,6 +42,10 @@ type ApplicationOption = {
 export interface InternalLinkerProps {
   /** Currently running application */
   appCode: App;
+  /** When defined, preloads and displays this type of resources. */
+  defaultAppCode?: App | null;
+  /** When defined, selects this resource (defaultApp must be specified) */
+  defaultResourceId?: string | null;
   /** Notify when the user selects an application in the dropdown */
   onChange?: (application?: ApplicationOption) => void;
   /** Notify when resources selection changes */
@@ -50,6 +55,8 @@ export interface InternalLinkerProps {
 /** The InternalLinker component */
 const InternalLinker = ({
   appCode,
+  defaultAppCode,
+  defaultResourceId,
   onChange,
   onSelect,
 }: InternalLinkerProps) => {
@@ -76,19 +83,28 @@ const InternalLinker = ({
   // Function to load and display resources of the currently selected application.
   const loadAndDisplayResources = useCallback(
     (search?: string) => {
-      if (selectedApplication) {
-        loadResources({
-          application: selectedApplication.application,
-          search,
-          types: [selectedApplication.application],
-          filters: {},
-          pagination: { startIdx: 0, pageSize: 300 }, // ignored at the moment
-        })
-          .then((resources) => setResources(resources))
-          .catch(() => setResources([]));
-      } else {
+      async function load() {
+        if (selectedApplication) {
+          try {
+            const resources = (
+              await loadResources({
+                application: selectedApplication.application,
+                search,
+                types: [selectedApplication.application],
+                filters: {},
+                pagination: { startIdx: 0, pageSize: 300 }, // ignored at the moment
+              })
+            ).sort((a, b) => (a.modifiedAt < b.modifiedAt ? 1 : -1));
+
+            setResources(resources);
+            return; // end here
+          } catch {
+            // continue on error
+          }
+        }
         setResources([]);
       }
+      load();
     },
     [loadResources, selectedApplication],
   );
@@ -96,6 +112,43 @@ const InternalLinker = ({
   // List of selected documents
   const [selectedDocuments, setSelectedDocuments] = useState<ILinkedResource[]>(
     [],
+  );
+
+  // Notify parent when an application is selected.
+  const handleOptionClick = (option: ApplicationOption) => {
+    onChange?.(option);
+    setSelectedApplication(option);
+  };
+
+  // Handle search input events (and debounce)
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newText = event.target.value;
+    setSearchTerms(newText.toString());
+  };
+  const handleSubmit = useCallback(
+    (event: FormEvent) => {
+      loadAndDisplayResources(searchTerms);
+      event.stopPropagation();
+      event.preventDefault();
+    },
+    [loadAndDisplayResources, searchTerms],
+  );
+
+  // Handle [de-]selection of a resource by the user.
+  const toggleResourceSelection = useCallback(
+    (resource: ILinkedResource) => {
+      const index = selectedDocuments.findIndex(
+        (selectedDocument) => selectedDocument.assetId === resource.assetId,
+      );
+      if (index < 0) {
+        setSelectedDocuments((previousState) => [...previousState, resource]);
+      } else {
+        setSelectedDocuments(
+          selectedDocuments.filter((value, i) => i !== index),
+        );
+      }
+    },
+    [selectedDocuments],
   );
 
   // Update dropdown when available applications list is updated.
@@ -131,49 +184,43 @@ const InternalLinker = ({
     onSelect?.(selectedDocuments);
   }, [selectedDocuments, onSelect]);
 
-  // Notify parent when an application is selected.
-  const handleOptionClick = (option: ApplicationOption) => {
-    onChange?.(option);
-    setSelectedApplication(option);
-  };
-
-  // Handle search input events (and debounce)
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newText = event.target.value;
-    setSearchTerms(newText.toString());
-  };
-  const handleSubmit = useCallback(
-    (e: FormEvent) => {
-      loadAndDisplayResources(searchTerms);
-      e.stopPropagation();
-      e.preventDefault();
-    },
-    [loadAndDisplayResources, searchTerms],
-  );
-
-  // Handle [de-]selection of a resource by the user.
-  const toggleResourceSelection = (resource: ILinkedResource) => {
-    const index = selectedDocuments.findIndex(
-      (doc) => doc.assetId === resource.assetId,
-    );
-    if (index < 0) {
-      setSelectedDocuments((prevState) => [...prevState, resource]);
-    } else {
-      setSelectedDocuments(selectedDocuments.filter((value, i) => i !== index));
+  // Preselect default option and load associated resources, if specified.
+  useEffect(() => {
+    if (defaultAppCode) {
+      const option = options?.find(
+        (option) => defaultAppCode === option.application,
+      );
+      setSelectedApplication(option);
+      loadAndDisplayResources("");
     }
-  };
+  }, [defaultAppCode, options, loadAndDisplayResources]);
+
+  // Preselect default resource, if specified.
+  useEffect(() => {
+    if (defaultResourceId) {
+      const resource = resources?.find(
+        (resource) => defaultResourceId === resource.assetId,
+      );
+      resource && toggleResourceSelection(resource);
+    }
+  }, [defaultResourceId, resources, toggleResourceSelection]);
 
   return (
     <div className="internal-linker flex-grow-1 w-100 rounded border gap-0">
       <div className="search d-flex bg-light rounded-top border-bottom">
-        <div className="flex-shrink-1 p-8 border-end">
+        <div className="flex-shrink-1 px-8 py-12 border-end">
           <Dropdown overflow>
             <Dropdown.Trigger
-              icon={selectedApplication?.icon || <Applications />}
+              icon={
+                <div className="pe-8">
+                  {selectedApplication?.icon || <Applications />}
+                </div>
+              }
               label={t(
                 selectedApplication?.displayName || "Choix de l'application",
               )}
               variant="ghost"
+              size="md"
             />
             <Dropdown.Menu>
               {options?.map((option) => (
@@ -213,19 +260,21 @@ const InternalLinker = ({
       </div>
 
       {selectedApplication && resources && resources.length > 0 && (
-        <div className="list row">
-          <ul>
-            {resources.map((resource) => (
-              <li key={resource.assetId}>
-                <p>
-                  {resource.name}, {resource.creatorName}
-                </p>
-                <button onClick={() => toggleResourceSelection(resource)}>
-                  Select
-                </button>
-              </li>
-            ))}
-          </ul>
+        <div className="">
+          {resources.map((resource) => {
+            const isSelected =
+              selectedDocuments.findIndex(
+                (doc) => doc.assetId === resource.assetId,
+              ) >= 0;
+            return (
+              <LinkerCard
+                key={resource.assetId}
+                doc={resource}
+                isSelected={isSelected}
+                onClick={() => toggleResourceSelection(resource)}
+              />
+            );
+          })}
         </div>
       )}
 

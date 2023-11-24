@@ -1,56 +1,45 @@
 import { WorkspaceElement } from "edifice-ts-client";
 
-import Dropzone from "../../../components/Dropzone/Dropzone";
+import { Dropzone } from "../../../components/Dropzone";
+import { UploadFiles } from "../../UploadFiles";
 import { MediaLibraryType } from "../MediaLibrary";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 
+const acceptedTypes = (type: MediaLibraryType) => {
+  const acceptedTypes = [];
+
+  switch (type) {
+    case "audio":
+    case "video":
+      acceptedTypes.push("video/*");
+      break;
+    case "image":
+      acceptedTypes.push("image/*");
+      break;
+    default:
+      break;
+  }
+  return acceptedTypes;
+};
+
 export const Upload = () => {
-  const { setResultCounter, setResult, type } = useMediaLibraryContext();
+  const { type, setResult, setResultCounter } = useMediaLibraryContext();
 
-  const acceptTypeFile = (type: MediaLibraryType) => {
-    const acceptTypes = [];
-
-    switch (type) {
-      case "audio":
-      case "video":
-        acceptTypes.push("video/mp4", "video/mp3");
-        break;
-      case "image":
-        acceptTypes.push("image/jpeg", "image/png");
-        break;
-      default:
-        break;
-    }
-    return acceptTypes;
-  };
-
-  const handleSuccess = (doc: WorkspaceElement[]) => {
-    let result;
-
-    if (doc.length === 0) {
-      result = undefined;
-      return;
+  const handleOnFilesChange = (uploadedFiles: WorkspaceElement[]) => {
+    if (uploadedFiles.length) {
+      setResultCounter(uploadedFiles.length);
+      setResult(uploadedFiles);
     } else {
-      result = doc;
+      setResultCounter(undefined);
+      setResult(undefined);
     }
-
-    setResult(result);
-    setResultCounter(doc.length);
-  };
-
-  const handleError = (err: string) => {
-    console.error(err);
   };
 
   return (
     <div className="py-8 flex-grow-1">
-      <Dropzone
-        multiple
-        accept={acceptTypeFile(type ?? "embedder")}
-        importMessage="Glissez-déposez un/des fichier(s) depuis votre appareil ou cliquez sur parcourir"
-        onSuccess={handleSuccess}
-        onError={handleError}
-      />
+      <Dropzone multiple accept={acceptedTypes(type ?? "embedder")}>
+        <UploadFiles onFilesChange={handleOnFilesChange} />
+      </Dropzone>
     </div>
   );
 };

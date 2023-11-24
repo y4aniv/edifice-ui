@@ -18,6 +18,7 @@ import { useTranslation } from "react-i18next";
 
 import {
   Dropdown,
+  FileCard,
   FormControl,
   Grid,
   Input,
@@ -28,7 +29,6 @@ import {
 } from "../../components";
 import { useWorkspaceSearch } from "../../core";
 import { FolderNode } from "../../core/useWorkspaceSearch/useWorkspaceSearch";
-import { FileCard } from "../FileCard";
 
 /**
  * MediaLibrary component properties

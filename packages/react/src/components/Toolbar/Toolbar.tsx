@@ -35,6 +35,7 @@ interface IconButtonItem extends Item {
 interface DropdownItem extends Item {
   type: "dropdown";
   props: DropdownProps;
+  overflow?: boolean;
 }
 interface PrimaryItem extends Item {
   type: "primary";
@@ -210,6 +211,7 @@ const Toolbar = forwardRef(
                   {...item.props}
                   key={item.name ?? index}
                   extraTriggerKeyDownHandler={handleKeyDown}
+                  overflow={item.overflow}
                 >
                   {/* Set the children through props */}
                 </Dropdown>

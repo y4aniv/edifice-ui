@@ -15,7 +15,7 @@ import { useOdeIcons } from "../../core";
 
 export interface CardProps {
   /**
-   * IWeb App
+   * IWebApp
    */
   app?: IWebApp | undefined;
   /**
