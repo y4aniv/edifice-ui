@@ -1,6 +1,6 @@
 import { ReactNode, Ref, forwardRef } from "react";
 
-interface DropdownMenuGroupProps {
+export interface DropdownMenuGroupProps {
   /**
    * Label
    */

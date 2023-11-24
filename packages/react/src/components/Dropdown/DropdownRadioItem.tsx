@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { useDropdownContext } from "./DropdownContext";
 import { Radio } from "../Radio";
 
-interface DropdownRadioItemProps {
+export interface DropdownRadioItemProps {
   /**
    * Children Node
    */

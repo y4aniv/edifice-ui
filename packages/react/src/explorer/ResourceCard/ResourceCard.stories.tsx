@@ -34,13 +34,43 @@ type Story = StoryObj<typeof ResourceCard>;
 
 export const Base: Story = {
   render: (args) => {
-    return <ResourceCard {...args} />;
+    const [selected, setSelected] = useState(false);
+    const handleOnClick = () => {
+      setSelected((prev) => !prev);
+    };
+    const handleOnSelect = () => {
+      setSelected((prev) => !prev);
+    };
+    return (
+      <ResourceCard
+        {...args}
+        isSelectable={true}
+        isSelected={selected}
+        onClick={handleOnClick}
+        onSelect={handleOnSelect}
+      />
+    );
   },
 };
 
 export const ResourceIsShared: Story = {
   render: (args) => {
-    return <ResourceCard {...args} />;
+    const [selected, setSelected] = useState(false);
+    const handleOnClick = () => {
+      setSelected((prev) => !prev);
+    };
+    const handleOnSelect = () => {
+      setSelected((prev) => !prev);
+    };
+    return (
+      <ResourceCard
+        {...args}
+        isSelectable={true}
+        isSelected={selected}
+        onClick={handleOnClick}
+        onSelect={handleOnSelect}
+      />
+    );
   },
   args: {
     resource: {
@@ -57,7 +87,22 @@ export const ResourceIsShared: Story = {
 
 export const ResourceIsPublic: Story = {
   render: (args) => {
-    return <ResourceCard {...args} />;
+    const [selected, setSelected] = useState(false);
+    const handleOnClick = () => {
+      setSelected((prev) => !prev);
+    };
+    const handleOnSelect = () => {
+      setSelected((prev) => !prev);
+    };
+    return (
+      <ResourceCard
+        {...args}
+        isSelectable={true}
+        isSelected={selected}
+        onClick={handleOnClick}
+        onSelect={handleOnSelect}
+      />
+    );
   },
   args: {
     resource: {

@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import ComboboxTrigger from "./ComboboxTrigger";
 import { Dropdown } from "../Dropdown";
 import { Loading } from "../Loading";
+
 export interface ComboboxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   onSearchResultsChange: (model: (string | number)[]) => void;

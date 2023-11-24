@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 import { useDropdownContext } from "./DropdownContext";
 
-interface DropdownItemProps {
+export interface DropdownItemProps {
   /**
    * Object type
    */
