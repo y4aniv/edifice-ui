@@ -6,7 +6,7 @@ import { Indeterminate } from "../../Checkbox/Checkbox.stories";
 import { Checkbox } from "../../Checkbox";
 import { FormControl } from "../../Form";
 import { Radio } from "../../Radio";
-import Input from "..";
+import Input from "../Input";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof FormControl> = {
