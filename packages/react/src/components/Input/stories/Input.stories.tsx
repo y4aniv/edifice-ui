@@ -3,8 +3,8 @@ import { Ref, useEffect, useRef } from "react";
 import { Button } from "../../Button";
 
 import { FormControl, FormText } from "../../Form/index";
-import Input, { InputProps } from "../Input";
 import { Label } from "../../Label";
+import Input, { InputProps } from "../Input";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Input> = {

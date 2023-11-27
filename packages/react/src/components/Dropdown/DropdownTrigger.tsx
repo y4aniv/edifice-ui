@@ -48,17 +48,19 @@ const DropdownTrigger = forwardRef(
       disabled = false,
       size,
       badgeContent,
+      ...restProps
     }: DropdownTriggerProps,
     forwardRef: Ref<HTMLButtonElement>,
   ) => {
-    const { triggerProps, visible, block } = useDropdownContext();
-    const { className, ...restProps } = triggerProps;
+    const { triggerProps, block } = useDropdownContext();
+    const { className, ...restTriggerProps } = triggerProps;
 
+    const mergedProps = { ...restTriggerProps, ...restProps };
     const dropdownTrigger = clsx(
-      "dropdown-toggle",
+      "dropdown-toggle ",
       size,
       variant,
-      { "w-100": block, selected: visible },
+      { "w-100": block },
       className,
     );
 
@@ -67,10 +69,10 @@ const DropdownTrigger = forwardRef(
         ref={forwardRef}
         className={dropdownTrigger}
         disabled={disabled}
-        {...restProps}
+        {...mergedProps}
       >
         {icon ? icon : null}
-        {label ? <span>{label}</span> : null}
+        {label}
         {badgeContent ? (
           <span className="badge text-bg-secondary rounded-pill">
             {badgeContent}

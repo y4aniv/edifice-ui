@@ -35,9 +35,6 @@
     "prepare": "husky install",
     "publish-packages": "changeset version && changeset publish"
   },
-  "dependencies": {
-    "semantic-release-monorepo": "7.0.5"
-  },
   "devDependencies": {
     "@edifice-ui/icons": "workspace:*",
     "@skypack/package-check": "0.2.2",
@@ -62,11 +59,11 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-storybook": "0.6.13",
     "husky": "8.0.3",
-    "prettier": "3.0.1",
+    "lerna": "7.0.2",
+    "prettier": "2.8.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rollup-plugin-visualizer": "5.9.2",
-    "semantic-release": "20.1.0",
     "storybook": "7.0.18",
     "turbo": "1.10.12",
     "typescript": "5.1.6",
@@ -75,7 +72,6 @@
   },
   "packageManager": "pnpm@8.6.6",
   "engines": {
-    "node": "16 || 18"
-  },
-  "engineStrict": true
+    "node": "18"
+  }
 }

@@ -15,6 +15,7 @@ import {
   autoUpdate,
   flip,
   offset,
+  size,
   useFloating,
 } from "@floating-ui/react";
 
@@ -67,7 +68,17 @@ const useDropdown = (
     open: visible,
     onOpenChange: setVisible,
     whileElementsMounted: autoUpdate,
-    middleware: [offset(4), flip({ padding: 0 })],
+    middleware: [
+      offset(4),
+      size({
+        apply({ rects, elements }) {
+          Object.assign(elements.floating.style, {
+            minWidth: `${rects.reference.width}px`,
+          });
+        },
+      }),
+      flip({ padding: 0 }),
+    ],
   });
 
   /* refs */
@@ -92,9 +103,12 @@ const useDropdown = (
       const currentItem = Object.values(itemRefs.current)[
         activeIndex
       ] as HTMLElement;
-      const id = currentItem.getAttribute("id") as string;
-      setIsFocused(id);
-      currentItem.focus();
+
+      if (currentItem) {
+        const id = currentItem.getAttribute("id") as string;
+        setIsFocused(id);
+        currentItem.focus();
+      }
     }
   }, [activeIndex]);
 
@@ -272,15 +286,16 @@ const useDropdown = (
       "aria-haspopup": "menu",
       "aria-controls": `dropdown-${id}`,
       "aria-expanded": visible ? true : false,
+      className: `${visible ? "selected" : ""}`,
       onClick: onTriggerClick,
       onKeyDown: onTriggerKeyDown,
+      "aria-activedescendant": isFocused,
     },
     /* MenuProps to spread to any Menu Component */
     menuProps: {
       ref: mergeRefs(menuRef, refs.setFloating),
       className: "dropdown-menu bg-white shadow rounded-4 p-8",
       "aria-labelledby": `dropdown-toggle-${id}`,
-      "aria-activedescendant": isFocused,
       style: { ...floatingStyles },
     },
     /* ItemProps to spread to any item Component */

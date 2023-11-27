@@ -92,10 +92,10 @@ export const ImageURL: Story = {
 export const UploadImageWithCallbacks: Story = {
   render: (args: ImagePickerProps) => {
     function handleUploadImage(obj: any) {
-      alert(`Uploading image ${JSON.stringify(obj)}`);
+      console.log(`Uploading image ${JSON.stringify(obj)}`);
     }
     function handleDeleteImage() {
-      alert("Image deleted");
+      console.log("Image deleted");
     }
     return (
       <ImagePicker

@@ -19,7 +19,7 @@ const SvgNoColors = ({
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path fill="currentColor" d="M23 0h-4L1 24h4L23 0Z" />
+    <path fill="currentColor" d="M23 0h-4L1 24h4z" />
   </svg>
 );
 export default SvgNoColors;

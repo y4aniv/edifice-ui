@@ -22,7 +22,7 @@ const SvgTextSize = ({
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M2 4a1 1 0 0 0 0 2h6v13a1 1 0 1 0 2 0V6h6a1 1 0 1 0 0-2H2Zm15 8h-3a1 1 0 1 1 0-2h8a1 1 0 1 1 0 2h-3v7a1 1 0 1 1-2 0v-7Z"
+      d="M2 4a1 1 0 0 0 0 2h6v13a1 1 0 1 0 2 0V6h6a1 1 0 1 0 0-2zm15 8h-3a1 1 0 1 1 0-2h8a1 1 0 1 1 0 2h-3v7a1 1 0 1 1-2 0z"
       clipRule="evenodd"
     />
   </svg>

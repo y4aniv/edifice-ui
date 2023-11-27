@@ -1,10 +1,8 @@
-name: Semantic release
+name: Release
 on:
   push:
     branches:
       - main
-      - develop
-      - develop*
 permissions:
   contents: read #  for checkout
 jobs:
@@ -13,13 +11,17 @@ jobs:
       contents: write #  to be able to publish a GitHub release
       issues: write #  to be able to comment on released issues
       pull-requests: write #  to be able to comment on released pull requests
-    name: Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: "0"
+
       - uses: actions/setup-node@v3
+        name: Install Node
         with:
           node-version: 18
+
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         id: pnpm-install
@@ -31,7 +33,7 @@ jobs:
         id: pnpm-cache
         shell: bash
         run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+          echo "STORE_PATH=$(pnpm store path | tr -d '\n')" >> $GITHUB_OUTPUT
 
       - uses: actions/cache@v3
         name: Setup pnpm cache
@@ -41,10 +43,24 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - run: pnpm install --no-frozen-lockfile
-      - run: pnpm build
-      # - run: npx semantic-release
-      - run: pnpm -r --workspace-concurrency=1 exec -- npx --no-install semantic-release -e semantic-release-monorepo
+      - run: pnpm install --no-frozen-lockfile && pnpm build
+        name: Install & Build
+
+      - name: Write NPM_TOKEN
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
+      - name: Version & Publish
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor}}@users.noreply.github.com"
+
+          npx lerna version --conventional-commits --conventional-graduate --create-release github --no-private --yes || export LERNA_VERSION_ERROR=$?
+
+          if [ -n "$LERNA_VERSION_ERROR" ]; then
+            npx lerna version --conventional-commits --create-release github --no-private --yes
+          fi
+
+          npx lerna publish from-git --conventional-commits --yes
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

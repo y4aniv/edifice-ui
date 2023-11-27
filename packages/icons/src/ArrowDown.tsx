@@ -22,13 +22,13 @@ const SvgArrowDown = ({
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M12 4a1 1 0 0 1 1 1v14a1 1 0 1 1-2 0V5a1 1 0 0 1 1-1Z"
+      d="M12 4a1 1 0 0 1 1 1v14a1 1 0 1 1-2 0V5a1 1 0 0 1 1-1"
       clipRule="evenodd"
     />
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M4.293 11.293a1 1 0 0 1 1.414 0L12 17.586l6.293-6.293a1 1 0 0 1 1.414 1.414l-7 7a1 1 0 0 1-1.414 0l-7-7a1 1 0 0 1 0-1.414Z"
+      d="M4.293 11.293a1 1 0 0 1 1.414 0L12 17.586l6.293-6.293a1 1 0 0 1 1.414 1.414l-7 7a1 1 0 0 1-1.414 0l-7-7a1 1 0 0 1 0-1.414"
       clipRule="evenodd"
     />
   </svg>

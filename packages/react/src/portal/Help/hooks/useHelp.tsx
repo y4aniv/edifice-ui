@@ -133,10 +133,6 @@ export function useHelp() {
               replace: (domNode: any) => {
                 const typedDomNode = domNode as any;
 
-                if (typedDomNode.attribs && typedDomNode.name === "p") {
-                  return <></>;
-                }
-
                 if (typedDomNode.attribs && typedDomNode.name === "img") {
                   const attribs = domNode.attribs.src;
                   return (
