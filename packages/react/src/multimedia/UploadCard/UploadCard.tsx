@@ -10,7 +10,7 @@ import {
   CardProps,
 } from "../../components";
 import { usePaths } from "../../core";
-import { Status } from "../../utils/Status";
+import { Status } from "../../types";
 
 const typeAcceptEdit = ["png", "jpeg"];
 export interface UploadItemProps {

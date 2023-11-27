@@ -228,7 +228,7 @@ const InternalLinker = ({
       </div>
 
       {selectedApplication && resources && resources.length > 0 && (
-        <div className="">
+        <div>
           {resources.map((resource) => {
             const isSelected =
               selectedDocuments.findIndex(

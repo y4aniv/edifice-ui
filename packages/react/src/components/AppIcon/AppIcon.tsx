@@ -22,28 +22,29 @@ export interface BaseProps {
 type AppVariants = "square" | "circle" | "rounded";
 type SquareVariant = Extract<AppVariants, "square">;
 
-export type Props =
-  | {
-      /**
-       * Show icon full width
-       */
-      iconFit?: "contain";
-      /**
-       * Square variant
-       */
-      variant?: SquareVariant;
-    }
-  | {
-      /**
-       * Add padding around icon
-       */
-      iconFit: "ratio";
-      /**
-       * Rounded or Circle variant
-       */
-      variant: AppVariants;
-    };
+type SquareIcon = {
+  /**
+   * Show icon full width
+   */
+  iconFit?: "contain";
+  /**
+   * Square variant
+   */
+  variant?: SquareVariant;
+};
 
+type VariantsIcon = {
+  /**
+   * Add padding around icon
+   */
+  iconFit: "ratio";
+  /**
+   * Rounded or Circle variant
+   */
+  variant: AppVariants;
+};
+
+export type Props = SquareIcon | VariantsIcon;
 export type AppIconProps = BaseProps & Props;
 
 /**

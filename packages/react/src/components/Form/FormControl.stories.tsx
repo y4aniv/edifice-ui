@@ -2,7 +2,7 @@ import React from "react";
 import { Mail } from "@edifice-ui/icons";
 import { Meta, StoryObj } from "@storybook/react";
 
-import { FormControl, FormText, FormControlProps } from "../index";
+import { FormControl, FormText, FormControlProps } from "./index";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof FormControl> = {
@@ -27,7 +27,7 @@ export default meta;
 type Story = StoryObj<typeof FormControl>;
 
 export const Base: Story = {
-  render: (args) => {
+  render: (args: FormControlProps) => {
     return (
       <FormControl {...args}>
         <FormControl.Label>Email</FormControl.Label>
@@ -42,7 +42,7 @@ export const Base: Story = {
 };
 
 export const WithLabel: Story = {
-  render: (args) => {
+  render: (args: FormControlProps) => {
     return (
       <FormControl id="email-X23">
         <FormControl.Label>Email</FormControl.Label>
@@ -57,7 +57,7 @@ export const WithLabel: Story = {
 };
 
 export const WithLabelAndIcon: Story = {
-  render: (args) => {
+  render: (args: FormControlProps) => {
     return (
       <FormControl id="email-7">
         <FormControl.Label leftIcon={<Mail />}>Email</FormControl.Label>
@@ -72,7 +72,7 @@ export const WithLabelAndIcon: Story = {
 };
 
 export const WithInformativeMessage: Story = {
-  render: (args) => {
+  render: (args: FormControlProps) => {
     return (
       <FormControl id="email" style={{ marginTop: "3px" }}>
         <FormControl.Label leftIcon={<Mail />}>Email</FormControl.Label>
@@ -88,7 +88,7 @@ export const WithInformativeMessage: Story = {
 };
 
 export const OptionalField: Story = {
-  render: (args) => {
+  render: (args: FormControlProps) => {
     return (
       <FormControl id="email-0" isOptional>
         <FormControl.Label leftIcon={<Mail />}>Email</FormControl.Label>
@@ -103,7 +103,7 @@ export const OptionalField: Story = {
 };
 
 export const OptionalFieldCustomText: Story = {
-  render: (args) => {
+  render: (args: FormControlProps) => {
     return (
       <FormControl id="email-1" isOptional>
         <FormControl.Label leftIcon={<Mail />} optionalText="Not mandatory">
@@ -120,7 +120,7 @@ export const OptionalFieldCustomText: Story = {
 };
 
 export const RequiredField: Story = {
-  render: (args) => {
+  render: (args: FormControlProps) => {
     return (
       <FormControl id="email-2" isRequired>
         <FormControl.Label leftIcon={<Mail />}>Email</FormControl.Label>
@@ -135,7 +135,7 @@ export const RequiredField: Story = {
 };
 
 export const RequiredFieldCustomText: Story = {
-  render: (args) => {
+  render: (args: FormControlProps) => {
     return (
       <FormControl id="email-3" isRequired>
         <FormControl.Label leftIcon={<Mail />} requiredText="- Mandatory">
@@ -152,7 +152,7 @@ export const RequiredFieldCustomText: Story = {
 };
 
 export const ReadOnlyStatus: Story = {
-  render: (args) => {
+  render: (args: FormControlProps) => {
     return (
       <FormControl id="example-5" isReadOnly>
         <FormControl.Input

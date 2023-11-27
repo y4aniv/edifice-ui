@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { WorkspaceElement, odeServices } from "edifice-ts-client";
 
-import { Status } from "../../utils/Status";
+import { Status } from "../../types";
 
 export default function useHandleFile() {
   const [status, setStatus] = useState<Status | undefined>("idle");

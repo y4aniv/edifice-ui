@@ -7,3 +7,4 @@ export * from "./widgets";
 export * from "./tiptap";
 export * from "./utils";
 export * from "./multimedia";
+export * from "./types";
