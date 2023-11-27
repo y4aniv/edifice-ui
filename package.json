@@ -1,5 +1,5 @@
 {
-  "name": "edifice-ui",
+  "name": "root",
   "private": true,
   "description": "Edifice UI Frontend Library",
   "homepage": "https://github.com/opendigitaleducation/edifice-ui#readme",
@@ -37,9 +37,6 @@
     "prepare": "husky install",
     "publish-packages": "changeset version && changeset publish"
   },
-  "dependencies": {
-    "semantic-release-monorepo": "7.0.5"
-  },
   "devDependencies": {
     "@edifice-ui/icons": "workspace:*",
     "@skypack/package-check": "0.2.2",
@@ -69,7 +66,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rollup-plugin-visualizer": "5.9.2",
-    "semantic-release": "20.1.0",
     "storybook": "7.0.18",
     "turbo": "1.10.12",
     "typescript": "5.1.6",
