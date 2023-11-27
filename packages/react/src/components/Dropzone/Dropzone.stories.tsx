@@ -8,10 +8,6 @@ const meta: Meta<typeof Dropzone> = {
   component: Dropzone,
   args: {
     accept: [],
-    onSuccess: () => console.log("Success"),
-    onError: () => console.log("Error"),
-    importMessage:
-      "Glissez-déposez un/des fichier(s) depuis votre appareil ou cliquez sur parcourir",
   },
 };
 

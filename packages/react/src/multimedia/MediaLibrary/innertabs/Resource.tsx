@@ -6,15 +6,25 @@ import { useToggle } from "../../../hooks";
 import InternalLinker from "../../Linker/InternalLinker";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 
+export type ResourceTabProps = {
+  target?: "_blank" | null;
+  appPrefix?: string | null;
+  resourceId?: string | null;
+};
+
 export type ResourceTabResult = {
   target?: "_blank";
   resources?: ILinkedResource[];
 };
 
-export const Resource = () => {
+export const Resource = ({
+  target,
+  resourceId,
+  appPrefix,
+}: ResourceTabProps) => {
   const { t } = useTranslation();
   const { setResult, setResultCounter, appCode } = useMediaLibraryContext();
-  const [isChecked, toggleChecked] = useToggle(false);
+  const [isChecked, toggleChecked] = useToggle(target === "_blank");
 
   const handleSelect = (resources: ILinkedResource[]) => {
     setResult({
@@ -32,6 +42,8 @@ export const Resource = () => {
     <div className="d-flex flex-column flex-fill gap-16">
       <InternalLinker
         appCode={appCode}
+        defaultAppCode={appPrefix}
+        defaultResourceId={resourceId}
         onSelect={handleSelect}
       ></InternalLinker>
       <Checkbox

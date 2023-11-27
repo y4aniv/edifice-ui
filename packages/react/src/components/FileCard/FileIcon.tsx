@@ -20,4 +20,5 @@ const FileIcon = ({
 
   return <div className={fileicon}>{roleMap?.icon ?? <Paperclip />}</div>;
 };
+
 export default FileIcon;

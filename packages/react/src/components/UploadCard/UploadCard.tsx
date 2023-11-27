@@ -1,18 +1,13 @@
 import { SuccessOutline, Retry, Wand, Close } from "@edifice-ui/icons";
 import { useTranslation } from "react-i18next";
 
-import {
-  Card,
-  Loading,
-  Button,
-  IconButton,
-  Image,
-  CardProps,
-} from "../../components";
 import { usePaths } from "../../core";
 import { Status } from "../../types";
+import { Button, IconButton } from "../Button";
+import { CardProps, Card } from "../Card";
+import { Image } from "../Image";
+import { Loading } from "../Loading";
 
-const typeAcceptEdit = ["png", "jpeg"];
 export interface UploadItemProps {
   /**
    * File's image
@@ -27,6 +22,7 @@ export interface UploadItemProps {
    * */
   info?: { type: string; weight: string };
 }
+
 export interface UploadCardProps extends CardProps {
   /**
    * UploadItemProps
@@ -61,14 +57,16 @@ const UploadCard = ({
 }: UploadCardProps) => {
   const [imagePath] = usePaths();
 
+  const { t } = useTranslation();
+
+  const { src, name, info } = item;
+
   const isIdle = status === "idle";
   const isLoading = status === "loading";
   const isError = status === "error";
   const isSuccess = status === "success";
 
-  const { t } = useTranslation();
-
-  const { src, name, info } = item;
+  const isTypeImage = info?.type.startsWith("image/");
 
   return (
     <Card
@@ -134,7 +132,7 @@ const UploadCard = ({
                 </Button>
               )}
               {!isIdle && <div className="vr"></div>}
-              {typeAcceptEdit.find((type) => type === info?.type) && (
+              {isTypeImage && (
                 <IconButton
                   icon={<Wand />}
                   variant="ghost"

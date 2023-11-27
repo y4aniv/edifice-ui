@@ -1,9 +1,8 @@
 import {
-  ChangeEvent,
   ComponentPropsWithRef,
   forwardRef,
   Ref,
-  useRef,
+  useEffect,
   useState,
 } from "react";
 
@@ -69,11 +68,18 @@ const ImagePicker = forwardRef(
     }: ImagePickerProps,
     ref: Ref<HTMLInputElement>,
   ) => {
-    const inputRef = useRef<HTMLInputElement | null>(null);
-
     const [preview, setPreview] = useState<string>(src || "");
 
-    const handleChange = (files?: FileList | null) => {
+    const {
+      inputRef,
+      files,
+      handleOnChange,
+      handleDragging,
+      handleDragLeave,
+      handleDrop,
+    } = useDropzone();
+
+    useEffect(() => {
       setPreview("");
 
       const file = files?.[0];
@@ -81,7 +87,7 @@ const ImagePicker = forwardRef(
 
       setPreview(URL.createObjectURL(file));
       onUploadImage(file);
-    };
+    }, [files, onUploadImage]);
 
     const handleClick = () => {
       inputRef.current?.click();
@@ -95,16 +101,7 @@ const ImagePicker = forwardRef(
       onDeleteImage();
     };
 
-    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-      handleChange(event.target.files);
-    };
-
     const classes = clsx("image-input", className);
-
-    const { handleDragging, handleDragLeave, handleDrop } = useDropzone(
-      inputRef,
-      handleChange,
-    );
 
     return (
       <FormControl
@@ -140,7 +137,7 @@ const ImagePicker = forwardRef(
           <Input
             accept="image/*"
             hidden
-            onChange={handleInputChange}
+            onChange={handleOnChange}
             ref={inputRef}
             size="sm"
             type="file"

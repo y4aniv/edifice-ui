@@ -10,6 +10,7 @@ export * from "./useOdeIcons";
 export * from "./usePaths";
 export * from "./useResourceSearch";
 export * from "./useSession";
+export * from "./useUploadFiles";
 export * from "./useUser";
 export * from "./useWorkspaceSearch";
 export * from "./useXitiTrackPageLoad";
