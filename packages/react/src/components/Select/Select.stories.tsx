@@ -1,16 +1,13 @@
-import { useState } from "react";
-
 import { Meta, StoryObj } from "@storybook/react";
 
 import Select, { OptionsType } from "./Select";
-import FormControl from "../Form/FormControl";
-import { Label } from "../Label";
+import { ListOrder } from "@edifice-ui/icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Select> = {
   title: "Forms/Select",
   component: Select,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
+  decorators: [(Story) => <div style={{ height: "400px" }}>{Story()}</div>],
 } as Meta<typeof Select>;
 
 export default meta;
@@ -58,51 +55,123 @@ const subjectAreaOptions: OptionsType[] = [
 
 export const Base: Story = {
   render: (args) => {
-    const [value, setValue] = useState<string>();
+    const onChange = (option: OptionsType | string) => {
+      console.log(option);
+    };
 
     return (
-      <div>
-        <FormControl id="subjectArea">
-          <Label>Discipline</Label>
-          <Select
-            placeholderOption="Sélectionnez une discipline"
-            options={subjectAreaOptions}
-            model={value}
-            onChange={(e) => setValue(e.target.value)}
-          />
-        </FormControl>
-        <div className="mt-16">Option séléctionnée : {value && value}</div>
-      </div>
+      <Select
+        onValueChange={onChange}
+        options={subjectAreaOptions}
+        placeholderOption={subjectAreaOptions[0].label}
+      />
     );
   },
 };
 
-type status = "invalid" | "valid";
-
-export const WithStatus: Story = {
+export const WithIcon: Story = {
   render: (args) => {
-    const [value, setValue] = useState<status>("invalid");
-
-    const statusOptions: OptionsType[] = [
-      { label: "Invalid option", value: "invalid" },
-      { label: "Valid option", value: "valid" },
-    ];
+    const onChange = (option: OptionsType | string) => {
+      console.log(option);
+    };
 
     return (
-      <div>
-        <FormControl id="subjectArea" status={value}>
-          <Label>
-            Discipline {value === "invalid" ? "invalide" : "valide"}
-          </Label>
+      <Select
+        icon={<ListOrder />}
+        onValueChange={onChange}
+        options={subjectAreaOptions}
+        placeholderOption={subjectAreaOptions[0].label}
+      />
+    );
+  },
+};
+
+export const Disabled: Story = {
+  render: (args) => {
+    const onChange = (option: OptionsType | string) => {
+      console.log(option);
+    };
+
+    return (
+      <Select
+        onValueChange={onChange}
+        options={subjectAreaOptions}
+        placeholderOption={subjectAreaOptions[0].label}
+        disabled
+      />
+    );
+  },
+};
+
+export const Variant: Story = {
+  render: (args) => {
+    const onChange = (option: OptionsType | string) => {
+      console.log(option);
+    };
+
+    return (
+      <Select
+        onValueChange={onChange}
+        options={subjectAreaOptions}
+        variant="ghost"
+        placeholderOption={subjectAreaOptions[0].label}
+      />
+    );
+  },
+};
+
+export const SelectSizes: Story = {
+  render: (args) => {
+    const onChange = (option: OptionsType | string) => {
+      console.log(option);
+    };
+
+    return (
+      <>
+        <div className="d-flex align-items-center gap-8">
           <Select
-            options={statusOptions}
-            model={value}
-            onChange={(e) => {
-              setValue(e.target.value as status);
-            }}
+            onValueChange={onChange}
+            options={subjectAreaOptions}
+            size="sm"
+            placeholderOption={subjectAreaOptions[0].label}
           />
-        </FormControl>
-      </div>
+          <Select
+            onValueChange={onChange}
+            options={subjectAreaOptions}
+            size="md"
+            placeholderOption={subjectAreaOptions[0].label}
+          />
+          <Select
+            onValueChange={onChange}
+            options={subjectAreaOptions}
+            size="lg"
+            placeholderOption={subjectAreaOptions[0].label}
+          />
+        </div>
+        <div className="d-flex align-items-center gap-8">
+          <Select
+            onValueChange={onChange}
+            options={subjectAreaOptions}
+            size="sm"
+            variant="ghost"
+            placeholderOption={subjectAreaOptions[0].label}
+          />
+          <Select
+            onValueChange={onChange}
+            options={subjectAreaOptions}
+            size="md"
+            variant="ghost"
+            placeholderOption={subjectAreaOptions[0].label}
+          />
+          <Select
+            onValueChange={onChange}
+            options={subjectAreaOptions}
+            size="lg"
+            variant="ghost"
+            placeholderOption={subjectAreaOptions[0].label}
+          />
+        </div>
+      </>
     );
   },
 };

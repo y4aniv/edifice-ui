@@ -18,8 +18,7 @@ import {
   TextTypo,
   TextUnderline,
 } from "@edifice-ui/icons";
-import { size } from "@floating-ui/react";
-import { RefAttributes, Fragment } from "react";
+import { RefAttributes } from "react";
 import { IconButtonProps, IconButton, Dropdown } from "../../components";
 
 const meta: Meta<typeof Toolbar> = {
@@ -49,7 +48,7 @@ const meta: Meta<typeof Toolbar> = {
         type: "icon",
         props: {
           icon: <Landscape />,
-          className: "widget-image",
+          className: "bg-green-200",
           "aria-label": "Insérer une image",
           onClick: () => {},
         },
@@ -59,7 +58,7 @@ const meta: Meta<typeof Toolbar> = {
         type: "icon",
         props: {
           icon: <RecordVideo />,
-          className: "widget-video",
+          className: "bg-purple-200",
           "aria-label": "Insérer une vidéo",
           onClick: () => {},
         },
@@ -69,7 +68,7 @@ const meta: Meta<typeof Toolbar> = {
         type: "icon",
         props: {
           icon: <Mic />,
-          className: "widget-audio",
+          className: "bg-red-200",
           "aria-label": "Insérer une piste audio",
           onClick: () => {},
         },
@@ -79,7 +78,7 @@ const meta: Meta<typeof Toolbar> = {
         type: "icon",
         props: {
           icon: <Paperclip />,
-          className: "widget-attachment",
+          className: "bg-yellow-200",
           "aria-label": "Insérer une pièce jointe",
           onClick: () => {},
         },

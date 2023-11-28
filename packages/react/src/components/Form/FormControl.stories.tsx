@@ -1,4 +1,3 @@
-import React from "react";
 import { Mail } from "@edifice-ui/icons";
 import { Meta, StoryObj } from "@storybook/react";
 

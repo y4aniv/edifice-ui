@@ -28,7 +28,7 @@ const SvgSee = ({
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-4 2a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z"
+      d="M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-4 2a4 4 0 1 1 8 0 4 4 0 0 1-8 0"
       clipRule="evenodd"
     />
   </svg>

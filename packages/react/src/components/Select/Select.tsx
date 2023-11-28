@@ -1,85 +1,93 @@
-import { forwardRef, Ref, useId } from "react";
+import { useEffect, useState } from "react";
 
-import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 
-import { useFormControl } from "../Form/FormContext";
+import SelectTrigger from "./SelectTrigger";
+import Dropdown, { DropdownProps } from "../Dropdown/Dropdown";
+import { DropdownTriggerProps } from "../Dropdown/DropdownTrigger";
 
 export interface OptionsType {
   /**
-   * Value
+   * Select Option Value
    */
   value: string;
   /**
-   * Label
+   * Option Option Label
    */
   label: string;
 }
 
 export interface SelectProps
-  extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  extends Omit<DropdownProps, "children">,
+    Omit<DropdownTriggerProps, "badgeContent"> {
   /**
-   * Options list
+   * Default select label
    */
-  options: OptionsType[] | number[] | string[];
+  placeholderOption: string;
   /**
-   * State controlling select state
-   */
-  model?: string | undefined;
+   * Select options
+   * */
+  options: OptionsType[] | string[];
   /**
-   * Add a placeholder option
+   * Callback to get value
    */
-  placeholderOption?: string | false;
+  onValueChange?: (option: OptionsType | string) => void;
 }
 
-const Select = forwardRef(
-  (
-    {
-      options,
-      model,
-      disabled = false,
-      placeholderOption = false,
-      ...restProps
-    }: SelectProps,
-    ref: Ref<HTMLSelectElement>,
-  ) => {
-    const { isRequired, status } = useFormControl();
+/**
+ *
+ * Select component is based on Dropdown Component. It extends `Dropdown` and `Dropdown.Trigger` props `block`, `overflow`, `icon`, `variant`, `size`, `disabled`
+ */
 
-    const selectId = useId();
-    const selectProps = {
-      ...restProps,
-      ...{
-        id: selectId,
-        disabled,
-        ref,
-        className: clsx(restProps.className, "form-select c-pointer", {
-          "is-invalid": status === "invalid",
-          "is-valid": status === "valid",
-        }),
-      },
-    };
+const Select = ({
+  icon,
+  options,
+  overflow,
+  block,
+  variant,
+  size,
+  disabled,
+  placeholderOption,
+  onValueChange,
+}: SelectProps) => {
+  const [localValue, setLocalValue] = useState<OptionsType | string>();
 
-    return (
-      <>
-        <select {...selectProps} required={isRequired}>
-          {placeholderOption && (
-            <option disabled selected={model === undefined}>
-              {placeholderOption}
-            </option>
-          )}
-          {options?.map((option) => {
-            const value = typeof option === "object" ? option.value : option;
-            const label = typeof option === "object" ? option.label : option;
-            return (
-              <option key={value} value={value} selected={model === value}>
-                {label}
-              </option>
-            );
-          })}
-        </select>
-      </>
-    );
-  },
-);
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    if (localValue) {
+      const value =
+        typeof localValue === "object" ? localValue.value : localValue;
+      onValueChange?.(value);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [localValue]);
+
+  const label = typeof localValue === "object" ? localValue.label : localValue;
+
+  return (
+    <Dropdown overflow={overflow} block={block}>
+      <SelectTrigger
+        icon={icon}
+        label={t(label || placeholderOption)}
+        variant={variant}
+        size={size}
+        disabled={disabled}
+      />
+      <Dropdown.Menu role="listbox">
+        {options?.map((option) => {
+          const value = typeof option === "object" ? option.value : option;
+          const label = typeof option === "object" ? option.label : option;
+          return (
+            <Dropdown.Item key={value} onClick={() => setLocalValue(option)}>
+              {label}
+            </Dropdown.Item>
+          );
+        })}
+      </Dropdown.Menu>
+    </Dropdown>
+  );
+};
 
 Select.displayName = "Select";
 

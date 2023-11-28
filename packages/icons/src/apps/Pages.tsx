@@ -18,7 +18,7 @@ const SvgPages = ({
     {...props}
   >
     {title ? <title id={titleId}>{title}</title> : null}
-    <path d="M0 23.83V1.28h24.05v22.55H0zm2.96-2.95h18.13V4.23H2.96v16.63zM4.93 19v-4h4v4h-4zm0-5.27V6.35h14.14v7.38H4.93zM10 19v-4h4v4h-4zm5.08 0v-4h3.99v4h-4z" />
+    <path d="M0 23.83V1.28h24.05v22.55H0zm2.96-2.95h18.13V4.23H2.96v16.63zM4.93 19v-4h4v4zm0-5.27V6.35h14.14v7.38zM10 19v-4h4v4zm5.08 0v-4h3.99v4h-4z" />
   </svg>
 );
 export default SvgPages;

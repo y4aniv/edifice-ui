@@ -21,7 +21,7 @@ const SvgRecordStop = ({
     {title ? <title id={titleId}>{title}</title> : null}
     <path
       fill="currentColor"
-      d="M2 6a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V6Z"
+      d="M2 6a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4z"
     />
   </svg>
 );

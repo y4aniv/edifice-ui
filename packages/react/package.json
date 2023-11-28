@@ -1,6 +1,6 @@
 {
   "name": "@edifice-ui/react",
-  "version": "1.0.0",
+  "version": "1.2.1-develop.2",
   "description": "Edifice React Library",
   "keywords": [
     "react",
@@ -89,5 +89,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "3e1c3f5b48505564db1b70aab22063a70336f3b0"
 }

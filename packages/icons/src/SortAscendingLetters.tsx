@@ -28,7 +28,7 @@ const SvgSortAscendingLetters = ({
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M7 4a1 1 0 0 1 1 1v15a1 1 0 1 1-2 0V5a1 1 0 0 1 1-1Z"
+      d="M7 4a1 1 0 0 1 1 1v15a1 1 0 1 1-2 0V5a1 1 0 0 1 1-1"
       clipRule="evenodd"
     />
   </svg>

@@ -22,7 +22,7 @@ const SvgPlus = ({
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M13 4a1 1 0 1 0-2 0v7H4a1 1 0 1 0 0 2h7v7a1 1 0 1 0 2 0v-7h7a1 1 0 1 0 0-2h-7V4Z"
+      d="M13 4a1 1 0 1 0-2 0v7H4a1 1 0 1 0 0 2h7v7a1 1 0 1 0 2 0v-7h7a1 1 0 1 0 0-2h-7z"
       clipRule="evenodd"
     />
   </svg>

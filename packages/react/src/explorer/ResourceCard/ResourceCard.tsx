@@ -12,7 +12,9 @@ import {
   Tooltip,
 } from "../../components";
 
-export interface ResourceCardProps extends CardProps {
+type OmitChildren = Omit<CardProps, "children">;
+
+export interface ResourceCardProps extends OmitChildren {
   /**
    * IWeb App
    */

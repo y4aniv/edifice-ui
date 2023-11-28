@@ -16,6 +16,7 @@ import {
   IGetConf,
   IGetSession,
 } from "edifice-ts-client";
+import { useTranslation } from "react-i18next";
 
 import { useConf } from "../useConf";
 import { useSession } from "../useSession";
@@ -50,6 +51,9 @@ export const OdeClientContext = createContext<OdeContextProps | null>(null!);
 export function OdeClientProvider({ children, params }: OdeClientProps) {
   const appCode = params.app;
 
+  const { t } = useTranslation();
+  const translatedAppCode = t(appCode);
+
   const sessionQuery = useSession();
   const confQuery = useConf({ appCode });
 
@@ -60,6 +64,10 @@ export function OdeClientProvider({ children, params }: OdeClientProps) {
       .querySelector("html")
       ?.setAttribute("lang", sessionQuery?.data?.currentLanguage || "fr");
   }, [sessionQuery?.data]);
+
+  useEffect(() => {
+    document.title = `${translatedAppCode}`;
+  }, [appCode, sessionQuery.data, translatedAppCode]);
 
   const values = useMemo(
     () => ({
