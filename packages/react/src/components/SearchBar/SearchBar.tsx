@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 import { Search } from "@edifice-ui/icons";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
@@ -15,7 +17,18 @@ export interface BaseProps {
    * Control SearchBar size
    */
   size?: Exclude<Size, "sm">;
-  /* onClick?: () => void; */
+  /**
+   * Disabled status
+   */
+  disabled?: boolean;
+  /**
+   * Optional class for styling purpose
+   */
+  className?: string;
+  /**
+   * ChangeEvent Handler
+   */
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 type DefaultSearchBar = {
@@ -48,12 +61,15 @@ const SearchBar = ({
   isVariant = false,
   size = "md",
   placeholder = "Search",
+  className,
+  disabled,
+  onChange,
   onClick,
   ...restProps
 }: SearchBarProps) => {
   const { t } = useTranslation();
 
-  const searchbar = clsx({
+  const searchbar = clsx(className, {
     "input-group": !isVariant,
     "position-relative": isVariant,
   });
@@ -76,10 +92,12 @@ const SearchBar = ({
       )}
       <FormControl.Input
         type="search"
-        placeholder={t(`${placeholder}`)}
+        placeholder={t(placeholder)}
         size={size}
         noValidationIcon
         className={input}
+        onChange={onChange}
+        disabled={disabled}
         {...restProps}
       />
       {!isVariant && (

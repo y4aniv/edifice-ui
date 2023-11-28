@@ -28,6 +28,7 @@ const meta: Meta<typeof SearchBar> = {
   args: {
     isVariant: false,
     onClick: () => {},
+    onChange: () => {},
     size: "md",
     placeholder: "Search something....",
   },
@@ -46,6 +47,15 @@ export const DynamicSearch: Story = {
   render: Template,
   args: {
     isVariant: true,
+    onClick: undefined,
+  },
+};
+
+export const DisabledDynamicSearch: Story = {
+  render: Template,
+  args: {
+    isVariant: true,
+    disabled: true,
     onClick: undefined,
   },
 };
