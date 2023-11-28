@@ -13,15 +13,15 @@ interface DropdownCheckboxItem {
   /**
    * Value
    */
-  value: string;
+  value: string | number;
   /**
    * Model
    */
-  model: string;
+  model: (string | number)[];
   /**
    * OnKeyDown handler
    */
-  onChange: (value: string) => void;
+  onChange: (value: string | number) => void;
 }
 
 const DropdownCheckboxItem = ({
@@ -57,7 +57,7 @@ const DropdownCheckboxItem = ({
       onMouseUp={() => onChange(value)}
       onKeyDown={(event) => onMenuItemKeyDown(event, () => onChange(value))}
       onMouseEnter={onMenuItemMouseEnter}
-      tabIndex={value === model ? 0 : -1}
+      tabIndex={checked ? 0 : -1}
       className={dropdownCheckboxItem}
     >
       <div className="d-flex gap-8 align-items-center justify-content-between position-relative">

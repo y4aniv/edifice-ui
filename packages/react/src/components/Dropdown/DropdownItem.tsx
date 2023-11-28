@@ -21,7 +21,7 @@ export interface DropdownItemProps {
    *
    * Action on click
    */
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const DropdownItem = ({
