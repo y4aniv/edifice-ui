@@ -54,15 +54,9 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor}}@users.noreply.github.com"
 
-          echo "your current branch is ${{ github.ref }}"
+          echo "Your current branch is ${{ github.ref_name }}"
 
-          if [ "${{ github.ref }}" = "refs/heads/develop-pedago" ]; then
-            npx lerna publish --canary --preid develop-pedago --pre-dist-tag develop-pedago --yes
-          elif [ "${{ github.ref }}" = "refs/heads/develop-b2school" ]; then
-            npx lerna publish --canary --preid develop-b2school --pre-dist-tag develop-b2school --yes
-          else
-            npx lerna publish --canary --preid develop --pre-dist-tag develop --yes
-          fi
+          npx lerna publish --canary --preid ${{ github.ref_name }} --pre-dist-tag ${{ github.ref_name }} --yes
 
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
