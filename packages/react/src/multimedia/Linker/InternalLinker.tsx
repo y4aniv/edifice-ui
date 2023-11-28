@@ -1,13 +1,6 @@
-import {
-  FormEvent,
-  Ref,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { FormEvent, useCallback, useEffect, useState } from "react";
 
-import { Applications, Search } from "@edifice-ui/icons";
+import { Applications } from "@edifice-ui/icons";
 import { App, odeServices } from "edifice-ts-client";
 /*
  * Augmented definition of a resource, until behaviours are dropped.
@@ -16,13 +9,8 @@ import { App, odeServices } from "edifice-ts-client";
 import { ILinkedResource } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
-import {
-  AppIcon,
-  Dropdown,
-  EmptyScreen,
-  FormControl,
-  Input,
-} from "../../components";
+import { AppIcon, Dropdown, EmptyScreen } from "../../components";
+import { SearchBar } from "../../components/SearchBar";
 import { useOdeTheme, usePaths, useResourceSearch } from "../../core";
 import { useDebounce } from "../../hooks";
 import LinkerCard from "../LinkerCard/LinkerCard";
@@ -63,7 +51,6 @@ const InternalLinker = ({
   const { t } = useTranslation();
   const { theme } = useOdeTheme();
   const [imagePath] = usePaths();
-  const inputRef: Ref<HTMLInputElement> = useRef(null);
 
   // Get available applications, and a function to load their resources.
   const { resourceApplications, loadResources } = useResourceSearch(appCode);
@@ -240,27 +227,20 @@ const InternalLinker = ({
             className="gap-16 d-flex w-100 align-items-center px-16 py-8"
             onSubmit={handleSubmit}
           >
-            <FormControl className="input-group" id="search">
-              <div className="input-group-text border-end-0">
-                <Search />
-              </div>
-              <Input
-                noValidationIcon
-                ref={inputRef}
-                placeholder={t("Rechercher")}
-                size="md"
-                type="search"
-                disabled={selectedApplication ? false : true}
-                className="border-start-0"
-                onChange={handleSearchChange}
-              />
-            </FormControl>
+            <SearchBar
+              isVariant
+              placeholder={t("Rechercher")}
+              size="lg"
+              className="w-100"
+              disabled={selectedApplication ? false : true}
+              onChange={handleSearchChange}
+            />
           </form>
         </div>
       </div>
 
       {selectedApplication && resources && resources.length > 0 && (
-        <div className="">
+        <div>
           {resources.map((resource) => {
             const isSelected =
               selectedDocuments.findIndex(

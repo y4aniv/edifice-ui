@@ -1,7 +1,7 @@
 import { Mail } from "@edifice-ui/icons";
 import { Meta, StoryObj } from "@storybook/react";
-import FormControl, { FormControlProps } from "../FormControl";
-import FormText from "../FormText";
+
+import { FormControl, FormText, FormControlProps } from "./index";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof FormControl> = {

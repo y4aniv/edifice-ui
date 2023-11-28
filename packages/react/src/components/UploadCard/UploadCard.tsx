@@ -2,7 +2,7 @@ import { SuccessOutline, Retry, Wand, Close } from "@edifice-ui/icons";
 import { useTranslation } from "react-i18next";
 
 import { usePaths } from "../../core";
-import { Status } from "../../utils/status";
+import { Status } from "../../types";
 import { Button, IconButton } from "../Button";
 import { CardProps, Card } from "../Card";
 import { Image } from "../Image";
