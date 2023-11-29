@@ -73,7 +73,7 @@ const ExternalLinker = ({
           <Label>{t("URL du lien externe")}</Label>
           <Input
             type="text"
-            placeholder={t("www.exemple-lien.com")}
+            placeholder={t("http://www.exemple-lien.com")}
             size="md"
             value={linkURL}
             onChange={(e) => setLinkURL(e.target.value)}
