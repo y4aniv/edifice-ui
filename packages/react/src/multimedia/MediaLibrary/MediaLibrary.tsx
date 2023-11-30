@@ -5,6 +5,7 @@ import {
   useRef,
   Ref,
   useState,
+  useEffect,
 } from "react";
 
 import {
@@ -20,13 +21,17 @@ import { WorkspaceElement } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import { InnerTabs } from "./innertabs";
-import { ResourceTabProps, ResourceTabResult } from "./innertabs/Resource";
+import {
+  InternalLinkTabProps,
+  InternalLinkTabResult,
+} from "./innertabs/InternalLink";
 import { MediaLibraryContext } from "./MediaLibraryContext";
 import { Button } from "../../components";
 import Modal, { ModalElement } from "../../components/Modal/Modal";
 import { Tabs } from "../../components/Tabs";
 import { TabsItemProps } from "../../components/Tabs/TabsItem";
 import { useHasWorkflow } from "../../core/useHasWorkflow";
+import { IExternalLink } from "../Linker";
 
 //---------------------------------------------------
 // Tabs parameters
@@ -35,8 +40,8 @@ import { useHasWorkflow } from "../../core/useHasWorkflow";
 const orderedTabs = [
   "audio-capture",
   "video-capture",
-  "resource", // Link to a shared resource (previously known as "internal linker")
-  "linker", // Link to an external website (previously known as "external linker")
+  "internal-link", // Link to a shared resource (previously known as "internal linker")
+  "external-link", // Link to an external website (previously known as "external linker")
   "iframe", // Framed website
   "upload", // Filesystem browser + drag'n'drop of files
   "workspace", // Media browser
@@ -98,10 +103,8 @@ export interface MediaLibraryRef {
   /**
    * Open the MediaLibrary on a internal/external link Tab,
    * and prefill the tab with data.
-   * @return a resolved promise when ready.
    */
-  editInternalLink: (data: ResourceTabProps) => void;
-
+  editLink: (data: InternalLinkTabProps | IExternalLink) => void;
   /** Get the Media Libray type currently displayed, or null if hidden. */
   type: MediaLibraryType | null;
 }
@@ -133,7 +136,7 @@ const mediaLibraryTypes: { none: null } & {
  */
 export type MediaLibraryResult =
   | WorkspaceElement[] // Workspace result
-  | ResourceTabResult // Linker result
+  | InternalLinkTabResult // Linker result
   | /*TODO type des autres résultats ?*/ any;
 
 /**
@@ -165,8 +168,8 @@ const MediaLibrary = forwardRef(
     useImperativeHandle(ref, () => ({
       show,
       hide,
-      editInternalLink,
-      type: type,
+      editLink,
+      type,
       ...refModal.current,
     }));
 
@@ -179,8 +182,9 @@ const MediaLibrary = forwardRef(
       "com.opendigitaleducation.video.controllers.VideoController|capture",
     );
 
-    const [defaultResourceTabProps, setDefaultResourceTabProps] = useState<
-      ResourceTabProps | undefined
+    // Used to prefill the [in|ex]ternal innertab.
+    const [linkTabProps, setLinkTabProps] = useState<
+      InternalLinkTabProps | IExternalLink | undefined
     >();
 
     const [type, setType] = useState<MediaLibraryType | null>(null);
@@ -205,7 +209,7 @@ const MediaLibrary = forwardRef(
         isEnable: () => (workspaceCreateWorkflow ? true : false),
       },
       "video-capture": {
-        id: "video",
+        id: "video-capture",
         icon: <RecordVideo />,
         label: t("Captation vidéo"),
         content: <InnerTabs.Video />,
@@ -213,26 +217,30 @@ const MediaLibrary = forwardRef(
         isEnable: () => (videoCaptureWorkflow ? true : false),
       },
       "audio-capture": {
-        id: "audio",
+        id: "audio-capture",
         icon: <Mic />,
         label: t("Captation audio"),
         content: <InnerTabs.Audio />,
         availableFor: ["audio"],
         isEnable: () => (workspaceCreateWorkflow ? true : false),
       },
-      linker: {
-        id: "external",
+      "external-link": {
+        id: "external-link",
         icon: <Globe />,
         label: t("Liens externes"),
-        content: <InnerTabs.Linker />,
+        content: (
+          <InnerTabs.ExternalLink {...(linkTabProps as IExternalLink)} />
+        ),
         availableFor: ["hyperlink"],
         isEnable: null,
       },
-      resource: {
-        id: "resource",
+      "internal-link": {
+        id: "internal-link",
         icon: <Applications />,
         label: t("Ressources internes"),
-        content: <InnerTabs.Resource {...defaultResourceTabProps} />,
+        content: (
+          <InnerTabs.InternalLink {...(linkTabProps as InternalLinkTabProps)} />
+        ),
         availableFor: ["hyperlink"],
         isEnable: null,
       },
@@ -262,17 +270,15 @@ const MediaLibrary = forwardRef(
       [type],
     );
 
+    const [defaultTabId, setDefaultTabId] = useState<
+      AvailableTab | undefined
+    >();
+
     /* Compute the index of the displayed tab by default. */
     const defaultTabIdx = useMemo<number>(() => {
-      const typeKey = type || "none";
-      let index = 0;
-      if (typeof mediaLibraryTypes[typeKey]?.defaultTab == "string") {
-        const defaultTabId = mediaLibraryTypes[typeKey]?.defaultTab;
-        index = tabs.findIndex((t) => t.id === defaultTabId);
-      }
-      // Check boundaries before returning an index.
+      const index = tabs.findIndex((t) => t.id === defaultTabId);
       return 0 > index || index >= tabs.length ? 0 : index;
-    }, [type, tabs]);
+    }, [tabs, defaultTabId]);
 
     // Stateful contextual values
     const [resultCounter, setResultCounter] = useState<number | undefined>();
@@ -293,10 +299,25 @@ const MediaLibrary = forwardRef(
       setType(null);
     };
 
-    const editInternalLink = (props: ResourceTabProps) => {
-      setDefaultResourceTabProps(props);
+    const editLink = (props: InternalLinkTabProps | IExternalLink) => {
+      setLinkTabProps(props);
+      const asInternal = props as InternalLinkTabProps;
+      if (!asInternal?.appPrefix && !asInternal?.appPrefix) {
+        setDefaultTabId("external-link");
+      }
       setType("hyperlink");
     };
+
+    // If not set before, determine which available tab to display when type change.
+    useEffect(() => {
+      const typeKey = type || "none";
+      if (
+        !defaultTabId &&
+        typeof mediaLibraryTypes[typeKey]?.defaultTab === "string"
+      ) {
+        setDefaultTabId(mediaLibraryTypes[typeKey]?.defaultTab);
+      }
+    }, [defaultTabId, type]);
 
     // --------------- Utility functions
     const modalHeader = t(
@@ -305,24 +326,27 @@ const MediaLibrary = forwardRef(
     const handleTabChange = () => {
       setResult(undefined);
       setResultCounter(undefined);
-      setDefaultResourceTabProps(undefined);
+      setLinkTabProps(undefined);
+      setDefaultTabId(undefined);
     };
 
     const handleOnSuccess = () => {
       if (result) onSuccess(result);
-      setDefaultResourceTabProps(undefined);
+      setLinkTabProps(undefined);
+      setDefaultTabId(undefined);
     };
 
     const handleOnCancel = () => {
       onCancel();
-      setDefaultResourceTabProps(undefined);
+      setLinkTabProps(undefined);
+      setDefaultTabId(undefined);
     };
 
     return type ? (
       <MediaLibraryContext.Provider
         value={{
           appCode,
-          type: type,
+          type,
           setResultCounter,
           setResult,
           setVisibleTab,

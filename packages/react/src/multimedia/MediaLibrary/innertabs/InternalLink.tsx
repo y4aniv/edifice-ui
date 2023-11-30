@@ -6,22 +6,22 @@ import { useToggle } from "../../../hooks";
 import InternalLinker from "../../Linker/InternalLinker";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 
-export type ResourceTabProps = {
+export type InternalLinkTabProps = {
   target?: "_blank" | null;
   appPrefix?: string | null;
   resourceId?: string | null;
 };
 
-export type ResourceTabResult = {
+export type InternalLinkTabResult = {
   target?: "_blank";
   resources?: ILinkedResource[];
 };
 
-export const Resource = ({
+export const InternalLink = ({
   target,
   resourceId,
   appPrefix,
-}: ResourceTabProps) => {
+}: InternalLinkTabProps) => {
   const { t } = useTranslation();
   const { setResult, setResultCounter, appCode } = useMediaLibraryContext();
   const [isChecked, toggleChecked] = useToggle(target === "_blank");
@@ -30,7 +30,7 @@ export const Resource = ({
     setResult({
       target: isChecked ? "_blank" : undefined,
       resources,
-    } as ResourceTabResult);
+    } as InternalLinkTabResult);
     if (resources && resources.length) {
       setResultCounter(resources.length);
     } else {

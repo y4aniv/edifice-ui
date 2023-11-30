@@ -26,6 +26,8 @@ export type ExternalLinkerProps = {
   link?: IExternalLink;
   /** Selected text in case of a link creation. */
   selectedText?: string;
+  /** Target */
+  target?: "_blank";
   /** Notify when the user change any link information */
   onChange?: (link: IExternalLink, isValidLink: boolean) => void;
 };
@@ -52,7 +54,7 @@ const ExternalLinker = ({
         text: linkText,
         target: isBlankTarget ? "_blank" : undefined,
       },
-      StringUtils.isValidURL(linkURL),
+      StringUtils.isLocalURL(linkURL) || StringUtils.isValidURL(linkURL),
     );
   }, [linkText, linkURL, isBlankTarget, onChange]);
 
