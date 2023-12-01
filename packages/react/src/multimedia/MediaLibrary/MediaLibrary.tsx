@@ -302,7 +302,7 @@ const MediaLibrary = forwardRef(
     const editLink = (props: InternalLinkTabProps | IExternalLink) => {
       setLinkTabProps(props);
       const asInternal = props as InternalLinkTabProps;
-      if (!asInternal?.appPrefix && !asInternal?.appPrefix) {
+      if (!asInternal?.resourceId && !asInternal?.appPrefix) {
         setDefaultTabId("external-link");
       }
       setType("hyperlink");

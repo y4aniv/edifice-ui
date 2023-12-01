@@ -121,21 +121,40 @@ const InternalLinker = ({
     [loadAndDisplayResources, searchTerms],
   );
 
+  /**
+   * Check if a resource is selected.
+   * @returns its index in selectedDocuments, or -1 if not selected.
+   */
+  const getSelectedResourceIndex = useCallback(
+    (resourceId: string) => {
+      return selectedDocuments.findIndex(
+        (selectedDocument) => selectedDocument.assetId === resourceId,
+      );
+    },
+    [selectedDocuments],
+  );
+
+  // Select a resource.
+  const selectResource = useCallback(
+    (resource: ILinkedResource) => {
+      setSelectedDocuments((previousState) => [...previousState, resource]);
+    },
+    [setSelectedDocuments],
+  );
+
   // Handle [de-]selection of a resource by the user.
   const toggleResourceSelection = useCallback(
     (resource: ILinkedResource) => {
-      const index = selectedDocuments.findIndex(
-        (selectedDocument) => selectedDocument.assetId === resource.assetId,
-      );
+      const index = getSelectedResourceIndex(resource.assetId);
       if (index < 0) {
-        setSelectedDocuments((previousState) => [...previousState, resource]);
+        selectResource(resource);
       } else {
         setSelectedDocuments(
           selectedDocuments.filter((value, i) => i !== index),
         );
       }
     },
-    [selectedDocuments],
+    [getSelectedResourceIndex, selectResource, selectedDocuments],
   );
 
   // Update dropdown when available applications list is updated.
@@ -169,7 +188,8 @@ const InternalLinker = ({
   // Notify parent when resources selection changes.
   useEffect(() => {
     onSelect?.(selectedDocuments);
-  }, [selectedDocuments, onSelect]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedDocuments]);
 
   // Preselect default option and load associated resources, if specified.
   useEffect(() => {
@@ -184,13 +204,13 @@ const InternalLinker = ({
 
   // Preselect default resource, if specified.
   useEffect(() => {
-    if (defaultResourceId) {
+    if (defaultResourceId && getSelectedResourceIndex(defaultResourceId) < 0) {
       const resource = resources?.find(
         (resource) => defaultResourceId === resource.assetId,
       );
-      resource && toggleResourceSelection(resource);
+      resource && selectResource(resource);
     }
-  }, [defaultResourceId, resources, toggleResourceSelection]);
+  }, [defaultResourceId, resources, getSelectedResourceIndex, selectResource]);
 
   return (
     <div className="internal-linker flex-grow-1 w-100 rounded border gap-0">
