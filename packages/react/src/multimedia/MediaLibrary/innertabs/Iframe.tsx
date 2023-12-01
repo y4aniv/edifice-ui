@@ -1,8 +1,12 @@
+import { Embed } from "../../Embed";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 
 export const Iframe = () => {
-  const context = useMediaLibraryContext();
-  context.setResult();
+  const { setResult } = useMediaLibraryContext();
 
-  return <p>TODO: Iframe</p>;
+  const handleOnSuccess = (ressource?: string) => {
+    setResult([ressource]);
+  };
+
+  return <Embed onSuccess={handleOnSuccess}></Embed>;
 };

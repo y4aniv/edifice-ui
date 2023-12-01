@@ -10,11 +10,11 @@ import {
 import {
   Applications,
   Globe,
-  ExternalLink,
   Folder,
   Mic,
   RecordVideo,
   Smartphone,
+  Code,
 } from "@edifice-ui/icons";
 import { WorkspaceElement } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
@@ -238,8 +238,8 @@ const MediaLibrary = forwardRef(
       },
       iframe: {
         id: "iframe",
-        icon: <ExternalLink />,
-        label: t("</> Balise embed ou iframe"),
+        icon: <Code />,
+        label: t("Balise embed ou iframe"),
         content: <InnerTabs.Iframe />,
         availableFor: ["embedder"],
         isEnable: null,
@@ -346,7 +346,7 @@ const MediaLibrary = forwardRef(
           >
             {(currentItem) => (
               <>
-                <Tabs.List className="mt-16" />
+                {tabs.length > 1 && <Tabs.List className="mt-16" />}
                 <Modal.Body className="d-flex">
                   <Tabs.Panel currentItem={currentItem}>
                     {currentItem?.content}
