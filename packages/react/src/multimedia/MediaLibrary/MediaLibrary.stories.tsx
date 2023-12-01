@@ -97,7 +97,7 @@ const meta: Meta<typeof MediaLibrary> = {
   component: MediaLibrary,
   args: {
     type: null,
-  },
+  } as MediaLibraryProps & { type: MediaLibraryType | null },
   argTypes: {
     type: {
       options: [

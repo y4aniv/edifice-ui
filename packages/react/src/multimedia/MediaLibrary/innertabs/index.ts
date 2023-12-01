@@ -1,7 +1,7 @@
 import { Audio } from "./Audio";
+import { ExternalLink } from "./ExternalLink";
 import { Iframe } from "./Iframe";
-import { Linker } from "./Linker";
-import { Resource } from "./Resource";
+import { InternalLink } from "./InternalLink";
 import { Upload } from "./Upload";
 import { Video } from "./Video";
 import { Workspace } from "./Workspace";
@@ -10,8 +10,8 @@ export const InnerTabs = {
   Audio,
   Video,
   Upload,
-  Linker,
+  ExternalLink,
   Workspace,
-  Resource,
+  InternalLink,
   Iframe,
 };
