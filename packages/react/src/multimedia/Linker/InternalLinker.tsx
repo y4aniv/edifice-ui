@@ -200,7 +200,12 @@ const InternalLinker = ({
       setSelectedApplication(option);
       loadAndDisplayResources("");
     }
-  }, [defaultAppCode, options, loadAndDisplayResources]);
+    /* Note : when options changes, `defaultAppCode` and `loadAndDisplayResources` are
+     * already set at a correct value. So we remove them from the dependency array,
+     * otherwise they will provoke side effects forbiding user from changing the selected app.
+     */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [options]);
 
   // Preselect default resource, if specified.
   useEffect(() => {
@@ -210,7 +215,13 @@ const InternalLinker = ({
       );
       resource && selectResource(resource);
     }
-  }, [defaultResourceId, resources, getSelectedResourceIndex, selectResource]);
+    /* Note : when resources changes, `defaultResourceId`, `getSelectedResourceIndex`
+     * and `selectResource` are already set at a correct value.
+     * So we remove them from the dependency array, otherwise they will provoke side effects
+     * forbiding user from changing the selected resources.
+     */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [resources]);
 
   return (
     <div className="internal-linker flex-grow-1 w-100 rounded border gap-0">
