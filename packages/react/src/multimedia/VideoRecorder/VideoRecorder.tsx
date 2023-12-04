@@ -22,7 +22,7 @@ import { convertMsToMS, getBestSupportedMimeType } from "../../utils";
 export interface VideoRecorderProps {
   appCode: string;
   caption?: string;
-  onSuccess: (res: WorkspaceElement) => void;
+  onSuccess: (res: WorkspaceElement[]) => void;
   onError: (error: string) => void;
 }
 
@@ -316,7 +316,7 @@ const VideoRecorder = ({
         owner: { userId: "", displayName: "" },
       };
 
-      onSuccess(resVideo);
+      onSuccess([resVideo]);
     } else if (uploadResponse.state === "error") {
       onError("Error while uploading video");
     } else {
