@@ -210,6 +210,10 @@ const VideoRecorder = ({
     setStartTime(Date.now());
     setRecording(true);
 
+    if (videoRef && videoRef.current) {
+      videoRef.current.muted = true;
+    }
+
     const mimeType = getBestSupportedMimeType();
     setMimeType(mimeType);
 
@@ -241,6 +245,10 @@ const VideoRecorder = ({
   }, [recorderRef]);
 
   const handlePlayPause = useCallback(() => {
+    if (videoRef && videoRef.current) {
+      videoRef.current.muted = false;
+    }
+
     if (!playing) {
       videoRef?.current?.play();
       setPlaying(true);
