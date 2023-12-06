@@ -14,11 +14,7 @@ interface ModalProps {
   onCancel?: () => void;
 }
 
-export default function MathsModal({
-  isOpen,
-  onSuccess = () => ({}),
-  onCancel = () => ({}),
-}: ModalProps) {
+const MathsModal = ({ isOpen, onSuccess, onCancel }: ModalProps) => {
   const FORMULA_PLACEHOLDER = "\\frac{-b + \\sqrt{b^2 - 4ac}}{2a}";
   const [formulaEditor, setFormulaEditor] = useState<string>(
     `$${FORMULA_PLACEHOLDER}$`,
@@ -52,9 +48,13 @@ export default function MathsModal({
     editor?.commands.enter();
   };
 
+  const handleOnCancel = () => {
+    onCancel?.();
+  };
+
   return createPortal(
-    <Modal id="MathsModal" isOpen={isOpen} onModalClose={onCancel}>
-      <Modal.Header onModalClose={onCancel}>
+    <Modal id="MathsModal" isOpen={isOpen} onModalClose={handleOnCancel}>
+      <Modal.Header onModalClose={handleOnCancel}>
         {t("Formule mathématique")}
       </Modal.Header>
       <Modal.Subtitle>
@@ -94,7 +94,7 @@ export default function MathsModal({
         </Button>
         <Button
           color="primary"
-          onClick={() => onSuccess(formulaEditor)}
+          onClick={() => onSuccess?.(formulaEditor)}
           type="button"
           variant="filled"
         >
@@ -104,4 +104,6 @@ export default function MathsModal({
     </Modal>,
     document.getElementById("portal") as HTMLElement,
   );
-}
+};
+
+export default MathsModal;

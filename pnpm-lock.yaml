@@ -196,11 +196,11 @@ importers:
         specifier: 2.0.3
         version: 2.0.3
       '@types/react':
-        specifier: 18.2.8
-        version: 18.2.8
+        specifier: 18.2.33
+        version: 18.2.33
       '@types/react-dom':
-        specifier: 18.2.4
-        version: 18.2.4
+        specifier: 18.2.14
+        version: 18.2.14
       '@types/ua-parser-js':
         specifier: 0.7.37
         version: 0.7.37
@@ -212,7 +212,7 @@ importers:
         version: 8.2.0
       edifice-ts-client:
         specifier: develop-b2school
-        version: 1.1.0-develop-b2school.13
+        version: 1.1.0-develop-b2school.14
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -5628,22 +5628,8 @@ packages:
       '@types/react': 18.2.33
     dev: true
 
-  /@types/react-dom@18.2.4:
-    resolution: {integrity: sha512-G2mHoTMTL4yoydITgOGwWdWMVd8sNgyEP85xVmMKAPUBwQWm9wBPQUmvbeF4V3WBY1P7mmL4BkjQ0SqUpf1snw==}
-    dependencies:
-      '@types/react': 18.2.33
-    dev: true
-
   /@types/react@18.2.33:
     resolution: {integrity: sha512-v+I7S+hu3PIBoVkKGpSYYpiBT1ijqEzWpzQD62/jm4K74hPpSP7FF9BnKG6+fg2+62weJYkkBWDJlZt5JO/9hg==}
-    dependencies:
-      '@types/prop-types': 15.7.11
-      '@types/scheduler': 0.16.8
-      csstype: 3.1.2
-    dev: true
-
-  /@types/react@18.2.8:
-    resolution: {integrity: sha512-lTyWUNrd8ntVkqycEEplasWy2OxNlShj3zqS0LuB1ENUGis5HodmhM7DtCoUGbxj3VW/WsGA0DUhpG6XrM7gPA==}
     dependencies:
       '@types/prop-types': 15.7.11
       '@types/scheduler': 0.16.8
@@ -7730,8 +7716,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /edifice-ts-client@1.1.0-develop-b2school.13:
-    resolution: {integrity: sha512-vqovJvxieSNVbAabC1vUqbC79GqM58e/WY6bXouCS2xzosvibShkWreRYlo67n9zX/X4dpdhSY7xeF3fudI/Ow==}
+  /edifice-ts-client@1.1.0-develop-b2school.14:
+    resolution: {integrity: sha512-mugX8jAwXr2ZW2sKcA2GDhl6iEYPcscy0cSk1wTVagcmjw5+gu+qfOnxfW5d8D8SteOVXiAIGSen1QNw/J9GWw==}
     engines: {node: 16 || 18}
     dependencies:
       axios: 1.4.0
