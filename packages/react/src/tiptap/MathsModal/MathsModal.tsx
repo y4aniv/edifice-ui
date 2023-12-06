@@ -14,11 +14,11 @@ interface ModalProps {
   onCancel?: () => void;
 }
 
-const MathsModal = ({
+export default function MathsModal({
   isOpen,
   onSuccess = () => ({}),
   onCancel = () => ({}),
-}: ModalProps) => {
+}: ModalProps) {
   const FORMULA_PLACEHOLDER = "\\frac{-b + \\sqrt{b^2 - 4ac}}{2a}";
   const [formulaEditor, setFormulaEditor] = useState<string>(
     `$${FORMULA_PLACEHOLDER}$`,
@@ -104,6 +104,4 @@ const MathsModal = ({
     </Modal>,
     document.getElementById("portal") as HTMLElement,
   );
-};
-
-export default MathsModal;
+}
