@@ -28,6 +28,13 @@ export default defineConfig({
       external: [
         ...Object.keys(dependencies),
         ...Object.keys(peerDependencies),
+        "dayjs/plugin/customParseFormat",
+        "dayjs/plugin/relativeTime",
+        "dayjs/locale/de",
+        "dayjs/locale/es",
+        "dayjs/locale/pt",
+        "dayjs/locale/fr",
+        "dayjs/locale/it",
         "react/jsx-runtime",
         "edifice-ts-client",
         "@edifice-ui/icons/nav",

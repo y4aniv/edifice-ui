@@ -1,2 +1,2 @@
-export * from "./Modals";
+export * from "./MathsModal";
 export * from "./TiptapWrapper";

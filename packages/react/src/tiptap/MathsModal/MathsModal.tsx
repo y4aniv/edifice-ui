@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { EditorContent, useEditor } from "@tiptap/react";
+import { Editor, EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Mathematics from "@tiptap-pro/extension-mathematics";
 import { createPortal } from "react-dom";
@@ -26,7 +26,7 @@ const MathsModal = ({
 
   const { t } = useTranslation();
 
-  const editor = useEditor({
+  const editor: Editor | null = useEditor({
     extensions: [StarterKit, Mathematics],
     content: ``,
     editable: false,

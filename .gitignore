@@ -31,3 +31,6 @@ dist-ssr
 
 # Tgz test files
 *.tgz
+
+# NPM
+.npmrc
