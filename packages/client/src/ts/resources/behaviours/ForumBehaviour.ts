@@ -19,8 +19,8 @@ type ForumData = {
 };
 
 export class ForumBehaviour extends AbstractBehaviourService {
-  APP = "actualites";
-  RESOURCE = "actualites";
+  APP = "forum";
+  RESOURCE = "forum";
 
   async loadResources() {
     const categories = await this.httpGet<ForumData[]>("/forum/categories");
