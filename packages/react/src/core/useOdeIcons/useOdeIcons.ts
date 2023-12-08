@@ -70,6 +70,9 @@ export default function useOdeIcons() {
       case "emploi du temps":
         appCode = "edt";
         break;
+      case "formulaire":
+        appCode = "forms";
+        break;
       case "messagerie":
         appCode = "conversation";
         break;
@@ -83,6 +86,9 @@ export default function useOdeIcons() {
       case "diary":
       case "cahier de texte 2d":
         appCode = "cahier-textes";
+        break;
+      case "scrapbook":
+        appCode = "scrap-book";
         break;
       default:
         break;
