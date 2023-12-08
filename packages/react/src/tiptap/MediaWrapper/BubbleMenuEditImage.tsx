@@ -70,6 +70,7 @@ const BubbleMenuEditImage = ({ editor }: { editor: Editor }) => {
         size="lg"
         variant="ghost"
         leftIcon={<Wand />}
+        color="secondary"
         //onClick={() => } Afficher la modal d'edit modal
       >
         {t("edit.image")}
@@ -78,10 +79,12 @@ const BubbleMenuEditImage = ({ editor }: { editor: Editor }) => {
       {buttonSizeList.map((button, index) => (
         <IconButton
           key={index}
-          icon={button.icon}
-          variant={
-            selectedNode?.attrs?.size === button.sizeName ? "filled" : "ghost"
+          className={
+            selectedNode?.attrs?.size === button.sizeName ? "is-selected" : ""
           }
+          icon={button.icon}
+          variant="ghost"
+          color="tertiary"
           onClick={() => {
             handleButtonClick(button);
           }}
