@@ -34,8 +34,8 @@ export class CommunityBehaviour extends AbstractBehaviourService {
         icon: communityIcon,
         path: "/community#/view/" + data.id,
         _id: data.id,
-        owner: data.owner.userId,
-        ownerName: data.owner.displayName,
+        owner: "",
+        ownerName: "",
         shared: data.shared && data.shared.length >= 0 ? true : false,
         modified: data.name, // FIXME date ?
       });
