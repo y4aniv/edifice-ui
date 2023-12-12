@@ -8,3 +8,4 @@ export * from "./session/interfaces";
 export * from "./widget/interfaces";
 export * from "./apps/timeline/interfaces";
 export * from "./utils";
+export * from "./embedder/interface";

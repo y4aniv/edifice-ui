@@ -12,6 +12,7 @@ import { AnalyticsService } from "../analytics/Service";
 import { VideoService } from "../video/Service";
 import { App, ResourceType } from "../globals";
 import { IResourceService, IWebResourceService } from "../resources/interface";
+import { EmbedderService } from "../embedder/Service";
 
 export interface IOdeServices {
   analytics(): AnalyticsService;
@@ -29,6 +30,7 @@ export interface IOdeServices {
   share(): ShareService;
   video(): VideoService;
   workspace(): WorkspaceService;
+  embedder(): EmbedderService;
 }
 
 export class OdeServices implements IOdeServices {
@@ -43,6 +45,7 @@ export class OdeServices implements IOdeServices {
   private _share: ShareService;
   private _video: VideoService;
   private _workspace: WorkspaceService;
+  private _embedder: EmbedderService;
 
   constructor() {
     this._analytics = new AnalyticsService(this);
@@ -56,6 +59,7 @@ export class OdeServices implements IOdeServices {
     this._share = new ShareService(this);
     this._video = new VideoService(this);
     this._workspace = new WorkspaceService(this);
+    this._embedder = new EmbedderService(this);
   }
 
   analytics() {
@@ -110,5 +114,9 @@ export class OdeServices implements IOdeServices {
 
   workspace() {
     return this._workspace;
+  }
+
+  embedder() {
+    return this._embedder;
   }
 }
