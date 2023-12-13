@@ -1,20 +1,6 @@
 import { RefAttributes, useEffect, useMemo, useState } from "react";
 
-import {
-  HighlightRow,
-  HighlightColumn,
-  MergeCells,
-  SplitCells,
-  ArrowUp,
-  ArrowDown,
-  ArrowLeft,
-  ArrowRight,
-  DeleteRow,
-  DeleteColumn,
-  DeleteRowHighlight,
-  DeleteColumnHighlight,
-  Delete,
-} from "@edifice-ui/icons";
+import { MergeCells, SplitCells } from "@edifice-ui/icons";
 import {
   FloatingMenu,
   FloatingMenuProps,
@@ -23,18 +9,10 @@ import {
 } from "@tiptap/react";
 import { useTranslation } from "react-i18next";
 
-import {
-  ColorPalette,
-  Dropdown,
-  IconButtonProps,
-  Toolbar,
-  ToolbarItem,
-} from "../../components";
-import {
-  ColorPicker,
-  ColorPickerItem,
-  DefaultPalette,
-} from "../../components/ColorPicker";
+import { TableToolbarAddMenu } from "./TableToolbar.AddMenu";
+import { TableToolbarCellColor } from "./TableToolbar.CellColor";
+import { TableToolbarDelMenu } from "./TableToolbar.DelMenu";
+import { IconButtonProps, Toolbar } from "../../components";
 
 interface TableToolbarProps {
   /**
@@ -46,36 +24,30 @@ interface TableToolbarProps {
 const TableToolbar = ({ editor }: TableToolbarProps) => {
   const { t } = useTranslation();
 
-  const [backgroundColor, setBackgroundColor] = useState<string>("transparent");
+  // Display the Split action when truthy, and Merge action when falsy.
+  const [isSpan, setSpan] = useState<boolean | undefined>(undefined);
 
-  useEffect(() => {
-    // When cursor moves in table, update the current background color.
-    setBackgroundColor(
-      editor?.getAttributes("tableCell").backgroundColor ?? "transparent",
-    );
-  }, [editor, editor?.state]);
-
-  /** Adjust a DOMRect to make it visible at a correct place.  */
-  function adjustRect(rect: DOMRect) {
-    let yOffset = 0;
-    if (window.visualViewport) {
-      const bottomScreen =
-        window.innerHeight || document.documentElement.clientHeight;
-      if (rect.bottom >= bottomScreen) {
-        yOffset += rect.bottom - bottomScreen - rect.height;
+  // Options need some computing
+  const tippyOptions: FloatingMenuProps["tippyOptions"] = useMemo(() => {
+    // Adjust a DOMRect to make it visible at a correct place.
+    function adjustRect(rect: DOMRect) {
+      let yOffset = 0;
+      if (window.visualViewport) {
+        const bottomScreen =
+          window.innerHeight || document.documentElement.clientHeight;
+        if (rect.bottom >= bottomScreen) {
+          yOffset += rect.bottom - bottomScreen - rect.height;
+        }
       }
+      return new DOMRect(rect.x, rect.y - yOffset, rect.width, rect.height);
     }
-    return new DOMRect(rect.x, rect.y - yOffset, rect.width, rect.height);
-  }
 
-  /** Options need some computing */
-  const tippyOptions: FloatingMenuProps["tippyOptions"] = useMemo(
-    () => ({
+    return {
       placement: "bottom",
       offset: [0, 0],
       zIndex: 999,
       // popperOptions: {modifiers: [ /*see popper v2 modifiers*/ ]},
-      /** Try to get the bounding rect of the table. */
+      // Try to get the bounding rect of the table.
       getReferenceClientRect: () => {
         const parentDiv = editor?.isActive("table")
           ? findParentNodeClosestToPos(
@@ -99,11 +71,9 @@ const TableToolbar = ({ editor }: TableToolbarProps) => {
         // This should never happen... but it keeps the transpiler happy.
         return new DOMRect(0, 0, 100, 100);
       },
-    }),
-    [editor],
-  );
+    };
+  }, [editor]);
 
-  const [isSpan, setSpan] = useState<boolean | undefined>(undefined);
   useEffect(() => {
     const cellAttr = editor?.getAttributes("tableCell");
     const headAttr = editor?.getAttributes("tableHeader");
@@ -119,208 +89,6 @@ const TableToolbar = ({ editor }: TableToolbarProps) => {
     }
   }, [editor, editor?.state, isSpan]);
 
-  const tableToolbarItems: ToolbarItem[] = useMemo(() => {
-    // Manage background colors.
-    const cellBackgroundPalette: ColorPalette = {
-      ...DefaultPalette,
-      label: t("Couleur de cellule"),
-      reset: {
-        value: "transparent",
-        description: t("Aucune"),
-        isReset: true,
-      },
-    };
-
-    return [
-      {
-        type: "dropdown",
-        name: "bkg-col",
-        isEnable: typeof editor?.getAttributes("tableCell") !== "undefined",
-        props: {
-          children: (
-            triggerProps: JSX.IntrinsicAttributes &
-              Omit<IconButtonProps, "ref"> &
-              RefAttributes<HTMLButtonElement>,
-            itemRefs,
-          ) => (
-            <>
-              <Dropdown.Trigger
-                variant="ghost"
-                aria-label={t("Couleur de fond")}
-                icon={
-                  <ColorPickerItem
-                    model={{
-                      value: backgroundColor,
-                      description: "",
-                      isReset:
-                        !backgroundColor ||
-                        backgroundColor.length === 0 ||
-                        backgroundColor === "transparent",
-                    }}
-                  />
-                }
-              />
-              <Dropdown.Menu>
-                <ColorPicker
-                  ref={(el) => (itemRefs.current["color-picker"] = el)}
-                  model={backgroundColor}
-                  palettes={[cellBackgroundPalette]}
-                  onSuccess={(item) => {
-                    editor
-                      ?.chain()
-                      .focus()
-                      .setCellAttribute(
-                        "backgroundColor",
-                        // reset color is transparent here => remove bkg color
-                        item.value === "transparent" ? "" : item.value,
-                      )
-                      .run();
-                    setBackgroundColor(item.value);
-                  }}
-                />
-              </Dropdown.Menu>
-            </>
-          ),
-        },
-      },
-      {
-        type: "icon",
-        name: "mergeorsplit",
-        isEnable: typeof isSpan !== "undefined",
-        props: {
-          icon: isSpan ? <SplitCells /> : <MergeCells />,
-          "aria-label": isSpan ? t("Fractionner") : t("Fusionner"),
-          onClick: () => editor?.chain().focus().mergeOrSplit().run(),
-        },
-      },
-      {
-        type: "divider",
-        name: "add-d0",
-      },
-      {
-        type: "dropdown",
-        name: "add",
-        props: {
-          children: () => (
-            <>
-              <Dropdown.Trigger variant="ghost" label={t("Ajouter")} />
-              <Dropdown.Menu>
-                <Dropdown.Item
-                  key="add-above"
-                  icon={<ArrowUp />}
-                  onClick={() => editor?.chain().focus().addRowBefore().run()}
-                >
-                  {t("Ligne au dessus")}
-                </Dropdown.Item>
-                <Dropdown.Item
-                  key="add-below"
-                  icon={<ArrowDown />}
-                  onClick={() => editor?.chain().focus().addRowAfter().run()}
-                >
-                  {t("Ligne en dessous")}
-                </Dropdown.Item>
-                <Dropdown.Separator />
-                <Dropdown.Item
-                  key="add-left"
-                  icon={<ArrowLeft />}
-                  onClick={() =>
-                    editor?.chain().focus().addColumnBefore().run()
-                  }
-                >
-                  {t("Colonne à gauche")}
-                </Dropdown.Item>
-                <Dropdown.Item
-                  key="add-right"
-                  icon={<ArrowRight />}
-                  onClick={() => editor?.chain().focus().addColumnAfter().run()}
-                >
-                  {t("Colonne à droite")}
-                </Dropdown.Item>
-                <Dropdown.Separator />
-                <Dropdown.Item
-                  key="header-row"
-                  icon={<HighlightRow />}
-                  onClick={() =>
-                    editor?.chain().focus().toggleHeaderRow().run()
-                  }
-                >
-                  {t("Entête première ligne")}
-                </Dropdown.Item>
-                <Dropdown.Item
-                  key="header-col"
-                  icon={<HighlightColumn />}
-                  onClick={() =>
-                    editor?.chain().focus().toggleHeaderColumn().run()
-                  }
-                >
-                  {t("Entête première colonne")}
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </>
-          ),
-        },
-      },
-      {
-        type: "divider",
-        name: "add-d1",
-      },
-      {
-        type: "dropdown",
-        name: "del",
-        props: {
-          children: () => (
-            <>
-              <Dropdown.Trigger variant="ghost" label={t("Supprimer")} />
-              <Dropdown.Menu>
-                <Dropdown.Item
-                  key="del-row"
-                  icon={<DeleteRow />}
-                  onClick={() => editor?.chain().focus().deleteRow().run()}
-                >
-                  {t("Supprimer la ligne")}
-                </Dropdown.Item>
-                <Dropdown.Item
-                  key="del-col"
-                  icon={<DeleteColumn />}
-                  onClick={() => editor?.chain().focus().deleteColumn().run()}
-                >
-                  {t("Supprimer la colonne")}
-                </Dropdown.Item>
-                <Dropdown.Separator />
-                <Dropdown.Item
-                  key="del-header-row"
-                  icon={<DeleteRowHighlight />}
-                  onClick={() =>
-                    editor?.chain().focus().toggleHeaderRow().run()
-                  }
-                >
-                  {t("Supprimer en-tête ligne")}
-                </Dropdown.Item>
-                <Dropdown.Item
-                  key="del-header-col"
-                  icon={<DeleteColumnHighlight />}
-                  onClick={() =>
-                    editor?.chain().focus().toggleHeaderColumn().run()
-                  }
-                >
-                  {t("Supprimer en-tête colonne")}
-                </Dropdown.Item>
-                <Dropdown.Separator />
-                <Dropdown.Item
-                  key="del-table"
-                  icon={<Delete />}
-                  onClick={() => editor?.chain().focus().deleteTable().run()}
-                >
-                  {t("Supprimer tableau")}
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </>
-          ),
-        },
-      },
-    ];
-  }, [backgroundColor, editor, isSpan, t]);
-
   return (
     <>
       {editor && (
@@ -329,7 +97,62 @@ const TableToolbar = ({ editor }: TableToolbarProps) => {
           tippyOptions={tippyOptions}
           shouldShow={() => editor.isActive("table")}
         >
-          <Toolbar className="p-4" items={tableToolbarItems} />
+          <Toolbar
+            className="p-4"
+            items={[
+              {
+                type: "dropdown",
+                name: "bkg-col",
+                // isEnable:
+                //   typeof editor?.getAttributes("tableCell") !== "undefined",
+                props: {
+                  children: (
+                    triggerProps: JSX.IntrinsicAttributes &
+                      Omit<IconButtonProps, "ref"> &
+                      RefAttributes<HTMLButtonElement>,
+                    itemRefs,
+                  ) => (
+                    <TableToolbarCellColor
+                      editor={editor}
+                      itemRefs={itemRefs}
+                    />
+                  ),
+                },
+              },
+              {
+                type: "icon",
+                name: "mergeorsplit",
+                // isEnable: typeof isSpan !== "undefined",
+                props: {
+                  icon: isSpan ? <SplitCells /> : <MergeCells />,
+                  "aria-label": isSpan ? t("Fractionner") : t("Fusionner"),
+                  onClick: () => editor?.chain().focus().mergeOrSplit().run(),
+                },
+              },
+              {
+                type: "divider",
+                name: "add-d0",
+              },
+              {
+                type: "dropdown",
+                name: "add",
+                props: {
+                  children: () => <TableToolbarAddMenu editor={editor} />,
+                },
+              },
+              {
+                type: "divider",
+                name: "add-d1",
+              },
+              {
+                type: "dropdown",
+                name: "del",
+                props: {
+                  children: () => <TableToolbarDelMenu editor={editor} />,
+                },
+              },
+            ]}
+          />
         </FloatingMenu>
       )}
     </>
