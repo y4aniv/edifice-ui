@@ -142,3 +142,20 @@ export const Error: Story = {
       "Ornare senectus inceptos, laboriosam montes suscipit, tristique rhoncus, tristique irure itaque cum, tellus imperdiet ornare nostra nec curae cumque vitae, minus ridiculus? Auctor eget.",
   },
 };
+
+export const Confirm: Story = {
+  render: (args) => <Template {...args} />,
+
+  args: {
+    type: "info",
+    isConfirm: true,
+    position: "bottom-right",
+    button: (
+      <Button type="button" variant="ghost" color="tertiary">
+        Consulter
+      </Button>
+    ),
+    children:
+      "Parce que nous sommes soucieux de la protection de vos données personnelles, les cookies que nous utilisons collectent des informations anonymisées. Notre seule utilisation de ces cookies vise à améliorer votre expérience utilisateur. Vous pouvez consulter à tout moment ces cookies depuis la page « Mon compte » dans la section « Cookies ».",
+  },
+};
