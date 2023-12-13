@@ -47,15 +47,7 @@ export class WorkspaceService {
   private get http() {
     return this.context.http();
   }
-  async saveFile(
-    file: Blob | File,
-    params?: {
-      parentId?: string;
-      visibility?: "public" | "protected";
-      application?: string;
-    },
-  ) {
-    //prepare metadata
+  private extractMetadata(file: Blob | File) {
     const tmpName = file.name || "";
     const nameSplit = tmpName.split(".");
     const contentType = file.type || "application/octet-stream";
@@ -68,10 +60,22 @@ export class WorkspaceService {
       extension,
       role: DocumentHelper.role(contentType, false, extension),
     };
-    const name = tmpName.replace("." + metadata.extension, "");
+    const basename = tmpName.replace("." + metadata.extension, "");
     const fullname = metadata.extension
-      ? name + "." + metadata.extension
-      : name;
+      ? basename + "." + metadata.extension
+      : basename;
+    return { basename, fullname, metadata };
+  }
+  async saveFile(
+    file: Blob | File,
+    params?: {
+      parentId?: string;
+      visibility?: "public" | "protected";
+      application?: string;
+    },
+  ) {
+    //prepare metadata
+    const { fullname, metadata } = this.extractMetadata(file);
     //prepare form data
     const formData = new FormData();
     formData.append("file", file, fullname);
@@ -92,6 +96,37 @@ export class WorkspaceService {
     //make query
     const res = await this.http.postFile<WorkspaceElement>(
       `/workspace/document?${args.join("&")}`,
+      formData,
+    );
+    return res;
+  }
+  async updateFile(
+    id: string,
+    file: Blob | File,
+    params?: {
+      alt?: string;
+      legend?: string;
+    },
+  ) {
+    //prepare metadata
+    const { fullname, metadata } = this.extractMetadata(file);
+    //prepare form data
+    const formData = new FormData();
+    formData.append("file", file, fullname);
+    //add query params
+    const args = [];
+    if (metadata.role === "img") {
+      args.push(`quality=1`);
+    }
+    if (params?.alt) {
+      args.push(`alt=${params.alt}`);
+    }
+    if (params?.legend) {
+      args.push(`alt=${params.legend}`);
+    }
+    //make query
+    const res = await this.http.putFile<WorkspaceElement>(
+      `/workspace/document/${id}?${args.join("&")}`,
       formData,
     );
     return res;
