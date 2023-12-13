@@ -57,7 +57,7 @@ const useHistoryTool = ({
   };
   const historize = <T extends (...args: any[]) => any>(callback: T) => {
     return async function (...args: any[]) {
-      if (application === undefined) {
+      if (!application) {
         return;
       }
       const sprite = application.stage.getChildByName(spriteName, true) as

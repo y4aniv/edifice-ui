@@ -180,9 +180,13 @@ export function autoResize(
  */
 export function saveAsBlob(application: PIXI.Application): Promise<Blob> {
   return new Promise<Blob>((resolve, reject) => {
-    application?.view?.toBlob?.((blob) => {
-      blob ? resolve(blob) : reject("EXTRACT_FAILED");
-    });
+    if (application?.view?.toBlob) {
+      application.view.toBlob((blob) => {
+        blob ? resolve(blob) : reject("EXTRACT_FAILED");
+      });
+    } else {
+      reject("EXTRACT_FAILED");
+    }
   });
 }
 /**

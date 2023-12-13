@@ -24,11 +24,11 @@ export default function useImageEffects({
   onSave,
 }: UseImageEffectsProps) {
   const startCrop = () => {
-    if (application === undefined) return;
+    if (!application) return;
     cropEffect.start(application, { spriteName });
   };
   const stopCrop = (save: boolean) => {
-    if (application === undefined) return;
+    if (!application) return;
     if (save) {
       const result = cropEffect.save(application);
       result && onSave(result);
@@ -36,15 +36,15 @@ export default function useImageEffects({
     cropEffect.stop(application);
   };
   const startBlur = () => {
-    if (application === undefined) return;
+    if (!application) return;
     blurEffect.start(application, { spriteName });
   };
   const stopBlur = () => {
-    if (application === undefined) return;
+    if (!application) return;
     blurEffect.stop(application);
   };
   const stopResize = (save: boolean) => {
-    if (application === undefined) return;
+    if (!application) return;
     if (save) {
       const result = resizeEffect.save(application);
       result && onSave(result);
@@ -52,11 +52,11 @@ export default function useImageEffects({
     resizeEffect.stop(application);
   };
   const startResize = () => {
-    if (application === undefined) return;
+    if (!application) return;
     resizeEffect.start(application, spriteName);
   };
   const rotate = () => {
-    if (application === undefined) return;
+    if (!application) return;
     rotateEffect.rotate(application, spriteName);
   };
   return {

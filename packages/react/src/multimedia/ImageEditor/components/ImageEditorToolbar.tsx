@@ -10,7 +10,7 @@ interface ImageEditorToolbarProps {
   handle(operation: ImageEditorAction): void;
 }
 
-const ImageEditorToolbar: React.FC<ImageEditorToolbarProps> = ({ handle }) => {
+const ImageEditorToolbar = ({ handle }: ImageEditorToolbarProps) => {
   const { t } = useTranslation();
   const [action, setAction] = useState<ImageEditorAction | undefined>(
     undefined,

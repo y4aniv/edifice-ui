@@ -32,7 +32,7 @@ interface ImageEditorProps {
  * @param param.onSave callback when the save action succeed and receive as params the new image as blob and also the new legend and alt
  * @returns A React Component
  */
-const ImageEditor: React.FC<ImageEditorProps> = ({
+const ImageEditor = ({
   altText: altTextParam,
   legend: legendParam,
   image: imageSrc,
@@ -40,7 +40,7 @@ const ImageEditor: React.FC<ImageEditorProps> = ({
   onCancel,
   onError,
   onSave,
-}) => {
+}: ImageEditorProps) => {
   const { t } = useTranslation();
   // Store the current operation in a state
   const [currentOperation, setCurrentOperation] = useState<

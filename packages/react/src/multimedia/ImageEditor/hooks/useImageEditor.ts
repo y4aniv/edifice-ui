@@ -53,11 +53,11 @@ export default function useImageEditor({
   });
 
   const toBlob = (): Promise<Blob | undefined> => {
-    if (application === undefined) return Promise.resolve(undefined);
+    if (!application) return Promise.resolve(undefined);
     return saveAsBlob(application);
   };
   const toDataURL = (): string | undefined => {
-    if (application === undefined) return undefined;
+    if (!application) return undefined;
     return saveAsDataURL(application);
   };
 
@@ -65,7 +65,7 @@ export default function useImageEditor({
     application,
     spriteName,
     onRestore(imgDatasource, state) {
-      if (application === undefined) return undefined;
+      if (!application) return undefined;
       updateImageFromBlob(application, {
         imgDatasource,
         spriteName,
@@ -75,7 +75,7 @@ export default function useImageEditor({
   });
 
   useEffect(() => {
-    if (application === undefined) return undefined;
+    if (!application) return undefined;
     updateImage(application, { spriteName, imgDatasource: imageSrc });
   }, [application, imageSrc, spriteName]);
   return {

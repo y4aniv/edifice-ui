@@ -107,7 +107,7 @@ function removeCursor(application: PIXI.Application) {
  */
 function moveCursorListener(application: PIXI.Application) {
   return (event: PIXI.FederatedMouseEvent) => {
-    if (application === undefined) return;
+    if (!application) return;
     const point = application.stage.toLocal(event.global);
     const child = application.stage.getChildByName(CURSOR_NAME, true);
     if (child) {
