@@ -137,7 +137,9 @@ const mediaLibraryTypes: { none: null } & {
  */
 export type MediaLibraryResult =
   | WorkspaceElement[] // Workspace result
+  | WorkspaceElement // Workspace result
   | InternalLinkTabResult // Linker result
+  | string
   | /*TODO type des autres résultats ?*/ any;
 
 /**
@@ -291,7 +293,7 @@ const MediaLibrary = forwardRef(
 
     // Stateful contextual values
     const [resultCounter, setResultCounter] = useState<number | undefined>();
-    const [result, setResult] = useState<WorkspaceElement | undefined>();
+    const [result, setResult] = useState<MediaLibraryResult | undefined>();
 
     function setVisibleTab(tab: AvailableTab) {
       const index = tabs.findIndex((t) => t.id === tab);

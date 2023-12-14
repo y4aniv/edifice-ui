@@ -1,6 +1,9 @@
+import { useState } from "react";
+
 import { Mic } from "@edifice-ui/icons";
 import clsx from "clsx";
 import { WorkspaceElement } from "edifice-ts-client";
+import { useTranslation } from "react-i18next";
 
 import AudioRecorderTimer from "./AudioRecorderTimer";
 import useAudioRecorder from "./useAudioRecorder";
@@ -21,45 +24,52 @@ const AudioRecorder = ({ onSuccess, onError }: AudioRecorderProps) => {
     toolbarItems,
     handlePlayEnded,
   } = useAudioRecorder(onSuccess, onError);
+  const { t } = useTranslation();
+
+  const [audioTime, setAudioTime] = useState<number>(0);
 
   const classColor = clsx({
     "text-danger": recordState === "RECORDING",
     "text-success": playState === "PLAYING",
   });
 
+  const handleTimeUpdate = (event: any) => {
+    setAudioTime(event.target.currentTime);
+  };
+
   return (
-    <div className="audio-recorder d-flex flex-column flex-fill justify-content-center align-items-center">
-      <div className="audio-recorder-icon">
+    <div className="audio-recorder m-auto d-flex flex-column">
+      <FormControl
+        id="recordName"
+        className="mb-32"
+        isRequired
+        isReadOnly={recordState === "SAVED" || recordState === "SAVING"}
+      >
+        <Input
+          type="text"
+          size={"sm"}
+          placeholder={t("Nom de l'enregistrement audio")}
+          ref={audioNameRef}
+          defaultValue={t("Capture ") + new Date().toLocaleDateString()}
+        />
+      </FormControl>
+      <div className="audio-recorder-icon mx-auto ">
         <Mic width={64} height={64} className={classColor} />
       </div>
       <AudioRecorderTimer
         recordState={recordState}
         playState={playState}
-        recordtime={recordtime}
-        audiotime={audioRef.current?.currentTime}
+        recordTime={recordtime}
+        audioTime={audioTime}
       ></AudioRecorderTimer>
-      <div>
-        <audio ref={audioRef} onEnded={handlePlayEnded}>
-          <track default kind="captions" srcLang="fr" src=""></track>
-        </audio>
-      </div>
-      <div className="audio-recorder-toolbar toolbar default">
-        <FormControl
-          id="recordName"
-          className="mb-8"
-          isRequired
-          isReadOnly={recordState === "SAVED" || recordState === "SAVING"}
-        >
-          <Input
-            type="text"
-            size={"sm"}
-            placeholder="Nom de l'enregistrement audio"
-            ref={audioNameRef}
-            defaultValue={"Capture " + new Date().toLocaleDateString()}
-          />
-        </FormControl>
-        <Toolbar items={toolbarItems} variant="no-shadow" />
-      </div>
+      <audio
+        ref={audioRef}
+        onEnded={handlePlayEnded}
+        onTimeUpdate={handleTimeUpdate}
+      >
+        <track default kind="captions" srcLang="fr" src=""></track>
+      </audio>
+      <Toolbar items={toolbarItems} />
     </div>
   );
 };
