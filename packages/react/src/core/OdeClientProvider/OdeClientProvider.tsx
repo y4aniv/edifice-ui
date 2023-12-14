@@ -18,7 +18,9 @@ import {
 } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
+import { Alert, Button } from "../../components";
 import { useConf } from "../useConf";
+import { useCookiesConsent } from "../useCookiesConsent";
 import { useSession } from "../useSession";
 
 export interface OdeProviderParams {
@@ -56,6 +58,11 @@ export function OdeClientProvider({ children, params }: OdeClientProps) {
 
   const sessionQuery = useSession();
   const confQuery = useConf({ appCode });
+  const {
+    showCookiesConsent,
+    handleConsultCookies,
+    handleCloseCookiesConsent,
+  } = useCookiesConsent();
 
   const init = confQuery?.isSuccess && sessionQuery?.isSuccess;
 
@@ -88,6 +95,25 @@ export function OdeClientProvider({ children, params }: OdeClientProps) {
   return (
     <OdeClientContext.Provider value={values}>
       {children}
+      {showCookiesConsent && (
+        <Alert
+          type="info"
+          className="m-12"
+          isConfirm={true}
+          button={
+            <Button
+              color="tertiary"
+              variant="ghost"
+              onClick={handleConsultCookies}
+            >
+              {t("rgpd.cookies.banner.button.consult")}
+            </Button>
+          }
+          onClose={handleCloseCookiesConsent}
+        >
+          {t("rgpd.cookies.banner.text1")}
+        </Alert>
+      )}
     </OdeClientContext.Provider>
   );
 }

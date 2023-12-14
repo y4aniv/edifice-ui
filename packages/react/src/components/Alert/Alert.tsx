@@ -18,6 +18,9 @@ import {
   SuccessOutline,
 } from "@edifice-ui/icons";
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
+
+import { Button } from "../Button";
 
 export interface AlertRef {
   show: () => void;
@@ -25,6 +28,13 @@ export interface AlertRef {
 }
 
 export type AlertTypes = "success" | "warning" | "info" | "danger";
+
+export type AlertPosition =
+  | "none"
+  | "top-left"
+  | "top-right"
+  | "bottom-left"
+  | "bottom-right";
 
 export interface AlertProps extends ComponentPropsWithRef<"div"> {
   /**
@@ -41,6 +51,16 @@ export interface AlertProps extends ComponentPropsWithRef<"div"> {
    * Alert is displayed as Toast
    */
   isToast?: boolean;
+
+  /**
+   * Alert is displayed as a confirm box (cancel button and confirm button)
+   */
+  isConfirm?: boolean;
+
+  /**
+   * Alert poistion.
+   */
+  position?: AlertPosition;
 
   /**
    * Alert must close after delay
@@ -88,6 +108,8 @@ const Alert = forwardRef(
       button,
       isDismissible = false,
       isToast = false,
+      isConfirm = false,
+      position = "none",
       autoClose = false,
       autoCloseDelay = 3000,
       onClose,
@@ -99,6 +121,8 @@ const Alert = forwardRef(
 
     // Local ref will be merged with forwardRef in useImperativeHandle below
     const refAlert = useRef<HTMLDivElement>(null);
+
+    const { t } = useTranslation();
 
     // Method to hide alert
     const hide = useCallback(() => {
@@ -146,26 +170,37 @@ const Alert = forwardRef(
       "is-dismissible": isDismissible,
       "is-toast ": isToast,
     };
+    // class for Confirm box style
+    const confirmClasses = {
+      "is-confirm": isConfirm,
+    };
 
-    const classes = clsx(
+    const divContainerClasses = clsx(
       "alert gap-12",
       mapping[type].classModifier,
       toastClasses,
+      confirmClasses,
+      position,
       className,
     );
 
     return (
       <>
         {isVisible ? (
-          <div ref={refAlert} className={classes} role="alert">
-            {mapping[type].icon}
+          <div ref={refAlert} className={divContainerClasses} role="alert">
+            {!isConfirm && mapping[type].icon}
             <div className="alert-content small">{children}</div>
-            {button && <div className="ms-12">{button}</div>}
-            {isDismissible && (
+            {button && (
+              <div className="ms-12">
+                {button}{" "}
+                {isConfirm && <Button onClick={hide}>{t("close")}</Button>}
+              </div>
+            )}
+            {(isDismissible || isConfirm) && (
               <div className="btn-close-container">
                 <button
                   type="button"
-                  className="btn btn-close"
+                  className="btn-close"
                   data-bs-dismiss="alert"
                   aria-label="Close"
                   onClick={hide}
