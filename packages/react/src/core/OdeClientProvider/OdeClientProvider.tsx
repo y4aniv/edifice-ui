@@ -4,8 +4,6 @@ import {
   useMemo,
   useContext,
   useEffect,
-  useState,
-  useCallback,
 } from "react";
 
 import { UseQueryResult } from "@tanstack/react-query";
@@ -22,7 +20,7 @@ import { useTranslation } from "react-i18next";
 
 import { Alert, Button } from "../../components";
 import { useConf } from "../useConf";
-import { usePreferences } from "../usePreferences";
+import { useCookiesConsent } from "../useCookiesConsent";
 import { useSession } from "../useSession";
 
 export interface OdeProviderParams {
@@ -53,9 +51,6 @@ export interface ContextProps {
 export const OdeClientContext = createContext<ContextProps | null>(null!);
 
 export function OdeClientProvider({ children, params }: OdeClientProps) {
-  const [showCookiesConsent, setShowCookiesConsent] = useState<boolean>(false);
-  const [getPreference, savePreference] = usePreferences("rgpdCookies");
-
   const appCode = params.app;
 
   const { t } = useTranslation();
@@ -63,17 +58,13 @@ export function OdeClientProvider({ children, params }: OdeClientProps) {
 
   const sessionQuery = useSession();
   const confQuery = useConf({ appCode });
+  const {
+    showCookiesConsent,
+    handleConsultCookies,
+    handleCloseCookiesConsent,
+  } = useCookiesConsent();
 
   const init = confQuery?.isSuccess && sessionQuery?.isSuccess;
-
-  const initCookiesConsent = useCallback(async () => {
-    const res = await getPreference();
-    setShowCookiesConsent(res);
-  }, []);
-
-  useEffect(() => {
-    initCookiesConsent();
-  }, []);
 
   useEffect(() => {
     document
@@ -100,17 +91,6 @@ export function OdeClientProvider({ children, params }: OdeClientProps) {
     }),
     [appCode, confQuery, init, sessionQuery],
   );
-
-  const handleConsultCookies = useCallback(() => {
-    document.location.href = "/userbook/mon-compte";
-    savePreference({ showInfoTip: false });
-    setShowCookiesConsent(false);
-  }, []);
-
-  const handleCloseCookiesConsent = useCallback(() => {
-    savePreference({ showInfoTip: false });
-    setShowCookiesConsent(false);
-  }, []);
 
   return (
     <OdeClientContext.Provider value={values}>
