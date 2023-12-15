@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { Edit, ExternalLink, Unlink } from "@edifice-ui/icons";
-import { FloatingMenu, FloatingMenuProps, Editor } from "@tiptap/react";
+import { FloatingMenu, Editor } from "@tiptap/react";
 import { useTranslation } from "react-i18next";
 
+import { tippyOptions } from "./LinkToolbar.TippyOptions";
 import { Toolbar, ToolbarItem } from "../../components";
 
 interface LinkToolbarProps {
@@ -62,7 +63,7 @@ const LinkToolbar = ({
     ];
   }, [onEdit, onOpen, onUnlink, t, linkAttrs]);
 
-  // Retrieve any selected linker node ONLY WHEN EDITOR STRATE CHANGES
+  // Retrieve any selected linker node ONLY WHEN EDITOR STATE CHANGES
   useEffect(() => {
     if (editor?.isActive("linker"))
       setLinkAttrs(editor.getAttributes("linker"));
@@ -71,13 +72,6 @@ const LinkToolbar = ({
     else setLinkAttrs(undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor?.state]);
-
-  // Position options
-  const tippyOptions: FloatingMenuProps["tippyOptions"] = {
-    placement: "bottom",
-    offset: [0, 10],
-    zIndex: 999,
-  };
 
   const handleShouldShow = () =>
     editor?.isActive("linker") || editor?.isActive("hyperlink") || false;
