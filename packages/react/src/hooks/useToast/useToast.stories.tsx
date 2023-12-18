@@ -1,36 +1,35 @@
-import useHotToast from "./useHotToast";
+import useToast from "./useToast";
 import { Toaster } from "react-hot-toast";
-import docs from "./useHotToast.mdx";
+import docs from "./useToast.mdx";
 import { Meta, StoryObj } from "@storybook/react";
-import Alert from "../../components/Alert/Alert";
 import Button from "../../components/Button/Button";
 
-const meta: Meta<typeof useHotToast> = {
-  title: "Hooks/useHotToast",
+const meta: Meta<typeof useToast> = {
+  title: "Hooks/useToast",
   parameters: {
     docs: { page: docs },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof useHotToast>;
+type Story = StoryObj<typeof useToast>;
 
 export const Example: Story = {
   render: (args) => {
-    const { hotToast } = useHotToast(Alert);
+    const toast = useToast();
 
-    const infoNotify = () => hotToast.info("This is an info message!");
+    const infoNotify = () => toast.info("This is an info message!");
 
     const warningNotify = () =>
-      hotToast.warning(<h3>This is a warning message in a H3 tag</h3>);
+      toast.warning(<h3>This is a warning message in a H3 tag</h3>);
 
-    const sucessNotify = () => hotToast.success("This is a success message!");
+    const sucessNotify = () => toast.success("This is a success message!");
 
     const errorNotify = () =>
-      hotToast.error(<div>This is an error message in a DIV tag</div>);
+      toast.error(<div>This is an error message in a DIV tag</div>);
 
     const dismissibleInfoNotify = () =>
-      hotToast.info(
+      toast.info(
         `This is an info message with infinite duration and dismissible.`,
         {
           duration: Infinity,
