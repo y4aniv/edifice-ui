@@ -22,7 +22,7 @@ export default function useToast() {
         >
           {message}
         </Alert>,
-        { duration: options?.duration },
+        { duration: options?.duration, position: options?.position },
       ),
     error: (message: string | ReactNode, options?: CustomToastOptions) =>
       toast.custom(
@@ -34,7 +34,7 @@ export default function useToast() {
         >
           {message}
         </Alert>,
-        { duration: options?.duration },
+        { duration: options?.duration, position: options?.position },
       ),
     info: (message: string | ReactNode, options?: CustomToastOptions) =>
       toast.custom(
@@ -46,7 +46,7 @@ export default function useToast() {
         >
           {message}
         </Alert>,
-        { duration: options?.duration },
+        { duration: options?.duration, position: options?.position },
       ),
     warning: (message: string | ReactNode, options?: CustomToastOptions) =>
       toast.custom(
@@ -58,7 +58,7 @@ export default function useToast() {
         >
           {message}
         </Alert>,
-        { duration: options?.duration },
+        { duration: options?.duration, position: options?.position },
       ),
     loading: toast.loading,
   };
