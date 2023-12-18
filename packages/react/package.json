@@ -46,8 +46,8 @@
     "@floating-ui/react": "0.26.0",
     "@popperjs/core": "2.11.8",
     "html-react-parser": "4.0.0",
-    "react-popper": "2.3.0",
-    "react-hot-toast": "2.4.1"
+    "react-hot-toast": "2.4.1",
+    "react-popper": "2.3.0"
   },
   "devDependencies": {
     "@edifice-ui/icons": "^1.3.0",
@@ -61,6 +61,7 @@
     "edifice-ts-client": "develop",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "7.49.2",
     "react-i18next": "13.0.1",
     "swiper": "10.0.3"
   },
@@ -71,6 +72,7 @@
     "clsx": "2.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "7.49.2",
     "react-i18next": "13.0.1",
     "swiper": "10.0.3"
   },
