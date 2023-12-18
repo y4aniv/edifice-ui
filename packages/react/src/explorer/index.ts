@@ -1,4 +1,5 @@
 export * from "./FolderCard";
-export * from "./ResourceCard";
-export * from "./ShareModal";
 export * from "./PublishModal";
+export * from "./ResourceCard";
+export * from "./ResourceModal";
+export * from "./ShareModal";
