@@ -1,64 +1,67 @@
-import { ElementType, ReactNode } from "react";
+import { ReactNode } from "react";
 
-import toast from "react-hot-toast";
+import toast, { ToastPosition } from "react-hot-toast";
 
-export interface HotToastOptions {
+import Alert from "../../components/Alert/Alert";
+
+export interface CustomToastOptions {
   isDismissible?: boolean;
+  position?: ToastPosition;
   duration?: number;
 }
 
-export default function useHotToast(Component: ElementType) {
-  const hotToast = {
-    success: (message: string | ReactNode, options?: HotToastOptions) =>
+export default function useToast() {
+  const toasts = {
+    success: (message: string | ReactNode, options?: CustomToastOptions) =>
       toast.custom(
-        <Component
+        <Alert
           type="success"
           isToast={true}
           isDismissible={options?.isDismissible}
           className="mb-12"
         >
           {message}
-        </Component>,
+        </Alert>,
         { duration: options?.duration },
       ),
-    error: (message: string | ReactNode, options?: HotToastOptions) =>
+    error: (message: string | ReactNode, options?: CustomToastOptions) =>
       toast.custom(
-        <Component
+        <Alert
           type="danger"
           isToast={true}
           isDismissible={options?.isDismissible}
           className="mb-12"
         >
           {message}
-        </Component>,
+        </Alert>,
         { duration: options?.duration },
       ),
-    info: (message: string | ReactNode, options?: HotToastOptions) =>
+    info: (message: string | ReactNode, options?: CustomToastOptions) =>
       toast.custom(
-        <Component
+        <Alert
           type="info"
           isToast={true}
           isDismissible={options?.isDismissible}
           className="mb-12"
         >
           {message}
-        </Component>,
+        </Alert>,
         { duration: options?.duration },
       ),
-    warning: (message: string | ReactNode, options?: HotToastOptions) =>
+    warning: (message: string | ReactNode, options?: CustomToastOptions) =>
       toast.custom(
-        <Component
+        <Alert
           type="warning"
           isToast={true}
           isDismissible={options?.isDismissible}
           className="mb-12"
         >
           {message}
-        </Component>,
+        </Alert>,
         { duration: options?.duration },
       ),
     loading: toast.loading,
   };
 
-  return { hotToast };
+  return toasts;
 }

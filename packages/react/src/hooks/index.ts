@@ -1,5 +1,5 @@
 export * from "./useClickOutside";
-export * from "./useHotToast";
+export * from "./useToast";
 export * from "./useHover";
 export * from "./useImage";
 export * from "./useKeyPress";
