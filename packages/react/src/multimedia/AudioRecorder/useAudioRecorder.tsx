@@ -4,6 +4,7 @@ import {
   Pause,
   PlayFilled,
   Record,
+  RecordPause,
   Refresh,
   Restart,
   Save,
@@ -43,8 +44,9 @@ type AudioReducerState = {
 };
 
 export default function useAudioRecorder(
-  onSuccess: (resource: WorkspaceElement) => void,
-  onError: (error: string) => void,
+  onSaveSuccess?: (resource: WorkspaceElement) => void,
+  onUpdateRecord?: (audioUrl?: string) => void,
+  hideSaveAction: boolean = false,
 ) {
   function audioReducer(
     state: AudioReducerState,
@@ -171,44 +173,9 @@ export default function useAudioRecorder(
           type: "update",
           updatedState: { playState: "IDLE", recordState: "IDLE" },
         });
-        closeWs();
-      } else if (
-        event.data &&
-        event.data.text &&
-        typeof event.data.text === "function" &&
-        recordState === "SAVING"
-      ) {
-        const data = JSON.parse(await event.data.text());
-        if (data.status === "ok") {
-          closeWs();
-          const mockWorkspaceAudio = {
-            _id: data.docId,
-            name: audioNameRef.current?.value,
-            eType: "file",
-            eParent: "",
-            children: [],
-            created: new Date(),
-            _shared: [],
-            _isShared: false,
-            owner: { userId: "", displayName: "" },
-          } as any as WorkspaceElement;
-
-          if (mockWorkspaceAudio) {
-            onSuccess(mockWorkspaceAudio);
-          } else {
-            onError("");
-          }
-
-          closeAudioStream();
-          dispatch({ type: "update", updatedState: { recordState: "SAVED" } });
-        } else {
-          dispatch({ type: "update", updatedState: { recordState: "IDLE" } });
-          closeWs();
-        }
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [webSocket, recordState]);
+  }, [webSocket]);
 
   /**
    * Handle message received from the audio recorder processor.
@@ -362,8 +329,12 @@ export default function useAudioRecorder(
           rightChannel.length * BUFFER_SIZE,
         ]);
         encoderWorker.onmessage = (event: MessageEvent) => {
+          const audioUrl = window.URL.createObjectURL(event.data);
           if (audioRef.current) {
-            audioRef.current.src = window.URL.createObjectURL(event.data);
+            audioRef.current.src = audioUrl;
+          }
+          if (onUpdateRecord) {
+            onUpdateRecord(audioUrl);
           }
         };
       }
@@ -374,7 +345,7 @@ export default function useAudioRecorder(
         audioRef.current.currentTime = 0;
       }
     }
-  }, [audioContext, encoderWorker, leftChannel, rightChannel]);
+  }, [audioContext, encoderWorker, leftChannel, onUpdateRecord, rightChannel]);
 
   const handlePlay = useCallback(() => {
     dispatch({ type: "update", updatedState: { playState: "PLAYING" } });
@@ -403,13 +374,78 @@ export default function useAudioRecorder(
         rightChannel: [],
       },
     });
-  }, [closeAudioStream]);
 
-  const handleSave = useCallback(() => {
-    dispatch({ type: "update", updatedState: { recordState: "SAVING" } });
+    if (onUpdateRecord) {
+      onUpdateRecord(undefined);
+    }
+  }, [closeAudioStream, onUpdateRecord]);
 
-    webSocket?.send(`save-${audioNameRef.current?.value}`);
-  }, [webSocket]);
+  const handleSave: () => Promise<WorkspaceElement | undefined> =
+    useCallback(async () => {
+      dispatch({ type: "update", updatedState: { recordState: "SAVING" } });
+
+      if (webSocket) {
+        return new Promise((resolve, reject) => {
+          webSocket.send(`save-${audioNameRef.current?.value}`);
+          webSocket.onmessage = async (event) => {
+            if (
+              event.data &&
+              event.data.indexOf &&
+              typeof event.data.indexOf === "function" &&
+              event.data.indexOf("error") !== -1
+            ) {
+              console.error(event.data);
+              dispatch({
+                type: "update",
+                updatedState: { playState: "IDLE", recordState: "IDLE" },
+              });
+              reject("Error while saving");
+            } else if (
+              event.data &&
+              event.data.text &&
+              typeof event.data.text === "function"
+            ) {
+              const data = JSON.parse(await event.data.text());
+              if (data.status === "ok") {
+                closeWs();
+                const mockWorkspaceAudio = {
+                  _id: data.docId,
+                  name: audioNameRef.current?.value,
+                  eType: "file",
+                  eParent: "",
+                  children: [],
+                  created: new Date(),
+                  _shared: [],
+                  _isShared: false,
+                  owner: { userId: "", displayName: "" },
+                } as WorkspaceElement;
+
+                if (mockWorkspaceAudio && onSaveSuccess) {
+                  onSaveSuccess(mockWorkspaceAudio);
+                }
+
+                closeAudioStream();
+                dispatch({
+                  type: "update",
+                  updatedState: { recordState: "SAVED" },
+                });
+
+                resolve(mockWorkspaceAudio);
+              } else {
+                dispatch({
+                  type: "update",
+                  updatedState: { recordState: "IDLE" },
+                });
+                closeWs();
+
+                reject("Error while saving");
+              }
+            }
+          };
+        });
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [webSocket, recordState, onSaveSuccess, closeAudioStream]);
 
   const handlePlayStop = useCallback(() => {
     // Stop Playing the record
@@ -451,14 +487,14 @@ export default function useAudioRecorder(
     return `${base}/audio/${uuid()}?sampleRate=${sampleRate}`;
   }
 
-  function closeWs() {
+  const closeWs = useCallback(() => {
     if (webSocket) {
       if (webSocket.readyState === 1) {
         webSocket.close();
       }
     }
     clearWs();
-  }
+  }, [webSocket]);
 
   function clearWs() {
     dispatch({ type: "update", updatedState: { webSocket: null } });
@@ -468,29 +504,22 @@ export default function useAudioRecorder(
     {
       type: "icon",
       name: "record",
-      visibility:
-        recordState === "RECORDING" || recordState === "PAUSED"
-          ? "hide"
-          : "show",
+      visibility: recordState === "RECORDING" ? "hide" : "show",
       props: {
-        icon: <Record color="" />,
+        icon: <Record />,
         color: "danger",
-        disabled: recordState !== "IDLE",
+        disabled: recordState !== "IDLE" && recordState !== "PAUSED",
         onClick: handleRecord,
       },
     },
     {
       type: "icon",
       name: "recordPause",
-      visibility:
-        recordState === "RECORDING" || recordState === "PAUSED"
-          ? "show"
-          : "hide",
+      visibility: recordState === "RECORDING" ? "show" : "hide",
       props: {
-        icon: (
-          <Pause className={recordState === "PAUSED" ? "text-danger" : ""} />
-        ),
-        disabled: recordState !== "RECORDING" && recordState !== "PAUSED",
+        icon: <RecordPause />,
+        color: "danger",
+        disabled: recordState !== "RECORDING",
         onClick: handleRecordPause,
       },
     },
@@ -545,6 +574,7 @@ export default function useAudioRecorder(
     {
       type: "icon",
       name: "save",
+      visibility: hideSaveAction ? "hide" : "show",
       props: {
         icon: <Save />,
         disabled:
@@ -569,5 +599,6 @@ export default function useAudioRecorder(
     audioNameRef,
     toolbarItems,
     handlePlayEnded,
+    handleSave,
   };
 }

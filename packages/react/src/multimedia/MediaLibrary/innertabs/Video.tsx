@@ -1,15 +1,23 @@
-import { WorkspaceElement } from "edifice-ts-client";
+import { useRef } from "react";
+
 import { useTranslation } from "react-i18next";
 
 import { VideoRecorder } from "../../VideoRecorder";
+import { VideoRecorderRef } from "../../VideoRecorder/VideoRecorder";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 
 export const Video = () => {
-  const context = useMediaLibraryContext();
+  const { appCode, setResult, setPreSuccess } = useMediaLibraryContext();
   const { t } = useTranslation();
+  const ref = useRef<VideoRecorderRef>(null);
 
-  const handleSuccess = (res: WorkspaceElement) => {
-    context.setResult(res);
+  const handleRecordUpdated = (recordUrl?: string) => {
+    if (recordUrl) {
+      setResult(recordUrl);
+      setPreSuccess(() => ref.current!.save);
+    } else {
+      setResult();
+    }
   };
 
   const handleError = (err: string) => {
@@ -18,10 +26,12 @@ export const Video = () => {
 
   return (
     <VideoRecorder
-      appCode={context.appCode}
+      ref={ref}
+      appCode={appCode}
       caption={t("video.caption")}
-      onSuccess={handleSuccess}
+      onRecordUpdated={handleRecordUpdated}
       onError={handleError}
+      hideSaveAction={true}
     ></VideoRecorder>
   );
 };

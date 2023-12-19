@@ -1,23 +1,27 @@
-import { WorkspaceElement } from "edifice-ts-client";
+import { useRef } from "react";
 
 import { AudioRecorder } from "../../AudioRecorder";
+import { AudioRecorderRef } from "../../AudioRecorder/AudioRecorder";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 
 export const Audio = () => {
-  const { setResult } = useMediaLibraryContext();
+  const { setResult, setPreSuccess } = useMediaLibraryContext();
+  const ref = useRef<AudioRecorderRef>(null);
 
-  const handleOnSuccess = (ressource: WorkspaceElement) => {
-    setResult([ressource]);
-  };
-
-  const handleOnError = (error: string) => {
-    console.error(error);
+  const handleOnUpdateRecord = (recordURL?: string) => {
+    if (recordURL) {
+      setResult(recordURL);
+      setPreSuccess(() => ref.current!.save);
+    } else {
+      setResult();
+    }
   };
 
   return (
     <AudioRecorder
-      onSuccess={handleOnSuccess}
-      onError={handleOnError}
+      ref={ref}
+      onRecordUpdated={handleOnUpdateRecord}
+      hideSaveAction={true}
     ></AudioRecorder>
   );
 };
