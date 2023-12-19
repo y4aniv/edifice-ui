@@ -1,6 +1,6 @@
 import { resolve } from "path";
 
-import react from "@vitejs/plugin-react";
+import react from "@vitejs/plugin-react-swc";
 import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
@@ -13,7 +13,6 @@ export default defineConfig({
   },
   build: {
     minify: false,
-    target: "esnext",
     lib: {
       entry: {
         index: resolve(__dirname, "src/index.ts"),
@@ -21,10 +20,6 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      output: {
-        preserveModules: true,
-        preserveModulesRoot: "src",
-      },
       external: [
         ...Object.keys(dependencies),
         ...Object.keys(peerDependencies),

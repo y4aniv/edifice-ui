@@ -26,6 +26,10 @@ export const useSlug = ({ watch, selectedResource }: UseSlugProps) => {
   const { t } = useTranslation();
   const toast = useToast();
 
+  const newSlug = `${hash({
+    foo: `${resourceName}${uniqueId}`,
+  })}-${slugify(resourceName)}`;
+
   useEffect(() => {
     if (isPublic) {
       let slug = "";
@@ -33,9 +37,7 @@ export const useSlug = ({ watch, selectedResource }: UseSlugProps) => {
       if (selectedResource && selectedResource.slug) {
         slug = selectedResource.slug;
       } else {
-        slug = `${hash({
-          foo: `${resourceName}${uniqueId}`,
-        })}-${slugify(resourceName)}`;
+        slug = newSlug;
       }
 
       setSlug(slug);
