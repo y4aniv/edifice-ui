@@ -1,8 +1,6 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2020: true,
-  },
+  root: true,
+  env: { browser: true, es2020: true },
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -11,17 +9,21 @@ module.exports = {
     "plugin:import/typescript",
     "plugin:storybook/recommended",
   ],
-  plugins: ["react", "import", "jsx-a11y"],
+  plugins: ["react-refresh", "react", "import", "jsx-a11y"],
   parser: "@typescript-eslint/parser",
-  parserOptions: {
+  /* parserOptions: {
     ecmaFeatures: {
       jsx: false,
     },
     ecmaVersion: "latest",
     sourceType: "module",
     project: ["./tsconfig.json"],
-  },
+  }, */
   rules: {
+    "react-refresh/only-export-components": [
+      "warn",
+      { allowConstantExport: true },
+    ],
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/ban-ts-comment": "off",
@@ -46,11 +48,11 @@ module.exports = {
       },
     ],
   },
-  settings: {
+  /* settings: {
     react: {
       version: "detect",
     },
-  },
+  }, */
   ignorePatterns: [
     ".eslintrc.cjs",
     "*.d.ts",

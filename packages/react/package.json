@@ -35,7 +35,7 @@
   ],
   "scripts": {
     "build": "vite build",
-    "fix": "eslint --fix \"**/*.{ts,tsx}\"",
+    "fix": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "concurrently \"pnpm:format:*\"",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
