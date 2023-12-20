@@ -42,7 +42,7 @@ export const useSlug = ({ watch, selectedResource }: UseSlugProps) => {
 
       setSlug(slug);
     }
-  }, [isPublic, selectedResource, resourceName, uniqueId]);
+  }, [isPublic, selectedResource, resourceName, uniqueId, newSlug]);
 
   function onPublicChange(value: boolean) {
     setIsPublic(value);
