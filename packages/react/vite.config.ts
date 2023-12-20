@@ -1,6 +1,6 @@
 import { resolve } from "path";
 
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
@@ -23,11 +23,21 @@ export default defineConfig({
       external: [
         ...Object.keys(dependencies),
         ...Object.keys(peerDependencies),
+        "swiper/react",
+        "swiper/modules",
         "react/jsx-runtime",
         "edifice-ts-client",
         "@edifice-ui/icons/nav",
       ],
     },
   },
-  plugins: [react(), dts(), visualizer()],
+  plugins: [
+    react({
+      babel: {
+        plugins: ["@babel/plugin-transform-react-pure-annotations"],
+      },
+    }),
+    dts(),
+    visualizer(),
+  ],
 });

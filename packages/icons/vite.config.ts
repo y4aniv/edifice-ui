@@ -12,7 +12,6 @@ export default defineConfig({
     minifyIdentifiers: false,
   },
   build: {
-    target: "esnext",
     lib: {
       entry: {
         index: resolve(__dirname, "src/index.ts"),
