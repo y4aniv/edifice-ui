@@ -29,7 +29,7 @@ import {
   PopoverBody,
   PopoverFooter,
 } from "../../components";
-import { useConversation, useUser, useHeader } from "../../core";
+import { useConversation, useUser, useHeader, useOdeClient } from "../../core";
 import { Help } from "../Help";
 import { useHelp } from "../Help/hooks/useHelp";
 import SearchEngine from "../SearchEngine/SearchEngine";
@@ -43,6 +43,7 @@ const Header = ({ is1d = false, src = "" }: HeaderProps): JSX.Element => {
   const { t } = useTranslation();
   const { messages, msgLink, zimbraWorkflow } = useConversation();
   const { user, avatar } = useUser();
+  const { currentLanguage } = useOdeClient();
 
   const {
     isModalOpen: isHelpOpen,
@@ -122,25 +123,27 @@ const Header = ({ is1d = false, src = "" }: HeaderProps): JSX.Element => {
                     <OneProfile className="icon user" />
                   </NavLink>
                 </NavItem>
-                <NavItem>
-                  <button
-                    className="nav-link"
-                    onClick={() => {
-                      setIsHelpOpen(true);
-                    }}
-                  >
-                    <Assistance className="icon help" />
-                    <VisuallyHidden>{t("navbar.help")}</VisuallyHidden>
-                  </button>
+                {currentLanguage === "fr" ? (
+                  <NavItem>
+                    <button
+                      className="nav-link"
+                      onClick={() => {
+                        setIsHelpOpen(true);
+                      }}
+                    >
+                      <Assistance className="icon help" />
+                      <VisuallyHidden>{t("navbar.help")}</VisuallyHidden>
+                    </button>
 
-                  <Help
-                    isHelpOpen={isHelpOpen}
-                    setIsHelpOpen={setIsHelpOpen}
-                    parsedContent={parsedContent}
-                    parsedHeadline={parsedHeadline}
-                    error={error}
-                  />
-                </NavItem>
+                    <Help
+                      isHelpOpen={isHelpOpen}
+                      setIsHelpOpen={setIsHelpOpen}
+                      parsedContent={parsedContent}
+                      parsedHeadline={parsedHeadline}
+                      error={error}
+                    />
+                  </NavItem>
+                ) : null}
                 <NavItem>
                   <button className="nav-link" onClick={handleLogout}>
                     <Disconnect className="icon logout" />
@@ -276,25 +279,27 @@ const Header = ({ is1d = false, src = "" }: HeaderProps): JSX.Element => {
                   </NavLink>
                 </NavItem>
               )}
-              <NavItem>
-                <button
-                  className="nav-link btn btn-naked"
-                  onClick={() => {
-                    setIsHelpOpen(true);
-                  }}
-                >
-                  <NeoAssistance color="#fff" />
-                  <VisuallyHidden>{t("support")}</VisuallyHidden>
-                </button>
+              {currentLanguage === "fr" ? (
+                <NavItem>
+                  <button
+                    className="nav-link btn btn-naked"
+                    onClick={() => {
+                      setIsHelpOpen(true);
+                    }}
+                  >
+                    <NeoAssistance color="#fff" />
+                    <VisuallyHidden>{t("support")}</VisuallyHidden>
+                  </button>
 
-                <Help
-                  isHelpOpen={isHelpOpen}
-                  setIsHelpOpen={setIsHelpOpen}
-                  parsedContent={parsedContent}
-                  parsedHeadline={parsedHeadline}
-                  error={error}
-                />
-              </NavItem>
+                  <Help
+                    isHelpOpen={isHelpOpen}
+                    setIsHelpOpen={setIsHelpOpen}
+                    parsedContent={parsedContent}
+                    parsedHeadline={parsedHeadline}
+                    error={error}
+                  />
+                </NavItem>
+              ) : null}
               <NavItem>
                 <div className="dropdown">
                   <button
