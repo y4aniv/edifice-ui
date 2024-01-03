@@ -1,7 +1,14 @@
-import { createContext, useMemo, useContext } from "react";
+import {
+  createContext,
+  type ReactNode,
+  useMemo,
+  useContext,
+  useEffect,
+} from "react";
 
 import { UseQueryResult } from "@tanstack/react-query";
 import {
+  App,
   IUserInfo,
   IUserDescription,
   IWebApp,
@@ -9,15 +16,29 @@ import {
   IGetConf,
   IGetSession,
 } from "edifice-ts-client";
+import { useTranslation } from "react-i18next";
 
-import { AppContext, AppProvider, AppProviderProps } from "./AppProvider";
 import { useConf } from "../useConf";
 import { useSession } from "../useSession";
 
+export interface OdeProviderParams {
+  alternativeApp?: boolean;
+  app: App;
+  cdnDomain?: string | null;
+  version?: string | null;
+}
+
+export interface OdeClientProps {
+  children: ReactNode;
+  params: OdeProviderParams;
+}
+
 export interface OdeContextProps {
+  appCode: App;
   applications: IWebApp[] | undefined;
   confQuery: UseQueryResult<IGetConf>;
   currentApp: IWebApp | undefined;
+  currentLanguage: string | undefined;
   init: boolean;
   sessionQuery: UseQueryResult<IGetSession>;
   user: IUserInfo | any;
@@ -25,16 +46,32 @@ export interface OdeContextProps {
   userProfile: UserProfile | undefined;
 }
 
-const OdeClientContext = createContext<OdeContextProps | null>(null!);
+export const OdeClientContext = createContext<OdeContextProps | null>(null!);
 
-export function OdeClientProvider({ children, params }: AppProviderProps) {
+export function OdeClientProvider({ children, params }: OdeClientProps) {
+  const appCode = params.app;
+
+  const { t } = useTranslation();
+  const translatedAppCode = t(appCode);
+
   const sessionQuery = useSession();
-  const confQuery = useConf({ appCode: params.app });
+  const confQuery = useConf({ appCode });
 
   const init = confQuery?.isSuccess && sessionQuery?.isSuccess;
 
+  useEffect(() => {
+    document
+      .querySelector("html")
+      ?.setAttribute("lang", sessionQuery?.data?.currentLanguage || "fr");
+  }, [sessionQuery?.data]);
+
+  useEffect(() => {
+    document.title = `${translatedAppCode}`;
+  }, [appCode, sessionQuery.data, translatedAppCode]);
+
   const values = useMemo(
     () => ({
+      appCode,
       applications: confQuery?.data?.applications,
       confQuery,
       currentApp: confQuery?.data?.currentApp,
@@ -45,24 +82,21 @@ export function OdeClientProvider({ children, params }: AppProviderProps) {
       userDescription: sessionQuery?.data?.userDescription,
       userProfile: sessionQuery?.data?.userProfile,
     }),
-    [confQuery, init, sessionQuery],
+    [appCode, confQuery, init, sessionQuery],
   );
 
   return (
-    <AppProvider params={params}>
-      <OdeClientContext.Provider value={values}>
-        {children}
-      </OdeClientContext.Provider>
-    </AppProvider>
+    <OdeClientContext.Provider value={values}>
+      {children}
+    </OdeClientContext.Provider>
   );
 }
 
 export function useOdeClient() {
-  const appContext = useContext(AppContext);
   const context = useContext(OdeClientContext);
 
-  if (!appContext || !context) {
+  if (!context) {
     throw new Error(`Cannot be used outside of OdeClientProvider`);
   }
-  return { ...appContext, ...context };
+  return context;
 }
