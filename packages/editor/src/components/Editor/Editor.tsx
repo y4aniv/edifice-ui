@@ -12,7 +12,6 @@ import {
 } from "@edifice-ui/react";
 import { BubbleMenu, EditorContent, Content, JSONContent } from "@tiptap/react";
 
-import "katex/dist/katex.min.css";
 import {
   EditorToolbar,
   EditorContext,
@@ -25,6 +24,18 @@ import {
 } from "../..";
 
 //-------- LAZY IMPORTS --------//
+const KatexStyles = lazy(async () => {
+  /**
+   * Lazy import of a CSS file requires :
+   * 1) bundling the CSS as a JS module, which done by Vite, when an `import()` exists.
+   *    => the CSS rules are stringified and exported from the JS module as `default`.
+   * 2) exporting a "ReactNode factory" from the lazy() call.
+   *
+   * Both requirements are implemented below :
+   */
+  const katex = await import("../../styles/katex.scss");
+  return { default: () => <style>{katex.default}</style> };
+});
 const MathsModal = lazy(async () => {
   const module = await import("@edifice-ui/react");
   return { default: module.MathsModal };
@@ -153,7 +164,10 @@ const Editor = forwardRef(
           )}
 
           {editable && mathsModalHandlers.isOpen && (
-            <MathsModal {...mathsModalHandlers} />
+            <>
+              <KatexStyles></KatexStyles>
+              <MathsModal {...mathsModalHandlers} />
+            </>
           )}
 
           {editable && imageModal?.isOpen && imageModal?.currentImage && (
