@@ -13,7 +13,6 @@ import {
 import { BubbleMenu, EditorContent, Content, JSONContent } from "@tiptap/react";
 
 import "katex/dist/katex.min.css";
-import "../../styles/table.scss";
 import {
   EditorToolbar,
   EditorContext,
