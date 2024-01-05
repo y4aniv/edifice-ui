@@ -81,6 +81,7 @@ export class ShareService {
           displayName: group.name,
           id: group.id,
           type: "group",
+          structureName: group.structureName,
         } as ShareSubject;
       });
     const bookmarks: Bookmark[] = await this.directory.getBookMarks();
