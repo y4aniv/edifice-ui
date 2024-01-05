@@ -1,11 +1,12 @@
 import { MouseEventHandler } from "react";
 
 import { AppIcon, Badge, useOdeIcons } from "@edifice-ui/react";
-import { NodeViewWrapper } from "@tiptap/react";
+import { Editor, NodeViewWrapper } from "@tiptap/react";
 import clsx from "clsx";
 
 interface LinkerProps {
   selected: boolean;
+  editor: Editor;
   [x: string]: any;
 }
 
