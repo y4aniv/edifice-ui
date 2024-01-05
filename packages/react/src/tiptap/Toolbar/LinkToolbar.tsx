@@ -74,7 +74,9 @@ const LinkToolbar = ({
   }, [editor?.state]);
 
   const handleShouldShow = () =>
-    editor?.isActive("linker") || editor?.isActive("hyperlink") || false;
+    (editor?.isEditable &&
+      (editor?.isActive("linker") || editor?.isActive("hyperlink"))) ||
+    false;
 
   return (
     <>
