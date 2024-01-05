@@ -155,6 +155,8 @@ const Editor = forwardRef(
         )}
 
         <Suspense fallback={<LoadingScreen />}>
+          <KatexStyles></KatexStyles>
+
           {editable && (
             <MediaLibrary
               appCode={appCode}
@@ -164,10 +166,7 @@ const Editor = forwardRef(
           )}
 
           {editable && mathsModalHandlers.isOpen && (
-            <>
-              <KatexStyles></KatexStyles>
-              <MathsModal {...mathsModalHandlers} />
-            </>
+            <MathsModal {...mathsModalHandlers} />
           )}
 
           {editable && imageModal?.isOpen && imageModal?.currentImage && (
