@@ -111,7 +111,7 @@ export const useMediaLibraryModal = (editor: Editor | null) => {
 
         case "hyperlink": {
           const resourceTabResult = result as InternalLinkTabResult;
-          // Cancel any pre-selected link, see handleLinkEdit()
+          // Cancel any pre-selected link
           if (editor?.isActive("linker")) editor.commands.unsetLinker();
           if (editor?.isActive("hyperlink"))
             editor.commands.toggleMark("hyperlink");
@@ -122,7 +122,7 @@ export const useMediaLibraryModal = (editor: Editor | null) => {
             editor.state.selection.empty &&
             Array.isArray(resourceTabResult.resources)
           ) {
-            // One or more internal link(s) are rendered as a LinkerCard.
+            // One or more internal link(s) are rendered as a Badge.
             resourceTabResult.resources.forEach((link) => {
               editor?.commands.setLinker({
                 href: link.path,
