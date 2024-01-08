@@ -20,7 +20,11 @@ export const useLinkToolbar = (
   const onEdit = useCallback(
     (attrs: LinkerAttributes | HyperlinkAttributes) => {
       // If a link is active, select it.
-      if (editor?.isActive("linker")) editor.commands.selectParentNode();
+      // see https://github.com/ProseMirror/prosemirror-state/blob/88e2a24104481098f0f660e74240c0f846e7fd6e/src/selection.ts#L320
+      // Edit: 2024-01-08 when this function is called, the linker node is already selected !
+      // => Nothing to do, since the linkToolbar only appears when linker node is selected.
+      // if (editor?.isActive("linker"))
+      //   editor?.commands.setNodeSelection(editor?.state.selection.$from.pos);
       if (editor?.isActive("hyperlink"))
         editor.commands.extendMarkRange("hyperlink");
 
