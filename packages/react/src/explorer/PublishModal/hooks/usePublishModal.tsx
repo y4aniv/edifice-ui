@@ -97,6 +97,7 @@ export default function usePublishModal({ onSuccess, resource }: ModalProps) {
 
     try {
       let coverBlob = new Blob();
+
       if (typeof cover === "string") {
         coverBlob = await odeServices.http().get(cover, {
           responseType: "blob",
@@ -145,9 +146,7 @@ export default function usePublishModal({ onSuccess, resource }: ModalProps) {
         userStructureName: resAttachmentSchool.name || user?.structureNames[0],
       };
 
-      const result = await odeServices
-        .resource(application)
-        .publish(parameters);
+      const result = await odeServices.resource(appCode).publish(parameters);
 
       if (result.success) {
         toast.success(<ToastSuccess result={result} />, {
