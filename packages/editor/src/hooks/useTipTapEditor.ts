@@ -97,5 +97,9 @@ export const useTipTapEditor = (editable: boolean, content: Content) => {
     editor?.setEditable(editable);
   }, [editor, editable]);
 
+  useEffect(() => {
+    editor?.commands.setContent(content);
+  }, [editor, content]);
+
   return { editor, editable };
 };
