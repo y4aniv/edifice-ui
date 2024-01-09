@@ -1,6 +1,6 @@
 export * from "./components";
 export * from "./core";
-export * from "./explorer";
+export * from "./common";
 export * from "./hooks";
 export * from "./portal";
 export * from "./widgets";
