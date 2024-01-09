@@ -259,18 +259,17 @@ const ResourceModal = ({
             </div>
           </div>
 
-          {app === APP.BLOG &&
-            isActionAvailable({ workflow: "createPublic", actions }) && (
-              <PublicResource
-                appCode={app}
-                isPublic={isPublic}
-                slug={slug}
-                onCopyToClipBoard={onCopyToClipBoard}
-                onPublicChange={onPublicChange}
-                register={register}
-                resourceName={resourceName}
-              />
-            )}
+          {app === APP.BLOG && isActionAvailable("createPublic", actions) && (
+            <PublicResource
+              appCode={app}
+              isPublic={isPublic}
+              slug={slug}
+              onCopyToClipBoard={onCopyToClipBoard}
+              onPublicChange={onPublicChange}
+              register={register}
+              resourceName={resourceName}
+            />
+          )}
         </form>
       </Modal.Body>
 

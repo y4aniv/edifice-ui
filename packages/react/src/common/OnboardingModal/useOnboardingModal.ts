@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { odeServices } from "edifice-ts-client";
 
+// TODO : use new hook usePreference
 /**
  * getPreference API
  * @returns check onboarding trash param
@@ -13,6 +14,7 @@ const getOnboardingTrash = async (key: string) => {
   return res;
 };
 
+// TODO : use new hook usePreference
 /**
  * savePreference API
  * @returns set onboarding trash param
