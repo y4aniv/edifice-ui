@@ -51,7 +51,7 @@ interface CreateProps extends BaseProps {
   mode: "create";
   createResource: UseMutationResult<
     CreateResult,
-    unknown,
+    Error,
     CreateParameters,
     unknown
   >;
