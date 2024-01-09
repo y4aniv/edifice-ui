@@ -6,6 +6,7 @@ import {
   MediaLibraryRef,
   MediaLibraryResult,
   MediaLibraryType,
+  useWorkspaceFile,
 } from "@edifice-ui/react";
 import { Editor } from "@tiptap/react";
 import { WorkspaceElement } from "edifice-ts-client";
@@ -20,6 +21,8 @@ import { WorkspaceElement } from "edifice-ts-client";
  * }
  */
 export const useMediaLibraryModal = (editor: Editor | null) => {
+  const { remove } = useWorkspaceFile();
+
   /**
    * Convert the result of a successful action in MediaLibrary
    * - to a call to the editor's dedicated command,
@@ -216,7 +219,10 @@ export const useMediaLibraryModal = (editor: Editor | null) => {
   const mediaLibraryRef = useRef<MediaLibraryRef>(null);
 
   //----- Handlers
-  const onCancel = () => {
+  const onCancel = async (uploads?: WorkspaceElement[]) => {
+    if (mediaLibraryRef.current?.type && uploads && uploads.length > 0) {
+      await remove(uploads);
+    }
     mediaLibraryRef.current?.hide();
   };
   const onSuccess = (result: MediaLibraryResult) => {
