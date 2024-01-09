@@ -359,11 +359,16 @@ const MediaLibrary = forwardRef(
         return previous.concat(newUploads);
       });
 
-    const handleTabChange = () => {
+    const resetState = () => {
       setResult(undefined);
       setResultCounter(undefined);
       setLinkTabProps(undefined);
       setDefaultTabId(undefined);
+      setCancellable([]);
+    };
+
+    const handleTabChange = () => {
+      resetState();
     };
 
     const handleOnSuccess = useCallback(() => {
@@ -374,16 +379,12 @@ const MediaLibrary = forwardRef(
       } else if (result) {
         onSuccess(result);
       }
-
-      setCancellable([]);
-      setLinkTabProps(undefined);
-      setDefaultTabId(undefined);
+      resetState();
     }, [onSuccess, onSuccessAction, result]);
 
     const handleOnCancel = () => {
       onCancel(cancellable);
-      setLinkTabProps(undefined);
-      setDefaultTabId(undefined);
+      resetState();
     };
 
     return type ? (
