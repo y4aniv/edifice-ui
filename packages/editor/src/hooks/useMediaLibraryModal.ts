@@ -8,7 +8,7 @@ import {
   MediaLibraryType,
 } from "@edifice-ui/react";
 import { Editor } from "@tiptap/react";
-import { WorkspaceElement } from "edifice-ts-client";
+import { WorkspaceElement, odeServices } from "edifice-ts-client";
 
 /**
  * Custom hook to manage MediaLibrary events in an editor.
@@ -216,7 +216,10 @@ export const useMediaLibraryModal = (editor: Editor | null) => {
   const mediaLibraryRef = useRef<MediaLibraryRef>(null);
 
   //----- Handlers
-  const onCancel = () => {
+  const onCancel = async (uploads?: WorkspaceElement[]) => {
+    if (mediaLibraryRef.current?.type && uploads && uploads.length > 0) {
+      await odeServices.workspace().deleteFile(uploads);
+    }
     mediaLibraryRef.current?.hide();
   };
   const onSuccess = (result: MediaLibraryResult) => {

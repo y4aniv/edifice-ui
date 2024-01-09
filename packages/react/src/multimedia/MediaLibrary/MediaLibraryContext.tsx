@@ -1,5 +1,7 @@
 import { createContext, useContext } from "react";
 
+import { WorkspaceElement } from "edifice-ts-client";
+
 import {
   MediaLibraryType,
   AvailableTab,
@@ -26,6 +28,11 @@ export const MediaLibraryContext = createContext<{
    * Set a innertab-specific callback which gets the result when success button is clicked
    */
   setResult: (result?: MediaLibraryResult) => void;
+
+  /**
+   * Memoize all uploaded elements, to be deleted on cancellation.
+   */
+  addCancellable: (uploads: WorkspaceElement[]) => void;
 
   /**
    * Allow an innertab to switch display to another innertab.
