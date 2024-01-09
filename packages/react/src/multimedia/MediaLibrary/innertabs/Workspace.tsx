@@ -4,8 +4,7 @@ import { Workspace as Component } from "../../Workspace";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 
 export const Workspace = () => {
-  const { type, setResultCounter, setResult, setPreSuccess } =
-    useMediaLibraryContext();
+  const { type, setResultCounter, setResult } = useMediaLibraryContext();
 
   function getDocumentRoleFilter(): Role | Role[] | null {
     switch (type) {
@@ -21,7 +20,6 @@ export const Workspace = () => {
   }
 
   function handleSelect(result: WorkspaceElement[]) {
-    setPreSuccess(undefined);
     setResultCounter(result.length);
     if (result.length) {
       setResult(result);

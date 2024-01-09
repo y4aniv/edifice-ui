@@ -362,6 +362,7 @@ const MediaLibrary = forwardRef(
 
       setLinkTabProps(undefined);
       setDefaultTabId(undefined);
+      setPreSuccess(undefined);
     }, [onSuccess, onSuccessAction, result]);
 
     const handleOnCancel = () => {

@@ -2,10 +2,9 @@ import { Embed } from "../../Embed";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 
 export const Iframe = () => {
-  const { setResult, setPreSuccess } = useMediaLibraryContext();
+  const { setResult } = useMediaLibraryContext();
 
   const handleOnSuccess = (ressource?: string) => {
-    setPreSuccess(undefined);
     setResult(ressource);
   };
 
