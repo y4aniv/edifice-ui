@@ -14,6 +14,7 @@ export const useThumb = ({ isUpdating, selectedResource }: UseThumbProps) => {
   const handleUploadImage = (file: File) => setThumbnail(file);
   const handleDeleteImage = () => setThumbnail("");
 
+  console.log({ isUpdating }, selectedResource?.thumbnail);
   return {
     thumbnail,
     handleDeleteImage,

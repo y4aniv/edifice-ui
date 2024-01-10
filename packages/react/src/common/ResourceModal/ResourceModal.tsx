@@ -117,6 +117,7 @@ const ResourceModal = ({
 
   const { thumbnail, handleDeleteImage, handleUploadImage } = useThumb({
     isUpdating,
+    selectedResource: isUpdating ? props.selectedResource : undefined,
   });
 
   const onSubmit: SubmitHandler<FormInputs> = async function (
