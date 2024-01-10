@@ -37,7 +37,14 @@ export default defineConfig({
         plugins: ["@babel/plugin-transform-react-pure-annotations"],
       },
     }),
-    dts(),
+    dts({
+      compilerOptions: {
+        baseUrl: ".",
+        paths: {
+          "@tanstack/react-query": ["node_modules/@tanstack/react-query"],
+        },
+      },
+    }),
     visualizer(),
   ],
 });
