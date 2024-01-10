@@ -89,8 +89,8 @@ export async function updateImage(
     imgDatasource instanceof HTMLImageElement
       ? PIXI.Texture.from(imgDatasource)
       : imgDatasource instanceof PIXI.Sprite
-      ? imgDatasource
-      : await PIXI.Texture.fromURL(imgDatasource);
+        ? imgDatasource
+        : await PIXI.Texture.fromURL(imgDatasource);
   // Create sprite from texture and set name
   const sprite =
     texture instanceof PIXI.Sprite ? texture : PIXI.Sprite.from(texture, {});

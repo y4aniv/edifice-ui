@@ -4,7 +4,7 @@ export * from "./useDebounce";
 export * from "./useDropdown";
 export * from "./useDropzone";
 export * from "./useDropzone";
-export * from "./useHotToast";
+export * from "./useToast";
 export * from "./useHover";
 export * from "./useImage";
 export * from "./useKeyPress";

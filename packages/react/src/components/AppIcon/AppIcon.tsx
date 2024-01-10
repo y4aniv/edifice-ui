@@ -87,8 +87,8 @@ const AppIcon = forwardRef(
       typeof app === "string"
         ? app
         : app?.icon !== undefined
-        ? app.icon
-        : "placeholder";
+          ? app.icon
+          : "placeholder";
     const displayName =
       typeof app !== "string" && app?.displayName !== undefined
         ? app.displayName
