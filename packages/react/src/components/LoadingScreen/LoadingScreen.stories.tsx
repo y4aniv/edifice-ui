@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
 import LoadingScreen from "./LoadingScreen";
-import React from "react";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof LoadingScreen> = {
@@ -29,13 +28,29 @@ export const Base: Story = {
 };
 
 export const Position: Story = {
-  render: (args) => <LoadingScreen />,
-
+  render: (args) => <LoadingScreen {...args} />,
+  args: {
+    position: true,
+  },
   parameters: {
     docs: {
       description: {
         story:
           "Position of the component is set to `true` per default. If set to `false`, LoadingScreen will take the whole screen and shows an overlay",
+      },
+    },
+  },
+};
+
+export const Caption: Story = {
+  render: (args) => <LoadingScreen {...args} />,
+  args: {
+    caption: "Loading...",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Caption will show text below the loading icon.",
       },
     },
   },

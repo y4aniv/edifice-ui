@@ -23,6 +23,13 @@ export default defineConfig({
       external: [
         ...Object.keys(dependencies),
         ...Object.keys(peerDependencies),
+        "dayjs/plugin/customParseFormat",
+        "dayjs/plugin/relativeTime",
+        "dayjs/locale/de",
+        "dayjs/locale/es",
+        "dayjs/locale/pt",
+        "dayjs/locale/fr",
+        "dayjs/locale/it",
         "swiper/react",
         "swiper/modules",
         "react/jsx-runtime",

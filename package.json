@@ -15,9 +15,7 @@
   "type": "module",
   "scripts": {
     "build": "turbo run build",
-    "check:components": "package-check --cwd=packages/components",
-    "check:core": "package-check --cwd=packages/core",
-    "check:hooks": "package-check --cwd=packages/hooks",
+    "check:react": "package-check --cwd=packages/react",
     "check:icons": "package-check --cwd=packages/icons",
     "clean": "rm -rf */**/node_modules && rm -rf node_modules && rm -f pnpm-lock.yaml && rm -rf */**/dist && rm -rf packages/**/.turbo",
     "clean:dist": "rm -rf */**/dist",
@@ -76,6 +74,6 @@
   },
   "packageManager": "pnpm@8.6.6",
   "engines": {
-    "node": "18"
+    "node": "18 || 20"
   }
 }

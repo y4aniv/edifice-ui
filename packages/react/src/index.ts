@@ -5,3 +5,4 @@ export * from "./hooks";
 export * from "./portal";
 export * from "./widgets";
 export * from "./utils";
+export * from "./multimedia";

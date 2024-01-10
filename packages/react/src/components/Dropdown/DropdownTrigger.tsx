@@ -56,7 +56,13 @@ const DropdownTrigger = forwardRef(
     const { className, ...restTriggerProps } = triggerProps;
 
     const mergedProps = { ...restTriggerProps, ...restProps };
-    const dropdownTrigger = clsx(size, variant, { "w-100": block }, className);
+    const dropdownTrigger = clsx(
+      "dropdown-toggle ",
+      size,
+      variant,
+      { "w-100": block },
+      className,
+    );
 
     return (
       <button

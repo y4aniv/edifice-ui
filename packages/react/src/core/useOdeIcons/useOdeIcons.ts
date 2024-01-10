@@ -26,17 +26,24 @@ export default function useOdeIcons() {
   };
   /**
    * Map between apps and their CSS code.
-   * @param app
+   * @param app an IWebApp, or an app prefix
    */
-  function getIconCode(app: IWebApp | undefined): string | undefined {
-    let appCode: string | undefined = "";
+  function getIconCode(app: IWebApp | string | undefined): string {
+    let appCode: string = "";
 
-    appCode =
-      app?.icon !== undefined ? app?.icon.trim().toLowerCase() : "placeholder";
+    if (typeof app === "string") {
+      appCode = app;
+    } else {
+      appCode =
+        app?.icon !== undefined
+          ? app?.icon.trim().toLowerCase()
+          : "placeholder";
+    }
 
     if (appCode && appCode.length > 0) {
       if (appCode.endsWith("-large")) appCode = appCode.replace("-large", "");
-    } else {
+    } else if (typeof app === "object") {
+      // fallback value, probably won't ever happen
       appCode =
         app?.displayName !== undefined
           ? app?.displayName.trim().toLowerCase()
@@ -63,6 +70,9 @@ export default function useOdeIcons() {
       case "emploi du temps":
         appCode = "edt";
         break;
+      case "formulaire":
+        appCode = "forms";
+        break;
       case "messagerie":
         appCode = "conversation";
         break;
@@ -76,6 +86,9 @@ export default function useOdeIcons() {
       case "diary":
       case "cahier de texte 2d":
         appCode = "cahier-textes";
+        break;
+      case "scrapbook":
+        appCode = "scrap-book";
         break;
       default:
         break;
@@ -94,20 +107,20 @@ export default function useOdeIcons() {
 
   /**
    *
-   * @param app
+   * @param app an IWebApp, or an app prefix
    * @return the CSS class used to style icons
    */
-  function getIconClass(app: IWebApp): string {
+  function getIconClass(app: IWebApp | string): string {
     const appCode = getIconCode(app);
     if (appCode) return `color-app-${appCode}`;
     return `color-app-placeholder`;
   }
   /**
    *
-   * @param app
+   * @param app an IWebApp, or an app prefix
    * @return the CSS class used to style icons
    */
-  function getBackgroundIconClass(app: IWebApp): string {
+  function getBackgroundIconClass(app: IWebApp | string): string {
     const appCode = getIconCode(app);
     if (appCode) return `bg-app-${appCode}`;
     return `bg-app-placeholder`;
@@ -115,10 +128,10 @@ export default function useOdeIcons() {
 
   /**
    *
-   * @param app
+   * @param app an IWebApp, or an app prefix
    * @return the CSS class used to style icons
    */
-  function getBackgroundLightIconClass(app: IWebApp): string {
+  function getBackgroundLightIconClass(app: IWebApp | string): string {
     const appCode = getIconCode(app);
     if (appCode) return `bg-light-${appCode}`;
     return `bg-light-placeholder`;

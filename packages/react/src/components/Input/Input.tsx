@@ -2,6 +2,7 @@ import { forwardRef, Ref } from "react";
 
 import clsx from "clsx";
 
+import { Size } from "../../types";
 import { useFormControl } from "../Form/FormContext";
 
 export type OmitInputProps =
@@ -16,7 +17,7 @@ export interface InputProps
   /**
    * Control size of input
    */
-  size: "sm" | "md" | "lg";
+  size: Size;
   /**
    * Type of input (text, password, ..)
    */

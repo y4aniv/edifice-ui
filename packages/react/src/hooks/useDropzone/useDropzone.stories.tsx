@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 
 import useDropzone from "./useDropzone";
 import { Meta, StoryObj } from "@storybook/react";
@@ -16,14 +16,21 @@ type Story = StoryObj<typeof useDropzone>;
 
 export const Example: Story = {
   render: (args) => {
-    const inputRef = useRef<HTMLInputElement | null>(null);
+    const {
+      inputRef,
+      files,
+      handleOnChange,
+      handleDragLeave,
+      handleDragging,
+      handleDrop,
+    } = useDropzone();
 
     const [preview, setPreview] = useState<Record<string, string>>({
       name: "",
       image: "",
     });
 
-    const handleChange = (files?: FileList | null) => {
+    useEffect(() => {
       setPreview({ ...preview, name: "", image: "" });
 
       const file = files?.[0];
@@ -38,16 +45,7 @@ export const Example: Story = {
       };
 
       setPreview(newPreview);
-    };
-
-    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-      handleChange(event.target.files);
-    };
-
-    const { handleDragLeave, handleDragging, handleDrop } = useDropzone(
-      inputRef,
-      handleChange,
-    );
+    }, [files]);
 
     return (
       <>
@@ -70,7 +68,7 @@ export const Example: Story = {
             type="file"
             name="attachement-input"
             id="attachement-input"
-            onChange={handleInputChange}
+            onChange={handleOnChange}
             hidden
           />
         </div>
