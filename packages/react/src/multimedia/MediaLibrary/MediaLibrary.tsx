@@ -364,6 +364,7 @@ const MediaLibrary = forwardRef(
       setResultCounter(undefined);
       setLinkTabProps(undefined);
       setDefaultTabId(undefined);
+      setPreSuccess(undefined);
       setCancellable([]);
     };
 
