@@ -117,38 +117,38 @@ importers:
   packages/editor:
     dependencies:
       '@edifice-tiptap-extensions/extension-attachment':
-        specifier: develop-b2school
-        version: 1.0.0-develop-b2school.2(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+        specifier: develop
+        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-audio':
-        specifier: develop-b2school
-        version: 1.0.0-develop-b2school.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+        specifier: develop
+        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-hyperlink':
-        specifier: develop-b2school
-        version: 1.0.0-develop-b2school.2(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3)
+        specifier: develop
+        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-iframe':
-        specifier: develop-b2school
-        version: 1.0.0-develop-b2school.2(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+        specifier: develop
+        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-image':
-        specifier: develop-b2school
-        version: 1.0.0-develop-b2school.3(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+        specifier: develop
+        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-linker':
-        specifier: develop-b2school
-        version: 1.0.0-develop-b2school.3(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3)
+        specifier: develop
+        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-speechrecognition':
-        specifier: develop-b2school
-        version: 1.0.0-develop-b2school.2(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+        specifier: develop
+        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-speechsynthesis':
-        specifier: develop-b2school
-        version: 1.0.0-develop-b2school.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+        specifier: develop
+        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-table-cell':
-        specifier: develop-b2school
-        version: 1.0.0-develop-b2school.2(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+        specifier: develop
+        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-typosize':
-        specifier: develop-b2school
-        version: 1.0.0-develop-b2school.2(@tiptap/core@2.0.3)(@tiptap/extension-heading@2.0.3)(@tiptap/pm@2.0.3)
+        specifier: develop
+        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/extension-heading@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-video':
-        specifier: develop-b2school
-        version: 1.0.0-develop-b2school.4(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+        specifier: develop
+        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@react-spring/web':
         specifier: 9.7.3
         version: 9.7.3(react-dom@18.2.0)(react@18.2.0)
@@ -259,8 +259,8 @@ importers:
         specifier: 8.2.0
         version: 8.2.0
       edifice-ts-client:
-        specifier: develop-b2school
-        version: 1.1.0-develop-b2school.18
+        specifier: develop
+        version: 1.0.5-develop.1
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -1743,8 +1743,8 @@ packages:
     engines: {node: '>=10.0.0'}
     dev: true
 
-  /@edifice-tiptap-extensions/extension-attachment@1.0.0-develop-b2school.2(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-OVAm0/R3QB6tU+zVAVAMNE5nc9bAYqE1pPbxY/5AGjf/2PaarQQyW4ZHt44tayWCwgBYbP0xFlqCGCw+AKR/lQ==}
+  /@edifice-tiptap-extensions/extension-attachment@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-hbXyqR4TmZCtE6uSgR/UVFwQzg5h6FwnAupTxXG2HETD73Tk21/0oJbd7Spk6fJHdEZ8TJqA6Lp3oBfJnHRfSg==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/pm': 2.0.3
@@ -1753,8 +1753,8 @@ packages:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-audio@1.0.0-develop-b2school.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-xsm1RQBlEo7igFhLpzWajopPUrHjLOF6tuU0BytESDmnTc4osA3ngXYb2/yjHJ84Ib8cSp1NVWsgj2ryyusOQw==}
+  /@edifice-tiptap-extensions/extension-audio@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-Ha1+ipGM04JAxTCcvheMAaTAxB0tK2+mxjU6Qz2QFTd3IYTcD99k+M8vsCF0aQiTvc4c+74K2dFuXpBdvAo79Q==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/pm': 2.0.3
@@ -1763,40 +1763,8 @@ packages:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-hyperlink@1.0.0-develop-b2school.2(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-Zrns/27qHm+DGOjMiACvjVMU1ocqkfHgK77KRJ3d0wH0MCxZ7SKdlvuC0c/5zwGlTb5PKSUYKoR5ncN1MqNjsg==}
-    peerDependencies:
-      '@tiptap/core': 2.0.3
-      '@tiptap/extension-link': 2.0.3
-      '@tiptap/pm': 2.0.3
-    dependencies:
-      '@tiptap/core': 2.0.3(@tiptap/pm@2.0.3)
-      '@tiptap/extension-link': 2.0.3(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
-      '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
-    dev: false
-
-  /@edifice-tiptap-extensions/extension-iframe@1.0.0-develop-b2school.2(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-qUp2juz/rRxBtn2OSPjbUokk3G4ZsLkRGWu5h8BP7YqTt00l2gQbS3TZvVKC7BAP7n9RwEsTjeNhuIthAznTjg==}
-    peerDependencies:
-      '@tiptap/core': 2.0.3
-      '@tiptap/pm': 2.0.3
-    dependencies:
-      '@tiptap/core': 2.0.3(@tiptap/pm@2.0.3)
-      '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
-    dev: false
-
-  /@edifice-tiptap-extensions/extension-image@1.0.0-develop-b2school.3(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-qGlroPtuq1hSebgk9NgAU74kCIm7azJUi64OguW6j0UV6x8kntXgfBeE0Wx0bsxR8K0wo4n8Tk3qY8i5befC9w==}
-    peerDependencies:
-      '@tiptap/core': 2.0.3
-      '@tiptap/pm': 2.0.3
-    dependencies:
-      '@tiptap/core': 2.0.3(@tiptap/pm@2.0.3)
-      '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
-    dev: false
-
-  /@edifice-tiptap-extensions/extension-linker@1.0.0-develop-b2school.3(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-KOk4fugG2DMbUR1H57tKJpe94+dgkoRMgKfJdKzq1S7PB3kdXJrtiInkFXeQfux5tW2mABI0sMhYFNoXWmp5lQ==}
+  /@edifice-tiptap-extensions/extension-hyperlink@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-Cjue5LKUkPin6Uh4e+Nk3iAiHrcV2ykLSuW42SeMnpvBJot5bvjpLIqNJrD2gASY63a21hPqKBlYEw8OqizIwQ==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/extension-link': 2.0.3
@@ -1807,8 +1775,8 @@ packages:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-speechrecognition@1.0.0-develop-b2school.2(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-Bw+wqHiZ6kPTbyCAqUMzQ6ig+MpVXE3mmvMc+TZE5U7NGsK+A+YUAsr/3ZzPzEfZIoG5CMtQH+lMpZWlEQoGlA==}
+  /@edifice-tiptap-extensions/extension-iframe@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-LNiIrfHk0VTBMNGAgNA2n3AtWgt3ASEu8IqlV7+oHw7v8zjPihF6BKL1oahy87sFdEkdiuTA0iag2NyutL8Pqw==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/pm': 2.0.3
@@ -1817,8 +1785,8 @@ packages:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-speechsynthesis@1.0.0-develop-b2school.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-exp50E6M9OYUyuCxwQk04dnE7zRSo3TjPohtZpu3gcXxX1u3T6fSExCuD6QkHJw+Se85ssI/+r+i8bxRetRRpw==}
+  /@edifice-tiptap-extensions/extension-image@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-gL1McNBGUYBmU5qIKYCUUjMZQ/npdyLe1PU2N7rsWNUP04Rr1tkl4fmgsU3R9e3mqj/I7oOFu8K6T2dD+EeU/g==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/pm': 2.0.3
@@ -1827,8 +1795,20 @@ packages:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-table-cell@1.0.0-develop-b2school.2(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-zietPHlZJhju4b5MC+YsrV3RuSlsHjL8mGwAI2u09Qd7sNMofc0sy0WEoEaBCL0jAFVsvnnqZiU9BnTyjlPtiA==}
+  /@edifice-tiptap-extensions/extension-linker@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-+uWdee+VZthlK7NI7PLVFLD6EnHSGOBiktELMy/aVkTl+aesLBcleVstl/1rJfSCFvrHQdX6kwytxFZZ9mNmAw==}
+    peerDependencies:
+      '@tiptap/core': 2.0.3
+      '@tiptap/extension-link': 2.0.3
+      '@tiptap/pm': 2.0.3
+    dependencies:
+      '@tiptap/core': 2.0.3(@tiptap/pm@2.0.3)
+      '@tiptap/extension-link': 2.0.3(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+      '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
+    dev: false
+
+  /@edifice-tiptap-extensions/extension-speechrecognition@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-B902UYAqcZVSR367Sgv4d5zIuq6a/luYWxFPvUFESudtyTl9qp279cEYz2nP7Lq5DsLJ0h25gdTAUHXksCQ+xA==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/pm': 2.0.3
@@ -1837,8 +1817,28 @@ packages:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-typosize@1.0.0-develop-b2school.2(@tiptap/core@2.0.3)(@tiptap/extension-heading@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-oVRnMA5H1mYXteM7+6j6Br7UoyDavJgcuRXIkPxoF8wLII51+cQkEdsmyLhsRXOYBsJFAdovdN4oh8h0K9xz7g==}
+  /@edifice-tiptap-extensions/extension-speechsynthesis@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-oiK3D/4EXgq2RSq+TR0Nf5TgTxbR92qJtrcg04xmajLhOWj9QVJyYuAdSG926KXp1RkB3hVy5nDZCFfryqg+eg==}
+    peerDependencies:
+      '@tiptap/core': 2.0.3
+      '@tiptap/pm': 2.0.3
+    dependencies:
+      '@tiptap/core': 2.0.3(@tiptap/pm@2.0.3)
+      '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
+    dev: false
+
+  /@edifice-tiptap-extensions/extension-table-cell@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-MaXFtPBJUMfpyh5ez8riFv2pRv7cAHXxyiXG8mbdJfktR9XtIniWs8KTqtZe2B4CmGpw0i/BYsMbuT6M3vBgyg==}
+    peerDependencies:
+      '@tiptap/core': 2.0.3
+      '@tiptap/pm': 2.0.3
+    dependencies:
+      '@tiptap/core': 2.0.3(@tiptap/pm@2.0.3)
+      '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
+    dev: false
+
+  /@edifice-tiptap-extensions/extension-typosize@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/extension-heading@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-bI19TIP+LWhmTRLmMRPxpEY8EuajpXpZJsFDYcyLzHrEgui7/8m9Ihhmm+pS25jpe7/8ley9+jhvP4PebTWdKA==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/extension-heading': 2.0.3
@@ -1849,8 +1849,8 @@ packages:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-video@1.0.0-develop-b2school.4(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-FO6JX8vECg73uyn3CKyBXpCGSKlv9KyNxyUFpGBxyZ5y/66s0m4/wWxOcy9J30gIV11uW9uYIZ2yRfMqrO4x3Q==}
+  /@edifice-tiptap-extensions/extension-video@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-w/B2f0eZmJJRe8fwSVEsyQiVTqy320wPvHIbQtkqTa6NJiZFKKtl0Q3d29hgQV003T1/fo2k1E0xU11cC5E3/g==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/pm': 2.0.3
@@ -8024,6 +8024,17 @@ packages:
 
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
+    dev: true
+
+  /edifice-ts-client@1.0.5-develop.1:
+    resolution: {integrity: sha512-QHIjj0eCA9vQrYTjDjErG/56FV5VgsDsPaX8pcPAKQUEKkAvDu3sBFhqo2z4pRbG/LBj7f+lWhZ6OLX9EHmY4g==}
+    engines: {node: 16 || 18}
+    dependencies:
+      axios: 1.4.0
+      core-js: 3.32.0
+      rxjs: 7.8.1
+    transitivePeerDependencies:
+      - debug
     dev: true
 
   /edifice-ts-client@1.1.0-develop-b2school.18:
