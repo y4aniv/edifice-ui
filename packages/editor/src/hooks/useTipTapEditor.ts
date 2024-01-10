@@ -27,8 +27,8 @@ import Typography from "@tiptap/extension-typography";
 import Underline from "@tiptap/extension-underline";
 import { useEditor, Content } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-// eslint-disable-next-line import/order
 import { Mathematics } from "@tiptap-pro/extension-mathematics";
+
 import {
   AttachmentNodeView,
   AttachmentRenderer,

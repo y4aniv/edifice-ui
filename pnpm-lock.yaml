@@ -46,7 +46,7 @@ importers:
         version: 7.6.6(react-dom@18.2.0)(react@18.2.0)
       '@turbo/gen':
         specifier: 1.11.2
-        version: 1.11.2(@types/node@20.8.9)(typescript@5.3.3)
+        version: 1.11.2(@types/node@20.10.8)(typescript@5.3.3)
       '@typescript-eslint/eslint-plugin':
         specifier: 6.15.0
         version: 6.15.0(@typescript-eslint/parser@6.15.0)(eslint@8.56.0)(typescript@5.3.3)
@@ -109,31 +109,31 @@ importers:
         version: 5.3.3
       vite:
         specifier: 4.5.1
-        version: 4.5.1(@types/node@20.8.9)
+        version: 4.5.1(@types/node@20.10.8)
       vite-plugin-dts:
         specifier: 3.7.0
-        version: 3.7.0(@types/node@20.8.9)(typescript@5.3.3)(vite@4.5.1)
+        version: 3.7.0(@types/node@20.10.8)(typescript@5.3.3)(vite@4.5.1)
 
   packages/editor:
     dependencies:
       '@edifice-tiptap-extensions/extension-attachment':
         specifier: develop
-        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+        version: 1.0.0-develop.3(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-audio':
         specifier: develop
-        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+        version: 1.0.0-develop.3(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-hyperlink':
         specifier: develop
-        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3)
+        version: 1.0.0-develop.3(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-iframe':
         specifier: develop
         version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-image':
         specifier: develop
-        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+        version: 1.0.0-develop.3(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-linker':
         specifier: develop
-        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3)
+        version: 1.0.0-develop.3(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-speechrecognition':
         specifier: develop
         version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
@@ -142,10 +142,10 @@ importers:
         version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-table-cell':
         specifier: develop
-        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+        version: 1.0.0-develop.4(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-typosize':
         specifier: develop
-        version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/extension-heading@2.0.3)(@tiptap/pm@2.0.3)
+        version: 1.0.0-develop.3(@tiptap/core@2.0.3)(@tiptap/extension-heading@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-video':
         specifier: develop
         version: 1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
@@ -260,7 +260,7 @@ importers:
         version: 8.2.0
       edifice-ts-client:
         specifier: develop
-        version: 1.0.5-develop.1
+        version: 1.1.0-develop.1
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -314,10 +314,10 @@ importers:
         version: 2.11.8
       '@tiptap/pm':
         specifier: 2.0.3
-        version: 2.0.3(@tiptap/core@2.0.3)
+        version: 2.0.3(@tiptap/core@2.1.15)
       '@tiptap/react':
         specifier: 2.0.3
-        version: 2.0.3(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)(react-dom@18.2.0)(react@18.2.0)
+        version: 2.0.3(@tiptap/core@2.1.15)(@tiptap/pm@2.0.3)(react-dom@18.2.0)(react@18.2.0)
       '@tiptap/starter-kit':
         specifier: 2.0.3
         version: 2.0.3(@tiptap/pm@2.0.3)
@@ -1743,8 +1743,8 @@ packages:
     engines: {node: '>=10.0.0'}
     dev: true
 
-  /@edifice-tiptap-extensions/extension-attachment@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-hbXyqR4TmZCtE6uSgR/UVFwQzg5h6FwnAupTxXG2HETD73Tk21/0oJbd7Spk6fJHdEZ8TJqA6Lp3oBfJnHRfSg==}
+  /@edifice-tiptap-extensions/extension-attachment@1.0.0-develop.3(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-PEng4gTDhr+l6uI+fwVOErWr1NBxDh3soE5RS9a/I4HBVy5Lc/p2VW0PGlhVBNM1dhwmRrFhq/xt4h6Tr+8Akg==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/pm': 2.0.3
@@ -1753,8 +1753,8 @@ packages:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-audio@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-Ha1+ipGM04JAxTCcvheMAaTAxB0tK2+mxjU6Qz2QFTd3IYTcD99k+M8vsCF0aQiTvc4c+74K2dFuXpBdvAo79Q==}
+  /@edifice-tiptap-extensions/extension-audio@1.0.0-develop.3(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-QzC1V5rOgns4BMFFTzoW2wZv1+BotiFD4Q5gXHCgPo+vTqKxWoj0XtvOqRJqw9HM5R5qOJr/YGy/R+e7s7NZ0g==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/pm': 2.0.3
@@ -1763,8 +1763,8 @@ packages:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-hyperlink@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-Cjue5LKUkPin6Uh4e+Nk3iAiHrcV2ykLSuW42SeMnpvBJot5bvjpLIqNJrD2gASY63a21hPqKBlYEw8OqizIwQ==}
+  /@edifice-tiptap-extensions/extension-hyperlink@1.0.0-develop.3(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-XwErwkaw9f7Lc30oQf2OuQdTf8y8PQFCoejE038OUQH6qA1L5LOeN3W6UJNa6klx1Km2ujo7YcAEwY2QVbBjng==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/extension-link': 2.0.3
@@ -1785,8 +1785,8 @@ packages:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-image@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-gL1McNBGUYBmU5qIKYCUUjMZQ/npdyLe1PU2N7rsWNUP04Rr1tkl4fmgsU3R9e3mqj/I7oOFu8K6T2dD+EeU/g==}
+  /@edifice-tiptap-extensions/extension-image@1.0.0-develop.3(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-EgpqtwsUmfQMe6aQ4Ir/HLFUxv/ejLGyu5G2vewUdOBlgpK3JN2PHzKjGuJ/ApfQlNVORMgmnynw+WW/LId66Q==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/pm': 2.0.3
@@ -1795,8 +1795,8 @@ packages:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-linker@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-+uWdee+VZthlK7NI7PLVFLD6EnHSGOBiktELMy/aVkTl+aesLBcleVstl/1rJfSCFvrHQdX6kwytxFZZ9mNmAw==}
+  /@edifice-tiptap-extensions/extension-linker@1.0.0-develop.3(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-sYIPRDYICyh6qDpjlbz/Ex/SJS8I5npc23P6YzUIF0uD1XKgeDmHBbVMwZUmD0XwZ1HPZUBosPMysdx4r1yF+A==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/extension-link': 2.0.3
@@ -1827,8 +1827,8 @@ packages:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-table-cell@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-MaXFtPBJUMfpyh5ez8riFv2pRv7cAHXxyiXG8mbdJfktR9XtIniWs8KTqtZe2B4CmGpw0i/BYsMbuT6M3vBgyg==}
+  /@edifice-tiptap-extensions/extension-table-cell@1.0.0-develop.4(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-UTPuuwgrkJMuE/YZTnvOmMLTw8lh4R4VIEu//gO9rWyuuhBp6bBQBkvv4TBxlmif+HV/WNq6kXQIwxM3RSM7UQ==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/pm': 2.0.3
@@ -1837,8 +1837,8 @@ packages:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-typosize@1.0.0-develop.1(@tiptap/core@2.0.3)(@tiptap/extension-heading@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-bI19TIP+LWhmTRLmMRPxpEY8EuajpXpZJsFDYcyLzHrEgui7/8m9Ihhmm+pS25jpe7/8ley9+jhvP4PebTWdKA==}
+  /@edifice-tiptap-extensions/extension-typosize@1.0.0-develop.3(@tiptap/core@2.0.3)(@tiptap/extension-heading@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-DBHlRtySpDZ1tj5SRHyR/ON/orpauMf95CWAQxreWGvqMwEvr6os/BgTeJS1vgMniMXZdYDummBMe/raygbwgw==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/extension-heading': 2.0.3
@@ -2267,7 +2267,7 @@ packages:
       magic-string: 0.27.0
       react-docgen-typescript: 2.2.2(typescript@5.3.3)
       typescript: 5.3.3
-      vite: 4.5.1(@types/node@20.8.9)
+      vite: 4.5.1(@types/node@20.10.8)
     dev: true
 
   /@jridgewell/gen-mapping@0.3.3:
@@ -2399,24 +2399,24 @@ packages:
       react: 18.2.0
     dev: true
 
-  /@microsoft/api-extractor-model@7.28.3(@types/node@20.8.9):
+  /@microsoft/api-extractor-model@7.28.3(@types/node@20.10.8):
     resolution: {integrity: sha512-wT/kB2oDbdZXITyDh2SQLzaWwTOFbV326fP0pUwNW00WeliARs0qjmXBWmGWardEzp2U3/axkO3Lboqun6vrig==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.62.0(@types/node@20.8.9)
+      '@rushstack/node-core-library': 3.62.0(@types/node@20.10.8)
     transitivePeerDependencies:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor@7.39.0(@types/node@20.8.9):
+  /@microsoft/api-extractor@7.39.0(@types/node@20.10.8):
     resolution: {integrity: sha512-PuXxzadgnvp+wdeZFPonssRAj/EW4Gm4s75TXzPk09h3wJ8RS3x7typf95B4vwZRrPTQBGopdUl+/vHvlPdAcg==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.28.3(@types/node@20.8.9)
+      '@microsoft/api-extractor-model': 7.28.3(@types/node@20.10.8)
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.62.0(@types/node@20.8.9)
+      '@rushstack/node-core-library': 3.62.0(@types/node@20.10.8)
       '@rushstack/rig-package': 0.5.1
       '@rushstack/ts-command-line': 4.17.1
       colors: 1.2.5
@@ -4003,7 +4003,7 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@rushstack/node-core-library@3.62.0(@types/node@20.8.9):
+  /@rushstack/node-core-library@3.62.0(@types/node@20.10.8):
     resolution: {integrity: sha512-88aJn2h8UpSvdwuDXBv1/v1heM6GnBf3RjEy6ZPP7UnzHNCqOHA2Ut+ScYUbXcqIdfew9JlTAe3g+cnX9xQ/Aw==}
     peerDependencies:
       '@types/node': '*'
@@ -4011,7 +4011,7 @@ packages:
       '@types/node':
         optional: true
     dependencies:
-      '@types/node': 20.8.9
+      '@types/node': 20.10.8
       colors: 1.2.5
       fs-extra: 7.0.1
       import-lazy: 4.0.0
@@ -4362,7 +4362,7 @@ packages:
       magic-string: 0.30.5
       rollup: 3.29.4
       typescript: 5.3.3
-      vite: 4.5.1(@types/node@20.8.9)
+      vite: 4.5.1(@types/node@20.10.8)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -4725,7 +4725,7 @@ packages:
       react: 18.2.0
       react-docgen: 7.0.2
       react-dom: 18.2.0(react@18.2.0)
-      vite: 4.5.1(@types/node@20.8.9)
+      vite: 4.5.1(@types/node@20.10.8)
     transitivePeerDependencies:
       - '@preact/preset-vite'
       - encoding
@@ -5209,6 +5209,14 @@ packages:
     dependencies:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
 
+  /@tiptap/core@2.1.15(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-bsSUOQ9/OrQ3O4OFrMzjbCcShwHUS0w71DZoZTkOElnUFK2fu6IjDh8kbZyIxMW+sWuvLK/KePLdHOKOl1l/3Q==}
+    peerDependencies:
+      '@tiptap/pm': ^2.0.0
+    dependencies:
+      '@tiptap/pm': 2.0.3(@tiptap/core@2.1.15)
+    dev: false
+
   /@tiptap/extension-blockquote@2.1.15(@tiptap/core@2.0.3):
     resolution: {integrity: sha512-H7zKKL85ZefhXS0ye3YYCUemStcs3PQLuSznR/T/KX3ds7AMhHbfRx3nRbMYYUT2dHd0DVVrhgdQPu4HhwbZVQ==}
     peerDependencies:
@@ -5232,6 +5240,17 @@ packages:
     dependencies:
       '@tiptap/core': 2.0.3(@tiptap/pm@2.0.3)
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
+      tippy.js: 6.3.7
+    dev: false
+
+  /@tiptap/extension-bubble-menu@2.1.15(@tiptap/core@2.1.15)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-nHTeIYKruau6KL7fh1pvWBrzVXH1YE7S96RPPQ6dNwZjb9F3tXNVrIpPhR3Pafhy4LGHYvWYiZekc3Ir0dM4aQ==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.1.15(@tiptap/pm@2.0.3)
+      '@tiptap/pm': 2.0.3(@tiptap/core@2.1.15)
       tippy.js: 6.3.7
     dev: false
 
@@ -5297,6 +5316,17 @@ packages:
     dependencies:
       '@tiptap/core': 2.0.3(@tiptap/pm@2.0.3)
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
+      tippy.js: 6.3.7
+    dev: false
+
+  /@tiptap/extension-floating-menu@2.1.15(@tiptap/core@2.1.15)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-2qrRE2HpF2vgYK72+CbT6xrhlShw4dS2xPV6kuXaYuBHR7tiyeGusCg7CXr7mZxIdTVj/+nNj3GCtST/+A7d5w==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.1.15(@tiptap/pm@2.0.3)
+      '@tiptap/pm': 2.0.3(@tiptap/core@2.1.15)
       tippy.js: 6.3.7
     dev: false
 
@@ -5547,6 +5577,32 @@ packages:
       prosemirror-transform: 1.8.0
       prosemirror-view: 1.32.7
 
+  /@tiptap/pm@2.0.3(@tiptap/core@2.1.15):
+    resolution: {integrity: sha512-I9dsInD89Agdm1QjFRO9dmJtU1ldVSILNPW0pEhv9wYqYVvl4HUj/JMtYNqu2jWrCHNXQcaX/WkdSdvGJtmg5g==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.1.15(@tiptap/pm@2.0.3)
+      prosemirror-changeset: 2.2.1
+      prosemirror-collab: 1.3.1
+      prosemirror-commands: 1.5.2
+      prosemirror-dropcursor: 1.8.1
+      prosemirror-gapcursor: 1.3.2
+      prosemirror-history: 1.3.2
+      prosemirror-inputrules: 1.3.0
+      prosemirror-keymap: 1.2.2
+      prosemirror-markdown: 1.12.0
+      prosemirror-menu: 1.2.4
+      prosemirror-model: 1.19.4
+      prosemirror-schema-basic: 1.2.2
+      prosemirror-schema-list: 1.3.0
+      prosemirror-state: 1.4.3
+      prosemirror-tables: 1.3.5
+      prosemirror-trailing-node: 2.0.7(prosemirror-model@1.19.4)(prosemirror-state@1.4.3)(prosemirror-view@1.32.7)
+      prosemirror-transform: 1.8.0
+      prosemirror-view: 1.32.7
+    dev: false
+
   /@tiptap/react@2.0.3(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-fiAh8Lk+/NBPAR/PE4Kc/aLiBUbUYI/CpAopz8DI9eInNyV8h8LAGa9uFILJQF/TNu0tclJ4rV0sWc7Se0FZMw==}
     peerDependencies:
@@ -5559,6 +5615,22 @@ packages:
       '@tiptap/extension-bubble-menu': 2.1.15(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@tiptap/extension-floating-menu': 2.1.15(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@tiptap/react@2.0.3(@tiptap/core@2.1.15)(@tiptap/pm@2.0.3)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-fiAh8Lk+/NBPAR/PE4Kc/aLiBUbUYI/CpAopz8DI9eInNyV8h8LAGa9uFILJQF/TNu0tclJ4rV0sWc7Se0FZMw==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    dependencies:
+      '@tiptap/core': 2.1.15(@tiptap/pm@2.0.3)
+      '@tiptap/extension-bubble-menu': 2.1.15(@tiptap/core@2.1.15)(@tiptap/pm@2.0.3)
+      '@tiptap/extension-floating-menu': 2.1.15(@tiptap/core@2.1.15)(@tiptap/pm@2.0.3)
+      '@tiptap/pm': 2.0.3(@tiptap/core@2.1.15)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -5645,7 +5717,7 @@ packages:
       minimatch: 9.0.3
     dev: true
 
-  /@turbo/gen@1.11.2(@types/node@20.8.9)(typescript@5.3.3):
+  /@turbo/gen@1.11.2(@types/node@20.10.8)(typescript@5.3.3):
     resolution: {integrity: sha512-zV4vwedEujiAcACPnFXnKat8IqDo0EVJpMbS3W5CiokUBv35vw5PjldjqKcdh0GIiUTlriWGwRU6FZ8pzBg+kg==}
     hasBin: true
     dependencies:
@@ -5657,7 +5729,7 @@ packages:
       minimatch: 9.0.3
       node-plop: 0.26.3
       proxy-agent: 6.3.1
-      ts-node: 10.9.2(@types/node@20.8.9)(typescript@5.3.3)
+      ts-node: 10.9.2(@types/node@20.10.8)(typescript@5.3.3)
       update-check: 1.5.4
       validate-npm-package-name: 5.0.0
     transitivePeerDependencies:
@@ -5897,6 +5969,12 @@ packages:
 
   /@types/node@18.19.6:
     resolution: {integrity: sha512-X36s5CXMrrJOs2lQCdDF68apW4Rfx9ixYMawlepwmE4Anezv/AV2LSpKD1Ub8DAc+urp5bk0BGZ6NtmBitfnsg==}
+    dependencies:
+      undici-types: 5.26.5
+    dev: true
+
+  /@types/node@20.10.8:
+    resolution: {integrity: sha512-f8nQs3cLxbAFc00vEU59yf9UyGUftkPaLGfvbVOIDdx2i1b8epBqj2aNGyP19fiyXWvlmZ7qC1XLjAzw/OKIeA==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -6250,7 +6328,7 @@ packages:
       vite: ^4 || ^5
     dependencies:
       '@swc/core': 1.3.102
-      vite: 4.5.1(@types/node@20.8.9)
+      vite: 4.5.1(@types/node@20.10.8)
     transitivePeerDependencies:
       - '@swc/helpers'
     dev: true
@@ -6266,7 +6344,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.23.3(@babel/core@7.23.7)
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.5.1(@types/node@20.8.9)
+      vite: 4.5.1(@types/node@20.10.8)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6282,7 +6360,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.23.3(@babel/core@7.23.7)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.0
-      vite: 4.5.1(@types/node@20.8.9)
+      vite: 4.5.1(@types/node@20.10.8)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8026,8 +8104,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /edifice-ts-client@1.0.5-develop.1:
-    resolution: {integrity: sha512-QHIjj0eCA9vQrYTjDjErG/56FV5VgsDsPaX8pcPAKQUEKkAvDu3sBFhqo2z4pRbG/LBj7f+lWhZ6OLX9EHmY4g==}
+  /edifice-ts-client@1.1.0-develop-b2school.18:
+    resolution: {integrity: sha512-v4X9lxfCXogoP8RMzpIYKg8QucmpFc/JNbfAky57DBESsKG+i3/QuQIoQ5K60Ex5npZb6OfWd/A38sB/jkzGGQ==}
     engines: {node: 16 || 18}
     dependencies:
       axios: 1.4.0
@@ -8037,8 +8115,8 @@ packages:
       - debug
     dev: true
 
-  /edifice-ts-client@1.1.0-develop-b2school.18:
-    resolution: {integrity: sha512-v4X9lxfCXogoP8RMzpIYKg8QucmpFc/JNbfAky57DBESsKG+i3/QuQIoQ5K60Ex5npZb6OfWd/A38sB/jkzGGQ==}
+  /edifice-ts-client@1.1.0-develop.1:
+    resolution: {integrity: sha512-wOTvEVTP7GO/P4cHFpUVFOprxouqzY/3HYmKfLo6CjXDqYRMbAGo7stonZZ2eLCQ5GSu2shrlECczvPf3ml8fg==}
     engines: {node: 16 || 18}
     dependencies:
       axios: 1.4.0
@@ -13870,7 +13948,7 @@ packages:
     engines: {node: '>=6.10'}
     dev: true
 
-  /ts-node@10.9.2(@types/node@20.8.9)(typescript@5.3.3):
+  /ts-node@10.9.2(@types/node@20.10.8)(typescript@5.3.3):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
     peerDependencies:
@@ -13889,7 +13967,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.8.9
+      '@types/node': 20.10.8
       acorn: 8.11.3
       acorn-walk: 8.3.1
       arg: 4.1.3
@@ -14405,7 +14483,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite-plugin-dts@3.7.0(@types/node@20.8.9)(typescript@5.3.3)(vite@4.5.1):
+  /vite-plugin-dts@3.7.0(@types/node@20.10.8)(typescript@5.3.3)(vite@4.5.1):
     resolution: {integrity: sha512-np1uPaYzu98AtPReB8zkMnbjwcNHOABsLhqVOf81b3ol9b5M2wPcAVs8oqPnOpr6Us+7yDXVauwkxsk5+ldmRA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -14415,13 +14493,13 @@ packages:
       vite:
         optional: true
     dependencies:
-      '@microsoft/api-extractor': 7.39.0(@types/node@20.8.9)
+      '@microsoft/api-extractor': 7.39.0(@types/node@20.10.8)
       '@rollup/pluginutils': 5.1.0
       '@vue/language-core': 1.8.27(typescript@5.3.3)
       debug: 4.3.4
       kolorist: 1.8.0
       typescript: 5.3.3
-      vite: 4.5.1(@types/node@20.8.9)
+      vite: 4.5.1(@types/node@20.10.8)
       vue-tsc: 1.8.27(typescript@5.3.3)
     transitivePeerDependencies:
       - '@types/node'
@@ -14429,7 +14507,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite@4.5.1(@types/node@20.8.9):
+  /vite@4.5.1(@types/node@20.10.8):
     resolution: {integrity: sha512-AXXFaAJ8yebyqzoNB9fu2pHoo/nWX+xZlaRwoeYUxEqBO+Zj4msE5G+BhGBll9lYEKv9Hfks52PAF2X7qDYXQA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -14457,7 +14535,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.8.9
+      '@types/node': 20.10.8
       esbuild: 0.18.20
       postcss: 8.4.33
       rollup: 3.29.4
