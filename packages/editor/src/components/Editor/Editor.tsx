@@ -18,20 +18,6 @@ import {
   BubbleMenuEditImage,
 } from "../..";
 
-//-------- LAZY IMPORTS --------//
-const KatexStyles = lazy(async () => {
-  /**
-   * Lazy import of a CSS file requires :
-   * 1) bundling the CSS as a JS module, which done by Vite, when an `import()` exists.
-   *    => the CSS rules are stringified and exported from the JS module as `default`.
-   * 2) exporting a "ReactNode factory" from the lazy() call.
-   *
-   * Both requirements are implemented below :
-   */
-  const katex = await import("../../styles/katex.scss");
-  return { default: () => <style>{katex.default}</style> };
-});
-
 const MathsModal = lazy(async () => await import("./MathsModal"));
 
 const ImageEditor = lazy(async () => {
@@ -149,8 +135,6 @@ const Editor = forwardRef(
         )}
 
         <Suspense fallback={<LoadingScreen />}>
-          <KatexStyles></KatexStyles>
-
           {editable && (
             <MediaLibrary
               appCode={appCode}
