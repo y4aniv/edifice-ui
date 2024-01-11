@@ -13,7 +13,6 @@ export default defineConfig({
   },
   build: {
     minify: false,
-    target: "esnext",
     lib: {
       entry: {
         index: resolve(__dirname, "src/index.ts"),
@@ -21,18 +20,38 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      output: {
-        preserveModules: true,
-        preserveModulesRoot: "src",
-      },
       external: [
         ...Object.keys(dependencies),
         ...Object.keys(peerDependencies),
+        "dayjs/plugin/customParseFormat",
+        "dayjs/plugin/relativeTime",
+        "dayjs/locale/de",
+        "dayjs/locale/es",
+        "dayjs/locale/pt",
+        "dayjs/locale/fr",
+        "dayjs/locale/it",
+        "swiper/react",
+        "swiper/modules",
         "react/jsx-runtime",
         "edifice-ts-client",
         "@edifice-ui/icons/nav",
       ],
     },
   },
-  plugins: [react(), dts(), visualizer()],
+  plugins: [
+    react({
+      babel: {
+        plugins: ["@babel/plugin-transform-react-pure-annotations"],
+      },
+    }),
+    dts({
+      compilerOptions: {
+        baseUrl: ".",
+        paths: {
+          "@tanstack/react-query": ["node_modules/@tanstack/react-query"],
+        },
+      },
+    }),
+    visualizer(),
+  ],
 });

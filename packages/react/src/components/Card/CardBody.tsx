@@ -7,13 +7,13 @@ const CardBody = ({
   space = null,
   flexDirection = "row",
 }: {
-  space?: "8" | "16" | null;
+  space?: "0" | "8" | "16" | null;
   flexDirection?: "row" | "column" | null;
   children: ReactNode;
 }) => {
   const cardbody = clsx("card-body", {
-    "p-8": space === "8",
-    "gap-8": space === "8",
+    [`p-${space}`]: space,
+    [`gap-${space}`]: space,
     "align-items-start": flexDirection === "column",
     "flex-column": flexDirection === "column",
   });

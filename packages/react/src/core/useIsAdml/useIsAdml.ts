@@ -7,6 +7,7 @@ export default function useIsAdml() {
 
   useEffect(() => {
     initIsAdml();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const initIsAdml = useCallback(async () => {

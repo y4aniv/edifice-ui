@@ -16,8 +16,18 @@ import IconButton, { IconButtonProps } from "./IconButton";
 type PickedProps = "type" | "icon" | "size";
 
 export interface SearchButtonProps extends Pick<IconButtonProps, PickedProps> {
-  onClick?: any;
+  /**
+   * OnClick Handler
+   */
+  onClick?: () => void;
+  /**
+   * Disabled state of Search Button
+   */
   disabled?: boolean;
+  /**
+   * Optional class for styling purpose
+   */
+  className?: string;
 }
 
 /**
@@ -25,18 +35,18 @@ export interface SearchButtonProps extends Pick<IconButtonProps, PickedProps> {
  */
 const SearchButton = forwardRef(
   (
-    { icon = <Search />, onClick, ...restProps }: SearchButtonProps,
+    { icon = <Search />, onClick, className, ...restProps }: SearchButtonProps,
     ref?: Ref<ButtonRef>,
   ) => {
-    const classes = clsx("btn-search");
+    const classes = clsx("btn-search", className);
 
     return (
       <IconButton
         ref={ref}
         className={classes}
         icon={icon}
-        {...restProps}
         onClick={onClick}
+        {...restProps}
       />
     );
   },

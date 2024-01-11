@@ -35,7 +35,7 @@ export interface OdeClientProps {
   params: OdeProviderParams;
 }
 
-export interface ContextProps {
+export interface OdeContextProps {
   appCode: App;
   applications: IWebApp[] | undefined;
   confQuery: UseQueryResult<IGetConf>;
@@ -48,7 +48,7 @@ export interface ContextProps {
   userProfile: UserProfile | undefined;
 }
 
-export const OdeClientContext = createContext<ContextProps | null>(null!);
+export const OdeClientContext = createContext<OdeContextProps | null>(null!);
 
 export function OdeClientProvider({ children, params }: OdeClientProps) {
   const appCode = params.app;
