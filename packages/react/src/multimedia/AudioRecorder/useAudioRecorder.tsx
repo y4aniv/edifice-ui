@@ -128,6 +128,7 @@ export default function useAudioRecorder(
     };
 
     return () => {
+      console.log("closing ws");
       if (ws.readyState === 1) {
         ws.close();
       }
@@ -149,6 +150,7 @@ export default function useAudioRecorder(
     ]);
 
     return () => {
+      console.log("closing encoder worker");
       closeAudioStream();
       encoderWorker.terminate();
     };
@@ -251,7 +253,7 @@ export default function useAudioRecorder(
     micStreamAudioSourceNode,
   ]);
 
-  const initRecording = async () => {
+  const initRecording = useCallback(async () => {
     // Request access to the user's microphone
     const micStream: MediaStream = await navigator.mediaDevices.getUserMedia({
       audio: true,
@@ -306,44 +308,44 @@ export default function useAudioRecorder(
 
     micStreamAudioSourceNode.connect(audioWorkletNode);
     audioWorkletNode.connect(audioContext.destination);
-  };
+  }, [handleAudioWorkletNodeMessage]);
 
-  const handleRecord = async () => {
-    dispatch({
-      type: "update",
-      updatedState: { recordState: "RECORDING", playState: "IDLE" },
-    });
-
-    await initRecording();
-  };
-
-  const handleRecordPause = useCallback(() => {
-    if (audioContext?.state === "running") {
-      dispatch({ type: "update", updatedState: { recordState: "PAUSED" } });
-      audioContext?.suspend();
-      if (encoderWorker) {
-        encoderWorker.postMessage([
-          "wav",
-          rightChannel,
-          leftChannel,
-          rightChannel.length * BUFFER_SIZE,
-        ]);
-        encoderWorker.onmessage = (event: MessageEvent) => {
-          const audioUrl = window.URL.createObjectURL(event.data);
-          if (audioRef.current) {
-            audioRef.current.src = audioUrl;
-          }
-          if (onUpdateRecord) {
-            onUpdateRecord(audioUrl);
-          }
-        };
-      }
-    } else {
+  const handleRecord = useCallback(async () => {
+    if (recordState === "PAUSED") {
       dispatch({ type: "update", updatedState: { recordState: "RECORDING" } });
       audioContext?.resume();
       if (audioRef.current) {
         audioRef.current.currentTime = 0;
       }
+    } else {
+      dispatch({
+        type: "update",
+        updatedState: { recordState: "RECORDING", playState: "IDLE" },
+      });
+
+      await initRecording();
+    }
+  }, [initRecording, recordState, audioContext, audioRef]);
+
+  const handleRecordPause = useCallback(() => {
+    dispatch({ type: "update", updatedState: { recordState: "PAUSED" } });
+    audioContext?.suspend();
+    if (encoderWorker) {
+      encoderWorker.postMessage([
+        "wav",
+        rightChannel,
+        leftChannel,
+        rightChannel.length * BUFFER_SIZE,
+      ]);
+      encoderWorker.onmessage = (event: MessageEvent) => {
+        const audioUrl = window.URL.createObjectURL(event.data);
+        if (audioRef.current) {
+          audioRef.current.src = audioUrl;
+        }
+        if (onUpdateRecord) {
+          onUpdateRecord(audioUrl);
+        }
+      };
     }
   }, [audioContext, encoderWorker, leftChannel, onUpdateRecord, rightChannel]);
 
