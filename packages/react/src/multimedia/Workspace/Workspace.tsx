@@ -61,13 +61,13 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
   );
   const { root: shared, loadContent: loadSharedDocs } = useWorkspaceSearch(
     "shared",
-    t("Partagé avec moi"),
+    t("Partagés avec moi"),
     "shared",
     roles,
   );
   const { root: protect, loadContent: loadProtectedDocs } = useWorkspaceSearch(
     "protected",
-    t("Ajouté dans les applications"),
+    t("Ajoutés dans les applications"),
     "protected",
     roles,
   );
