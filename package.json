@@ -15,6 +15,7 @@
   "type": "module",
   "scripts": {
     "build": "turbo run build",
+    "check:editor": "package-check --cwd=packages/editor",
     "check:icons": "package-check --cwd=packages/icons",
     "check:react": "package-check --cwd=packages/react",
     "clean": "rm -rf */**/node_modules && rm -rf node_modules && rm -f pnpm-lock.yaml && rm -rf */**/dist && rm -rf packages/**/.turbo",
