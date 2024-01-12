@@ -17,7 +17,7 @@ export default defineConfig({
         index: resolve(__dirname, "src/index.ts"),
         nav: resolve(__dirname, "src/nav/index.ts"),
       },
-      formats: ["es", "cjs"],
+      formats: ["es"],
     },
     rollupOptions: {
       external: [...Object.keys(peerDependencies), "react/jsx-runtime"],

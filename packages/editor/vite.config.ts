@@ -12,19 +12,13 @@ export default defineConfig({
     minifyIdentifiers: false,
   },
   build: {
-    minify: false,
-    target: "esnext",
     lib: {
       entry: {
         index: resolve(__dirname, "src/index.ts"),
       },
-      formats: ["es", "cjs"],
+      formats: ["es"],
     },
     rollupOptions: {
-      output: {
-        preserveModules: true,
-        preserveModulesRoot: "src",
-      },
       external: [
         ...Object.keys(dependencies),
         ...Object.keys(peerDependencies),
@@ -34,5 +28,13 @@ export default defineConfig({
       ],
     },
   },
-  plugins: [react(), dts(), visualizer()],
+  plugins: [
+    react({
+      babel: {
+        plugins: ["@babel/plugin-transform-react-pure-annotations"],
+      },
+    }),
+    dts(),
+    visualizer(),
+  ],
 });
