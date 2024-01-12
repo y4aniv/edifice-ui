@@ -19,11 +19,7 @@ import {
 } from "../..";
 
 const MathsModal = lazy(async () => await import("./MathsModal"));
-
-const ImageEditor = lazy(async () => {
-  const module = await import("@edifice-ui/react");
-  return { default: module.ImageEditor };
-});
+const ImageEditor = lazy(async () => await import("./ImageEditor"));
 
 export interface EditorRef {
   /** Get the current content. */

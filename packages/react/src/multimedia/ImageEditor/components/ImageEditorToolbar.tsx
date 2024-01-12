@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { Blur, Crop, FullScreen, Retry, Undo } from "@edifice-ui/icons";
 import { useTranslation } from "react-i18next";
