@@ -5,6 +5,7 @@ import "@edifice-tiptap-extensions/extension-audio";
 import "@edifice-tiptap-extensions/extension-image";
 import "@edifice-tiptap-extensions/extension-video";
 
+import { Alert } from "@edifice-tiptap-extensions/extension-alert";
 import { Hyperlink } from "@edifice-tiptap-extensions/extension-hyperlink";
 import { IFrame } from "@edifice-tiptap-extensions/extension-iframe";
 import { SpeechRecognition } from "@edifice-tiptap-extensions/extension-speechrecognition";
@@ -25,7 +26,7 @@ import TextAlign from "@tiptap/extension-text-align";
 import TextStyle from "@tiptap/extension-text-style";
 import Typography from "@tiptap/extension-typography";
 import Underline from "@tiptap/extension-underline";
-import { useEditor, Content } from "@tiptap/react";
+import { Content, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { Mathematics } from "@tiptap-pro/extension-mathematics";
 
@@ -94,6 +95,7 @@ export const useTipTapEditor = (editable: boolean, content: Content) => {
       ImageNodeView(MediaRenderer),
       LinkerNodeView(LinkerRenderer),
       AttachmentNodeView(AttachmentRenderer),
+      Alert,
     ],
     content,
   });
