@@ -56,7 +56,8 @@ const ExternalLinker = ({
       },
       StringUtils.isLocalURL(linkURL) || StringUtils.isValidURL(linkURL),
     );
-  }, [linkText, linkURL, isBlankTarget, onChange]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [linkText, linkURL, isBlankTarget]);
 
   return (
     <>

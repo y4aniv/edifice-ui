@@ -36,11 +36,11 @@ export const useLinkToolbar = (
           appPrefix: attrsLinker["data-app-prefix"],
         });
       } else {
-        const { href, target, title } = attrs as HyperlinkAttributes;
+        const { href, target, title, text } = attrs as HyperlinkAttributes;
         mediaLibraryRef.current?.editLink({
           url: href || "",
           target: target || undefined,
-          text: title || undefined,
+          text: text || title || undefined,
         });
       }
     },
