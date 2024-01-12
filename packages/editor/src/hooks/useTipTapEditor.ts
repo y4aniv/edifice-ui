@@ -5,7 +5,7 @@ import "@edifice-tiptap-extensions/extension-audio";
 import "@edifice-tiptap-extensions/extension-image";
 import "@edifice-tiptap-extensions/extension-video";
 
-import { Alert } from "@edifice-tiptap-extensions/extension-alert";
+import { Alerts } from "@edifice-tiptap-extensions/extension-alert";
 import { Hyperlink } from "@edifice-tiptap-extensions/extension-hyperlink";
 import { Iframe } from "@edifice-tiptap-extensions/extension-iframe";
 import { SpeechRecognition } from "@edifice-tiptap-extensions/extension-speechrecognition";
@@ -95,7 +95,7 @@ export const useTipTapEditor = (editable: boolean, content: Content) => {
       ImageNodeView(MediaRenderer),
       LinkerNodeView(LinkerRenderer),
       AttachmentNodeView(AttachmentRenderer),
-      Alert,
+      Alerts,
     ],
     content,
   });
