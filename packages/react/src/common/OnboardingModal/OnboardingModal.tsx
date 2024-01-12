@@ -1,12 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/css";
-import "swiper/css/pagination";
 import { useOnboardingModal } from "./useOnboardingModal";
 import { usePaths, Modal, Button, Image } from "../..";
 
@@ -56,6 +54,19 @@ const OnboardingModal = ({ id, items, modalOptions }: OnboardingProps) => {
 
   const { isOpen, isOnboardingTrash, setIsOpen, handleSavePreference } =
     useOnboardingModal(id);
+
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.href = "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css";
+    link.rel = "stylesheet";
+    link.type = "text/css";
+
+    document.head.appendChild(link);
+
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
 
   const { t } = useTranslation();
 

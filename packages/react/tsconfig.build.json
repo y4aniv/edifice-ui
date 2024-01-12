@@ -1,9 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": [
-    "node_modules",
-    "dist",
-    "src/**/**/*.stories.tsx",
-    "src/**/**/*.mdx"
-  ]
+  "exclude": ["src/**/**/*.stories.tsx", "src/**/**/*.mdx"]
 }
