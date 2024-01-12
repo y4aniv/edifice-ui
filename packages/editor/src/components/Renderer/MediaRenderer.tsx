@@ -11,14 +11,8 @@ const MediaRenderer = (props: MediaResizeProps) => {
 
   const resizableMedia = useRef<HTMLImageElement | HTMLVideoElement>(null);
 
-  const {
-    startHorizontalResize,
-    stopHorizontalResize,
-    startVerticalResize,
-    stopVerticalResize,
-    isHorizontalResizeActive,
-    isVerticalResizeActive,
-  } = useResizeMedia(props, resizableMedia);
+  const { startVerticalResize, stopVerticalResize, isVerticalResizeActive } =
+    useResizeMedia(props, resizableMedia);
   return (
     <NodeViewWrapper>
       <div
@@ -48,15 +42,6 @@ const MediaRenderer = (props: MediaResizeProps) => {
             </video>
           )}
         </div>
-
-        <div
-          className={`horizontal-resize-handle ${
-            isHorizontalResizeActive ? "horizontal-resize-active" : ""
-          }`}
-          title="Resize"
-          onMouseDown={(e) => startHorizontalResize(e)}
-          onMouseUp={() => stopHorizontalResize}
-        />
 
         <div
           className={`vertical-resize-handle ${

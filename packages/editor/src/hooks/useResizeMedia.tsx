@@ -17,7 +17,7 @@ export const useResizeMedia = (
 
   const lastCursorX = useRef(-1);
 
-  const isHorizontalResizeActive = useRef(false);
+  /* const isHorizontalResizeActive = useRef(false); */
 
   const isVerticalResizeActive = useRef(false);
 
@@ -117,9 +117,10 @@ export const useResizeMedia = (
     document.removeEventListener("mouseup", stopVerticalResize);
   };
 
+  // A garder si l'on décide remettre le resize horizontal
   /* HORIZONTAL */
 
-  const onHorizontalMouseMove = (event: MouseEvent) => {
+  /* const onHorizontalMouseMove = (event: MouseEvent) => {
     if (!isHorizontalResizeActive.current) return;
 
     const { clientY } = event;
@@ -165,11 +166,11 @@ export const useResizeMedia = (
     setTimeout(() => {
       props.updateAttributes(newMediaDimensions);
     });
-  };
+  }; */
 
-  const lastCursorY = useRef(-1);
+  //const lastCursorY = useRef(-1);
 
-  const startHorizontalResize = (
+  /* const startHorizontalResize = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     console.log(event);
@@ -186,14 +187,11 @@ export const useResizeMedia = (
 
     document.removeEventListener("mousemove", onHorizontalMouseMove);
     document.removeEventListener("mouseup", stopHorizontalResize);
-  };
+  }; */
 
   return {
-    startHorizontalResize,
-    stopHorizontalResize,
     startVerticalResize,
     stopVerticalResize,
-    isHorizontalResizeActive,
     isVerticalResizeActive,
   };
 };

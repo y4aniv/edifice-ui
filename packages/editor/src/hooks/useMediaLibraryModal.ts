@@ -6,6 +6,7 @@ import {
   MediaLibraryRef,
   MediaLibraryResult,
   MediaLibraryType,
+  TabsItemProps,
   useWorkspaceFile,
 } from "@edifice-ui/react";
 import { Editor } from "@tiptap/react";
@@ -47,7 +48,6 @@ export const useMediaLibraryModal = (editor: Editor | null) => {
                 src: `/workspace/document/${img._id}`,
                 alt: img.alt,
                 title: img.title,
-                ["media-type"]: "img",
               })
               .run();
           });
@@ -232,10 +232,19 @@ export const useMediaLibraryModal = (editor: Editor | null) => {
       mediaLibraryRef.current?.hide();
     }
   };
+  const onTabChange = async (
+    _tab: TabsItemProps,
+    uploads?: WorkspaceElement[],
+  ) => {
+    if (mediaLibraryRef.current?.type && uploads && uploads.length > 0) {
+      await remove(uploads);
+    }
+  };
 
   return {
     ref: mediaLibraryRef,
     onCancel,
     onSuccess,
+    onTabChange,
   };
 };

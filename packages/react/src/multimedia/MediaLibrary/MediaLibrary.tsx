@@ -156,9 +156,15 @@ export interface MediaLibraryProps {
   onSuccess: (result: MediaLibraryResult) => void;
   /**
    * Called when the user closes the modal.
-   * @param uploads uploaded elements to remove, depend on which InnerTab is visible
+   * @param uploads uploaded workspace elements to cancel.
    */
   onCancel: (uploads?: WorkspaceElement[]) => void;
+  /**
+   * Called when the user swith between tabs, without closing the modal.
+   * @param tab Props of the newly displayed tab.
+   * @param uploads uploaded workspace elements to cancel.
+   */
+  onTabChange?: (tab: TabsItemProps, uploads?: WorkspaceElement[]) => void;
 }
 
 //---------------------------------------------------
@@ -166,7 +172,7 @@ export interface MediaLibraryProps {
 //---------------------------------------------------
 const MediaLibrary = forwardRef(
   (
-    { appCode, onSuccess, onCancel }: MediaLibraryProps,
+    { appCode, onSuccess, onCancel, onTabChange }: MediaLibraryProps,
     ref: Ref<MediaLibraryRef>,
   ) => {
     // Local ref will be merged with forwardRef in useImperativeHandle() below
@@ -368,7 +374,8 @@ const MediaLibrary = forwardRef(
       setCancellable([]);
     };
 
-    const handleTabChange = () => {
+    const handleTabChange = (tab: TabsItemProps) => {
+      onTabChange?.(tab, cancellable);
       resetState();
     };
 
