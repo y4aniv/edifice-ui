@@ -43,6 +43,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@edifice-tiptap-extensions/extension-alert": "develop",
     "@edifice-tiptap-extensions/extension-attachment": "develop",
     "@edifice-tiptap-extensions/extension-audio": "develop",
     "@edifice-tiptap-extensions/extension-hyperlink": "develop",
