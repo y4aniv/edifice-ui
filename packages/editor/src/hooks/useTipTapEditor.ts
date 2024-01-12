@@ -6,9 +6,9 @@ import "@edifice-tiptap-extensions/extension-image";
 import "@edifice-tiptap-extensions/extension-video";
 
 import { Hyperlink } from "@edifice-tiptap-extensions/extension-hyperlink";
-import { IFrame } from "@edifice-tiptap-extensions/extension-iframe";
+import { Iframe } from "@edifice-tiptap-extensions/extension-iframe";
 import { SpeechRecognition } from "@edifice-tiptap-extensions/extension-speechrecognition";
-import SpeechSynthesis from "@edifice-tiptap-extensions/extension-speechsynthesis";
+import { SpeechSynthesis } from "@edifice-tiptap-extensions/extension-speechsynthesis";
 import { TableCell } from "@edifice-tiptap-extensions/extension-table-cell";
 import { TypoSize } from "@edifice-tiptap-extensions/extension-typosize";
 import { useOdeClient } from "@edifice-ui/react";
@@ -85,7 +85,7 @@ export const useTipTapEditor = (editable: boolean, content: Content) => {
             ? `${currentLanguage}-${currentLanguage.toUpperCase()}` // FIXME very dirty hack for demo
             : "fr-FR",
       }),
-      IFrame,
+      Iframe,
       Hyperlink,
       FontFamily,
       Mathematics,
