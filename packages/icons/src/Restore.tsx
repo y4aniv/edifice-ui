@@ -3,7 +3,7 @@ interface SVGRProps {
   title?: string;
   titleId?: string;
 }
-const SvgRedo = ({
+const SvgRestore = ({
   title,
   titleId,
   ...props
@@ -22,15 +22,9 @@ const SvgRedo = ({
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M14.293 13.707a1 1 0 0 1 0-1.414L18.586 8l-4.293-4.293a1 1 0 0 1 1.414-1.414l5 5a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414 0"
-      clipRule="evenodd"
-    />
-    <path
-      fill="currentColor"
-      fillRule="evenodd"
-      d="M4 20a1 1 0 0 1-1-1v-7a5 5 0 0 1 5-5h12a1 1 0 1 1 0 2H8a3 3 0 0 0-3 3v7a1 1 0 0 1-1 1"
+      d="m20.417 7.812.606-3.442a.996.996 0 1 1 1.962.346l-1.013 5.747a.996.996 0 0 1-1.153.809l-5.743-1.014a.996.996 0 0 1 .346-1.962l3.3.582a7.754 7.754 0 0 0-8.399-4.254 7.75 7.75 0 0 0-6.321 7.224 7.76 7.76 0 0 0 5.54 7.84 7.745 7.745 0 0 0 8.913-3.56.995.995 0 1 1 1.724.997 9.744 9.744 0 0 1-11.201 4.474 9.74 9.74 0 0 1-5.19-3.718 9.756 9.756 0 0 1 .625-12.055A9.74 9.74 0 0 1 16.27 3.617a9.75 9.75 0 0 1 4.147 4.195"
       clipRule="evenodd"
     />
   </svg>
 );
-export default SvgRedo;
+export default SvgRestore;
