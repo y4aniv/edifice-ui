@@ -2,7 +2,7 @@ import { forwardRef, ReactNode, Ref } from "react";
 
 import clsx from "clsx";
 
-import { Loading, LoadingIcon, LoadingPosition } from "../Loading/Loading";
+import { Loading, LoadingIcon, LoadingPosition } from "../Loading";
 
 export type ButtonRef = HTMLButtonElement;
 
