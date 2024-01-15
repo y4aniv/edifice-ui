@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-import { Blur, Crop, FullScreen, Retry, Undo } from "@edifice-ui/icons";
+import { Blur, Crop, FullScreen, Reset, Undo } from "@edifice-ui/icons";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "../../../components";
@@ -38,7 +38,7 @@ const ImageEditorToolbar = ({ handle }: ImageEditorToolbarProps) => {
         color="tertiary"
         type="button"
         variant="ghost"
-        leftIcon={<Retry />}
+        leftIcon={<Reset />}
         onClick={() => handleAndSave("ROTATE")}
       >
         {t("Pivoter")}

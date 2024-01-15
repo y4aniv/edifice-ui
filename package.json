@@ -15,6 +15,7 @@
   "type": "module",
   "scripts": {
     "build": "turbo run build",
+    "check:editor": "package-check --cwd=packages/editor",
     "check:icons": "package-check --cwd=packages/icons",
     "check:react": "package-check --cwd=packages/react",
     "clean": "rm -rf */**/node_modules && rm -rf node_modules && rm -f pnpm-lock.yaml && rm -rf */**/dist && rm -rf packages/**/.turbo",
@@ -36,6 +37,7 @@
     "publish-packages": "changeset version && changeset publish"
   },
   "devDependencies": {
+    "@babel/plugin-transform-react-pure-annotations": "7.23.3",
     "@edifice-ui/icons": "workspace:*",
     "@skypack/package-check": "0.2.2",
     "@storybook/addon-a11y": "7.6.6",
@@ -65,6 +67,7 @@
     "prettier": "3.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "rollup-plugin-pure": "^0.2.1",
     "rollup-plugin-visualizer": "5.11.0",
     "storybook": "7.6.6",
     "turbo": "1.11.2",

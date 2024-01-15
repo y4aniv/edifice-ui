@@ -29,7 +29,7 @@ import { useMockedData } from "../../utils";
  * Note : until all applications are using the explorer main page,
  * only the first resource of the `filter.types` array will be considered while searching.
  */
-export default function useResourceSearch(appCode: App) {
+export const useResourceSearch = (appCode: App) => {
   // Needed for storybook to mock calls to backend
   const mock = useMockedData();
 
@@ -84,4 +84,4 @@ export default function useResourceSearch(appCode: App) {
       filters: GetContextParameters,
     ) => Promise<ILinkedResource[]>;
   };
-}
+};

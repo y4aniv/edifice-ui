@@ -1,1 +1,2 @@
-export { default as useResourceSearch } from "./useResourceSearch";
+// export { default as useResourceSearch } from "./useResourceSearch";
+export * from "./useResourceSearch";

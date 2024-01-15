@@ -60,6 +60,7 @@ const EmptyScreen = ({
     </div>
   );
 };
+
 EmptyScreen.displayName = "EmptyScreen";
 
 export default EmptyScreen;

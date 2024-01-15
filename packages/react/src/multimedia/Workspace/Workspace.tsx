@@ -7,7 +7,12 @@ import {
   useState,
 } from "react";
 
-import { Search } from "@edifice-ui/icons";
+import {
+  Search,
+  SortAscendingLetters,
+  SortDescendingLetters,
+  SortTime,
+} from "@edifice-ui/icons";
 import clsx from "clsx";
 import {
   Role,
@@ -61,13 +66,13 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
   );
   const { root: shared, loadContent: loadSharedDocs } = useWorkspaceSearch(
     "shared",
-    t("Partagé avec moi"),
+    t("Partagés avec moi"),
     "shared",
     roles,
   );
   const { root: protect, loadContent: loadProtectedDocs } = useWorkspaceSearch(
     "protected",
-    t("Ajouté dans les applications"),
+    t("Ajoutés dans les applications"),
     "protected",
     roles,
   );
@@ -84,6 +89,10 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
   const [documents, setDocuments] = useState<WorkspaceElement[]>([]);
 
   const [searchTerm, setSearchTerm] = useState<string | undefined>(null!);
+  const [sortOrder, setSortOrder] = useState<[string, string]>([
+    "modified",
+    "desc",
+  ]);
 
   const [selectedDocuments, setSelectedDocuments] = useState<
     WorkspaceElement[]
@@ -175,14 +184,23 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
   /** Load content when the callback is updated */
   useEffect(loadContent, [loadContent]);
 
-  /** Display documents when currentNode or searchTerm changes */
+  /** Display documents when currentNode or searchTerm or sortOrder changes */
   useEffect(() => {
-    let list = currentNode.files || [];
+    let list = ([] as WorkspaceElement[]).concat(currentNode.files || []);
+    // Apply search terms
     if (searchTerm) {
       list = list.filter((f) => f.name.indexOf(searchTerm) >= 0);
     }
-    setDocuments(list);
-  }, [currentNode, owner, protect, shared, searchTerm]);
+    // Apply sort order
+    const sortFunction: (a: any, b: any) => number =
+      sortOrder[0] === "name"
+        ? sortOrder[1] === "asc"
+          ? (a, b) => compare(a.name, b.name)
+          : (a, b) => compare(b.name, a.name)
+        : (a, b) => compare(b.modified, a.modified);
+
+    setDocuments(() => list.sort(sortFunction));
+  }, [currentNode, owner, protect, shared, searchTerm, sortOrder]);
 
   /** Load initial content, once */
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -196,6 +214,20 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
     },
     [inputRef],
   );
+
+  function compare(a: string, b: string) {
+    if (!a) return -1;
+    if (!b) return 1;
+    return a.localeCompare(b);
+  }
+
+  function getSortOrderLabel() {
+    return sortOrder[0] === "name"
+      ? sortOrder[1] === "asc"
+        ? t("Alphabétique")
+        : t("Alphabétique inversé")
+      : t("Dernières modifications");
+  }
 
   function handleSelectDoc(doc: WorkspaceElement) {
     let currentDocuments = [...selectedDocuments];
@@ -270,25 +302,32 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
                 </FormControl>
               </form>
             </div>
-            {/* TODO */}
             <div className="d-flex align-items-center justify-content-end px-8 py-4">
-              <small className="text-muted">Ordre :</small>
+              <small className="text-muted">{t("Ordre :")}</small>
               <Dropdown>
                 <Dropdown.Trigger
                   size="sm"
-                  label={t("Dernière modif.")}
+                  label={getSortOrderLabel()}
                   variant="ghost"
                 />
                 <Dropdown.Menu>
-                  <Dropdown.Item onClick={() => alert("edit")}>
-                    Edit
+                  <Dropdown.Item
+                    icon={<SortTime />}
+                    onClick={() => setSortOrder(["modified", "desc"])}
+                  >
+                    {t("Dernières modifications")}
                   </Dropdown.Item>
-                  <Dropdown.Separator />
-                  <Dropdown.Item onClick={() => alert("copy")}>
-                    Copy
+                  <Dropdown.Item
+                    icon={<SortAscendingLetters />}
+                    onClick={() => setSortOrder(["name", "asc"])}
+                  >
+                    {t("Alphabétique")}
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => alert("cut")}>
-                    Cut
+                  <Dropdown.Item
+                    icon={<SortDescendingLetters />}
+                    onClick={() => setSortOrder(["name", "desc"])}
+                  >
+                    {t("Alphabétique inversé")}
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>

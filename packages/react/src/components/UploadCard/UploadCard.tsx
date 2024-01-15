@@ -1,4 +1,4 @@
-import { SuccessOutline, Retry, Wand, Close } from "@edifice-ui/icons";
+import { SuccessOutline, Wand, Close, Reset } from "@edifice-ui/icons";
 import { useTranslation } from "react-i18next";
 
 import { usePaths } from "../../core";
@@ -123,7 +123,7 @@ const UploadCard = ({
               {isSuccess && <SuccessOutline className="text-success" />}
               {isError && (
                 <Button
-                  leftIcon={<Retry />}
+                  leftIcon={<Reset />}
                   variant="ghost"
                   color="tertiary"
                   onClick={onRetry}
