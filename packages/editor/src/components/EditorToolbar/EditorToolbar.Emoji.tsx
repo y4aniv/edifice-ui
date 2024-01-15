@@ -46,7 +46,7 @@ export const EditorToolbarEmoji = ({ triggerProps, itemRefs }: Props) => {
               )
             }
             previewConfig={{ showPreview: false }}
-            searchPlaceHolder={t("Recherche")}
+            searchDisabled={true}
             categories={[
               {
                 category: Categories.SUGGESTED,
