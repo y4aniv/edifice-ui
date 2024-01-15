@@ -1,51 +1,52 @@
-/* import { SuccessOutline, Retry, Wand, Close } from "@edifice-ui/icons";
-import { useTranslation } from "react-i18next"; */
+import { SuccessOutline, Retry, Wand, Close } from "@edifice-ui/icons";
+import { useTranslation } from "react-i18next";
 
-/* import { CardProps, Card, Loading, Button, IconButton, Image } from "..";
-import { usePaths } from "../..";
+import { usePaths } from "../../core";
 import { Status } from "../../types";
-import CardBody from "../Card/CardBody";
-import CardText from "../Card/CardText"; */
+import { Button, IconButton } from "../Button";
+import { CardProps, Card } from "../Card";
+import { Image } from "../Image";
+import { Loading } from "../Loading";
 
-// interface UploadItemProps {
-//   /**
-//    * File's image
-//    * */
-//   src: string;
-//   /**
-//    * File's name
-//    * */
-//   name: string;
-//   /**
-//    * File's info
-//    * */
-//   info?: { type: string; weight: string };
-// }
+export interface UploadItemProps {
+  /**
+   * File's image
+   * */
+  src: string;
+  /**
+   * File's name
+   * */
+  name: string;
+  /**
+   * File's info
+   * */
+  info?: { type: string; weight: string };
+}
 
-// interface UploadCardProps extends CardProps {
-//   /**
-//    * UploadItemProps
-//    * */
-//   item: UploadItemProps;
-//   /**
-//    * idle, loading, success, warning, error
-//    * */
-//   status?: Status;
-//   /**
-//    * Delete callback
-//    * */
-//   onDelete?: () => void;
-//   /**
-//    * Edit callback
-//    * */
-//   onEdit?: () => void;
-//   /**
-//    * Retry callback
-//    * */
-//   onRetry?: () => void;
-// }
+export interface UploadCardProps extends CardProps {
+  /**
+   * UploadItemProps
+   * */
+  item: UploadItemProps;
+  /**
+   * idle, loading, success, warning, error
+   * */
+  status?: Status;
+  /**
+   * Delete callback
+   * */
+  onDelete?: () => void;
+  /**
+   * Edit callback
+   * */
+  onEdit?: () => void;
+  /**
+   * Retry callback
+   * */
+  onRetry?: () => void;
+}
 
-export const UploadCard = (/* {
+const UploadCard = ({
   item,
   status = "idle",
   isClickable = false,
@@ -53,8 +54,8 @@ export const UploadCard = (/* {
   onDelete,
   onEdit,
   onRetry,
-}: UploadCardProps */) => {
-  /* const [imagePath] = usePaths();
+}: UploadCardProps) => {
+  const [imagePath] = usePaths();
 
   const { t } = useTranslation();
 
@@ -65,17 +66,15 @@ export const UploadCard = (/* {
   const isError = status === "error";
   const isSuccess = status === "success";
 
-  const isTypeImage = info?.type.startsWith("image/"); */
+  const isTypeImage = info?.type.startsWith("image/");
 
-  return <p>"test"</p>;
-
-  /* return (
+  return (
     <Card
       isClickable={isClickable}
       isSelectable={isSelectable}
       className="card-upload"
     >
-      <CardBody>
+      <Card.Body>
         <div className="card-image">
           {isError ? (
             <Image
@@ -95,8 +94,8 @@ export const UploadCard = (/* {
           )}
         </div>
         <div className="text-truncate">
-          <CardText>{name}</CardText>
-          <CardText className="caption">
+          <Card.Text>{name}</Card.Text>
+          <Card.Text className="caption">
             {isSuccess && (
               <em>
                 {info?.type} {info?.weight && `- ${info.weight}`}
@@ -109,7 +108,7 @@ export const UploadCard = (/* {
                 </small>
               </strong>
             )}
-          </CardText>
+          </Card.Text>
         </div>
         {!isIdle && (
           <div className="ms-auto">
@@ -153,9 +152,11 @@ export const UploadCard = (/* {
             </div>
           </div>
         )}
-      </CardBody>
+      </Card.Body>
     </Card>
-  ); */
+  );
 };
 
-// UploadCard.displayName = "UploadCard";
+UploadCard.displayName = "UploadCard";
+
+export default UploadCard;

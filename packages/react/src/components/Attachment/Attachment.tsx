@@ -13,7 +13,7 @@ export interface AttachmentProps extends ComponentPropsWithRef<"div"> {
   options: ReactNode;
 }
 
-export type AttachmentType = React.FC<AttachmentProps>;
+export type AttachmentType = AttachmentProps;
 
 const Attachment = forwardRef(
   (

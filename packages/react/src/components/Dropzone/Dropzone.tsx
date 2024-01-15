@@ -8,13 +8,6 @@ import DropzoneFile from "./DropzoneFile";
 import DropzoneImport from "./DropzoneImport";
 import useDropzone from "../../hooks/useDropzone/useDropzone";
 
-export interface AttachmentType {
-  type: string;
-  size: number;
-  name: string;
-  src: string;
-}
-
 interface DropzoneProps {
   className?: string;
   accept?: string[];
