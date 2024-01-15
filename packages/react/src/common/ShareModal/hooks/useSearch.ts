@@ -9,6 +9,7 @@ import {
   ShareSubject,
   ShareRightWithVisibles,
 } from "edifice-ts-client";
+import { useTranslation } from "react-i18next";
 
 import { ShareAction } from "./useShare";
 import { OptionListItemType } from "../../../components";
@@ -88,6 +89,8 @@ export const useSearch = ({
   const { isAdml } = useIsAdml();
   const { appCode } = useOdeClient();
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     search(debouncedSearchInputValue);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -137,13 +140,33 @@ export const useSearch = ({
           (right: { type: string; id: any }) =>
             !(right.type === "user" && right.id === resource.creatorId),
         )
-        .map((searchResult: { id: any; displayName: any; type: string }) => {
-          return {
-            value: searchResult.id,
-            label: searchResult.displayName,
-            icon: searchResult.type === "sharebookmark" ? Bookmark : null,
-          };
-        });
+        .map(
+          (searchResult: {
+            id: any;
+            displayName: any;
+            type: string;
+            profile?: string;
+            structureName?: string;
+          }) => {
+            let label: string = searchResult.displayName;
+            if (searchResult.type === "user" && searchResult.profile) {
+              label = `${label} (${t(searchResult.profile)})`;
+            } else if (
+              searchResult.type === "group" &&
+              searchResult.structureName
+            ) {
+              label = `${label} (${searchResult.structureName})`;
+            } else if (searchResult.type === "sharebookmark") {
+              label = `${label} (${t("sharebookmark")})`;
+            }
+
+            return {
+              value: searchResult.id,
+              label,
+              icon: searchResult.type === "sharebookmark" ? Bookmark : null,
+            };
+          },
+        );
 
       dispatch({
         type: "addResult",
