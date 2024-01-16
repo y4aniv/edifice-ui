@@ -7,6 +7,7 @@ import { Checkbox } from "../../Checkbox";
 import { FormControl } from "../../Form";
 import { Radio } from "../../Radio";
 import Input from "../Input";
+import { Search } from "@edifice-ui/icons";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof FormControl> = {
@@ -37,6 +38,39 @@ const Template = (args: any) => (
 
 export const Base: Story = {
   render: Template,
+};
+
+export const BorderlessInputGroup: Story = {
+  render: (args) => (
+    <FormControl id={args.id} status={args.status} className="input-group">
+      <span className="input-group-text border-end-0">
+        <Search width={20} height={20}></Search>
+      </span>
+      <FormControl.Input
+        type="text"
+        className="border-start-0"
+        placeholder="Search terms"
+        size="lg"
+      />
+    </FormControl>
+  ),
+};
+
+export const BorderlessDisabledInputGroup: Story = {
+  render: (args) => (
+    <FormControl id={args.id} status={args.status} className="input-group">
+      <span className="input-group-text border-end-0">
+        <Search width={20} height={20}></Search>
+      </span>
+      <FormControl.Input
+        disabled
+        type="text"
+        className="border-start-0"
+        placeholder="Search terms"
+        size="lg"
+      />
+    </FormControl>
+  ),
 };
 
 export const MultiInputGroup: Story = {

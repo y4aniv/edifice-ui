@@ -2,6 +2,7 @@ import { forwardRef, Ref } from "react";
 
 import clsx from "clsx";
 
+import { Size } from "../../types";
 import { useFormControl } from "../Form/FormContext";
 
 export type OmitTextAreaProps =
@@ -16,11 +17,11 @@ export interface TextAreaProps
   /**
    * Control size of TextArea
    */
-  size: "sm" | "md" | "lg";
+  size: Size;
   /**
    * Control maxHeight of TextArea
    */
-  height?: "sm" | "md" | "lg";
+  height?: Size;
   /**
    * Change text of placeholder
    */

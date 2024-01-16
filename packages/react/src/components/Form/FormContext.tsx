@@ -4,9 +4,9 @@ import { FormControlProps } from "./FormControl";
 
 type Props = Omit<FormControlProps, "className" | "children">;
 
-export type ContextProps = Props;
+export type FormContextProps = Props;
 
-export const Context = createContext<ContextProps | null>(null!);
+export const Context = createContext<FormContextProps | null>(null!);
 
 export const useFormControl = () => {
   const context = useContext(Context);

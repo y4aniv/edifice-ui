@@ -15,10 +15,9 @@
   "type": "module",
   "scripts": {
     "build": "turbo run build",
-    "check:components": "package-check --cwd=packages/components",
-    "check:core": "package-check --cwd=packages/core",
-    "check:hooks": "package-check --cwd=packages/hooks",
+    "check:editor": "package-check --cwd=packages/editor",
     "check:icons": "package-check --cwd=packages/icons",
+    "check:react": "package-check --cwd=packages/react",
     "clean": "rm -rf */**/node_modules && rm -rf node_modules && rm -f pnpm-lock.yaml && rm -rf */**/dist && rm -rf packages/**/.turbo",
     "clean:dist": "rm -rf */**/dist",
     "clean:lock": "rm -f pnpm-lock.yaml",
@@ -38,6 +37,7 @@
     "publish-packages": "changeset version && changeset publish"
   },
   "devDependencies": {
+    "@babel/plugin-transform-react-pure-annotations": "7.23.3",
     "@edifice-ui/icons": "workspace:*",
     "@skypack/package-check": "0.2.2",
     "@storybook/addon-a11y": "7.6.6",
@@ -60,22 +60,23 @@
     "eslint-plugin-jsx-a11y": "6.8.0",
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
+    "eslint-plugin-react-refresh": "0.4.5",
     "eslint-plugin-storybook": "0.6.15",
     "husky": "8.0.3",
     "lerna": "8.0.1",
     "prettier": "3.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "rollup-plugin-pure": "^0.2.1",
     "rollup-plugin-visualizer": "5.11.0",
     "storybook": "7.6.6",
     "turbo": "1.11.2",
     "typescript": "5.3.3",
     "vite": "4.5.1",
-    "vite-plugin-dts": "3.6.4"
+    "vite-plugin-dts": "3.7.0"
   },
   "packageManager": "pnpm@8.6.6",
   "engines": {
-    "node": "18"
+    "node": "18 || 20"
   }
 }
