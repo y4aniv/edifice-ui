@@ -352,7 +352,7 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.7)
       "@edifice-ui/icons":
-        specifier: ^1.4.0-develop.10
+        specifier: ^1.4.0-develop.11
         version: link:../icons
       "@react-spring/web":
         specifier: 9.7.3
