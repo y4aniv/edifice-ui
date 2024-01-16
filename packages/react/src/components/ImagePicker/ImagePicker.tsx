@@ -73,6 +73,7 @@ const ImagePicker = forwardRef(
     const {
       inputRef,
       files,
+      deleteFile,
       handleOnChange,
       handleDragging,
       handleDragLeave,
@@ -80,14 +81,18 @@ const ImagePicker = forwardRef(
     } = useDropzone();
 
     useEffect(() => {
-      setPreview("");
+      if (files.length > 0) {
+        deleteFile(files[0]);
+        setPreview("");
 
-      const file = files?.[0];
-      if (!file) return;
+        const file = files?.[0];
+        if (!file) return;
 
-      setPreview(URL.createObjectURL(file));
-      onUploadImage(file);
-    }, [files, onUploadImage]);
+        setPreview(URL.createObjectURL(file));
+        onUploadImage(file);
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [files]);
 
     const handleClick = () => {
       inputRef.current?.click();
@@ -97,6 +102,8 @@ const ImagePicker = forwardRef(
       if (inputRef.current) {
         inputRef.current.value = "";
       }
+
+      deleteFile(files[0]);
       setPreview("");
       onDeleteImage();
     };

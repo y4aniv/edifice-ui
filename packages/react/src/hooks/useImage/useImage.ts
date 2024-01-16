@@ -16,5 +16,5 @@ export default function useImage({ src, placeholder }: useImageProps) {
   useEffect(() => {
     setImgSrc(src);
   }, [src]);
-  return { imgSrc, status, onError };
+  return { imgSrc, onError };
 }

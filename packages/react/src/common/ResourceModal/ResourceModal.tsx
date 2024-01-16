@@ -2,7 +2,6 @@ import { useId } from "react";
 
 import { UseMutationResult } from "@tanstack/react-query";
 import {
-  APP,
   CreateParameters,
   CreateResult,
   IAction,
@@ -78,7 +77,7 @@ const ResourceModal = ({
   onSuccess,
   ...props
 }: Props) => {
-  const { appCode: app, currentApp } = useOdeClient();
+  const { appCode: application, currentApp } = useOdeClient();
   const { t } = useTranslation();
   const { mode } = props;
 
@@ -143,7 +142,7 @@ const ResourceModal = ({
               ? undefined
               : parseInt(props.currentFolder?.id || ""),
           slug: formData.enablePublic ? newSlug : "",
-          app,
+          application,
         });
       } else {
         await props.updateResource.mutateAsync({
@@ -173,7 +172,7 @@ const ResourceModal = ({
           <p>
             {t("description")} : {formData.description}
           </p>
-          {app === APP.BLOG && (
+          {application === "blog" && (
             <p>
               Public:
               {formData.enablePublic
@@ -260,17 +259,18 @@ const ResourceModal = ({
             </div>
           </div>
 
-          {app === APP.BLOG && isActionAvailable("createPublic", actions) && (
-            <PublicResource
-              appCode={app}
-              isPublic={isPublic}
-              slug={slug}
-              onCopyToClipBoard={onCopyToClipBoard}
-              onPublicChange={onPublicChange}
-              register={register}
-              resourceName={resourceName}
-            />
-          )}
+          {application === "blog" &&
+            isActionAvailable("createPublic", actions) && (
+              <PublicResource
+                appCode={application}
+                isPublic={isPublic}
+                slug={slug}
+                onCopyToClipBoard={onCopyToClipBoard}
+                onPublicChange={onPublicChange}
+                register={register}
+                resourceName={resourceName}
+              />
+            )}
         </form>
       </Modal.Body>
 
