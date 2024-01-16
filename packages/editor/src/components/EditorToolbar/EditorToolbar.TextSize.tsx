@@ -33,26 +33,26 @@ export const EditorToolbarTextSize = ({ triggerProps }: Props) => {
   const sizes = [
     {
       value: "2",
-      label: t("Titre 1"),
+      label: t("editor.toolbar.size.h1"),
       className: "fs-2 fw-bold",
     },
     {
       value: "3",
-      label: t("Titre 2"),
+      label: t("editor.toolbar.size.h2"),
       className: "fs-3 fw-bold",
     },
     {
       value: "4",
-      label: t("Texte grand"),
+      label: t("editor.toolbar.size.big"),
       className: "fs-4",
     },
     {
       value: "5",
-      label: t("Texte normal"),
+      label: t("editor.toolbar.size.normal"),
     },
     {
       value: "6",
-      label: t("Texte petit"),
+      label: t("editor.toolbar.size.small"),
       className: "fs-6",
     },
   ];
@@ -65,7 +65,7 @@ export const EditorToolbarTextSize = ({ triggerProps }: Props) => {
         variant="ghost"
         color="tertiary"
         icon={<TextSize />}
-        aria-label={t("Choix de la taille de typographie")}
+        aria-label={t("editor.toolbar.size.choice")}
       />
       <Dropdown.Menu>
         {sizes.map(({ value, label, className }) => {

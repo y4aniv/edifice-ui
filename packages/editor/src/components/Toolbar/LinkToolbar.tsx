@@ -38,7 +38,7 @@ const LinkToolbar = ({
         name: "edit",
         props: {
           icon: <Edit />,
-          "aria-label": t("Modifier"),
+          "aria-label": t("editor.link.toolbar.edit"),
           onClick: () => onEdit?.(linkAttrs),
         },
       },
@@ -47,7 +47,7 @@ const LinkToolbar = ({
         name: "open",
         props: {
           icon: <ExternalLink />,
-          "aria-label": t("Ouvrir dans un nouvel onglet"),
+          "aria-label": t("editor.link.toolbar.open"),
           onClick: () => onOpen?.(linkAttrs),
         },
       },
@@ -56,7 +56,7 @@ const LinkToolbar = ({
         name: "unlink",
         props: {
           icon: <Unlink className="text-danger" />,
-          "aria-label": t("Ouvrir dans un nouvel onglet"),
+          "aria-label": t("editor.link.toolbar.unlink"),
           onClick: () => onUnlink?.(linkAttrs),
         },
       },
