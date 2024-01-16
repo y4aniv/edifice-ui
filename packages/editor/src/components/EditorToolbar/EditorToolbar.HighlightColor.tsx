@@ -75,7 +75,10 @@ export const EditorToolbarHighlightColor = ({
   const palettes: ColorPalette[] = [
     {
       ...DefaultPalette,
-      reset: { value: "transparent", description: "None" },
+      reset: {
+        value: "transparent",
+        description: t("editor.toolbar.highlight.none"),
+      },
     },
   ];
 
@@ -87,7 +90,7 @@ export const EditorToolbarHighlightColor = ({
         variant="ghost"
         color="tertiary"
         icon={<TextHighlight />}
-        aria-label={t("Couleur de fond")}
+        aria-label={t("editor.toolbar.highlight")}
         className={isActive ? "selected" : ""}
       />
       <Dropdown.Menu>

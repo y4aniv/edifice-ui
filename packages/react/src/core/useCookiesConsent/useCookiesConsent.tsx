@@ -11,6 +11,7 @@ export default function useCookiesConsent() {
       const res: boolean = await getPreference();
       setShowCookiesConsent(res);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleConsultCookies = () => {

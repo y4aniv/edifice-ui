@@ -77,7 +77,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         props: {
           icon: <Landscape />,
           className: "bg-green-200",
-          "aria-label": t("Insérer une image"),
+          "aria-label": t("editor.toolbar.picture"),
           onClick: () => mediaLibraryRef.current?.show("image"),
         },
         name: "image",
@@ -88,7 +88,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         props: {
           icon: <RecordVideo />,
           className: "bg-purple-200",
-          "aria-label": t("Insérer une vidéo"),
+          "aria-label": t("editor.toolbar.video"),
           onClick: () => mediaLibraryRef.current?.show("video"),
         },
         name: "video",
@@ -99,7 +99,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         props: {
           icon: <Mic />,
           className: "bg-red-200",
-          "aria-label": t("Insérer une piste audio"),
+          "aria-label": t("editor.toolbar.audio"),
           onClick: () => mediaLibraryRef.current?.show("audio"),
         },
         name: "audio",
@@ -110,7 +110,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         props: {
           icon: <Paperclip />,
           className: "bg-yellow-200",
-          "aria-label": t("Insérer une pièce jointe"),
+          "aria-label": t("editor.toolbar.attachment"),
           onClick: () => mediaLibraryRef.current?.show("attachment"),
         },
         name: "attachment",
@@ -125,7 +125,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         type: "icon",
         props: {
           icon: <SpeechToText />,
-          "aria-label": t("Reconnaissance vocale"),
+          "aria-label": t("editor.toolbar.stt"),
           className: speechRecognition ? "is-selected" : "",
           onClick: () => toggleSpeechRecognition(),
         },
@@ -213,7 +213,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         type: "icon",
         props: {
           icon: <TextBold />,
-          "aria-label": t("Ajout de gras"),
+          "aria-label": t("editor.toolbar.bold"),
           className: editor?.isActive("bold") ? "is-selected" : "",
           onClick: () => editor?.chain().focus().toggleBold().run(),
         },
@@ -225,7 +225,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         type: "icon",
         props: {
           icon: <TextItalic />,
-          "aria-label": t("Incliner le text"),
+          "aria-label": t("editor.toolbar.italic"),
           className: editor?.isActive("italic") ? "is-selected" : "",
           onClick: () => editor?.chain().focus().toggleItalic().run(),
         },
@@ -237,7 +237,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         type: "icon",
         props: {
           icon: <TextUnderline />,
-          "aria-label": t("Souligner le texte"),
+          "aria-label": t("editor.toolbar.underline"),
           className: editor?.isActive("underline") ? "is-selected" : "",
           onClick: () => editor?.chain().focus().toggleUnderline().run(),
         },
@@ -272,7 +272,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         type: "icon",
         props: {
           icon: <Link />,
-          "aria-label": t("Ajout d'un lien"),
+          "aria-label": t("editor.toolbar.linker"),
           className: editor?.isActive("linker") ? "is-selected" : "",
           onClick: () => mediaLibraryRef.current?.show("hyperlink"),
         },
@@ -295,7 +295,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
             <EditorToolbarDropdownMenu
               triggerProps={triggerProps}
               icon={<BulletList />}
-              ariaLabel={t("Options d'affichage en liste")}
+              ariaLabel={t("editor.toolbar.listoptions")}
               options={listOptions}
             />
           ),
@@ -315,7 +315,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
             <EditorToolbarDropdownMenu
               triggerProps={triggerProps}
               icon={<AlignLeft />}
-              ariaLabel={t("Options d'alignement")}
+              ariaLabel={t("editor.toolbar.align")}
               options={alignmentOptions}
             />
           ),

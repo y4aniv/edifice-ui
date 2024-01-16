@@ -17,7 +17,7 @@ export const EditorToolbarPlusMenu = ({ options }: Props) => {
     <>
       <Dropdown.Trigger
         variant="ghost"
-        label={t("Plus")}
+        label={t("editor.toolbar.plus")}
         size="md"
         tabIndex={-1}
       />

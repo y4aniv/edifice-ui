@@ -72,14 +72,12 @@ export const EditorToolbarTextColor = ({ triggerProps, itemRefs }: Props) => {
 
   // Palettes of available colors to choose from.
   const palettes: ColorPalette[] = [
-    { ...DefaultPalette, label: t("Couleur de texte") },
+    { ...DefaultPalette, label: t("editor.toolbar.color.text") },
     {
       ...AccessiblePalette,
-      label: t("Accessible palette"),
+      label: t("editor.toolbar.color.a13y"),
       tooltip: {
-        message: t(
-          "Cette palette assure un contraste qui permet aux personnes atteintes de daltonisme de distinguer les différentes nuances de couleurs.",
-        ),
+        message: t("editor.toolbar.color.a13y.hint"),
         placement: "right",
       },
     },
@@ -93,7 +91,7 @@ export const EditorToolbarTextColor = ({ triggerProps, itemRefs }: Props) => {
         variant="ghost"
         color="tertiary"
         icon={<TextColor />}
-        aria-label={t("Couleur de texte")}
+        aria-label={t("editor.toolbar.color.text")}
         className={isActive ? "selected" : ""}
       />
       <Dropdown.Menu>
