@@ -79,7 +79,11 @@ const Select = ({
           const value = typeof option === "object" ? option.value : option;
           const label = typeof option === "object" ? option.label : option;
           return (
-            <Dropdown.Item key={value} onClick={() => setLocalValue(option)}>
+            <Dropdown.Item
+              type="action"
+              key={value}
+              onClick={() => setLocalValue(option)}
+            >
               {label}
             </Dropdown.Item>
           );
