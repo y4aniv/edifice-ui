@@ -7,10 +7,10 @@ export default function useCookiesConsent() {
   const { getPreference, savePreference } = usePreferences("rgpdCookies");
 
   useEffect(() => {
-    async () => {
+    (async () => {
       const res: boolean = await getPreference();
       setShowCookiesConsent(res);
-    };
+    })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
