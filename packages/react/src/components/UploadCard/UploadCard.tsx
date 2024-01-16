@@ -104,7 +104,7 @@ const UploadCard = ({
             {isError && (
               <strong>
                 <small className="text-danger caption">
-                  {t("Upload error")}
+                  {t("uploadcard.error")}
                 </small>
               </strong>
             )}
@@ -128,7 +128,7 @@ const UploadCard = ({
                   color="tertiary"
                   onClick={onRetry}
                 >
-                  {t("Retry")}
+                  {t("uploadcard.retry")}
                 </Button>
               )}
               {!isIdle && <div className="vr"></div>}
