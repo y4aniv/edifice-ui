@@ -27,7 +27,7 @@ export const useActionOptions = (
   const options: DropdownMenuOptions[] = [
     {
       icon: <TextVanilla />,
-      label: t("Supprimer la mise en forme"),
+      label: t("tiptap.toolbar.removeFormat"),
       action: () => editor?.chain().clearNodes().unsetAllMarks().run(),
     },
     {
@@ -35,7 +35,7 @@ export const useActionOptions = (
     },
     {
       icon: <Table />,
-      label: t("Tableau"),
+      label: t("tiptap.toolbar.table"),
       action: () =>
         editor
           ?.chain()
@@ -48,17 +48,17 @@ export const useActionOptions = (
     },
     {
       icon: <Superscript />,
-      label: t("Exposant"),
+      label: t("tiptap.toolbar.superscript"),
       action: () => editor?.chain().focus().toggleSuperscript().run(),
     },
     {
       icon: <Subscript />,
-      label: t("Indice"),
+      label: t("tiptap.toolbar.subscript"),
       action: () => editor?.chain().focus().toggleSubscript().run(),
     },
     {
       icon: <SquareRoot />,
-      label: t("Formule mathématique"),
+      label: t("tiptap.toolbar.mathjax"),
       action: () => {
         toggleMathsModal();
       },
@@ -68,41 +68,41 @@ export const useActionOptions = (
     },
     {
       icon: <Code />,
-      label: t("Élément embed/iframe"),
+      label: t("tiptap.toolbar.embed.iframe"),
       action: () => mediaLibraryRef.current?.show("embedder"),
     },
   ];
   const listOptions: DropdownMenuOptions[] = [
     {
       icon: <BulletList />,
-      label: t("Liste à puce"),
+      label: t("tiptap.toolbar.ulist"),
       action: () => editor?.chain().focus().toggleBulletList().run(),
     },
     {
       icon: <OrderedList />,
-      label: t("Liste numérotée"),
+      label: t("tiptap.toolbar.olist"),
       action: () => editor?.chain().focus().toggleOrderedList().run(),
     },
   ];
   const alignmentOptions: DropdownMenuOptions[] = [
     {
       icon: <AlignLeft />,
-      label: t("Aligner à gauche"),
+      label: t("tiptap.toolbar.text.left"),
       action: () => editor?.chain().focus().setTextAlign("left").run(),
     },
     {
       icon: <AlignCenter />,
-      label: t("Aligner au centre"),
+      label: t("tiptap.toolbar.text.center"),
       action: () => editor?.chain().focus().setTextAlign("center").run(),
     },
     {
       icon: <AlignRight />,
-      label: t("Aligner à droite"),
+      label: t("tiptap.toolbar.text.right"),
       action: () => editor?.chain().focus().setTextAlign("right").run(),
     },
     {
       icon: <AlignJustify />,
-      label: t("Justifier"),
+      label: t("tiptap.toolbar.text.justify"),
       action: () => editor?.chain().focus().setTextAlign("justify").run(),
     },
   ];
