@@ -42,7 +42,7 @@ const AttachmentRenderer = (props: AttachmentProps) => {
           }}
           data-drag-handle
         >
-          <p className="m-12 mt-0">{t("editor.attachments.bloc")}</p>
+          <p className="m-12 mt-0">{t("tiptap.attachments.bloc")}</p>
           <Grid>
             {attachmentArrayAttrs?.map((attachment, index) => (
               <Grid.Col sm="6" key={index}>

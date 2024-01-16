@@ -33,26 +33,26 @@ export const EditorToolbarTextSize = ({ triggerProps }: Props) => {
   const sizes = [
     {
       value: "2",
-      label: t("editor.toolbar.size.h1"),
+      label: t("tiptap.toolbar.size.h1"),
       className: "fs-2 fw-bold",
     },
     {
       value: "3",
-      label: t("editor.toolbar.size.h2"),
+      label: t("tiptap.toolbar.size.h2"),
       className: "fs-3 fw-bold",
     },
     {
       value: "4",
-      label: t("editor.toolbar.size.big"),
+      label: t("tiptap.toolbar.size.big"),
       className: "fs-4",
     },
     {
       value: "5",
-      label: t("editor.toolbar.size.normal"),
+      label: t("tiptap.toolbar.size.normal"),
     },
     {
       value: "6",
-      label: t("editor.toolbar.size.small"),
+      label: t("tiptap.toolbar.size.small"),
       className: "fs-6",
     },
   ];
@@ -65,7 +65,7 @@ export const EditorToolbarTextSize = ({ triggerProps }: Props) => {
         variant="ghost"
         color="tertiary"
         icon={<TextSize />}
-        aria-label={t("editor.toolbar.size.choice")}
+        aria-label={t("tiptap.toolbar.size.choice")}
       />
       <Dropdown.Menu>
         {sizes.map(({ value, label, className }) => {

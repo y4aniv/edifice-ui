@@ -30,26 +30,26 @@ export const EditorToolbarTypography = ({ triggerProps }: Props) => {
   const options = [
     {
       value: "",
-      label: t("editor.toolbar.typo.sans"),
+      label: t("tiptap.toolbar.typo.sans"),
     },
     {
       value: "Lora",
-      label: t("editor.toolbar.typo.serif"),
+      label: t("tiptap.toolbar.typo.serif"),
       className: "ff-serif",
     },
     {
       value: "IBM Plex Mono",
-      label: t("editor.toolbar.typo.mono"),
+      label: t("tiptap.toolbar.typo.mono"),
       className: "ff-script",
     },
     {
       value: "Ecriture A",
-      label: t("editor.toolbar.typo.cursive"),
+      label: t("tiptap.toolbar.typo.cursive"),
       className: "ff-cursive",
     },
     {
       value: "OpenDyslexic",
-      label: t("editor.toolbar.typo.dyslexic"),
+      label: t("tiptap.toolbar.typo.dyslexic"),
       className: "ff-dyslexic",
     },
   ];
@@ -62,7 +62,7 @@ export const EditorToolbarTypography = ({ triggerProps }: Props) => {
         variant="ghost"
         color="tertiary"
         icon={<TextTypo />}
-        aria-label={t("editor.toolbar.typo.choice")}
+        aria-label={t("tiptap.toolbar.typo.choice")}
         className={
           editor?.isActive("textStyle", {
             color: /^#([0-9a-f]{3}){1,2}$/i,

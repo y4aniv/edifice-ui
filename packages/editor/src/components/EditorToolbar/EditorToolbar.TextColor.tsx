@@ -72,12 +72,12 @@ export const EditorToolbarTextColor = ({ triggerProps, itemRefs }: Props) => {
 
   // Palettes of available colors to choose from.
   const palettes: ColorPalette[] = [
-    { ...DefaultPalette, label: t("editor.toolbar.color.text") },
+    { ...DefaultPalette, label: t("tiptap.toolbar.color.text") },
     {
       ...AccessiblePalette,
-      label: t("editor.toolbar.color.a13y"),
+      label: t("tiptap.toolbar.color.a13y"),
       tooltip: {
-        message: t("editor.toolbar.color.a13y.hint"),
+        message: t("tiptap.toolbar.color.a13y.hint"),
         placement: "right",
       },
     },
@@ -91,7 +91,7 @@ export const EditorToolbarTextColor = ({ triggerProps, itemRefs }: Props) => {
         variant="ghost"
         color="tertiary"
         icon={<TextColor />}
-        aria-label={t("editor.toolbar.color.text")}
+        aria-label={t("tiptap.toolbar.color.text")}
         className={isActive ? "selected" : ""}
       />
       <Dropdown.Menu>
