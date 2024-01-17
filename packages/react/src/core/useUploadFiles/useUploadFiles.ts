@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { WorkspaceElement } from "edifice-ts-client";
 
 import { useDropzoneContext } from "../../components/Dropzone/DropzoneContext";
-import { Status } from "../../utils";
+import { Status } from "../../types";
 import { useWorkspaceFile } from "../useWorkspaceFile";
 
 const useUploadFiles = ({
@@ -54,8 +54,7 @@ const useUploadFiles = ({
         resource,
       ]);
     } catch (error) {
-      console.error(error);
-
+      //console.error(error);
       setStatus((prevStatus) => ({
         ...prevStatus,
         [file.name]: "error",
