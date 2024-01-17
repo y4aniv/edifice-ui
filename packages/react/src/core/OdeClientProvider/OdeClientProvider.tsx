@@ -100,6 +100,7 @@ export function OdeClientProvider({ children, params }: OdeClientProps) {
           type="info"
           className="m-12"
           isConfirm={true}
+          position="bottom-right"
           button={
             <Button
               color="tertiary"
