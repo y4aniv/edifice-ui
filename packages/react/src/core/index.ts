@@ -5,6 +5,7 @@ export * from "./useConf";
 export * from "./useConversation";
 export * from "./useHasWorkflow";
 export * from "./useHeader";
+export * from "./useHttpErrorToast";
 export * from "./useIsAdml";
 export * from "./useLibraryUrl";
 export * from "./useOdeIcons";

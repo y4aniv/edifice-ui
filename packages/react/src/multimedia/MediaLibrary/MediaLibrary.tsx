@@ -27,6 +27,7 @@ import {
   InternalLinkTabResult,
 } from "./innertabs/InternalLink";
 import { MediaLibraryContext } from "./MediaLibraryContext";
+import { useHttpErrorToast } from "../..";
 import { Button } from "../../components";
 import Modal, { ModalElement } from "../../components/Modal/Modal";
 import { Tabs } from "../../components/Tabs";
@@ -185,6 +186,9 @@ const MediaLibrary = forwardRef(
       type,
       ...refModal.current,
     }));
+
+    // HTTP errors toasts
+    useHttpErrorToast();
 
     const { t } = useTranslation();
 
