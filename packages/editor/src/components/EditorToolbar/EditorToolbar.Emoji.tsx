@@ -32,7 +32,7 @@ export const EditorToolbarEmoji = ({ triggerProps, itemRefs }: Props) => {
         variant="ghost"
         color="tertiary"
         icon={<Smiley />}
-        aria-label={t("Emojis")}
+        aria-label={t("toolbar.emojisPicker")}
       />
       <Dropdown.Menu>
         <div ref={(el) => (itemRefs.current["emoji-picker"] = el)}>
@@ -50,39 +50,39 @@ export const EditorToolbarEmoji = ({ triggerProps, itemRefs }: Props) => {
             categories={[
               {
                 category: Categories.SUGGESTED,
-                name: `${t("Utilisés récemment")}`,
+                name: `${t("tiptap.toolbar.emojis.recentlyUsed")}`,
               },
               {
                 category: Categories.SMILEYS_PEOPLE,
-                name: `${t("Personnes")}`,
+                name: `${t("tiptap.toolbar.emojis.people")}`,
               },
               {
                 category: Categories.ANIMALS_NATURE,
-                name: `${t("Animaux et nature")}`,
+                name: `${t("tiptap.toolbar.emojis.animalsNature")}`,
               },
               {
                 category: Categories.FOOD_DRINK,
-                name: `${t("Aliments et boissons")}`,
+                name: `${t("tiptap.toolbar.emojis.foodDrink")}`,
               },
               {
                 category: Categories.TRAVEL_PLACES,
-                name: `${t("Voyages et lieux")}`,
+                name: `${t("tiptap.toolbar.emojis.travelPlaces")}`,
               },
               {
                 category: Categories.ACTIVITIES,
-                name: `${t("Activités")}`,
+                name: `${t("tiptap.toolbar.emojis.activities")}`,
               },
               {
                 category: Categories.OBJECTS,
-                name: `${t("Objets")}`,
+                name: `${t("tiptap.toolbar.emojis.objects")}`,
               },
               {
                 category: Categories.SYMBOLS,
-                name: `${t("Symbôles")}`,
+                name: `${t("tiptap.toolbar.emojis.symbols")}`,
               },
               {
                 category: Categories.FLAGS,
-                name: `${t("Drapeaux")}`,
+                name: `${t("tiptap.toolbar.emojis.flags")}`,
               },
             ]}
           />

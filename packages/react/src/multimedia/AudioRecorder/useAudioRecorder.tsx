@@ -11,6 +11,7 @@ import {
 } from "@edifice-ui/icons";
 import { WorkspaceElement } from "edifice-ts-client";
 import pako from "pako";
+import { useTranslation } from "react-i18next";
 
 import { ToolbarItem } from "../../components";
 
@@ -96,6 +97,8 @@ export default function useAudioRecorder(
   const audioNameRef = useRef<HTMLInputElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
+  const { t } = useTranslation();
+
   const BUFFER_SIZE: number = 128; // https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor
   const DEFAULT_SAMPLE_RATE: number = 44100;
 
@@ -150,7 +153,6 @@ export default function useAudioRecorder(
     ]);
 
     return () => {
-      console.log("closing encoder worker");
       closeAudioStream();
       encoderWorker.terminate();
     };
@@ -512,6 +514,10 @@ export default function useAudioRecorder(
         color: "danger",
         disabled: recordState !== "IDLE" && recordState !== "PAUSED",
         onClick: handleRecord,
+        "aria-label":
+          recordState === "IDLE"
+            ? t("bbm.audio.record.start")
+            : t("bbm.audio.record.resume"),
       },
     },
     {
@@ -523,6 +529,7 @@ export default function useAudioRecorder(
         color: "danger",
         disabled: recordState !== "RECORDING",
         onClick: handleRecordPause,
+        "aria-label": t("bbm.audio.record.pause"),
       },
     },
     { type: "divider" },
@@ -538,6 +545,7 @@ export default function useAudioRecorder(
           recordState !== "SAVED" &&
           playState !== "PAUSED",
         onClick: handlePlay,
+        "aria-label": t("bbm.audio.play.start"),
       },
     },
     {
@@ -548,6 +556,7 @@ export default function useAudioRecorder(
         icon: <Pause />,
         disabled: playState !== "PLAYING",
         onClick: handlePlayPause,
+        "aria-label": t("bbm.audio.play.pause"),
       },
     },
     {
@@ -557,6 +566,7 @@ export default function useAudioRecorder(
         icon: <Restart />,
         disabled: playState !== "PLAYING" && playState !== "PAUSED",
         onClick: handlePlayStop,
+        "aria-label": t("bbm.audio.play.stop"),
       },
     },
     { type: "divider" },
@@ -571,6 +581,7 @@ export default function useAudioRecorder(
           playState !== "PAUSED" &&
           recordState !== "PAUSED",
         onClick: handleReset,
+        "aria-label": t("bbm.audio.record.reset"),
       },
     },
     {
@@ -587,6 +598,7 @@ export default function useAudioRecorder(
           recordState === "SAVED" ||
           !audioNameRef.current?.value,
         onClick: handleSave,
+        "aria-label": t("bbm.audio.record.save"),
       },
     },
   ];

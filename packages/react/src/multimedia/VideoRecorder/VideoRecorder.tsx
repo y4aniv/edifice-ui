@@ -17,8 +17,11 @@ import {
   Refresh,
   Save,
 } from "@edifice-ui/icons";
-import { WorkspaceElement, odeServices } from "edifice-ts-client";
-import { VideoUploadParams } from "edifice-ts-client/dist/video/interface";
+import {
+  WorkspaceElement,
+  odeServices,
+  VideoUploadParams,
+} from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -430,6 +433,7 @@ const VideoRecorder = forwardRef(
           color: "danger",
           disabled: recording || recorded || saving,
           onClick: handleRecord,
+          "aria-label": t("bbm.video.record.start"),
         },
       },
       {
@@ -439,6 +443,7 @@ const VideoRecorder = forwardRef(
           icon: <RecordStop />,
           disabled: !recording || recorded || saving,
           onClick: handleStop,
+          "aria-label": t("bbm.video.record.stop"),
         },
       },
       {
@@ -449,6 +454,7 @@ const VideoRecorder = forwardRef(
           icon: <PlayFilled />,
           disabled: !recorded || saving,
           onClick: handlePlayPause,
+          "aria-label": t("bbm.video.play.start"),
         },
       },
       {
@@ -459,6 +465,7 @@ const VideoRecorder = forwardRef(
           icon: <Pause />,
           disabled: !recorded || saving,
           onClick: handlePlayPause,
+          "aria-label": t("bbm.video.play.pause"),
         },
       },
       { type: "divider" },
@@ -469,6 +476,7 @@ const VideoRecorder = forwardRef(
           icon: <Refresh />,
           disabled: !recorded || saving,
           onClick: handleReset,
+          "aria-label": t("bbm.video.record.reset"),
         },
       },
       {
@@ -479,6 +487,7 @@ const VideoRecorder = forwardRef(
           icon: <Save />,
           disabled: !recorded || saving || saved,
           onClick: handleSave,
+          "aria-label": t("bbm.video.record.save"),
         },
       },
     ];

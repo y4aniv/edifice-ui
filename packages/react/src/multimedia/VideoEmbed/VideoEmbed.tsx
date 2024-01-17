@@ -101,10 +101,8 @@ const VideoEmbed = ({ onSuccess }: VideoEmbedProps) => {
           <div className="d-flex flex-column align-items-center m-16">
             <EmptyScreen
               imageSrc={`${imagePath}/emptyscreen/illu-error.svg`}
-              title={t("Prévisualisation de la vidéo non disponible")}
-              text={t(
-                "Le lien n'est pas reconnu, vous pouvez utiliser un code embed ou iframe, afin qu'elle s'affiche correctement.",
-              )}
+              title={t("bbm.video.previewError.title")}
+              text={t("bbm.video.previewError.text")}
             />
             <Button
               variant="ghost"
@@ -112,7 +110,7 @@ const VideoEmbed = ({ onSuccess }: VideoEmbedProps) => {
               onClick={handleSwitchToEmbedderClick}
               className="align-items-start mt-16"
             >
-              {t("Utiliser un code embed ou iframe")} <ArrowRight />
+              {t("bbm.video.useEmbedCode")} <ArrowRight />
             </Button>
           </div>
         );
@@ -126,7 +124,7 @@ const VideoEmbed = ({ onSuccess }: VideoEmbedProps) => {
             onClick={handleSwitchToEmbedderClick}
             className="align-items-start"
           >
-            {t("Utiliser un code embed ou iframe")} <ArrowRight />
+            {t("bbm.video.useEmbedCode")} <ArrowRight />
           </Button>
         </div>
       );
@@ -137,13 +135,13 @@ const VideoEmbed = ({ onSuccess }: VideoEmbedProps) => {
     <div className="d-flex flex-column flex-fill video-embed">
       <div className="mb-8 d-flex">
         <Globe className="me-8"></Globe>
-        {t("URL de la vidéo")}
+        {t("bbm.video.url.title")}
       </div>
       <FormControl id={formControlId}>
         <Input
           size="md"
           type="text"
-          placeholder={t("www.exemple-video.com")}
+          placeholder={t("bbm.video.url.placeholder")}
           onChange={handleUrlChange}
         />
       </FormControl>

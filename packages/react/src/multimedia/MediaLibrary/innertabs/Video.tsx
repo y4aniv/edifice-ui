@@ -28,7 +28,7 @@ export const Video = () => {
     <VideoRecorder
       ref={ref}
       appCode={appCode}
-      caption={t("video.caption")}
+      caption={t("bbm.video.caption")}
       onRecordUpdated={handleRecordUpdated}
       onError={handleError}
       hideSaveAction={true}
