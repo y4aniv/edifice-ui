@@ -22,21 +22,21 @@ export const TableToolbarAddMenu = ({ editor }: Props) => {
 
   return (
     <>
-      <Dropdown.Trigger variant="ghost" label={t("Ajouter")} />
+      <Dropdown.Trigger variant="ghost" label={t("add")} />
       <Dropdown.Menu>
         <Dropdown.Item
           key="add-above"
           icon={<ArrowUp />}
           onClick={() => editor?.chain().focus().addRowBefore().run()}
         >
-          {t("Ligne au dessus")}
+          {t("tiptap.table.toolbar.line.above")}
         </Dropdown.Item>
         <Dropdown.Item
           key="add-below"
           icon={<ArrowDown />}
           onClick={() => editor?.chain().focus().addRowAfter().run()}
         >
-          {t("Ligne en dessous")}
+          {t("tiptap.table.toolbar.line.below")}
         </Dropdown.Item>
         <Dropdown.Separator />
         <Dropdown.Item
@@ -44,14 +44,14 @@ export const TableToolbarAddMenu = ({ editor }: Props) => {
           icon={<ArrowLeft />}
           onClick={() => editor?.chain().focus().addColumnBefore().run()}
         >
-          {t("Colonne à gauche")}
+          {t("tiptap.table.toolbar.col.left")}
         </Dropdown.Item>
         <Dropdown.Item
           key="add-right"
           icon={<ArrowRight />}
           onClick={() => editor?.chain().focus().addColumnAfter().run()}
         >
-          {t("Colonne à droite")}
+          {t("tiptap.table.toolbar.col.right")}
         </Dropdown.Item>
         <Dropdown.Separator />
         <Dropdown.Item
@@ -59,14 +59,14 @@ export const TableToolbarAddMenu = ({ editor }: Props) => {
           icon={<HighlightRow />}
           onClick={() => editor?.chain().focus().toggleHeaderRow().run()}
         >
-          {t("Entête première ligne")}
+          {t("tiptap.table.toolbar.line.head")}
         </Dropdown.Item>
         <Dropdown.Item
           key="header-col"
           icon={<HighlightColumn />}
           onClick={() => editor?.chain().focus().toggleHeaderColumn().run()}
         >
-          {t("Entête première colonne")}
+          {t("tiptap.table.toolbar.col.head")}
         </Dropdown.Item>
       </Dropdown.Menu>
     </>

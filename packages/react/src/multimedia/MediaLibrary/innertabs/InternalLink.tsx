@@ -49,7 +49,7 @@ export const InternalLink = ({
       <Checkbox
         className="align-items-center"
         checked={isChecked}
-        label={t("Ouvrir le lien dans un nouvel onglet")}
+        label={t("tiptap.linker.open.tab")}
         onChange={() => toggleChecked()}
       />
     </div>

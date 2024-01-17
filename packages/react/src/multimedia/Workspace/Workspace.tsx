@@ -60,19 +60,19 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
 
   const { root: owner, loadContent: loadOwnerDocs } = useWorkspaceSearch(
     "owner",
-    t("Mes documents"),
+    t("workspace.tree.owner"),
     "owner",
     roles,
   );
   const { root: shared, loadContent: loadSharedDocs } = useWorkspaceSearch(
     "shared",
-    t("Partagés avec moi"),
+    t("workspace.tree.shared"),
     "shared",
     roles,
   );
   const { root: protect, loadContent: loadProtectedDocs } = useWorkspaceSearch(
     "protected",
-    t("Ajoutés dans les applications"),
+    t("workspace.tree.protected"),
     "protected",
     roles,
   );
@@ -224,9 +224,9 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
   function getSortOrderLabel() {
     return sortOrder[0] === "name"
       ? sortOrder[1] === "asc"
-        ? t("Alphabétique")
-        : t("Alphabétique inversé")
-      : t("Dernières modifications");
+        ? t("sort.order.alpha.asc")
+        : t("sort.order.alpha.desc")
+      : t("sort.order.modify.desc");
   }
 
   function handleSelectDoc(doc: WorkspaceElement) {
@@ -290,12 +290,12 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
                   <Input
                     noValidationIcon
                     ref={inputRef}
-                    placeholder={t("Placeholder text")}
+                    placeholder={t("workspace.search.protected")}
                     size="md"
                     type="search"
                   />
                   <SearchButton
-                    aria-label={t("Rechercher")}
+                    aria-label={t("search")}
                     icon={<Search />}
                     type="submit"
                   />
@@ -303,7 +303,9 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
               </form>
             </div>
             <div className="d-flex align-items-center justify-content-end px-8 py-4">
-              <small className="text-muted">{t("Ordre :")}</small>
+              <small className="text-muted">
+                {t("workspace.search.order")}
+              </small>
               <Dropdown>
                 <Dropdown.Trigger
                   size="sm"
@@ -315,19 +317,19 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
                     icon={<SortTime />}
                     onClick={() => setSortOrder(["modified", "desc"])}
                   >
-                    {t("Dernières modifications")}
+                    {t("sort.order.modify.desc")}
                   </Dropdown.Item>
                   <Dropdown.Item
                     icon={<SortAscendingLetters />}
                     onClick={() => setSortOrder(["name", "asc"])}
                   >
-                    {t("Alphabétique")}
+                    {t("sort.order.alpha.asc")}
                   </Dropdown.Item>
                   <Dropdown.Item
                     icon={<SortDescendingLetters />}
                     onClick={() => setSortOrder(["name", "desc"])}
                   >
-                    {t("Alphabétique inversé")}
+                    {t("sort.order.alpha.desc")}
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>

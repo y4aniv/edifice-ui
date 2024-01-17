@@ -55,10 +55,10 @@ export const TableToolbarCellColor = ({ editor, itemRefs }: Props) => {
   const palettes: ColorPalette[] = [
     {
       ...DefaultPalette,
-      label: t("Couleur de cellule"),
+      label: t("tiptap.table.toolbar.cell.color"),
       reset: {
         value: "transparent",
-        description: t("Aucune"),
+        description: t("tiptap.table.toolbar.cell.none"),
         isReset: true,
       },
     },
@@ -68,7 +68,7 @@ export const TableToolbarCellColor = ({ editor, itemRefs }: Props) => {
     <>
       <Dropdown.Trigger
         variant="ghost"
-        aria-label={t("Couleur de fond")}
+        aria-label={t("tiptap.table.toolbar.cell.bk")}
         icon={
           <ColorPickerItem
             model={{
