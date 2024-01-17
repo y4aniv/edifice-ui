@@ -52,7 +52,7 @@ const AttachmentRenderer = (props: AttachmentProps) => {
                     <>
                       <a href={attachment.href} download>
                         <IconButton
-                          aria-label={t("download")}
+                          aria-label={t("tiptap.attachments.download")}
                           color="tertiary"
                           type="button"
                           icon={<Download />}
@@ -60,7 +60,7 @@ const AttachmentRenderer = (props: AttachmentProps) => {
                         />
                       </a>
                       <IconButton
-                        aria-label={t("explorer.delete")}
+                        aria-label={t("tiptap.attachments.delete")}
                         color="danger"
                         type="button"
                         icon={<Delete />}

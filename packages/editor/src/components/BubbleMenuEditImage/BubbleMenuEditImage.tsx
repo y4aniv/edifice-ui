@@ -78,7 +78,7 @@ const BubbleMenuEditImage = ({
         color="secondary"
         onClick={onEditImage}
       >
-        {t("edit.image")}
+        {t("tiptap.bubblemenu.edit")}
       </Button>
       <div className="vr"></div>
       {buttonSizeList.map((button, index) => (
