@@ -32,7 +32,7 @@ export const EditorToolbarEmoji = ({ triggerProps, itemRefs }: Props) => {
         variant="ghost"
         color="tertiary"
         icon={<Smiley />}
-        aria-label={t("toolbar.emojisPicker")}
+        aria-label={t("tiptap.toolbar.emojisPicker")}
       />
       <Dropdown.Menu>
         <div ref={(el) => (itemRefs.current["emoji-picker"] = el)}>
