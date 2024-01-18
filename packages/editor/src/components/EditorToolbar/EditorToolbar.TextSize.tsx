@@ -22,6 +22,7 @@ export const EditorToolbarTextSize = ({ triggerProps }: Props) => {
 
   const textOptions = [
     {
+      id: "title-1",
       label: t("tiptap.toolbar.size.h1"),
       className: "fs-2 fw-bold text-secondary",
       action: () =>
@@ -29,6 +30,7 @@ export const EditorToolbarTextSize = ({ triggerProps }: Props) => {
       visibility: hasExtension("customHeading", editor),
     },
     {
+      id: "title-2",
       label: t("tiptap.toolbar.size.h2"),
       className: "fs-3 fw-bold text-secondary",
       action: () =>
@@ -36,12 +38,14 @@ export const EditorToolbarTextSize = ({ triggerProps }: Props) => {
       visibility: hasExtension("customHeading", editor),
     },
     {
+      id: "divider",
       type: "divider",
       visibility:
         hasExtension("customHeading", editor) &&
         hasExtension("fontSize", editor),
     },
     {
+      id: "big-text",
       label: t("tiptap.toolbar.size.big"),
       className: "fs-4",
       action: () =>
@@ -49,12 +53,14 @@ export const EditorToolbarTextSize = ({ triggerProps }: Props) => {
       visibility: hasExtension("fontSize", editor),
     },
     {
+      id: "normal-text",
       label: t("tiptap.toolbar.size.normal"),
       action: () =>
         editor?.chain().focus().setParagraph().setFontSize("16px").run(),
       visibility: hasExtension("fontSize", editor),
     },
     {
+      id: "small-text",
       label: t("tiptap.toolbar.size.small"),
       className: "fs-6",
       action: () =>
@@ -62,8 +68,6 @@ export const EditorToolbarTextSize = ({ triggerProps }: Props) => {
       visibility: hasExtension("fontSize", editor),
     },
   ];
-
-  console.log(hasExtension("customHeading", editor));
 
   return (
     <>
@@ -78,7 +82,7 @@ export const EditorToolbarTextSize = ({ triggerProps }: Props) => {
       <Dropdown.Menu>
         {textOptions.map((option) => {
           return (
-            <Fragment key={option.label}>
+            <Fragment key={option.id}>
               {option.type === "divider" && option.visibility ? (
                 <Dropdown.Separator />
               ) : option.visibility ? (
