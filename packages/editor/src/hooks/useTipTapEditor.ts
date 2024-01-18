@@ -56,7 +56,7 @@ export const useTipTapEditor = (editable: boolean, content: Content) => {
   const editor = useEditor({
     editable,
     extensions: [
-      StarterKit as any,
+      StarterKit,
       Highlight.configure({
         multicolor: true,
       }),
@@ -78,7 +78,9 @@ export const useTipTapEditor = (editable: boolean, content: Content) => {
       TextAlign.configure({
         types: ["heading", "paragraph"],
       }),
-      CustomHeading,
+      CustomHeading.configure({
+        levels: [1, 2],
+      }),
       Typography,
       FontSize,
       SpeechRecognition,
@@ -108,7 +110,8 @@ export const useTipTapEditor = (editable: boolean, content: Content) => {
 
   useEffect(() => {
     editor?.commands.setContent(content);
-  }, [editor, content]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [content]);
 
   return { editor, editable };
 };
