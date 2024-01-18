@@ -132,11 +132,11 @@ importers:
         specifier: develop
         version: 1.0.1-develop.111(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-font-size':
-        specifier: link:../../../edifice-tiptap-extensions/packages/extension-font-size
-        version: link:../../../edifice-tiptap-extensions/packages/extension-font-size
+        specifier: develop
+        version: 1.0.1-develop.116(@tiptap/core@2.0.3)(@tiptap/extension-heading@2.0.3)(@tiptap/extension-text-style@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-heading':
-        specifier: link:../../../edifice-tiptap-extensions/packages/extension-heading
-        version: link:../../../edifice-tiptap-extensions/packages/extension-heading
+        specifier: develop
+        version: 1.0.1-develop.116(@tiptap/core@2.0.3)(@tiptap/extension-heading@2.0.3)(@tiptap/extension-text-style@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-hyperlink':
         specifier: develop
         version: 1.0.1-develop.111(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3)
@@ -151,7 +151,7 @@ importers:
         version: 1.0.1-develop.111(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-speechrecognition':
         specifier: develop
-        version: 1.0.1-develop.111(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+        version: 1.0.1-develop.114(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       '@edifice-tiptap-extensions/extension-speechsynthesis':
         specifier: develop
         version: 1.0.1-develop.111(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
@@ -269,7 +269,7 @@ importers:
         version: 8.2.0
       edifice-ts-client:
         specifier: develop
-        version: 1.1.0-develop.2
+        version: 1.1.0-develop.4
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -387,7 +387,7 @@ importers:
         version: 8.2.0
       edifice-ts-client:
         specifier: develop
-        version: 1.1.0-develop.2
+        version: 1.1.0-develop.4
       ohash:
         specifier: 1.1.3
         version: 1.1.3
@@ -1779,6 +1779,34 @@ packages:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
+  /@edifice-tiptap-extensions/extension-font-size@1.0.1-develop.116(@tiptap/core@2.0.3)(@tiptap/extension-heading@2.0.3)(@tiptap/extension-text-style@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-Ag/vYOUlBTMdSqjZeVnM4MjmA9ejS/L86UXrpOILB5OhH2UmpNxG8bsBPG0AzYbNCiMj/nZc42wlg1FVdf8H/w==}
+    peerDependencies:
+      '@tiptap/core': 2.0.3
+      '@tiptap/extension-heading': 2.0.3
+      '@tiptap/extension-text-style': 2.0.3
+      '@tiptap/pm': 2.0.3
+    dependencies:
+      '@tiptap/core': 2.0.3(@tiptap/pm@2.0.3)
+      '@tiptap/extension-heading': 2.0.3(@tiptap/core@2.0.3)
+      '@tiptap/extension-text-style': 2.0.3(@tiptap/core@2.0.3)
+      '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
+    dev: false
+
+  /@edifice-tiptap-extensions/extension-heading@1.0.1-develop.116(@tiptap/core@2.0.3)(@tiptap/extension-heading@2.0.3)(@tiptap/extension-text-style@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-JCDDKpixb8EoENQdYJDTn3Jh2okwvVn9AAqEOyzel/fG+dz1mmK53IA0T/nsv8ySowadej59nuBz+pt+tGdXqQ==}
+    peerDependencies:
+      '@tiptap/core': 2.0.3
+      '@tiptap/extension-heading': 2.0.3
+      '@tiptap/extension-text-style': 2.0.3
+      '@tiptap/pm': 2.0.3
+    dependencies:
+      '@tiptap/core': 2.0.3(@tiptap/pm@2.0.3)
+      '@tiptap/extension-heading': 2.0.3(@tiptap/core@2.0.3)
+      '@tiptap/extension-text-style': 2.0.3(@tiptap/core@2.0.3)
+      '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
+    dev: false
+
   /@edifice-tiptap-extensions/extension-hyperlink@1.0.1-develop.111(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3):
     resolution: {integrity: sha512-asfjPs/Ta9HgkelbRUYJES5jMjpR//g0uzKW9KLOPiqTBTBi3CvLZ8+NVUvJM7w8+gXVx7tcQvyAGpoD4KC8fA==}
     peerDependencies:
@@ -1823,8 +1851,8 @@ packages:
       '@tiptap/pm': 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-speechrecognition@1.0.1-develop.111(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
-    resolution: {integrity: sha512-vVVYYNsj5Q28N0t3aCd+OYd641dco7xIkWd6DCvqosORnjlE/od5ojW04+jujiaGIAbRNw143V8j4gckHOmCdw==}
+  /@edifice-tiptap-extensions/extension-speechrecognition@1.0.1-develop.114(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
+    resolution: {integrity: sha512-ULNlJRZzc064TSM2xqsK/JXMA9s5bzaP3blMwHpjX8arzyoqNmK41yi02EJfBrbwsGtQlyYqhblck1aCNIjgig==}
     peerDependencies:
       '@tiptap/core': 2.0.3
       '@tiptap/pm': 2.0.3
@@ -8023,13 +8051,12 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /edifice-ts-client@1.1.0-develop.2:
-    resolution: {integrity: sha512-4DRuvYSVp8riTIR9Asi3u6Wcbu42URwwBLqhZ+jLo7ZaD8QWelu0nH+eV7JrGQjG/7YshscWfhT5snH3g8mkJg==}
+  /edifice-ts-client@1.1.0-develop.4:
+    resolution: {integrity: sha512-rmSSEf5gnD9B9qnlINyrWG4CFvTE9Ro6TseKWFZXr6roiH1bV+QogcCI8KEoQ5jIdoqV0LeTjNQIg2pg48J/FA==}
     engines: {node: 16 || 18}
     dependencies:
       axios: 1.4.0
       core-js: 3.32.0
-      rxjs: 7.8.1
     transitivePeerDependencies:
       - debug
     dev: true
