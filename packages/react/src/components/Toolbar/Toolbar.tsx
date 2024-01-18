@@ -26,11 +26,13 @@ interface ButtonItem extends Item {
   type: "button";
   name: string;
   props: ButtonProps;
+  isEnable?: boolean;
 }
 interface IconButtonItem extends Item {
   type: "icon";
   name: string;
   props: IconButtonProps;
+  isEnable?: boolean;
 }
 interface DropdownItem extends Item {
   type: "dropdown";
@@ -40,6 +42,7 @@ interface DropdownItem extends Item {
 interface PrimaryItem extends Item {
   type: "primary";
   props: ButtonProps;
+  isEnable?: boolean;
 }
 interface DividerItem extends Item {
   type: "divider";
@@ -190,6 +193,7 @@ const Toolbar = forwardRef(
                   variant="ghost"
                   tabIndex={index === 0 ? 0 : -1}
                   onKeyDown={handleKeyDown}
+                  disabled={item.isEnable}
                 />
               );
 
@@ -202,6 +206,7 @@ const Toolbar = forwardRef(
                   variant="ghost"
                   tabIndex={index === 0 ? 0 : -1}
                   onKeyDown={handleKeyDown}
+                  disabled={item.isEnable}
                 />
               );
 
@@ -226,6 +231,7 @@ const Toolbar = forwardRef(
                   color="primary"
                   tabIndex={index === 0 ? 0 : -1}
                   onKeyDown={handleKeyDown}
+                  disabled={item.isEnable}
                 />
               );
 

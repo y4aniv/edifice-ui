@@ -156,8 +156,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         },
         name: "text_size",
         visibility: showIf(
-          hasExtension("fontSize", editor) ||
-            hasExtension("customHeading", editor),
+          hasExtension("fontSize", editor) || hasExtension("heading", editor),
         ),
       },
       //--------------- TEXT COLOR ---------------//
@@ -214,6 +213,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           onClick: () => editor?.chain().focus().toggleBold().run(),
         },
         name: "bold",
+        isEnable: editor?.isActive("heading"),
         visibility: showIf(hasMark("bold", editor)),
       },
       //--------------- ITALIC ---------------//
