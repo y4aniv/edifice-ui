@@ -5,7 +5,7 @@ import "@edifice-tiptap-extensions/extension-audio";
 import "@edifice-tiptap-extensions/extension-image";
 import "@edifice-tiptap-extensions/extension-video";
 
-import { Alerts } from "@edifice-tiptap-extensions/extension-alert";
+import { Alert } from "@edifice-tiptap-extensions/extension-alert";
 import { FontSize } from "@edifice-tiptap-extensions/extension-font-size";
 import { CustomHeading } from "@edifice-tiptap-extensions/extension-heading";
 import { Hyperlink } from "@edifice-tiptap-extensions/extension-hyperlink";
@@ -94,7 +94,7 @@ export const useTipTapEditor = (editable: boolean, content: Content) => {
       Hyperlink,
       FontFamily,
       Mathematics,
-      Alerts,
+      Alert,
       VideoNodeView(MediaRenderer),
       AudioNodeView(AudioRenderer),
       ImageNodeView(MediaRenderer),
