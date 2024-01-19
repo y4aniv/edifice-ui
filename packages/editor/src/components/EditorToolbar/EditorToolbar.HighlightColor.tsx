@@ -85,14 +85,14 @@ export const EditorToolbarHighlightColor = ({
 
   return (
     <>
-      <Tooltip message={t("tiptap.toolbar.highlight")} placement="top">
+      <Tooltip message={t("tiptap.toolbar.highlight.back")} placement="top">
         <IconButton
           {...triggerProps}
           type="button"
           variant="ghost"
           color="tertiary"
           icon={<TextHighlight />}
-          aria-label={t("tiptap.toolbar.highlight")}
+          aria-label={t("tiptap.toolbar.highlight.back")}
           className={isActive ? "selected" : ""}
         />
       </Tooltip>
