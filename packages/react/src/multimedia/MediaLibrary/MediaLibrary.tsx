@@ -254,7 +254,7 @@ const MediaLibrary = forwardRef(
       "internal-link": {
         id: "internal-link",
         icon: <Applications />,
-        label: t("bbm.internal"),
+        label: t("bbm.linker.int"),
         content: (
           <InnerTabs.InternalLink {...(linkTabProps as InternalLinkTabProps)} />
         ),
