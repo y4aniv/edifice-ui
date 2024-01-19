@@ -140,7 +140,8 @@ const useDropdown = (
 
   const closeDropdown = useCallback(() => {
     if (triggerRef.current) {
-      triggerRef.current.focus();
+      // Closing the dropdown should not scroll the window content.
+      triggerRef.current.focus({ preventScroll: true });
       setVisible(false);
     }
   }, []);
@@ -269,10 +270,6 @@ const useDropdown = (
     [visible],
   );
 
-  const onMenuItemClick = useCallback(() => {
-    closeDropdown();
-  }, [closeDropdown]);
-
   return {
     isFocused,
     visible,
@@ -301,7 +298,7 @@ const useDropdown = (
     /* ItemProps to spread to any item Component */
     itemProps: {
       onMenuItemMouseEnter,
-      onMenuItemClick,
+      onMenuItemClick: closeDropdown,
       onMenuItemKeyDown,
     },
     setVisible,
