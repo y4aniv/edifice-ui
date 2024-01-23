@@ -118,7 +118,7 @@ const Editor = forwardRef(
             editable={editable}
           />
         )}
-        
+
         <Suspense fallback={<LoadingScreen />}>
           {editable && (
             <MediaLibrary
