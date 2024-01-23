@@ -67,17 +67,17 @@ const MathsModal = ({ isOpen, onSuccess, onCancel }: ModalProps) => {
   return createPortal(
     <Modal id="MathsModal" isOpen={isOpen} onModalClose={handleOnCancel}>
       <Modal.Header onModalClose={handleOnCancel}>
-        {t("Formule mathématique")}
+        {t("tiptap.maths.title")}
       </Modal.Header>
       <Modal.Subtitle>
-        {t("Rédigez vos formules grâce au langage ")}
+        {t("tiptap.maths.subtitle.1")}
         <a
           href={t(
             "https://fr.wikibooks.org/wiki/LaTeX/%C3%89crire_des_math%C3%A9matiques",
           )}
           target="_blank"
         >
-          {t("LaTeX Mathematics")}
+          {t("tiptap.maths.subtitle.2")}
         </a>
       </Modal.Subtitle>
       <Modal.Body>
@@ -102,7 +102,7 @@ const MathsModal = ({ isOpen, onSuccess, onCancel }: ModalProps) => {
           type="button"
           variant="ghost"
         >
-          {t("Annuler")}
+          {t("tiptap.maths.cancel")}
         </Button>
         <Button
           color="primary"
@@ -110,7 +110,7 @@ const MathsModal = ({ isOpen, onSuccess, onCancel }: ModalProps) => {
           type="button"
           variant="filled"
         >
-          {t("Ajouter")}
+          {t("tiptap.maths.add")}
         </Button>
       </Modal.Footer>
     </Modal>,

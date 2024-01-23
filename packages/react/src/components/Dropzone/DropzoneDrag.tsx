@@ -6,7 +6,7 @@ const DropzoneDrag = () => {
   return (
     <div className="drop-wrapper">
       <div className="drop-content">
-        <p className="drop-text">{t("medialibrary.drop.help")}</p>
+        <p className="drop-text">{t("dropzone.drop")}</p>
       </div>
     </div>
   );

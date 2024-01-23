@@ -1,14 +1,6 @@
-import {
-  FormEvent,
-  Ref,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
 
 import {
-  Search,
   SortAscendingLetters,
   SortDescendingLetters,
   SortTime,
@@ -24,10 +16,8 @@ import { useTranslation } from "react-i18next";
 import {
   Dropdown,
   FileCard,
-  FormControl,
   Grid,
-  Input,
-  SearchButton,
+  SearchBar,
   TreeNode,
   TreeView,
   TreeViewHandlers,
@@ -56,23 +46,22 @@ export interface WorkspaceProps {
 
 const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
   const { t } = useTranslation();
-  const inputRef: Ref<HTMLInputElement> = useRef(null);
 
   const { root: owner, loadContent: loadOwnerDocs } = useWorkspaceSearch(
     "owner",
-    t("Mes documents"),
+    t("workspace.tree.owner"),
     "owner",
     roles,
   );
   const { root: shared, loadContent: loadSharedDocs } = useWorkspaceSearch(
     "shared",
-    t("Partagés avec moi"),
+    t("workspace.tree.shared"),
     "shared",
     roles,
   );
   const { root: protect, loadContent: loadProtectedDocs } = useWorkspaceSearch(
     "protected",
-    t("Ajoutés dans les applications"),
+    t("workspace.tree.protected"),
     "protected",
     roles,
   );
@@ -89,6 +78,7 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
   const [documents, setDocuments] = useState<WorkspaceElement[]>([]);
 
   const [searchTerm, setSearchTerm] = useState<string | undefined>(null!);
+
   const [sortOrder, setSortOrder] = useState<[string, string]>([
     "modified",
     "desc",
@@ -206,13 +196,11 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => selectAndLoadContent("owner", "owner"), []);
 
-  const handleSearchSubmit = useCallback(
-    (e: FormEvent) => {
-      setSearchTerm(inputRef.current?.value);
-      e.stopPropagation();
-      e.preventDefault();
+  const handleSearchChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setSearchTerm(e.target.value);
     },
-    [inputRef],
+    [setSearchTerm],
   );
 
   function compare(a: string, b: string) {
@@ -224,9 +212,9 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
   function getSortOrderLabel() {
     return sortOrder[0] === "name"
       ? sortOrder[1] === "asc"
-        ? t("Alphabétique")
-        : t("Alphabétique inversé")
-      : t("Dernières modifications");
+        ? t("sort.order.alpha.asc")
+        : t("sort.order.alpha.desc")
+      : t("sort.order.modify.desc");
   }
 
   function handleSelectDoc(doc: WorkspaceElement) {
@@ -285,25 +273,16 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
         <Grid className="flex-grow-1 gap-0">
           <Grid.Col sm="4" md="8" xl="12">
             <div className="workspace-search px-16 py-8 ">
-              <form className="gap-16 d-flex" onSubmit={handleSearchSubmit}>
-                <FormControl className="input-group" id="search">
-                  <Input
-                    noValidationIcon
-                    ref={inputRef}
-                    placeholder={t("Placeholder text")}
-                    size="md"
-                    type="search"
-                  />
-                  <SearchButton
-                    aria-label={t("Rechercher")}
-                    icon={<Search />}
-                    type="submit"
-                  />
-                </FormControl>
-              </form>
+              <SearchBar
+                isVariant={true}
+                className="gap-16"
+                onChange={handleSearchChange}
+              />
             </div>
             <div className="d-flex align-items-center justify-content-end px-8 py-4">
-              <small className="text-muted">{t("Ordre :")}</small>
+              <small className="text-muted">
+                {t("workspace.search.order")}
+              </small>
               <Dropdown>
                 <Dropdown.Trigger
                   size="sm"
@@ -315,19 +294,19 @@ const Workspace = ({ roles, onSelect, className }: WorkspaceProps) => {
                     icon={<SortTime />}
                     onClick={() => setSortOrder(["modified", "desc"])}
                   >
-                    {t("Dernières modifications")}
+                    {t("sort.order.modify.desc")}
                   </Dropdown.Item>
                   <Dropdown.Item
                     icon={<SortAscendingLetters />}
                     onClick={() => setSortOrder(["name", "asc"])}
                   >
-                    {t("Alphabétique")}
+                    {t("sort.order.alpha.asc")}
                   </Dropdown.Item>
                   <Dropdown.Item
                     icon={<SortDescendingLetters />}
                     onClick={() => setSortOrder(["name", "desc"])}
                   >
-                    {t("Alphabétique inversé")}
+                    {t("sort.order.alpha.desc")}
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>

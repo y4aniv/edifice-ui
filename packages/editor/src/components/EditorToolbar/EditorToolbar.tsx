@@ -33,6 +33,9 @@ import {
   useEditorContext,
   useSpeechRecognition,
 } from "../..";
+import { hasExtension } from "../../utils/has-extension";
+import { hasMark } from "../../utils/has-mark";
+import { hasTextStyle } from "../../utils/has-text-style";
 
 interface Props {
   /** Ref to a MediaLibrary instance */
@@ -58,16 +61,6 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
   } = useSpeechRecognition(editor);
 
   const toolbarItems: ToolbarItem[] = useMemo(() => {
-    const hasMark = (extensionName: string) =>
-      !!editor?.extensionManager.splittableMarks.includes(extensionName);
-    const hasExtension = (extensionName: string) =>
-      !!editor?.extensionManager.extensions.find(
-        (item) => item.name === extensionName,
-      );
-    const hasTextStyle = (styleName: string) =>
-      editor?.extensionManager.extensions.find(
-        (item) => item.name === styleName && hasMark("textStyle"),
-      );
     const showIf = (truthy: boolean) => (truthy ? "show" : "hide");
 
     return [
@@ -77,10 +70,11 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         props: {
           icon: <Landscape />,
           className: "bg-green-200",
-          "aria-label": t("Insérer une image"),
+          "aria-label": t("tiptap.toolbar.picture"),
           onClick: () => mediaLibraryRef.current?.show("image"),
         },
         name: "image",
+        tooltip: t("tiptap.toolbar.picture"),
       },
       //--------------- VIDEO ---------------//
       {
@@ -88,10 +82,11 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         props: {
           icon: <RecordVideo />,
           className: "bg-purple-200",
-          "aria-label": t("Insérer une vidéo"),
+          "aria-label": t("tiptap.toolbar.video"),
           onClick: () => mediaLibraryRef.current?.show("video"),
         },
         name: "video",
+        tooltip: t("tiptap.toolbar.video"),
       },
       //--------------- AUDIO ---------------//
       {
@@ -99,10 +94,11 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         props: {
           icon: <Mic />,
           className: "bg-red-200",
-          "aria-label": t("Insérer une piste audio"),
+          "aria-label": t("tiptap.toolbar.audio"),
           onClick: () => mediaLibraryRef.current?.show("audio"),
         },
         name: "audio",
+        tooltip: t("tiptap.toolbar.audio"),
       },
       //--------------- ATTACHMENT ---------------//
       {
@@ -110,10 +106,11 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         props: {
           icon: <Paperclip />,
           className: "bg-yellow-200",
-          "aria-label": t("Insérer une pièce jointe"),
+          "aria-label": t("tiptap.toolbar.attachment"),
           onClick: () => mediaLibraryRef.current?.show("attachment"),
         },
         name: "attachment",
+        tooltip: t("tiptap.toolbar.attachment"),
       },
       //-------------------------------------//
       {
@@ -125,12 +122,13 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         type: "icon",
         props: {
           icon: <SpeechToText />,
-          "aria-label": t("Reconnaissance vocale"),
+          "aria-label": t("tiptap.toolbar.stt"),
           className: speechRecognition ? "is-selected" : "",
           onClick: () => toggleSpeechRecognition(),
         },
         visibility: canRecognizeSpeech ? "show" : "hide",
         name: "speechtotext",
+        tooltip: t("tiptap.toolbar.stt"),
       },
       //------------------------------------//
       {
@@ -149,7 +147,8 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           ) => <EditorToolbarTypography triggerProps={triggerProps} />,
         },
         name: "text_typo",
-        visibility: showIf(hasExtension("fontFamily")),
+        visibility: showIf(hasExtension("fontFamily", editor)),
+        tooltip: t("tiptap.toolbar.typo.choice"),
       },
       //--------------- TEXT SIZE ---------------//
       {
@@ -162,7 +161,10 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           ) => <EditorToolbarTextSize triggerProps={triggerProps} />,
         },
         name: "text_size",
-        visibility: showIf(hasExtension("typoSize")),
+        visibility: showIf(
+          hasExtension("fontSize", editor) || hasExtension("heading", editor),
+        ),
+        tooltip: t("tiptap.toolbar.size.choice"),
       },
       //--------------- TEXT COLOR ---------------//
       {
@@ -182,7 +184,8 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         },
         overflow: false,
         name: "color",
-        visibility: hasTextStyle("color") ? "show" : "hide",
+        visibility: hasTextStyle("color", editor) ? "show" : "hide",
+        tooltip: t("tiptap.toolbar.color.text"),
       },
       //--------------- TEXT HIGHLIGHTING COLOR ---------------//
       {
@@ -201,7 +204,8 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           ),
         },
         name: "highlight",
-        visibility: showIf(hasMark("highlight")),
+        visibility: showIf(hasMark("highlight", editor)),
+        tooltip: t("tiptap.toolbar.highlight.back"),
       },
       //-------------------------------------//
       {
@@ -213,36 +217,40 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         type: "icon",
         props: {
           icon: <TextBold />,
-          "aria-label": t("Ajout de gras"),
+          "aria-label": t("tiptap.toolbar.bold"),
           className: editor?.isActive("bold") ? "is-selected" : "",
           onClick: () => editor?.chain().focus().toggleBold().run(),
         },
         name: "bold",
-        visibility: showIf(hasMark("bold")),
+        isEnable: editor?.isActive("heading"),
+        visibility: showIf(hasMark("bold", editor)),
+        tooltip: t("tiptap.toolbar.bold"),
       },
       //--------------- ITALIC ---------------//
       {
         type: "icon",
         props: {
           icon: <TextItalic />,
-          "aria-label": t("Incliner le text"),
+          "aria-label": t("tiptap.toolbar.italic"),
           className: editor?.isActive("italic") ? "is-selected" : "",
           onClick: () => editor?.chain().focus().toggleItalic().run(),
         },
         name: "italic",
-        visibility: showIf(hasMark("italic")),
+        visibility: showIf(hasMark("italic", editor)),
+        tooltip: t("tiptap.toolbar.italic"),
       },
       //--------------- UNDERLINE ---------------//
       {
         type: "icon",
         props: {
           icon: <TextUnderline />,
-          "aria-label": t("Souligner le texte"),
+          "aria-label": t("tiptap.toolbar.underline"),
           className: editor?.isActive("underline") ? "is-selected" : "",
           onClick: () => editor?.chain().focus().toggleUnderline().run(),
         },
         name: "underline",
-        visibility: showIf(hasMark("underline")),
+        visibility: showIf(hasMark("underline", editor)),
+        tooltip: t("tiptap.toolbar.underline"),
       },
       //-------------------------------------//
       {
@@ -266,17 +274,19 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           ),
         },
         name: "emoji",
+        tooltip: t("tiptap.toolbar.emojisPicker"),
       },
       //--------------- LINKER (internal / external) ---------------//
       {
         type: "icon",
         props: {
           icon: <Link />,
-          "aria-label": t("Ajout d'un lien"),
+          "aria-label": t("tiptap.toolbar.linker"),
           className: editor?.isActive("linker") ? "is-selected" : "",
           onClick: () => mediaLibraryRef.current?.show("hyperlink"),
         },
         name: "linker",
+        tooltip: t("tiptap.toolbar.linker"),
       },
       //-----------------------------------//
       {
@@ -295,13 +305,14 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
             <EditorToolbarDropdownMenu
               triggerProps={triggerProps}
               icon={<BulletList />}
-              ariaLabel={t("Options d'affichage en liste")}
+              ariaLabel={t("tiptap.toolbar.listoptions")}
               options={listOptions}
             />
           ),
         },
         name: "list",
-        visibility: showIf(hasExtension("starterKit")),
+        visibility: showIf(hasExtension("starterKit", editor)),
+        tooltip: t("tiptap.toolbar.listoptions"),
       },
       //--------------- TEXT ALIGNMENT ---------------//
       {
@@ -315,13 +326,14 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
             <EditorToolbarDropdownMenu
               triggerProps={triggerProps}
               icon={<AlignLeft />}
-              ariaLabel={t("Options d'alignement")}
+              ariaLabel={t("tiptap.toolbar.align")}
               options={alignmentOptions}
             />
           ),
         },
         name: "alignment",
-        visibility: showIf(hasExtension("textAlign")),
+        visibility: showIf(hasExtension("textAlign", editor)),
+        tooltip: t("tiptap.toolbar.align"),
       },
       //-------------------------------------//
       {
@@ -335,7 +347,8 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           children: () => <EditorToolbarPlusMenu options={plusOptions} />,
         },
         name: "plus",
-        visibility: showIf(hasExtension("textAlign")),
+        visibility: showIf(hasExtension("textAlign", editor)),
+        tooltip: t("tiptap.tooltip.plus"),
       },
     ];
   }, [
@@ -351,13 +364,15 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
   ]);
 
   return (
-    <Toolbar
-      items={toolbarItems}
-      variant="no-shadow"
-      className="rounded-top"
-      isBlock
-      align="left"
-      ariaControls="editorContent"
-    />
+    <div className=" z-1000 sticky-top editor-toolbar rounded">
+      <Toolbar
+        items={toolbarItems}
+        variant="no-shadow"
+        className="toolbar bg-white rounded-top no-shadow d-flex justify-content-start overflow-x-auto px-16"
+        isBlock
+        align="left"
+        ariaControls="editorContent"
+      />
+    </div>
   );
 };

@@ -38,8 +38,12 @@ const LinkToolbar = ({
         name: "edit",
         props: {
           icon: <Edit />,
-          "aria-label": t("Modifier"),
+          "aria-label": t("tiptap.link.toolbar.edit"),
           onClick: () => onEdit?.(linkAttrs),
+        },
+        tooltip: {
+          message: t("tiptap.link.toolbar.tooltip.edit"),
+          position: "bottom",
         },
       },
       {
@@ -47,8 +51,12 @@ const LinkToolbar = ({
         name: "open",
         props: {
           icon: <ExternalLink />,
-          "aria-label": t("Ouvrir dans un nouvel onglet"),
+          "aria-label": t("tiptap.link.toolbar.open"),
           onClick: () => onOpen?.(linkAttrs),
+        },
+        tooltip: {
+          message: t("tiptap.link.toolbar.tooltip.open"),
+          position: "bottom",
         },
       },
       {
@@ -56,8 +64,12 @@ const LinkToolbar = ({
         name: "unlink",
         props: {
           icon: <Unlink className="text-danger" />,
-          "aria-label": t("Ouvrir dans un nouvel onglet"),
+          "aria-label": t("tiptap.link.toolbar.unlink"),
           onClick: () => onUnlink?.(linkAttrs),
+        },
+        tooltip: {
+          message: t("tiptap.link.toolbar.tooltip.unlink"),
+          position: "bottom",
         },
       },
     ];

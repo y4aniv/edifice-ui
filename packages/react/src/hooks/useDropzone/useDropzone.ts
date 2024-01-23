@@ -17,6 +17,10 @@ const useDropzone = () => {
     );
   };
 
+  const cleanFiles = () => {
+    setFiles([]);
+  };
+
   const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
 
@@ -61,6 +65,7 @@ const useDropzone = () => {
     handleDrop,
     deleteFile,
     addFile,
+    cleanFiles,
     handleOnChange,
   };
 };

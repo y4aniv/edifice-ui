@@ -1,104 +1,199 @@
+import { useMemo } from "react";
+
 import {
   ImageSizeLarge,
   ImageSizeMedium,
   ImageSizeSmall,
   Wand,
 } from "@edifice-ui/icons";
-import { Button, IconButton } from "@edifice-ui/react";
-import { Editor } from "@tiptap/react";
+import { Toolbar, ToolbarItem } from "@edifice-ui/react";
+import { Editor, BubbleMenu, BubbleMenuProps } from "@tiptap/react";
 import { useTranslation } from "react-i18next";
 
 interface ButtonSize {
-  icon: JSX.Element;
-  sizeName: string;
-  size: {
-    width: number;
-    height: number | string;
-  };
+  size: string;
+  width: string | number;
+  height: string | number;
 }
 
 const BubbleMenuEditImage = ({
   editor,
   onEditImage,
+  openEditImage,
+  editable,
 }: {
   editor: Editor;
   onEditImage: () => void;
+  openEditImage: boolean;
+  editable: boolean;
 }) => {
   const { t } = useTranslation();
 
-  const buttonSizeList = [
-    {
-      icon: <ImageSizeSmall />,
-      sizeName: "small",
-      size: {
-        width: 250,
-        height: "auto",
-      },
-    },
-    {
-      icon: <ImageSizeMedium />,
-      sizeName: "medium",
-      size: {
-        width: 350,
-        height: "auto",
-      },
-    },
-    {
-      icon: <ImageSizeLarge />,
-      sizeName: "large",
-      size: {
-        width: 500,
-        height: "auto",
-      },
-    },
-  ];
+  const { selection } = editor.view.state;
+
+  const selectedNode = editor.view.state.doc.nodeAt(selection.anchor);
 
   const handleButtonClick = (buttonSize: ButtonSize) => {
     editor
       .chain()
       .focus()
       .setAttributes({
-        width: buttonSize.size.width,
-        height: buttonSize.size.height,
-        size: buttonSize.sizeName,
+        width: buttonSize.width,
+        height: buttonSize.height,
+        size: buttonSize.size,
       })
       .run();
   };
 
-  const { selection } = editor.view.state;
+  const ImageSizeItems: ToolbarItem[] = useMemo(() => {
+    return [
+      {
+        type: "button",
+        name: "edit",
+        props: {
+          size: "lg",
+          color: "secondary",
+          leftIcon: <Wand />,
+          "aria-label": t("tiptap.tooltip.bubblemenu.image.edit"),
+          children: t("tiptap.bubblemenu.edit"),
+          onClick: onEditImage,
+        },
+        tooltip: {
+          message: t("tiptap.tooltip.bubblemenu.image.edit"),
+          position: "top",
+        },
+      },
+      {
+        type: "divider",
+        name: "div-4",
+      },
+      {
+        type: "icon",
+        name: "small",
+        props: {
+          icon: <ImageSizeSmall />,
+          "aria-label": t("tiptap.tooltip.bubblemenu.image.small"),
+          color: "tertiary",
+          className:
+            selectedNode?.attrs?.size === "small" &&
+            selectedNode?.attrs?.width === 250
+              ? "is-selected"
+              : "",
+          onClick: () =>
+            handleButtonClick({
+              size: "small",
+              width: 250,
+              height: "auto",
+            }),
+        },
+        tooltip: {
+          message: t("tiptap.tooltip.bubblemenu.image.small"),
+          position: "top",
+        },
+      },
+      {
+        type: "icon",
+        name: "medium",
+        props: {
+          icon: <ImageSizeMedium />,
+          "aria-label": t("tiptap.tooltip.bubblemenu.image.medium"),
+          color: "tertiary",
+          className:
+            selectedNode?.attrs?.size === "medium" &&
+            selectedNode?.attrs?.width === 350
+              ? "is-selected"
+              : "",
+          onClick: () =>
+            handleButtonClick({
+              size: "medium",
+              width: 350,
+              height: "auto",
+            }),
+        },
+        tooltip: {
+          message: t("tiptap.tooltip.bubblemenu.image.medium"),
+          position: "top",
+        },
+      },
+      {
+        type: "icon",
+        name: "large",
+        props: {
+          icon: <ImageSizeLarge />,
+          "aria-label": t("tiptap.tooltip.bubblemenu.image.big"),
+          color: "tertiary",
+          className:
+            selectedNode?.attrs?.size === "large" &&
+            selectedNode?.attrs?.width === 500
+              ? "is-selected"
+              : "",
+          onClick: () =>
+            handleButtonClick({
+              size: "large",
+              width: 500,
+              height: "auto",
+            }),
+        },
+        tooltip: {
+          message: t("tiptap.tooltip.bubblemenu.image.big"),
+          position: "top",
+        },
+      },
+    ];
+  }, [t, selectedNode]);
 
-  const selectedNode = editor.view.state.doc.nodeAt(selection.anchor);
+  const tippyOptions: BubbleMenuProps["tippyOptions"] = useMemo(() => {
+    // Adjust a DOMRect to make it visible at a correct place.
+    function adjustRect(rect: DOMRect) {
+      let yOffset = 0;
+      if (window.visualViewport) {
+        const bottomScreen =
+          window.innerHeight || document.documentElement.clientHeight;
+        if (rect.bottom >= bottomScreen) {
+          yOffset += rect.bottom - bottomScreen - rect.height;
+        }
+      }
+      return new DOMRect(rect.x, rect.y - yOffset, rect.width, rect.height);
+    }
+
+    return {
+      placement: "bottom-start",
+      offset: [0, 0],
+      zIndex: 999,
+      duration: 100,
+      // Try to get the bounding rect of the table.
+      getReferenceClientRect: () => {
+        const parentDiv = editor?.isActive("custom-image")
+          ? editor.state.selection.$anchor
+          : null;
+
+        if (parentDiv) {
+          const parentDomNode = editor?.view.nodeDOM(parentDiv.pos) as
+            | HTMLElement
+            | undefined;
+
+          if (parentDomNode) {
+            return adjustRect(parentDomNode.getBoundingClientRect());
+          }
+        }
+
+        // This should never happen... but it keeps the transpiler happy.
+        return new DOMRect(0, 0, 100, 100);
+      },
+    };
+  }, [editor]);
 
   return (
-    <div className="bubble-menu">
-      <Button
-        size="lg"
-        variant="ghost"
-        leftIcon={<Wand />}
-        color="secondary"
-        onClick={onEditImage}
-      >
-        {t("edit.image")}
-      </Button>
-      <div className="vr"></div>
-      {buttonSizeList.map((button, index) => (
-        <IconButton
-          key={index}
-          className={
-            selectedNode?.attrs?.size === button.sizeName &&
-            selectedNode?.attrs?.width === button.size.width
-              ? "is-selected"
-              : ""
-          }
-          icon={button.icon}
-          variant="ghost"
-          color="tertiary"
-          onClick={() => {
-            handleButtonClick(button);
-          }}
-        />
-      ))}
-    </div>
+    <BubbleMenu
+      className={openEditImage ? "d-none" : ""}
+      shouldShow={({ editor }) => {
+        return editor.isActive("custom-image") && !openEditImage;
+      }}
+      editor={editor}
+      tippyOptions={tippyOptions}
+    >
+      {editable && <Toolbar className="p-8" items={ImageSizeItems} />}
+    </BubbleMenu>
   );
 };
 

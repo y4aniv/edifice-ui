@@ -19,9 +19,9 @@ const DropzoneImport = () => {
   return (
     <div className={classes}>
       <Download height={48} width={48} />
-      <p className="my-16">{t("medialibrary.drop.info")}</p>
+      <p className="my-16">{t("dropzone.text")}</p>
       <Button onClick={() => inputRef?.current?.click()}>
-        {t("medialibrary.drop.import")}
+        {t("dropzone.import")}
       </Button>
     </div>
   );

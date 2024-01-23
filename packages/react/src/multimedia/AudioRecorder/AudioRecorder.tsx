@@ -67,12 +67,15 @@ const AudioRecorder = forwardRef(
           <Input
             type="text"
             size={"sm"}
-            placeholder={t("Nom de l'enregistrement audio")}
+            placeholder={t("bbm.audio.recorder.name")}
             ref={audioNameRef}
-            defaultValue={t("Capture ") + new Date().toLocaleDateString()}
+            defaultValue={
+              t("bbm.audio.recorder.defaultName") +
+              new Date().toLocaleDateString()
+            }
           />
         </FormControl>
-        <div className="audio-recorder-icon mx-auto ">
+        <div className="audio-recorder-icon mx-auto">
           <Mic width={64} height={64} className={classColor} />
         </div>
         <AudioRecorderTimer

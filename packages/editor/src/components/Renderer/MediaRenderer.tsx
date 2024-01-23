@@ -3,21 +3,38 @@ import { useRef } from "react";
 
 import { Image } from "@edifice-ui/react";
 import { NodeViewWrapper } from "@tiptap/react";
+import { useTranslation } from "react-i18next";
 
 import { MediaResizeProps, useResizeMedia } from "../../hooks";
 
 const MediaRenderer = (props: MediaResizeProps) => {
   const { node } = props;
 
+  const { t } = useTranslation();
+
   const resizableMedia = useRef<HTMLImageElement | HTMLVideoElement>(null);
 
   const { startVerticalResize, stopVerticalResize, isVerticalResizeActive } =
     useResizeMedia(props, resizableMedia);
+
+  const alignContent = (textalign: string) => {
+    switch (textalign) {
+      case "center":
+      case "justify":
+        return { marginLeft: "auto", marginRight: "auto" };
+      case "left":
+        return { marginRight: "auto" };
+      case "right":
+        return { marginLeft: "auto" };
+      default:
+        return {};
+    }
+  };
   return (
     <NodeViewWrapper>
       <div
         className="media-node-view"
-        style={{ position: "relative", width: "fit-content" }}
+        style={alignContent(node.attrs.textAlign)}
       >
         <div data-drag-handle>
           {node.type.name === "custom-image" ? (
@@ -47,7 +64,7 @@ const MediaRenderer = (props: MediaResizeProps) => {
           className={`vertical-resize-handle ${
             isVerticalResizeActive ? "vertical-resize-active" : ""
           }`}
-          title="Resize"
+          title={t("tiptap.media.resize")}
           onMouseDown={(e) => startVerticalResize(e)}
           onMouseUp={() => stopVerticalResize}
         />

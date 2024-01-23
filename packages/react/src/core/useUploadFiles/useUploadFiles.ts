@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { WorkspaceElement } from "edifice-ts-client";
 
 import { useDropzoneContext } from "../../components/Dropzone/DropzoneContext";
-import { Status } from "../../utils";
+import { Status } from "../../types";
 import { useWorkspaceFile } from "../useWorkspaceFile";
 
 const useUploadFiles = ({
@@ -13,9 +13,12 @@ const useUploadFiles = ({
 }) => {
   const [uploadedFiles, setUploadedFiles] = useState<WorkspaceElement[]>([]);
   const [status, setStatus] = useState<Record<string, Status>>({});
+  const [editingImage, setEditingImage] = useState<
+    WorkspaceElement | undefined
+  >(undefined);
 
   const { files, deleteFile } = useDropzoneContext();
-  const { create, remove } = useWorkspaceFile();
+  const { create, remove, createOrUpdate } = useWorkspaceFile();
 
   useEffect(() => {
     if (files.length > 0) {
@@ -54,8 +57,7 @@ const useUploadFiles = ({
         resource,
       ]);
     } catch (error) {
-      console.error(error);
-
+      //console.error(error);
       setStatus((prevStatus) => ({
         ...prevStatus,
         [file.name]: "error",
@@ -86,10 +88,44 @@ const useUploadFiles = ({
     }
   }
 
+  async function updateImage({
+    blob,
+    legend,
+    altText: alt,
+  }: {
+    blob: Blob;
+    legend: string;
+    altText: string;
+  }) {
+    if (!editingImage) {
+      return;
+    }
+    try {
+      await createOrUpdate({
+        blob,
+        legend,
+        alt,
+        uri: getUrl(editingImage),
+      });
+    } finally {
+      setEditingImage(undefined);
+    }
+  }
+  function getUrl(resource?: WorkspaceElement, timestamp?: boolean) {
+    return resource
+      ? `/workspace/document/${resource?._id}?timestamp=${
+          timestamp ? new Date().getTime() : ""
+        }`
+      : "";
+  }
   return {
     files,
     status,
     uploadedFiles,
+    editingImage,
+    setEditingImage,
+    getUrl,
+    updateImage,
     uploadFile,
     removeFile,
   };

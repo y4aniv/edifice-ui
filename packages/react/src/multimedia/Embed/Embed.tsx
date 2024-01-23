@@ -33,13 +33,13 @@ const Embed = ({ onSuccess }: EmbedProps) => {
       </div>
       <div className="mb-8 d-flex">
         <Code className="me-8"></Code>
-        {t("Balise embed ou iframe")}
+        {t("bbm.embed.title")}
       </div>
       <FormControl id="iframeContent">
         <TextArea
           size="md"
           height="sm"
-          placeholder={t("Coller le code embed / iframe ici")}
+          placeholder={t("bbm.embed.placeholder")}
           onChange={handleContentChange}
         />
       </FormControl>
@@ -51,7 +51,7 @@ const Embed = ({ onSuccess }: EmbedProps) => {
       )}
       {!htmlContent?.length && (
         <div className="embed-preview mt-12 d-flex align-items-center justify-content-center bg-gray-300 text-black-50 rounded-3">
-          <strong>{t("Prévisualisation")}</strong>
+          <strong>{t("bbm.embed.preview")}</strong>
         </div>
       )}
     </div>

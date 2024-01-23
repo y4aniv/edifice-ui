@@ -27,7 +27,7 @@ const DropzoneFile = ({ children }: { children: ReactNode }) => {
             leftIcon={<Plus></Plus>}
             onClick={() => inputRef?.current?.click()}
           >
-            {t("medialibrary.drop.morefiles")}
+            {t("dropzone.add.more")}
           </Button>
         </div>
       </div>

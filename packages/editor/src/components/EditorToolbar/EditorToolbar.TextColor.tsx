@@ -15,6 +15,7 @@ import {
   Dropdown,
   IconButton,
   IconButtonProps,
+  Tooltip,
 } from "@edifice-ui/react";
 import { useTranslation } from "react-i18next";
 
@@ -72,14 +73,12 @@ export const EditorToolbarTextColor = ({ triggerProps, itemRefs }: Props) => {
 
   // Palettes of available colors to choose from.
   const palettes: ColorPalette[] = [
-    { ...DefaultPalette, label: t("Couleur de texte") },
+    { ...DefaultPalette, label: t("tiptap.toolbar.color.text") },
     {
       ...AccessiblePalette,
-      label: t("Accessible palette"),
+      label: t("tiptap.toolbar.color.a13y"),
       tooltip: {
-        message: t(
-          "Cette palette assure un contraste qui permet aux personnes atteintes de daltonisme de distinguer les différentes nuances de couleurs.",
-        ),
+        message: t("tiptap.toolbar.color.a13y.hint"),
         placement: "right",
       },
     },
@@ -87,15 +86,17 @@ export const EditorToolbarTextColor = ({ triggerProps, itemRefs }: Props) => {
 
   return (
     <>
-      <IconButton
-        {...triggerProps}
-        type="button"
-        variant="ghost"
-        color="tertiary"
-        icon={<TextColor />}
-        aria-label={t("Couleur de texte")}
-        className={isActive ? "selected" : ""}
-      />
+      <Tooltip message={t("tiptap.toolbar.color.text")} placement="top">
+        <IconButton
+          {...triggerProps}
+          type="button"
+          variant="ghost"
+          color="tertiary"
+          icon={<TextColor />}
+          aria-label={t("tiptap.toolbar.color.text")}
+          className={isActive ? "selected" : ""}
+        />
+      </Tooltip>
       <Dropdown.Menu>
         <ColorPicker
           ref={(el: any) => (itemRefs.current["color-picker"] = el)}

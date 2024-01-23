@@ -7,6 +7,7 @@ import {
   DefaultPalette,
   Dropdown,
 } from "@edifice-ui/react";
+import { Tooltip } from "@edifice-ui/react";
 import { Editor } from "@tiptap/react";
 import { useTranslation } from "react-i18next";
 
@@ -55,10 +56,10 @@ export const TableToolbarCellColor = ({ editor, itemRefs }: Props) => {
   const palettes: ColorPalette[] = [
     {
       ...DefaultPalette,
-      label: t("Couleur de cellule"),
+      label: t("tiptap.table.toolbar.cell.color"),
       reset: {
         value: "transparent",
-        description: t("Aucune"),
+        description: t("tiptap.table.toolbar.cell.none"),
         isReset: true,
       },
     },
@@ -66,19 +67,22 @@ export const TableToolbarCellColor = ({ editor, itemRefs }: Props) => {
 
   return (
     <>
-      <Dropdown.Trigger
-        variant="ghost"
-        aria-label={t("Couleur de fond")}
-        icon={
-          <ColorPickerItem
-            model={{
-              value: color,
-              description: "",
-              isReset: !color || color.length === 0 || color === "transparent",
-            }}
-          />
-        }
-      />
+      <Tooltip message={t("tiptap.table.toolbar.cell.bk")} placement="top">
+        <Dropdown.Trigger
+          variant="ghost"
+          aria-label={t("tiptap.table.toolbar.cell.bk")}
+          icon={
+            <ColorPickerItem
+              model={{
+                value: color,
+                description: "",
+                isReset:
+                  !color || color.length === 0 || color === "transparent",
+              }}
+            />
+          }
+        />
+      </Tooltip>
       <Dropdown.Menu>
         <ColorPicker
           ref={(el) => (itemRefs.current["color-picker"] = el)}

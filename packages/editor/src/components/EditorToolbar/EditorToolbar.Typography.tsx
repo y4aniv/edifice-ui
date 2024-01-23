@@ -1,7 +1,12 @@
 import { Fragment, RefAttributes, useEffect, useState } from "react";
 
 import { TextTypo } from "@edifice-ui/icons";
-import { Dropdown, IconButton, IconButtonProps } from "@edifice-ui/react";
+import {
+  Dropdown,
+  IconButton,
+  IconButtonProps,
+  Tooltip,
+} from "@edifice-ui/react";
 import { useTranslation } from "react-i18next";
 
 import { useEditorContext } from "../../hooks/useEditorContext";
@@ -30,47 +35,49 @@ export const EditorToolbarTypography = ({ triggerProps }: Props) => {
   const options = [
     {
       value: "",
-      label: t("Sans-serif"),
+      label: t("tiptap.toolbar.typo.sans"),
     },
     {
       value: "Lora",
-      label: t("Serif"),
+      label: t("tiptap.toolbar.typo.serif"),
       className: "ff-serif",
     },
     {
       value: "IBM Plex Mono",
-      label: t("Monoscript"),
+      label: t("tiptap.toolbar.typo.mono"),
       className: "ff-script",
     },
     {
       value: "Ecriture A",
-      label: t("Cursive"),
+      label: t("tiptap.toolbar.typo.cursive"),
       className: "ff-cursive",
     },
     {
       value: "OpenDyslexic",
-      label: t("OpenDyslexic"),
+      label: t("tiptap.toolbar.typo.dyslexic"),
       className: "ff-dyslexic",
     },
   ];
 
   return (
     <>
-      <IconButton
-        {...triggerProps}
-        type="button"
-        variant="ghost"
-        color="tertiary"
-        icon={<TextTypo />}
-        aria-label={t("Choix de la famille de typographie")}
-        className={
-          editor?.isActive("textStyle", {
-            color: /^#([0-9a-f]{3}){1,2}$/i,
-          })
-            ? "selected"
-            : ""
-        }
-      />
+      <Tooltip message={t("tiptap.toolbar.typo.choice")} placement="top">
+        <IconButton
+          {...triggerProps}
+          type="button"
+          variant="ghost"
+          color="tertiary"
+          icon={<TextTypo />}
+          aria-label={t("tiptap.toolbar.typo.choice")}
+          className={
+            editor?.isActive("textStyle", {
+              color: /^#([0-9a-f]{3}){1,2}$/i,
+            })
+              ? "selected"
+              : ""
+          }
+        />
+      </Tooltip>
       <Dropdown.Menu>
         {options.map((option) => {
           return (

@@ -27,6 +27,7 @@ import {
   InternalLinkTabResult,
 } from "./innertabs/InternalLink";
 import { MediaLibraryContext } from "./MediaLibraryContext";
+import { useHttpErrorToast } from "../..";
 import { Button } from "../../components";
 import Modal, { ModalElement } from "../../components/Modal/Modal";
 import { Tabs } from "../../components/Tabs";
@@ -186,6 +187,9 @@ const MediaLibrary = forwardRef(
       ...refModal.current,
     }));
 
+    // HTTP errors toasts
+    useHttpErrorToast({ isDismissible: true, duration: Infinity });
+
     const { t } = useTranslation();
 
     const workspaceCreateWorkflow = useHasWorkflow(
@@ -208,7 +212,7 @@ const MediaLibrary = forwardRef(
       workspace: {
         id: "workspace",
         icon: <Folder />,
-        label: t("Espace doc"),
+        label: t("bbm.workspace"),
         content: <InnerTabs.Workspace />,
         availableFor: ["audio", "video", "image", "attachment"],
         isEnable: null,
@@ -216,7 +220,7 @@ const MediaLibrary = forwardRef(
       upload: {
         id: "upload",
         icon: <Smartphone />,
-        label: t("Mon appareil"),
+        label: t("bbm.device"),
         content: <InnerTabs.Upload />,
         availableFor: ["audio", "video", "image", "attachment"],
         isEnable: () => (workspaceCreateWorkflow ? true : false),
@@ -224,7 +228,7 @@ const MediaLibrary = forwardRef(
       "video-capture": {
         id: "video-capture",
         icon: <RecordVideo />,
-        label: t("Captation vidéo"),
+        label: t("bbm.video"),
         content: <InnerTabs.Video />,
         availableFor: ["video"],
         isEnable: () => (videoCaptureWorkflow ? true : false),
@@ -232,7 +236,7 @@ const MediaLibrary = forwardRef(
       "audio-capture": {
         id: "audio-capture",
         icon: <Mic />,
-        label: t("Captation audio"),
+        label: t("bbm.audio"),
         content: <InnerTabs.Audio />,
         availableFor: ["audio"],
         isEnable: () => (workspaceCreateWorkflow ? true : false),
@@ -240,7 +244,7 @@ const MediaLibrary = forwardRef(
       "external-link": {
         id: "external-link",
         icon: <Globe />,
-        label: t("Liens externes"),
+        label: t("bbm.linker.ext"),
         content: (
           <InnerTabs.ExternalLink {...(linkTabProps as IExternalLink)} />
         ),
@@ -250,7 +254,7 @@ const MediaLibrary = forwardRef(
       "internal-link": {
         id: "internal-link",
         icon: <Applications />,
-        label: t("Ressources internes"),
+        label: t("bbm.linker.int"),
         content: (
           <InnerTabs.InternalLink {...(linkTabProps as InternalLinkTabProps)} />
         ),
@@ -260,7 +264,7 @@ const MediaLibrary = forwardRef(
       iframe: {
         id: "iframe",
         icon: <Code />,
-        label: t("Balise embed ou iframe"),
+        label: t("bbm.embed"),
         content: <InnerTabs.Iframe />,
         availableFor: ["embedder"],
         isEnable: null,
@@ -268,7 +272,7 @@ const MediaLibrary = forwardRef(
       "video-embedder": {
         id: "iframe",
         icon: <Code />,
-        label: t("Balise embed ou iframe"),
+        label: t("bbm.embed"),
         content: <InnerTabs.VideoEmbedder />,
         availableFor: ["video"],
         isEnable: null,
@@ -351,9 +355,7 @@ const MediaLibrary = forwardRef(
     }, [defaultTabId, type]);
 
     // --------------- Utility functions
-    const modalHeader = t(
-      mediaLibraryTypes[type ?? "none"]?.title ?? "Bibliothèque multimédia", // FIXME i18n key
-    );
+    const modalHeader = t(mediaLibraryTypes[type ?? "none"]?.title ?? "bbm");
     const addCancellable = (uploads: WorkspaceElement[]) =>
       setCancellable((previous) => {
         // Append WorkspaceElements which not already in the list.
@@ -442,7 +444,7 @@ const MediaLibrary = forwardRef(
               variant="ghost"
               onClick={handleOnCancel}
             >
-              {t("Annuler")}
+              {t("cancel")}
             </Button>
             <Button
               type="button"
@@ -451,7 +453,7 @@ const MediaLibrary = forwardRef(
               disabled={typeof result === "undefined"}
               onClick={handleOnSuccess}
             >
-              {t("Ajouter")}
+              {t("add")}
               {typeof resultCounter === "number" &&
                 resultCounter > 1 &&
                 ` (${resultCounter})`}

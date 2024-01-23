@@ -1,7 +1,12 @@
 import { RefAttributes } from "react";
 
 import { Smiley } from "@edifice-ui/icons";
-import { Dropdown, IconButton, IconButtonProps } from "@edifice-ui/react";
+import {
+  Dropdown,
+  IconButton,
+  IconButtonProps,
+  Tooltip,
+} from "@edifice-ui/react";
 import EmojiPicker, { Categories } from "emoji-picker-react";
 import { useTranslation } from "react-i18next";
 
@@ -26,14 +31,16 @@ export const EditorToolbarEmoji = ({ triggerProps, itemRefs }: Props) => {
 
   return (
     <>
-      <IconButton
-        {...triggerProps}
-        type="button"
-        variant="ghost"
-        color="tertiary"
-        icon={<Smiley />}
-        aria-label={t("Emojis")}
-      />
+      <Tooltip message={t("tiptap.toolbar.emojisPicker")} placement="top">
+        <IconButton
+          {...triggerProps}
+          type="button"
+          variant="ghost"
+          color="tertiary"
+          icon={<Smiley />}
+          aria-label={t("tiptap.toolbar.emojisPicker")}
+        />
+      </Tooltip>
       <Dropdown.Menu>
         <div ref={(el) => (itemRefs.current["emoji-picker"] = el)}>
           <EmojiPicker
@@ -50,39 +57,39 @@ export const EditorToolbarEmoji = ({ triggerProps, itemRefs }: Props) => {
             categories={[
               {
                 category: Categories.SUGGESTED,
-                name: `${t("Utilisés récemment")}`,
+                name: `${t("tiptap.toolbar.emojis.recentlyUsed")}`,
               },
               {
                 category: Categories.SMILEYS_PEOPLE,
-                name: `${t("Personnes")}`,
+                name: `${t("tiptap.toolbar.emojis.people")}`,
               },
               {
                 category: Categories.ANIMALS_NATURE,
-                name: `${t("Animaux et nature")}`,
+                name: `${t("tiptap.toolbar.emojis.animalsNature")}`,
               },
               {
                 category: Categories.FOOD_DRINK,
-                name: `${t("Aliments et boissons")}`,
+                name: `${t("tiptap.toolbar.emojis.foodDrink")}`,
               },
               {
                 category: Categories.TRAVEL_PLACES,
-                name: `${t("Voyages et lieux")}`,
+                name: `${t("tiptap.toolbar.emojis.travelPlaces")}`,
               },
               {
                 category: Categories.ACTIVITIES,
-                name: `${t("Activités")}`,
+                name: `${t("tiptap.toolbar.emojis.activities")}`,
               },
               {
                 category: Categories.OBJECTS,
-                name: `${t("Objets")}`,
+                name: `${t("tiptap.toolbar.emojis.objects")}`,
               },
               {
                 category: Categories.SYMBOLS,
-                name: `${t("Symbôles")}`,
+                name: `${t("tiptap.toolbar.emojis.symbols")}`,
               },
               {
                 category: Categories.FLAGS,
-                name: `${t("Drapeaux")}`,
+                name: `${t("tiptap.toolbar.emojis.flags")}`,
               },
             ]}
           />

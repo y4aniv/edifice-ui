@@ -42,7 +42,7 @@ const AttachmentRenderer = (props: AttachmentProps) => {
           }}
           data-drag-handle
         >
-          <p className="m-12 mt-0">{t("editor.attachments.bloc")}</p>
+          <p className="m-12 mt-0">{t("tiptap.attachments.bloc")}</p>
           <Grid>
             {attachmentArrayAttrs?.map((attachment, index) => (
               <Grid.Col sm="6" key={index}>
@@ -52,7 +52,7 @@ const AttachmentRenderer = (props: AttachmentProps) => {
                     <>
                       <a href={attachment.href} download>
                         <IconButton
-                          aria-label={t("download")}
+                          aria-label={t("tiptap.attachments.download")}
                           color="tertiary"
                           type="button"
                           icon={<Download />}
@@ -60,7 +60,7 @@ const AttachmentRenderer = (props: AttachmentProps) => {
                         />
                       </a>
                       <IconButton
-                        aria-label={t("explorer.delete")}
+                        aria-label={t("tiptap.attachments.delete")}
                         color="danger"
                         type="button"
                         icon={<Delete />}

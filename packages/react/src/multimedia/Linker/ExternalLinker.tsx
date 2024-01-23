@@ -63,27 +63,27 @@ const ExternalLinker = ({
     <>
       <div className="d-flex flex-column flex-fill gap-24">
         <FormControl id="linkText" isOptional>
-          <Label>{t("Texte du lien")}</Label>
+          <Label>{t("bbm.linker.ext.text")}</Label>
           <Input
             type="text"
-            placeholder={t("Texte du lien personnalisé")}
+            placeholder={t("bbm.linker.ext.text.placeholder")}
             size="md"
             value={linkText}
             onChange={(e) => setLinkText(e.target.value)}
           />
         </FormControl>
         <FormControl id="linkUrl" isRequired>
-          <Label>{t("URL du lien externe")}</Label>
+          <Label>{t("bbm.linker.ext.url")}</Label>
           <Input
             type="text"
-            placeholder={t("http://www.exemple-lien.com")}
+            placeholder={t("bbm.linker.ext.url.placeholder")}
             size="md"
             value={linkURL}
             onChange={(e) => setLinkURL(e.target.value)}
           />
         </FormControl>
         <Checkbox
-          label={t("Ouvrir le lien dans un nouvel onglet")}
+          label={t("bbm.linker.open.tab")}
           onChange={() => toggleBlankTarget()}
           checked={isBlankTarget}
         />

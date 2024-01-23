@@ -235,7 +235,7 @@ const InternalLinker = ({
                 </div>
               }
               label={t(
-                selectedApplication?.displayName || "Choix de l'application",
+                selectedApplication?.displayName || "bbm.linker.int.choose",
               )}
               variant="ghost"
               size="md"
@@ -260,7 +260,7 @@ const InternalLinker = ({
           >
             <SearchBar
               isVariant
-              placeholder={t("Rechercher")}
+              placeholder={t("search")}
               size="lg"
               className="w-100"
               disabled={selectedApplication ? false : true}
@@ -293,7 +293,7 @@ const InternalLinker = ({
         <div className="d-flex justify-content-center mt-16">
           <EmptyScreen
             imageSrc={`${imagePath}/${theme?.bootstrapVersion}/illu-empty-search-${selectedApplication.application}.svg`}
-            text={t("Aucune ressource trouvée pour votre recherche.")}
+            text={t("bbm.linker.int.notfound")}
             className="mt-16"
           />
         </div>
@@ -303,9 +303,7 @@ const InternalLinker = ({
         <div className="d-flex justify-content-center mt-32">
           <EmptyScreen
             imageSrc={`${imagePath}/${theme?.bootstrapVersion}/illu-empty-search.svg`}
-            text={t(
-              "Sélectionnez, en haut à gauche, l’application dans laquelle se trouve la ressource que vous voulez ajouter !",
-            )}
+            text={t("bbm.linker.int.empty")}
             className="mt-32"
           />
         </div>
