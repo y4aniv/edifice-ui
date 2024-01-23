@@ -140,6 +140,7 @@ const BubbleMenuEditImage = ({
         },
       },
     ];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [t, selectedNode]);
 
   const tippyOptions: BubbleMenuProps["tippyOptions"] = useMemo(() => {
