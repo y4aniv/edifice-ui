@@ -1,7 +1,10 @@
 import * as PIXI from "pixi.js";
 
+// Define (in pixel) the minimal height the sprite should have
+const MIN_HEIGHT = 100;
 // Define (in pixel) the minimal width the sprite should have
 const MIN_WIDTH = 100;
+const MODAL_VERTICAL_PADDING = 400;
 //Define the default name of the sprite in the PIXI.Application context
 export const DEFAULT_SPRITE_NAME = "image";
 
@@ -139,38 +142,34 @@ export function autoResize(
   // Get parent html object
   const parent = application.view.parentNode as HTMLElement | undefined;
   const parentWidth = Math.max(parent?.offsetWidth ?? 0, MIN_WIDTH);
-  // resize only if image is bigger than stage
-  if (sprite.width > parentWidth) {
-    // Compute the current image ratio
-    const imageRatio = sprite.width / sprite.height;
-    // Define the new width to the parentWidth
-    const newWidth = parentWidth;
-    // Define the new height by maching ratio
-    const newHeight = newWidth / imageRatio;
-    // Anchor the sprite to the middle (for rotation)
-    sprite.anchor.x = 0.5;
-    sprite.anchor.y = 0.5;
-    // Position the sprite to the middle
-    sprite.position = new PIXI.Point(newWidth / 2, newHeight / 2);
-    // Update sprite size
-    sprite.width = newWidth;
-    sprite.height = newHeight;
-    // Resize the stage
-    application.renderer.resize(newWidth, newHeight);
-  } else {
-    const scale = sprite.scale.clone();
-    const newWidth = application.stage.width;
-    const newHeight = application.stage.height;
-    // Resize the stage
-    application.renderer.resize(newWidth, newHeight);
-    // Reset scal
-    sprite.scale = scale;
-    // Anchor the sprite to the middle (for rotation)
-    sprite.anchor.x = 0.5;
-    sprite.anchor.y = 0.5;
-    // Position the sprite to the middle
-    sprite.position = new PIXI.Point(newWidth / 2, newHeight / 2);
-  }
+  const newSize = constraintSize(
+    {
+      width: sprite.width,
+      height: sprite.height,
+    },
+    {
+      width: {
+        max: parentWidth,
+        min: MIN_WIDTH,
+      },
+      height: {
+        min: MIN_HEIGHT,
+        max: window.innerHeight - MODAL_VERTICAL_PADDING,
+      },
+    },
+  );
+  // Define the new width to the parentWidth
+  const { height: newHeight, width: newWidth } = newSize;
+  // Anchor the sprite to the middle (for rotation)
+  sprite.anchor.x = 0.5;
+  sprite.anchor.y = 0.5;
+  // Position the sprite to the middle
+  sprite.position = new PIXI.Point(newWidth / 2, newHeight / 2);
+  // Update sprite size
+  sprite.width = newWidth;
+  sprite.height = newHeight;
+  // Resize the stage
+  application.renderer.resize(newWidth, newHeight);
 }
 /**
  * This function transform the stage into a blob
@@ -199,4 +198,38 @@ export function saveAsDataURL(
   application: PIXI.Application,
 ): string | undefined {
   return application.view.toDataURL?.();
+}
+export function constraintSize(
+  size: { width: number; height: number },
+  constraints: {
+    width: { max: number; min: number };
+    height: { max: number; min: number };
+  },
+) {
+  const { height, width } = size;
+  const ratio = width / height;
+  const { height: constraintHeight, width: constraintWidth } = constraints;
+  let newWidth = width;
+  let newHeight = height;
+  // constraint width max
+  if (width > constraintWidth.max) {
+    newWidth = constraintWidth.max;
+    newHeight = newWidth / ratio;
+  }
+  // constraint height max
+  if (newHeight > constraintHeight.max) {
+    newHeight = constraintHeight.max;
+    newWidth = newHeight * ratio;
+  }
+  // constraint width min
+  if (newWidth < constraintWidth.min) {
+    newWidth = constraintWidth.min;
+    newHeight = newWidth / ratio;
+  }
+  // constraint height max
+  if (newHeight < constraintHeight.min) {
+    newHeight = constraintHeight.min;
+    newWidth = newHeight * ratio;
+  }
+  return { width: newWidth, height: newHeight };
 }

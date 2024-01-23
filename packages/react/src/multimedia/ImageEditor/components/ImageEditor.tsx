@@ -137,16 +137,18 @@ const ImageEditor = ({
       <Modal.Header onModalClose={handleCancel}>
         <span className="h2">{t("imageeditor.title")}</span>
       </Modal.Header>
-      <Modal.Body>
-        <div className="d-flex flex-column align-items-center gap-12">
+      <Modal.Body className="d-flex flex-column align-items-center">
+        <div className="d-flex flex-column align-items-center gap-12 w-100 flex-grow-1">
           <ImageEditorToolbar
             handle={handleOperation}
             historyCount={historyCount}
           />
-          <Stage
-            onMount={(app) => setApplication(app)}
-            options={{ preserveDrawingBuffer: true, backgroundAlpha: 0 }}
-          ></Stage>
+          <div className="d-flex flex-column align-items-center justify-content-center flex-grow-1">
+            <Stage
+              onMount={(app) => setApplication(app)}
+              options={{ preserveDrawingBuffer: true, backgroundAlpha: 0 }}
+            ></Stage>
+          </div>
           <div className="d-flex flex-column flex-md-row m-10 gap-12 w-100">
             <FormControl id="alt" className="flex-grow-1">
               <Label>{t("alttext")}</Label>
