@@ -76,8 +76,6 @@ const VideoRecorder = forwardRef(
       useState<MediaStreamConstraints>({
         audio: true,
         video: {
-          width: VIDEO_WIDTH,
-          height: VIDEO_HEIGHT,
           facingMode: "environment",
         },
       });
@@ -500,7 +498,7 @@ const VideoRecorder = forwardRef(
 
     return (
       <div className="video-recorder d-flex flex-fill flex-column align-items-center">
-        <div className="video-recorder-caption m-12">{caption}</div>
+        <div className="video-recorder-caption">{caption}</div>
         {inputDevices.length > 1 && (
           <div className="video-recorder-devices mb-12">
             <FormControl id="selectInputDevice">
@@ -515,7 +513,8 @@ const VideoRecorder = forwardRef(
             </FormControl>
           </div>
         )}
-        <div className="video-recorder-video position-relative">
+
+        <div className="video-recorder-video-container position-relative">
           <video
             ref={videoRef}
             playsInline={true}
@@ -530,7 +529,7 @@ const VideoRecorder = forwardRef(
             <track default kind="captions" srcLang="fr" src=""></track>
           </video>
           {(recording || recorded) && (
-            <div className="video-recorder-time d-flex align-items-center position-absolute top-0 py-2 px-8 font-monospace fs-6 text-bg-dark rounded">
+            <div className="video-recorder-time d-flex align-items-center font-monospace fs-6 text-bg-dark rounded">
               {recording && (
                 <>
                   <Record width={12} height={12} color="red" className="me-4" />
@@ -551,7 +550,7 @@ const VideoRecorder = forwardRef(
           )}
           <Toolbar
             items={toolbarItems}
-            className="position-absolute bottom-0 start-50 translate-middle bg-white"
+            className="position-absolute bottom-0 start-50 bg-white"
           />
         </div>
         {saving && (
