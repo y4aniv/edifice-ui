@@ -87,6 +87,7 @@ const Editor = forwardRef(
         value={{
           appCode,
           editor,
+          editable,
         }}
       >
         <div className="border rounded">

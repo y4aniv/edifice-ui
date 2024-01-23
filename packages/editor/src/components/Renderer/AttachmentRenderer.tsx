@@ -5,6 +5,8 @@ import { Attachment, Grid, IconButton } from "@edifice-ui/react";
 import { Editor, NodeViewWrapper } from "@tiptap/react";
 import { useTranslation } from "react-i18next";
 
+import { useEditorContext } from "../..";
+
 interface AttachmentProps {
   editor: Editor;
   [x: string]: any;
@@ -21,6 +23,9 @@ const AttachmentRenderer = (props: AttachmentProps) => {
   const { t } = useTranslation();
 
   const { node } = props;
+
+  const { editable } = useEditorContext();
+
   const [attachmentArrayAttrs, setAttachmentArrayAttrs] = useState<
     AttachmentAttrsProps[]
   >(node.attrs.links);
@@ -59,14 +64,16 @@ const AttachmentRenderer = (props: AttachmentProps) => {
                           variant="ghost"
                         />
                       </a>
-                      <IconButton
-                        aria-label={t("tiptap.attachments.delete")}
-                        color="danger"
-                        type="button"
-                        icon={<Delete />}
-                        variant="ghost"
-                        onClick={() => handleDelete(index)}
-                      />
+                      {editable && (
+                        <IconButton
+                          aria-label={t("tiptap.attachments.delete")}
+                          color="danger"
+                          type="button"
+                          icon={<Delete />}
+                          variant="ghost"
+                          onClick={() => handleDelete(index)}
+                        />
+                      )}
                     </>
                   }
                 />

@@ -12,6 +12,10 @@ export const EditorContext = createContext<{
    * TipTap editor instance
    */
   editor: Editor | null;
+  /**
+   * To know if TipTap editor is editable
+   */
+  editable: boolean;
 }>(null!);
 
 export function useEditorContext() {
