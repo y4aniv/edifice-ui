@@ -4,7 +4,7 @@ import { IWebApp } from "edifice-ts-client";
 
 import { CardProps } from "./Card";
 
-export interface ContextProps
+export interface CardContextProps
   extends Omit<CardProps, "children" | "className"> {
   app?: IWebApp | undefined;
   appCode: string | undefined;
@@ -14,7 +14,7 @@ export interface ContextProps
   onSelect?: () => void;
 }
 
-export const CardContext = createContext<ContextProps | null>(null!);
+export const CardContext = createContext<CardContextProps | null>(null!);
 
 CardContext.displayName = "CardContext";
 

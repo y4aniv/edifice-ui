@@ -16,34 +16,35 @@ export interface BaseProps {
   /**
    * App information to get code and name
    */
-  app?: IWebApp;
+  app?: IWebApp | string;
 }
 
 type AppVariants = "square" | "circle" | "rounded";
-type SquareVariant = Extract<AppVariants, { type: "square" }>;
+type SquareVariant = Extract<AppVariants, "square">;
 
-export type Props =
-  | {
-      /**
-       * Show icon full width
-       */
-      iconFit?: "contain";
-      /**
-       * Square variant
-       */
-      variant?: SquareVariant;
-    }
-  | {
-      /**
-       * Add padding around icon
-       */
-      iconFit: "ratio";
-      /**
-       * Rounded or Circle variant
-       */
-      variant: AppVariants;
-    };
+type SquareIcon = {
+  /**
+   * Show icon full width
+   */
+  iconFit?: "contain";
+  /**
+   * Square variant
+   */
+  variant?: SquareVariant;
+};
 
+type VariantsIcon = {
+  /**
+   * Add padding around icon
+   */
+  iconFit: "ratio";
+  /**
+   * Rounded or Circle variant
+   */
+  variant: AppVariants;
+};
+
+export type Props = SquareIcon | VariantsIcon;
 export type AppIconProps = BaseProps & Props;
 
 /**
@@ -82,8 +83,16 @@ const AppIcon = forwardRef(
       "icon-ratio": isRatio,
     };
 
-    const icon = app?.icon !== undefined ? app.icon : "placeholder";
-    const displayName = app?.displayName !== undefined ? app.displayName : "";
+    const icon =
+      typeof app === "string"
+        ? app
+        : app?.icon !== undefined
+          ? app.icon
+          : "placeholder";
+    const displayName =
+      typeof app !== "string" && app?.displayName !== undefined
+        ? app.displayName
+        : "";
     const code = app ? getIconCode(app) : "";
     const isIconURL = isIconUrl(icon);
 

@@ -4,6 +4,7 @@ import Dropdown from "../Dropdown";
 import { Copy, Cut, Delete, Edit, Filter, Print } from "@edifice-ui/icons";
 import { RefAttributes, useState } from "react";
 import IconButton, { IconButtonProps } from "../../Button/IconButton";
+import { ColorPicker, DefaultPalette } from "../../ColorPicker";
 
 const meta: Meta<typeof Dropdown> = {
   title: "Components/Dropdown/Base",
@@ -339,6 +340,56 @@ export const CustomTrigger: Story = {
       description: {
         story:
           "Any component can be used as a custom trigger when use as a function as children (render prop). It can access `triggerProps` to get required a11y attributes.",
+      },
+    },
+  },
+};
+
+export const CustomMenu: Story = {
+  render: (args) => {
+    const [currentColor, setCurrentColor] = useState<string>("#4A4A4A");
+    const handleOnChange = (color: string) => setCurrentColor(color);
+    return (
+      <Dropdown>
+        {(
+          triggerProps: JSX.IntrinsicAttributes &
+            Omit<IconButtonProps, "ref"> &
+            RefAttributes<HTMLButtonElement>,
+          itemRefs,
+        ) => (
+          <>
+            <IconButton
+              {...triggerProps}
+              type="button"
+              aria-label="label"
+              color="tertiary"
+              variant="ghost"
+              icon={<Edit />}
+            />
+
+            <Dropdown.Menu>
+              <ColorPicker
+                ref={(el) => (itemRefs.current["color-picker"] = el)}
+                palettes={[
+                  {
+                    ...DefaultPalette,
+                    reset: { value: "transparent", description: "None" },
+                  },
+                ]}
+                model={currentColor}
+                onChange={handleOnChange}
+              />
+            </Dropdown.Menu>
+          </>
+        )}
+      </Dropdown>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "You can pass any Component inside `Dropdown.Menu` by exposing `itemRefs` (render prop) and adding a ref to your component `ref={(el) => (itemRefs.current[id] = el)}`",
       },
     },
   },

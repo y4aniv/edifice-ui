@@ -11,6 +11,7 @@ export default function useXitiTrackPageLoad() {
 
   useEffect(() => {
     trackPageLoad();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const trackPageLoad = async () => {
