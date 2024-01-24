@@ -174,7 +174,8 @@ const BubbleMenuEditImage = ({
             | undefined;
 
           if (parentDomNode) {
-            return adjustRect(parentDomNode.getBoundingClientRect());
+            const childDomNode = parentDomNode.firstChild as HTMLElement;
+            return adjustRect(childDomNode.getBoundingClientRect());
           }
         }
 
