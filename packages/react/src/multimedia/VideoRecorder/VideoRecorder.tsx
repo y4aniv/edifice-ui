@@ -502,9 +502,11 @@ const VideoRecorder = forwardRef(
         {inputDevices.length > 1 && (
           <div className="video-recorder-devices mb-12">
             <FormControl id="selectInputDevice">
-              <Label>{t("video.select.devices.label")}</Label>
+              <Label>{t("bbm.video.record.select.devices.label")}</Label>
               <Select
-                placeholderOption={t("video.select.devices.placeholder")}
+                placeholderOption={t(
+                  "bbm.video.record.select.devices.placeholder",
+                )}
                 options={inputDevices.map(
                   (videoInputDevice) => videoInputDevice.label,
                 )}
