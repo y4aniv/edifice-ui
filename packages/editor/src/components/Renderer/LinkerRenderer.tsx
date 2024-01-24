@@ -22,7 +22,7 @@ const LinkerRenderer = ({ selected, ...props }: LinkerProps) => {
   } = props.node.attrs;
 
   const classes = clsx(
-    "align-middle badge-linker c-pointer",
+    "align-middle badge-linker c-pointer mx-4",
     className,
     selected && "bg-secondary-200",
   );
@@ -38,7 +38,7 @@ const LinkerRenderer = ({ selected, ...props }: LinkerProps) => {
   };
 
   return (
-    <NodeViewWrapper as={"span"}>
+    <NodeViewWrapper as={"span"} contentEditable="false">
       <Badge
         variant={{ type: "link" }}
         className={classes}
