@@ -20,8 +20,7 @@ type State = {
   searchInputValue: string;
   searchResults: OptionListItemType[];
   searchAPIResults: ShareSubject[];
-  searchPending: boolean;
-  isLoading: boolean;
+  isSearching: boolean;
 };
 
 type Action =
@@ -36,8 +35,7 @@ const initialState = {
   searchInputValue: "",
   searchResults: [],
   searchAPIResults: [],
-  searchPending: false,
-  isLoading: false,
+  isSearching: false,
 };
 
 function reducer(state: State, action: Action) {
@@ -45,7 +43,7 @@ function reducer(state: State, action: Action) {
     case "onChange":
       return { ...state, searchInputValue: action.payload };
     case "isSearching":
-      return { ...state, isLoading: action.payload };
+      return { ...state, isSearching: action.payload };
     case "addResult":
       return { ...state, searchResults: action.payload };
     case "addApiResult":
@@ -278,11 +276,11 @@ export const useSearch = ({
 
   const showSearchNoResults = (): boolean => {
     return (
-      (!state.searchPending &&
+      (!state.isSearching &&
         !isAdml &&
         debouncedSearchInputValue.length > 0 &&
         state.searchResults.length === 0) ||
-      (!state.searchPending &&
+      (!state.isSearching &&
         isAdml &&
         debouncedSearchInputValue.length > 3 &&
         state.searchResults.length === 0)
@@ -294,7 +292,11 @@ export const useSearch = ({
   };
 
   const showSearchLoading = (): boolean => {
-    return state.searchPending && state.searchInputValue.length > 0;
+    return state.isSearching;
+  };
+
+  const getSearchMinLength = (): number => {
+    return isAdml ? 3 : 1;
   };
 
   return {
@@ -302,6 +304,7 @@ export const useSearch = ({
     showSearchAdmlHint,
     showSearchLoading,
     showSearchNoResults,
+    getSearchMinLength,
     handleSearchInputChange,
     handleSearchResultsChange,
   };

@@ -9,7 +9,9 @@ const meta: Meta<typeof Combobox> = {
   component: Combobox,
   decorators: [(Story) => <div style={{ height: "400px" }}>{Story()}</div>],
   args: {
-    placeholder: "Saisissez 3 lettres pour démarrer la recherche",
+    searchMinLength: 1,
+    placeholder:
+      "Saisissez 'searchMinLength' lettres pour démarrer la recherche",
     options: [
       {
         value: "First Item",
