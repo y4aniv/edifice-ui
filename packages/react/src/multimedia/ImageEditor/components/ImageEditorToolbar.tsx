@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import { Blur, Crop, Reset, Undo } from "@edifice-ui/icons";
 import { useTranslation } from "react-i18next";
 
-import { Button } from "../../../components";
+import { Toolbar, ToolbarItem } from "../../../components";
 
 export type ImageEditorAction = "ROTATE" | "UNDO" | "CROP" | "BLUR" | "RESIZE";
 interface ImageEditorToolbarProps {
@@ -23,51 +23,76 @@ const ImageEditorToolbar = ({
     setAction(action);
     handle(action);
   };
+
+  const ImageEditorItems: ToolbarItem[] = useMemo(() => {
+    return [
+      {
+        type: "button",
+        name: "undo",
+        props: {
+          color: "tertiary",
+          leftIcon: <Undo />,
+          "aria-label": t("cancel"),
+          children: t("cancel"),
+          onClick: () => handleAndSave("UNDO"),
+        },
+        isEnable: historyCount === 0,
+        tooltip: t("cancel"),
+      },
+      {
+        type: "divider",
+        name: "div-1",
+      },
+      {
+        type: "button",
+        name: "reset",
+        props: {
+          color: "tertiary",
+          leftIcon: <Reset />,
+          "aria-label": t("rotate"),
+          children: t("rotate"),
+          onClick: () => handleAndSave("ROTATE"),
+        },
+        tooltip: t("rotate"),
+      },
+      {
+        type: "button",
+        name: "crop",
+        props: {
+          color: "tertiary",
+          leftIcon: <Crop />,
+          "aria-label": t("crop"),
+          children: t("crop"),
+          className: action === "CROP" ? "is-selected" : "",
+          onClick: () => handleAndSave("CROP"),
+        },
+        tooltip: t("crop"),
+      },
+      {
+        type: "button",
+        name: "blur",
+        props: {
+          color: "tertiary",
+          leftIcon: <Blur />,
+          "aria-label": t("blur"),
+          children: t("blur"),
+          className: action === "BLUR" ? "is-selected" : "",
+          onClick: () => handleAndSave("BLUR"),
+        },
+        tooltip: t("blur"),
+      },
+    ];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [action, historyCount]);
+
   return (
-    <div
-      className="d-flex flex-row align-items-center justify-content-start gap-2 align-self-start mw-100"
-      style={{ overflowX: "scroll" }}
-    >
-      <Button
-        color="tertiary"
-        type="button"
-        variant="ghost"
-        leftIcon={<Undo />}
-        disabled={historyCount === 0}
-        onClick={() => handleAndSave("UNDO")}
-      >
-        {t("cancel")}
-      </Button>
-      <span className="text-gray-400">&#10072;</span>
-      <Button
-        color="tertiary"
-        type="button"
-        variant="ghost"
-        leftIcon={<Reset />}
-        onClick={() => handleAndSave("ROTATE")}
-      >
-        {t("rotate")}
-      </Button>
-      <Button
-        color="tertiary"
-        type="button"
-        variant="ghost"
-        leftIcon={<Crop />}
-        className={action === "CROP" ? "is-selected" : ""}
-        onClick={() => handleAndSave("CROP")}
-      >
-        {t("crop")}
-      </Button>
-      <Button
-        color="tertiary"
-        type="button"
-        variant="ghost"
-        leftIcon={<Blur />}
-        className={action === "BLUR" ? "is-selected" : ""}
-        onClick={() => handleAndSave("BLUR")}
-      >
-        {t("blur")}
-      </Button>
+    <div className="d-flex flex-row align-self-start ">
+      <Toolbar
+        variant="no-shadow"
+        align="left"
+        isBlock
+        items={ImageEditorItems}
+      />
     </div>
   );
 };
