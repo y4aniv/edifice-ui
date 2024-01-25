@@ -138,7 +138,7 @@ importers:
         version: 1.0.1-develop.123(@tiptap/core@2.0.3)(@tiptap/extension-heading@2.0.3)(@tiptap/extension-text-style@2.0.3)(@tiptap/pm@2.0.3)
       "@edifice-tiptap-extensions/extension-highlight":
         specifier: develop
-        version: 1.0.1-develop.131(@tiptap/core@2.0.3)(@tiptap/extension-highlight@2.0.3)(@tiptap/pm@2.0.3)
+        version: 1.0.1-develop.133(@tiptap/core@2.0.3)(@tiptap/extension-highlight@2.0.3)(@tiptap/pm@2.0.3)
       "@edifice-tiptap-extensions/extension-hyperlink":
         specifier: develop
         version: 1.0.1-develop.123(@tiptap/core@2.0.3)(@tiptap/extension-link@2.0.3)(@tiptap/pm@2.0.3)
@@ -271,7 +271,7 @@ importers:
         version: 8.2.0
       edifice-ts-client:
         specifier: develop
-        version: 1.1.0-develop.6
+        version: 1.1.0-develop.9
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -358,7 +358,7 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.7)
       "@edifice-ui/icons":
-        specifier: ^1.4.0-develop.43
+        specifier: ^1.4.0-develop-pedago.0
         version: link:../icons
       "@react-spring/web":
         specifier: 9.7.3
@@ -389,7 +389,7 @@ importers:
         version: 8.2.0
       edifice-ts-client:
         specifier: develop
-        version: 1.1.0-develop.6
+        version: 1.1.0-develop.9
       ohash:
         specifier: 1.1.3
         version: 1.1.3
@@ -2219,10 +2219,10 @@ packages:
       "@tiptap/pm": 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-highlight@1.0.1-develop.131(@tiptap/core@2.0.3)(@tiptap/extension-highlight@2.0.3)(@tiptap/pm@2.0.3):
+  /@edifice-tiptap-extensions/extension-highlight@1.0.1-develop.133(@tiptap/core@2.0.3)(@tiptap/extension-highlight@2.0.3)(@tiptap/pm@2.0.3):
     resolution:
       {
-        integrity: sha512-u3pLJNYs6Cne7GekEB0bAzIue8hdPo7a3PscUDip3X0DOkTfELQyVUAoa4KqjL8/64DiXAtDz9EDMGNJvlw3wA==,
+        integrity: sha512-83jbgsU2VSjqAceISI1VF9PCVGzA7fAra+oqY4+xpPvKIrVuDCODAen43mwOlWQpBusr+1gTYUYPh5DkNBLsMw==,
       }
     peerDependencies:
       "@tiptap/core": 2.0.3
@@ -8798,10 +8798,10 @@ packages:
     engines: { node: ">=4" }
     dev: true
 
-  /axios@1.4.0:
+  /axios@1.6.5:
     resolution:
       {
-        integrity: sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA==,
+        integrity: sha512-Ii012v05KEVuUoFWmMW/UQv9aRIc3ZwkWDcM+h5Il8izZCtRVpDUfwpoFf7eOtajT3QiGR4yDUx7lPqHJULgbg==,
       }
     dependencies:
       follow-redirects: 1.15.5
@@ -8811,10 +8811,10 @@ packages:
       - debug
     dev: true
 
-  /axios@1.6.5:
+  /axios@1.6.6:
     resolution:
       {
-        integrity: sha512-Ii012v05KEVuUoFWmMW/UQv9aRIc3ZwkWDcM+h5Il8izZCtRVpDUfwpoFf7eOtajT3QiGR4yDUx7lPqHJULgbg==,
+        integrity: sha512-XZLZDFfXKM9U/Y/B4nNynfCRUqNyVZ4sBC/n9GDRCkq9vd2mIvKjKKsbIh1WPmHmNbg6ND7cTBY3Y2+u1G3/2Q==,
       }
     dependencies:
       follow-redirects: 1.15.5
@@ -9916,10 +9916,10 @@ packages:
     requiresBuild: true
     dev: true
 
-  /core-js@3.32.0:
+  /core-js@3.35.1:
     resolution:
       {
-        integrity: sha512-rd4rYZNlF3WuoYuRIDEmbR/ga9CeuWX9U05umAvgrrZoHY4Z++cp/xwPQMvUpBB4Ag6J8KfD80G0zwCyaSxDww==,
+        integrity: sha512-IgdsbxNyMskrTFxa9lWHyMwAJU5gXOPP+1yO+K59d50VLVAIDAbs7gIv705KzALModfK3ZrSZTPNpC0PQgIZuw==,
       }
     requiresBuild: true
     dev: true
@@ -10590,15 +10590,15 @@ packages:
       }
     dev: true
 
-  /edifice-ts-client@1.1.0-develop.6:
+  /edifice-ts-client@1.1.0-develop.9:
     resolution:
       {
-        integrity: sha512-nWnOckkkYocVviY8LFfShx3IEaMKiROnbDHzePOzpWX66QCnGComuC/QY17I6PMNI/21PC5NIQwb2zqbPcrLgw==,
+        integrity: sha512-mKs9vrb/TFtHZMtGxtNTa2bJtRseM3FBRF1OhG1w/I9EsmWpdsnLgXjcRDCib3akyq1CFYRzxTwUDEj9TjvbJw==,
       }
-    engines: { node: 16 || 18 }
+    engines: { node: 18 || 20 }
     dependencies:
-      axios: 1.4.0
-      core-js: 3.32.0
+      axios: 1.6.6
+      core-js: 3.35.1
     transitivePeerDependencies:
       - debug
     dev: true
