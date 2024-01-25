@@ -87,9 +87,6 @@ export default function useOdeIcons() {
       case "cahier de texte 2d":
         appCode = "cahier-textes";
         break;
-      case "scrapbook":
-        appCode = "scrap-book";
-        break;
       default:
         break;
     }
