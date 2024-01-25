@@ -4,7 +4,9 @@ import * as PIXI from "pixi.js";
 const MIN_HEIGHT = 100;
 // Define (in pixel) the minimal width the sprite should have
 const MIN_WIDTH = 100;
+// Modal padding
 const MODAL_VERTICAL_PADDING = 400;
+const MODAL_HORIZONTAL_PADDING = 64;
 //Define the default name of the sprite in the PIXI.Application context
 export const DEFAULT_SPRITE_NAME = "image";
 
@@ -52,13 +54,16 @@ export function updateImageFromBlob(
   const imageUrl = URL.createObjectURL(imgDatasource);
   const image = new Image();
   image.src = imageUrl;
-  image.onload = () => {
-    updateImage(application, {
-      spriteName,
-      imgDatasource: image,
-      settings,
-    });
-  };
+  return new Promise<void>((resolve) => {
+    image.onload = async () => {
+      await updateImage(application, {
+        spriteName,
+        imgDatasource: image,
+        settings,
+      });
+      resolve();
+    };
+  });
 }
 /**
  *  This function update the image content for the sprite in the PIXI.Application context
@@ -141,6 +146,7 @@ export function autoResize(
 ): void {
   // Get parent html object
   const parent = application.view.parentNode as HTMLElement | undefined;
+  const maxMobileWidth = window.innerWidth - MODAL_HORIZONTAL_PADDING;
   const parentWidth = Math.max(parent?.offsetWidth ?? 0, MIN_WIDTH);
   const newSize = constraintSize(
     {
@@ -149,7 +155,7 @@ export function autoResize(
     },
     {
       width: {
-        max: parentWidth,
+        max: Math.min(parentWidth, maxMobileWidth),
         min: MIN_WIDTH,
       },
       height: {
@@ -232,4 +238,19 @@ export function constraintSize(
     newWidth = newHeight * ratio;
   }
   return { width: newWidth, height: newHeight };
+}
+export function toBlob(application: PIXI.Application) {
+  return new Promise<Blob>((resolve, reject) => {
+    application.view.toBlob?.(
+      (blob) => {
+        if (blob) {
+          resolve(blob);
+        } else {
+          reject("EXTRACT_FAIL");
+        }
+      },
+      "image/png",
+      1,
+    );
+  });
 }

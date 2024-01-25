@@ -55,9 +55,9 @@ export default function useImageEffects({
     if (!application) return;
     resizeEffect.start(application, spriteName);
   };
-  const rotate = () => {
+  const rotate = async () => {
     if (!application) return;
-    rotateEffect.rotate(application, spriteName);
+    await rotateEffect.rotate(application, spriteName);
   };
   return {
     rotate,
