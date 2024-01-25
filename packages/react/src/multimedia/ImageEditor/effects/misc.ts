@@ -50,18 +50,24 @@ export function updateImageFromBlob(
     imgDatasource: Blob;
     settings?: ImageSettings;
   },
-) {
+): Promise<PIXI.Sprite | null> {
   const imageUrl = URL.createObjectURL(imgDatasource);
   const image = new Image();
   image.src = imageUrl;
-  return new Promise<void>((resolve) => {
+  return new Promise<PIXI.Sprite | null>((resolve) => {
     image.onload = async () => {
       await updateImage(application, {
         spriteName,
         imgDatasource: image,
         settings,
       });
-      resolve();
+
+      // get new sprite
+      const newSprite = application?.stage.getChildByName(
+        spriteName,
+        true,
+      ) as PIXI.Sprite | null;
+      resolve(newSprite);
     };
   });
 }
@@ -175,6 +181,8 @@ export function autoResize(
   sprite.width = newWidth;
   sprite.height = newHeight;
   // Resize the stage
+  application.stage.height = newHeight;
+  application.stage.width = newWidth;
   application.renderer.resize(newWidth, newHeight);
 }
 /**
@@ -215,8 +223,9 @@ export function constraintSize(
   const { height, width } = size;
   const ratio = width / height;
   const { height: constraintHeight, width: constraintWidth } = constraints;
-  let newWidth = width;
-  let newHeight = height;
+  // set max size
+  let newWidth = constraintWidth.max;
+  let newHeight = constraintWidth.max / ratio;
   // constraint width max
   if (width > constraintWidth.max) {
     newWidth = constraintWidth.max;
@@ -253,4 +262,54 @@ export function toBlob(application: PIXI.Application) {
       1,
     );
   });
+}
+
+export function createImageSettings({
+  application,
+  sprite,
+}: {
+  sprite: PIXI.Sprite;
+  application: PIXI.Application;
+}) {
+  return {
+    sprite: {
+      rotation: sprite.rotation,
+      size: { width: sprite.width, height: sprite.height },
+      position: { x: sprite.position.x, y: sprite.position.y },
+      scale: { x: sprite.scale.x, y: sprite.scale.y },
+      anchor: { x: sprite.anchor.x, y: sprite.anchor.y },
+    },
+    stage: {
+      size: {
+        width: application.stage.width,
+        height: application.stage.height,
+      },
+      scale: { x: application.stage.scale.x, y: application.stage.scale.y },
+    },
+  };
+}
+
+export function trimStage(application: PIXI.Application, sprite: PIXI.Sprite) {
+  application.renderer.resize(sprite.width, sprite.height);
+}
+export function resizeStage({
+  application,
+  sprite,
+  newHeight,
+  newWidth,
+}: {
+  newHeight: number;
+  newWidth: number;
+  application: PIXI.Application;
+  sprite: PIXI.Sprite;
+}) {
+  // Anchor the sprite to the middle (for rotation)
+  sprite.anchor.x = 0.5;
+  sprite.anchor.y = 0.5;
+  // Position the sprite to the middle
+  sprite.position = new PIXI.Point(newWidth / 2, newHeight / 2);
+  // Resize the stage
+  application.stage.height = newHeight;
+  application.stage.width = newWidth;
+  application.renderer.resize(newWidth, newHeight);
 }
