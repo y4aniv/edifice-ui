@@ -396,7 +396,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
   ]);
 
   return (
-    <div className=" z-1000 sticky-top editor-toolbar rounded">
+    <div className="sticky-top z-1 editor-toolbar rounded">
       <Toolbar
         items={toolbarItems}
         variant="no-shadow"
