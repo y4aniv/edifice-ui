@@ -154,8 +154,6 @@ export const useSearch = ({
               searchResult.structureName
             ) {
               label = `${label} (${searchResult.structureName})`;
-            } else if (searchResult.type === "sharebookmark") {
-              label = `${label} (${t("sharebookmark")})`;
             }
 
             return {
