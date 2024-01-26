@@ -7,7 +7,7 @@ export interface MediaResizeProps {
   [x: string]: any;
 }
 
-const MIN_WIDTH = 125;
+const MIN_WIDTH = 80;
 
 export const useResizeMedia = (
   props: MediaResizeProps,
