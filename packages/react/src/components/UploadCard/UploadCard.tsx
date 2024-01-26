@@ -105,7 +105,7 @@ const UploadCard = ({
             {isError && (
               <strong>
                 <small className="text-danger caption">
-                  {t("uploadcard.error")}
+                  {t("tiptap.upload.error")}
                 </small>
               </strong>
             )}
@@ -115,7 +115,10 @@ const UploadCard = ({
           <div className="ms-auto">
             <div className="d-flex align-items-center gap-12">
               {isLoading && (
-                <Tooltip message={t("Chargement en cours")} placement="top">
+                <Tooltip
+                  message={t("tiptap.tooltip.upload.loading")}
+                  placement="top"
+                >
                   <Loading
                     isLoading
                     loadingPosition="left"
@@ -123,7 +126,14 @@ const UploadCard = ({
                   />
                 </Tooltip>
               )}
-              {isSuccess && <SuccessOutline className="text-success" />}
+              {isSuccess && (
+                <Tooltip
+                  message={t("tiptap.tooltip.upload.loaded")}
+                  placement="top"
+                >
+                  <SuccessOutline className="text-success" />
+                </Tooltip>
+              )}
               {isError && (
                 <Button
                   leftIcon={<Reset />}
@@ -131,27 +141,33 @@ const UploadCard = ({
                   color="tertiary"
                   onClick={onRetry}
                 >
-                  {t("uploadcard.retry")}
+                  {t("tiptap.upload.retry")}
                 </Button>
               )}
               {!isIdle && <div className="vr"></div>}
               {isTypeImage && (
-                <Tooltip message={t("Modifier l'image")} placement="top">
+                <Tooltip
+                  message={t("tiptap.tooltip.upload.edit")}
+                  placement="top"
+                >
                   <IconButton
                     icon={<Wand />}
                     variant="ghost"
-                    aria-label={t("Modifier l'image")}
+                    aria-label={t("tiptap.tooltip.upload.loading")}
                     disabled={isLoading || !isSuccess}
                     onClick={onEdit}
                     color="secondary"
                   />
                 </Tooltip>
               )}
-              <Tooltip message={t("Supprimer le fichier")} placement="top">
+              <Tooltip
+                message={t("tiptap.tooltip.upload.delete")}
+                placement="top"
+              >
                 <IconButton
                   icon={<Close />}
                   variant="ghost"
-                  aria-label={t("Supprimer le fichier")}
+                  aria-label={t("tiptap.tooltip.upload.delete")}
                   color="tertiary"
                   onClick={onDelete}
                 />
