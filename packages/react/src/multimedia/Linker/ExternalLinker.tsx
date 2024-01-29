@@ -61,7 +61,7 @@ const ExternalLinker = ({
 
     const newLink: IExternalLink = {
       url: linkURL,
-      text: multiNodeSelected ? linkText || linkURL : link?.text,
+      text: !multiNodeSelected ? linkText || linkURL : link?.text,
       target: isBlankTarget ? "_blank" : undefined,
     };
     if (
