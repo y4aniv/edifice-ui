@@ -34,8 +34,8 @@ const ImageEditorToolbar = ({
         "aria-label": t("cancel"),
         children: t("cancel"),
         onClick: () => handleAndSave("UNDO"),
+        disabled: historyCount === 0,
       },
-      isEnable: historyCount === 0,
       tooltip: t("cancel"),
     },
     {

@@ -37,13 +37,11 @@ interface ButtonItem extends Item, ToolbarTooltip {
   type: "button";
   name: string;
   props: ButtonProps;
-  isEnable?: boolean;
 }
 interface IconButtonItem extends Item, ToolbarTooltip {
   type: "icon";
   name: string;
   props: IconButtonProps;
-  isEnable?: boolean;
 }
 interface DropdownItem extends Item {
   type: "dropdown";
@@ -53,7 +51,6 @@ interface DropdownItem extends Item {
 interface PrimaryItem extends Item, ToolbarTooltip {
   type: "primary";
   props: ButtonProps;
-  isEnable?: boolean;
 }
 interface DividerItem extends Item {
   type: "divider";
