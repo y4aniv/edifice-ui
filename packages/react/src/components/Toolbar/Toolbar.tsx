@@ -223,7 +223,6 @@ const Toolbar = forwardRef(
                     variant="ghost"
                     tabIndex={index === 0 ? 0 : -1}
                     onKeyDown={handleKeyDown}
-                    disabled={item.isEnable}
                   />
                 </Tooltip>
               );
@@ -242,7 +241,6 @@ const Toolbar = forwardRef(
                     variant="ghost"
                     tabIndex={index === 0 ? 0 : -1}
                     onKeyDown={handleKeyDown}
-                    disabled={item.isEnable}
                   />
                 </Tooltip>
               );
@@ -272,7 +270,6 @@ const Toolbar = forwardRef(
                     color="primary"
                     tabIndex={index === 0 ? 0 : -1}
                     onKeyDown={handleKeyDown}
-                    disabled={item.isEnable}
                   />
                 </Tooltip>
               );
