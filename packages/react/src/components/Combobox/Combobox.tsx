@@ -14,6 +14,7 @@ export interface ComboboxProps
   value: string;
   isLoading: boolean;
   noResult: boolean;
+  searchMinLength?: number;
   placeholder?: string;
 }
 
@@ -39,6 +40,7 @@ const Combobox = ({
   value,
   isLoading,
   noResult,
+  searchMinLength,
   placeholder,
 }: ComboboxProps) => {
   const { t } = useTranslation();
@@ -72,6 +74,7 @@ const Combobox = ({
       <Fragment key={index}>
         <Dropdown.Item
           type="select"
+          icon={option.icon}
           onClick={() => handleOptionClick(option.value)}
         >
           {option.label}
@@ -86,6 +89,7 @@ const Combobox = ({
     <Dropdown block>
       <Combobox.Trigger
         placeholder={placeholder}
+        searchMinLength={searchMinLength}
         handleSearchInputChange={onSearchInputChange}
         value={value}
       />

@@ -5,7 +5,8 @@ import { IconButton } from "../Button";
 
 const CardHeader = () => {
   const { isSelectable, isClickable, onClick, onSelect } = useCardContext();
-  return (
+  const isActive = isSelectable || isClickable;
+  return isActive ? (
     <div className="card-header">
       {isSelectable ? (
         <IconButton
@@ -25,7 +26,7 @@ const CardHeader = () => {
         />
       ) : null}
     </div>
-  );
+  ) : null;
 };
 
 CardHeader.displayName = "Card.Header";

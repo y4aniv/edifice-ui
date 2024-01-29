@@ -7,8 +7,11 @@ import * as useDropzoneStories from "./useDropzone.stories";
 
 ## Usage
 
-- Accept `ref` of target element
-- Handle Drag and Drop of a file
+This hook provides everything to :
+
+- drag and drop or import one or more files
+- add a new file
+- remove a file
 
 ## Example
 
@@ -17,10 +20,13 @@ import * as useDropzoneStories from "./useDropzone.stories";
 ## Hook usage
 
 ```jsx
-const { handleDragLeave, handleDragging, handleDrop } = useDropzone(
+const {
   inputRef,
-  onChange,
-);
+  handleOnChange,
+  handleDragLeave,
+  handleDragging,
+  handleDrop,
+} = useDropzone();
 
 <div
   className="drop-zone"
@@ -40,7 +46,7 @@ const { handleDragLeave, handleDragging, handleDrop } = useDropzone(
     type="file"
     name="attachement-input"
     id="attachement-input"
-    onChange={handleInputChange}
+    onChange={handleOnChange}
     hidden
   />
 </div>;

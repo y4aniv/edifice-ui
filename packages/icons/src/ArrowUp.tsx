@@ -28,7 +28,7 @@ const SvgArrowUp = ({
     <path
       fill="currentColor"
       fillRule="evenodd"
-      d="M11.293 4.293a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1-1.414 1.414L12 6.414l-6.293 6.293a1 1 0 0 1-1.414-1.414l7-7"
+      d="M11.293 4.293a1 1 0 0 1 1.414 0l7 7a1 1 0 0 1-1.414 1.414L12 6.414l-6.293 6.293a1 1 0 0 1-1.414-1.414z"
       clipRule="evenodd"
     />
   </svg>

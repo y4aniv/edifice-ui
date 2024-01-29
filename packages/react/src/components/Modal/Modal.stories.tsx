@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import { TreeNode, TreeView } from "../TreeView";
 import { Button } from "../Button";
 import Modal from "./Modal";
 import useToggle from "../../hooks/useToggle/useToggle";
@@ -8,6 +7,7 @@ import useToggle from "../../hooks/useToggle/useToggle";
 const meta: Meta<typeof Modal> = {
   title: "Components/Modal",
   component: Modal,
+  decorators: [(Story) => <div style={{ height: "25em" }}>{Story()}</div>],
   args: {
     id: "modal",
     viewport: false,

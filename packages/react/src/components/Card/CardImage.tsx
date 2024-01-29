@@ -30,7 +30,7 @@ const CardImage = ({
           alt=""
           src={imageSrc}
           objectFit="cover"
-          className={clsx("h-full", className)}
+          className={clsx("h-full w-100", className)}
         />
       ) : (
         <AppIcon
