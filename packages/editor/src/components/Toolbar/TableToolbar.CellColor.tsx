@@ -65,8 +65,6 @@ export const TableToolbarCellColor = ({ editor, itemRefs }: Props) => {
     },
   ];
 
-  console.log({ color });
-
   return (
     <>
       <Tooltip message={t("tiptap.table.toolbar.cell.bk")} placement="top">

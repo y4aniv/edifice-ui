@@ -131,7 +131,6 @@ export default function useAudioRecorder(
     };
 
     return () => {
-      console.log("closing ws");
       if (ws.readyState === 1) {
         ws.close();
       }
