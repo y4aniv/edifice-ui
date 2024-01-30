@@ -1,16 +1,20 @@
 import { useState } from "react";
 
-import { Blur, Crop, FullScreen, Reset, Undo } from "@edifice-ui/icons";
+import { Blur, Crop, Reset, Undo } from "@edifice-ui/icons";
 import { useTranslation } from "react-i18next";
 
-import { Button } from "../../../components";
+import { Toolbar, ToolbarItem } from "../../../components";
 
 export type ImageEditorAction = "ROTATE" | "UNDO" | "CROP" | "BLUR" | "RESIZE";
 interface ImageEditorToolbarProps {
+  historyCount: number;
   handle(operation: ImageEditorAction): void;
 }
 
-const ImageEditorToolbar = ({ handle }: ImageEditorToolbarProps) => {
+const ImageEditorToolbar = ({
+  historyCount,
+  handle,
+}: ImageEditorToolbarProps) => {
   const { t } = useTranslation();
   const [action, setAction] = useState<ImageEditorAction | undefined>(
     undefined,
@@ -19,57 +23,73 @@ const ImageEditorToolbar = ({ handle }: ImageEditorToolbarProps) => {
     setAction(action);
     handle(action);
   };
+
+  const ImageEditorItems: ToolbarItem[] = [
+    {
+      type: "button",
+      name: "undo",
+      props: {
+        color: "tertiary",
+        leftIcon: <Undo />,
+        "aria-label": t("cancel"),
+        children: t("cancel"),
+        onClick: () => handleAndSave("UNDO"),
+        disabled: historyCount === 0,
+      },
+      tooltip: t("cancel"),
+    },
+    {
+      type: "divider",
+      name: "div-1",
+    },
+    {
+      type: "button",
+      name: "reset",
+      props: {
+        color: "tertiary",
+        leftIcon: <Reset />,
+        "aria-label": t("rotate"),
+        children: t("rotate"),
+        onClick: () => handleAndSave("ROTATE"),
+      },
+      tooltip: t("rotate"),
+    },
+    {
+      type: "button",
+      name: "crop",
+      props: {
+        color: "tertiary",
+        leftIcon: <Crop />,
+        "aria-label": t("crop"),
+        children: t("crop"),
+        className: action === "CROP" ? "is-selected" : "",
+        onClick: () => handleAndSave("CROP"),
+      },
+      tooltip: t("crop"),
+    },
+    {
+      type: "button",
+      name: "blur",
+      props: {
+        color: "tertiary",
+        leftIcon: <Blur />,
+        "aria-label": t("blur"),
+        children: t("blur"),
+        className: action === "BLUR" ? "is-selected" : "",
+        onClick: () => handleAndSave("BLUR"),
+      },
+      tooltip: t("blur"),
+    },
+  ];
+
   return (
-    <div
-      className="d-flex flex-row align-items-center justify-content-start gap-2 align-self-start mw-100"
-      style={{ overflowX: "scroll" }}
-    >
-      <Button
-        color="tertiary"
-        type="button"
-        variant={"ghost"}
-        leftIcon={<Undo />}
-        onClick={() => handleAndSave("UNDO")}
-      >
-        {t("cancel")}
-      </Button>
-      <>&#10072;</>
-      <Button
-        color="tertiary"
-        type="button"
-        variant="ghost"
-        leftIcon={<Reset />}
-        onClick={() => handleAndSave("ROTATE")}
-      >
-        {t("rotate")}
-      </Button>
-      <Button
-        color="tertiary"
-        type="button"
-        leftIcon={<Crop />}
-        variant={action === "CROP" ? "filled" : "ghost"}
-        onClick={() => handleAndSave("CROP")}
-      >
-        {t("crop")}
-      </Button>
-      <Button
-        color="tertiary"
-        type="button"
-        leftIcon={<FullScreen />}
-        variant={action === "RESIZE" ? "filled" : "ghost"}
-        onClick={() => handleAndSave("RESIZE")}
-      >
-        {t("resize")}
-      </Button>
-      <Button
-        color="tertiary"
-        type="button"
-        leftIcon={<Blur />}
-        variant={action === "BLUR" ? "filled" : "ghost"}
-        onClick={() => handleAndSave("BLUR")}
-      >
-        {t("blur")}
-      </Button>
+    <div className="d-flex flex-row align-self-start ">
+      <Toolbar
+        variant="no-shadow"
+        align="left"
+        isBlock
+        items={ImageEditorItems}
+      />
     </div>
   );
 };

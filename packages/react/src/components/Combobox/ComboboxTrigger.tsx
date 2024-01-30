@@ -8,12 +8,14 @@ export interface ComboboxTriggerProps
   extends React.ComponentPropsWithRef<"button"> {
   handleSearchInputChange: (event: ChangeEvent<HTMLInputElement>) => void;
   value: string;
+  searchMinLength?: number;
   placeholder?: string;
 }
 
 const ComboboxTrigger = ({
   placeholder,
   value = "",
+  searchMinLength = 3,
   handleSearchInputChange,
 }: ComboboxTriggerProps) => {
   const { triggerProps, itemProps, setVisible } = useDropdownContext();
@@ -22,7 +24,7 @@ const ComboboxTrigger = ({
     ...triggerProps,
     role: "combobox",
     onClick: () => {
-      if (value.length > 2) {
+      if (value.length >= searchMinLength) {
         setVisible(true);
       }
     },
@@ -30,8 +32,8 @@ const ComboboxTrigger = ({
   };
 
   useEffect(() => {
-    setVisible(value.length > 2);
-  }, [setVisible, value]);
+    setVisible(value.length >= searchMinLength);
+  }, [setVisible, value, searchMinLength]);
 
   return (
     <FormControl className="d-flex align-items-center" id="search">

@@ -66,6 +66,7 @@ const ImageEditor = ({
     stopCrop,
     startResize,
     stopResize,
+    historyCount,
   } = useImageEditor({
     imageSrc,
   });
@@ -136,13 +137,18 @@ const ImageEditor = ({
       <Modal.Header onModalClose={handleCancel}>
         <span className="h2">{t("imageeditor.title")}</span>
       </Modal.Header>
-      <Modal.Body>
-        <div className="d-flex flex-column align-items-center gap-12">
-          <ImageEditorToolbar handle={handleOperation} />
-          <Stage
-            onMount={(app) => setApplication(app)}
-            options={{ preserveDrawingBuffer: true, backgroundAlpha: 0 }}
-          ></Stage>
+      <Modal.Body className="d-flex flex-column align-items-center">
+        <div className="d-flex flex-column align-items-center gap-12 w-100 flex-grow-1">
+          <ImageEditorToolbar
+            handle={handleOperation}
+            historyCount={historyCount}
+          />
+          <div className="d-flex flex-column align-items-center justify-content-center flex-grow-1 w-100">
+            <Stage
+              onMount={(app) => setApplication(app)}
+              options={{ preserveDrawingBuffer: true, backgroundAlpha: 0 }}
+            ></Stage>
+          </div>
           <div className="d-flex flex-column flex-md-row m-10 gap-12 w-100">
             <FormControl id="alt" className="flex-grow-1">
               <Label>{t("alttext")}</Label>
@@ -175,10 +181,10 @@ const ImageEditor = ({
       </Modal.Body>
       <Modal.Footer>
         <Button
-          color="secondary"
+          color="tertiary"
           onClick={handleCancel}
           type="button"
-          variant="outline"
+          variant="ghost"
         >
           {t("imageeditor.cancel")}
         </Button>
@@ -190,7 +196,7 @@ const ImageEditor = ({
           isLoading={isSaving}
           disabled={isSaving || !dirty}
         >
-          {"imageeditor.save"}
+          {t("imageeditor.save")}
         </Button>
       </Modal.Footer>
     </Modal>

@@ -1,4 +1,4 @@
-import { NoColors } from "@edifice-ui/icons";
+import { DeleteColor } from "@edifice-ui/icons";
 import clsx from "clsx";
 
 import { ColorPaletteItem } from "./ColorPalette";
@@ -22,20 +22,21 @@ const ColorPickerItem = ({
   model,
   selected,
   className,
-}: ColorPickerItemProps) => (
-  <div
-    aria-label={model.description}
-    className={clsx(
-      "color-picker-hue-color-item rounded-1",
-      className,
-      model.hue === "light" ? "light" : "dark",
-      selected && "selected",
-    )}
-    style={{ backgroundColor: model.value }}
-  >
-    {model.isReset && <NoColors style={{ color: "var(--edifice-danger)" }} />}
-  </div>
-);
+}: ColorPickerItemProps) =>
+  model.isReset ? (
+    <DeleteColor />
+  ) : (
+    <div
+      aria-label={model.description}
+      className={clsx(
+        "color-picker-hue-color-item rounded-1",
+        className,
+        model.hue === "light" ? "light" : "dark",
+        selected && "selected",
+      )}
+      style={{ backgroundColor: model.value }}
+    ></div>
+  );
 
 ColorPickerItem.displayName = "ColorPickerItem";
 

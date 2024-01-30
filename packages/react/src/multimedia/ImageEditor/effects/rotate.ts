@@ -1,6 +1,11 @@
 import * as PIXI from "pixi.js";
 
-import { autoResize } from "./misc";
+import {
+  createImageSettings,
+  resizeStage,
+  toBlob,
+  updateImageFromBlob,
+} from "./misc";
 
 /**
  * This function rotate the sprite by adding PI/2
@@ -8,16 +13,43 @@ import { autoResize } from "./misc";
  * @param application The PIXI.Application context
  * @param spriteName The name of the sprite representing the image
  */
-export function rotate(
+export async function rotate(
   application: PIXI.Application,
   spriteName: string,
-): void {
+): Promise<void> {
   const sprite = application?.stage.getChildByName(
     spriteName,
     true,
   ) as PIXI.Sprite | null;
   if (application && sprite) {
-    sprite.rotation += Math.PI / 2;
-    autoResize(application, sprite);
+    if (!application) return undefined;
+    // create blob
+    const blobBefore = await toBlob(application);
+    // replace sprite using blob
+    const mergedSprite = await updateImageFromBlob(application, {
+      imgDatasource: blobBefore,
+      spriteName,
+      settings: createImageSettings({ application, sprite }),
+    });
+    if (!mergedSprite) {
+      return;
+    }
+    // rotate
+    mergedSprite.rotation += Math.PI / 2;
+    resizeStage({
+      application,
+      sprite: mergedSprite,
+      newHeight: mergedSprite.width,
+      newWidth: mergedSprite.height,
+    });
+    // render
+    application.render();
+    // create blob
+    const blobAfter = await toBlob(application);
+    // replace sprite using blob
+    await updateImageFromBlob(application, {
+      imgDatasource: blobAfter,
+      spriteName,
+    });
   }
 }

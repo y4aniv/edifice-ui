@@ -140,7 +140,8 @@ const useDropdown = (
 
   const closeDropdown = useCallback(() => {
     if (triggerRef.current) {
-      triggerRef.current.focus();
+      // Closing the dropdown should not scroll the window content.
+      triggerRef.current.focus({ preventScroll: true });
       setVisible(false);
     }
   }, []);
@@ -209,8 +210,9 @@ const useDropdown = (
           case KEYS.Escape:
             closeDropdown();
             break;
+          // FIX WB2-1334: Space event prevents user to insert Space during search, so we comment it to keep a trace.
+          // case KEYS.Space:
           case " ":
-          case KEYS.Space:
           case KEYS.Enter:
             if (activeIndex !== -1) {
               const currentItem = Object.values(itemRefs.current)[
@@ -269,10 +271,6 @@ const useDropdown = (
     [visible],
   );
 
-  const onMenuItemClick = useCallback(() => {
-    closeDropdown();
-  }, [closeDropdown]);
-
   return {
     isFocused,
     visible,
@@ -301,7 +299,7 @@ const useDropdown = (
     /* ItemProps to spread to any item Component */
     itemProps: {
       onMenuItemMouseEnter,
-      onMenuItemClick,
+      onMenuItemClick: closeDropdown,
       onMenuItemKeyDown,
     },
     setVisible,

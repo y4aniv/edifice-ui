@@ -14,6 +14,7 @@ import {
   Dropdown,
   IconButton,
   IconButtonProps,
+  Tooltip,
 } from "@edifice-ui/react";
 import { useTranslation } from "react-i18next";
 
@@ -44,7 +45,7 @@ export const EditorToolbarHighlightColor = ({
 
   const isActive = useMemo(
     () =>
-      editor?.isActive("highlight", {
+      editor?.isActive("customHighlight", {
         color: /^#([0-9a-f]{3}){1,2}$/i,
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -68,7 +69,7 @@ export const EditorToolbarHighlightColor = ({
 
   // When cursor moves in table, update the current highlight color.
   useEffect(() => {
-    setColor(editor?.getAttributes("highlight").color ?? "");
+    setColor(editor?.getAttributes("customHighlight").color ?? "");
   }, [editor, editor?.state]);
 
   // Palettes of available colors to choose from.
@@ -84,15 +85,17 @@ export const EditorToolbarHighlightColor = ({
 
   return (
     <>
-      <IconButton
-        {...triggerProps}
-        type="button"
-        variant="ghost"
-        color="tertiary"
-        icon={<TextHighlight />}
-        aria-label={t("tiptap.toolbar.highlight")}
-        className={isActive ? "selected" : ""}
-      />
+      <Tooltip message={t("tiptap.toolbar.highlight.back")} placement="top">
+        <IconButton
+          {...triggerProps}
+          type="button"
+          variant="ghost"
+          color="tertiary"
+          icon={<TextHighlight />}
+          aria-label={t("tiptap.toolbar.highlight.back")}
+          className={isActive ? "selected" : ""}
+        />
+      </Tooltip>
       <Dropdown.Menu>
         <ColorPicker
           ref={(el: any) => (itemRefs.current["color-picker"] = el)}

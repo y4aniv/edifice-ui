@@ -12,6 +12,8 @@ import {
   TextUnderline,
   SpeechToText,
   BulletList,
+  Undo,
+  Redo,
 } from "@edifice-ui/icons";
 import {
   ToolbarItem,
@@ -33,6 +35,9 @@ import {
   useEditorContext,
   useSpeechRecognition,
 } from "../..";
+import { hasExtension } from "../../utils/has-extension";
+import { hasMark } from "../../utils/has-mark";
+import { hasTextStyle } from "../../utils/has-text-style";
 
 interface Props {
   /** Ref to a MediaLibrary instance */
@@ -58,19 +63,55 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
   } = useSpeechRecognition(editor);
 
   const toolbarItems: ToolbarItem[] = useMemo(() => {
-    const hasMark = (extensionName: string) =>
-      !!editor?.extensionManager.splittableMarks.includes(extensionName);
-    const hasExtension = (extensionName: string) =>
-      !!editor?.extensionManager.extensions.find(
-        (item) => item.name === extensionName,
-      );
-    const hasTextStyle = (styleName: string) =>
-      editor?.extensionManager.extensions.find(
-        (item) => item.name === styleName && hasMark("textStyle"),
-      );
     const showIf = (truthy: boolean) => (truthy ? "show" : "hide");
 
+    const showLinkModal = () => {
+      const { state } = editor!;
+      if (state.selection.empty) {
+        mediaLibraryRef.current?.show("hyperlink");
+      } else {
+        mediaLibraryRef.current?.showLink({
+          link: {
+            text: state.selection.content().content.child(0).textContent,
+            target: "_blank",
+          },
+          multiNodeSelected: state.selection.content().content.childCount > 1,
+        });
+      }
+    };
+
     return [
+      //--------------- UNDO ---------------//
+      {
+        type: "icon",
+        props: {
+          icon: <Undo />,
+          "aria-label": t("editor.option.undo"),
+          onClick: () => editor?.chain().focus().undo().run(),
+          disabled: !editor?.can().undo(),
+        },
+        name: "undo",
+        tooltip: t("editor.option.undo"),
+        visibility: showIf(hasExtension("history", editor)),
+      },
+      //--------------- REDO ---------------//
+      {
+        type: "icon",
+        props: {
+          icon: <Redo />,
+          "aria-label": t("editor.option.redo"),
+          onClick: () => editor?.chain().focus().redo().run(),
+          disabled: !editor?.can().redo(),
+        },
+        name: "redo",
+        tooltip: t("editor.option.redo"),
+        visibility: showIf(hasExtension("history", editor)),
+      },
+      //-------------------------------------//
+      {
+        type: "divider",
+        name: "div-1",
+      },
       //--------------- IMAGE ---------------//
       {
         type: "icon",
@@ -81,6 +122,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           onClick: () => mediaLibraryRef.current?.show("image"),
         },
         name: "image",
+        tooltip: t("tiptap.toolbar.picture"),
       },
       //--------------- VIDEO ---------------//
       {
@@ -92,6 +134,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           onClick: () => mediaLibraryRef.current?.show("video"),
         },
         name: "video",
+        tooltip: t("tiptap.toolbar.video"),
       },
       //--------------- AUDIO ---------------//
       {
@@ -103,6 +146,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           onClick: () => mediaLibraryRef.current?.show("audio"),
         },
         name: "audio",
+        tooltip: t("tiptap.toolbar.audio"),
       },
       //--------------- ATTACHMENT ---------------//
       {
@@ -114,11 +158,11 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           onClick: () => mediaLibraryRef.current?.show("attachment"),
         },
         name: "attachment",
+        tooltip: t("tiptap.toolbar.attachment"),
       },
-      //-------------------------------------//
       {
         type: "divider",
-        name: "div-1",
+        name: "div-2",
       },
       //--------------- SPEECH TO TEXT ---------------//
       {
@@ -131,6 +175,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         },
         visibility: canRecognizeSpeech ? "show" : "hide",
         name: "speechtotext",
+        tooltip: t("tiptap.toolbar.stt"),
       },
       //------------------------------------//
       {
@@ -149,7 +194,8 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           ) => <EditorToolbarTypography triggerProps={triggerProps} />,
         },
         name: "text_typo",
-        visibility: showIf(hasExtension("fontFamily")),
+        visibility: showIf(hasExtension("fontFamily", editor)),
+        tooltip: t("tiptap.toolbar.typo.choice"),
       },
       //--------------- TEXT SIZE ---------------//
       {
@@ -162,7 +208,10 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           ) => <EditorToolbarTextSize triggerProps={triggerProps} />,
         },
         name: "text_size",
-        visibility: showIf(hasExtension("typoSize")),
+        visibility: showIf(
+          hasExtension("fontSize", editor) || hasExtension("heading", editor),
+        ),
+        tooltip: t("tiptap.toolbar.size.choice"),
       },
       //--------------- TEXT COLOR ---------------//
       {
@@ -182,7 +231,8 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         },
         overflow: false,
         name: "color",
-        visibility: hasTextStyle("color") ? "show" : "hide",
+        visibility: hasTextStyle("color", editor) ? "show" : "hide",
+        tooltip: t("tiptap.toolbar.color.text"),
       },
       //--------------- TEXT HIGHLIGHTING COLOR ---------------//
       {
@@ -201,12 +251,13 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           ),
         },
         name: "highlight",
-        visibility: showIf(hasMark("highlight")),
+        visibility: showIf(hasMark("customHighlight", editor)),
+        tooltip: t("tiptap.toolbar.highlight.back"),
       },
       //-------------------------------------//
       {
         type: "divider",
-        name: "div-2",
+        name: "div-3",
       },
       //--------------- BOLD ---------------//
       {
@@ -216,9 +267,11 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           "aria-label": t("tiptap.toolbar.bold"),
           className: editor?.isActive("bold") ? "is-selected" : "",
           onClick: () => editor?.chain().focus().toggleBold().run(),
+          disabled: editor?.isActive("heading"),
         },
         name: "bold",
-        visibility: showIf(hasMark("bold")),
+        visibility: showIf(hasMark("bold", editor)),
+        tooltip: t("tiptap.toolbar.bold"),
       },
       //--------------- ITALIC ---------------//
       {
@@ -230,7 +283,8 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           onClick: () => editor?.chain().focus().toggleItalic().run(),
         },
         name: "italic",
-        visibility: showIf(hasMark("italic")),
+        visibility: showIf(hasMark("italic", editor)),
+        tooltip: t("tiptap.toolbar.italic"),
       },
       //--------------- UNDERLINE ---------------//
       {
@@ -242,12 +296,13 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           onClick: () => editor?.chain().focus().toggleUnderline().run(),
         },
         name: "underline",
-        visibility: showIf(hasMark("underline")),
+        visibility: showIf(hasMark("underline", editor)),
+        tooltip: t("tiptap.toolbar.underline"),
       },
       //-------------------------------------//
       {
         type: "divider",
-        name: "div-3",
+        name: "div-4",
       },
       //--------------- EMOJI ---------------//
       {
@@ -266,6 +321,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           ),
         },
         name: "emoji",
+        tooltip: t("tiptap.toolbar.emojisPicker"),
       },
       //--------------- LINKER (internal / external) ---------------//
       {
@@ -274,14 +330,15 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           icon: <Link />,
           "aria-label": t("tiptap.toolbar.linker"),
           className: editor?.isActive("linker") ? "is-selected" : "",
-          onClick: () => mediaLibraryRef.current?.show("hyperlink"),
+          onClick: () => showLinkModal(),
         },
         name: "linker",
+        tooltip: t("tiptap.toolbar.linker"),
       },
       //-----------------------------------//
       {
         type: "divider",
-        name: "div-4",
+        name: "div-5",
       },
       //--------------- LIST MENU ---------------//
       {
@@ -301,7 +358,8 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           ),
         },
         name: "list",
-        visibility: showIf(hasExtension("starterKit")),
+        visibility: showIf(hasExtension("starterKit", editor)),
+        tooltip: t("tiptap.toolbar.listoptions"),
       },
       //--------------- TEXT ALIGNMENT ---------------//
       {
@@ -321,12 +379,13 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           ),
         },
         name: "alignment",
-        visibility: showIf(hasExtension("textAlign")),
+        visibility: showIf(hasExtension("textAlign", editor)),
+        tooltip: t("tiptap.toolbar.align"),
       },
       //-------------------------------------//
       {
         type: "divider",
-        name: "div-5",
+        name: "div-6",
       },
       //--------------- MORE sub-menu ---------------//
       {
@@ -335,7 +394,8 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           children: () => <EditorToolbarPlusMenu options={plusOptions} />,
         },
         name: "plus",
-        visibility: showIf(hasExtension("textAlign")),
+        visibility: showIf(hasExtension("textAlign", editor)),
+        tooltip: t("tiptap.tooltip.plus"),
       },
     ];
   }, [
@@ -351,13 +411,15 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
   ]);
 
   return (
-    <Toolbar
-      items={toolbarItems}
-      variant="no-shadow"
-      className="rounded-top"
-      isBlock
-      align="left"
-      ariaControls="editorContent"
-    />
+    <div className="sticky-top z-1 editor-toolbar rounded">
+      <Toolbar
+        items={toolbarItems}
+        variant="no-shadow"
+        className="rounded-top px-16"
+        isBlock
+        align="left"
+        ariaControls="editorContent"
+      />
+    </div>
   );
 };

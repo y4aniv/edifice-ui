@@ -1,6 +1,7 @@
 import { SuccessOutline, Wand, Close, Reset } from "@edifice-ui/icons";
 import { useTranslation } from "react-i18next";
 
+import { Tooltip } from "..";
 import { usePaths } from "../../core";
 import { Status } from "../../types";
 import { Button, IconButton } from "../Button";
@@ -104,7 +105,7 @@ const UploadCard = ({
             {isError && (
               <strong>
                 <small className="text-danger caption">
-                  {t("uploadcard.error")}
+                  {t("tiptap.upload.error")}
                 </small>
               </strong>
             )}
@@ -114,13 +115,25 @@ const UploadCard = ({
           <div className="ms-auto">
             <div className="d-flex align-items-center gap-12">
               {isLoading && (
-                <Loading
-                  isLoading
-                  loadingPosition="left"
-                  className="text-secondary"
-                />
+                <Tooltip
+                  message={t("tiptap.tooltip.upload.loading")}
+                  placement="top"
+                >
+                  <Loading
+                    isLoading
+                    loadingPosition="left"
+                    className="text-secondary"
+                  />
+                </Tooltip>
               )}
-              {isSuccess && <SuccessOutline className="text-success" />}
+              {isSuccess && (
+                <Tooltip
+                  message={t("tiptap.tooltip.upload.loaded")}
+                  placement="top"
+                >
+                  <SuccessOutline className="text-success" />
+                </Tooltip>
+              )}
               {isError && (
                 <Button
                   leftIcon={<Reset />}
@@ -128,27 +141,37 @@ const UploadCard = ({
                   color="tertiary"
                   onClick={onRetry}
                 >
-                  {t("uploadcard.retry")}
+                  {t("tiptap.upload.retry")}
                 </Button>
               )}
               {!isIdle && <div className="vr"></div>}
               {isTypeImage && (
-                <IconButton
-                  icon={<Wand />}
-                  variant="ghost"
-                  aria-label="edit"
-                  disabled={isLoading || !isSuccess}
-                  onClick={onEdit}
-                  color="secondary"
-                />
+                <Tooltip
+                  message={t("tiptap.tooltip.upload.edit")}
+                  placement="top"
+                >
+                  <IconButton
+                    icon={<Wand />}
+                    variant="ghost"
+                    aria-label={t("tiptap.tooltip.upload.loading")}
+                    disabled={isLoading || !isSuccess}
+                    onClick={onEdit}
+                    color="secondary"
+                  />
+                </Tooltip>
               )}
-              <IconButton
-                icon={<Close />}
-                variant="ghost"
-                aria-label="delete"
-                color="tertiary"
-                onClick={onDelete}
-              />
+              <Tooltip
+                message={t("tiptap.tooltip.upload.delete")}
+                placement="top"
+              >
+                <IconButton
+                  icon={<Close />}
+                  variant="ghost"
+                  aria-label={t("tiptap.tooltip.upload.delete")}
+                  color="tertiary"
+                  onClick={onDelete}
+                />
+              </Tooltip>
             </div>
           </div>
         )}

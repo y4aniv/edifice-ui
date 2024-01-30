@@ -86,6 +86,7 @@ export default function ShareResourceModal({
     showSearchAdmlHint,
     showSearchLoading,
     showSearchNoResults,
+    getSearchMinLength,
     handleSearchInputChange,
     handleSearchResultsChange,
   } = useSearch({ resource, shareRights, shareDispatch });
@@ -231,6 +232,7 @@ export default function ShareResourceModal({
               isLoading={showSearchLoading()}
               noResult={showSearchNoResults()}
               options={searchResults}
+              searchMinLength={getSearchMinLength()}
               onSearchInputChange={handleSearchInputChange}
               onSearchResultsChange={handleSearchResultsChange}
             />

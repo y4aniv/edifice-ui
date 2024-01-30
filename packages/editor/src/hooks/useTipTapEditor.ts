@@ -5,18 +5,19 @@ import "@edifice-tiptap-extensions/extension-audio";
 import "@edifice-tiptap-extensions/extension-image";
 import "@edifice-tiptap-extensions/extension-video";
 
-import { Alerts } from "@edifice-tiptap-extensions/extension-alert";
+import { Alert } from "@edifice-tiptap-extensions/extension-alert";
+import { FontSize } from "@edifice-tiptap-extensions/extension-font-size";
+import { CustomHeading } from "@edifice-tiptap-extensions/extension-heading";
+import { CustomHighlight } from "@edifice-tiptap-extensions/extension-highlight";
 import { Hyperlink } from "@edifice-tiptap-extensions/extension-hyperlink";
 import { Iframe } from "@edifice-tiptap-extensions/extension-iframe";
 import { SpeechRecognition } from "@edifice-tiptap-extensions/extension-speechrecognition";
 import { SpeechSynthesis } from "@edifice-tiptap-extensions/extension-speechsynthesis";
 import { TableCell } from "@edifice-tiptap-extensions/extension-table-cell";
-import { TypoSize } from "@edifice-tiptap-extensions/extension-typosize";
 import { useOdeClient } from "@edifice-ui/react";
 import Color from "@tiptap/extension-color";
 import Focus from "@tiptap/extension-focus";
 import FontFamily from "@tiptap/extension-font-family";
-import Highlight from "@tiptap/extension-highlight";
 import Subscript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
 import Table from "@tiptap/extension-table";
@@ -55,8 +56,8 @@ export const useTipTapEditor = (editable: boolean, content: Content) => {
   const editor = useEditor({
     editable,
     extensions: [
-      StarterKit as any,
-      Highlight.configure({
+      StarterKit,
+      CustomHighlight.configure({
         multicolor: true,
       }),
       Underline,
@@ -75,10 +76,13 @@ export const useTipTapEditor = (editable: boolean, content: Content) => {
       TableHeader,
       TableCell,
       TextAlign.configure({
-        types: ["heading", "paragraph"],
+        types: ["heading", "paragraph", "custom-image", "video"],
+      }),
+      CustomHeading.configure({
+        levels: [1, 2],
       }),
       Typography,
-      TypoSize,
+      FontSize,
       SpeechRecognition,
       SpeechSynthesis.configure({
         lang:
@@ -90,12 +94,12 @@ export const useTipTapEditor = (editable: boolean, content: Content) => {
       Hyperlink,
       FontFamily,
       Mathematics,
+      Alert,
       VideoNodeView(MediaRenderer),
       AudioNodeView(AudioRenderer),
-      ImageNodeView(MediaRenderer),
       LinkerNodeView(LinkerRenderer),
+      ImageNodeView(MediaRenderer),
       AttachmentNodeView(AttachmentRenderer),
-      Alerts,
     ],
     content,
   });
@@ -106,7 +110,8 @@ export const useTipTapEditor = (editable: boolean, content: Content) => {
 
   useEffect(() => {
     editor?.commands.setContent(content);
-  }, [editor, content]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [content]);
 
   return { editor, editable };
 };

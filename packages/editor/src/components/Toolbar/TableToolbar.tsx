@@ -56,13 +56,14 @@ const TableToolbar = ({ editor }: TableToolbarProps) => {
             )
           : null;
 
-        // Retrieve the <div class="tableWrapper"> that wraps the <table>
+        // Try to retrieve the <div class="tableWrapper"> that wraps the <table>
         if (parentDiv) {
           const parentDomNode = editor?.view.nodeDOM(parentDiv.pos) as
             | HTMLElement
             | undefined;
 
-          const tableDomNode = parentDomNode?.querySelector("table");
+          const tableDomNode =
+            parentDomNode?.querySelector("table") || parentDomNode;
           if (tableDomNode) {
             return adjustRect(tableDomNode.getBoundingClientRect());
           }
@@ -89,13 +90,16 @@ const TableToolbar = ({ editor }: TableToolbarProps) => {
     }
   }, [editor, editor?.state, isSpan]);
 
+  const handleShouldShow = () =>
+    (editor?.isEditable && editor.isActive("table")) || false;
+
   return (
     <>
       {editor && (
         <FloatingMenu
           editor={editor}
           tippyOptions={tippyOptions}
-          shouldShow={() => editor.isActive("table")}
+          shouldShow={handleShouldShow}
         >
           <Toolbar
             className="p-4"
@@ -130,6 +134,9 @@ const TableToolbar = ({ editor }: TableToolbarProps) => {
                     : t("tiptap.table.toolbar.merge"),
                   onClick: () => editor?.chain().focus().mergeOrSplit().run(),
                 },
+                tooltip: isSpan
+                  ? t("tiptap.table.toolbar.split")
+                  : t("tiptap.table.toolbar.merge"),
               },
               {
                 type: "divider",

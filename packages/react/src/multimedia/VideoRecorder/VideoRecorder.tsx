@@ -76,8 +76,6 @@ const VideoRecorder = forwardRef(
       useState<MediaStreamConstraints>({
         audio: true,
         video: {
-          width: VIDEO_WIDTH,
-          height: VIDEO_HEIGHT,
           facingMode: "environment",
         },
       });
@@ -435,6 +433,7 @@ const VideoRecorder = forwardRef(
           onClick: handleRecord,
           "aria-label": t("bbm.video.record.start"),
         },
+        tooltip: t("bbm.video.record.start"),
       },
       {
         type: "icon",
@@ -445,6 +444,7 @@ const VideoRecorder = forwardRef(
           onClick: handleStop,
           "aria-label": t("bbm.video.record.stop"),
         },
+        tooltip: t("bbm.video.record.stop"),
       },
       {
         type: "icon",
@@ -456,6 +456,7 @@ const VideoRecorder = forwardRef(
           onClick: handlePlayPause,
           "aria-label": t("bbm.video.play.start"),
         },
+        tooltip: t("bbm.video.play.start"),
       },
       {
         type: "icon",
@@ -467,6 +468,7 @@ const VideoRecorder = forwardRef(
           onClick: handlePlayPause,
           "aria-label": t("bbm.video.play.pause"),
         },
+        tooltip: t("bbm.video.play.pause"),
       },
       { type: "divider" },
       {
@@ -478,6 +480,7 @@ const VideoRecorder = forwardRef(
           onClick: handleReset,
           "aria-label": t("bbm.video.record.reset"),
         },
+        tooltip: t("bbm.video.record.reset"),
       },
       {
         type: "icon",
@@ -489,18 +492,21 @@ const VideoRecorder = forwardRef(
           onClick: handleSave,
           "aria-label": t("bbm.video.record.save"),
         },
+        tooltip: t("bbm.video.record.save"),
       },
     ];
 
     return (
       <div className="video-recorder d-flex flex-fill flex-column align-items-center">
-        <div className="video-recorder-caption m-12">{caption}</div>
+        <div className="video-recorder-caption">{caption}</div>
         {inputDevices.length > 1 && (
           <div className="video-recorder-devices mb-12">
             <FormControl id="selectInputDevice">
-              <Label>{t("video.select.devices.label")}</Label>
+              <Label>{t("bbm.video.record.select.devices.label")}</Label>
               <Select
-                placeholderOption={t("video.select.devices.placeholder")}
+                placeholderOption={t(
+                  "bbm.video.record.select.devices.placeholder",
+                )}
                 options={inputDevices.map(
                   (videoInputDevice) => videoInputDevice.label,
                 )}
@@ -509,7 +515,8 @@ const VideoRecorder = forwardRef(
             </FormControl>
           </div>
         )}
-        <div className="video-recorder-video position-relative">
+
+        <div className="video-recorder-video-container position-relative">
           <video
             ref={videoRef}
             playsInline={true}
@@ -524,7 +531,7 @@ const VideoRecorder = forwardRef(
             <track default kind="captions" srcLang="fr" src=""></track>
           </video>
           {(recording || recorded) && (
-            <div className="video-recorder-time d-flex align-items-center position-absolute top-0 py-2 px-8 font-monospace fs-6 text-bg-dark rounded">
+            <div className="video-recorder-time d-flex align-items-center font-monospace fs-6 text-bg-dark rounded">
               {recording && (
                 <>
                   <Record width={12} height={12} color="red" className="me-4" />
@@ -545,7 +552,7 @@ const VideoRecorder = forwardRef(
           )}
           <Toolbar
             items={toolbarItems}
-            className="position-absolute bottom-0 start-50 translate-middle bg-white"
+            className="position-absolute bottom-0 start-50 bg-white"
           />
         </div>
         {saving && (
