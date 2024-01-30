@@ -42,39 +42,37 @@ export const useMediaLibraryModal = (editor: Editor | null) => {
           const images = result as WorkspaceElement[];
           const imagesSize = images.length - 1;
           images.forEach((image, index) => {
-            const currentChain = editor?.chain().focus();
-            currentChain.setNewImage({
-              src: `/workspace/document/${image._id}`,
-              alt: image.alt,
-              title: image.title,
-            });
+            editor
+              ?.chain()
+              .focus()
+              .setNewImage({
+                src: `/workspace/document/${image._id}`,
+                alt: image.alt,
+                title: image.title,
+              })
+              .run();
             // Deselect the image, so that next images are added afterward. Select only the last image.
             if (index < imagesSize) {
-              currentChain.setTextSelection(editor.state.selection.to);
+              editor?.commands.setTextSelection(editor.state.selection.to);
             }
-            currentChain.run();
           });
           break;
         }
 
         // Audio type => result is of type WorkspaceElement[]
         case "audio": {
-          const sounds =
-            typeof result === "object"
-              ? [result]
-              : (result as WorkspaceElement[]);
-          const soundsSize = sounds.length - 1;
-          sounds.forEach((sound, index) => {
-            const currentChain = editor?.chain().focus();
-            currentChain.setAudio(
+          const sounds = Array.isArray(result)
+            ? (result as WorkspaceElement[])
+            : [result];
+          // The setAudio() command does not auto-select the inserted audio.
+          // => reset the cursor position after inserting
+          const { from } = editor.state.selection;
+          sounds.reverse().forEach((sound) => {
+            editor?.commands.setAudio(
               sound._id || "",
               `/workspace/document/${sound._id}`,
             );
-            // Deselect the audio, so that next audios are added afterward. Select only the last audio.
-            if (index < soundsSize) {
-              currentChain.setTextSelection(editor.state.selection.to);
-            }
-            currentChain.run();
+            editor?.commands.setTextSelection(from);
           });
           break;
         }
@@ -89,20 +87,16 @@ export const useMediaLibraryModal = (editor: Editor | null) => {
             );
           } else {
             const videos = result as WorkspaceElement[];
-            const videosSize = videos.length - 1;
-            videos.forEach((video, index) => {
-              const currentChain = editor?.chain().focus();
-              currentChain.setVideo(
+            // The setVideo() command does not auto-select the inserted video.
+            // => reset the cursor position after inserting
+            const { from } = editor.state.selection;
+            videos.reverse().forEach((video) => {
+              editor?.commands.setVideo(
                 video._id || "",
                 `/workspace/document/${video._id}`,
                 true,
               );
-
-              // Deselect the video, so that next videos are added afterward. Select only the last video.
-              if (index < videosSize) {
-                currentChain.setTextSelection(editor.state.selection.to);
-              }
-              currentChain.run();
+              editor?.commands.setTextSelection(from);
             });
           }
           break;
@@ -174,13 +168,12 @@ export const useMediaLibraryModal = (editor: Editor | null) => {
 
             // *** Case of internal links ***
             if (Array.isArray(resourceTabResult.resources)) {
-              if (editor.state.selection.empty) {
-                // No text is currently selected.
-                // => Insert the name of the first link and select it.
-                insertAndSelectText(resourceTabResult.resources[0].name);
-              }
-
               resourceTabResult.resources.forEach((link) => {
+                if (editor.state.selection.empty) {
+                  // No text is currently selected.
+                  // => Insert the name of the first link and select it.
+                  insertAndSelectText(link.name);
+                }
                 // Add a hyperlink to the selection.
                 editor?.commands.setLink({
                   href: link.path,
@@ -207,10 +200,33 @@ export const useMediaLibraryModal = (editor: Editor | null) => {
                 // No text is currently selected.
                 // => Insert the name of the link and select it.
                 insertAndSelectText(text);
+              } else {
+                const { selection } = editor.view.state;
+                const { from, to } = selection;
+                if (
+                  text &&
+                  selection.content().content.child(0).textContent !== text
+                ) {
+                  editor
+                    .chain()
+                    .focus()
+                    .insertContentAt(
+                      {
+                        from,
+                        to,
+                      },
+                      text,
+                    )
+                    .setTextSelection({
+                      from,
+                      to: from + text.length,
+                    })
+                    .run();
+                }
               }
               editor?.commands.setLink({
                 href: url,
-                title: text,
+                title: "",
                 target,
               });
             }

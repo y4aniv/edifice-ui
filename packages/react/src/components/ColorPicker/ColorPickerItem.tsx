@@ -22,20 +22,21 @@ const ColorPickerItem = ({
   model,
   selected,
   className,
-}: ColorPickerItemProps) => (
-  <div
-    aria-label={model.description}
-    className={clsx(
-      "color-picker-hue-color-item",
-      className,
-      model.hue === "light" ? "light" : "dark",
-      selected && "selected",
-    )}
-    style={{ backgroundColor: model.value }}
-  >
-    {model.isReset && <DeleteColor />}
-  </div>
-);
+}: ColorPickerItemProps) =>
+  model.isReset ? (
+    <DeleteColor />
+  ) : (
+    <div
+      aria-label={model.description}
+      className={clsx(
+        "color-picker-hue-color-item rounded-1",
+        className,
+        model.hue === "light" ? "light" : "dark",
+        selected && "selected",
+      )}
+      style={{ backgroundColor: model.value }}
+    ></div>
+  );
 
 ColorPickerItem.displayName = "ColorPickerItem";
 

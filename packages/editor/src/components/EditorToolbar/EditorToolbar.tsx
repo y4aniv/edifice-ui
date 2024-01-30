@@ -65,6 +65,21 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
   const toolbarItems: ToolbarItem[] = useMemo(() => {
     const showIf = (truthy: boolean) => (truthy ? "show" : "hide");
 
+    const showLinkModal = () => {
+      const { state } = editor!;
+      if (state.selection.empty) {
+        mediaLibraryRef.current?.show("hyperlink");
+      } else {
+        mediaLibraryRef.current?.showLink({
+          link: {
+            text: state.selection.content().content.child(0).textContent,
+            target: "_blank",
+          },
+          multiNodeSelected: state.selection.content().content.childCount > 1,
+        });
+      }
+    };
+
     return [
       //--------------- UNDO ---------------//
       {
@@ -73,10 +88,10 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           icon: <Undo />,
           "aria-label": t("editor.option.undo"),
           onClick: () => editor?.chain().focus().undo().run(),
+          disabled: !editor?.can().undo(),
         },
         name: "undo",
         tooltip: t("editor.option.undo"),
-        isEnable: !editor?.can().undo(),
         visibility: showIf(hasExtension("history", editor)),
       },
       //--------------- REDO ---------------//
@@ -86,10 +101,10 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           icon: <Redo />,
           "aria-label": t("editor.option.redo"),
           onClick: () => editor?.chain().focus().redo().run(),
+          disabled: !editor?.can().redo(),
         },
         name: "redo",
         tooltip: t("editor.option.redo"),
-        isEnable: !editor?.can().redo(),
         visibility: showIf(hasExtension("history", editor)),
       },
       //-------------------------------------//
@@ -252,9 +267,9 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           "aria-label": t("tiptap.toolbar.bold"),
           className: editor?.isActive("bold") ? "is-selected" : "",
           onClick: () => editor?.chain().focus().toggleBold().run(),
+          disabled: editor?.isActive("heading"),
         },
         name: "bold",
-        isEnable: editor?.isActive("heading"),
         visibility: showIf(hasMark("bold", editor)),
         tooltip: t("tiptap.toolbar.bold"),
       },
@@ -315,7 +330,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
           icon: <Link />,
           "aria-label": t("tiptap.toolbar.linker"),
           className: editor?.isActive("linker") ? "is-selected" : "",
-          onClick: () => mediaLibraryRef.current?.show("hyperlink"),
+          onClick: () => showLinkModal(),
         },
         name: "linker",
         tooltip: t("tiptap.toolbar.linker"),
@@ -396,7 +411,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
   ]);
 
   return (
-    <div className=" z-1000 sticky-top editor-toolbar rounded">
+    <div className="sticky-top z-1 editor-toolbar rounded">
       <Toolbar
         items={toolbarItems}
         variant="no-shadow"

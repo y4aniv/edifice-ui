@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { DeleteColor } from "@edifice-ui/icons";
 import {
   ColorPalette,
   ColorPicker,
+  ColorPickerItem,
   DefaultPalette,
   Dropdown,
 } from "@edifice-ui/react";
@@ -71,7 +71,16 @@ export const TableToolbarCellColor = ({ editor, itemRefs }: Props) => {
         <Dropdown.Trigger
           variant="ghost"
           aria-label={t("tiptap.table.toolbar.cell.bk")}
-          icon={<DeleteColor />}
+          icon={
+            <ColorPickerItem
+              model={{
+                value: color,
+                description: "",
+                isReset:
+                  !color || color.length === 0 || color === "transparent",
+              }}
+            />
+          }
         />
       </Tooltip>
       <Dropdown.Menu>

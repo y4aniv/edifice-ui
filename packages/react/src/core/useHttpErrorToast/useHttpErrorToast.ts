@@ -12,7 +12,7 @@ const useHttpErrorToast = (options?: CustomToastOptions) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    const unsubscribeFn = odeServices
+    const subscription = odeServices
       .notify()
       .events()
       .subscribe(LAYER_NAME.TRANSPORT, (event) => {
@@ -25,7 +25,8 @@ const useHttpErrorToast = (options?: CustomToastOptions) => {
         );
       });
 
-    return unsubscribeFn;
+    return () => subscription.revoke();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [t, toast]);
 
   return message.current;

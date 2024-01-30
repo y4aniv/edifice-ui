@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import * as PIXI from "pixi.js";
 
-import { ImageSettings } from "../effects/misc";
+import { ImageSettings, toBlob } from "../effects/misc";
 
 // Define how much backup are stored in history
 const DEFAULT_MAX_HISTORY = 20;
@@ -67,19 +67,7 @@ const useHistoryTool = ({
       if (sprite === undefined || sprite === null) {
         return;
       }
-      const promise = new Promise<Blob>((resolve, reject) => {
-        application.view.toBlob?.(
-          (blob) => {
-            if (blob) {
-              resolve(blob);
-            } else {
-              reject("EXTRACT_FAIL");
-            }
-          },
-          "image/png",
-          1,
-        );
-      });
+      const promise = toBlob(application);
       const state: HistoryState = {
         backup: promise,
         sprite: {

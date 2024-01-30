@@ -37,13 +37,11 @@ interface ButtonItem extends Item, ToolbarTooltip {
   type: "button";
   name: string;
   props: ButtonProps;
-  isEnable?: boolean;
 }
 interface IconButtonItem extends Item, ToolbarTooltip {
   type: "icon";
   name: string;
   props: IconButtonProps;
-  isEnable?: boolean;
 }
 interface DropdownItem extends Item {
   type: "dropdown";
@@ -53,7 +51,6 @@ interface DropdownItem extends Item {
 interface PrimaryItem extends Item, ToolbarTooltip {
   type: "primary";
   props: ButtonProps;
-  isEnable?: boolean;
 }
 interface DividerItem extends Item {
   type: "divider";
@@ -223,7 +220,6 @@ const Toolbar = forwardRef(
                     variant="ghost"
                     tabIndex={index === 0 ? 0 : -1}
                     onKeyDown={handleKeyDown}
-                    disabled={item.isEnable}
                   />
                 </Tooltip>
               );
@@ -242,7 +238,6 @@ const Toolbar = forwardRef(
                     variant="ghost"
                     tabIndex={index === 0 ? 0 : -1}
                     onKeyDown={handleKeyDown}
-                    disabled={item.isEnable}
                   />
                 </Tooltip>
               );
@@ -272,7 +267,6 @@ const Toolbar = forwardRef(
                     color="primary"
                     tabIndex={index === 0 ? 0 : -1}
                     onKeyDown={handleKeyDown}
-                    disabled={item.isEnable}
                   />
                 </Tooltip>
               );
