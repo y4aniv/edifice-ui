@@ -235,7 +235,7 @@ const Toolbar = forwardRef(
                     {...item.props}
                     key={item.name ?? index}
                     color={item.props.color ? item.props.color : "tertiary"}
-                    variant="ghost"
+                    variant={item.props.variant ? item.props.variant : "ghost"}
                     tabIndex={index === 0 ? 0 : -1}
                     onKeyDown={handleKeyDown}
                   />
