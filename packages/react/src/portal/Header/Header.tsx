@@ -43,7 +43,7 @@ const Header = ({ is1d = false, src = "" }: HeaderProps): JSX.Element => {
   const { t } = useTranslation();
   const { messages, msgLink, zimbraWorkflow } = useConversation();
   const { user, avatar } = useUser();
-  const { currentLanguage } = useOdeClient();
+  const { currentLanguage, currentApp } = useOdeClient();
 
   const {
     isModalOpen: isHelpOpen,
@@ -77,6 +77,8 @@ const Header = ({ is1d = false, src = "" }: HeaderProps): JSX.Element => {
 
   const hasMessages = messages > 0;
 
+  console.log({ currentApp });
+
   return (
     <header className={classes}>
       {is1d ? (
@@ -85,7 +87,7 @@ const Header = ({ is1d = false, src = "" }: HeaderProps): JSX.Element => {
             <Navbar>
               <a
                 className="navbar-title d-md-none text-truncate h4"
-                href="/timeline/timeline"
+                href={currentApp ? currentApp.address : "/timeline/timeline"}
               >
                 {title}
               </a>
@@ -221,7 +223,7 @@ const Header = ({ is1d = false, src = "" }: HeaderProps): JSX.Element => {
           <div className="container-fluid">
             <Logo src={`${src}/img/illustrations/logo.png`} />
             <a
-              href="/timeline/timeline"
+              href={currentApp ? currentApp.address : "/timeline/timeline"}
               className="navbar-title text-truncate d-md-none"
             >
               {title}

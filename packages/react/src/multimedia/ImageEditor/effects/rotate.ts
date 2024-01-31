@@ -34,6 +34,16 @@ export async function rotate(
     if (!mergedSprite) {
       return;
     }
+    // fix maxHeight to avoid resize modal
+    let backupOldMaxHeight: string | undefined = undefined;
+    let backupOldVisibility: string | undefined = undefined;
+    const canvas = application.view as any as HTMLElement;
+    if (canvas.style) {
+      backupOldMaxHeight = canvas.style.maxHeight ?? "";
+      backupOldVisibility = canvas.style.visibility ?? "";
+      canvas.style.maxHeight = `${canvas.clientHeight}px`;
+      canvas.style.visibility = "hidden";
+    }
     // rotate
     mergedSprite.rotation += Math.PI / 2;
     resizeStage({
@@ -46,6 +56,14 @@ export async function rotate(
     application.render();
     // create blob
     const blobAfter = await toBlob(application);
+    // restore maxHeight (could be empty string)
+    if (backupOldMaxHeight !== undefined) {
+      canvas.style.maxHeight = backupOldMaxHeight;
+    }
+    // restore visibility (could be empty string....)
+    if (backupOldVisibility !== undefined) {
+      canvas.style.visibility = backupOldVisibility;
+    }
     // replace sprite using blob
     await updateImageFromBlob(application, {
       imgDatasource: blobAfter,

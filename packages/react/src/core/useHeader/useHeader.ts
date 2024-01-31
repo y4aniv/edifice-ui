@@ -74,6 +74,13 @@ export default function useHeader({
     window.location.href = "/auth/login";
   };
 
+  const getCurrentUrl = () => {
+    const currentUrl = window.location.href;
+    console.log(currentUrl);
+  };
+
+  getCurrentUrl();
+
   return useMemo(
     () => ({
       title,

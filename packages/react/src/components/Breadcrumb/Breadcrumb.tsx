@@ -1,6 +1,6 @@
 import { forwardRef, Ref } from "react";
 
-import { RafterLeft } from "@edifice-ui/icons";
+import { RafterRight } from "@edifice-ui/icons";
 import { IWebApp } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
@@ -8,7 +8,6 @@ import BreadcrumbItem from "./BreadcrumbItem";
 import BreadcrumbList from "./BreadcrumbList";
 import BreadcrumbNav from "./BreadcrumbNav";
 import { AppIcon } from "../AppIcon";
-import { IconButton } from "../Button";
 import Heading from "../Heading/Heading";
 
 export interface BreadcrumbProps {
@@ -33,14 +32,11 @@ const Breadcrumb = forwardRef(
             <>
               <BreadcrumbItem>
                 <a href={app?.address} className="d-flex">
-                  <IconButton
-                    variant="ghost"
-                    color="tertiary"
-                    icon={<RafterLeft />}
-                    aria-label={t(app?.displayName)}
-                  />
                   <AppIcon app={app} size="40" />
                 </a>
+              </BreadcrumbItem>
+              <BreadcrumbItem>
+                <RafterRight />
               </BreadcrumbItem>
               <BreadcrumbItem className="text-truncate">
                 <Heading level="h1" headingStyle="h3" className="text-truncate">
@@ -50,7 +46,9 @@ const Breadcrumb = forwardRef(
             </>
           ) : (
             <BreadcrumbItem className="gap-12 d-flex align-items-center">
-              <AppIcon app={app} size="40" />
+              <a href={app?.address} className="d-flex">
+                <AppIcon app={app} size="40" />
+              </a>
               <Heading
                 level="h1"
                 headingStyle="h3"
