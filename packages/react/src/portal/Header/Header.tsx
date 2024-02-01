@@ -77,8 +77,6 @@ const Header = ({ is1d = false, src = "" }: HeaderProps): JSX.Element => {
 
   const hasMessages = messages > 0;
 
-  console.log({ currentApp });
-
   return (
     <header className={classes}>
       {is1d ? (
