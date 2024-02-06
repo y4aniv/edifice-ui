@@ -1,4 +1,4 @@
-import { IResource } from "edifice-ts-client";
+import { ID } from "edifice-ts-client";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 
@@ -17,24 +17,28 @@ import {
   Input,
   TextArea,
   Button,
+  LoadingScreen,
 } from "../../components";
 import { useOdeClient } from "../../core";
+import { useResource } from "../../core/useResource";
 
 interface PublishModalProps {
   isOpen: boolean;
-  resource: IResource;
+  resourceId: ID;
   onSuccess: () => void;
   onCancel: () => void;
 }
 
 export default function PublishModal({
   isOpen,
-  resource,
+  resourceId,
   onSuccess,
   onCancel,
 }: PublishModalProps) {
-  const { currentApp } = useOdeClient();
+  const { appCode: application, currentApp } = useOdeClient();
   const { t } = useTranslation();
+
+  const resource = useResource(application, resourceId);
 
   const {
     control,
@@ -54,6 +58,8 @@ export default function PublishModal({
   const defaultSelectAgeMinOption = "bpr.form.publication.age.min";
   const defaultSelectAgeMaxOption = "bpr.form.publication.age.max";
 
+  if (!resource) return <LoadingScreen />;
+
   return createPortal(
     <Modal isOpen={isOpen} onModalClose={onCancel} id="libraryModal" size="lg">
       <Modal.Header onModalClose={onCancel}>{t("bpr.publish")}</Modal.Header>
@@ -71,7 +77,7 @@ export default function PublishModal({
               </div>
               <ImagePicker
                 app={currentApp}
-                src={resource.thumbnail}
+                src={resource?.thumbnail}
                 label={t("bpr.form.publication.cover.upload.label")}
                 addButtonLabel={t("bpr.form.publication.cover.upload.add")}
                 deleteButtonLabel={t(
@@ -94,7 +100,7 @@ export default function PublishModal({
                 <Label>{t("bpr.form.publication.title")}</Label>
                 <Input
                   type="text"
-                  defaultValue={resource.name}
+                  defaultValue={resource?.name}
                   {...register("title", { required: true })}
                   placeholder={t("bpr.form.publication.title.placeholder")}
                   size="md"

@@ -9,23 +9,14 @@ import {
   type ShareRightActionDisplayName,
   IResource,
   PutShareResponse,
-  UpdateResult,
-  UpdateParameters,
-  BlogUpdate,
 } from "edifice-ts-client";
+import { useTranslation } from "react-i18next";
 
-import { useOdeClient, useUser } from "../../../core";
+import { useOdeClient, useToast, useUser } from "../../..";
 
 interface UseShareResourceModalProps {
-  onSuccess: () => void;
   resource: IResource;
-  updateResource: UseMutationResult<
-    UpdateResult,
-    unknown,
-    UpdateParameters,
-    unknown
-  >;
-  shareResource: UseMutationResult<
+  shareResource?: UseMutationResult<
     PutShareResponse,
     unknown,
     {
@@ -34,6 +25,7 @@ interface UseShareResourceModalProps {
     },
     unknown
   >;
+  onSuccess: () => void;
 }
 
 type State = {
@@ -71,7 +63,7 @@ function reducer(state: State, action: ShareAction) {
     case "toggleRight":
       return { ...state, shareRights: action.payload };
     case "isSharing":
-      return { ...state, isSharing: true };
+      return { ...state, isSharing: action.payload };
     default:
       throw new Error(`Unhandled action type`);
   }
@@ -80,15 +72,19 @@ function reducer(state: State, action: ShareAction) {
 export default function useShare({
   onSuccess,
   resource,
-  updateResource,
   shareResource,
 }: UseShareResourceModalProps) {
   const { appCode } = useOdeClient();
   const { user, avatar } = useUser();
 
+  const toast = useToast();
+  const { t } = useTranslation();
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
+    if (!resource) return;
+
     (async () => {
       const shareRightActions: ShareRightAction[] = await odeServices
         .share()
@@ -96,7 +92,7 @@ export default function useShare({
 
       const shareRights: ShareRightWithVisibles = await odeServices
         .share()
-        .getRightsForResource(appCode, resource.assetId);
+        .getRightsForResource(appCode, resource?.assetId);
 
       dispatch({
         type: "init",
@@ -107,7 +103,7 @@ export default function useShare({
       });
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [resource]);
 
   const toggleRight = (
     shareRight: ShareRight,
@@ -198,7 +194,7 @@ export default function useShare({
     });
   };
 
-  const handleShare = async (shareBlogPayload?: BlogUpdate) => {
+  const handleShare = async () => {
     dispatch({
       type: "isSharing",
       payload: true,
@@ -231,30 +227,23 @@ export default function useShare({
         });
       }
 
-      // update publication data
-      if (appCode === "blog") {
-        await updateResource.mutateAsync(shareBlogPayload as BlogUpdate);
-      } else {
-        await updateResource.mutateAsync({
-          entId: resource.assetId || "",
-          trashed: resource.trashed || false,
-          name: resource.name || "",
-          thumbnail: resource.thumbnail || "",
-          description: resource.description || "",
-          public: resource.public || false,
-          slug: resource.slug || "",
+      // shared
+      if (shareResource) {
+        await shareResource.mutateAsync({
+          resourceId: resource?.assetId,
+          rights: shares,
         });
+      } else {
+        await odeServices
+          .share()
+          .saveRights(appCode, resource?.assetId, shares);
       }
-
-      // update shared
-      await shareResource.mutateAsync({
-        resourceId: resource.assetId,
-        rights: shares,
-      });
-
-      onSuccess?.();
-    } catch (e) {
-      console.error("Failed to save share", e);
+      toast.success(t("explorer.shared.status.saved"));
+      onSuccess();
+    } catch (error) {
+      if (typeof error === "string")
+        toast.error(t("explorer.shared.status.error"));
+      console.error("Failed to save share", error);
     } finally {
       dispatch({
         type: "isSharing",

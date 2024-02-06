@@ -2,7 +2,7 @@ import { useEffect, useId, useState } from "react";
 
 import { IResource } from "edifice-ts-client";
 import { hash } from "ohash";
-import { UseFormWatch } from "react-hook-form";
+import { UseFormSetValue, UseFormWatch } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import slugify from "react-slugify";
 
@@ -11,13 +11,18 @@ import { FormInputs } from "../ResourceModal";
 
 interface UseSlugProps {
   watch: UseFormWatch<FormInputs>;
+  setValue: UseFormSetValue<FormInputs>;
   selectedResource?: IResource;
 }
 
-export const useSlug = ({ watch, selectedResource }: UseSlugProps) => {
+export const useSlug = ({
+  watch,
+  setValue,
+  selectedResource,
+}: UseSlugProps) => {
   const [slug, setSlug] = useState<string>("");
   const [isPublic, setIsPublic] = useState<boolean>(
-    !!selectedResource?.public || false,
+    selectedResource?.public || false,
   );
 
   const uniqueId = useId();
@@ -26,23 +31,27 @@ export const useSlug = ({ watch, selectedResource }: UseSlugProps) => {
   const { t } = useTranslation();
   const toast = useToast();
 
-  const newSlug = `${hash({
-    foo: `${resourceName}${uniqueId}`,
-  })}-${slugify(resourceName)}`;
-
   useEffect(() => {
     if (isPublic) {
       let slug = "";
 
-      if (selectedResource && selectedResource.slug) {
-        slug = selectedResource.slug;
+      if (selectedResource) {
+        slug = selectedResource.slug
+          ? selectedResource.slug
+          : `${hash({
+              foo: `${resourceName}${uniqueId}`,
+            })}-${slugify(resourceName)}`;
       } else {
-        slug = newSlug;
+        slug = `${hash({
+          foo: `${resourceName}${uniqueId}`,
+        })}-${slugify(resourceName)}`;
       }
 
+      setValue("formSlug", slug);
       setSlug(slug);
     }
-  }, [isPublic, selectedResource, resourceName, uniqueId, newSlug]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isPublic, resourceName]);
 
   function onPublicChange(value: boolean) {
     setIsPublic(value);

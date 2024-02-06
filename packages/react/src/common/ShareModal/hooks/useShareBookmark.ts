@@ -4,7 +4,7 @@ import { ShareRightWithVisibles, odeServices } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
 import { ShareAction } from "./useShare";
-import { useToast, useToggle } from "../../../hooks";
+import { useToast, useToggle } from "../../..";
 
 interface UseShareBookmarkProps {
   shareRights: ShareRightWithVisibles;
