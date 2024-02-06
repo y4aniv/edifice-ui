@@ -4,7 +4,7 @@ import { Save } from "@edifice-ui/icons";
 import { useTranslation } from "react-i18next";
 
 import { BookmarkProps } from "./hooks/useShareBookmark";
-import { FormControl, Button } from "../../components";
+import { FormControl, Button } from "../..";
 
 export const ShareBookmark = ({
   bookmark,
