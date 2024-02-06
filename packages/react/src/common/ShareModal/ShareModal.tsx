@@ -1,19 +1,13 @@
+import { ReactNode } from "react";
+
 import { Bookmark, InfoCircle, RafterDown } from "@edifice-ui/icons";
 import { UseMutationResult } from "@tanstack/react-query";
-import {
-  IResource,
-  PutShareResponse,
-  ShareRight,
-  UpdateParameters,
-  UpdateResult,
-} from "edifice-ts-client";
+import { ID, PutShareResponse, ShareRight } from "edifice-ts-client";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 
-import ShareBlog from "./apps/ShareBlog";
 import { useSearch } from "./hooks/useSearch";
 import useShare from "./hooks/useShare";
-import useShareBlog from "./hooks/useShareBlog";
 import { useShareBookmark } from "./hooks/useShareBookmark";
 import { ShareBookmark } from "./ShareBookmark";
 import { ShareBookmarkLine } from "./ShareBookmarkLine";
@@ -26,19 +20,15 @@ import {
   Button,
   Tooltip,
   Combobox,
-} from "../../components";
-import { useOdeClient } from "../../core";
+  useOdeClient,
+  LoadingScreen,
+} from "../..";
+import { useResource } from "../../core/useResource";
 
 interface ShareResourceModalProps {
   isOpen: boolean;
-  resource: IResource;
-  updateResource: UseMutationResult<
-    UpdateResult,
-    unknown,
-    UpdateParameters,
-    unknown
-  >;
-  shareResource: UseMutationResult<
+  resourceId: ID;
+  shareResource?: UseMutationResult<
     PutShareResponse,
     unknown,
     {
@@ -47,24 +37,22 @@ interface ShareResourceModalProps {
     },
     unknown
   >;
+  children?: ReactNode;
   onSuccess: () => void;
   onCancel: () => void;
 }
 
 export default function ShareResourceModal({
   isOpen,
-  resource,
-  updateResource,
+  resourceId,
   shareResource,
+  children,
   onSuccess,
   onCancel,
 }: ShareResourceModalProps) {
-  const { appCode } = useOdeClient();
-  const {
-    radioPublicationValue,
-    shareBlogPayload,
-    handleRadioPublicationChange,
-  } = useShareBlog({ resource });
+  const { appCode: application } = useOdeClient();
+
+  const resource = useResource(application, resourceId);
 
   const {
     state: { isSharing, shareRights, shareRightActions },
@@ -76,7 +64,6 @@ export default function ShareResourceModal({
     handleDeleteRow,
   } = useShare({
     resource,
-    updateResource,
     shareResource,
     onSuccess,
   });
@@ -107,6 +94,8 @@ export default function ShareResourceModal({
   const searchPlaceholder = showSearchAdmlHint()
     ? t("explorer.search.adml.hint")
     : t("explorer.modal.share.search.placeholder");
+
+  if (!resource) return <LoadingScreen />;
 
   return createPortal(
     <Modal id="share_modal" size="lg" isOpen={isOpen} onModalClose={onCancel}>
@@ -238,12 +227,7 @@ export default function ShareResourceModal({
             />
           </div>
         </div>
-        {appCode === "blog" && (
-          <ShareBlog
-            radioPublicationValue={radioPublicationValue}
-            onRadioPublicationChange={handleRadioPublicationChange}
-          />
-        )}
+        {children}
       </Modal.Body>
       <Modal.Footer>
         <Button
@@ -260,7 +244,7 @@ export default function ShareResourceModal({
           color="primary"
           variant="filled"
           isLoading={isSharing}
-          onClick={() => handleShare(shareBlogPayload)}
+          onClick={handleShare}
           disabled={isSharing}
         >
           {t("share")}

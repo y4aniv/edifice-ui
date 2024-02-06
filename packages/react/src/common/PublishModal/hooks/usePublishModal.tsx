@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   IResource,
@@ -34,8 +34,12 @@ export default function usePublishModal({ onSuccess, resource }: ModalProps) {
   const toast = useToast();
 
   const [cover, setCover] = useState<string | Blob | File>(
-    resource.thumbnail || "",
+    resource?.thumbnail || "",
   );
+
+  useEffect(() => {
+    setCover(resource?.thumbnail);
+  }, [resource]);
 
   const {
     control,
@@ -108,8 +112,8 @@ export default function usePublishModal({ onSuccess, resource }: ModalProps) {
           .get(URL.createObjectURL(cover as Blob), {
             responseType: "blob",
           });
-      } else if (resource.thumbnail) {
-        coverBlob = await odeServices.http().get(resource.thumbnail, {
+      } else if (resource?.thumbnail) {
+        coverBlob = await odeServices.http().get(resource?.thumbnail, {
           responseType: "blob",
         });
       }
@@ -137,8 +141,8 @@ export default function usePublishModal({ onSuccess, resource }: ModalProps) {
         keyWords: formData.keyWords,
         language: formData.language,
         licence: "CC-BY",
-        resourceId: resource.assetId,
-        resourceEntId: resource.assetId,
+        resourceId: resource?.assetId,
+        resourceEntId: resource?.assetId,
         subjectArea: selectedSubjectAreas as string[],
         teacherAvatar,
         title: formData.title,
