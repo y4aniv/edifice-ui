@@ -36,7 +36,11 @@ const Breadcrumb = forwardRef(
                 </a>
               </BreadcrumbItem>
               <BreadcrumbItem>
-                <RafterRight color="var(--edifice-gray-600)" />
+                <RafterRight
+                  color="var(--edifice-gray-600)"
+                  width={20}
+                  height={20}
+                />
               </BreadcrumbItem>
               <BreadcrumbItem className="text-truncate">
                 <Heading level="h1" headingStyle="h3" className="text-truncate">
