@@ -173,7 +173,7 @@ export default function ShareResourceModal({
             leftIcon={<Bookmark />}
             rightIcon={
               <RafterDown
-                title="Show"
+                title={t("show")}
                 className="w-16 min-w-0"
                 style={{
                   transition: "rotate 0.2s ease-out",

@@ -119,20 +119,20 @@ const mediaLibraryTypes: { none: null } & {
 } = {
   none: null,
   audio: {
-    title: "Ajouter un audio depuis...",
+    title: "bbm.audio.modal.title",
     defaultTab: "audio-capture",
   },
   video: {
-    title: "Ajouter une vidéo depuis...",
+    title: "bbm.video.modal.title",
     defaultTab: "video-capture",
   },
-  image: { title: "Ajouter une image depuis...", defaultTab: "workspace" },
+  image: { title: "bbm.image.modal.title", defaultTab: "workspace" },
   attachment: {
-    title: "Ajouter une pièce jointe depuis...",
+    title: "bbm.attachment.modal.title",
     defaultTab: "workspace",
   },
-  hyperlink: { title: "Ajouter un lien", defaultTab: "linker" },
-  embedder: { title: "Ajout embed / iframe", defaultTab: "iframe" },
+  hyperlink: { title: "bbm.link.modal.title", defaultTab: "linker" },
+  embedder: { title: "bbm.embedder.modal.title", defaultTab: "iframe" },
 };
 
 /**

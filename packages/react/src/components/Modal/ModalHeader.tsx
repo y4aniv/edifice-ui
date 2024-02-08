@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useRef } from "react";
 
 import { Close } from "@edifice-ui/icons";
+import { useTranslation } from "react-i18next";
 
 import { useModalContext } from "./ModalContext";
 import IconButton from "../Button/IconButton";
@@ -23,6 +24,7 @@ const ModalHeader = (props: ModalHeaderProps) => {
   const { onModalClose, children } = props;
   const { ariaLabelId, focusId } = useModalContext();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!focusId) {
@@ -37,12 +39,12 @@ const ModalHeader = (props: ModalHeaderProps) => {
       </h2>
       <IconButton
         ref={closeButtonRef}
-        aria-label="Close"
+        aria-label={t("close")}
         color="tertiary"
         icon={<Close />}
         type="button"
         variant="ghost"
-        title="Delete"
+        title={t("close")}
         onClick={onModalClose}
         className="btn-close"
       />

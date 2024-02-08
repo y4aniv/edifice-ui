@@ -4,6 +4,7 @@ import { ComponentPropsWithRef } from "react";
 
 import { DeleteColor, InfoCircle } from "@edifice-ui/icons";
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 
 import {
   AccessiblePalette,
@@ -42,6 +43,7 @@ const ColorPicker = forwardRef(
     }: ColorPickerProps,
     ref: Ref<HTMLDivElement>,
   ) => {
+    const { t } = useTranslation();
     const handleClick = (item?: ColorPaletteItem) => {
       item && onSuccess?.(item);
     };
@@ -54,7 +56,7 @@ const ColorPicker = forwardRef(
             className={clsx("color-picker mx-8", palette.className)}
           >
             <div className="color-picker-label small mt-4 mb-8">
-              {palette.label}
+              {t(palette.label)}
               {palette.tooltip && (
                 <Tooltip message="" placement="auto" {...palette.tooltip}>
                   <InfoCircle
