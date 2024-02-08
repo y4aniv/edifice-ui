@@ -106,7 +106,7 @@ const VideoEmbed = ({ onSuccess }: VideoEmbedProps) => {
             />
             <Button
               variant="ghost"
-              color="secondary"
+              color="primary"
               onClick={handleSwitchToEmbedderClick}
               className="align-items-start mt-16"
             >
@@ -120,7 +120,7 @@ const VideoEmbed = ({ onSuccess }: VideoEmbedProps) => {
         <div className="d-flex my-16 align-items-start">
           <Button
             variant="ghost"
-            color="secondary"
+            color="primary"
             onClick={handleSwitchToEmbedderClick}
             className="align-items-start"
           >
