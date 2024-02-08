@@ -558,7 +558,7 @@ const VideoRecorder = forwardRef(
         {saving && (
           <LoadingScreen
             position={false}
-            caption={t("video.save.loader.caption")}
+            caption={t("bbm.video.save.loader.caption")}
           />
         )}
       </div>

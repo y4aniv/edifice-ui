@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 import { hasRight } from "./utils/hasRight";
 import { showShareRightLine } from "./utils/showShareRightLine";
-import { Avatar, Button, Checkbox, IconButton } from "../../components";
+import { Avatar, Button, Checkbox, IconButton } from "../..";
 
 export const ShareBookmarkLine = ({
   shareRights,

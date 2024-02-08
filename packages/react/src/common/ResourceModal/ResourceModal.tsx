@@ -1,24 +1,20 @@
-import { useId } from "react";
+import { ReactNode, useId } from "react";
 
 import { UseMutationResult } from "@tanstack/react-query";
 import {
   CreateParameters,
   CreateResult,
-  IAction,
+  ID,
   IFolder,
-  IResource,
   UpdateParameters,
   UpdateResult,
+  odeServices,
 } from "edifice-ts-client";
-import { hash } from "ohash";
 import { createPortal } from "react-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import slugify from "react-slugify";
 
-import { useSlug } from "./hooks/useSlug";
 import { useThumb } from "./hooks/useThumb";
-import { PublicResource } from "./PublicResource";
 import {
   Modal,
   Heading,
@@ -28,27 +24,29 @@ import {
   Input,
   TextArea,
   Button,
+  LoadingScreen,
 } from "../../components";
 import { useOdeClient } from "../../core";
+import { useResource } from "../../core/useResource";
 import { useToast } from "../../hooks";
-import { isActionAvailable } from "../../utils";
 
 export interface FormInputs {
   title: string;
   description: string;
   enablePublic: boolean;
+  formSlug: string;
 }
 
 interface BaseProps {
   isOpen: boolean;
-  actions: IAction[] | undefined;
+  children?: ReactNode | ((...props: any) => ReactNode);
   onSuccess: () => void;
   onCancel: () => void;
 }
 
 interface CreateProps extends BaseProps {
   mode: "create";
-  createResource: UseMutationResult<
+  createResource?: UseMutationResult<
     CreateResult,
     Error,
     CreateParameters,
@@ -59,64 +57,55 @@ interface CreateProps extends BaseProps {
 
 interface UpdateProps extends BaseProps {
   mode: "update";
-  updateResource: UseMutationResult<
+  updateResource?: UseMutationResult<
     UpdateResult,
     unknown,
     UpdateParameters,
     unknown
   >;
-  selectedResource: IResource;
+  resourceId: ID;
 }
 
 type Props = CreateProps | UpdateProps;
 
 const ResourceModal = ({
   isOpen,
-  actions,
   onCancel,
   onSuccess,
+  children,
   ...props
 }: Props) => {
   const { appCode: application, currentApp } = useOdeClient();
   const { t } = useTranslation();
   const { mode } = props;
 
+  const toast = useToast();
   const formId = useId();
 
   const isCreating = mode === "create";
   const isUpdating = mode === "update";
 
+  const resource = useResource(application, isUpdating ? props.resourceId : "");
+
   const {
     watch,
     register,
     handleSubmit,
+    setValue,
     formState: { isSubmitting, isValid },
   } = useForm<FormInputs>({
     mode: "onChange",
     defaultValues: {
-      description: isUpdating ? props.selectedResource?.description : "",
-      enablePublic: isUpdating ? props.selectedResource?.public : false,
-      title: isUpdating ? props.selectedResource?.name : "",
+      description: isUpdating ? resource?.description : "",
+      enablePublic: isUpdating ? resource?.public : false,
+      title: isUpdating ? resource?.name : "",
+      formSlug: isUpdating ? resource?.slug : "",
     },
   });
 
-  const {
-    slug,
-    uniqueId,
-    isPublic,
-    resourceName,
-    onPublicChange,
-    onCopyToClipBoard,
-  } = useSlug({
-    watch,
-    selectedResource: isUpdating ? props.selectedResource : undefined,
-  });
-
-  const toast = useToast();
-
   const { thumbnail, handleDeleteImage, handleUploadImage } = useThumb({
     isUpdating,
-    selectedResource: isUpdating ? props.selectedResource : undefined,
+    selectedResource: isUpdating ? resource : undefined,
   });
 
   const onSubmit: SubmitHandler<FormInputs> = async function (
@@ -127,34 +116,37 @@ const ResourceModal = ({
         description: formData.description || "",
         name: formData.title,
         public: formData.enablePublic,
+        slug: formData.enablePublic ? formData.formSlug || "" : "",
         thumbnail,
       };
 
-      const newSlug = `${hash({
-        foo: `${formData.title}${uniqueId}`,
-      })}-${slugify(formData.title)}`;
-
       if (isCreating) {
-        await props.createResource.mutateAsync({
+        const createParams = {
           ...data,
           folder:
             props.currentFolder?.id === "default"
               ? undefined
               : parseInt(props.currentFolder?.id || ""),
-          slug: formData.enablePublic ? newSlug : "",
           application,
-        });
+        };
+
+        if (props.createResource) {
+          await props.createResource.mutateAsync(createParams);
+        } else {
+          await odeServices.resource(application).create(createParams);
+        }
       } else {
-        await props.updateResource.mutateAsync({
+        const updateParams = {
           ...data,
-          slug: formData.enablePublic
-            ? props.selectedResource && props.selectedResource.slug
-              ? props.selectedResource.slug
-              : newSlug
-            : "",
-          entId: props.selectedResource.assetId,
-          trashed: props.selectedResource.trashed,
-        });
+          entId: resource.assetId,
+          trashed: resource.trashed,
+        };
+
+        if (props.updateResource) {
+          await props.updateResource.mutateAsync(updateParams);
+        } else {
+          await odeServices.resource(application).update(updateParams);
+        }
       }
 
       toast.success(
@@ -188,6 +180,8 @@ const ResourceModal = ({
     }
   };
 
+  if (isUpdating && !resource) return <LoadingScreen />;
+
   return createPortal(
     <Modal
       id={`${mode}-resource`}
@@ -213,7 +207,7 @@ const ResourceModal = ({
             <div>
               <ImagePicker
                 app={currentApp}
-                src={isUpdating ? props.selectedResource?.thumbnail || "" : ""}
+                src={isUpdating ? resource?.thumbnail || "" : ""}
                 label={t("explorer.imagepicker.label")}
                 addButtonLabel={t("explorer.imagepicker.button.add")}
                 deleteButtonLabel={t("explorer.imagepicker.button.delete")}
@@ -228,7 +222,7 @@ const ResourceModal = ({
                 <Label>{t("title")}</Label>
                 <Input
                   type="text"
-                  defaultValue={isUpdating ? props.selectedResource?.name : ""}
+                  defaultValue={isUpdating ? resource?.name : ""}
                   {...register("title", {
                     required: true,
                     pattern: {
@@ -246,9 +240,7 @@ const ResourceModal = ({
               <FormControl id="description" isOptional>
                 <Label>{t("description")}</Label>
                 <TextArea
-                  defaultValue={
-                    isUpdating ? props.selectedResource?.description : ""
-                  }
+                  defaultValue={isUpdating ? resource?.description : ""}
                   {...register("description")}
                   placeholder={t(
                     "explorer.resource.editModal.description.placeholder",
@@ -259,18 +251,9 @@ const ResourceModal = ({
             </div>
           </div>
 
-          {application === "blog" &&
-            isActionAvailable("createPublic", actions) && (
-              <PublicResource
-                appCode={application}
-                isPublic={isPublic}
-                slug={slug}
-                onCopyToClipBoard={onCopyToClipBoard}
-                onPublicChange={onPublicChange}
-                register={register}
-                resourceName={resourceName}
-              />
-            )}
+          {typeof children === "function"
+            ? children(resource, isUpdating, watch, setValue, register)
+            : children}
         </form>
       </Modal.Body>
 

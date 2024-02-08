@@ -1,8 +1,8 @@
-import { forwardRef, ReactNode, Ref } from "react";
+import { ComponentPropsWithRef, forwardRef, ReactNode, Ref } from "react";
 
 import clsx from "clsx";
 
-export interface AppHeaderProps {
+export interface AppHeaderProps extends ComponentPropsWithRef<"div"> {
   /**
    * Accept Breadcrumb Component
    */
@@ -19,20 +19,20 @@ export interface AppHeaderProps {
 
 const AppHeader = forwardRef(
   (
-    { children, render, isFullscreen = false }: AppHeaderProps,
+    { children, render, isFullscreen = false, ...restProps }: AppHeaderProps,
     ref: Ref<HTMLDivElement>,
   ) => {
     const classes = clsx("d-flex flex-wrap p-16 gap-8 border-bottom bg-white", {
       "justify-content-between": render,
       "mx-n16": !isFullscreen,
-      "z-2000 top-0 start-0 end-0 position-fixed": isFullscreen,
+      "z-2000 top-0 start-0 end-0": isFullscreen,
     });
 
     return (
-      <div ref={ref} className={classes}>
+      <div ref={ref} className={classes} {...restProps}>
         {children}
         {render ? (
-          <div className="d-flex align-items-center  ms-auto gap-8">
+          <div className="d-flex align-items-center ms-auto gap-8">
             {render()}
           </div>
         ) : null}
