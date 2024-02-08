@@ -44,8 +44,8 @@ export interface VideoRecorderProps {
   hideSaveAction?: boolean;
 }
 
-const VIDEO_HEIGHT = 455;
-const VIDEO_WIDTH = 728;
+const VIDEO_HEIGHT = 9;
+const VIDEO_WIDTH = 16;
 
 export interface VideoRecorderRef {
   save: () => Promise<WorkspaceElement | undefined>;
@@ -77,6 +77,7 @@ const VideoRecorder = forwardRef(
         audio: true,
         video: {
           facingMode: "environment",
+          aspectRatio: VIDEO_WIDTH / VIDEO_HEIGHT,
         },
       });
     const [stream, setStream] = useState<MediaStream>();
@@ -392,6 +393,7 @@ const VideoRecorder = forwardRef(
             video: {
               width: VIDEO_WIDTH,
               height: VIDEO_HEIGHT,
+              aspectRatio: VIDEO_WIDTH / VIDEO_HEIGHT,
               facingMode: selectedDevice?.deviceId,
             },
           };
@@ -401,6 +403,7 @@ const VideoRecorder = forwardRef(
             video: {
               width: VIDEO_WIDTH,
               height: VIDEO_HEIGHT,
+              aspectRatio: VIDEO_WIDTH / VIDEO_HEIGHT,
               deviceId: selectedDevice.deviceId,
             },
           };
@@ -497,7 +500,7 @@ const VideoRecorder = forwardRef(
     ];
 
     return (
-      <div className="video-recorder d-flex flex-fill flex-column align-items-center">
+      <div className="video-recorder d-flex flex-fill flex-column align-items-center pb-8">
         <div className="video-recorder-caption">{caption}</div>
         {inputDevices.length > 1 && (
           <div className="video-recorder-devices mb-12">
