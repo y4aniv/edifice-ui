@@ -358,8 +358,8 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.9)
       "@edifice-ui/icons":
-        specifier: ^1.4.2-develop.8
-        version: 1.4.2-develop-b2school.0(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.4.2
+        version: link:../icons
       "@react-spring/web":
         specifier: 9.7.3
         version: 9.7.3(react-dom@18.2.0)(react@18.2.0)
@@ -2436,19 +2436,6 @@ packages:
       "@tiptap/core": 2.0.3(@tiptap/pm@2.0.3)
       "@tiptap/pm": 2.0.3(@tiptap/core@2.0.3)
     dev: false
-
-  /@edifice-ui/icons@1.4.2-develop-b2school.0(react-dom@18.2.0)(react@18.2.0):
-    resolution:
-      {
-        integrity: sha512-5RGp0a9BeRpkMS/FB5A9jDvWGrPqH9682sTGD1eDhWew7qtKEuPh8w521nJSRiFhtOWmf4d3pQ682VXiqbwtmA==,
-      }
-    peerDependencies:
-      react: 18.2.0
-      react-dom: 18.2.0
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: true
 
   /@emotion/use-insertion-effect-with-fallbacks@1.0.1(react@18.2.0):
     resolution:
