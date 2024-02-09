@@ -54,7 +54,10 @@ export const useTipTapEditor = (editable: boolean, content: Content) => {
   const { currentLanguage } = useOdeClient();
 
   const editor = useEditor({
-    editable,
+    // fix WB-2534
+    // TipTap editor must be instantiated in editable mode for table columns to be resizable.
+    // It will then be set in the correct editable mode, by a useEffect below.
+    editable: true,
     extensions: [
       StarterKit,
       CustomHighlight.configure({
