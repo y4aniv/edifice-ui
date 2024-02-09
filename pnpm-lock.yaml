@@ -129,7 +129,7 @@ importers:
         version: 1.0.4-develop-b2school.0(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       "@edifice-tiptap-extensions/extension-audio":
         specifier: develop-b2school
-        version: 1.0.4-develop-b2school.0(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
+        version: 1.0.4-develop-b2school.2(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3)
       "@edifice-tiptap-extensions/extension-font-size":
         specifier: develop-b2school
         version: 1.0.4-develop-b2school.0(@tiptap/core@2.0.3)(@tiptap/extension-heading@2.0.3)(@tiptap/extension-text-style@2.0.3)(@tiptap/pm@2.0.3)
@@ -358,7 +358,7 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.9)
       "@edifice-ui/icons":
-        specifier: ^1.4.2-develop-b2school.1
+        specifier: ^1.4.3-develop-b2school.1
         version: link:../icons
       "@react-spring/web":
         specifier: 9.7.3
@@ -2267,10 +2267,10 @@ packages:
       "@tiptap/pm": 2.0.3(@tiptap/core@2.0.3)
     dev: false
 
-  /@edifice-tiptap-extensions/extension-audio@1.0.4-develop-b2school.0(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
+  /@edifice-tiptap-extensions/extension-audio@1.0.4-develop-b2school.2(@tiptap/core@2.0.3)(@tiptap/pm@2.0.3):
     resolution:
       {
-        integrity: sha512-lpfnfX0gJI16/xj+oe7+2EKJ6AGz269WSVtc/1o3tEvzjE56YaHlpJhBYgUOQHTRJLNnIAuXrrJsuAZZidOjWw==,
+        integrity: sha512-J7xy8jSjr8mamxXgTj57kc0nX0IXa0bytvzsQnt9xupvfdiIi71Kn2oIBDugHXbj0dTtHaTK67hsS3muzKn57A==,
       }
     peerDependencies:
       "@tiptap/core": 2.0.3
