@@ -18,6 +18,7 @@ import {
   TextArea,
   Button,
   LoadingScreen,
+  Dropdown,
 } from "../../components";
 import { useOdeClient } from "../../core";
 import { useResource } from "../../core/useResource";
@@ -141,12 +142,33 @@ export default function PublishModal({
             <LangSelect control={control} />
           </div>
 
+          <Dropdown>
+            <Dropdown.Trigger label="Dropdown" />
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={() => alert("click")}>
+                Dropdown Item
+              </Dropdown.Item>
+              <Dropdown.Separator />
+              <Dropdown.MenuGroup label="Title label">
+                <Dropdown.Item>Dropdown Item</Dropdown.Item>
+                <Dropdown.Item>Dropdown Item</Dropdown.Item>
+              </Dropdown.MenuGroup>
+              <Dropdown.Separator />
+              <Dropdown.MenuGroup label="Title label">
+                <Dropdown.Item>Dropdown Item</Dropdown.Item>
+                <Dropdown.Item>Dropdown Item</Dropdown.Item>
+              </Dropdown.MenuGroup>
+              <Dropdown.Separator />
+              <Dropdown.Item>Dropdown Item</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
           <div className="mb-24">
             <label htmlFor="" className="form-label">
               {t("bpr.form.publication.age")}
             </label>
             <div className="d-flex gap-8">
-              <div className="col col-2">
+              <div className="col col-md-2 d-flex">
                 <AgeSelect
                   control={control}
                   name="ageMin"
@@ -156,7 +178,7 @@ export default function PublishModal({
                   }
                 />
               </div>
-              <div className="col col-2">
+              <div className="col col-md-2 d-flex">
                 <AgeSelect
                   control={control}
                   name="ageMax"
