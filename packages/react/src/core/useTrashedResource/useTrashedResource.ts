@@ -32,7 +32,6 @@ const useTrashedResource = (id: UseTrashedResourceProps) => {
         (resource: IResource) => resource.assetId === id,
       );
 
-      console.log({ explorerData, resource });
       if (resource?.trashed || resource?.trashedBy?.includes(user?.userId)) {
         // Error boundaries are not working with async calls,
         // so we need to use a state and then in another useEffect we handle the error
