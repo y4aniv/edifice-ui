@@ -18,7 +18,6 @@ import {
   TextArea,
   Button,
   LoadingScreen,
-  Dropdown,
 } from "../../components";
 import { useOdeClient } from "../../core";
 import { useResource } from "../../core/useResource";
@@ -141,27 +140,6 @@ export default function PublishModal({
             />
             <LangSelect control={control} />
           </div>
-
-          <Dropdown>
-            <Dropdown.Trigger label="Dropdown" />
-            <Dropdown.Menu>
-              <Dropdown.Item onClick={() => alert("click")}>
-                Dropdown Item
-              </Dropdown.Item>
-              <Dropdown.Separator />
-              <Dropdown.MenuGroup label="Title label">
-                <Dropdown.Item>Dropdown Item</Dropdown.Item>
-                <Dropdown.Item>Dropdown Item</Dropdown.Item>
-              </Dropdown.MenuGroup>
-              <Dropdown.Separator />
-              <Dropdown.MenuGroup label="Title label">
-                <Dropdown.Item>Dropdown Item</Dropdown.Item>
-                <Dropdown.Item>Dropdown Item</Dropdown.Item>
-              </Dropdown.MenuGroup>
-              <Dropdown.Separator />
-              <Dropdown.Item>Dropdown Item</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
 
           <div className="mb-24">
             <label htmlFor="" className="form-label">
