@@ -358,7 +358,7 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.9)
       "@edifice-ui/icons":
-        specifier: ^1.4.3-develop-b2school.1
+        specifier: develop-b2school
         version: link:../icons
       "@react-spring/web":
         specifier: 9.7.3
@@ -3717,7 +3717,7 @@ packages:
       "@pixi/display": 7.4.0(@pixi/core@7.4.0)
     dev: false
 
-  /@pixi/assets@7.3.2(@pixi/core@7.3.2)(@pixi/utils@7.3.2):
+  /@pixi/assets@7.3.2(@pixi/core@7.4.0)(@pixi/utils@7.3.2):
     resolution:
       {
         integrity: sha512-yteq6ptAxA09EcwU9D9hl7qr5yWIqy+c2PsXkTDkc76vTAwIamLY3KxLq2aR5y1U4L4O6aHFJd26uNhHcuTPmw==,
@@ -3726,21 +3726,9 @@ packages:
       "@pixi/core": 7.3.2
       "@pixi/utils": 7.3.2
     dependencies:
-      "@pixi/core": 7.3.2
+      "@pixi/core": 7.4.0
       "@pixi/utils": 7.3.2
       "@types/css-font-loading-module": 0.0.7
-    dev: false
-
-  /@pixi/assets@7.4.0(@pixi/core@7.4.0):
-    resolution:
-      {
-        integrity: sha512-Z7J2ZYSZ41Pr3CK0IXgtVV1HiLm1sG0AOZHAPMwB82wNdIDvmWowo/LkXvQmSHFLxFlEz1hWOdOFs1daWAeIfg==,
-      }
-    peerDependencies:
-      "@pixi/core": 7.4.0
-    dependencies:
-      "@pixi/core": 7.4.0
-      "@types/css-font-loading-module": 0.0.12
     dev: false
 
   /@pixi/color@7.3.2:
@@ -3777,7 +3765,7 @@ packages:
       "@pixi/assets": 7.3.2
       "@pixi/core": 7.3.2
     dependencies:
-      "@pixi/assets": 7.3.2(@pixi/core@7.3.2)(@pixi/utils@7.3.2)
+      "@pixi/assets": 7.3.2(@pixi/core@7.4.0)(@pixi/utils@7.3.2)
       "@pixi/core": 7.3.2
     dev: false
 
@@ -4178,7 +4166,7 @@ packages:
       "@pixi/sprite-animated": 7.4.0(@pixi/core@7.4.0)(@pixi/sprite@7.4.0)
       "@pixi/sprite-tiling": 7.4.0(@pixi/core@7.4.0)(@pixi/display@7.4.0)(@pixi/sprite@7.4.0)
       "@pixi/text": 7.4.0(@pixi/core@7.4.0)(@pixi/sprite@7.4.0)
-      "@pixi/text-bitmap": 7.4.0(@pixi/assets@7.4.0)(@pixi/core@7.4.0)(@pixi/display@7.4.0)(@pixi/mesh@7.4.0)(@pixi/text@7.4.0)
+      "@pixi/text-bitmap": 7.4.0(@pixi/assets@7.3.2)(@pixi/core@7.4.0)(@pixi/display@7.4.0)(@pixi/mesh@7.4.0)(@pixi/text@7.4.0)
       "@pixi/ticker": 7.4.0
       lodash.isnil: 4.0.0
       lodash.times: 4.3.2
@@ -4315,7 +4303,7 @@ packages:
       "@pixi/assets": 7.3.2
       "@pixi/core": 7.3.2
     dependencies:
-      "@pixi/assets": 7.3.2(@pixi/core@7.3.2)(@pixi/utils@7.3.2)
+      "@pixi/assets": 7.3.2(@pixi/core@7.4.0)(@pixi/utils@7.3.2)
       "@pixi/core": 7.3.2
     dev: false
 
@@ -4331,14 +4319,14 @@ packages:
       "@pixi/mesh": 7.3.2
       "@pixi/text": 7.3.2
     dependencies:
-      "@pixi/assets": 7.3.2(@pixi/core@7.3.2)(@pixi/utils@7.3.2)
+      "@pixi/assets": 7.3.2(@pixi/core@7.4.0)(@pixi/utils@7.3.2)
       "@pixi/core": 7.3.2
       "@pixi/display": 7.3.2(@pixi/core@7.3.2)
       "@pixi/mesh": 7.3.2(@pixi/core@7.3.2)(@pixi/display@7.3.2)
       "@pixi/text": 7.3.2(@pixi/core@7.3.2)(@pixi/sprite@7.3.2)
     dev: false
 
-  /@pixi/text-bitmap@7.4.0(@pixi/assets@7.4.0)(@pixi/core@7.4.0)(@pixi/display@7.4.0)(@pixi/mesh@7.4.0)(@pixi/text@7.4.0):
+  /@pixi/text-bitmap@7.4.0(@pixi/assets@7.3.2)(@pixi/core@7.4.0)(@pixi/display@7.4.0)(@pixi/mesh@7.4.0)(@pixi/text@7.4.0):
     resolution:
       {
         integrity: sha512-OkYixlqMW9b1EHtEbSP9mgZEqI0WLN1KP4h2EyJk0LC9lH2Ybp3v7ZGHKAetGkSCt8PXY5AfXbcWtm+TgTWbJw==,
@@ -4350,7 +4338,7 @@ packages:
       "@pixi/mesh": 7.4.0
       "@pixi/text": 7.4.0
     dependencies:
-      "@pixi/assets": 7.4.0(@pixi/core@7.4.0)
+      "@pixi/assets": 7.3.2(@pixi/core@7.4.0)(@pixi/utils@7.3.2)
       "@pixi/core": 7.4.0
       "@pixi/display": 7.4.0(@pixi/core@7.4.0)
       "@pixi/mesh": 7.4.0(@pixi/core@7.4.0)(@pixi/display@7.4.0)
@@ -16364,7 +16352,7 @@ packages:
     dependencies:
       "@pixi/accessibility": 7.3.2(@pixi/core@7.3.2)(@pixi/display@7.3.2)(@pixi/events@7.3.2)
       "@pixi/app": 7.3.2(@pixi/core@7.3.2)(@pixi/display@7.3.2)
-      "@pixi/assets": 7.3.2(@pixi/core@7.3.2)(@pixi/utils@7.3.2)
+      "@pixi/assets": 7.3.2(@pixi/core@7.4.0)(@pixi/utils@7.3.2)
       "@pixi/compressed-textures": 7.3.2(@pixi/assets@7.3.2)(@pixi/core@7.3.2)
       "@pixi/core": 7.3.2
       "@pixi/display": 7.3.2(@pixi/core@7.3.2)
