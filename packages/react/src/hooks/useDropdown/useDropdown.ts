@@ -72,9 +72,7 @@ const useDropdown = (
       offset(4),
       size({
         apply({ rects, elements }) {
-          Object.assign(elements.floating.style, {
-            minWidth: `${rects.reference.width}px`,
-          });
+          elements.floating.style.minWidth = `${rects.reference.width}px`;
         },
       }),
       flip({ padding: 0 }),
