@@ -5,6 +5,7 @@ import toast, { ToastPosition } from "react-hot-toast";
 import Alert from "../../components/Alert/Alert";
 
 export interface CustomToastOptions {
+  id?: string;
   isDismissible?: boolean;
   position?: ToastPosition;
   duration?: number;
@@ -25,6 +26,7 @@ export default function useToast() {
           {message}
         </Alert>,
         {
+          id: options?.id,
           duration: options?.duration,
           position: options?.position ?? DEFAULT_POSITION,
         },
@@ -40,6 +42,7 @@ export default function useToast() {
           {message}
         </Alert>,
         {
+          id: options?.id,
           duration: options?.duration,
           position: options?.position ?? DEFAULT_POSITION,
         },
@@ -55,6 +58,7 @@ export default function useToast() {
           {message}
         </Alert>,
         {
+          id: options?.id,
           duration: options?.duration,
           position: options?.position ?? DEFAULT_POSITION,
         },
@@ -70,11 +74,14 @@ export default function useToast() {
           {message}
         </Alert>,
         {
+          id: options?.id,
           duration: options?.duration,
           position: options?.position ?? DEFAULT_POSITION,
         },
       ),
     loading: toast.loading,
+    dismiss: (id: string) => toast.dismiss(id),
+    remove: (id: string) => toast.remove(id),
   };
 
   return toasts;
