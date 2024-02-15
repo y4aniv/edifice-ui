@@ -17,6 +17,10 @@ export interface BaseProps {
    * App information to get code and name
    */
   app?: IWebApp | string;
+  /**
+   * Custom class name
+   */
+  className?: string;
 }
 
 type AppVariants = "square" | "circle" | "rounded";
@@ -52,7 +56,13 @@ export type AppIconProps = BaseProps & Props;
  */
 const AppIcon = forwardRef(
   (
-    { app, size = "24", iconFit = "contain", variant = "square" }: AppIconProps,
+    {
+      app,
+      size = "24",
+      iconFit = "contain",
+      variant = "square",
+      className = "",
+    }: AppIconProps,
     ref: Ref<SVGSVGElement>,
   ) => {
     const { isIconUrl, getIconCode } = useOdeIcons();
@@ -98,15 +108,8 @@ const AppIcon = forwardRef(
 
     const appCode = code || "placeholder";
 
-    const classes = clsx("app-icon", {
-      ...iconSizes,
-      ...iconVariant,
-      ...iconFits,
-      [`bg-light-${appCode}`]: appCode && !isContain,
-      [`color-app-${appCode}`]: appCode,
-    });
-
     if (isIconURL) {
+      const classes = clsx("h-full", className);
       return (
         <Image
           src={icon}
@@ -114,10 +117,22 @@ const AppIcon = forwardRef(
           objectFit="contain"
           width={size}
           height={size}
-          className="h-full"
+          className={classes}
         />
       );
     }
+
+    const classes = clsx(
+      "app-icon",
+      {
+        ...iconSizes,
+        ...iconVariant,
+        ...iconFits,
+        [`bg-light-${appCode}`]: appCode && !isContain,
+        [`color-app-${appCode}`]: appCode,
+      },
+      className,
+    );
 
     return (
       <div
