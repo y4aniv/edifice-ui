@@ -22,7 +22,6 @@ export * from "./Image";
 export * from "./ImagePicker";
 export * from "./Input";
 export * from "./Label";
-export * from "./Library";
 export * from "./Loading";
 export * from "./LoadingScreen";
 export * from "./Logo";
