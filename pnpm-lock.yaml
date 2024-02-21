@@ -358,7 +358,7 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.23.9)
       "@edifice-ui/icons":
-        specifier: ^1.4.2-develop-pedago.8
+        specifier: ^1.4.2-develop-pedago.17
         version: 1.4.2(react-dom@18.2.0)(react@18.2.0)
       "@react-spring/web":
         specifier: 9.7.3
