@@ -19,7 +19,7 @@ interface DropzoneProps {
 const Dropzone = ({
   className,
   accept,
-  multiple,
+  multiple = true,
   handle = false,
   children,
 }: DropzoneProps) => {
