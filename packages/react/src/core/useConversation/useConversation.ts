@@ -22,14 +22,11 @@ const useConversation = () => {
    */
   const queryParams = { unread: true, _: new Date().getTime() };
 
-  console.log({ zimbraWorkflow });
-
   const refreshMails = useCallback(async () => {
     const url = zimbraWorkflow
       ? "/zimbra/count/INBOX"
       : "/conversation/count/INBOX";
 
-    console.log({ url });
     try {
       const { status, count } = await odeServices
         .http()
