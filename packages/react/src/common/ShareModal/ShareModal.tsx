@@ -37,7 +37,7 @@ interface ShareResourceModalProps {
     },
     unknown
   >;
-  children?: ReactNode;
+  children?: ReactNode | ((...props: any) => ReactNode);
   onSuccess: () => void;
   onCancel: () => void;
 }
@@ -227,7 +227,7 @@ export default function ShareResourceModal({
             />
           </div>
         </div>
-        {children}
+        {typeof children === "function" ? children(resource) : children}
       </Modal.Body>
       <Modal.Footer>
         <Button
