@@ -26,11 +26,7 @@ const Embed = ({ onSuccess }: EmbedProps) => {
 
   return (
     <div className="d-flex flex-column flex-fill">
-      <div className="mb-32">
-        {t(
-          'Pour ajouter un contenu externe, copiez le code de partage "embed" ou "iframe" et coller le ci-dessous.',
-        )}
-      </div>
+      <div className="mb-32">{t("bbm.embed.description")}</div>
       <div className="mb-8 d-flex">
         <Code className="me-8"></Code>
         {t("bbm.embed.title")}

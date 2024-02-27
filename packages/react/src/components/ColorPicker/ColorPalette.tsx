@@ -48,7 +48,7 @@ export interface ColorPalette {
 
 export const DefaultPalette: ColorPalette = {
   className: "fw-bold",
-  label: "Default palette",
+  label: "defaultPalette",
   colors: [
     /* Paint It Black */
     [
@@ -110,7 +110,7 @@ export const DefaultPalette: ColorPalette = {
 };
 
 export const AccessiblePalette: ColorPalette = {
-  label: "Accessible palette",
+  label: "accessiblePalette",
   tooltip: { message: "Veni, vidi, vici" },
   colors: [
     [{ value: "#4A4A4A", description: "color.gray" }],

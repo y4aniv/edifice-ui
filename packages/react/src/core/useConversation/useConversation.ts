@@ -4,11 +4,7 @@ import { odeServices } from "edifice-ts-client";
 
 import { useHasWorkflow } from "../useHasWorkflow";
 
-const useConversation = (): {
-  messages: number;
-  msgLink: string;
-  zimbraWorkflow: boolean | Record<string, boolean> | undefined;
-} => {
+const useConversation = () => {
   const zimbraWorkflow = useHasWorkflow(
     "fr.openent.zimbra.controllers.ZimbraController|view",
   );
@@ -24,75 +20,59 @@ const useConversation = (): {
   /**
    * Get message count for zimbra or chat app
    */
+  const queryParams = { unread: true, _: new Date().getTime() };
+
   const refreshMails = useCallback(async () => {
-    if (zimbraWorkflow) {
-      try {
-        const response = await odeServices.http().get("/zimbra/count/INBOX", {
-          queryParams: { unread: true, _: new Date().getTime() },
-        });
+    const url = zimbraWorkflow
+      ? "/zimbra/count/INBOX"
+      : "/conversation/count/INBOX";
 
-        if (response.status !== 200) {
-          setMessages(0);
-        }
-
-        setMessages(response.count);
-      } catch (error) {
-        console.error("error");
-        setMessages(0);
-      }
-    } else {
-      try {
-        const response = await odeServices
-          .http()
-          .get("/conversation/count/INBOX", {
-            queryParams: { unread: true, _: new Date().getTime() },
-          });
-
-        setMessages(response.count);
-      } catch (error) {
-        console.error("error");
-        setMessages(0);
-      }
+    try {
+      const { status, count } = await odeServices
+        .http()
+        .get(url, { queryParams });
+      setMessages(status === 200 ? count : 0);
+    } catch (error) {
+      console.error(error);
+      setMessages(0);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [zimbraWorkflow]);
 
-  const goToMessagerie = useCallback(() => {
-    let messagerieLink = "";
-    // FIXME This is the old-fashioned way of accessing preferences. Do not reproduce anymore (use edifice-ts-client lib instead)
-    odeServices
-      .http()
-      .get("/userbook/preference/zimbra")
-      .then((data: { preference: string }) => {
-        try {
-          if (
-            data.preference
-              ? JSON.parse(data.preference).modeExpert && zimbraPreauth
-              : false
-          ) {
-            messagerieLink = "/zimbra/preauth";
-          } else {
-            messagerieLink = window.location.origin + "/zimbra/zimbra";
-          }
-        } catch (e) {
-          messagerieLink = "/zimbra/zimbra";
-        }
-      });
-
-    setMsgLink(messagerieLink);
-  }, [zimbraPreauth]);
+  const goToMessagerie = useCallback(async () => {
+    const defaultLink = "/zimbra/zimbra";
+    try {
+      const { preference } = await odeServices
+        .http()
+        .get("/userbook/preference/zimbra");
+      const isExpertMode = preference
+        ? JSON.parse(preference).modeExpert
+        : false;
+      setMsgLink(
+        isExpertMode && zimbraPreauth
+          ? "/zimbra/preauth"
+          : window.location.origin + defaultLink,
+      );
+    } catch (error) {
+      console.error(error);
+      setMsgLink(window.location.origin + defaultLink);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
-    (async () => {
-      try {
-        await refreshMails();
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-    goToMessagerie();
-  }, [goToMessagerie, refreshMails]);
+    if (zimbraWorkflow) {
+      refreshMails();
+    }
+  }, [zimbraWorkflow, refreshMails]);
 
-  return { messages, msgLink, zimbraWorkflow };
+  useEffect(() => {
+    if (zimbraPreauth) {
+      goToMessagerie();
+    }
+  }, [zimbraPreauth, goToMessagerie]);
+
+  return { messages, msgLink, zimbraWorkflow } as const;
 };
 
 export default useConversation;

@@ -1,10 +1,4 @@
-import {
-  ChangeEvent,
-  Dispatch,
-  useCallback,
-  useEffect,
-  useReducer,
-} from "react";
+import { ChangeEvent, Dispatch, useEffect, useReducer } from "react";
 
 import { Bookmark } from "@edifice-ui/icons";
 import {
@@ -108,93 +102,87 @@ export const useSearch = ({
     });
   };
 
-  const search = useCallback(
-    async (debouncedSearchInputValue: string) => {
-      if (!resource) return;
+  const search = async (debouncedSearchInputValue: string) => {
+    if (!resource) return;
+
+    dispatch({
+      type: "isSearching",
+      payload: true,
+    });
+    // start search from 1 caracter length for non Adml but start from 3 for Adml
+    if (
+      (!isAdml && debouncedSearchInputValue.length >= 1) ||
+      (isAdml && debouncedSearchInputValue.length >= 3)
+    ) {
+      const resSearchShareSubjects = await odeServices
+        .share()
+        .searchShareSubjects(
+          appCode,
+          resource.assetId,
+          debouncedSearchInputValue,
+        );
 
       dispatch({
-        type: "isSearching",
-        payload: true,
+        type: "addApiResult",
+        payload: resSearchShareSubjects,
       });
-      // start search from 1 caracter length for non Adml but start from 3 for Adml
-      if (
-        (!isAdml && debouncedSearchInputValue.length >= 1) ||
-        (isAdml && debouncedSearchInputValue.length >= 3)
-      ) {
-        const resSearchShareSubjects =
-          resource &&
-          (await odeServices
-            .share()
-            .searchShareSubjects(
-              appCode,
-              resource?.assetId,
-              debouncedSearchInputValue,
-            ));
 
-        dispatch({
-          type: "addApiResult",
-          payload: resSearchShareSubjects,
-        });
+      const adaptedResults = resSearchShareSubjects
+        // exclude subjects that are already in the share table
+        .filter(
+          (right: { id: any }) =>
+            !shareRights.rights.find(
+              (shareRight: { id: any }) => shareRight.id === right.id,
+            ),
+        )
+        // exclude owner from results
+        .filter(
+          (right: { type: string; id: any }) =>
+            !(right.type === "user" && right.id === resource?.creatorId),
+        )
+        .map(
+          (searchResult: {
+            id: any;
+            displayName: any;
+            type: string;
+            profile?: string;
+            structureName?: string;
+          }) => {
+            let label: string = searchResult.displayName;
+            if (searchResult.type === "user" && searchResult.profile) {
+              label = `${label} (${t(searchResult.profile)})`;
+            } else if (
+              searchResult.type === "group" &&
+              searchResult.structureName
+            ) {
+              label = `${label} (${searchResult.structureName})`;
+            }
 
-        const adaptedResults = resSearchShareSubjects
-          // exclude subjects that are already in the share table
-          .filter(
-            (right: { id: any }) =>
-              !shareRights.rights.find(
-                (shareRight: { id: any }) => shareRight.id === right.id,
-              ),
-          )
-          // exclude owner from results
-          .filter(
-            (right: { type: string; id: any }) =>
-              !(right.type === "user" && right.id === resource?.creatorId),
-          )
-          .map(
-            (searchResult: {
-              id: any;
-              displayName: any;
-              type: string;
-              profile?: string;
-              structureName?: string;
-            }) => {
-              let label: string = searchResult.displayName;
-              if (searchResult.type === "user" && searchResult.profile) {
-                label = `${label} (${t(searchResult.profile)})`;
-              } else if (
-                searchResult.type === "group" &&
-                searchResult.structureName
-              ) {
-                label = `${label} (${searchResult.structureName})`;
-              }
-
-              return {
-                value: searchResult.id,
-                label,
-                icon:
-                  searchResult.type === "sharebookmark" ? <Bookmark /> : null,
-              };
-            },
-          );
-
-        dispatch({
-          type: "addResult",
-          payload: adaptedResults,
-        });
-      } else {
-        dispatch({
-          type: "emptyResult",
-          payload: [],
-        });
-        Promise.resolve();
-      }
+            return {
+              value: searchResult.id,
+              label,
+              icon: searchResult.type === "sharebookmark" ? <Bookmark /> : null,
+            };
+          },
+        );
 
       dispatch({
-        type: "isSearching",
-        payload: false,
+        type: "addResult",
+        payload: adaptedResults,
       });
-    },
-    [resource],
-  );
+    } else {
+      dispatch({
+        type: "emptyResult",
+        payload: [],
+      });
+      Promise.resolve();
+    }
+
+    dispatch({
+      type: "isSearching",
+      payload: false,
+    });
+  };
 
   const handleSearchResultsChange = async (model: Array<string | number>) => {
     const shareSubject = state.searchAPIResults.find(
