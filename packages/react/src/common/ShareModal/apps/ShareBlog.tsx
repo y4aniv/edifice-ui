@@ -34,7 +34,7 @@ export default function ShareBlog({
   const publishType = resource && resource["publish-type"];
 
   const [radioPublicationValue, setRadioPublicationValue] =
-    useState<PublicationType>(publishType);
+    useState<PublicationType>(publishType ?? "RESTRAINT");
 
   const handleRadioPublicationChange = async (
     event: ChangeEvent<HTMLInputElement>,
