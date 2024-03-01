@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.3](https://github.com/opendigitaleducation/edifice-ui/compare/v1.4.3-develop.11...v1.4.3) (2024-03-01)
+
+**Note:** Version bump only for package @edifice-ui/editor
+
 ## [1.4.2](https://github.com/opendigitaleducation/edifice-ui/compare/v1.4.2-develop.8...v1.4.2) (2024-02-08)
 
 **Note:** Version bump only for package @edifice-ui/editor
