@@ -56,7 +56,7 @@ export const ShareBookmarkLine = ({
                   color="tertiary"
                   rightIcon={
                     <RafterDown
-                      title="Show"
+                      title={t("show")}
                       className="w-16 min-w-0"
                       style={{
                         transition: "rotate 0.2s ease-out",
@@ -92,12 +92,12 @@ export const ShareBookmarkLine = ({
           <td>
             {!shareRight.isBookmarkMember && (
               <IconButton
-                aria-label="Delete"
+                aria-label={t("close")}
                 color="tertiary"
                 icon={<Close />}
                 type="button"
                 variant="ghost"
-                title="Delete"
+                title={t("close")}
                 onClick={() => onDeleteRow(shareRight)}
               />
             )}

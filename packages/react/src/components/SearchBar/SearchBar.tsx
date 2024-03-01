@@ -60,7 +60,7 @@ export type SearchBarProps = BaseProps & Props;
 const SearchBar = ({
   isVariant = false,
   size = "md",
-  placeholder = "Search",
+  placeholder = "search",
   className,
   disabled,
   onChange,
@@ -103,7 +103,7 @@ const SearchBar = ({
       {!isVariant && (
         <SearchButton
           type="submit"
-          aria-label="search"
+          aria-label={t("search")}
           icon={<Search />}
           className="border-start-0"
           onClick={handleClick}

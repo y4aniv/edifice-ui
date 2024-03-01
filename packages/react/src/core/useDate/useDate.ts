@@ -74,6 +74,30 @@ export default function useDate() {
     [lang],
   );
 
+  const formatDate = useCallback(
+    (date: CoreDate, format?: string): string => {
+      let computedDate: Dayjs = dayjs();
+      try {
+        if ("undefined" === typeof date) {
+          return "";
+        } else if ("string" === typeof date) {
+          computedDate = parseDate(date, lang);
+        } else if ("number" === typeof date.$date) {
+          computedDate = dayjs(new Date(date.$date));
+        } else if ("string" === typeof date.$date) {
+          computedDate = parseDate(date.$date, lang);
+        }
+
+        return computedDate.isValid()
+          ? computedDate.locale(lang).format(format || "D MMMM YYYY HH:mm:ss")
+          : "";
+      } catch (e) {
+        return "";
+      }
+    },
+    [lang],
+  );
+
   useEffect(() => {
     const lang = sessionQuery?.data?.currentLanguage || "fr";
     setLang(lang);
@@ -82,5 +106,6 @@ export default function useDate() {
 
   return {
     fromNow,
+    formatDate,
   };
 }

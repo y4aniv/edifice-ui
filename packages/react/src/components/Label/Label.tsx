@@ -34,7 +34,7 @@ const Label = forwardRef(
   (
     {
       leftIcon,
-      optionalText = "Optional",
+      optionalText = "optional",
       requiredText = "*",
       children,
       className,
