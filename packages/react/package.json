@@ -9,13 +9,13 @@
     "library",
     "ui"
   ],
-  "homepage": "https://github.com/opendigitaleducation/edifice-ui/tree/main/packages/react#readme",
+  "homepage": "https://github.com/edificeio/edifice-ui/tree/main/packages/react#readme",
   "bugs": {
-    "url": "https://github.com/opendigitaleducation/edifice-ui/issues"
+    "url": "https://github.com/edificeio/edifice-ui/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/opendigitaleducation/edifice-ui.git"
+    "url": "https://github.com/edificeio/edifice-ui.git"
   },
   "license": "AGPL-3.0",
   "author": "Edifice",
