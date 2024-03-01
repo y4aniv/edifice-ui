@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { odeServices } from "edifice-ts-client";
 
@@ -22,24 +22,23 @@ const useConversation = () => {
    */
   const queryParams = { unread: true, _: new Date().getTime() };
 
-  const refreshMails = useCallback(async () => {
+  const refreshMails = async () => {
     const url = zimbraWorkflow
       ? "/zimbra/count/INBOX"
       : "/conversation/count/INBOX";
 
     try {
-      const { status, count } = await odeServices
-        .http()
-        .get(url, { queryParams });
-      setMessages(status === 200 ? count : 0);
+      const { count } = await odeServices.http().get(url, { queryParams });
+
+      setMessages(count ?? 0);
     } catch (error) {
       console.error(error);
       setMessages(0);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [zimbraWorkflow]);
+  };
 
-  const goToMessagerie = useCallback(async () => {
+  const goToMessagerie = async () => {
     const defaultLink = "/zimbra/zimbra";
     try {
       const { preference } = await odeServices
@@ -58,19 +57,17 @@ const useConversation = () => {
       setMsgLink(window.location.origin + defaultLink);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  };
+
+  useEffect(() => {
+    refreshMails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    if (zimbraWorkflow) {
-      refreshMails();
-    }
-  }, [zimbraWorkflow, refreshMails]);
-
-  useEffect(() => {
-    if (zimbraPreauth) {
-      goToMessagerie();
-    }
-  }, [zimbraPreauth, goToMessagerie]);
+    if (zimbraPreauth) goToMessagerie();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return { messages, msgLink, zimbraWorkflow } as const;
 };
