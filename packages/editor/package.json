@@ -1,6 +1,6 @@
 {
   "name": "@edifice-ui/editor",
-  "version": "1.4.3-develop-b2school.9",
+  "version": "1.4.3-develop-b2school.10",
   "description": "Edifice Editor Library",
   "keywords": [
     "react",
@@ -59,8 +59,8 @@
     "@edifice-tiptap-extensions/extension-video": "develop-b2school",
     "@tiptap-pro/extension-mathematics": "2.2.1",
     "@tiptap/core": "2.0.3",
-    "@tiptap/extension-color": "2.0.3",
     "@tiptap/extension-character-count": "2.0.3",
+    "@tiptap/extension-color": "2.0.3",
     "@tiptap/extension-focus": "2.0.3",
     "@tiptap/extension-font-family": "2.0.3",
     "@tiptap/extension-heading": "2.0.3",
