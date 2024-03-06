@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Hyperlink } from "@edifice-tiptap-extensions/extension-hyperlink";
+import CharacterCount from "@tiptap/extension-character-count";
 import { Content, HTMLContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
@@ -13,13 +14,17 @@ import StarterKit from "@tiptap/starter-kit";
 export const useCommentEditor = (
   editable: boolean,
   content: Content,
-  maxLength?: number,
+  maxLength: number = 800,
 ) => {
   const [commentLength, setCommentLength] = useState(0);
 
   const editor = useEditor({
     editable,
-    extensions: [StarterKit, Hyperlink],
+    extensions: [
+      StarterKit,
+      Hyperlink,
+      CharacterCount.configure({ limit: maxLength }),
+    ],
     content,
   });
 
@@ -36,7 +41,7 @@ export const useCommentEditor = (
   // When content is updated manually, update the characters counter.
   useEffect(() => {
     function setCounter() {
-      const length = editor?.getText().length ?? 0;
+      const length = editor?.storage.characterCount.characters() ?? 0;
       setCommentLength(length);
     }
 
@@ -46,15 +51,6 @@ export const useCommentEditor = (
       editor?.off("update", setCounter);
     };
   }, [editor]);
-
-  // When characters counter changes, undo last action if it is too high.
-  useEffect(() => {
-    if (!editor || maxLength === undefined) return;
-
-    if (commentLength > maxLength) {
-      editor.commands.undo?.();
-    }
-  }, [editor, commentLength, maxLength]);
 
   const getComment = () => editor?.getHTML() as HTMLContent;
   const resetComment = () => editor?.commands.setContent(content);

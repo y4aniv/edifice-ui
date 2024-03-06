@@ -60,6 +60,7 @@
     "@tiptap-pro/extension-mathematics": "2.2.1",
     "@tiptap/core": "2.0.3",
     "@tiptap/extension-color": "2.0.3",
+    "@tiptap/extension-character-count": "2.0.3",
     "@tiptap/extension-focus": "2.0.3",
     "@tiptap/extension-font-family": "2.0.3",
     "@tiptap/extension-heading": "2.0.3",
