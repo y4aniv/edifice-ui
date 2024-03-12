@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@floating-ui/react": "0.26.0",
+    "@pixi/mixin-get-child-by-name": "7.3.2",
     "@pixi/react": "7.1.1",
     "@popperjs/core": "2.11.8",
     "@tiptap/pm": "2.0.3",

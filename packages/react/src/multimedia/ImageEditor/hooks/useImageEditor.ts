@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import * as PIXI from "pixi.js";
 
+import "@pixi/mixin-get-child-by-name";
 import useHistoryTool from "./useHistoryTool";
 import useImageEffects from "./useImageEffects";
 import {
