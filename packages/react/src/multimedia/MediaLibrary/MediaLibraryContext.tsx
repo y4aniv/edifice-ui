@@ -14,6 +14,8 @@ export const MediaLibraryContext = createContext<{
    */
   appCode: string;
 
+  multiple?: boolean;
+
   /**
    * Type of rss to search for
    */

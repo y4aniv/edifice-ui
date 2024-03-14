@@ -1,6 +1,6 @@
 {
   "name": "@edifice-ui/react",
-  "version": "1.4.3-develop-b2school.14",
+  "version": "1.4.4",
   "description": "Edifice React Library",
   "keywords": [
     "react",
@@ -9,13 +9,13 @@
     "library",
     "ui"
   ],
-  "homepage": "https://github.com/opendigitaleducation/edifice-ui/tree/main/packages/react#readme",
+  "homepage": "https://github.com/edificeio/edifice-ui/tree/main/packages/react#readme",
   "bugs": {
-    "url": "https://github.com/opendigitaleducation/edifice-ui/issues"
+    "url": "https://github.com/edificeio/edifice-ui/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/opendigitaleducation/edifice-ui.git"
+    "url": "https://github.com/edificeio/edifice-ui.git"
   },
   "license": "AGPL-3.0",
   "author": "Edifice",
@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-react-pure-annotations": "7.23.3",
-    "@edifice-ui/icons": "^1.4.3-develop-b2school.8",
+    "@edifice-ui/icons": "^1.4.4",
     "@react-spring/web": "9.7.3",
     "@tanstack/react-query": "5.8.4",
     "@types/node": "20.8.4",

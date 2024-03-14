@@ -15,6 +15,10 @@ export interface OptionsType {
    * Option Option Label
    */
   label: string;
+  /**
+   * Icon Left Options
+   */
+  icon?: JSX.Element;
 }
 
 export interface SelectProps
@@ -64,11 +68,13 @@ const Select = ({
   }, [localValue]);
 
   const label = typeof localValue === "object" ? localValue.label : localValue;
+  const iconChange =
+    typeof localValue === "object" ? localValue.icon : undefined;
 
   return (
     <Dropdown overflow={overflow} block={block}>
       <SelectTrigger
-        icon={icon}
+        icon={iconChange || icon}
         label={t(label || placeholderOption)}
         variant={variant}
         size={size}
@@ -78,11 +84,13 @@ const Select = ({
         {options?.map((option) => {
           const value = typeof option === "object" ? option.value : option;
           const label = typeof option === "object" ? option.label : option;
+          const icon = typeof option === "object" ? option.icon : undefined;
           return (
             <Dropdown.Item
               type="action"
               key={value}
               onClick={() => setLocalValue(option)}
+              icon={icon}
             >
               {label}
             </Dropdown.Item>

@@ -146,7 +146,7 @@ export default function PublishModal({
               {t("bpr.form.publication.age")}
             </label>
             <div className="d-flex gap-8">
-              <div className="col col-2">
+              <div className="col col-md-2 d-flex">
                 <AgeSelect
                   control={control}
                   name="ageMin"
@@ -156,7 +156,7 @@ export default function PublishModal({
                   }
                 />
               </div>
-              <div className="col col-2">
+              <div className="col col-md-2 d-flex">
                 <AgeSelect
                   control={control}
                   name="ageMax"

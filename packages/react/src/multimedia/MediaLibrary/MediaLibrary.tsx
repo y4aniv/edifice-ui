@@ -151,6 +151,7 @@ export type MediaLibraryResult =
 export interface MediaLibraryProps {
   /** Application Code (example: "blog"). */
   appCode: string;
+  multiple?: boolean;
   /**
    * Called when the user validates the modal (Add button).
    * @param result depends on which InnerTab is visible
@@ -174,7 +175,7 @@ export interface MediaLibraryProps {
 //---------------------------------------------------
 const MediaLibrary = forwardRef(
   (
-    { appCode, onSuccess, onCancel, onTabChange }: MediaLibraryProps,
+    { appCode, multiple, onSuccess, onCancel, onTabChange }: MediaLibraryProps,
     ref: Ref<MediaLibraryRef>,
   ) => {
     // Local ref will be merged with forwardRef in useImperativeHandle() below
@@ -402,6 +403,7 @@ const MediaLibrary = forwardRef(
       <MediaLibraryContext.Provider
         value={{
           appCode,
+          multiple,
           type,
           setResultCounter,
           setResult,
