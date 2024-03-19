@@ -1,6 +1,6 @@
 # Edifice Bootstrap
 
-Edifice Bootstrap is a CSS framework containing all the UI components used by our applications. This framework is based on the latest version of Bootstrap
+Edifice Bootstrap is a CSS framework containing all the UI components used by our applications. This framework is based on the latest version of Bootstrap.
 
 ## Install
 

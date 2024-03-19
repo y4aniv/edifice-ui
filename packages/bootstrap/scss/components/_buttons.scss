@@ -30,7 +30,9 @@
   border-width: var(--#{$prefix}btn-border-width);
   border-radius: var(--#{$prefix}btn-border-radius);
   box-shadow: var(--#{$prefix}btn-box-shadow);
-  transition: font-weight 0ms, all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition:
+    font-weight 0ms,
+    all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   span,
   .loading {
