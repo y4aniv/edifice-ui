@@ -84,7 +84,7 @@ Overring style should be done in component file with data-attribute selector `[d
 
 ### Push Force
 
-`git push --force` is not recommended!
+`git push --force` is not recommended!!
 
 ```
 After a git history rewrite due to a git push --force, the git tags and notes referencing the commits that were rewritten are lost.
