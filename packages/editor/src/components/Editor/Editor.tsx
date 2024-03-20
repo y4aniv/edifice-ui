@@ -18,6 +18,7 @@ import {
   TableToolbar,
   BubbleMenuEditImage,
 } from "../..";
+import { useMathsStyles } from "../../hooks/useMathsStyles";
 
 const MathsModal = lazy(async () => await import("./MathsModal"));
 const ImageEditor = lazy(async () => await import("./ImageEditor"));
@@ -71,6 +72,8 @@ const Editor = forwardRef(
     const imageModal = useImageModal(editor);
     const linkToolbarHandlers = useLinkToolbar(editor, mediaLibraryModalRef);
     const speechSynthetisis = useSpeechSynthetisis(editor);
+
+    useMathsStyles();
 
     //----- Editor API
     useImperativeHandle(ref, () => ({
