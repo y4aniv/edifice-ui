@@ -395,7 +395,6 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         },
         name: "plus",
         visibility: showIf(hasExtension("textAlign", editor)),
-        tooltip: t("tiptap.tooltip.plus"),
       },
     ];
   }, [
