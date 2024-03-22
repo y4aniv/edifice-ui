@@ -70,6 +70,7 @@
     --edifice-secondary-200: #e5f5ff;
     --edifice-secondary-300: #b9e3f8;
     --edifice-secondary-800: #2f7ea7;
+    --edifice-tertiary: #f2f2f2;
     --edifice-danger: #e13a3a;
     --edifice-danger-200: #ffe9e9;
     --edifice-danger-300: #f3a6a6;
@@ -17025,6 +17026,11 @@ hr {
     background-color: var(--edifice-secondary-800) !important
 }
 
+.text-bg-tertiary {
+    color: #fff !important;
+    background-color: var(--edifice-tertiary) !important
+}
+
 .text-bg-danger {
     color: #fff !important;
     background-color: var(--edifice-danger) !important
@@ -17303,6 +17309,10 @@ hr {
 
 .bg-secondary-800 {
     background-color: var(--edifice-secondary-800) !important
+}
+
+.bg-tertiary {
+    background-color: var(--edifice-tertiary) !important
 }
 
 .bg-danger {
@@ -18048,9 +18058,17 @@ hr {
     background-color: rgba(0, 0, 0, 0)
 }
 
+.btn.btn-ghost-primary {
+    height: 40px
+}
+
 .btn.btn-ghost-primary:focus-visible {
     outline: 2px solid var(--edifice-secondary);
     outline-offset: -1px
+}
+
+.btn.btn-ghost-secondary {
+    height: 40px
 }
 
 .btn.btn-ghost-secondary:focus-visible {
@@ -18058,9 +18076,17 @@ hr {
     outline-offset: -1px
 }
 
+.btn.btn-ghost-tertiary {
+    height: 40px
+}
+
 .btn.btn-ghost-tertiary:focus-visible {
     outline: 2px solid var(--edifice-secondary);
     outline-offset: -1px
+}
+
+.btn.btn-ghost-danger {
+    height: 40px
 }
 
 .btn.btn-ghost-danger:focus-visible {
