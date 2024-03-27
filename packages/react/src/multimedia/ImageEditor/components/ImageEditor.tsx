@@ -138,7 +138,7 @@ const ImageEditor = ({
         <span className="h2">{t("imageeditor.title")}</span>
       </Modal.Header>
       <Modal.Body className="d-flex flex-column align-items-center">
-        <div className="d-flex flex-column align-items-center gap-12 w-100 flex-grow-1">
+        <div className="d-flex flex-column gap-12 w-100 flex-grow-1">
           <ImageEditorToolbar
             handle={handleOperation}
             historyCount={historyCount}
