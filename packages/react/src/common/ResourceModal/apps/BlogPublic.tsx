@@ -93,7 +93,7 @@ const BlogPublic = ({
             <Button
               color="primary"
               disabled={!isPublic}
-              onClick={onCopyToClipBoard}
+              onClick={() => onCopyToClipBoard("/blog")}
               type="button"
               leftIcon={<Copy />}
               variant="ghost"
