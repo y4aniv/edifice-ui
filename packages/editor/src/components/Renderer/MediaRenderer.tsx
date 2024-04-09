@@ -67,8 +67,14 @@ const MediaRenderer = (props: MediaResizeProps) => {
             isVerticalResizeActive ? "vertical-resize-active" : ""
           }`}
           title={t("tiptap.media.resize")}
-          onMouseDown={(e) => startVerticalResize(e)}
-          onMouseUp={() => stopVerticalResize}
+          onMouseDown={(e) => {
+            e.stopPropagation();
+            startVerticalResize(e);
+          }}
+          onMouseUp={(e) => {
+            e.stopPropagation();
+            stopVerticalResize();
+          }}
         />
       </div>
     </NodeViewWrapper>
