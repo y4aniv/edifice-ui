@@ -224,7 +224,7 @@ const InternalLinker = ({
   }, [resources]);
 
   return (
-    <div className="internal-linker flex-grow-1 w-100 rounded border gap-0">
+    <div className="internal-linker flex-grow-1 w-100 rounded border gap-0 overflow-auto">
       <div className="search d-flex bg-light rounded-top border-bottom">
         <div className="flex-shrink-1 px-8 py-12 border-end">
           <Dropdown overflow>
