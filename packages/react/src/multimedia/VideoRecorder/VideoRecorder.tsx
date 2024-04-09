@@ -232,10 +232,12 @@ const VideoRecorder = forwardRef(
         if (videoRef.current) {
           if (videoRef.current.src) {
             window.URL.revokeObjectURL(videoRef.current.src);
+            videoRef.current.src = "";
           }
           videoRef.current.srcObject = mediaStream;
           videoRef.current.autoplay = true;
           videoRef.current.volume = 1;
+          videoRef.current.muted = true;
         }
       } catch (err) {
         console.error(err);
