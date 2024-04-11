@@ -31,9 +31,11 @@ $container-spacings: (
   --#{$prefix}family-primary: "KGJune";
   --#{$prefix}primary-200: var(--#{$prefix}blue-200);
   --#{$prefix}primary-300: var(--#{$prefix}blue-300);
+  --#{$prefix}primary-500: var(--#{$prefix}blue);
   --#{$prefix}primary-800: var(--#{$prefix}blue-800);
   --#{$prefix}secondary-200: var(--#{$prefix}orange-200);
   --#{$prefix}secondary-300: var(--#{$prefix}orange-300);
+  --#{$prefix}secondary-500: var(--#{$prefix}orange);
   --#{$prefix}secondary-800: var(--#{$prefix}orange-800);
   --#{$prefix}green-200: #EAF7E4;
   --#{$prefix}yellow-200: #FBF4D5;
