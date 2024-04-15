@@ -12,6 +12,7 @@ import {
   saveAsDataURL,
   updateImageFromBlob,
 } from "../effects/misc";
+
 /**
  * This hook expose all the functions available for the pixi editor:
  * - all the effects (crop, resize, rotate, blur)
@@ -32,6 +33,9 @@ export default function useImageEditor({
   const [application, setApplication] = useState<PIXI.Application | undefined>(
     undefined,
   );
+
+  const [loading, setLoading] = useState(true);
+
   const {
     rotate,
     startBlur,
@@ -77,8 +81,12 @@ export default function useImageEditor({
 
   useEffect(() => {
     if (!application) return undefined;
-    updateImage(application, { spriteName, imgDatasource: imageSrc });
+    setLoading(true);
+    updateImage(application, { spriteName, imgDatasource: imageSrc }).finally(
+      () => setLoading(false),
+    );
   }, [application, imageSrc, spriteName]);
+
   return {
     historyCount,
     setApplication,
@@ -86,11 +94,28 @@ export default function useImageEditor({
     stopCrop,
     stopBlur,
     stopResize,
-    startResize: historize(startResize),
-    startCrop: historize(startCrop),
-    startBlur: historize(startBlur),
-    rotate: historize(rotate),
+    startResize: async () => {
+      setLoading(true);
+      await historize(startResize);
+      setLoading(false);
+    },
+    startCrop: async () => {
+      setLoading(true);
+      await historize(startCrop);
+      setLoading(false);
+    },
+    startBlur: async () => {
+      setLoading(true);
+      await historize(startBlur);
+      setLoading(false);
+    },
+    rotate: async () => {
+      setLoading(true);
+      await historize(rotate);
+      setLoading(false);
+    },
     toBlob,
     toDataURL,
+    loading,
   };
 }
