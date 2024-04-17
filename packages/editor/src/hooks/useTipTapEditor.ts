@@ -55,6 +55,7 @@ export const useTipTapEditor = (
   editable: boolean,
   content: Content,
   placeholder?: string,
+  onContentChange?: ((content: string) => void) | undefined,
 ) => {
   const { currentLanguage } = useOdeClient();
   const { t } = useTranslation();
@@ -114,6 +115,13 @@ export const useTipTapEditor = (
       AttachmentNodeView(AttachmentRenderer),
     ],
     content,
+    onUpdate: ({ editor }) => {
+      const content = editor?.getHTML();
+
+      if (onContentChange) {
+        onContentChange(content);
+      }
+    },
   });
 
   useEffect(() => {
