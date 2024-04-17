@@ -56,6 +56,8 @@ export interface EditorProps {
   /** Visibility of the content created
    *  this will impact where the uploaded files will be upload and the availability of the public media files  */
   visibility?: WorkspaceVisibility;
+  /** Editor placeholder content */
+  placeholder?: string;
 }
 
 const Editor = forwardRef(
@@ -66,11 +68,16 @@ const Editor = forwardRef(
       toolbar = "full",
       variant = "outline",
       visibility = "protected",
+      placeholder,
     }: EditorProps,
     ref: Ref<EditorRef>,
   ) => {
     const { appCode } = useOdeClient();
-    const { editor, editable } = useTipTapEditor(mode === "edit", content);
+    const { editor, editable } = useTipTapEditor(
+      mode === "edit",
+      content,
+      placeholder,
+    );
     const { ref: mediaLibraryModalRef, ...mediaLibraryModalHandlers } =
       useMediaLibraryModal(editor);
     const { toggle: toggleMathsModal, ...mathsModalHandlers } =
