@@ -1,6 +1,14 @@
 import * as PIXI from "pixi.js";
 
-//Define the default name of the sprite in the PIXI.Application context
+// Define (in pixel) the minimal height the sprite should have
+const MIN_HEIGHT = 100;
+// Define (in pixel) the minimal width the sprite should have
+const MIN_WIDTH = 100;
+// Modal padding
+const MODAL_VERTICAL_PADDING = 450;
+const MODAL_HORIZONTAL_PADDING = 64;
+
+// Define the default name of the sprite in the PIXI.Application context
 export const DEFAULT_SPRITE_NAME = "image";
 
 /**
@@ -134,6 +142,86 @@ export async function updateImage(
     application.renderer.resize(sprite.width, sprite.height);
   }
   // Resize the view in css to keep img quality
+  autoResize(application, sprite);
+}
+/**
+ * This function resize the sprite according to the container width
+ *
+ * @param application The PIXI.Application context
+ * @param sprite The sprite object representing the image to resize
+ */
+export function autoResize(
+  application: PIXI.Application,
+  sprite: PIXI.Sprite,
+): void {
+  setTimeout(() => {
+    // Get parent html object
+    const parent = application.view.parentNode as HTMLElement | undefined;
+    const maxMobileWidth = window.innerWidth - MODAL_HORIZONTAL_PADDING;
+    const parentWidth = Math.max(parent?.offsetWidth ?? 0, MIN_WIDTH);
+    const newSize = constraintSize(
+      {
+        width: sprite.width,
+        height: sprite.height,
+      },
+      {
+        width: {
+          max: Math.min(parentWidth, maxMobileWidth),
+          min: MIN_WIDTH,
+        },
+        height: {
+          min: MIN_HEIGHT,
+          max: window.innerHeight - MODAL_VERTICAL_PADDING,
+        },
+      },
+    );
+    // Define the new width to the parentWidth
+    const { height: newHeight, width: newWidth } = newSize;
+
+    // Anchor the sprite to the middle (for rotation)
+    if (application.view?.style) {
+      application.view.style.width = `${newWidth}px`;
+      application.view.style.height = `${newHeight}px`;
+      console.log(application.view.style.width, application.view.style.height);
+    }
+    console.log("newSize", newSize);
+  }, 0);
+}
+
+export function constraintSize(
+  size: { width: number; height: number },
+  constraints: {
+    width: { max: number; min: number };
+    height: { max: number; min: number };
+  },
+) {
+  const { height, width } = size;
+  const ratio = width / height;
+  const { height: constraintHeight, width: constraintWidth } = constraints;
+  // set max size
+  let newWidth = constraintWidth.max;
+  let newHeight = constraintWidth.max / ratio;
+  // constraint width max
+  if (width > constraintWidth.max) {
+    newWidth = constraintWidth.max;
+    newHeight = newWidth / ratio;
+  }
+  // constraint height max
+  if (newHeight > constraintHeight.max) {
+    newHeight = constraintHeight.max;
+    newWidth = newHeight * ratio;
+  }
+  // constraint width min
+  if (newWidth < constraintWidth.min) {
+    newWidth = constraintWidth.min;
+    newHeight = newWidth / ratio;
+  }
+  // constraint height max
+  if (newHeight < constraintHeight.min) {
+    newHeight = constraintHeight.min;
+    newWidth = newHeight * ratio;
+  }
+  return { width: newWidth, height: newHeight };
 }
 
 /**
