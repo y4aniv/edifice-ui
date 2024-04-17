@@ -59,7 +59,7 @@ export interface EditorProps {
   /** Editor placeholder content */
   placeholder?: string;
   /** Function to listen if content change */
-  onContentChange?: ((content: string) => void) | undefined;
+  onContentChange?: ({ editor }: { editor: any }) => void;
 }
 
 const Editor = forwardRef(

@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 
 // Import TipTap module overloaded typings (custom commands)
 import "@edifice-tiptap-extensions/extension-audio";
@@ -15,7 +15,6 @@ import { SpeechRecognition } from "@edifice-tiptap-extensions/extension-speechre
 import { SpeechSynthesis } from "@edifice-tiptap-extensions/extension-speechsynthesis";
 import { TableCell } from "@edifice-tiptap-extensions/extension-table-cell";
 import { useOdeClient } from "@edifice-ui/react";
-import { Editor } from "@tiptap/core";
 import Color from "@tiptap/extension-color";
 import Focus from "@tiptap/extension-focus";
 import FontFamily from "@tiptap/extension-font-family";
@@ -56,7 +55,7 @@ export const useTipTapEditor = (
   editable: boolean,
   content: Content,
   placeholder?: string,
-  onContentChange?: ((content: string) => void) | undefined,
+  onContentChange?: ({ editor }: { editor: any }) => void,
 ) => {
   const { currentLanguage } = useOdeClient();
   const { t } = useTranslation();
@@ -116,21 +115,8 @@ export const useTipTapEditor = (
       AttachmentNodeView(AttachmentRenderer),
     ],
     content,
+    onUpdate: onContentChange,
   });
-
-  const updateCallback = useCallback(
-    ({ editor }: { editor: Editor }) => {
-      onContentChange?.(editor?.getHTML());
-    },
-    [onContentChange],
-  );
-
-  useEffect(() => {
-    onContentChange
-      ? editor?.on("update", updateCallback)
-      : editor?.off("update", updateCallback);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onContentChange]);
 
   useEffect(() => {
     editor?.setEditable(editable);
