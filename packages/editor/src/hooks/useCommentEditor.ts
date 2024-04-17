@@ -53,7 +53,10 @@ export const useCommentEditor = (
   }, [editor]);
 
   const getComment = () => editor?.getHTML() as HTMLContent;
-  const resetComment = () => editor?.commands.setContent(content);
+  const resetComment = () => {
+    setCommentLength(0);
+    editor?.commands.setContent(content);
+  }
 
   return { editor, commentLength, getComment, resetComment };
 };
