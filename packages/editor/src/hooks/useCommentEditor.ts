@@ -56,7 +56,7 @@ export const useCommentEditor = (
   const resetComment = () => {
     setCommentLength(0);
     editor?.commands.setContent(content);
-  }
+  };
 
   return { editor, commentLength, getComment, resetComment };
 };
