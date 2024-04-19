@@ -154,38 +154,35 @@ export function autoResize(
   application: PIXI.Application,
   sprite: PIXI.Sprite,
 ): void {
-  setTimeout(() => {
-    // Get parent html object
-    const parent = application.view.parentNode as HTMLElement | undefined;
-    const maxMobileWidth = window.innerWidth - MODAL_HORIZONTAL_PADDING;
-    const parentWidth = Math.max(parent?.offsetWidth ?? 0, MIN_WIDTH);
-    const newSize = constraintSize(
-      {
-        width: sprite.width,
-        height: sprite.height,
+  // Get parent html object
+  const parent = application.view.parentNode as HTMLElement | undefined;
+  const maxMobileWidth = window.innerWidth - MODAL_HORIZONTAL_PADDING;
+  const parentWidth = Math.max(parent?.offsetWidth ?? 0, MIN_WIDTH);
+  const newSize = constraintSize(
+    {
+      width: sprite.width,
+      height: sprite.height,
+    },
+    {
+      width: {
+        max: Math.min(parentWidth, maxMobileWidth),
+        min: MIN_WIDTH,
       },
-      {
-        width: {
-          max: Math.min(parentWidth, maxMobileWidth),
-          min: MIN_WIDTH,
-        },
-        height: {
-          min: MIN_HEIGHT,
-          max: window.innerHeight - MODAL_VERTICAL_PADDING,
-        },
+      height: {
+        min: MIN_HEIGHT,
+        max: window.innerHeight - MODAL_VERTICAL_PADDING,
       },
-    );
-    // Define the new width to the parentWidth
-    const { height: newHeight, width: newWidth } = newSize;
+    },
+  );
+  // Define the new width to the parentWidth
+  const { height: newHeight, width: newWidth } = newSize;
 
-    // Anchor the sprite to the middle (for rotation)
-    if (application.view?.style) {
-      application.view.style.width = `${newWidth}px`;
-      application.view.style.height = `${newHeight}px`;
-      console.log(application.view.style.width, application.view.style.height);
-    }
-    console.log("newSize", newSize);
-  }, 0);
+  // Anchor the sprite to the middle (for rotation)
+  if (application.view?.style) {
+    application.view.style.width = `${newWidth}px`;
+    application.view.style.height = `${newHeight}px`;
+    console.log(application.view.style.width, application.view.style.height);
+  }
 }
 
 export function constraintSize(
