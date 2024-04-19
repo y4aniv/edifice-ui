@@ -58,6 +58,8 @@ export interface EditorProps {
   visibility?: WorkspaceVisibility;
   /** Editor placeholder content */
   placeholder?: string;
+  /** Function to listen if content change */
+  onContentChange?: ({ editor }: { editor: any }) => void;
 }
 
 const Editor = forwardRef(
@@ -69,6 +71,7 @@ const Editor = forwardRef(
       variant = "outline",
       visibility = "protected",
       placeholder,
+      onContentChange,
     }: EditorProps,
     ref: Ref<EditorRef>,
   ) => {
@@ -77,6 +80,7 @@ const Editor = forwardRef(
       mode === "edit",
       content,
       placeholder,
+      onContentChange,
     );
     const { ref: mediaLibraryModalRef, ...mediaLibraryModalHandlers } =
       useMediaLibraryModal(editor);
