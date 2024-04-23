@@ -102,43 +102,6 @@ export default function useAudioRecorder(
   const BUFFER_SIZE: number = 128; // https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor
   const DEFAULT_SAMPLE_RATE: number = 44100;
 
-  // Init Web Socket to send audio chunks to backend
-  useEffect(() => {
-    const ws = new WebSocket(
-      getUrl(audioContext?.sampleRate || DEFAULT_SAMPLE_RATE),
-    );
-    dispatch({ type: "update", updatedState: { webSocket: ws } });
-
-    ws.onopen = () => {
-      if (audioRef.current && audioRef.current.currentTime > 0) {
-        audioRef.current.currentTime = 0;
-      }
-      ws.send("open");
-      if (!compress) {
-        ws.send("rawdata");
-      }
-    };
-    ws.onerror = (event: Event) => {
-      console.error(event);
-      dispatch({
-        type: "update",
-        updatedState: { playState: "IDLE", recordState: "IDLE" },
-      });
-      closeWs();
-    };
-    ws.onclose = () => {
-      clearWs();
-    };
-
-    return () => {
-      if (ws.readyState === 1) {
-        ws.close();
-      }
-      dispatch({ type: "update", updatedState: { webSocket: null } });
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   // Init encoder worker
   useEffect(() => {
     const encoderWorker = new Worker("/infra/public/js/audioEncoder.js");
@@ -154,6 +117,11 @@ export default function useAudioRecorder(
     return () => {
       closeAudioStream();
       encoderWorker.terminate();
+
+      if (webSocket?.readyState === 1) {
+        webSocket.close();
+        dispatch({ type: "update", updatedState: { webSocket: null } });
+      }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -179,6 +147,41 @@ export default function useAudioRecorder(
       }
     };
   }, [webSocket]);
+
+  /**
+   * Open a new WebSocket connection to send audio data to the backend.
+   */
+  const openNewWebSocket = useCallback(() => {
+    const ws = new WebSocket(
+      getUrl(audioContext?.sampleRate || DEFAULT_SAMPLE_RATE),
+    );
+    dispatch({ type: "update", updatedState: { webSocket: ws } });
+
+    ws.onopen = () => {
+      if (audioRef.current && audioRef.current.currentTime > 0) {
+        audioRef.current.currentTime = 0;
+      }
+      ws.send("open");
+      if (!compress) {
+        ws.send("rawdata");
+      }
+    };
+
+    ws.onerror = (event: Event) => {
+      console.error(event);
+      dispatch({
+        type: "update",
+        updatedState: { playState: "IDLE", recordState: "IDLE" },
+      });
+      closeWs();
+    };
+
+    ws.onclose = () => {
+      clearWs();
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [audioContext, compress]);
 
   /**
    * Handle message received from the audio recorder processor.
@@ -255,6 +258,9 @@ export default function useAudioRecorder(
   ]);
 
   const initRecording = useCallback(async () => {
+    if (!webSocket) {
+      openNewWebSocket();
+    }
     // Request access to the user's microphone
     const micStream: MediaStream = await navigator.mediaDevices.getUserMedia({
       audio: true,
@@ -309,7 +315,7 @@ export default function useAudioRecorder(
 
     micStreamAudioSourceNode.connect(audioWorkletNode);
     audioWorkletNode.connect(audioContext.destination);
-  }, [handleAudioWorkletNodeMessage]);
+  }, [handleAudioWorkletNodeMessage, webSocket, openNewWebSocket]);
 
   const handleRecord = useCallback(async () => {
     if (recordState === "PAUSED") {
@@ -378,9 +384,12 @@ export default function useAudioRecorder(
       },
     });
 
+    closeWs();
+
     if (onUpdateRecord) {
       onUpdateRecord(undefined);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [closeAudioStream, onUpdateRecord]);
 
   const handleSave: () => Promise<WorkspaceElement | undefined> =
