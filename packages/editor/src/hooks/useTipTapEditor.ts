@@ -115,7 +115,12 @@ export const useTipTapEditor = (
       AttachmentNodeView(AttachmentRenderer),
     ],
     content,
-    onUpdate: onContentChange,
+    // If the onContentChange callback is provided, we call it on every content change.
+    ...(onContentChange
+      ? {
+          onUpdate: onContentChange,
+        }
+      : {}),
   });
 
   useEffect(() => {
