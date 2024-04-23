@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 
 import {
   Dropdown,
+  EmptyScreen,
   FileCard,
   Grid,
   SearchBar,
@@ -309,6 +310,8 @@ const Workspace = ({
 
   const workspace = clsx("workspace flex-grow-1 gap-0", className);
 
+  console.log(documents.length);
+
   return (
     <Grid className={workspace}>
       <Grid.Col
@@ -402,19 +405,27 @@ const Workspace = ({
             </div>
           </Grid.Col>
           <Grid.Col sm="4" md="8" xl="12" className="p-8 gap-8">
-            <div className="grid grid-workspace">
-              {documents.map((doc) => {
-                const isSelected = selectedDocuments.includes(doc);
-                return (
-                  <FileCard
-                    key={doc._id}
-                    doc={doc}
-                    isSelected={isSelected}
-                    onClick={() => handleSelectDoc(doc)}
-                  />
-                );
-              })}
-            </div>
+            {documents.length !== 0 ? (
+              <div className="grid grid-workspace">
+                {documents.map((doc) => {
+                  const isSelected = selectedDocuments.includes(doc);
+                  return (
+                    <FileCard
+                      key={doc._id}
+                      doc={doc}
+                      isSelected={isSelected}
+                      onClick={() => handleSelectDoc(doc)}
+                    />
+                  );
+                })}
+              </div>
+            ) : (
+              <EmptyScreen
+                imageSrc="/assets/themes/edifice-bootstrap/images/emptyscreen/illu-trash.svg"
+                text={t("workspace.empty.docSpace")}
+                title={t("explorer.emptyScreen.trash.title")}
+              />
+            )}
           </Grid.Col>
         </Grid>
       </Grid.Col>
