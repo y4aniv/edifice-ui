@@ -38,9 +38,15 @@ const useWorkspaceFile = () => {
     const matches = (uri ?? "").match(regex);
     if (matches && matches.length === 2) {
       const uuid = matches[1];
+      // get previous name
+      const existing = await odeServices
+        .workspace()
+        .searchDocuments({ filter: "all", id: uuid, limit: 1 });
+      const name = existing.length ? existing[0].name : undefined;
+      // update
       const file: WorkspaceElement = await odeServices
         .workspace()
-        .updateFile(uuid, blob, { alt, legend });
+        .updateFile(uuid, blob, { alt, legend, name });
       return `/workspace/${file.public ? "pub/" : ""}document/${uuid}`;
     } else {
       const res = await odeServices
