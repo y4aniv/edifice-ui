@@ -104,45 +104,6 @@ export default function useAudioRecorder(
 
   // Init Web Socket to send audio chunks to backend
   useEffect(() => {
-    const ws = new WebSocket(
-      getUrl(audioContext?.sampleRate || DEFAULT_SAMPLE_RATE),
-    );
-    dispatch({ type: "update", updatedState: { webSocket: ws } });
-
-    ws.onopen = () => {
-      if (audioRef.current && audioRef.current.currentTime > 0) {
-        audioRef.current.currentTime = 0;
-      }
-      ws.send("open");
-      if (!compress) {
-        ws.send("rawdata");
-      }
-    };
-
-    ws.onerror = (event: Event) => {
-      console.error(event);
-      dispatch({
-        type: "update",
-        updatedState: { playState: "IDLE", recordState: "IDLE" },
-      });
-      closeWs();
-    };
-
-    ws.onclose = () => {
-      clearWs();
-    };
-
-    return () => {
-      if (ws.readyState === 1) {
-        ws.close();
-      }
-      dispatch({ type: "update", updatedState: { webSocket: null } });
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Init encoder worker
-  useEffect(() => {
     const encoderWorker = new Worker("/infra/public/js/audioEncoder.js");
     dispatch({
       type: "update",
@@ -158,6 +119,19 @@ export default function useAudioRecorder(
       encoderWorker.terminate();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const getUrl = useCallback((sampleRate: number) => {
+    const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+    let host: string = window.location.host;
+    if (
+      window.location.host === "localhost:8090" ||
+      window.location.host === "localhost:3000"
+    ) {
+      host = "recette-ode1.opendigitaleducation.com";
+    }
+    const base = protocol + "://" + host;
+    return `${base}/audio/${uuid()}?sampleRate=${sampleRate}`;
   }, []);
 
   // Send audio chunks to backend + save
@@ -180,7 +154,47 @@ export default function useAudioRecorder(
         });
       }
     };
-  }, [webSocket]);
+
+    webSocket.onopen = () => {
+      if (audioRef.current && audioRef.current.currentTime > 0) {
+        audioRef.current.currentTime = 0;
+      }
+      webSocket.send("open");
+      if (!compress) {
+        webSocket.send("rawdata");
+      }
+
+      initRecording();
+    };
+
+    webSocket.onerror = (event: Event) => {
+      console.error(event);
+      dispatch({
+        type: "update",
+        updatedState: { playState: "IDLE", recordState: "IDLE" },
+      });
+      closeWs();
+    };
+
+    webSocket.onclose = () => {
+      clearWs();
+    };
+
+    return () => {
+      if (webSocket.readyState === 1) {
+        webSocket.close();
+      }
+      dispatch({ type: "update", updatedState: { webSocket: null } });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [compress, webSocket]);
+
+  const openNewWebSocket = useCallback(() => {
+    const ws = new WebSocket(
+      getUrl(audioContext?.sampleRate || DEFAULT_SAMPLE_RATE),
+    );
+    dispatch({ type: "update", updatedState: { webSocket: ws } });
+  }, [audioContext?.sampleRate, getUrl]);
 
   /**
    * Handle message received from the audio recorder processor.
@@ -326,9 +340,11 @@ export default function useAudioRecorder(
         updatedState: { recordState: "RECORDING", playState: "IDLE" },
       });
 
-      await initRecording();
+      // Open new WebSocket to send audio chunks to backend
+      openNewWebSocket();
     }
-  }, [initRecording, recordState, audioContext, audioRef]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [recordState, audioContext, audioRef]);
 
   const handleRecordPause = useCallback(() => {
     dispatch({ type: "update", updatedState: { recordState: "PAUSED" } });
@@ -370,6 +386,9 @@ export default function useAudioRecorder(
 
   const handleReset = useCallback(() => {
     closeAudioStream();
+    // Close web socket because it's impossible to clear the buffer sent to the backend
+    closeWs();
+
     dispatch({
       type: "update",
       updatedState: {
@@ -384,8 +403,8 @@ export default function useAudioRecorder(
       onUpdateRecord(undefined);
     }
 
-    webSocket?.send("cancel");
-  }, [closeAudioStream, onUpdateRecord, webSocket]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [closeAudioStream, onUpdateRecord]);
 
   const handleSave: () => Promise<WorkspaceElement | undefined> =
     useCallback(async () => {
@@ -448,6 +467,7 @@ export default function useAudioRecorder(
                 reject("Error while saving");
               }
             }
+            console.log(event);
           };
         });
       }
@@ -479,19 +499,6 @@ export default function useAudioRecorder(
         return v.toString(16);
       },
     );
-  }
-
-  function getUrl(sampleRate: number) {
-    const protocol = window.location.protocol === "https:" ? "wss" : "ws";
-    let host: string = window.location.host;
-    if (
-      window.location.host === "localhost:8090" ||
-      window.location.host === "localhost:3000"
-    ) {
-      host = "recette-ode1.opendigitaleducation.com";
-    }
-    const base = protocol + "://" + host;
-    return `${base}/audio/${uuid()}?sampleRate=${sampleRate}`;
   }
 
   const closeWs = useCallback(() => {
