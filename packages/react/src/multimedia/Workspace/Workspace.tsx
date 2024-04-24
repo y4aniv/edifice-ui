@@ -310,8 +310,6 @@ const Workspace = ({
 
   const workspace = clsx("workspace flex-grow-1 gap-0", className);
 
-  console.log(documents.length);
-
   return (
     <Grid className={workspace}>
       <Grid.Col
