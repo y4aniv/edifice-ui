@@ -11,12 +11,9 @@ const AudioRenderer = (props: AudioProps) => {
   return (
     <NodeViewWrapper>
       <div className="audio-wrapper">
-        <audio
-          src={node.attrs.src}
-          controls
-          data-document-id={node.attrs.src}
-          muted
-        ></audio>
+        <audio src={node.attrs.src} controls data-document-id={node.attrs.src}>
+          <track kind="captions" />
+        </audio>
       </div>
     </NodeViewWrapper>
   );
