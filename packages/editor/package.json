@@ -1,6 +1,6 @@
 {
   "name": "@edifice-ui/editor",
-  "version": "1.5.1-develop-pedago.5",
+  "version": "1.5.1-develop-pedago.6",
   "description": "Edifice Editor Library",
   "keywords": [
     "react",
@@ -59,6 +59,7 @@
     "@edifice-tiptap-extensions/extension-video": "develop-pedago",
     "@tiptap-pro/extension-mathematics": "2.6.4",
     "@tiptap/core": "2.3.0",
+    "@tiptap/extension-character-count": "2.3.0",
     "@tiptap/extension-color": "2.3.0",
     "@tiptap/extension-focus": "2.3.0",
     "@tiptap/extension-font-family": "2.3.0",
@@ -80,7 +81,6 @@
     "@tiptap/pm": "2.3.0",
     "@tiptap/react": "2.3.0",
     "@tiptap/starter-kit": "2.3.0",
-    "@tiptap/extension-character-count": "2.3.0",
     "emoji-picker-react": "4.5.2",
     "katex": "0.16.8"
   },
