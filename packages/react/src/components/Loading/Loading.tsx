@@ -56,7 +56,7 @@ const Loading = forwardRef(
     };
 
     const classes = clsx(
-      "loading",
+      "loading d-flex align-items-center gap-8",
       {
         "is-loading": isLoading,
       },

@@ -64,9 +64,11 @@
     --edifice-green-500: #46bfaf;
     --edifice-green-800: #058f7d;
     --edifice-green-900: #2e6105;
+    --edifice-primary-500: #ff8d2e;
     --edifice-primary-200: #ffefe3;
     --edifice-primary-300: #ffcba0;
     --edifice-primary-800: #da6a0b;
+    --edifice-secondary-500: #2a9cc8;
     --edifice-secondary-200: #e5f5ff;
     --edifice-secondary-300: #b9e3f8;
     --edifice-secondary-800: #2f7ea7;
@@ -16996,6 +16998,11 @@ hr {
     background-color: var(--edifice-green-900) !important
 }
 
+.text-bg-primary-500 {
+    color: #fff !important;
+    background-color: var(--edifice-primary-500) !important
+}
+
 .text-bg-primary-200 {
     color: #fff !important;
     background-color: var(--edifice-primary-200) !important
@@ -17009,6 +17016,11 @@ hr {
 .text-bg-primary-800 {
     color: #fff !important;
     background-color: var(--edifice-primary-800) !important
+}
+
+.text-bg-secondary-500 {
+    color: #fff !important;
+    background-color: var(--edifice-secondary-500) !important
 }
 
 .text-bg-secondary-200 {
@@ -17287,6 +17299,10 @@ hr {
     background-color: var(--edifice-green-900) !important
 }
 
+.bg-primary-500 {
+    background-color: var(--edifice-primary-500) !important
+}
+
 .bg-primary-200 {
     background-color: var(--edifice-primary-200) !important
 }
@@ -17297,6 +17313,10 @@ hr {
 
 .bg-primary-800 {
     background-color: var(--edifice-primary-800) !important
+}
+
+.bg-secondary-500 {
+    background-color: var(--edifice-secondary-500) !important
 }
 
 .bg-secondary-200 {
@@ -17718,6 +17738,10 @@ hr {
     --edifice-alert-border-left-color: #e13a3a
 }
 
+.app-header .breadcrumb-item+.breadcrumb-item {
+    padding: 0 !important
+}
+
 .app-icon {
     flex-shrink: 0
 }
@@ -17914,7 +17938,7 @@ hr {
     border-width: var(--edifice-btn-border-width);
     border-radius: var(--edifice-btn-border-radius);
     box-shadow: var(--edifice-btn-box-shadow);
-    transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    transition: font-weight 0ms, all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94)
 }
 
 .btn span,
@@ -19612,10 +19636,6 @@ hr {
     color: var(--edifice-secondary)
 }
 
-.ProseMirror>*+* {
-    margin-top: .75em
-}
-
 .ProseMirror .Tiptap-mathematics-editor {
     background: #202020;
     color: #fff;
@@ -19661,7 +19681,8 @@ hr {
 }
 
 .ProseMirror .react-renderer.has-focus .media-node-view .vertical-resize-handle {
-    opacity: 1
+    opacity: 1;
+    z-index: 1
 }
 
 .ProseMirror .react-renderer.has-focus .media-node-view {
@@ -19809,6 +19830,22 @@ hr {
     background: linear-gradient(to left, #fff, rgba(255, 255, 255, 0.4))
 }
 
+.iframe-wrapper iframe {
+    max-width: 100%
+}
+
+.node-custom-image {
+    display: inline-block
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+    color: #adb5bd;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none
+}
+
 .toast {
     --edifice-toast-border-left-color: var(--edifice-gray-800);
     --edifice-toast-zindex: 1090;
@@ -19866,18 +19903,12 @@ hr {
 
 .toolbar {
     align-items: center;
-    gap: .8rem;
+    gap: .4rem;
     border-radius: 1.6rem
 }
 
 .toolbar>* {
     flex-shrink: 0
-}
-
-@media(max-width: 767.98px) {
-    .toolbar {
-        gap: .4rem
-    }
 }
 
 .toolbar.default {
@@ -19892,7 +19923,8 @@ hr {
 .toolbar-divider {
     width: 1px;
     height: 2rem;
-    background: #e4e4e4
+    background: #e4e4e4;
+    margin: 0 .4rem
 }
 
 .toolbar.focus {
@@ -20153,7 +20185,8 @@ hr {
 }
 
 .modal-body .video-recorder-video-container {
-    min-height: 200px
+    min-height: 200px;
+    height: 100%
 }
 
 .modal-body .video-recorder-video-container video {
@@ -21455,9 +21488,11 @@ main.container-fluid {
     --edifice-family-primary: "KGJune";
     --edifice-primary-200: var(--edifice-blue-200);
     --edifice-primary-300: var(--edifice-blue-300);
+    --edifice-primary-500: var(--edifice-blue);
     --edifice-primary-800: var(--edifice-blue-800);
     --edifice-secondary-200: var(--edifice-orange-200);
     --edifice-secondary-300: var(--edifice-orange-300);
+    --edifice-secondary-500: var(--edifice-orange);
     --edifice-secondary-800: var(--edifice-orange-800);
     --edifice-green-200: #EAF7E4;
     --edifice-yellow-200: #FBF4D5;
@@ -25496,3 +25531,5 @@ h4,
     -webkit-box-orient: vertical;
     white-space: normal
 }
+
+/*# sourceMappingURL=index.css.map */

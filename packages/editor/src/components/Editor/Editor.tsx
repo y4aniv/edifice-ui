@@ -1,28 +1,30 @@
-import { Suspense, lazy, forwardRef, useImperativeHandle, Ref } from "react";
+import { Ref, Suspense, forwardRef, lazy, useImperativeHandle } from "react";
 
 import "@edifice-tiptap-extensions/extension-image";
 import { LoadingScreen, MediaLibrary, useOdeClient } from "@edifice-ui/react";
 import {
-  EditorContent,
   Content,
-  JSONContent,
+  EditorContent,
   FocusPosition,
+  JSONContent,
 } from "@tiptap/react";
 import clsx from "clsx";
+import { WorkspaceVisibility } from "edifice-ts-client";
 
 import {
-  EditorToolbar,
+  BubbleMenuEditImage,
   EditorContext,
+  EditorToolbar,
+  LinkToolbar,
+  TableToolbar,
   useImageModal,
   useLinkToolbar,
   useMathsModal,
   useMediaLibraryModal,
   useSpeechSynthetisis,
   useTipTapEditor,
-  LinkToolbar,
-  TableToolbar,
-  BubbleMenuEditImage,
 } from "../..";
+import { useMathsStyles } from "../../hooks/useMathsStyles";
 
 const MathsModal = lazy(async () => await import("./MathsModal"));
 const ImageEditor = lazy(async () => await import("./ImageEditor"));
@@ -59,6 +61,11 @@ export interface EditorProps {
   focus?: FocusPosition;
   /** Editor placeholder content */
   placeholder?: string;
+  /** Visibility of the content created
+   *  this will impact where the uploaded files will be upload and the availability of the public media files  */
+  visibility?: WorkspaceVisibility;
+  /** Function to listen if content change */
+  onContentChange?: ({ editor }: { editor: any }) => void;
 }
 
 const Editor = forwardRef(
@@ -70,6 +77,8 @@ const Editor = forwardRef(
       variant = "outline",
       focus = "all",
       placeholder = "",
+      visibility = "protected",
+      onContentChange,
     }: EditorProps,
     ref: Ref<EditorRef>,
   ) => {
@@ -79,14 +88,17 @@ const Editor = forwardRef(
       content,
       focus,
       placeholder,
+      onContentChange,
     );
     const { ref: mediaLibraryModalRef, ...mediaLibraryModalHandlers } =
       useMediaLibraryModal(editor);
     const { toggle: toggleMathsModal, ...mathsModalHandlers } =
       useMathsModal(editor);
-    const imageModal = useImageModal(editor);
+    const imageModal = useImageModal(editor, "media-library", visibility);
     const linkToolbarHandlers = useLinkToolbar(editor, mediaLibraryModalRef);
     const speechSynthetisis = useSpeechSynthetisis(editor);
+
+    useMathsStyles();
 
     //----- Editor API
     useImperativeHandle(ref, () => ({
@@ -153,6 +165,7 @@ const Editor = forwardRef(
           {editable && (
             <MediaLibrary
               appCode={appCode}
+              visibility={visibility}
               ref={mediaLibraryModalRef}
               {...mediaLibraryModalHandlers}
             />

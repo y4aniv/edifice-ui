@@ -4,7 +4,7 @@ import { Workspace as Component } from "../../Workspace";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 
 export const Workspace = () => {
-  const { type, setResultCounter, setResult, multiple } =
+  const { type, setResultCounter, setResult, multiple, visibility } =
     useMediaLibraryContext();
 
   function getDocumentRoleFilter(): Role | Role[] | null {
@@ -35,6 +35,8 @@ export const Workspace = () => {
       onSelect={handleSelect}
       multiple={multiple}
       className="border rounded overflow-y-auto"
+      defaultFolder={visibility}
+      showPublicFolder={visibility === "public"}
     ></Component>
   );
 };

@@ -33,7 +33,7 @@ const LinkerRenderer = ({ selected, ...props }: LinkerProps) => {
     // Clicking a linker badge in read mode opens the link
     if (editor && !editor.isEditable) {
       event.preventDefault;
-      window.open(href ?? "about:blank", target ?? "_blank");
+      window.open(href ?? "about:blank", target ?? "_self");
     }
   };
 

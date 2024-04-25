@@ -31,6 +31,7 @@ import Underline from "@tiptap/extension-underline";
 import { Content, FocusPosition, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { Mathematics } from "@tiptap-pro/extension-mathematics";
+import { useTranslation } from "react-i18next";
 
 import {
   AttachmentNodeView,
@@ -45,10 +46,9 @@ import {
 } from "../components";
 
 /**
- * Hook that creates a tiptap editor instance,
- * and a function to add rich content from the MediaLibrary.
+ * Hook that creates a tiptap editor instance.
  *
- * @param isEditable truthy if the editor content should be editable
+ * @param editable truthy if the editor content should be editable
  * @param content default rich content
  * @param focus set focus position to the editor
  * @param placeholder editor placeholder content
@@ -58,8 +58,10 @@ export const useTipTapEditor = (
   content: Content,
   focus?: FocusPosition,
   placeholder?: string,
+  onContentChange?: ({ editor }: { editor: any }) => void,
 ) => {
   const { currentLanguage } = useOdeClient();
+  const { t } = useTranslation();
 
   const editor = useEditor({
     // fix WB-2534
@@ -68,10 +70,12 @@ export const useTipTapEditor = (
     editable: true,
     extensions: [
       StarterKit,
-      Placeholder.configure({ placeholder }),
       Focus.configure({
         className: "has-focus",
         mode: "all",
+      }),
+      Placeholder.configure({
+        placeholder: t(placeholder || "tiptap.placeholder"),
       }),
       CustomHighlight.configure({
         multicolor: true,
@@ -114,6 +118,12 @@ export const useTipTapEditor = (
       AttachmentNodeView(AttachmentRenderer),
     ],
     content,
+    // If the onContentChange callback is provided, we call it on every content change.
+    ...(onContentChange
+      ? {
+          onUpdate: onContentChange,
+        }
+      : {}),
   });
 
   useEffect(() => {

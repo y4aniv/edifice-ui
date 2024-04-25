@@ -83,7 +83,15 @@ const InternalLinker = ({
                 filters: {},
                 pagination: { startIdx: 0, pageSize: 300 }, // ignored at the moment
               })
-            ).sort((a, b) => (a.modifiedAt < b.modifiedAt ? 1 : -1));
+            )
+              .filter((resource) => {
+                if (!search || search.length === 0) return true;
+                let found = resource.name?.includes(search) ?? false;
+                found ||= resource.creatorName?.includes(search) ?? false;
+                found ||= resource.description?.includes(search) ?? false;
+                return found;
+              })
+              .sort((a, b) => (a.modifiedAt < b.modifiedAt ? 1 : -1));
 
             setResources(resources);
             return; // end here
@@ -156,7 +164,7 @@ const InternalLinker = ({
         selectResource(resource);
       } else {
         setSelectedDocuments(
-          selectedDocuments.filter((value, i) => i !== index),
+          selectedDocuments.filter((_value, i) => i !== index),
         );
       }
     },
@@ -230,7 +238,7 @@ const InternalLinker = ({
   }, [resources]);
 
   return (
-    <div className="internal-linker flex-grow-1 w-100 rounded border gap-0">
+    <div className="internal-linker flex-grow-1 w-100 rounded border gap-0 overflow-auto">
       <div className="search d-flex bg-light rounded-top border-bottom">
         <div className="flex-shrink-1 px-8 py-12 border-end">
           <Dropdown overflow>
@@ -285,7 +293,7 @@ const InternalLinker = ({
               ) >= 0;
             return (
               <LinkerCard
-                key={resource.assetId}
+                key={resource.path}
                 doc={resource}
                 isSelected={isSelected}
                 onClick={() => toggleResourceSelection(resource)}

@@ -88,13 +88,12 @@ const BlogPublic = ({
           </FormControl>
           <div className="d-flex flex-wrap align-items-center gap-4">
             <p className="text-break">
-              {window.location.origin}
-              {window.location.pathname}/pub/{slug}
+              {window.location.origin}/blog/pub/{slug}
             </p>
             <Button
               color="primary"
               disabled={!isPublic}
-              onClick={onCopyToClipBoard}
+              onClick={() => onCopyToClipBoard("/blog")}
               type="button"
               leftIcon={<Copy />}
               variant="ghost"
