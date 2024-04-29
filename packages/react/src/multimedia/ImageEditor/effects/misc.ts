@@ -8,6 +8,9 @@ const MIN_WIDTH = 100;
 const MODAL_VERTICAL_PADDING = 450;
 const MODAL_HORIZONTAL_PADDING = 64;
 
+// Using canvas to download the image increase the file size so to keep the same we need to apply a quality
+const DEFAULT_QUALITY = 0.5;
+
 // Define the default name of the sprite in the PIXI.Application context
 export const DEFAULT_SPRITE_NAME = "image";
 
@@ -144,6 +147,7 @@ export async function updateImage(
   // Resize the view in css to keep img quality
   autoResize(application, sprite);
 }
+
 /**
  * This function resize the sprite according to the container width
  *
@@ -181,7 +185,6 @@ export function autoResize(
   if (application.view?.style) {
     application.view.style.width = `${newWidth}px`;
     application.view.style.height = `${newHeight}px`;
-    console.log(application.view.style.width, application.view.style.height);
   }
 }
 
@@ -230,9 +233,13 @@ export function constraintSize(
 export function saveAsBlob(application: PIXI.Application): Promise<Blob> {
   return new Promise<Blob>((resolve, reject) => {
     if (application?.view?.toBlob) {
-      application.view.toBlob((blob) => {
-        blob ? resolve(blob) : reject("EXTRACT_FAILED");
-      });
+      application.view.toBlob(
+        (blob) => {
+          blob ? resolve(blob) : reject("EXTRACT_FAILED");
+        },
+        "image/jpeg",
+        DEFAULT_QUALITY,
+      );
     } else {
       reject("EXTRACT_FAILED");
     }
