@@ -5,9 +5,13 @@ const MIN_HEIGHT = 100;
 // Define (in pixel) the minimal width the sprite should have
 const MIN_WIDTH = 100;
 // Modal padding
-const MODAL_VERTICAL_PADDING = 400;
+const MODAL_VERTICAL_PADDING = 450;
 const MODAL_HORIZONTAL_PADDING = 64;
-//Define the default name of the sprite in the PIXI.Application context
+
+// Using canvas to download the image increase the file size so to keep the same we need to apply a quality
+const DEFAULT_QUALITY = 0.5;
+
+// Define the default name of the sprite in the PIXI.Application context
 export const DEFAULT_SPRITE_NAME = "image";
 
 /**
@@ -137,9 +141,13 @@ export async function updateImage(
   } else {
     // Add sprite to context
     application.stage.addChild(sprite);
-    autoResize(application, sprite);
+    // Resize the sprite
+    application.renderer.resize(sprite.width, sprite.height);
   }
+  // Resize the view in css to keep img quality
+  autoResize(application, sprite);
 }
+
 /**
  * This function resize the sprite according to the container width
  *
@@ -172,47 +180,14 @@ export function autoResize(
   );
   // Define the new width to the parentWidth
   const { height: newHeight, width: newWidth } = newSize;
+
   // Anchor the sprite to the middle (for rotation)
-  sprite.anchor.x = 0.5;
-  sprite.anchor.y = 0.5;
-  // Position the sprite to the middle
-  sprite.position = new PIXI.Point(newWidth / 2, newHeight / 2);
-  // Update sprite size
-  sprite.width = newWidth;
-  sprite.height = newHeight;
-  // Resize the stage
-  application.stage.height = newHeight;
-  application.stage.width = newWidth;
-  application.renderer.resize(newWidth, newHeight);
+  if (application.view?.style) {
+    application.view.style.width = `${newWidth}px`;
+    application.view.style.height = `${newHeight}px`;
+  }
 }
-/**
- * This function transform the stage into a blob
- *
- * @param application the PIXI.Application context
- * @returns A promise of the generated blob
- */
-export function saveAsBlob(application: PIXI.Application): Promise<Blob> {
-  return new Promise<Blob>((resolve, reject) => {
-    if (application?.view?.toBlob) {
-      application.view.toBlob((blob) => {
-        blob ? resolve(blob) : reject("EXTRACT_FAILED");
-      });
-    } else {
-      reject("EXTRACT_FAILED");
-    }
-  });
-}
-/**
- * This function transform the stage into a data URL encoded image
- *
- * @param application the PIXI.Application context
- * @returns the generated image as Data URL or undefined if failed
- */
-export function saveAsDataURL(
-  application: PIXI.Application,
-): string | undefined {
-  return application.view.toDataURL?.();
-}
+
 export function constraintSize(
   size: { width: number; height: number },
   constraints: {
@@ -248,6 +223,55 @@ export function constraintSize(
   }
   return { width: newWidth, height: newHeight };
 }
+
+/**
+ * This function transform the stage into a blob
+ *
+ * @param application the PIXI.Application context
+ * @returns A promise of the generated blob
+ */
+export function saveAsBlob(application: PIXI.Application): Promise<Blob> {
+  return new Promise<Blob>((resolve, reject) => {
+    if (application?.view?.toBlob) {
+      application.view.toBlob(
+        (blob) => {
+          blob ? resolve(blob) : reject("EXTRACT_FAILED");
+        },
+        "image/jpeg",
+        DEFAULT_QUALITY,
+      );
+    } else {
+      reject("EXTRACT_FAILED");
+    }
+  });
+}
+/**
+ * This function transform the stage into a data URL encoded image
+ *
+ * @param application the PIXI.Application context
+ * @returns the generated image as Data URL or undefined if failed
+ */
+export function saveAsDataURL(
+  application: PIXI.Application,
+): string | undefined {
+  return application.view.toDataURL?.();
+}
+
+/**
+ * Calculates the scale percentage for a PIXI.Sprite or the application view based on the parent container's dimensions.
+ * @param application - The PIXI.Application instance.
+ * @param sprite - The PIXI.Sprite instance (optional).
+ * @returns The scale percentage.
+ */
+export function getApplicationScale(application: PIXI.Application) {
+  if (application.view.getBoundingClientRect) {
+    return (
+      application.view.getBoundingClientRect()!.width / application.view.width
+    );
+  }
+  return 1;
+}
+
 export function toBlob(application: PIXI.Application) {
   return new Promise<Blob>((resolve, reject) => {
     application.view.toBlob?.(

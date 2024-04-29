@@ -6,3 +6,4 @@ export * from "./video";
 export * from "./StringUtils";
 export * from "./isActionAvailable";
 export * from "./libraryMaps";
+export * from "./thumbnail";

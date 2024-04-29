@@ -42,7 +42,8 @@
   },
   "dependencies": {
     "@floating-ui/react": "0.26.0",
-    "@pixi/react": "7.1.1",
+    "@pixi/mixin-get-child-by-name": "7.4.2",
+    "@pixi/react": "7.1.2",
     "@popperjs/core": "2.11.8",
     "@tiptap/pm": "2.0.3",
     "@tiptap/react": "2.0.3",
@@ -50,7 +51,7 @@
     "dayjs": "1.11.10",
     "html-react-parser": "4.2.1",
     "pako": "2.1.0",
-    "pixi.js": "7.3.2",
+    "pixi.js": "7.4.2",
     "react-hot-toast": "2.4.1",
     "react-popper": "2.3.0",
     "swiper": "10.1.0",

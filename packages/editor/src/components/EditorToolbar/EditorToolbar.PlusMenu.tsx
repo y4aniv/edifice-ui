@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-import { Dropdown, DropdownMenuOptions, Tooltip } from "@edifice-ui/react";
+import { Dropdown, DropdownMenuOptions } from "@edifice-ui/react";
 import { useTranslation } from "react-i18next";
 
 interface Props {
@@ -15,14 +15,12 @@ export const EditorToolbarPlusMenu = ({ options }: Props) => {
 
   return (
     <>
-      <Tooltip message={t("tiptap.toolbar.plus")} placement="top">
-        <Dropdown.Trigger
-          variant="ghost"
-          label={t("tiptap.toolbar.plus")}
-          size="md"
-          tabIndex={-1}
-        />
-      </Tooltip>
+      <Dropdown.Trigger
+        variant="ghost"
+        label={t("tiptap.toolbar.plus")}
+        size="md"
+        tabIndex={-1}
+      />
       <Dropdown.Menu>
         {options.map((option, index) => {
           return (

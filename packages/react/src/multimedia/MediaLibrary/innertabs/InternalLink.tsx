@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import { ILinkedResource } from "edifice-ts-client";
 import { useTranslation } from "react-i18next";
 
@@ -25,8 +27,13 @@ export const InternalLink = ({
   const { t } = useTranslation();
   const { setResult, setResultCounter, appCode } = useMediaLibraryContext();
   const [isChecked, toggleChecked] = useToggle(target === "_blank");
+  const [resources, setRessources] = useState<ILinkedResource[]>([]);
 
   const handleSelect = (resources: ILinkedResource[]) => {
+    setRessources(resources);
+  };
+
+  useEffect(() => {
     setResult({
       target: isChecked ? "_blank" : undefined,
       resources,
@@ -36,10 +43,11 @@ export const InternalLink = ({
     } else {
       setResultCounter(undefined);
     }
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isChecked, resources]);
 
   return (
-    <div className="d-flex flex-column flex-fill gap-16">
+    <div className="d-flex flex-column flex-fill gap-16 overflow-hidden">
       <InternalLinker
         appCode={appCode}
         defaultAppCode={appPrefix}
@@ -50,7 +58,7 @@ export const InternalLink = ({
         className="align-items-center"
         checked={isChecked}
         label={t("bbm.linker.open.tab")}
-        onChange={() => toggleChecked()}
+        onChange={toggleChecked}
       />
     </div>
   );

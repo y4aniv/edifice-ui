@@ -18,6 +18,7 @@ import { useOdeClient } from "@edifice-ui/react";
 import Color from "@tiptap/extension-color";
 import Focus from "@tiptap/extension-focus";
 import FontFamily from "@tiptap/extension-font-family";
+import Placeholder from "@tiptap/extension-placeholder";
 import Subscript from "@tiptap/extension-subscript";
 import Superscript from "@tiptap/extension-superscript";
 import Table from "@tiptap/extension-table";
@@ -30,6 +31,7 @@ import Underline from "@tiptap/extension-underline";
 import { Content, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { Mathematics } from "@tiptap-pro/extension-mathematics";
+import { useTranslation } from "react-i18next";
 
 import {
   AttachmentNodeView,
@@ -44,14 +46,19 @@ import {
 } from "../components";
 
 /**
- * Hook that creates a tiptap editor instance,
- * and a function to add rich content from the MediaLibrary.
+ * Hook that creates a tiptap editor instance.
  *
- * @param isEditable truthy if the editor content should be editable
+ * @param editable truthy if the editor content should be editable
  * @param content default rich content
  */
-export const useTipTapEditor = (editable: boolean, content: Content) => {
+export const useTipTapEditor = (
+  editable: boolean,
+  content: Content,
+  placeholder?: string,
+  onContentChange?: ({ editor }: { editor: any }) => void,
+) => {
   const { currentLanguage } = useOdeClient();
+  const { t } = useTranslation();
 
   const editor = useEditor({
     // fix WB-2534
@@ -60,6 +67,9 @@ export const useTipTapEditor = (editable: boolean, content: Content) => {
     editable: true,
     extensions: [
       StarterKit,
+      Placeholder.configure({
+        placeholder: t(placeholder || "tiptap.placeholder"),
+      }),
       CustomHighlight.configure({
         multicolor: true,
       }),
@@ -105,6 +115,12 @@ export const useTipTapEditor = (editable: boolean, content: Content) => {
       AttachmentNodeView(AttachmentRenderer),
     ],
     content,
+    // If the onContentChange callback is provided, we call it on every content change.
+    ...(onContentChange
+      ? {
+          onUpdate: onContentChange,
+        }
+      : {}),
   });
 
   useEffect(() => {

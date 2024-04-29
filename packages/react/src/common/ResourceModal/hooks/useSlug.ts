@@ -57,9 +57,11 @@ export const useSlug = ({
     setIsPublic(value);
   }
 
-  function onCopyToClipBoard() {
+  function onCopyToClipBoard(pathname: string) {
     navigator.clipboard.writeText(
-      `${window.location.origin}${window.location.pathname}/pub/${slug}`,
+      `${window.location.origin}${
+        pathname ? pathname : window.location.pathname
+      }/pub/${slug}`,
     );
     toast.success(t("explorer.copy.clipboard"));
   }

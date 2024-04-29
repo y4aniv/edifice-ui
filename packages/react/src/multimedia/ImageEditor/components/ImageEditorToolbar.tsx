@@ -83,14 +83,12 @@ const ImageEditorToolbar = ({
   ];
 
   return (
-    <div className="d-flex flex-row align-self-start ">
-      <Toolbar
-        variant="no-shadow"
-        align="left"
-        isBlock
-        items={ImageEditorItems}
-      />
-    </div>
+    <Toolbar
+      variant="no-shadow"
+      align="left"
+      isBlock
+      items={ImageEditorItems}
+    />
   );
 };
 export default ImageEditorToolbar;

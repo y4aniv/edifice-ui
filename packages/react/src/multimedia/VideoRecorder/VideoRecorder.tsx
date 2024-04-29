@@ -232,10 +232,12 @@ const VideoRecorder = forwardRef(
         if (videoRef.current) {
           if (videoRef.current.src) {
             window.URL.revokeObjectURL(videoRef.current.src);
+            videoRef.current.src = "";
           }
           videoRef.current.srcObject = mediaStream;
           videoRef.current.autoplay = true;
           videoRef.current.volume = 1;
+          videoRef.current.muted = true;
         }
       } catch (err) {
         console.error(err);
@@ -333,16 +335,6 @@ const VideoRecorder = forwardRef(
 
       const uploadResponse = await odeServices.video().upload(params);
       if (uploadResponse.state === "succeed") {
-        await odeServices
-          .video()
-          .generateSaveEvent(
-            appCode,
-            recordedTime,
-            { name: browser.name, version: browser.version },
-            device.type,
-            uploadResponse,
-          );
-
         const resVideo: WorkspaceElement = {
           _id: uploadResponse.videoworkspaceid,
           file: uploadResponse.videoid,
@@ -501,11 +493,15 @@ const VideoRecorder = forwardRef(
 
     return (
       <div className="video-recorder d-flex flex-fill flex-column align-items-center pb-8">
-        <div className="video-recorder-caption">{caption}</div>
+        <div className="video-recorder-caption d-none d-md-block">
+          {caption}
+        </div>
         {inputDevices.length > 1 && (
           <div className="video-recorder-devices mb-12">
             <FormControl id="selectInputDevice">
-              <Label>{t("bbm.video.record.select.devices.label")}</Label>
+              <Label className="d-none d-md-block">
+                {t("bbm.video.record.select.devices.label")}
+              </Label>
               <Select
                 placeholderOption={t(
                   "bbm.video.record.select.devices.placeholder",

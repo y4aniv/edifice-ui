@@ -1,5 +1,6 @@
 import * as PIXI from "pixi.js";
 
+import { getApplicationScale } from "./misc";
 import { aggregate } from "../utils/aggregate";
 
 //
@@ -23,12 +24,15 @@ const CURSOR_NAME = "BRUSH_CURSOR";
  * @param points a list of PIXI.Point used to draw brush
  * @returns a graphical object that draw brush for each of theses points
  */
-function drawBrush(points: Array<PIXI.Point | undefined>): PIXI.Graphics {
+function drawBrush(
+  points: Array<PIXI.Point | undefined>,
+  scale: number,
+): PIXI.Graphics {
   const container = new PIXI.Graphics();
   for (const point of points) {
     if (point) {
       container.beginFill(0xffffff, 1);
-      container.drawCircle(point.x, point.y, BRUSH_SIZE);
+      container.drawCircle(point.x, point.y, BRUSH_SIZE / scale);
       container.lineStyle(0);
       container.endFill();
     }
@@ -57,16 +61,25 @@ function drawBlurListener(
     (points: Array<PIXI.Point | undefined>) => {
       // Search for sprite
       const child = application.stage.getChildByName(spriteName);
+      const scale = getApplicationScale(application);
       if (child === undefined || child === null) return;
       // Create a sprite by copying texture and apply blurFilter
       const newSprite = new PIXI.Sprite((child as PIXI.Sprite).texture);
-      newSprite.filters = [new PIXI.filters.BlurFilter()];
+      // Apply blur filter to the new sprite, quality for big image (fix lag issue)
+
+      newSprite.filters = [
+        new PIXI.BlurFilter(
+          8, // PIXI Default value for strength of the blur effect
+          (Math.min(Math.round(4 * scale)), 4), // Quality of the blur effect depending on the scale (4 is the PIXI default value)
+          Math.min(scale, 1), // Resolution of the blur effect depending on the scale
+        ),
+      ];
       newSprite.width = (child as PIXI.Sprite).width;
       newSprite.height = (child as PIXI.Sprite).height;
       // Resize the new sprite to match the original
       newSprite.scale = new PIXI.Point(1, 1);
       newSprite.anchor = (child as PIXI.Sprite).anchor;
-      newSprite.mask = drawBrush(points);
+      newSprite.mask = drawBrush(points, scale);
       (child as PIXI.Sprite).addChild(newSprite);
     },
   );
@@ -80,9 +93,10 @@ function drawBlurListener(
 function drawCursor(application: PIXI.Application): PIXI.Graphics {
   // Remove cursor if exists before draw
   removeCursor(application);
+  const scale = getApplicationScale(application);
   const circle = new PIXI.Graphics();
-  circle.lineStyle(1, 0xff0000);
-  circle.drawCircle(0, 0, BRUSH_SIZE);
+  circle.lineStyle(Math.max(1, 1 / scale), 0xff0000);
+  circle.drawCircle(0, 0, BRUSH_SIZE / scale);
   circle.endFill();
   circle.name = CURSOR_NAME;
   application.stage.addChild(circle);
