@@ -9,12 +9,13 @@
 
     &-video-container {
       min-height: 200px;
-    
+      height: 100%;
+
       & video {
         height: 100%;
         width: 100%;
       }
-      
+
       & .toolbar {
         padding: $spacer-4 $spacer-12;
         transform: translate(-50%, -#{$spacer-8}) !important;

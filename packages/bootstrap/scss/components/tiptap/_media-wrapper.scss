@@ -7,8 +7,8 @@
   }
 
   .media-node-view {
-      position: relative;
-      width: fit-content;
+    position: relative;
+    width: fit-content;
   }
 
   .media-node-view .vertical-resize-handle {
@@ -25,6 +25,7 @@
   .react-renderer.has-focus {
     .media-node-view .vertical-resize-handle {
       opacity: 1;
+      z-index: 1;
     }
 
     .media-node-view {
@@ -36,12 +37,11 @@
       position: relative;
       width: fit-content;
 
-      img, video{
+      img,
+      video {
         border-radius: 4px;
       }
-
     }
-
   }
 }
 
