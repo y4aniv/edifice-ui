@@ -31,7 +31,11 @@ const Breadcrumb = forwardRef(
           {name ? (
             <>
               <BreadcrumbItem>
-                <a href={app?.address} className="d-flex">
+                <a
+                  href={app?.address}
+                  className="d-flex"
+                  aria-label={t(app?.displayName)}
+                >
                   <AppIcon app={app} size="40" />
                 </a>
               </BreadcrumbItem>
@@ -50,7 +54,11 @@ const Breadcrumb = forwardRef(
             </>
           ) : (
             <BreadcrumbItem className="gap-12 d-flex align-items-center">
-              <a href={app?.address} className="d-flex">
+              <a
+                href={app?.address}
+                className="d-flex"
+                aria-label={t(app?.displayName)}
+              >
                 <AppIcon app={app} size="40" />
               </a>
               <Heading

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+// Import Katex CSS without bundling it.
 export const useMathsStyles = () => {
   useEffect(() => {
     const katexURL =
