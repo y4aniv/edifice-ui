@@ -1,14 +1,14 @@
 {
   "name": "edifice-ts-client",
-  "version": "1.0.0",
+  "version": "1.5.3-develop.0",
   "description": "Edifice TypeScript Client",
-  "homepage": "https://github.com/edificeio/edifice-ts-client#readme",
+  "homepage": "https://github.com/edificeio/edifice-ui/tree/main/packages/client#readme",
   "bugs": {
-    "url": "https://github.com/edificeio/edifice-ts-client/issues"
+    "url": "https://github.com/edificeio/edifice-ui/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edificeio/edifice-ts-client.git"
+    "url": "https://github.com/edificeio/edifice-ui.git"
   },
   "license": "AGPL-3.0",
   "author": "Edifice",
@@ -24,17 +24,14 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "version.txt"
+    "dist"
   ],
   "scripts": {
     "build": "vite build",
     "docs": "npx rimraf ./docs/ && npx typedoc src/ts/index.ts --excludePrivate --disableSources --plugin typedoc-plugin-markdown",
     "format": "pnpm run format:write && pnpm run format:check",
     "format:check": "npx prettier --check \"src/ts/**/*.ts\"",
-    "format:write": "npx prettier --write \"src/ts/**/*.ts\"",
-    "generate-commit-version": "node scripts/version.cjs",
-    "prepare": "husky install"
+    "format:write": "npx prettier --write \"src/ts/**/*.ts\""
   },
   "dependencies": {
     "axios": "1.6.6",
@@ -55,9 +52,5 @@
     "typescript": "5.3.3",
     "vite": "5.0.12",
     "vite-plugin-dts": "3.7.2"
-  },
-  "packageManager": "pnpm@8.6.6",
-  "engines": {
-    "node": "18 || 20"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@edifice-ui/editor",
-  "version": "1.5.3-develop-pedago.0",
+  "version": "1.5.3-develop.0",
   "description": "Edifice Editor Library",
   "keywords": [
     "react",
@@ -93,7 +93,7 @@
     "@types/react-dom": "18.2.14",
     "clsx": "2.0.0",
     "concurrently": "8.2.0",
-    "edifice-ts-client": "develop-b2school",
+    "edifice-ts-client": "workspace:*",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-i18next": "13.5.0",
