@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.2](https://github.com/edificeio/edifice-ui/compare/v1.5.1-develop.6...v1.5.2) (2024-04-29)
+
+## [1.5.1](https://github.com/edificeio/edifice-ui/compare/v1.4.6-develop-b2school.16...v1.5.1) (2024-04-18)
+
+**Note:** Version bump only for package @edifice-ui/icons
+
 ## [1.4.4](https://github.com/edificeio/edifice-ui/compare/v1.4.3-develop.12...v1.4.4) (2024-03-12)
 
 **Note:** Version bump only for package @edifice-ui/icons
