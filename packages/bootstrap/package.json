@@ -8,13 +8,13 @@
     "Edifice",
     "Theme"
   ],
-  "homepage": "https://github.com/edificeio/edifice-bootstrap#readme",
+  "homepage": "https://github.com/edificeio/edifice-ui/tree/main/packages/bootstrap#readme",
   "bugs": {
-    "url": "https://github.com/edificeio/edifice-bootstrap/issues"
+    "url": "https://github.com/edificeio/edifice-ui/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edificeio/edifice-bootstrap.git"
+    "url": "git+https://github.com/edificeio/edifice-ui.git"
   },
   "license": "AGPL-3.0",
   "author": "Edifice",
