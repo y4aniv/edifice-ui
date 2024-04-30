@@ -24,7 +24,7 @@
     "version.txt"
   ],
   "scripts": {
-    "build": "sass --load-path=node_modules/ --style=compressed scss/index.scss dist/index.css",
+    "prepare": "sass --load-path=node_modules/ --style=compressed scss/index.scss dist/index.css",
     "clean": "rm -rf dist",
     "dev:fix": "stylelint scss/**/*.scss --fix",
     "dev:lint": "stylelint scss/**/*.scss",
@@ -32,8 +32,7 @@
     "format:check": "npx prettier --check scss/**/*.scss",
     "format:write": "npx prettier --write scss/**/*.scss",
     "generate-commit-version": "node scripts/version.cjs",
-    "prepare": "husky install",
-    "release": "pnpm run clean && cp -r assets dist && pnpm generate-commit-version && pnpm run build",
+    "build": "rm -rf dist && cp -r assets dist && pnpm run prepare",
     "watch": "sass --watch --load-path=node_modules/ --style=compressed scss/index.scss dist/index.css",
     "watch:react": "sass --watch --style compressed --load-path=node_modules/ --no-source-map scss/index.scss ../edifice-ui/public/assets/themes/edifice-bootstrap/index.css",
     "watch:sb": "sass --watch --style compressed --load-path=node_modules/ --no-source-map scss/index.scss ../ode-dev-server/assets/themes/edifice-bootstrap/index.css"
@@ -49,10 +48,6 @@
     "stylelint": "16.2.0",
     "stylelint-config-recommended-scss": "14.0.0",
     "stylelint-config-standard": "36.0.0"
-  },
-  "packageManager": "pnpm@8.6.6",
-  "engines": {
-    "node": "18 || 20"
   },
   "publishConfig": {
     "access": "public"
