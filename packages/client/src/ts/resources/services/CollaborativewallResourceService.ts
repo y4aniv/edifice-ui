@@ -16,7 +16,9 @@ const backgroundImages = [
   "img/orange-hill.png",
 ];
 
-const randomNumber = Math.trunc(Math.random() * (backgroundImages.length - 0) + 0);
+const randomNumber = Math.trunc(
+  Math.random() * (backgroundImages.length - 0) + 0,
+);
 
 export class CollaborativewallResourceService extends ResourceService {
   async create(parameters: CreateParameters): Promise<CreateResult> {
