@@ -24,7 +24,7 @@
     "version.txt"
   ],
   "scripts": {
-    "prepare": "sass --load-path=node_modules/ --style=compressed scss/index.scss dist/index.css",
+    "compile": "sass --load-path=node_modules/ --style=compressed scss/index.scss dist/index.css",
     "clean": "rm -rf dist",
     "dev:fix": "stylelint scss/**/*.scss --fix",
     "dev:lint": "stylelint scss/**/*.scss",
@@ -32,7 +32,7 @@
     "format:check": "npx prettier --check scss/**/*.scss",
     "format:write": "npx prettier --write scss/**/*.scss",
     "generate-commit-version": "node scripts/version.cjs",
-    "build": "rm -rf dist && cp -r assets dist && pnpm run prepare",
+    "build": "rm -rf dist && cp -r assets dist && pnpm run compile",
     "watch": "sass --watch --load-path=node_modules/ --style=compressed scss/index.scss dist/index.css",
     "watch:react": "sass --watch --style compressed --load-path=node_modules/ --no-source-map scss/index.scss ../edifice-ui/public/assets/themes/edifice-bootstrap/index.css",
     "watch:sb": "sass --watch --style compressed --load-path=node_modules/ --no-source-map scss/index.scss ../ode-dev-server/assets/themes/edifice-bootstrap/index.css"
