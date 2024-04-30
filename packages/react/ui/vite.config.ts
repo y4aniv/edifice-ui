@@ -5,9 +5,9 @@ import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
-import { dependencies, peerDependencies } from "./package.json";
 import { PluginPure } from "rollup-plugin-pure";
-import { removeDsn } from "../../scripts/remove-display-name";
+import { removeDsn } from "../../../scripts/remove-display-name";
+import { dependencies, peerDependencies } from "./package.json";
 
 export default defineConfig({
   esbuild: {
