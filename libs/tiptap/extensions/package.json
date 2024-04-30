@@ -1,0 +1,47 @@
+{
+  "name": "edifice-tiptap-extensions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Edifice Monorepo Tiptap Extensions",
+  "homepage": "https://github.com/opendigitaleducation/edifice-tiptap-extensions",
+  "bugs": {
+    "url": "https://github.com/opendigitaleducation/edifice-tiptap-extensions/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opendigitaleducation/edifice-tiptap-extensions.git"
+  },
+  "license": "AGPL-3.0",
+  "author": "Edifice",
+  "type": "module",
+  "scripts": {
+    "build": "turbo build --filter=./packages/**",
+    "release": "turbo release --filter=./packages/**",
+    "fix": "turbo fix",
+    "format": "turbo format",
+    "lint": "turbo lint",
+    "pre-commit": "pnpm lint && pnpm format",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@turbo/gen": "1.11.3",
+    "@types/node": "20.11.5",
+    "@typescript-eslint/eslint-plugin": "6.19.1",
+    "@typescript-eslint/parser": "6.19.1",
+    "eslint": "8.56.0",
+    "husky": "8.0.3",
+    "lerna": "8.0.2",
+    "prettier": "3.2.4",
+    "turbo": "1.11.3",
+    "typescript": "5.3.3",
+    "vite": "5.0.12",
+    "vite-plugin-dts": "3.7.1"
+  },
+  "packageManager": "pnpm@8.6.6",
+  "engines": {
+    "node": "18 || 20"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
