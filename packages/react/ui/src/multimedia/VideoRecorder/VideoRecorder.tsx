@@ -181,7 +181,7 @@ const VideoRecorder = forwardRef(
 
     const initMaxDuration = async () => {
       const videoConfResponse = await odeServices.video().getVideoConf();
-      setMaxDuration(videoConfResponse.maxDuration * 60 * 1000);
+      setMaxDuration((videoConfResponse.maxDuration ?? 3) * 60 * 1000);
     };
 
     const initInputDevices = async () => {
@@ -552,10 +552,12 @@ const VideoRecorder = forwardRef(
               )}
             </div>
           )}
-          <Toolbar
-            items={toolbarItems}
-            className="position-absolute bottom-0 start-50 bg-white"
-          />
+          {stream && (
+            <Toolbar
+              items={toolbarItems}
+              className="position-absolute bottom-0 start-50 bg-white"
+            />
+          )}
         </div>
         {saving && (
           <LoadingScreen
