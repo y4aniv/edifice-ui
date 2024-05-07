@@ -213,7 +213,13 @@ export default function useAudioRecorder(
   const handleAudioWorkletNodeMessage = useCallback(
     (event: MessageEvent) => {
       const leftChannel = (event.data.inputs as Float32Array[][])[0][0];
-      const rightChannel = (event.data.inputs as Float32Array[][])[0][1];
+      let rightChannel = (event.data.inputs as Float32Array[][])[0][1];
+      if (
+        !rightChannel ||
+        rightChannel.filter((data) => data !== undefined).length === 0
+      ) {
+        rightChannel = leftChannel;
+      }
       dispatch({
         type: "updateChannels",
         updateChannels: {
