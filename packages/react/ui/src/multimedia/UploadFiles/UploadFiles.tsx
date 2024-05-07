@@ -24,7 +24,7 @@ const Upload = ({
     getUrl,
   } = useUploadFiles({
     handleOnChange: onFilesChange,
-    application: "media-lirary",
+    application: "media-library",
     visibility,
   });
 
