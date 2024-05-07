@@ -1,10 +1,10 @@
+import { DataServiceProps, IEventBroker, SEND_ALL } from "./interface";
 import {
   ISubscription,
   IDataTrackEvent,
   LAYER_NAME,
 } from "../notify/interfaces";
 import { IOdeServices } from "../services/OdeServices";
-import { DataServiceProps, IEventBroker, SEND_ALL } from "./interface";
 
 export class WebBroker implements IEventBroker {
   private subscription?: ISubscription;
