@@ -518,7 +518,7 @@ const VideoRecorder = forwardRef(
           </div>
         )}
 
-        <div className="video-recorder-video-container position-relative">
+        <div className="video-recorder-video-container position-relative align-self-stretch">
           <video
             ref={videoRef}
             playsInline={true}
