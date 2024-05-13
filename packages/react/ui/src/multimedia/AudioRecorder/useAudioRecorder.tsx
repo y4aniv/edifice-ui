@@ -42,6 +42,9 @@ type AudioReducerState = {
   compress?: boolean;
   leftChannel: Float32Array[];
   rightChannel: Float32Array[];
+
+  // max duration in s (3 minutes by default)
+  maxDuration: number;
 };
 
 export default function useAudioRecorder(
@@ -86,6 +89,7 @@ export default function useAudioRecorder(
       compress,
       leftChannel,
       rightChannel,
+      maxDuration,
     },
     dispatch,
   ] = useReducer(audioReducer, {
@@ -93,6 +97,7 @@ export default function useAudioRecorder(
     playState: "IDLE",
     leftChannel: [],
     rightChannel: [],
+    maxDuration: 180, // max duration in s (3 minutes by default)
   });
   const audioNameRef = useRef<HTMLInputElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -100,7 +105,7 @@ export default function useAudioRecorder(
   const { t } = useTranslation();
 
   const BUFFER_SIZE: number = 128; // https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletProcessor
-  const DEFAULT_SAMPLE_RATE: number = 44100;
+  const DEFAULT_SAMPLE_RATE: number = 48000;
 
   // Init Web Socket to send audio chunks to backend
   useEffect(() => {
@@ -208,7 +213,13 @@ export default function useAudioRecorder(
   const handleAudioWorkletNodeMessage = useCallback(
     (event: MessageEvent) => {
       const leftChannel = (event.data.inputs as Float32Array[][])[0][0];
-      const rightChannel = (event.data.inputs as Float32Array[][])[0][1];
+      let rightChannel = (event.data.inputs as Float32Array[][])[0][1];
+      if (
+        !rightChannel ||
+        rightChannel.filter((data) => data !== undefined).length === 0
+      ) {
+        rightChannel = leftChannel;
+      }
       dispatch({
         type: "updateChannels",
         updateChannels: {
@@ -489,6 +500,19 @@ export default function useAudioRecorder(
     }
   }, [audioRef]);
 
+  /**
+   * Auto-stop recording when max allowed duration is reached.
+   */
+  useEffect(() => {
+    if (
+      recordState === "RECORDING" &&
+      audioContext?.currentTime &&
+      audioContext?.currentTime >= maxDuration
+    ) {
+      handleRecordPause();
+    }
+  }, [audioContext, handleRecordPause, maxDuration, recordState]);
+
   function uuid() {
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
       /[xy]/g,
@@ -526,7 +550,11 @@ export default function useAudioRecorder(
       props: {
         icon: <Record />,
         color: "danger",
-        disabled: recordState !== "IDLE" && recordState !== "PAUSED",
+        disabled:
+          recordState !== "IDLE" &&
+          recordState !== "PAUSED" &&
+          (!audioContext?.currentTime ||
+            audioContext?.currentTime >= maxDuration),
         onClick: handleRecord,
         "aria-label": recordText,
       },
@@ -627,6 +655,7 @@ export default function useAudioRecorder(
     recordtime: audioContext?.currentTime
       ? audioContext?.currentTime * 1000
       : undefined,
+    maxDuration: maxDuration * 1000,
     audioRef,
     audioNameRef,
     toolbarItems,

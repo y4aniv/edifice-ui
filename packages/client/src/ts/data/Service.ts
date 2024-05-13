@@ -1,9 +1,9 @@
+import { DataServiceProps, IDataService, IEventBroker } from "./interface";
+import { WebBroker } from "./WebBroker";
 import { App } from "../globals";
 import { EVENT_NAME, IDataTrackEvent, LAYER_NAME } from "../notify/interfaces";
 import { IOdeServices } from "../services/OdeServices";
 import { IUserInfo, UserProfile } from "../session/interfaces";
-import { WebBroker } from "./WebBroker";
-import { DataServiceProps, IDataService, IEventBroker } from "./interface";
 
 /** A data event. */
 type IDataEvent = IDataTrackEvent["data"];
@@ -66,9 +66,8 @@ export class DataService implements IDataService {
     if (this.user) {
       base["userId"] = this.user.userId;
       base["structure"] = this.user.structureNames[0];
-      base["level"] = this.user.level;
     }
-    if (this.profile) base["userProfile"] = this.profile[0];
+    if (this.profile) base["profil"] = this.profile[0];
     return base;
   }
 

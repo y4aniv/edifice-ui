@@ -75,6 +75,7 @@ const InternalLinker = ({
       async function load() {
         if (selectedApplication) {
           try {
+            const searchLower = search?.toLowerCase();
             const resources = (
               await loadResources({
                 application: selectedApplication.application,
@@ -85,10 +86,13 @@ const InternalLinker = ({
               })
             )
               .filter((resource) => {
-                if (!search || search.length === 0) return true;
-                let found = resource.name?.includes(search) ?? false;
-                found ||= resource.creatorName?.includes(search) ?? false;
-                found ||= resource.description?.includes(search) ?? false;
+                // Filter in lowercase only
+                if (!searchLower || searchLower.length === 0) return true;
+                const found =
+                  resource.name?.toLowerCase().includes(searchLower) ||
+                  resource.creatorName?.toLowerCase().includes(searchLower) ||
+                  resource.description?.toLowerCase().includes(searchLower) ||
+                  false;
                 return found;
               })
               .sort((a, b) => (a.modifiedAt < b.modifiedAt ? 1 : -1));
@@ -147,22 +151,25 @@ const InternalLinker = ({
   // Select a resource.
   const selectResource = useCallback(
     (resource: ILinkedResource) => {
-      if (!multiple) {
-        setSelectedDocuments([resource]);
-      } else {
+      if (multiple) {
+        // Add this resource to the previous selected ones.
         setSelectedDocuments((previousState) => [...previousState, resource]);
+      } else {
+        // Replace previous selection by this resource.
+        setSelectedDocuments([resource]);
       }
     },
-    [setSelectedDocuments],
+    [setSelectedDocuments, multiple],
   );
 
   // Handle [de-]selection of a resource by the user.
   const toggleResourceSelection = useCallback(
     (resource: ILinkedResource) => {
       const index = getSelectedResourceIndex(resource.assetId);
-      if (index < 0 || multiple) {
+      if (index < 0) {
         selectResource(resource);
       } else {
+        // De-select resource (clicked twice)
         setSelectedDocuments(
           selectedDocuments.filter((_value, i) => i !== index),
         );
@@ -238,8 +245,8 @@ const InternalLinker = ({
   }, [resources]);
 
   return (
-    <div className="internal-linker flex-grow-1 w-100 rounded border gap-0 overflow-auto">
-      <div className="search d-flex bg-light rounded-top border-bottom">
+    <div className="d-flex flex-column flex-fill overflow-hidden">
+      <div className="search d-flex bg-light rounded-top border border-bottom-0">
         <div className="flex-shrink-1 px-8 py-12 border-end">
           <Dropdown overflow>
             <Dropdown.Trigger
@@ -284,44 +291,46 @@ const InternalLinker = ({
         </div>
       </div>
 
-      {selectedApplication && resources && resources.length > 0 && (
-        <div>
-          {resources.map((resource) => {
-            const isSelected =
-              selectedDocuments.findIndex(
-                (doc) => doc.assetId === resource.assetId,
-              ) >= 0;
-            return (
-              <LinkerCard
-                key={resource.path}
-                doc={resource}
-                isSelected={isSelected}
-                onClick={() => toggleResourceSelection(resource)}
-              />
-            );
-          })}
-        </div>
-      )}
+      <div className="internal-linker flex-grow-1 w-100 rounded-bottom border gap-0 overflow-auto">
+        {selectedApplication && resources && resources.length > 0 && (
+          <div>
+            {resources.map((resource) => {
+              const isSelected =
+                selectedDocuments.findIndex(
+                  (doc) => doc.assetId === resource.assetId,
+                ) >= 0;
+              return (
+                <LinkerCard
+                  key={resource.path}
+                  doc={resource}
+                  isSelected={isSelected}
+                  onClick={() => toggleResourceSelection(resource)}
+                />
+              );
+            })}
+          </div>
+        )}
 
-      {selectedApplication && resources && resources.length <= 0 && (
-        <div className="d-flex justify-content-center mt-16">
-          <EmptyScreen
-            imageSrc={`${imagePath}/${theme?.bootstrapVersion}/illu-empty-search-${selectedApplication.application}.svg`}
-            text={t("bbm.linker.int.notfound")}
-            className="mt-16"
-          />
-        </div>
-      )}
+        {selectedApplication && resources && resources.length <= 0 && (
+          <div className="d-flex justify-content-center mt-16">
+            <EmptyScreen
+              imageSrc={`${imagePath}/${theme?.bootstrapVersion}/illu-empty-search-${selectedApplication.application}.svg`}
+              text={t("bbm.linker.int.notfound")}
+              className="mt-16"
+            />
+          </div>
+        )}
 
-      {!selectedApplication && (
-        <div className="d-flex justify-content-center mt-32">
-          <EmptyScreen
-            imageSrc={`${imagePath}/${theme?.bootstrapVersion}/illu-empty-search.svg`}
-            text={t("bbm.linker.int.empty")}
-            className="mt-32"
-          />
-        </div>
-      )}
+        {!selectedApplication && (
+          <div className="d-flex justify-content-center mt-32">
+            <EmptyScreen
+              imageSrc={`${imagePath}/${theme?.bootstrapVersion}/illu-empty-search.svg`}
+              text={t("bbm.linker.int.empty")}
+              className="mt-32"
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };
