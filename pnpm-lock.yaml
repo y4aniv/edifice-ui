@@ -48,7 +48,7 @@ importers:
         version: 7.6.6(react-dom@18.2.0)(react@18.2.0)
       "@turbo/gen":
         specifier: 1.11.2
-        version: 1.11.2(@types/node@20.12.12)(typescript@5.3.3)
+        version: 1.11.2(@types/node@20.11.6)(typescript@5.3.3)
       "@typescript-eslint/eslint-plugin":
         specifier: 6.15.0
         version: 6.15.0(@typescript-eslint/parser@6.15.0)(eslint@8.56.0)(typescript@5.3.3)
@@ -114,10 +114,10 @@ importers:
         version: 5.3.3
       vite:
         specifier: 4.5.1
-        version: 4.5.1(@types/node@20.12.12)
+        version: 4.5.1(@types/node@20.11.6)
       vite-plugin-dts:
         specifier: 3.7.0
-        version: 3.7.0(@types/node@20.12.12)(rollup@3.29.4)(typescript@5.3.3)(vite@4.5.1)
+        version: 3.7.0(@types/node@20.11.6)(rollup@3.29.4)(typescript@5.3.3)(vite@4.5.1)
 
   packages/bootstrap:
     dependencies:
@@ -408,7 +408,7 @@ importers:
         version: 2.3.0
       "@tiptap/react":
         specifier: 2.3.0
-        version: 2.3.0(@tiptap/core@2.4.0)(@tiptap/pm@2.3.0)(react-dom@18.2.0)(react@18.2.0)
+        version: 2.3.0(@tiptap/core@2.3.0)(@tiptap/pm@2.3.0)(react-dom@18.2.0)(react@18.2.0)
       "@tiptap/starter-kit":
         specifier: 2.3.0
         version: 2.3.0(@tiptap/pm@2.3.0)
@@ -438,7 +438,7 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.24.5)
       "@edifice-ui/icons":
-        specifier: ^1.5.4-develop-b2school.0
+        specifier: ^1.5.4-develop-b2school.21
         version: 1.5.4(react-dom@18.2.0)(react@18.2.0)
       "@react-spring/web":
         specifier: 9.7.3
@@ -514,10 +514,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
       rollup-plugin-uglify:
         specifier: ^6.0.4
         version: 6.0.4(rollup@3.29.4)
@@ -547,10 +547,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
       rollup-plugin-uglify:
         specifier: ^6.0.4
         version: 6.0.4(rollup@3.29.4)
@@ -583,10 +583,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
       rollup-plugin-uglify:
         specifier: ^6.0.4
         version: 6.0.4(rollup@3.29.4)
@@ -616,10 +616,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
       rollup-plugin-uglify:
         specifier: ^6.0.4
         version: 6.0.4(rollup@3.29.4)
@@ -655,10 +655,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
       rollup-plugin-uglify:
         specifier: ^6.0.4
         version: 6.0.4(rollup@3.29.4)
@@ -694,10 +694,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
       rollup-plugin-uglify:
         specifier: ^6.0.4
         version: 6.0.4(rollup@3.29.4)
@@ -730,10 +730,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
       rollup-plugin-uglify:
         specifier: ^6.0.4
         version: 6.0.4(rollup@3.29.4)
@@ -767,10 +767,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
 
   packages/tiptap/extensions/extension-iframe:
     devDependencies:
@@ -797,10 +797,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
 
   packages/tiptap/extensions/extension-image:
     dependencies:
@@ -831,10 +831,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
 
   packages/tiptap/extensions/extension-line-height:
     devDependencies:
@@ -864,10 +864,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
       rollup-plugin-uglify:
         specifier: ^6.0.4
         version: 6.0.4(rollup@3.29.4)
@@ -904,10 +904,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
 
   packages/tiptap/extensions/extension-mathjax:
     devDependencies:
@@ -934,10 +934,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
 
   packages/tiptap/extensions/extension-paragraph:
     dependencies:
@@ -968,10 +968,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
 
   packages/tiptap/extensions/extension-speechrecognition:
     devDependencies:
@@ -1001,10 +1001,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
 
   packages/tiptap/extensions/extension-speechsynthesis:
     devDependencies:
@@ -1031,10 +1031,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
 
   packages/tiptap/extensions/extension-table-cell:
     dependencies:
@@ -1065,10 +1065,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
 
   packages/tiptap/extensions/extension-video:
     devDependencies:
@@ -1095,10 +1095,10 @@ importers:
         version: 2.0.0(rollup@3.29.4)
       rollup-plugin-sourcemaps:
         specifier: ^0.6.3
-        version: 0.6.3(@types/node@20.12.12)(rollup@3.29.4)
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
       rollup-plugin-typescript2:
         specifier: ^0.34.1
-        version: 0.34.1(rollup@3.29.4)(typescript@5.4.5)
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
 
   packages/tiptap/extensions/transform:
     dependencies:
@@ -2912,6 +2912,19 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
+  /@edifice-ui/icons@1.5.4(react-dom@18.2.0)(react@18.2.0):
+    resolution:
+      {
+        integrity: sha512-0sRQlLgSIDmT6Ps1J1btH8YekMd3/Jw8v+x1tpdklDhKrPnhITJQYmIwzV/Y7IYoO0eTZWmy0YXjdS3ZNg+0Tg==,
+      }
+    peerDependencies:
+      react: 18.2.0
+      react-dom: 18.2.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: true
+
   /@emotion/use-insertion-effect-with-fallbacks@1.0.1(react@18.2.0):
     resolution:
       {
@@ -3734,7 +3747,7 @@ packages:
       magic-string: 0.27.0
       react-docgen-typescript: 2.2.2(typescript@5.3.3)
       typescript: 5.3.3
-      vite: 4.5.1(@types/node@20.12.12)
+      vite: 4.5.1(@types/node@20.11.6)
     dev: true
 
   /@jridgewell/gen-mapping@0.3.5:
@@ -3916,19 +3929,6 @@ packages:
       - "@types/node"
     dev: true
 
-  /@microsoft/api-extractor-model@7.28.3(@types/node@20.12.12):
-    resolution:
-      {
-        integrity: sha512-wT/kB2oDbdZXITyDh2SQLzaWwTOFbV326fP0pUwNW00WeliARs0qjmXBWmGWardEzp2U3/axkO3Lboqun6vrig==,
-      }
-    dependencies:
-      "@microsoft/tsdoc": 0.14.2
-      "@microsoft/tsdoc-config": 0.16.2
-      "@rushstack/node-core-library": 3.62.0(@types/node@20.12.12)
-    transitivePeerDependencies:
-      - "@types/node"
-    dev: true
-
   /@microsoft/api-extractor@7.39.0(@types/node@20.11.6):
     resolution:
       {
@@ -3940,29 +3940,6 @@ packages:
       "@microsoft/tsdoc": 0.14.2
       "@microsoft/tsdoc-config": 0.16.2
       "@rushstack/node-core-library": 3.62.0(@types/node@20.11.6)
-      "@rushstack/rig-package": 0.5.1
-      "@rushstack/ts-command-line": 4.17.1
-      colors: 1.2.5
-      lodash: 4.17.21
-      resolve: 1.22.8
-      semver: 7.5.4
-      source-map: 0.6.1
-      typescript: 5.3.3
-    transitivePeerDependencies:
-      - "@types/node"
-    dev: true
-
-  /@microsoft/api-extractor@7.39.0(@types/node@20.12.12):
-    resolution:
-      {
-        integrity: sha512-PuXxzadgnvp+wdeZFPonssRAj/EW4Gm4s75TXzPk09h3wJ8RS3x7typf95B4vwZRrPTQBGopdUl+/vHvlPdAcg==,
-      }
-    hasBin: true
-    dependencies:
-      "@microsoft/api-extractor-model": 7.28.3(@types/node@20.12.12)
-      "@microsoft/tsdoc": 0.14.2
-      "@microsoft/tsdoc-config": 0.16.2
-      "@rushstack/node-core-library": 3.62.0(@types/node@20.12.12)
       "@rushstack/rig-package": 0.5.1
       "@rushstack/ts-command-line": 4.17.1
       colors: 1.2.5
@@ -6158,27 +6135,6 @@ packages:
       z-schema: 5.0.5
     dev: true
 
-  /@rushstack/node-core-library@3.62.0(@types/node@20.12.12):
-    resolution:
-      {
-        integrity: sha512-88aJn2h8UpSvdwuDXBv1/v1heM6GnBf3RjEy6ZPP7UnzHNCqOHA2Ut+ScYUbXcqIdfew9JlTAe3g+cnX9xQ/Aw==,
-      }
-    peerDependencies:
-      "@types/node": "*"
-    peerDependenciesMeta:
-      "@types/node":
-        optional: true
-    dependencies:
-      "@types/node": 20.12.12
-      colors: 1.2.5
-      fs-extra: 7.0.1
-      import-lazy: 4.0.0
-      jju: 1.4.0
-      resolve: 1.22.8
-      semver: 7.5.4
-      z-schema: 5.0.5
-    dev: true
-
   /@rushstack/rig-package@0.5.1:
     resolution:
       {
@@ -6756,7 +6712,7 @@ packages:
       magic-string: 0.30.10
       rollup: 3.29.4
       typescript: 5.3.3
-      vite: 4.5.1(@types/node@20.12.12)
+      vite: 4.5.1(@types/node@20.11.6)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -7194,7 +7150,7 @@ packages:
       react: 18.2.0
       react-docgen: 7.0.3
       react-dom: 18.2.0(react@18.2.0)
-      vite: 4.5.1(@types/node@20.12.12)
+      vite: 4.5.1(@types/node@20.11.6)
     transitivePeerDependencies:
       - "@preact/preset-vite"
       - encoding
@@ -7800,17 +7756,6 @@ packages:
     dependencies:
       "@tiptap/pm": 2.3.0
 
-  /@tiptap/core@2.4.0(@tiptap/pm@2.3.0):
-    resolution:
-      {
-        integrity: sha512-YJSahk8pkxpCs8SflCZfTnJpE7IPyUWIylfgXM2DefjRQa5DZ+c6sNY0s/zbxKYFQ6AuHVX40r9pCfcqHChGxQ==,
-      }
-    peerDependencies:
-      "@tiptap/pm": ^2.0.0
-    dependencies:
-      "@tiptap/pm": 2.3.0
-    dev: false
-
   /@tiptap/extension-blockquote@2.3.0(@tiptap/core@2.3.0):
     resolution:
       {
@@ -7847,7 +7792,7 @@ packages:
       tippy.js: 6.3.7
     dev: false
 
-  /@tiptap/extension-bubble-menu@2.3.0(@tiptap/core@2.4.0)(@tiptap/pm@2.3.0):
+  /@tiptap/extension-bubble-menu@2.3.0(@tiptap/core@2.3.0)(@tiptap/pm@2.3.0):
     resolution:
       {
         integrity: sha512-dqyfQ8idTlhapvt0fxCGvkyjw92pBEwPqmkJ01h3EE8wTh53j0ytOHyMSf1KBuzardxpd8Yya3zlrAcR0Z3DlQ==,
@@ -7856,7 +7801,7 @@ packages:
       "@tiptap/core": ^2.0.0
       "@tiptap/pm": ^2.0.0
     dependencies:
-      "@tiptap/core": 2.4.0(@tiptap/pm@2.3.0)
+      "@tiptap/core": 2.3.0(@tiptap/pm@2.3.0)
       "@tiptap/pm": 2.3.0
       tippy.js: 6.3.7
     dev: false
@@ -7986,7 +7931,7 @@ packages:
       tippy.js: 6.3.7
     dev: false
 
-  /@tiptap/extension-floating-menu@2.3.0(@tiptap/core@2.4.0)(@tiptap/pm@2.3.0):
+  /@tiptap/extension-floating-menu@2.3.0(@tiptap/core@2.3.0)(@tiptap/pm@2.3.0):
     resolution:
       {
         integrity: sha512-bNY43/yU/+wGfmk2eDV7EPDAN/akbC+YnSKTA5VPJADzscvlrL2HlQrxbd/STIdlwKqdPU5MokcvCChhfZ4f6w==,
@@ -7995,7 +7940,7 @@ packages:
       "@tiptap/core": ^2.0.0
       "@tiptap/pm": ^2.0.0
     dependencies:
-      "@tiptap/core": 2.4.0(@tiptap/pm@2.3.0)
+      "@tiptap/core": 2.3.0(@tiptap/pm@2.3.0)
       "@tiptap/pm": 2.3.0
       tippy.js: 6.3.7
     dev: false
@@ -8530,7 +8475,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@tiptap/react@2.3.0(@tiptap/core@2.4.0)(@tiptap/pm@2.3.0)(react-dom@18.2.0)(react@18.2.0):
+  /@tiptap/react@2.3.0(@tiptap/core@2.3.0)(@tiptap/pm@2.3.0)(react-dom@18.2.0)(react@18.2.0):
     resolution:
       {
         integrity: sha512-ThgFJQTWYKRClTV2Zg0wBRqfy0EGz3U4NOey7jwncUjSjx5+o9nXbfQAYWDKQFfWyE+wnrBTYfddEP9pHNX5cQ==,
@@ -8541,9 +8486,9 @@ packages:
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
     dependencies:
-      "@tiptap/core": 2.4.0(@tiptap/pm@2.3.0)
-      "@tiptap/extension-bubble-menu": 2.3.0(@tiptap/core@2.4.0)(@tiptap/pm@2.3.0)
-      "@tiptap/extension-floating-menu": 2.3.0(@tiptap/core@2.4.0)(@tiptap/pm@2.3.0)
+      "@tiptap/core": 2.3.0(@tiptap/pm@2.3.0)
+      "@tiptap/extension-bubble-menu": 2.3.0(@tiptap/core@2.3.0)(@tiptap/pm@2.3.0)
+      "@tiptap/extension-floating-menu": 2.3.0(@tiptap/core@2.3.0)(@tiptap/pm@2.3.0)
       "@tiptap/pm": 2.3.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -8696,7 +8641,7 @@ packages:
       minimatch: 9.0.4
     dev: true
 
-  /@turbo/gen@1.11.2(@types/node@20.12.12)(typescript@5.3.3):
+  /@turbo/gen@1.11.2(@types/node@20.11.6)(typescript@5.3.3):
     resolution:
       {
         integrity: sha512-zV4vwedEujiAcACPnFXnKat8IqDo0EVJpMbS3W5CiokUBv35vw5PjldjqKcdh0GIiUTlriWGwRU6FZ8pzBg+kg==,
@@ -8711,7 +8656,7 @@ packages:
       minimatch: 9.0.4
       node-plop: 0.26.3
       proxy-agent: 6.4.0
-      ts-node: 10.9.2(@types/node@20.12.12)(typescript@5.3.3)
+      ts-node: 10.9.2(@types/node@20.11.6)(typescript@5.3.3)
       update-check: 1.5.4
       validate-npm-package-name: 5.0.0
     transitivePeerDependencies:
@@ -9578,7 +9523,7 @@ packages:
       vite: ^4 || ^5
     dependencies:
       "@swc/core": 1.5.7
-      vite: 4.5.1(@types/node@20.12.12)
+      vite: 4.5.1(@types/node@20.11.6)
     transitivePeerDependencies:
       - "@swc/helpers"
     dev: true
@@ -9597,7 +9542,7 @@ packages:
       "@babel/plugin-transform-react-jsx-source": 7.24.1(@babel/core@7.24.5)
       magic-string: 0.27.0
       react-refresh: 0.14.2
-      vite: 4.5.1(@types/node@20.12.12)
+      vite: 4.5.1(@types/node@20.11.6)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -9616,7 +9561,7 @@ packages:
       "@babel/plugin-transform-react-jsx-source": 7.24.1(@babel/core@7.24.5)
       "@types/babel__core": 7.20.5
       react-refresh: 0.14.2
-      vite: 4.5.1(@types/node@20.12.12)
+      vite: 4.5.1(@types/node@20.11.6)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -20263,7 +20208,7 @@ packages:
       strip-literal: 1.3.0
     dev: true
 
-  /rollup-plugin-sourcemaps@0.6.3(@types/node@20.12.12)(rollup@3.29.4):
+  /rollup-plugin-sourcemaps@0.6.3(@types/node@20.11.6)(rollup@3.29.4):
     resolution:
       {
         integrity: sha512-paFu+nT1xvuO1tPFYXGe+XnQvg4Hjqv/eIhG8i5EspfYYPBKL57X7iVbfv55aNVASg3dzWvES9dmWsL2KhfByw==,
@@ -20277,12 +20222,12 @@ packages:
         optional: true
     dependencies:
       "@rollup/pluginutils": 3.1.0(rollup@3.29.4)
-      "@types/node": 20.12.12
+      "@types/node": 20.11.6
       rollup: 3.29.4
       source-map-resolve: 0.6.0
     dev: true
 
-  /rollup-plugin-typescript2@0.34.1(rollup@3.29.4)(typescript@5.4.5):
+  /rollup-plugin-typescript2@0.34.1(rollup@3.29.4)(typescript@5.3.3):
     resolution:
       {
         integrity: sha512-P4cHLtGikESmqi1CA+tdMDUv8WbQV48mzPYt77TSTOPJpERyZ9TXdDgjSDix8Fkqce6soYz3+fa4lrC93IEkcw==,
@@ -20297,7 +20242,7 @@ packages:
       rollup: 3.29.4
       semver: 7.6.0
       tslib: 2.6.2
-      typescript: 5.4.5
+      typescript: 5.3.3
     dev: true
 
   /rollup-plugin-uglify@6.0.4(rollup@3.29.4):
@@ -22053,7 +21998,7 @@ packages:
     engines: { node: ">=6.10" }
     dev: true
 
-  /ts-node@10.9.2(@types/node@20.12.12)(typescript@5.3.3):
+  /ts-node@10.9.2(@types/node@20.11.6)(typescript@5.3.3):
     resolution:
       {
         integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==,
@@ -22075,7 +22020,7 @@ packages:
       "@tsconfig/node12": 1.0.11
       "@tsconfig/node14": 1.0.3
       "@tsconfig/node16": 1.0.4
-      "@types/node": 20.12.12
+      "@types/node": 20.11.6
       acorn: 8.11.3
       acorn-walk: 8.3.2
       arg: 4.1.3
@@ -22459,15 +22404,6 @@ packages:
     resolution:
       {
         integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==,
-      }
-    engines: { node: ">=14.17" }
-    hasBin: true
-    dev: true
-
-  /typescript@5.4.5:
-    resolution:
-      {
-        integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==,
       }
     engines: { node: ">=14.17" }
     hasBin: true
@@ -22919,7 +22855,7 @@ packages:
     engines: { node: ">= 0.8" }
     dev: true
 
-  /vite-plugin-dts@3.7.0(@types/node@20.12.12)(rollup@3.29.4)(typescript@5.3.3)(vite@4.5.1):
+  /vite-plugin-dts@3.7.0(@types/node@20.11.6)(rollup@3.29.4)(typescript@5.3.3)(vite@4.5.1):
     resolution:
       {
         integrity: sha512-np1uPaYzu98AtPReB8zkMnbjwcNHOABsLhqVOf81b3ol9b5M2wPcAVs8oqPnOpr6Us+7yDXVauwkxsk5+ldmRA==,
@@ -22932,13 +22868,13 @@ packages:
       vite:
         optional: true
     dependencies:
-      "@microsoft/api-extractor": 7.39.0(@types/node@20.12.12)
+      "@microsoft/api-extractor": 7.39.0(@types/node@20.11.6)
       "@rollup/pluginutils": 5.1.0(rollup@3.29.4)
       "@vue/language-core": 1.8.27(typescript@5.3.3)
       debug: 4.3.4
       kolorist: 1.8.0
       typescript: 5.3.3
-      vite: 4.5.1(@types/node@20.12.12)
+      vite: 4.5.1(@types/node@20.11.6)
       vue-tsc: 1.8.27(typescript@5.3.3)
     transitivePeerDependencies:
       - "@types/node"
@@ -22973,7 +22909,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite@4.5.1(@types/node@20.12.12):
+  /vite@4.5.1(@types/node@20.11.6):
     resolution:
       {
         integrity: sha512-AXXFaAJ8yebyqzoNB9fu2pHoo/nWX+xZlaRwoeYUxEqBO+Zj4msE5G+BhGBll9lYEKv9Hfks52PAF2X7qDYXQA==,
@@ -23004,7 +22940,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      "@types/node": 20.12.12
+      "@types/node": 20.11.6
       esbuild: 0.18.20
       postcss: 8.4.38
       rollup: 3.29.4
