@@ -1,6 +1,10 @@
 {
   "name": "edifice-ts-client",
+<<<<<<< HEAD
   "version": "1.5.7",
+=======
+  "version": "1.5.4-develop-b2school.21",
+>>>>>>> 6755e9a5 (chore(release): version & publish)
   "description": "Edifice TypeScript Client",
   "homepage": "https://github.com/edificeio/edifice-ui/tree/main/packages/client#readme",
   "bugs": {
