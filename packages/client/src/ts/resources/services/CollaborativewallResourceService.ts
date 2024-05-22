@@ -26,6 +26,7 @@ export class CollaborativewallResourceService extends ResourceService {
     const res = await this.http.post<{ _id: string }>(`/collaborativewall`, {
       name: parameters.name,
       description: parameters.description,
+      folder: parameters.folder,
       background: {
         path: backgroundImages[randomNumber],
         color: "115deg, #E5F5FF 0.32%, #46AFE6 100%",
