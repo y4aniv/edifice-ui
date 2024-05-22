@@ -56,7 +56,6 @@ export default function useDate() {
   /** Compute a user-friendly elapsed duration, between now and a date. */
   const fromNow = useCallback(
     (date: CoreDate): string => {
-      console.log("date", { date: typeof date });
       let computedDate: Dayjs = dayjs();
       try {
         if ("undefined" === typeof date) {
@@ -72,8 +71,6 @@ export default function useDate() {
         } else if ("string" === typeof date.$date) {
           computedDate = parseDate(date.$date);
         }
-
-        console.log({ computedDate: computedDate.fromNow() });
 
         return computedDate.isValid() ? computedDate.fromNow() : "";
       } catch (e) {

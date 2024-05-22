@@ -36,9 +36,9 @@
   "scripts": {
     "build": "vite build",
     "fix": "eslint --fix \"**/*.{ts,tsx}\"",
-    "format": "concurrently \"pnpm:format:*\"",
-    "format:check": "prettier --check .",
-    "format:write": "prettier --write .",
+    "format": "pnpm run format:write && pnpm run format:check",
+    "format:check": "npx prettier --check .",
+    "format:write": "npx prettier --write .",
     "lint": "eslint \"**/*.{ts,tsx}\"",
     "test": "vitest"
   },

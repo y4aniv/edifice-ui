@@ -42,9 +42,9 @@
     "build:icons": "svgr assets --config-file ./svgr.config.cjs",
     "build:vite": "vite build",
     "fix": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "format": "concurrently \"pnpm:format:*\"",
-    "format:check": "prettier --check .",
-    "format:write": "prettier --write .",
+    "format": "pnpm run format:write && pnpm run format:check",
+    "format:check": "npx prettier --check .",
+    "format:write": "npx prettier --write .",
     "lint": "eslint \"**/*.{ts,tsx}\""
   },
   "devDependencies": {
