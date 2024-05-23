@@ -21,6 +21,9 @@ const randomNumber = Math.trunc(
 );
 
 export class CollaborativewallResourceService extends ResourceService {
+  getEditUrl(): string {
+    throw new Error("Method not implemented.");
+  }
   async create(parameters: CreateParameters): Promise<CreateResult> {
     const thumbnail = await this.getThumbnailPath(parameters.thumbnail);
     const res = await this.http.post<{ _id: string }>(`/collaborativewall`, {
