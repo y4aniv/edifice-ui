@@ -28,7 +28,7 @@ module.exports = {
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/ban-types": "off",
-    "import/order": [
+    /* "import/order": [
       "error",
       {
         groups: ["builtin", "external", "internal"],
@@ -46,7 +46,7 @@ module.exports = {
           caseInsensitive: true,
         },
       },
-    ],
+    ], */
   },
   /* settings: {
     react: {

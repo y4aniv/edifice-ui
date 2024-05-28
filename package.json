@@ -31,7 +31,7 @@
     "format": "turbo run format",
     "preinstall": "npx only-allow pnpm",
     "lint": "turbo run lint",
-    "pre-commit": "pnpm lint && pnpm format",
+    "pre-commit": "pnpm run lint && pnpm run format",
     "prepare": "husky install",
     "publish-packages": "changeset version && changeset publish"
   },

@@ -11,12 +11,14 @@ export interface EmbedProps {
 
 const Embed = ({ onSuccess }: EmbedProps) => {
   const { t } = useTranslation();
+
   const [htmlContent, setHTMLContent] = useState<string>();
 
   function handleContentChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
     const HTMLContent = event.target.value;
 
     setHTMLContent(HTMLContent);
+
     if (HTMLContent?.length) {
       onSuccess(HTMLContent);
     } else {

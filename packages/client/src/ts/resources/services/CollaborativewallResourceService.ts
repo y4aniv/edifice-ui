@@ -21,11 +21,15 @@ const randomNumber = Math.trunc(
 );
 
 export class CollaborativewallResourceService extends ResourceService {
+  getEditUrl(): string {
+    throw new Error("Method not implemented.");
+  }
   async create(parameters: CreateParameters): Promise<CreateResult> {
     const thumbnail = await this.getThumbnailPath(parameters.thumbnail);
     const res = await this.http.post<{ _id: string }>(`/collaborativewall`, {
       name: parameters.name,
       description: parameters.description,
+      folder: parameters.folder,
       background: {
         path: backgroundImages[randomNumber],
         color: "115deg, #E5F5FF 0.32%, #46AFE6 100%",
