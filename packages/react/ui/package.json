@@ -1,10 +1,6 @@
 {
   "name": "@edifice-ui/react",
-<<<<<<< HEAD
   "version": "1.5.7",
-=======
-  "version": "1.5.4-develop-b2school.21",
->>>>>>> 6755e9a5 (chore(release): version & publish)
   "description": "Edifice React Library",
   "keywords": [
     "react",
