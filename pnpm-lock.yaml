@@ -444,8 +444,8 @@ importers:
         specifier: 7.23.3
         version: 7.23.3(@babel/core@7.24.6)
       "@edifice-ui/icons":
-        specifier: ^1.5.8
-        version: 1.5.8(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.5.10-develop-b2school.0
+        version: 1.5.10-develop-pedago.0(react-dom@18.2.0)(react@18.2.0)
       "@react-spring/web":
         specifier: 9.7.3
         version: 9.7.3(react-dom@18.2.0)(react@18.2.0)
@@ -2899,10 +2899,10 @@ packages:
     engines: { node: ">=10.0.0" }
     dev: true
 
-  /@edifice-ui/icons@1.5.8(react-dom@18.2.0)(react@18.2.0):
+  /@edifice-ui/icons@1.5.10-develop-pedago.0(react-dom@18.2.0)(react@18.2.0):
     resolution:
       {
-        integrity: sha512-4tWYkdgPfcofBzCMdf2Mm/hT+zvVvGgVVclNVb/SnkNO0HUZCMYwmQyNjnQSRImP8SjW9SNyf1Vt2FuJALiJ7Q==,
+        integrity: sha512-UwXnZ8llzdkfd6Kyy3oFIO1ovsLkvUO1drsV6s8R224kzbK2yztvdiMy4vXLBG3WKdPr8WhsbOZYzAUW9loHXA==,
       }
     peerDependencies:
       react: 18.2.0
