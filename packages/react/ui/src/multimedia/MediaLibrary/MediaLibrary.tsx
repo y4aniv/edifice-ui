@@ -483,10 +483,9 @@ const MediaLibrary = forwardRef(
                 disabled={typeof result === "undefined"}
                 onClick={handleOnSuccess}
               >
-                {t("add")}
-                {typeof resultCounter === "number" &&
-                  resultCounter > 1 &&
-                  ` (${resultCounter})`}
+                {resultCounter && resultCounter > 1
+                  ? t("addMultiple", { number: resultCounter })
+                  : t("add")}
               </Button>
             </Modal.Footer>
           </Modal>
