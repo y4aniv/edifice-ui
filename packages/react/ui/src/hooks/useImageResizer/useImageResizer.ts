@@ -20,6 +20,12 @@ export default function useImageResizer() {
     return { height, width };
   };
 
+  const renameFileNameExtension = (filename: string, newExtension: string) => {
+    const filenameParts = filename.split(".");
+    filenameParts.pop();
+    return filenameParts.join(".") + "." + newExtension;
+  };
+
   const resizeImage = (
     image: HTMLImageElement,
     fileName: string,
@@ -104,7 +110,7 @@ export default function useImageResizer() {
       image.onload = async () => {
         const resizedFile = await resizeImage(
           image,
-          file.name,
+          renameFileNameExtension(file.name, compressFormat),
           maxWidth,
           maxHeight,
           compressFormat,
