@@ -241,7 +241,7 @@ export default function useAudioRecorder(
     if (encoderWorker && leftChannelRef.current && rightChannelRef.current) {
       // Encode audio
       encoderWorker.postMessage([
-        "mp3",
+        "wav",
         rightChannelRef.current,
         leftChannelRef.current,
         rightChannelRef.current.length * BUFFER_SIZE,
@@ -389,14 +389,13 @@ export default function useAudioRecorder(
    */
   useEffect(() => {
     if (recordState === "RECORDING" && audioContext) {
-      console.log("audioContext.currentTime", audioContext.currentTime);
       const timer = window.setInterval(
         // Compute exact elapsed time by diffing the start time.
         () => {
           dispatch({
             type: "update",
             updatedState: {
-              recordTime: audioContext.currentTime * 1000,
+              recordTime: audioContext.currentTime,
             },
           });
 
@@ -405,7 +404,7 @@ export default function useAudioRecorder(
             window.clearInterval(timer);
           }
         },
-        250,
+        100,
       );
 
       return () => window.clearInterval(timer);
@@ -426,10 +425,8 @@ export default function useAudioRecorder(
         icon: <Record />,
         color: "danger",
         disabled:
-          recordState !== "IDLE" &&
-          recordState !== "PAUSED" &&
-          (!audioContext?.currentTime ||
-            audioContext?.currentTime >= maxDuration),
+          (recordState !== "IDLE" && recordState !== "PAUSED") ||
+          recordTime >= maxDuration,
         onClick: handleRecord,
         "aria-label": recordText,
       },
@@ -535,7 +532,7 @@ export default function useAudioRecorder(
     recordState,
     playState,
     audioContext,
-    recordTime,
+    recordTime: recordTime * 1000,
     maxDuration: maxDuration * 1000,
     audioRef,
     audioNameRef,
