@@ -24,7 +24,11 @@ const acceptedTypes = (type: MediaLibraryType) => {
       acceptedTypes.push("video/*");
       break;
     case "image":
-      acceptedTypes.push("image/*");
+      acceptedTypes.push("image/png");
+      acceptedTypes.push("image/jpeg");
+      acceptedTypes.push("image/webp");
+      acceptedTypes.push("image/gif");
+      acceptedTypes.push("image/avif");
       break;
     default:
       break;
