@@ -221,6 +221,7 @@ export default function useAudioRecorder(
         updatedState: { recordState: "RECORDING", playState: "IDLE" },
       });
       audioContext?.resume();
+      onUpdateRecord?.(undefined);
     } else {
       // Start new recording
       initRecording();
