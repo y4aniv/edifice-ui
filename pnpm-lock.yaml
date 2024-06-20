@@ -418,9 +418,6 @@ importers:
       dayjs:
         specifier: 1.11.10
         version: 1.11.10
-      heic-decode:
-        specifier: ^2.0.0
-        version: 2.0.0
       pako:
         specifier: 2.1.0
         version: 2.1.0
@@ -455,9 +452,6 @@ importers:
       "@tanstack/react-query":
         specifier: 5.8.4
         version: 5.8.4(react-dom@18.2.0)(react@18.2.0)
-      "@types/heic-decode":
-        specifier: ^1.1.2
-        version: 1.1.2
       "@types/node":
         specifier: 20.8.4
         version: 20.8.4
@@ -8614,13 +8608,6 @@ packages:
       "@types/node": 20.11.6
     dev: true
 
-  /@types/heic-decode@1.1.2:
-    resolution:
-      {
-        integrity: sha512-E1Dw+gpIuiHJcTpFBHm+V/6eYsPhtWook1Z6MIG0H1ONWBp9Z6l3FKydUxFw9GL9JqrWB1qa/uQHdbn/KUeXYw==,
-      }
-    dev: true
-
   /@types/http-errors@2.0.4:
     resolution:
       {
@@ -14115,16 +14102,6 @@ packages:
       upper-case: 1.1.3
     dev: true
 
-  /heic-decode@2.0.0:
-    resolution:
-      {
-        integrity: sha512-NU+zsiDvdL+EebyTjrEqjkO2XYI7FgLhQzsbmO8dnnYce3S0PBSDm/ZyI4KpcGPXYEdb5W72vp/AQFuc4F8ASg==,
-      }
-    engines: { node: ">=8.0.0" }
-    dependencies:
-      libheif-js: 1.17.1
-    dev: false
-
   /hook-std@3.0.0:
     resolution:
       {
@@ -15799,14 +15776,6 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
-
-  /libheif-js@1.17.1:
-    resolution:
-      {
-        integrity: sha512-g9wBm/CasGZMjmH3B2sD9+AO7Y5+79F0oPS+sdAulSxQeYeCeiTIP+lDqvlPofD+y76wvfVtotKZ8AuvZQnWgg==,
-      }
-    engines: { node: ">=8.0.0" }
-    dev: false
 
   /libnpmaccess@7.0.2:
     resolution:

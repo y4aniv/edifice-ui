@@ -39,11 +39,7 @@ const useUploadFiles = ({
       files.forEach(async (file, index) => {
         if (file == null) return;
         let resource;
-        if (
-          file.type.startsWith("image") ||
-          file.name.endsWith(".heic") ||
-          file.name.endsWith(".heif")
-        ) {
+        if (file.type.startsWith("image")) {
           try {
             const replacement = await resizeImageFile(file);
             resource = await uploadAlternateFile(file, replacement);
