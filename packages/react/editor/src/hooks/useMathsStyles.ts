@@ -4,7 +4,7 @@ import { useEffect } from "react";
 export const useMathsStyles = () => {
   useEffect(() => {
     const katexURL =
-      "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
+      "https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css";
     let hasKatexLink = false;
     const links = document.head.getElementsByTagName("link");
 
