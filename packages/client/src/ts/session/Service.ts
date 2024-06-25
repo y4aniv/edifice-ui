@@ -194,13 +194,13 @@ export class SessionService {
     try {
       const [data, userbook] = await Promise.all([
         // FIXME The full user's description should be obtainable from a single endpoint in the backend.
-
         this.getUserProfile({
           requestName: "refreshAvatar",
         }),
         this.http.get<IUserDescription>("/directory/userbook/" + user?.userId),
       ]);
-      return { ...data, ...userbook };
+
+      return { ...userbook, profiles: data };
     } catch (error) {
       console.error(error);
       return {};
@@ -232,13 +232,13 @@ export class SessionService {
       };
     }
 
-    let bookmarkedApps: IWebApp[] = [];
+    const bookmarkedApps: IWebApp[] = [];
     myApps.bookmarks.forEach((appName, index) => {
       const foundApp = (user?.apps || []).find(
         (app: IWebApp) => app.name === appName,
       );
       if (foundApp) {
-        let app = Object.assign({}, foundApp);
+        const app = Object.assign({}, foundApp);
         bookmarkedApps.push(app);
       }
     });

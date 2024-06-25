@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { odeServices } from "edifice-ts-client";
+import { UserProfile, odeServices } from "edifice-ts-client";
 
 import { useIsAdml, useOdeClient, useOdeTheme, useUser } from "..";
 import { useHasWorkflow } from "../useHasWorkflow";
@@ -16,7 +16,7 @@ type DataModel =
 /** Add Zendesk Guide  */
 export default function useZendeskGuide() {
   const { currentLanguage } = useOdeClient();
-  const { user } = useUser();
+  const { userDescription } = useUser();
   const { isAdml } = useIsAdml();
 
   const { theme } = useOdeTheme();
@@ -91,10 +91,10 @@ export default function useZendeskGuide() {
 
     // Check if the label has a ${profile} tag and replace it with the user profile
     if (labels.includes("${profile}")) {
-      const userProfile = user?.type || "";
+      const userProfile = userDescription?.profiles as UserProfile;
       labels = labels.replace(
         "${profile}",
-        (userProfile as string).toLowerCase(),
+        (userProfile[0] as string).toLowerCase(),
       );
     }
 
