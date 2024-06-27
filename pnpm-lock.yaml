@@ -16461,16 +16461,16 @@ snapshots:
 
   "@floating-ui/core@1.6.4":
     dependencies:
-      "@floating-ui/utils": 0.2.4
+      "@floating-ui/utils": 0.2.3
 
   "@floating-ui/dom@1.6.7":
     dependencies:
-      "@floating-ui/core": 1.6.4
-      "@floating-ui/utils": 0.2.4
+      "@floating-ui/core": 1.6.3
+      "@floating-ui/utils": 0.2.3
 
   "@floating-ui/react-dom@2.1.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)":
     dependencies:
-      "@floating-ui/dom": 1.6.7
+      "@floating-ui/dom": 1.6.6
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
@@ -18285,7 +18285,7 @@ snapshots:
   "@storybook/csf-plugin@7.6.6":
     dependencies:
       "@storybook/csf-tools": 7.6.6
-      unplugin: 1.11.0
+      unplugin: 1.10.1
     transitivePeerDependencies:
       - supports-color
 
@@ -19173,7 +19173,7 @@ snapshots:
 
   "@typescript-eslint/eslint-plugin@6.15.0(@typescript-eslint/parser@6.15.0(eslint@8.56.0)(typescript@5.3.3))(eslint@8.56.0)(typescript@5.3.3)":
     dependencies:
-      "@eslint-community/regexpp": 4.11.0
+      "@eslint-community/regexpp": 4.10.1
       "@typescript-eslint/parser": 6.15.0(eslint@8.56.0)(typescript@5.3.3)
       "@typescript-eslint/scope-manager": 6.15.0
       "@typescript-eslint/type-utils": 6.15.0(eslint@8.56.0)(typescript@5.3.3)
@@ -19344,7 +19344,7 @@ snapshots:
   "@vue/compiler-core@3.4.31":
     dependencies:
       "@babel/parser": 7.24.7
-      "@vue/shared": 3.4.31
+      "@vue/shared": 3.4.30
       entities: 4.5.0
       estree-walker: 2.0.2
       source-map-js: 1.2.0
@@ -19358,8 +19358,8 @@ snapshots:
     dependencies:
       "@volar/language-core": 1.11.1
       "@volar/source-map": 1.11.1
-      "@vue/compiler-dom": 3.4.31
-      "@vue/shared": 3.4.31
+      "@vue/compiler-dom": 3.4.30
+      "@vue/shared": 3.4.30
       computeds: 0.0.1
       minimatch: 9.0.5
       muggle-string: 0.3.1
@@ -20848,7 +20848,7 @@ snapshots:
   eslint@8.56.0:
     dependencies:
       "@eslint-community/eslint-utils": 4.4.0(eslint@8.56.0)
-      "@eslint-community/regexpp": 4.11.0
+      "@eslint-community/regexpp": 4.10.1
       "@eslint/eslintrc": 2.1.4
       "@eslint/js": 8.56.0
       "@humanwhocodes/config-array": 0.11.14
