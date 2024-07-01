@@ -9,37 +9,28 @@ import {
 } from "./MediaLibrary";
 
 export const MediaLibraryContext = createContext<{
-  /**
-   * Application code (example: "blog")
-   */
+  /** Application code (example: "blog") */
   appCode: string;
 
-  /**
-   * Visibility of the uploaded files
-   */
+  /** Visibility of the uploaded files. */
   visibility?: WorkspaceVisibility;
 
+  /** Allow selecting / uploading multiple files at once ? */
   multiple?: boolean;
 
-  /**
-   * Type of rss to search for
-   */
+  /** Type of resource to search for. */
   type: MediaLibraryType | null;
 
-  /**
-   * Set the counter in the success button label
-   */
+  /** Set the counter in the success button label. */
   setResultCounter: (count?: number) => void;
 
   /**
-   * Set a innertab-specific callback which gets the result when success button is clicked
+   * Set a innertab-specific callback which gets the result when success button is clicked.
    */
   setResult: (result?: MediaLibraryResult) => void;
 
-  /**
-   * Memoize all uploaded elements, to be deleted on cancellation.
-   */
-  addCancellable: (uploads: WorkspaceElement[]) => void;
+  /** Memoize uploaded elements to be deleted on cancellation. */
+  setCancellable: (uploads: WorkspaceElement[]) => void;
 
   /**
    * Allow an innertab to switch display to another innertab.
@@ -47,9 +38,7 @@ export const MediaLibraryContext = createContext<{
    */
   setVisibleTab: (tab: AvailableTab) => void;
 
-  /**
-   * Allow an innertab to switch type of the media library.
-   */
+  /** Allow an innertab to switch type of the media library. */
   switchType: (type: MediaLibraryType) => void;
 
   /**

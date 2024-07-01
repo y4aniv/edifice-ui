@@ -6,10 +6,11 @@ import { DropzoneContext } from "./DropzoneContext";
 import DropzoneDrag from "./DropzoneDrag";
 import DropzoneFile from "./DropzoneFile";
 import DropzoneImport from "./DropzoneImport";
-import useDropzone from "../../hooks/useDropzone/useDropzone";
+import { useDropzone } from "../../hooks";
 
 interface DropzoneProps {
   className?: string;
+  /** See https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept#unique_file_type_specifiers */
   accept?: string[];
   multiple?: boolean;
   handle?: boolean;
@@ -29,11 +30,12 @@ const Dropzone = ({
     files,
     addFile,
     deleteFile,
+    replaceFileAt,
     handleDragLeave,
     handleDragging,
     handleDrop,
     handleOnChange,
-  } = useDropzone();
+  } = useDropzone(accept ? { forceFilters: true } : undefined);
 
   const classes = clsx(
     "dropzone",
@@ -50,8 +52,9 @@ const Dropzone = ({
       files,
       addFile,
       deleteFile,
+      replaceFileAt,
     }),
-    [addFile, deleteFile, files, inputRef],
+    [addFile, deleteFile, replaceFileAt, files, inputRef],
   );
 
   return (

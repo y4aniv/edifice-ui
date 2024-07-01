@@ -38,16 +38,38 @@ const useWorkspaceFile = () => {
     const matches = (uri ?? "").match(regex);
     if (matches && matches.length === 2) {
       const uuid = matches[1];
-      // get previous name
-      const existing = await odeServices
-        .workspace()
-        .searchDocuments({ filter: "all", id: uuid, limit: 1 });
-      const name = existing.length ? existing[0].name : undefined;
-      // update
-      const file: WorkspaceElement = await odeServices
+
+      // Get previous documents
+      const existingDocuments = await odeServices.workspace().searchDocuments({
+        filter: "all",
+        id: uuid,
+        limit: 1,
+      });
+      // Get name from current document
+      const name = existingDocuments.length
+        ? existingDocuments[0].name
+        : undefined;
+
+      // Update the file
+      await odeServices
         .workspace()
         .updateFile(uuid, blob, { alt, legend, name });
-      return `/workspace/${file.public ? "pub/" : ""}document/${uuid}`;
+
+      // Get updated file because `updateFile` method doesnt return information
+      const updatedDocuments = await odeServices.workspace().searchDocuments({
+        filter: "all",
+        id: uuid,
+        limit: 1,
+      });
+      const updatedFile = updatedDocuments[0];
+
+      /**
+       * need the file: updatedFile to update correctly uploadedFiles
+       */
+      return {
+        file: updatedFile,
+        src: `/workspace/${updatedFile.public ? "pub/" : ""}document/${uuid}`,
+      };
     } else {
       const res = await odeServices
         .workspace()
@@ -69,9 +91,12 @@ const useWorkspaceFile = () => {
   // const put = () => {}
 
   const remove = async (file: WorkspaceElement | WorkspaceElement[]) => {
-    return await odeServices
-      .workspace()
-      .deleteFile(Array.isArray(file) ? file : [file]);
+    const noop = !file || (Array.isArray(file) && file.length === 0);
+    return noop
+      ? Promise.resolve()
+      : await odeServices
+          .workspace()
+          .deleteFile(Array.isArray(file) ? file : [file]);
   };
 
   return {

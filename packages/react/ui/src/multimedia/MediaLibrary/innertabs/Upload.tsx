@@ -5,19 +5,29 @@ import { UploadFiles } from "../../UploadFiles";
 import { MediaLibraryType } from "../MediaLibrary";
 import { useMediaLibraryContext } from "../MediaLibraryContext";
 
+/**
+ * Get acceptable file (MIME-)types or extensions, for a MediaLibraryType.
+ * See https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept#unique_file_type_specifiers
+ *
+ * @param type type of MediaLibrary
+ * @returns array of acceptable types
+ */
 const acceptedTypes = (type: MediaLibraryType) => {
   const acceptedTypes = [];
 
   switch (type) {
     case "audio":
-      acceptedTypes.push("audio/mp3");
-      acceptedTypes.push("video/mp4");
+      acceptedTypes.push("audio/*");
       break;
     case "video":
       acceptedTypes.push("video/*");
       break;
     case "image":
-      acceptedTypes.push("image/*");
+      acceptedTypes.push("image/png");
+      acceptedTypes.push("image/jpeg");
+      acceptedTypes.push("image/webp");
+      acceptedTypes.push("image/gif");
+      acceptedTypes.push("image/avif");
       break;
     default:
       break;
@@ -32,17 +42,18 @@ export const Upload = () => {
     multiple,
     setResult,
     setResultCounter,
-    addCancellable,
+    setCancellable,
   } = useMediaLibraryContext();
 
   const handleOnFilesChange = (uploadedFiles: WorkspaceElement[]) => {
     if (uploadedFiles.length) {
       // Uploaded files are subject to cancel action
-      addCancellable(uploadedFiles);
+      setCancellable(uploadedFiles);
       // Uploaded files are subject to success action
       setResultCounter(uploadedFiles.length);
       setResult(uploadedFiles);
     } else {
+      setCancellable([]);
       setResultCounter(undefined);
       setResult(undefined);
     }
