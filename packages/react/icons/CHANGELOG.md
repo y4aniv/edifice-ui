@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.10](https://github.com/edificeio/edifice-ui/compare/v1.5.10-develop.7...v1.5.10) (2024-07-01)
+
+**Note:** Version bump only for package @edifice-ui/icons
+
 ## [1.5.9](https://github.com/edificeio/edifice-ui/compare/v1.5.9-develop.5...v1.5.9) (2024-06-12)
 
 **Note:** Version bump only for package @edifice-ui/icons
