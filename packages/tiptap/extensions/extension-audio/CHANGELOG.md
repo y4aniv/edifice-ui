@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.11](https://github.com/edificeio/edifice-ui/compare/v1.5.10...v1.5.11) (2024-07-09)
+
+### Bug Fixes
+
+- #WB-3160, remove call from ResourceService in Share Service ([#212](https://github.com/edificeio/edifice-ui/issues/212)) ([0eb69eb](https://github.com/edificeio/edifice-ui/commit/0eb69ebc4ed2e0b9d618d411acd4e399920ff85c)), closes [#WB-3160](https://github.com/edificeio/edifice-ui/issues/WB-3160)
+
 ## [1.5.10](https://github.com/edificeio/edifice-ui/compare/v1.5.10-develop.7...v1.5.10) (2024-07-01)
 
 **Note:** Version bump only for package @edifice-tiptap-extensions/extension-audio
