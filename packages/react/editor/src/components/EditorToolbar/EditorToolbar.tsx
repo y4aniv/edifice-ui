@@ -14,6 +14,7 @@ import {
   BulletList,
   Undo,
   Redo,
+  Cantoo,
 } from "@edifice-ui/icons";
 import {
   ToolbarItem,
@@ -38,6 +39,7 @@ import {
 import { hasExtension } from "../../utils/has-extension";
 import { hasMark } from "../../utils/has-mark";
 import { hasTextStyle } from "../../utils/has-text-style";
+import { useCantoo } from "../../hooks/useCantoo.ts";
 
 interface Props {
   /** Ref to a MediaLibrary instance */
@@ -61,6 +63,8 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
     isActive: speechRecognition,
     toggle: toggleSpeechRecognition,
   } = useSpeechRecognition(editor);
+
+  const { isAvailable: canUseCantoo } = useCantoo();
 
   const toolbarItems: ToolbarItem[] = useMemo(() => {
     const showIf = (truthy: boolean) => (truthy ? "show" : "hide");
@@ -159,6 +163,20 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         },
         name: "attachment",
         tooltip: t("tiptap.toolbar.attachment"),
+      },
+      //------------- CANTOO ---------------//
+      {
+        type: "icon",
+        props: {
+          icon: <Cantoo />,
+          className: "bg-gray-200",
+          "aria-label": t("tiptap.toolbar.cantoo"),
+          // @ts-ignore
+          onClick: () => editor?.commands.runCantoo(),
+        },
+        name: "cantoo",
+        tooltip: t("tiptap.toolbar.cantoo"),
+        visibility: canUseCantoo ? "show" : "hide",
       },
       {
         type: "divider",
