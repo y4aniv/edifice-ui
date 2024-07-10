@@ -62,7 +62,7 @@ const QcmModal = ({ isOpen, onSuccess, onCancel }: ModalProps) => {
           }
         });
 
-        if (!element.correct) {
+        if (element.correct === undefined) {
           throw new Error("The correct answer must be defined");
         }
 
@@ -79,6 +79,14 @@ const QcmModal = ({ isOpen, onSuccess, onCancel }: ModalProps) => {
             `The correct answer must be between 0 and ${
               element.answers.length - 1
             } (got ${element.correct})`,
+          );
+        }
+
+        if (element.explanation && typeof element.explanation !== "string") {
+          throw new Error(
+            `The explanation must be a string (got ${typeof element.explanation} for ${
+              element.explanation
+            })`,
           );
         }
       });

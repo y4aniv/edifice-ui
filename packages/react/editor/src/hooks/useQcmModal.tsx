@@ -24,8 +24,11 @@ export const useQcmModal = (editor: Editor | null) => {
       answers: string[] | number[];
       correct: number;
     }[];
-    jsonContent.forEach((qcm) => {
-      console.log(qcm);
+    editor?.commands.insertContent({
+      type: "qcmComponent",
+      attrs: {
+        json: jsonContent,
+      },
     });
     toggle();
   };

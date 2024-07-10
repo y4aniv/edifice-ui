@@ -44,6 +44,8 @@ import {
   LinkerNodeView,
   LinkerRenderer,
   MediaRenderer,
+  QcmNodeView,
+  QcmRenderer,
   VideoNodeView,
 } from "../components";
 
@@ -115,6 +117,7 @@ export const useTipTapEditor = (
       Alert,
       VideoNodeView(MediaRenderer),
       AudioNodeView(AudioRenderer),
+      QcmNodeView(QcmRenderer),
       LinkerNodeView(LinkerRenderer),
       ImageNodeView(MediaRenderer),
       AttachmentNodeView(AttachmentRenderer),
