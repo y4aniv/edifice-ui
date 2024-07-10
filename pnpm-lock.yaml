@@ -235,6 +235,9 @@ importers:
       '@edifice-tiptap-extensions/extension-linker':
         specifier: workspace:*
         version: link:../../tiptap/extensions/extension-linker
+      '@edifice-tiptap-extensions/extension-qcm':
+        specifier: workspace:*
+        version: link:../../tiptap/extensions/extension-qcm
       '@edifice-tiptap-extensions/extension-speechrecognition':
         specifier: workspace:*
         version: link:../../tiptap/extensions/extension-speechrecognition
@@ -446,7 +449,7 @@ importers:
         version: 7.23.3(@babel/core@7.24.7)
       '@edifice-ui/icons':
         specifier: ^1.5.10
-        version: link:../icons
+        version: 1.5.11(react-dom@18.2.0)(react@18.2.0)
       '@react-spring/web':
         specifier: 9.7.3
         version: 9.7.3(react-dom@18.2.0)(react@18.2.0)
@@ -994,6 +997,39 @@ importers:
       '@tiptap/pm':
         specifier: 2.3.0
         version: 2.3.0
+      rollup:
+        specifier: ^3.17.3
+        version: 3.29.4
+      rollup-plugin-auto-external:
+        specifier: ^2.0.0
+        version: 2.0.0(rollup@3.29.4)
+      rollup-plugin-sourcemaps:
+        specifier: ^0.6.3
+        version: 0.6.3(@types/node@20.11.6)(rollup@3.29.4)
+      rollup-plugin-typescript2:
+        specifier: ^0.34.1
+        version: 0.34.1(rollup@3.29.4)(typescript@5.3.3)
+
+  packages/tiptap/extensions/extension-qcm:
+    devDependencies:
+      '@rollup/plugin-babel':
+        specifier: ^6.0.3
+        version: 6.0.4(@babel/core@7.24.7)(rollup@3.29.4)
+      '@rollup/plugin-commonjs':
+        specifier: ^24.0.1
+        version: 24.1.0(rollup@3.29.4)
+      '@rollup/plugin-terser':
+        specifier: ^0.4.4
+        version: 0.4.4(rollup@3.29.4)
+      '@tiptap/core':
+        specifier: 2.3.0
+        version: 2.3.0(@tiptap/pm@2.3.0)
+      '@tiptap/pm':
+        specifier: 2.3.0
+        version: 2.3.0
+      '@tiptap/react':
+        specifier: 2.4.0
+        version: 2.4.0(@tiptap/core@2.3.0)(@tiptap/pm@2.3.0)(react-dom@18.2.0)(react@18.2.0)
       rollup:
         specifier: ^3.17.3
         version: 3.29.4
@@ -2605,6 +2641,16 @@ packages:
   /@discoveryjs/json-ext@0.5.7:
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
     engines: {node: '>=10.0.0'}
+    dev: true
+
+  /@edifice-ui/icons@1.5.11(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Zcy1Aq5KcU4bQq4uiOmnd4RiRbfip+X0GxdGB0TMp7FWLWbslE1tLF7XQaY0oAEJkLM9iWOUgy71uGAUqeS9Yw==}
+    peerDependencies:
+      react: 18.2.0
+      react-dom: 18.2.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: true
 
   /@emotion/use-insertion-effect-with-fallbacks@1.0.1(react@18.2.0):
@@ -4302,7 +4348,6 @@ packages:
 
   /@popperjs/core@2.11.8:
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
-    dev: false
 
   /@radix-ui/number@1.0.1:
     resolution: {integrity: sha512-T5gIdVO2mmPW3NNhjNgEP3cqMXjXL9UbO0BzWcXfvdBs+BohbQxvd/K5hSVKmn9/lbTdsQVKbUcP5WLCwvUbBg==}
@@ -6560,7 +6605,6 @@ packages:
       '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
       '@tiptap/pm': 2.3.0
       tippy.js: 6.3.7
-    dev: false
 
   /@tiptap/extension-bullet-list@2.4.0(@tiptap/core@2.3.0):
     resolution: {integrity: sha512-9S5DLIvFRBoExvmZ+/ErpTvs4Wf1yOEs8WXlKYUCcZssK7brTFj99XDwpHFA29HKDwma5q9UHhr2OB2o0JYAdw==}
@@ -6635,7 +6679,6 @@ packages:
       '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
       '@tiptap/pm': 2.3.0
       tippy.js: 6.3.7
-    dev: false
 
   /@tiptap/extension-focus@2.3.0(@tiptap/core@2.3.0)(@tiptap/pm@2.3.0):
     resolution: {integrity: sha512-GKWpTeFfmOC3tQWGg5NPf2RjXmg4n4Bg7x65Ti7RgtRrZ/1OKHuedYGzn9kTwRHGrdIKQl9MjaHlt+p4fo3N6A==}
@@ -6915,6 +6958,22 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
+
+  /@tiptap/react@2.4.0(@tiptap/core@2.3.0)(@tiptap/pm@2.3.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-baxnIr6Dy+5iGagOEIKFeHzdl1ZRa6Cg+SJ3GDL/BVLpO6KiCM3Mm5ymB726UKP1w7icrBiQD2fGY3Bx8KaiSA==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    dependencies:
+      '@tiptap/core': 2.3.0(@tiptap/pm@2.3.0)
+      '@tiptap/extension-bubble-menu': 2.4.0(@tiptap/core@2.3.0)(@tiptap/pm@2.3.0)
+      '@tiptap/extension-floating-menu': 2.4.0(@tiptap/core@2.3.0)(@tiptap/pm@2.3.0)
+      '@tiptap/pm': 2.3.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: true
 
   /@tiptap/starter-kit@2.3.0(@tiptap/pm@2.3.0):
     resolution: {integrity: sha512-TjvCd/hzEnuEYOdr5uQqcfHOMuj7JRoZBPdheupwl3SbuYiCxtcqYyAE5qoGXWwuVe9xVGerOLVPkDUgmyrH6A==}
@@ -16376,7 +16435,6 @@ packages:
     resolution: {integrity: sha512-E1d3oP2emgJ9dRQZdf3Kkn0qJgI6ZLpyS5z6ZkY1DF3kaQaBsGZsndEpHwx+eC+tYM41HaSNvNtLx8tU57FzTQ==}
     dependencies:
       '@popperjs/core': 2.11.8
-    dev: false
 
   /title-case@2.1.1:
     resolution: {integrity: sha512-EkJoZ2O3zdCz3zJsYCsxyq2OC5hrxR9mfdd5I+w8h/tmFfeOxJ+vvkxsKxdmN0WtS9zLdHEgfgVOiMVgv+Po4Q==}

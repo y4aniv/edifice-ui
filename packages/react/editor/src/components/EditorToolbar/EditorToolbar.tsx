@@ -15,6 +15,7 @@ import {
   Undo,
   Redo,
   Cantoo,
+  Checklist,
 } from "@edifice-ui/icons";
 import {
   ToolbarItem,
@@ -46,9 +47,15 @@ interface Props {
   mediaLibraryRef: RefObject<MediaLibraryRef>;
   /** API to open/close a Math modal. */
   toggleMathsModal: Function;
+  /** API to open/close a QCM modal. */
+  toggleQcmModal: Function;
 }
 
-export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
+export const EditorToolbar = ({
+  mediaLibraryRef,
+  toggleMathsModal,
+  toggleQcmModal,
+}: Props) => {
   const { t } = useTranslation();
   const { id, editor } = useEditorContext();
 
@@ -352,6 +359,19 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         },
         name: "linker",
         tooltip: t("tiptap.toolbar.linker"),
+      },
+      // -------------- QCM ---------------//
+      {
+        type: "icon",
+        props: {
+          icon: <Checklist />,
+          "aria-label": t("tiptap.toolbar.qcm"),
+          onClick: () => {
+            toggleQcmModal();
+          },
+        },
+        name: "qcm",
+        tooltip: t("tiptap.toolbar.qcm"),
       },
       //-----------------------------------//
       {

@@ -27,6 +27,7 @@ import {
   useImageModal,
   useLinkToolbar,
   useMathsModal,
+  useQcmModal,
   useMediaLibraryModal,
   useSpeechSynthetisis,
   useTipTapEditor,
@@ -35,6 +36,7 @@ import { useMathsStyles } from "../../hooks/useMathsStyles";
 
 const MathsModal = lazy(async () => await import("./MathsModal"));
 const ImageEditor = lazy(async () => await import("./ImageEditor"));
+const QcmModal = lazy(async () => await import("./QcmModal"));
 
 export interface EditorRef {
   /** Get the current content. */
@@ -108,6 +110,7 @@ const Editor = forwardRef(
       useMediaLibraryModal(editor);
     const { toggle: toggleMathsModal, ...mathsModalHandlers } =
       useMathsModal(editor);
+    const { toggle: toggleQcmModal, ...qcmModalHandlers } = useQcmModal(editor);
     const imageModal = useImageModal(editor, "media-library", visibility);
     const linkToolbarHandlers = useLinkToolbar(editor, mediaLibraryModalRef);
     const speechSynthetisis = useSpeechSynthetisis(editor);
@@ -152,6 +155,7 @@ const Editor = forwardRef(
               {...{
                 mediaLibraryRef: mediaLibraryModalRef,
                 toggleMathsModal: toggleMathsModal,
+                toggleQcmModal: toggleQcmModal,
               }}
             />
           )}
@@ -188,6 +192,10 @@ const Editor = forwardRef(
 
           {editable && mathsModalHandlers.isOpen && (
             <MathsModal {...mathsModalHandlers} />
+          )}
+
+          {editable && qcmModalHandlers.isOpen && (
+            <QcmModal {...qcmModalHandlers} />
           )}
 
           {editable && imageModal?.isOpen && imageModal?.currentImage && (

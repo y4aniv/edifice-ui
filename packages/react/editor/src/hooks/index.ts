@@ -6,6 +6,7 @@ export * from "./useImageSelection";
 export * from "./useLinkToolbar";
 export * from "./useMathsModal";
 export * from "./useMediaLibraryModal";
+export * from "./useQcmModal";
 export * from "./useResizeMedia";
 export * from "./useSpeechRecognition";
 export * from "./useSpeechSynthetisis";
