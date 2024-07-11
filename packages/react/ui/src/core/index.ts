@@ -1,5 +1,6 @@
 export * from "./OdeClientProvider";
 export * from "./ThemeProvider";
+export * from "./useAvatar";
 export * from "./useBookmark";
 export * from "./useConf";
 export * from "./useConversation";
@@ -9,6 +10,7 @@ export * from "./useHeader";
 export * from "./useHttpErrorToast";
 export * from "./useIsAdml";
 export * from "./useLibraryUrl";
+export * from "./useMediaLibrary";
 export * from "./useOdeIcons";
 export * from "./usePaths";
 export * from "./useResourceSearch";

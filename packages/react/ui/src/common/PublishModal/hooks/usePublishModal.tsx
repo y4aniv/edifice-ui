@@ -90,7 +90,7 @@ export default function usePublishModal({ onSuccess, resource }: ModalProps) {
     selectOption(value, selectedSubjectAreas, setSelectedSubjectAreas);
   };
 
-  const handleUploadImage = (file: File) => setCover(file);
+  const handleUploadImage = (file: File | string) => setCover(file);
 
   const handleDeleteImage = () => setCover("");
 
@@ -156,6 +156,8 @@ export default function usePublishModal({ onSuccess, resource }: ModalProps) {
         toast.success(<ToastSuccess result={result} />, {
           duration: 10000,
         });
+      } else if (result.message === "CONTENT_TOO_LARGE") {
+        toast.error(<ToastError errorMessage={result.message} />);
       } else {
         toast.error(<ToastError formData={formData} />);
       }

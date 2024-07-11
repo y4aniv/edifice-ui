@@ -15,8 +15,10 @@ import {
   autoUpdate,
   flip,
   offset,
+  safePolygon,
   size,
   useFloating,
+  useHover,
 } from "@floating-ui/react";
 
 import { mergeRefs } from "../../utils/ref";
@@ -54,6 +56,7 @@ const useDropdown = (
   extraTriggerKeyDownHandler?: (
     event: React.KeyboardEvent<HTMLButtonElement>,
   ) => void,
+  isTriggerHovered: boolean = false,
 ): UseDropdownProps => {
   /* Unique Dropdown Id */
   const id = useId();
@@ -63,7 +66,7 @@ const useDropdown = (
   const [activeIndex, setActiveIndex] = useState<number>(-1);
   const [isFocused, setIsFocused] = useState<string | null>(null);
 
-  const { refs, floatingStyles } = useFloating({
+  const { refs, floatingStyles, context } = useFloating({
     placement,
     open: visible,
     onOpenChange: setVisible,
@@ -77,6 +80,16 @@ const useDropdown = (
       }),
       flip({ padding: 0 }),
     ],
+  });
+
+  // Hover interaction for the dropdown trigger. This is used to open the dropdown on hover. The dropdown should be closed on mouse leave.
+  useHover(context, {
+    enabled: isTriggerHovered,
+    // Configure the delay for opening and closing separately.
+    delay: {
+      open: 200,
+    },
+    handleClose: safePolygon(),
   });
 
   /* refs */
@@ -290,7 +303,7 @@ const useDropdown = (
     /* MenuProps to spread to any Menu Component */
     menuProps: {
       ref: mergeRefs(menuRef, refs.setFloating),
-      className: "dropdown-menu bg-white shadow rounded-4 p-8",
+      className: "dropdown-menu",
       "aria-labelledby": `dropdown-toggle-${id}`,
       style: { ...floatingStyles },
     },
