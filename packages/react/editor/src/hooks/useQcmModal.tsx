@@ -21,15 +21,25 @@ export const useQcmModal = (editor: Editor | null) => {
   const onSuccess = (json: string) => {
     const jsonContent = JSON.parse(json) as {
       question: string;
-      answers: string[] | number[];
-      correct: number;
+      options: string[] | number[];
+      correctIndex: number;
+      explanation?: string;
     }[];
-    editor?.commands.insertContent({
-      type: "qcmComponent",
-      attrs: {
-        json: jsonContent,
+
+    editor?.commands.insertContent([
+      {
+        type: "qcmComponent",
+        attrs: {
+          json: jsonContent,
+        },
       },
-    });
+      // Add a line break after the QCM to avoid a bug if the component is at the end of the document
+      {
+        type: "paragraph",
+        content: [{ type: "text", text: "\n" }],
+      },
+    ]);
+
     toggle();
   };
 

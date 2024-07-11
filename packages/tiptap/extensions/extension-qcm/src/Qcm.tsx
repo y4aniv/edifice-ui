@@ -1,6 +1,4 @@
 import { Node, mergeAttributes } from "@tiptap/core";
-import { NodeViewWrapper, ReactNodeViewRenderer } from "@tiptap/react";
-import React from "react";
 
 export const Qcm = Node.create({
   name: "qcmComponent",
