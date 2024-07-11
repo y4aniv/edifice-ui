@@ -42,43 +42,48 @@ const QcmModal = ({ isOpen, onSuccess, onCancel }: ModalProps) => {
           );
         }
 
-        if (!element.answers) {
-          throw new Error("The answers must be defined");
+        if (!element.options) {
+          throw new Error("The options must be defined");
         }
 
-        if (!Array.isArray(element.answers)) {
-          throw new Error("The answers must be contained in an array");
+        if (!Array.isArray(element.options)) {
+          throw new Error("The options must be an array");
         }
 
-        if (element.answers.length < 2) {
-          throw new Error("There must be at least two answers");
+        if (element.options.length < 2) {
+          throw new Error("There must be at least two options");
         }
 
-        element.answers.forEach((answer: any) => {
-          if (typeof answer !== "string" && typeof answer !== "number") {
-            throw new Error(
-              `The answer must be a string or a number (got ${typeof answer} for ${answer})`,
-            );
-          }
-        });
+        element.options.forEach(
+          (option: { [key: string]: string | number }) => {
+            if (typeof option !== "string" && typeof option !== "number") {
+              throw new Error(
+                `The option must be a string or a number (got ${typeof option} for ${option})`,
+              );
+            }
+          },
+        );
 
-        if (element.correct === undefined) {
-          throw new Error("The correct answer must be defined");
+        if (element.correctIndex === undefined) {
+          throw new Error("The correct answer index must be defined");
         }
 
-        if (typeof element.correct !== "number") {
+        if (typeof element.correctIndex !== "number") {
           throw new Error(
-            `The correct answer must be a number (got ${typeof element.correct} for ${
-              element.correct
+            `The correct answer index must be a number (got ${typeof element.correct} for ${
+              element.correctIndex
             })`,
           );
         }
 
-        if (element.correct < 0 || element.correct >= element.answers.length) {
+        if (
+          element.correctIndex < 0 ||
+          element.correctIndex >= element.options.length
+        ) {
           throw new Error(
-            `The correct answer must be between 0 and ${
-              element.answers.length - 1
-            } (got ${element.correct})`,
+            `The correct answer index must be between 0 and ${
+              element.options.length - 1
+            } (got ${element.correctIndex})`,
           );
         }
 

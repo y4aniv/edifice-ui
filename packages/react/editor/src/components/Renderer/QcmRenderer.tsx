@@ -19,8 +19,8 @@ const QcmRenderer = (props: { editor: Editor; [x: string]: any }) => {
         (
           qcm: {
             question: string;
-            answers: string[] | number[];
-            correct: number;
+            options: string[] | number[];
+            correctIndex: number;
             explanation?: string;
           },
           qcmIndex: number,
@@ -39,25 +39,25 @@ const QcmRenderer = (props: { editor: Editor; [x: string]: any }) => {
               </Card.Body>
               <Card.Body>
                 <ul style={{ listStyleType: "decimal" }}>
-                  {qcm.answers.map((answer, answerIndex) => (
-                    <li key={answerIndex} className="mb-8">
+                  {qcm.options.map((option, optionIndex) => (
+                    <li key={optionIndex} className="mb-8">
                       <Button
                         variant={"ghost"}
-                        onClick={() => handleSelect(qcmIndex, answerIndex)}
+                        onClick={() => handleSelect(qcmIndex, optionIndex)}
                         disabled={!!disabled[qcmIndex]}
                         color={"tertiary"}
                         style={{
                           color:
                             selectedAnswers[qcmIndex] != null
-                              ? answerIndex === qcm.correct
+                              ? optionIndex === qcm.correctIndex
                                 ? "var(--edifice-green)"
-                                : selectedAnswers[qcmIndex] === answerIndex
+                                : selectedAnswers[qcmIndex] === optionIndex
                                   ? "var(--edifice-red)"
                                   : ""
                               : "",
                         }}
                       >
-                        {answer}
+                        {option}
                       </Button>
                     </li>
                   ))}
