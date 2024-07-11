@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.12](https://github.com/edificeio/edifice-ui/compare/v1.5.12-develop.2...v1.5.12) (2024-07-11)
+
+**Note:** Version bump only for package @edifice-tiptap-extensions/extension-speechsynthesis
+
 ## [1.5.11](https://github.com/edificeio/edifice-ui/compare/v1.5.10...v1.5.11) (2024-07-09)
 
 ### Bug Fixes
