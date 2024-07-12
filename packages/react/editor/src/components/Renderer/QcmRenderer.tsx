@@ -137,7 +137,7 @@ const QcmRenderer = (props: { editor: Editor; [x: string]: any }) => {
 
   return (
     <NodeViewWrapper>
-      <Card>
+      <Card className="mb-16" isClickable={false} isSelected={false}>
         <Card.Body>
           <h2>{PropsJson.qcmTitle}</h2>
         </Card.Body>
