@@ -211,9 +211,6 @@ importers:
       '@edifice-tiptap-extensions/extension-audio':
         specifier: workspace:*
         version: link:../../tiptap/extensions/extension-audio
-      '@edifice-tiptap-extensions/extension-cantoo':
-        specifier: workspace:*
-        version: link:../../tiptap/extensions/extension-cantoo
       '@edifice-tiptap-extensions/extension-font-size':
         specifier: workspace:*
         version: link:../../tiptap/extensions/extension-font-size
