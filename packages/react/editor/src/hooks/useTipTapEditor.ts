@@ -32,7 +32,6 @@ import { Content, FocusPosition, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { Mathematics } from "@tiptap-pro/extension-mathematics";
 import { useTranslation } from "react-i18next";
-import { Cantoo } from "@edifice-tiptap-extensions/extension-cantoo";
 import { useCantoo } from "@edifice-ui/react";
 
 import {
@@ -118,7 +117,6 @@ export const useTipTapEditor = (
       LinkerNodeView(LinkerRenderer),
       ImageNodeView(MediaRenderer),
       AttachmentNodeView(AttachmentRenderer),
-      Cantoo,
     ],
     content,
     // If the onContentChange callback is provided, we call it on every content change.

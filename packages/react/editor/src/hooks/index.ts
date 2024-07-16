@@ -1,4 +1,6 @@
 export * from "./useActionOptions";
+export * from "./useCantoo";
+export * from "./useCantooModal";
 export * from "./useCommentEditor";
 export * from "./useEditorContext";
 export * from "./useImageModal";

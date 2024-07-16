@@ -14,7 +14,6 @@ import {
   BulletList,
   Undo,
   Redo,
-  Cantoo,
 } from "@edifice-ui/icons";
 import {
   ToolbarItem,
@@ -24,6 +23,7 @@ import {
 } from "@edifice-ui/react";
 import { useTranslation } from "react-i18next";
 
+import { EditorToolbarCantoo } from "./EditorToolbar.Cantoo.tsx";
 import { EditorToolbarDropdownMenu } from "./EditorToolbar.DropdownMenu";
 import { EditorToolbarEmoji } from "./EditorToolbar.Emoji";
 import { EditorToolbarHighlightColor } from "./EditorToolbar.HighlightColor";
@@ -39,16 +39,22 @@ import {
 import { hasExtension } from "../../utils/has-extension";
 import { hasMark } from "../../utils/has-mark";
 import { hasTextStyle } from "../../utils/has-text-style";
-import { useCantoo } from "../../hooks/useCantoo.ts";
+import { useCantoo } from "../..";
 
 interface Props {
   /** Ref to a MediaLibrary instance */
   mediaLibraryRef: RefObject<MediaLibraryRef>;
   /** API to open/close a Math modal. */
   toggleMathsModal: Function;
+  /** API to open/close a Cantoo modal. */
+  toggleCantooModal: Function;
 }
 
-export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
+export const EditorToolbar = ({
+  mediaLibraryRef,
+  toggleMathsModal,
+  toggleCantooModal,
+}: Props) => {
   const { t } = useTranslation();
   const { id, editor } = useEditorContext();
 
@@ -64,7 +70,7 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
     toggle: toggleSpeechRecognition,
   } = useSpeechRecognition(editor);
 
-  const { isAvailable: canUseCantoo } = useCantoo();
+  const { isAvailable: canUseCantoo } = useCantoo(editor);
 
   const toolbarItems: ToolbarItem[] = useMemo(() => {
     const showIf = (truthy: boolean) => (truthy ? "show" : "hide");
@@ -164,20 +170,6 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         name: "attachment",
         tooltip: t("tiptap.toolbar.attachment"),
       },
-      //------------- CANTOO ---------------//
-      {
-        type: "icon",
-        props: {
-          icon: <Cantoo />,
-          className: "bg-gray-200",
-          "aria-label": t("tiptap.toolbar.cantoo"),
-          // @ts-ignore
-          onClick: () => editor?.commands.runCantoo(),
-        },
-        name: "cantoo",
-        tooltip: t("tiptap.toolbar.cantoo"),
-        visibility: canUseCantoo ? "show" : "hide",
-      },
       {
         type: "divider",
         name: "div-2",
@@ -194,6 +186,25 @@ export const EditorToolbar = ({ mediaLibraryRef, toggleMathsModal }: Props) => {
         visibility: canRecognizeSpeech ? "show" : "hide",
         name: "speechtotext",
         tooltip: t("tiptap.toolbar.stt"),
+      },
+      //------------- CANTOO ---------------//
+      {
+        type: "dropdown",
+        props: {
+          children: (
+            triggerProps: JSX.IntrinsicAttributes &
+              Omit<IconButtonProps, "ref"> &
+              RefAttributes<HTMLButtonElement>,
+          ) => (
+            <EditorToolbarCantoo
+              triggerProps={triggerProps}
+              openModal={toggleCantooModal}
+            />
+          ),
+        },
+        name: "cantoo",
+        visibility: canUseCantoo ? "show" : "hide",
+        tooltip: t("tiptap.toolbar.cantoo.choice"),
       },
       //------------------------------------//
       {
